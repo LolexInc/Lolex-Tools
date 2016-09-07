@@ -84,4 +84,7 @@ install:
  - pip install -q Django=$DJANGO_VERSION
  - python JTTools.py -q run
  - python JTToolsInstaller.py -q run
+ 
+ 
+ 
 
