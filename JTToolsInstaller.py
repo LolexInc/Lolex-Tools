@@ -3,20 +3,6 @@ try:
     sys.path.insert(0,"\\")
     import isnottravisci
 except(ImportError):
-    print("Running as Travis CI... Tests complete. If you are not actually running in Travis CI, please create isnottravisci.py")
-    time.sleep(500)
-    print("...")
-    time.sleep(500)
-    print("...")
-    time.sleep(500)
-    print("...")
-    time.sleep(500)
-    print("...")
-    time.sleep(500)
-    print("...")
-    time.sleep(500)
-    print("...")
-    
     print ("Build passed our tests, exiting...")
     exit(None)
 try:
@@ -25,8 +11,6 @@ try:
 except(NameError):
     python = int(3)
     test = input("Press any key then enter to continue...")
-    
-    
 try:
  os.remove ("JTToolsOptions.pyc")
 except(FileNotFoundError):
@@ -99,25 +83,10 @@ try:
      with open ("JTToolsOptions.py","a") as f: f.write(" menu = True\n")
  if showmenu != 1:
      with open ("JTToolsOptions.py","a") as f: f.write (" menu = False")
-     
- 
-
-
-
-        
-                              
-                   
-                   
-     
-
-            
-
-
 except(ValueError):
     print("FOLLOW INSTRUCTIONS!")
     subprocess.call("JTToolsInstaller.py", shell = True)
     time.sleep(5)
-
 py_compile.compile("JTToolsOptions.py")
 try:
  shutil.copy("\\__pycache__\JTToolsOptions.cpython-35.pyc","\\")
@@ -150,16 +119,4 @@ except(FileNotFoundError):
                   os.remove("\\__pycache__\JTToolsOptions.cpython-30.pyc")
                  except(FileNotFoundError):
                      print("Sorry! You need to update Python to at least version 3.0")
-              
-          
-       
-     
-
-
-
 os.remove("\\JTToolsOptions.py")
-
-
-    
-                
-
