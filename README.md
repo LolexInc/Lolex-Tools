@@ -4,4 +4,5 @@
  This is the link to Lolex-Tools Lobby chat.<br>
 #Travis CI<br>
 [![Build Status](https://travis-ci.org/LolexInc/Lolex-Tools.svg?branch=master)](https://travis-ci.org/LolexInc/Lolex-Tools)<br>
- Python script with lots of cool features with more and more coming everyday.
+ Python script with lots of cool features with more and more coming everyday.<br>
+ (https://www.designmantic.com/logo-design/variation?design=16069)
