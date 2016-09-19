@@ -5,4 +5,5 @@
 #Travis CI<br>
 [![Build Status](https://travis-ci.org/LolexInc/Lolex-Tools.svg?branch=master)](https://travis-ci.org/LolexInc/Lolex-Tools)<br>
  Python script with lots of cool features with more and more coming everyday.<br>
-[![Logo](https://www.designmantic.com/logo-design/variation?design=16069)]
+ Designed and published by Monkeyboy2805 form LolexInc<br>
+![logo lolexinc](https://cloud.githubusercontent.com/assets/20478546/18632261/73560566-7e6e-11e6-986e-ba3e85ba8572.png)<br>
