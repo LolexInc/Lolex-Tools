@@ -309,8 +309,6 @@ try:
         pass
     elif compiler == 1 or compiler == True:
         sys.path.insert(0,"/Lolex Tools/User/Data")
-        #add try remove all at start
-        #WHY IS THIS FAILING!???????????????????WTF!Try append Lolex Tools/User/Data to renames. JTToolsOptions appears in the root.!?! TODO!NOW!(Well,when you see it:p
         try:
             py_compile.compile("/Lolex Tools/User/Data/JTToolsOptions.py")
             py_compile.compile("/Lolex Tools/User/Data/verifonboot.py")
@@ -332,15 +330,12 @@ try:
         except(IOError):
             try:
                 shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data")
-                print("rename try.")
-                os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")#this fails!?
-                print("Done")
+                os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
                 shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data")
                 os.rename("/Lolex Tools/User/Data/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
             except(IOError):
                 try:
                     shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-34.pyc","/Lolex Tools/User/Data")
-                    print("trying.")
                     os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-34.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
                     shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data")
                     os.rename("/Lolex Tools/User/Data/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
@@ -370,6 +365,46 @@ try:
                                     os.rename("/Lolex Tools/User/Data/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
                                 except(IOError):
                                     print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly.")
+                                    time.sleep(3)
+                                    exit()
+    if compileplugins == 1 or compileplugins == True:
+        py_compile.compile("/Lolex Tools/User/Data/startplugins.py")
+        try:
+            shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-36.pyc","/Lolex Tools/User/Data")
+            os.rename("/Lolex Tools/User/Data/startplugins.cpython-36.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+        except(IOError):
+            try:
+                shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-35.pyc","/Lolex Tools/User/Data")
+                os.rename("/Lolex Tools/User/Data/startplugins.cpython-35.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+            except(IOError):
+                try:
+                    shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-34.pyc","/Lolex Tools/User/Data")
+                    os.rename("/Lolex Tools/User/Data/startplugins.cpython-34.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                except(IOError):
+                    try:
+                        shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-33.pyc","/Lolex Tools/User/Data")
+                        os.rename("/Lolex Tools/User/Data/startplugins.cpython-33.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                    except(IOError):
+                        try:
+                            shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-32.pyc","/Lolex Tools/User/Data")
+                            os.rename("/Lolex Tools/User/Data/startplugins.cpython-32.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                        except(IOError):
+                            try:
+                                shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-31.pyc","/Lolex Tools/User/Data")
+                                os.rename("/Lolex Tools/User/Data/startplugins.cpython-31.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                            except(IOError):
+                                try:
+                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-30.pyc","/Lolex Tools/User/Data")
+                                    os.rename("/Lolex Tools/User/Data/startplugins.cpython-30.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                                except(IOError):
+                                    print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly.")
+                                    time.sleep(3)
+                                    exit()
+            try:
+                os.remove("/Lolex Tools/User/Data/startplugins.py")
+            except(IOError):
+                pass
+            
          
 except():
  pass
