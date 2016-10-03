@@ -1,4 +1,5 @@
 import sys,time,subprocess,os,shutil,py_compile
+print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile")
 sys.path.insert(0,"\\")
 try:
  import isnottravisci
@@ -13,6 +14,39 @@ except(ValueError, TypeError, SyntaxError):
     exit()
 print("Welcome to Lolex Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
+    print("Resetting...This process could take a couple of minutes.")
+    try:
+        os.remove("/Lolex Tools/User/Data/JTToolsOptions.pyc")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/JTToolsOptions.py")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/verifonboot.pyc")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/verifonboot.py")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/startplugins.pyc")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/startplugins.py")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/theme.pyc")
+    except(IOError):
+        pass
+    try:
+        os.remove("/Lolex Tools/User/Data/theme.py")
+    except(IOError):
+        pass
     howmanyunames = int(input("Please enter the number of usernames you wish to use."))
     while howmanyunames<0 or howmanyunames>2:
         print("Sorry! We only support 0 - 2 usernames currently.")
@@ -20,14 +54,22 @@ try:
     if howmanyunames == 0:
         useusername = False
         username1 = False
+        onewait = False
     else:
         useusername = True
     if howmanyunames == 0 or 1:
         username2 = False
+        twoswappins = False
+        twousepin = False
+        twopinone = False
+        twopintwo = False
+        twopinthree = False
+        twopinfour = False
+        twopinfive = False
+        twowait = False
     if useusername == True:
         print("IF your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
         username1 = (str(input("Please set your username.")))
-        repr(str(username1))
         confirm = (str(input("Please confirm your username.")))
         while username1 != confirm:
             username1 = (str(input("Your usernames didn't match. Please set your username.")))
@@ -92,7 +134,6 @@ try:
     if howmanyunames>1:
         print("Setting up user 2...")
         username2 = (str(input("Please set your username.")))
-    
         confirm = (str(input("Please confirm your username.")))
         while username2 != confirm or username2 == username1:
             username2 = (str(input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")))
@@ -162,13 +203,173 @@ try:
                 confirm = int(input("SECURITY WARNING: this number may not be secure. Please enter 0 to change it, or 1 to confirm it.\nPlease be aware that less than 0 lines is invalid."))
                 if confirm != 1 or vanishprint<0:
                     vanishprint = int(input("Please enter a valid number of lines."))
+            compiler = True
         elif developer == 1:
              compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
              vanishprint = 0 #Feature for devs :)
         theme = (str(input("Here is a list of colours available: a - Neon Green, b - Light Blue, c - Neon Red, d - Light Purple/Pink, e - Neon Yellow, f - White, 1 - Dark Blue, 2 - Dark Green, 3 - Light Non-Neon Blue, 4 - Dark Red/Brown, 5 - Dark Purple, 6 - Non Neon Yellow, 7 - White/Light Gray, 8 - Dark Gray, 9 - Dark Neon Blue.The first colour will set the background colour, the second the text. Please enter color then your colour code.If any crashes occur try enclosing your colour code in speech marks.")))
-        os.system(theme)             
-             
+        os.system(theme)
+    pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
+    if pluginconfirm == 1:
+             try:
+                    shutil.copy("/Lolex Tools/Defaults/startplugins.py","/Lolex Tools/User/Data/")
+             except(IOError, OSError):
+                    print("File missing. Fatal Error: Please redownload the repository from github and re-run this installer.");
+                    
+             currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions!Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
     
-                
+             with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
+             done = int(input("Please enter 1 if you are done, 0 if you aren't."))
+             while done != 1:
+                currentplugin = (str(input("Please enter the name of your next plugin.")))
+                with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
+                done = int(input("Please enter 1 if you are done, 0 if you aren't."))
+             if developer == 1:
+                compileplugins = int(input("Please enter 1 if you want your plugins compiling, or 0 if you don't."))
+             else:
+                compileplugins = 1
+             if compileplugins == 1:
+
+                    try:
+                        py_compile.compile("/Lolex Tools/User/Plugins/startplugins.py")
+                        os.remove("/Lolex Tools/User/Plugins/startplugins.py")
+                    except(IOError):
+                        pass
+    elif pluginconfirm != 1:
+            compileplugins = 0
+    if developer == 1:
+        developer = True
+    else:
+        developer = False
+    if pluginconfirm !=1:
+        compileplugins = 0
+    print("OK. Reset completed with a 1.")
+    shutil.copy("/Lolex Tools/Defaults/verifonboot.py","/Lolex Tools/User/Data")
+    with open ("Lolex Tools/User/Data/verifonboot.py","a") as outf:
+        outf.write("oneswappins = ")
+        outf.write((str(oneswappins)))
+        outf.write("\ntwoswappins = ")
+        outf.write((str(twoswappins)))
+        outf.write("\nruntimeone = 0\nruntimetwo = 0")
+    with open ("/Lolex Tools/User/Data/JTToolsOptions.py","a") as outf:
+        outf.write("compiledon = 8.002")
+        outf.write("\nuseusername = ")
+        outf.write(str(useusername))
+        outf.write("\nusername1 = ")
+        if username1 == False:
+            outf.write(str(username1))
+        else:
+            outf.write('("')
+            outf.write(username1)
+            outf.write('")')
+        outf.write("\nusername2 = ")
+        if username2 == False:
+            outf.write(str(username2))
+        else:
+            outf.write('("')
+            outf.write(username2)
+            outf.write('")')
+        outf.write("\noneusepin = ")
+        outf.write(str(oneusepin))
+        outf.write("\ntwousepin = ")
+        outf.write(str(twousepin))
+        outf.write("\nonepinone = ")
+        outf.write(str(onepinone))
+        outf.write("\nonepintwo = ")
+        outf.write(str(onepintwo))
+        outf.write("\nonepinthree = ")
+        outf.write(str(onepinthree))
+        outf.write("\nonepinfour = ")
+        outf.write(str(onepinfour))
+        outf.write("\nonepinfive = ")
+        outf.write(str(onepinfive))
+        outf.write("\ntwopinone = ")
+        outf.write(str(twopinone))
+        outf.write("\ntwopintwo = ")
+        outf.write(str(twopintwo))
+        outf.write("\ntwopinthree = ")
+        outf.write(str(twopinthree))
+        outf.write("\ntwopinfour = ")
+        outf.write(str(twopinfour))
+        outf.write("\ntwopinfive = ")
+        outf.write(str(twopinfive))
+        outf.write("\ndeveloper = ")
+        outf.write(str(developer))
+        outf.write("\nvanishprint = ")
+        outf.write(str(vanishprint))
+        outf.write("\ncompiler = ")
+        outf.write(str(compiler))
+        outf.write("\ncompileplugins = ")
+        outf.write(str(compileplugins))
+        outf.write("\nonewait = ")
+        outf.write(str(onewait))
+        outf.write("\ntwowait = ")
+        outf.write(str(twowait))
+    if compiler == 0 or False:
+        pass
+    elif compiler == 1 or compiler == True:
+        sys.path.insert(0,"/Lolex Tools/User/Data")
+        #add try remove all at start
+        #WHY IS THIS FAILING!???????????????????WTF!Try append Lolex Tools/User/Data to renames. JTToolsOptions appears in the root.!?! TODO!NOW!(Well,when you see it:p
+        try:
+            py_compile.compile("/Lolex Tools/User/Data/JTToolsOptions.py")
+            py_compile.compile("/Lolex Tools/User/Data/verifonboot.py")
+            try:
+                os.remove("/Lolex Tools/User/Data/JTToolsOptions.py")
+            except(IOError, WindowsError):
+                pass
+            try:
+                os.remove("/Lolex Tools/User/Data/verifonboot.py")
+            except(IOError, WindowsError):
+                pass
+        except(IOError, SyntaxError):
+            pass
+        try:
+            shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-36.pyc","/Lolex Tools/User/Data/")
+            os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-36.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
+            shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-36.pyc","/Lolex Tools/User/Data")
+            os.rename("/Lolex Tools/User/Data/verifonboot.cpython-36.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+        except(IOError):
+            try:
+                shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data")
+                print("rename try.")
+                os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")#this fails!?
+                print("Done")
+                shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data")
+                os.rename("/Lolex Tools/User/Data/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+            except(IOError):
+                try:
+                    shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-34.pyc","/Lolex Tools/User/Data")
+                    print("trying.")
+                    os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-34.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
+                    shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data")
+                    os.rename("/Lolex Tools/User/Data/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                except(IOError):
+                    try:
+                        shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-33.pyc","/Lolex Tools/User/Data")
+                        os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-33.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
+                        shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-33.pyc","/Lolex Tools/User/Data")
+                        os.rename("/Lolex Tools/User/Data/verifonboot.cpython-33.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                    except(IOError):
+                        try:
+                            shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-32.pyc","/Lolex Tools/User/Data")
+                            os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-32.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
+                            shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-32.pyc","/Lolex Tools/User/Data")
+                            os.rename("/Lolex Tools/User/Data/verifonboot.cpython-32.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                        except(IOError):
+                            try:
+                                shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-31.pyc","/Lolex Tools/User/Data")
+                                os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-31.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
+                                shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-31.pyc","/Lolex Tools/User/Data")
+                                os.rename("/Lolex Tools/User/Data/verifonboot.cpython-31.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                            except(IOError):
+                                try:
+                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-30.pyc","/Lolex Tools/User/Data")
+                                    os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-30.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
+                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data")
+                                    os.rename("/Lolex Tools/User/Data/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                                except(IOError):
+                                    print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly.")
+         
 except():
-    pass
+ pass
