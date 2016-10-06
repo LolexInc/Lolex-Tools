@@ -244,8 +244,9 @@ try:
     if pluginconfirm !=1:
         compileplugins = 0
     print("OK. Reset completed with a 1.")
+    print("Applying new options...")
     shutil.copy("/Lolex Tools/Defaults/verifonboot.py","/Lolex Tools/User/Data")
-    with open ("Lolex Tools/User/Data/verifonboot.py","a") as outf:
+    with open ("/Lolex Tools/User/Data/verifonboot.py","a") as outf:
         outf.write("oneswappins = ")
         outf.write((str(oneswappins)))
         outf.write("\ntwoswappins = ")
@@ -404,7 +405,46 @@ try:
                 os.remove("/Lolex Tools/User/Data/startplugins.py")
             except(IOError):
                 pass
-            
+    try:
+        shutil.copy("/Lolex Tools/Defaults/theme.py","/Lolex Tools/User/Data")
+    except(IOError):
+        pass
+    with open("/Lolex Tools/User/Data/theme.py","a") as outf:
+        outf.write('import os\nos.system("')
+        outf.write(str(theme))
+        outf.write('")')
+    try:
+        start = int(input("Do you wish to start Lolex Tools now? Please enter 1 if you do, or 0 if you don't."))
+        print("Thank you for using Lolex Tools Installer.")
+        if start == 1:
+            print("Starting Lolex Tools...")
+            subprocess.call("/Lolex Tools/System/Frame/Main/JT Tools.py", shell = True)
+        else:
+            exit()
+    except(TypeError, SyntaxError, ValueError):
+        exit()
          
-except():
- pass
+except(SyntaxError):
+    print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(TypeError):
+    print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(ValueError):
+    print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(IOError):
+    print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(NameError):
+    print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(EOFError):
+    print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(AttributeError):
+    print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
+except(OSError):
+    print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
