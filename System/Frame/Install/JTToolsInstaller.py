@@ -17,35 +17,35 @@ try:
     print("Resetting...This process could take a couple of minutes.")
     try:
         os.remove("/Lolex Tools/User/Data/JTToolsOptions.pyc")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/JTToolsOptions.py")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/verifonboot.pyc")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/verifonboot.py")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/startplugins.pyc")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/startplugins.py")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/theme.pyc")
-    except(IOError):
+    except(IOError, OSError):
         pass
     try:
         os.remove("/Lolex Tools/User/Data/theme.py")
-    except(IOError):
+    except(IOError, OSError):
         pass
     howmanyunames = int(input("Please enter the number of usernames you wish to use."))
     while howmanyunames<0 or howmanyunames>2:
@@ -69,11 +69,11 @@ try:
         twowait = False
     if useusername == True:
         print("IF your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
-        username1 = (str(input("Please set your username.")))
-        confirm = (str(input("Please confirm your username.")))
+        username1 = input("Please set your username.")
+        confirm = input("Please confirm your username.")
         while username1 != confirm:
-            username1 = (str(input("Your usernames didn't match. Please set your username.")))
-            confirm = (str(input("Please confirm your username.")))
+            username1 = input("Your usernames didn't match. Please set your username.")
+            confirm = input("Please confirm your username.")
     onepins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
     while onepins<0 or onepins>5:
         onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
@@ -117,6 +117,7 @@ try:
             confirm = int(input("Please confirm your fifth PIN."))
     if onepins == 0:
         onepinone = False
+        onewait = False
     if onepins == 0 or 1:
         onepintwo = False
     if onepins == 0 or 1 or 2:
@@ -133,11 +134,11 @@ try:
         onewait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
     if howmanyunames>1:
         print("Setting up user 2...")
-        username2 = (str(input("Please set your username.")))
-        confirm = (str(input("Please confirm your username.")))
+        username2 = input("Please set your username.")
+        confirm = input("Please confirm your username.")
         while username2 != confirm or username2 == username1:
-            username2 = (str(input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")))
-            confirm = (str(input("Please confirm your username.")))
+            username2 = input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")
+            confirm = input("Please confirm your username.")
         twopins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
         while twopins<0 or twopins>5:
             twopins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
@@ -181,6 +182,7 @@ try:
                 confirm = int(input("Please confirm your fifth PIN."))
         if twopins == 0:
             twopinone = False
+            twowait = False
         if twopins == 0 or 1:
             twopintwo = False
         if twopins == 0 or 1 or 2:
@@ -207,7 +209,7 @@ try:
         elif developer == 1:
              compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
              vanishprint = 0 #Feature for devs :)
-        theme = (str(input("Here is a list of colours available: a - Neon Green, b - Light Blue, c - Neon Red, d - Light Purple/Pink, e - Neon Yellow, f - White, 1 - Dark Blue, 2 - Dark Green, 3 - Light Non-Neon Blue, 4 - Dark Red/Brown, 5 - Dark Purple, 6 - Non Neon Yellow, 7 - White/Light Gray, 8 - Dark Gray, 9 - Dark Neon Blue.The first colour will set the background colour, the second the text. Please enter color then your colour code.If any crashes occur try enclosing your colour code in speech marks.")))
+        theme = input("Here is a list of colours available: a - Neon Green, b - Light Blue, c - Neon Red, d - Light Purple/Pink, e - Neon Yellow, f - White, 1 - Dark Blue, 2 - Dark Green, 3 - Light Non-Neon Blue, 4 - Dark Red/Brown, 5 - Dark Purple, 6 - Non Neon Yellow, 7 - White/Light Gray, 8 - Dark Gray, 9 - Dark Neon Blue.The first colour will set the background colour, the second the text. Please enter color then your colour code.If any crashes occur try enclosing your colour code in speech marks.")
         os.system(theme)
     pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
     if pluginconfirm == 1:
@@ -436,15 +438,15 @@ except(ValueError):
 except(IOError):
     print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     time.sleep(10)
-except(NameError):
-    print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-    time.sleep(10)
+#except(NameError):
+    #print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    #time.sleep(10)
 except(EOFError):
     print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     time.sleep(10)
 except(AttributeError):
     print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     time.sleep(10)
-except(OSError):
-    print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-    time.sleep(10)
+#except(OSError):
+    #print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    #time.sleep(10)
