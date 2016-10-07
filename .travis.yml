@@ -82,8 +82,8 @@ env:
  - DJANGO_VERSION==1.4
 install:
  - pip install -q Django=$DJANGO_VERSION
- - python Lolex-Tools-Internal-Beta/System/Frame/Main/JTTools.py
- - python Lolex-Tools-Internal-Beta/System/Frame/InstallJTToolsInstaller.py
+ - python /Lolex-Tools-Internal-Beta/System/Frame/Main/JTTools.py
+ - python /Lolex-Tools-Internal-Beta/System/Frame/InstallJTToolsInstaller.py
  
  
  
