@@ -218,12 +218,12 @@ try:
              except(IOError, OSError):
                     print("File missing. Fatal Error: Please redownload the repository from github and re-run this installer.");
                     
-             currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions!Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
+             currentplugin = input("Please enter the name of your first plugin. Do not include file extensions!Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")
     
              with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
              done = int(input("Please enter 1 if you are done, 0 if you aren't."))
              while done != 1:
-                currentplugin = (str(input("Please enter the name of your next plugin.")))
+                currentplugin = input("Please enter the name of your next plugin.")
                 with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
                 done = int(input("Please enter 1 if you are done, 0 if you aren't."))
              if developer == 1:
@@ -438,15 +438,15 @@ except(ValueError):
 except(IOError):
     print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     time.sleep(10)
-#except(NameError):
-    #print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-    #time.sleep(10)
+except(NameError):
+    print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
 except(EOFError):
     print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     time.sleep(10)
 except(AttributeError):
     print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     time.sleep(10)
-#except(OSError):
-    #print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-    #time.sleep(10)
+except(OSError):
+    print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    time.sleep(10)
