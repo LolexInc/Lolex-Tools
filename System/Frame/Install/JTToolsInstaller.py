@@ -1,3 +1,4 @@
+#! python3
 import sys,time,subprocess,os,shutil,py_compile
 print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile")
 sys.path.insert(0,"\\")
@@ -69,8 +70,8 @@ try:
         twowait = False
     if useusername == True:
         print("IF your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
-        username1 = input("Please set your username.")
-        confirm = input("Please confirm your username.")
+        username1 = (str(input("Please set your username.")))
+        confirm = (str(input("Please confirm your username.")))
         while username1 != confirm:
             username1 = input("Your usernames didn't match. Please set your username.")
             confirm = input("Please confirm your username.")
@@ -134,11 +135,11 @@ try:
         onewait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
     if howmanyunames>1:
         print("Setting up user 2...")
-        username2 = input("Please set your username.")
-        confirm = input("Please confirm your username.")
+        username2 = (str(input("Please set your username.")))
+        confirm = (str(input("Please confirm your username.")))
         while username2 != confirm or username2 == username1:
-            username2 = input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")
-            confirm = input("Please confirm your username.")
+            username2 = (str(input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")))
+            confirm = (str(input("Please confirm your username.")))
         twopins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
         while twopins<0 or twopins>5:
             twopins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
@@ -209,7 +210,7 @@ try:
         elif developer == 1:
              compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
              vanishprint = 0 #Feature for devs :)
-        theme = input("Here is a list of colours available: a - Neon Green, b - Light Blue, c - Neon Red, d - Light Purple/Pink, e - Neon Yellow, f - White, 1 - Dark Blue, 2 - Dark Green, 3 - Light Non-Neon Blue, 4 - Dark Red/Brown, 5 - Dark Purple, 6 - Non Neon Yellow, 7 - White/Light Gray, 8 - Dark Gray, 9 - Dark Neon Blue.The first colour will set the background colour, the second the text. Please enter color then your colour code.If any crashes occur try enclosing your colour code in speech marks.")
+        theme = (str(input("Here is a list of colours available: a - Neon Green, b - Light Blue, c - Neon Red, d - Light Purple/Pink, e - Neon Yellow, f - White, 1 - Dark Blue, 2 - Dark Green, 3 - Light Non-Neon Blue, 4 - Dark Red/Brown, 5 - Dark Purple, 6 - Non Neon Yellow, 7 - White/Light Gray, 8 - Dark Gray, 9 - Dark Neon Blue.The first colour will set the background colour, the second the text. Please enter color then your colour code.If any crashes occur try enclosing your colour code in speech marks.")))
         os.system(theme)
     pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
     if pluginconfirm == 1:
@@ -218,12 +219,12 @@ try:
              except(IOError, OSError):
                     print("File missing. Fatal Error: Please redownload the repository from github and re-run this installer.");
                     
-             currentplugin = input("Please enter the name of your first plugin. Do not include file extensions!Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")
+             currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions!Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
     
              with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
              done = int(input("Please enter 1 if you are done, 0 if you aren't."))
              while done != 1:
-                currentplugin = input("Please enter the name of your next plugin.")
+                currentplugin = (str(input("Please enter the name of your next plugin.")))
                 with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
                 done = int(input("Please enter 1 if you are done, 0 if you aren't."))
              if developer == 1:
@@ -420,7 +421,7 @@ try:
         print("Thank you for using Lolex Tools Installer.")
         if start == 1:
             print("Starting Lolex Tools...")
-            subprocess.call("/Lolex Tools/System/Frame/Main/JT Tools.py", shell = True)
+            subprocess.call("/Lolex Tools/System/Frame/Main/JTTools.py", shell = True)
         else:
             exit()
     except(TypeError, SyntaxError, ValueError):
