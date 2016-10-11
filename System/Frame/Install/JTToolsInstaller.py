@@ -217,9 +217,9 @@ try:
              try:
                     shutil.copy("/Lolex Tools/Defaults/startplugins.py","/Lolex Tools/User/Data/")
              except(IOError, OSError):
-                    print("File missing. Fatal Error: Please redownload the repository from github and re-run this installer.");
+                    print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
                     
-             currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions!Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
+             currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions! Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
     
              with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
              done = int(input("Please enter 1 if you are done, 0 if you aren't."))
@@ -239,7 +239,11 @@ try:
                     except(IOError):
                         pass
     elif pluginconfirm != 1:
-            compileplugins = 0
+        compileplugins = 0
+        try:
+            shutil.copy("/Lolex Tools/Defaults/startplugins.py","/Lolex Tools/User/Data/")
+        except(IOError, OSError):
+            print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
     if developer == 1:
         developer = True
     else:
