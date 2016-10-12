@@ -55,7 +55,6 @@ try:
     if howmanyunames == 0:
         useusername = False
         username1 = False
-        onewait = False
     else:
         useusername = True
     if howmanyunames == 0 or 1:
@@ -67,7 +66,7 @@ try:
         twopinthree = False
         twopinfour = False
         twopinfive = False
-        twowait = False
+        twowait = 0
     if useusername == True:
         print("IF your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
         username1 = (str(input("Please set your username.")))
@@ -76,6 +75,8 @@ try:
             username1 = input("Your usernames didn't match. Please set your username.")
             confirm = input("Please confirm your username.")
     onepins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
+	if onepins == 0:
+		onewait = 0
     while onepins<0 or onepins>5:
         onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
     if onepins>1:
