@@ -151,8 +151,8 @@ try:
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
-	    #if (runtimeone != verifonboot.runtimeone) or (runtimetwo != verifonboot.runtimetwo) or (oneswappins != verifonboot.oneswappins) or (twoswappins != verifonboot.twoswappins):
-                #pass #for now :P
+    if verifonboot.runtimeone != runtimeone or verifonboot.runtimetwo != runtimetwo or verifonboot.oneswappins != oneswappins or verifonboot.twoswappins != twoswappins:
+        print("Oh well!")
 						
 					
             
