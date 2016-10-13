@@ -4,7 +4,7 @@
  This is the link to Lolex-Tools Lobby chat.<br>
 #Slack - for staff only
 First, email lolexinc2805@gmail.com to get an invite, then<br>
-Go to www.lolexorg.slack.com to chat
+Go to https:lolexorg.slack.com to chat
 #Travis CI<br>
 [![Build Status](https://travis-ci.org/LolexOrg/Lolex-Tools.svg?branch=master)](https://travis-ci.org/LolexOrg/Lolex-Tools)<br>
  Python script with lots of cool features with more and more coming everyday.<br>
