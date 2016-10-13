@@ -251,6 +251,13 @@ try:
         developer = False
     if pluginconfirm !=1:
         compileplugins = 0
+    else:
+        pass
+    if compiler == 1:
+        compiler = True
+    else:
+        compiler = False
+        
     print("OK. Reset completed with a 1.")
     print("Applying new options...")
     shutil.copy("/Lolex Tools/Defaults/verifonboot.py","/Lolex Tools/User/Data")
