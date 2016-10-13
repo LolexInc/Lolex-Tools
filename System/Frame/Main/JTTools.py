@@ -1,4 +1,4 @@
-import sys, time, subprocess, os
+import sys, time, subprocess, os, shutil, py_compile
 sys.path.insert(0,"\\")
 try:
     import isnottravisci
@@ -151,8 +151,70 @@ try:
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
-    if verifonboot.runtimeone != runtimeone or verifonboot.runtimetwo != runtimetwo or verifonboot.oneswappins != oneswappins or verifonboot.twoswappins != twoswappins:
-        print("Oh well!")
+    if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins):
+        try:
+            sys.path.insert(0,"\\")
+            os.remove("/Lolex Tools/User/Data/verifonboot.py")
+        except(IOError):
+            try:
+                os.remove("/Lolex Tools/User/Data/verifoboot.pyc")
+            except(IOError):
+                pass
+        try:
+            shutil.copy("/Lolex Tools/Defaults/verifonboot.py","/Lolex Tools/User/Data/verifonboot.py")
+        except(IOError):
+            print("Please do not remove system files. Please redownload the repository from https://github.com/LolexOrg/Lolex-Tools/tree/Internal-Beta and relaunch this.")
+            time.sleep(5)
+        with open ("/Lolex Tools/User/Data/verifonboot.py","a") as outf:
+            outf.write("oneswappins = ")
+            outf.write(str(oneswappins))
+            outf.write("\ntwoswappins = ")
+            outf.write(str(twoswappins))
+            outf.write("\nruntimeone = ")
+            outf.write(str(runtimeone))
+            outf.write("\nruntimetwo = ")
+            outf.write(str(runtimetwo))
+        if JTToolsOptions.compiler == True:
+            try:
+                py_compile.compile("/Lolex Tools/User/Data/verifonboot.py")
+                try:
+                    os.remove("/Lolex Tools/User/Data/verifonboot.py")
+                except(IOError, WindowsError):
+                    pass
+            except(IOError, SyntaxError):
+                pass
+            try:
+                shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-36.pyc","/Lolex Tools/User/Data")
+                os.rename("/Lolex Tools/User/Data/verifonboot.cpython-36.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+            except(IOError):
+                try:
+                    shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data")
+                    os.rename("/Lolex Tools/User/Data/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                except(IOError):
+                    try:
+                        shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data")
+                        os.rename("/Lolex Tools/User/Data/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                    except(IOError):
+                        try:
+                            shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-33.pyc","/Lolex Tools/User/Data")
+                            os.rename("/Lolex Tools/User/Data/verifonboot.cpython-33.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                        except(IOError):
+                            try:
+
+                                shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-32.pyc","/Lolex Tools/User/Data")
+                                os.rename("/Lolex Tools/User/Data/verifonboot.cpython-32.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                            except(IOError):
+                                try:
+                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-31.pyc","/Lolex Tools/User/Data")
+                                    os.rename("/Lolex Tools/User/Data/verifonboot.cpython-31.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                                except(IOError):
+                                    try:
+                                        shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data")
+                                        os.rename("/Lolex Tools/User/Data/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                                    except(IOError):
+                                        print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly. Python 2 is NOT supported.")
+                                        time.sleep(3)
+                                        exit()
 						
 					
             
