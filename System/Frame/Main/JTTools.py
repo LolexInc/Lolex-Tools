@@ -215,6 +215,22 @@ try:
                                         print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly. Python 2 is NOT supported.")
                                         time.sleep(3)
                                         exit()
+    while True:
+        modewanted = 10
+        while modewanted == 5 or 10:
+            if modewanted == 10:
+                print("1 = ")
+                print("2 = ")
+                print("3 = ")
+                print("4 = ")
+                print("5 = Next Page")
+            elif modewanted == 5:
+                print("6 = ")
+                print("7 = ")
+                print("8 = ")
+                print("9 = ")
+                print("10 = Previous Page")
+            modewanted = int(input("Please enter the number of the mode you want."))
 						
 					
             
