@@ -1,7 +1,7 @@
 # Lolex Tools
 #Travis CI
 [![Build Status](https://travis-ci.org/LolexOrg/Lolex-Tools.svg?branch=Internal-Beta)](https://travis-ci.org/LolexOrg/Lolex-Tools)<br>
-                    ~~~## GNU GENERAL PUBLIC LICENSE
+                    ```## GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. {http://fsf.org/}
@@ -619,5 +619,5 @@ above cannot be given local legal effect according to their terms,
 reviewing courts shall apply local law that most closely approximates
 an absolute waiver of all civil liability in connection with the
 Program, unless a warranty or assumption of liability accompanies a
-copy of the Program in return for a fee.~~~
+copy of the Program in return for a fee.```
 
