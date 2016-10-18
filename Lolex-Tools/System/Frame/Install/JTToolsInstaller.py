@@ -13,39 +13,39 @@ try:
         exit()
 except(ValueError, TypeError, SyntaxError):
     exit()
-print("Welcome to Lolex Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
+print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
     print("Resetting...This process could take a couple of minutes.")
     try:
-        os.remove("/Lolex Tools/User/Data/JTToolsOptions.pyc")
+        os.remove("/Lolex-Tools/User/Data/JTToolsOptions.pyc")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/JTToolsOptions.py")
+        os.remove("/Lolex-Tools/User/Data/JTToolsOptions.py")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/verifonboot.pyc")
+        os.remove("/Lolex-Tools/User/Data/verifonboot.pyc")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/verifonboot.py")
+        os.remove("/Lolex-Tools/User/Data/verifonboot.py")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/startplugins.pyc")
+        os.remove("/Lolex-Tools/User/Data/startplugins.pyc")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/startplugins.py")
+        os.remove("/Lolex-Tools/User/Data/startplugins.py")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/theme.pyc")
+        os.remove("/Lolex-Tools/User/Data/theme.pyc")
     except(IOError, OSError):
         pass
     try:
-        os.remove("/Lolex Tools/User/Data/theme.py")
+        os.remove("/Lolex-Tools/User/Data/theme.py")
     except(IOError, OSError):
         pass
     howmanyunames = int(input("Please enter the number of usernames you wish to use."))
@@ -216,17 +216,17 @@ try:
     pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
     if pluginconfirm == 1:
              try:
-                    shutil.copy("/Lolex Tools/Defaults/startplugins.py","/Lolex Tools/User/Data/")
+                    shutil.copy("/Lolex-Tools/Defaults/startplugins.py","/Lolex-Tools/User/Data/")
              except(IOError, OSError):
                     print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
                     
              currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions! Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
     
-             with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
+             with open ("/Lolex-Tools/User/Data/startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
              done = int(input("Please enter 1 if you are done, 0 if you aren't."))
              while done != 1:
                 currentplugin = (str(input("Please enter the name of your next plugin.")))
-                with open ("/Lolex Tools/User/Data/startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
+                with open ("/Lolex-Tools/User/Data/startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
                 done = int(input("Please enter 1 if you are done, 0 if you aren't."))
              if developer == 1:
                 compileplugins = int(input("Please enter 1 if you want your plugins compiling, or 0 if you don't."))
@@ -235,14 +235,14 @@ try:
              if compileplugins == 1:
 
                     try:
-                        py_compile.compile("/Lolex Tools/User/Plugins/startplugins.py")
-                        os.remove("/Lolex Tools/User/Plugins/startplugins.py")
+                        py_compile.compile("/Lolex-Tools/User/Plugins/startplugins.py")
+                        os.remove("/Lolex-Tools/User/Plugins/startplugins.py")
                     except(IOError):
                         pass
     elif pluginconfirm != 1:
         compileplugins = 0
         try:
-            shutil.copy("/Lolex Tools/Defaults/startplugins.py","/Lolex Tools/User/Data/")
+            shutil.copy("/Lolex-Tools/Defaults/startplugins.py","/Lolex-Tools/User/Data/")
         except(IOError, OSError):
             print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
     if developer == 1:
@@ -260,14 +260,14 @@ try:
         
     print("OK. Reset completed with a 1.")
     print("Applying new options...")
-    shutil.copy("/Lolex Tools/Defaults/verifonboot.py","/Lolex Tools/User/Data")
-    with open ("/Lolex Tools/User/Data/verifonboot.py","a") as outf:
+    shutil.copy("/Lolex-Tools/Defaults/verifonboot.py","/Lolex-Tools/User/Data")
+    with open ("/Lolex-Tools/User/Data/verifonboot.py","a") as outf:
         outf.write("oneswappins = ")
         outf.write((str(oneswappins)))
         outf.write("\ntwoswappins = ")
         outf.write((str(twoswappins)))
         outf.write("\nruntimeone = 0\nruntimetwo = 0")
-    with open ("/Lolex Tools/User/Data/JTToolsOptions.py","a") as outf:
+    with open ("/Lolex-Tools/User/Data/JTToolsOptions.py","a") as outf:
         outf.write("compiledon = 8.002")
         outf.write("\nuseusername = ")
         outf.write(str(useusername))
@@ -324,116 +324,116 @@ try:
     if compiler == 0 or False:
         pass
     elif compiler == 1 or compiler == True:
-        sys.path.insert(0,"/Lolex Tools/User/Data")
+        sys.path.insert(0,"/Lolex-Tools/User/Data")
         try:
-            py_compile.compile("/Lolex Tools/User/Data/JTToolsOptions.py")
-            py_compile.compile("/Lolex Tools/User/Data/verifonboot.py")
+            py_compile.compile("/Lolex-Tools/User/Data/JTToolsOptions.py")
+            py_compile.compile("/Lolex-Tools/User/Data/verifonboot.py")
             try:
-                os.remove("/Lolex Tools/User/Data/JTToolsOptions.py")
+                os.remove("/Lolex-Tools/User/Data/JTToolsOptions.py")
             except(IOError, WindowsError):
                 pass
             try:
-                os.remove("/Lolex Tools/User/Data/verifonboot.py")
+                os.remove("/Lolex-Tools/User/Data/verifonboot.py")
             except(IOError, WindowsError):
                 pass
         except(IOError, SyntaxError):
             pass
         try:
-            shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-36.pyc","/Lolex Tools/User/Data/")
-            os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-36.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-            shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-36.pyc","/Lolex Tools/User/Data")
-            os.rename("/Lolex Tools/User/Data/verifonboot.cpython-36.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+            shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-36.pyc","/Lolex-Tools/User/Data/")
+            os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-36.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+            shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-36.pyc","/Lolex-Tools/User/Data")
+            os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-36.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
         except(IOError):
             try:
-                shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data")
-                os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-35.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-                shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data")
-                os.rename("/Lolex Tools/User/Data/verifonboot.cpython-35.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-35.pyc","/Lolex-Tools/User/Data")
+                os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-35.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+                shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-35.pyc","/Lolex-Tools/User/Data")
+                os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-35.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
             except(IOError):
                 try:
-                    shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-34.pyc","/Lolex Tools/User/Data")
-                    os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-34.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-                    shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data")
-                    os.rename("/Lolex Tools/User/Data/verifonboot.cpython-34.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-34.pyc","/Lolex-Tools/User/Data")
+                    os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-34.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-34.pyc","/Lolex-Tools/User/Data")
+                    os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-34.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
                 except(IOError):
                     try:
-                        shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-33.pyc","/Lolex Tools/User/Data")
-                        os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-33.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-                        shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-33.pyc","/Lolex Tools/User/Data")
-                        os.rename("/Lolex Tools/User/Data/verifonboot.cpython-33.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                        shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-33.pyc","/Lolex-Tools/User/Data")
+                        os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-33.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+                        shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-33.pyc","/Lolex-Tools/User/Data")
+                        os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-33.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
                     except(IOError):
                         try:
-                            shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-32.pyc","/Lolex Tools/User/Data")
-                            os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-32.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-                            shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-32.pyc","/Lolex Tools/User/Data")
-                            os.rename("/Lolex Tools/User/Data/verifonboot.cpython-32.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                            shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-32.pyc","/Lolex-Tools/User/Data")
+                            os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-32.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+                            shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-32.pyc","/Lolex-Tools/User/Data")
+                            os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-32.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
                         except(IOError):
                             try:
-                                shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-31.pyc","/Lolex Tools/User/Data")
-                                os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-31.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-                                shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-31.pyc","/Lolex Tools/User/Data")
-                                os.rename("/Lolex Tools/User/Data/verifonboot.cpython-31.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                                shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-31.pyc","/Lolex-Tools/User/Data")
+                                os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-31.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+                                shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-31.pyc","/Lolex-Tools/User/Data")
+                                os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-31.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
                             except(IOError):
                                 try:
-                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/JTToolsOptions.cpython-30.pyc","/Lolex Tools/User/Data")
-                                    os.rename("/Lolex Tools/User/Data/JTToolsOptions.cpython-30.pyc","/Lolex Tools/User/Data/JTToolsOptions.pyc")
-                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data")
-                                    os.rename("/Lolex Tools/User/Data/verifonboot.cpython-30.pyc","/Lolex Tools/User/Data/verifonboot.pyc")
+                                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/JTToolsOptions.cpython-30.pyc","/Lolex-Tools/User/Data")
+                                    os.rename("/Lolex-Tools/User/Data/JTToolsOptions.cpython-30.pyc","/Lolex-Tools/User/Data/JTToolsOptions.pyc")
+                                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-30.pyc","/Lolex-Tools/User/Data")
+                                    os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-30.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
                                 except(IOError):
                                     print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly.")
                                     time.sleep(3)
                                     exit()
     if compileplugins == 1 or compileplugins == True:
-        py_compile.compile("/Lolex Tools/User/Data/startplugins.py")
+        py_compile.compile("/Lolex-Tools/User/Data/startplugins.py")
         try:
-            shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-36.pyc","/Lolex Tools/User/Data")
-            os.rename("/Lolex Tools/User/Data/startplugins.cpython-36.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+            shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-36.pyc","/Lolex-Tools/User/Data")
+            os.rename("/Lolex-Tools/User/Data/startplugins.cpython-36.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
         except(IOError):
             try:
-                shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-35.pyc","/Lolex Tools/User/Data")
-                os.rename("/Lolex Tools/User/Data/startplugins.cpython-35.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-35.pyc","/Lolex-Tools/User/Data")
+                os.rename("/Lolex-Tools/User/Data/startplugins.cpython-35.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
             except(IOError):
                 try:
-                    shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-34.pyc","/Lolex Tools/User/Data")
-                    os.rename("/Lolex Tools/User/Data/startplugins.cpython-34.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-34.pyc","/Lolex-Tools/User/Data")
+                    os.rename("/Lolex-Tools/User/Data/startplugins.cpython-34.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
                 except(IOError):
                     try:
-                        shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-33.pyc","/Lolex Tools/User/Data")
-                        os.rename("/Lolex Tools/User/Data/startplugins.cpython-33.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                        shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-33.pyc","/Lolex-Tools/User/Data")
+                        os.rename("/Lolex-Tools/User/Data/startplugins.cpython-33.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
                     except(IOError):
                         try:
-                            shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-32.pyc","/Lolex Tools/User/Data")
-                            os.rename("/Lolex Tools/User/Data/startplugins.cpython-32.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                            shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-32.pyc","/Lolex-Tools/User/Data")
+                            os.rename("/Lolex-Tools/User/Data/startplugins.cpython-32.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
                         except(IOError):
                             try:
-                                shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-31.pyc","/Lolex Tools/User/Data")
-                                os.rename("/Lolex Tools/User/Data/startplugins.cpython-31.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                                shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-31.pyc","/Lolex-Tools/User/Data")
+                                os.rename("/Lolex-Tools/User/Data/startplugins.cpython-31.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
                             except(IOError):
                                 try:
-                                    shutil.copy("/Lolex Tools/User/Data/__pycache__/startplugins.cpython-30.pyc","/Lolex Tools/User/Data")
-                                    os.rename("/Lolex Tools/User/Data/startplugins.cpython-30.pyc","/Lolex Tools/User/Data/startplugins.pyc")
+                                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/startplugins.cpython-30.pyc","/Lolex-Tools/User/Data")
+                                    os.rename("/Lolex-Tools/User/Data/startplugins.cpython-30.pyc","/Lolex-Tools/User/Data/startplugins.pyc")
                                 except(IOError):
                                     print("Sorry! It appears you are not running Python 3.0 - 3.6 nightly.")
                                     time.sleep(3)
                                     exit()
             try:
-                os.remove("/Lolex Tools/User/Data/startplugins.py")
+                os.remove("/Lolex-Tools/User/Data/startplugins.py")
             except(IOError):
                 pass
     try:
-        shutil.copy("/Lolex Tools/Defaults/theme.py","/Lolex Tools/User/Data")
+        shutil.copy("/Lolex-Tools/Defaults/theme.py","/Lolex-Tools/User/Data")
     except(IOError):
         pass
-    with open("/Lolex Tools/User/Data/theme.py","a") as outf:
+    with open("/Lolex-Tools/User/Data/theme.py","a") as outf:
         outf.write('import os\nos.system("')
         outf.write(str(theme))
         outf.write('")')
     try:
-        start = int(input("Do you wish to start Lolex Tools now? Please enter 1 if you do, or 0 if you don't."))
-        print("Thank you for using Lolex Tools Installer.")
+        start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
+        print("Thank you for using Lolex-Tools Installer.")
         if start == 1:
-            print("Starting Lolex Tools...")
-            subprocess.call("/Lolex Tools/System/Frame/Main/JTTools.py", shell = True)
+            print("Starting Lolex-Tools...")
+            subprocess.call("/Lolex-Tools/System/Frame/Main/JTTools.py", shell = True)
         else:
             exit()
     except(TypeError, SyntaxError, ValueError):
