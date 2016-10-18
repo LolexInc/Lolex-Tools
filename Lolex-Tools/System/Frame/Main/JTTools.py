@@ -183,9 +183,9 @@ try:
             try:
                 os.remove("/Lolex-Tools/User/Data/verifoboot.pyc")
             except(IOError):
-                pass
+                print("verifonboot.pyc was not found.")
         try:
-            shutil.copy("/Lolex-Tools/Defaults/verifonboot.py","/Lolex-Tools/User/Data/verifonboot.py")
+            shutil.copy("/Lolex-Tools/Defaults/verifonboot.py","Lolex-Tools/User/Data")
         except(IOError):
             print("Please do not remove system files. Please redownload the repository from https://github.com/LolexOrg/Lolex-Tools/tree/Internal-Beta and relaunch this.")
             time.sleep(5)
@@ -198,42 +198,8 @@ try:
             outf.write(str(runtimeone))
             outf.write("\nruntimetwo = ")
             outf.write(str(runtimetwo))
-        if JTToolsOptions.compiler == True:
-            sys.path.insert(0,"/Lolex-Tools/User/Data")
-            try:
-                py_compile.compile("/Lolex-Tools/User/Data/verifonboot.py")
-                os.remove("/Lolex-Tools/User/Data/verifonboot.py")
-            except(SyntaxError, IOError):
-                pass
-            try:
-                shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-36.pyc","/Lolex-Tools/User/Data/")
-                os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-36.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-            except(IOError):
-                try:
-                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-35.pyc","/Lolex-Tools/User/Data/")
-                    os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-35.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-                except(IOError):
-                    try:
-                        shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-34.pyc","/Lolex-Tools/User/Data/")
-                        os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-34.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-                    except(IOError):
-                        try:
-                            shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-33.pyc","/Lolex-Tools/User/Data/")
-                            os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-33.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-                        except(IOError):
-                            try:
-                                shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-32.pyc","/Lolex-Tools/User/Data/")
-                                os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-32.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-                            except(IOError):
-                                try:
-                                    shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-31.pyc","/Lolex-Tools/User/Data/")
-                                    os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-31.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-                                except(IOError):
-                                    try:
-                                        shutil.copy("/Lolex-Tools/User/Data/__pycache__/verifonboot.cpython-30.pyc","/Lolex-Tools/User/Data/")
-                                        os.rename("/Lolex-Tools/User/Data/verifonboot.cpython-30.pyc","/Lolex-Tools/User/Data/verifonboot.pyc")
-                                    except(IOError):
-                                        pass
+       
+                                    
                         
 
     while True:
