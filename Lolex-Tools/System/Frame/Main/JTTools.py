@@ -184,11 +184,6 @@ try:
                 os.remove("/Lolex-Tools/User/Data/verifoboot.pyc")
             except(IOError):
                 print("verifonboot.pyc was not found.")
-        try:
-            shutil.copy("/Lolex-Tools/Defaults/verifonboot.py","Lolex-Tools/User/Data")
-        except(IOError):
-            print("Please do not remove system files. Please redownload the repository from https://github.com/LolexOrg/Lolex-Tools/tree/Internal-Beta and relaunch this.")
-            time.sleep(5)
         with open ("/Lolex-Tools/User/Data/verifonboot.py","a") as outf:
             outf.write("oneswappins = ")
             outf.write(str(oneswappins))
