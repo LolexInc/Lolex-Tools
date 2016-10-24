@@ -41,5 +41,5 @@ env:
  - DJANGO_VERSION==1.8
 install:
  - pip install -q Django=$DJANGO_VERSION 
- - python /System/Frame/Main/JTTools.py 
- - python /System/Frame/Install/JTToolsInstaller.py
+ - python /Lolex-Tools/System/Frame/Main/JTTools.py 
+ - python /Lolex-Tools/System/Frame/Install/JTToolsInstaller.py
