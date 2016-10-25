@@ -1,5 +1,5 @@
 import sys, time, subprocess, os, shutil, py_compile
-sys.path.insert(0,"\\")
+sys.path.insert(0,"/Lolex-Tools/Lolex-Tools")
 try:
     import isnottravisci
 except(ImportError):
@@ -7,45 +7,23 @@ except(ImportError):
     time.sleep(10)
     exit()
 try:
-    sys.path.insert(0,"/Lolex-Tools/User/Data/")
+    sys.path.insert(0,"/User/Data/")
     import JTToolsOptions
 except(ImportError):
     print("Starting installer due to missing options file...")
-    sys.path.insert(0,"/Lolex-Tools/System")
+    sys.path.insert(0,"/Lolex-Tools/Lolex-Tools/")
     subprocess.call("JTToolsInstaller.py", shell = True)
-try:
-    sys.path.insert(0,"/Lolex-Tools/User/Data")
-    os.remove("verifonboot.cpython-36.pyc")
-except(IOError):
-    try:
-        os.remove("verifonboot.cpython-35.pyc")
-    except(IOError):
-        try:
-            os.remove("verifonboot.cpython-34.pyc")
-        except(IOError):
-            try:
-                os.remove("verifonboot.cpython-33.pyc")
-            except(IOError):
-                try:
-                    os.remove("verifonboot.cpython-32.pyc")
-                except(IOError):
-                    try:
-                        os.remove("verifonboot.cpython-31.pyc")
-                    except(IOError):
-                        try:
-                            os.remove("verifonboot.cpython-30.pyc")
-                        except(IOError):
-                            pass
+
     
 try:
-    sys.path.insert(0,"/Lolex-Tools/System/Lib")
+    sys.path.insert(0,"/System/Lib/")
     import JTToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
     time.sleep(10)
     exit()
 try:
-    sys.path.insert(0,"/Lolex-Tools/User/Data")
+    sys.path.insert(0,"/User/Data")
     import theme
 except(ImportError):
     pass
@@ -53,14 +31,14 @@ try:
     import verifonboot
 except(ImportError):
     print("Starting installer due to missing data file...")
-    sys.path.insert(0,"/Lolex-Tools/System")
+    sys.path.insert(0,"/System/")
     subprocess.call("JTToolsInstaller.py", shell = True)
 try:
-    sys.path.insert(0,"/Lolex-Tools/User/Data")
+    sys.path.insert(0,"/User/Data")
     import startplugins
 except(ImportError, ValueError, SyntaxError, TypeError, OSError, NameError):
     print("Starting installer due to missing data file...")
-    sys.path.insert(0,"/Lolex-Tools/System")
+    sys.path.insert(0,"/System/")
     subprocess.call("JTToolsInstaller.py", shell = True)
 print("Welcome to Lolex-Tools version 8.002")
 try:
@@ -177,14 +155,14 @@ try:
                     tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins):
         try:
-            sys.path.insert(0,"\\")
-            os.remove("/Lolex-Tools/User/Data/verifonboot.py")
+            sys.path.insert(0,"/Lolex-Tools/Lolex-Tools/")
+            os.remove("/User/Data/verifonboot.py")
         except(IOError):
             try:
-                os.remove("/Lolex-Tools/User/Data/verifoboot.pyc")
+                os.remove("/User/Data/verifoboot.pyc")
             except(IOError):
                 print("verifonboot.pyc was not found.")
-        with open ("/Lolex-Tools/User/Data/verifonboot.py","a") as outf:
+        with open ("/User/Data/verifonboot.py","a") as outf:
             outf.write("oneswappins = ")
             outf.write(str(oneswappins))
             outf.write("\ntwoswappins = ")
@@ -193,31 +171,29 @@ try:
             outf.write(str(runtimeone))
             outf.write("\nruntimetwo = ")
             outf.write(str(runtimetwo))
-       
-                                    
-                        
+
 
     while True:
          print ("Here is a list of modes available:")
-         print ("1= Restart")
-         print ("2 = Logoff")
-         print ("3 = Alternative Logoff Method ")
-         print ("4 = Hibernate")
-         print ("5= Shutdown")
-         print ("6 = Alternative Shutdown Method")
-         print ("7 = Colour Flickr")
-         print ("8 = Call CMD")
-         print ("9 = Call Documents")
-         print ("10 = Call A Python Shell")
-         print ("11 = Call Task Manager")
+         print ("1= Restart") #reboot for android
+         print ("2 = Logoff") #disable for android
+         print ("3 = Alternative Logoff Method ") #DISABLE
+         print ("4 = Hibernate") #DISABLE
+         print ("5= Shutdown") # shutdown -p?
+         print ("6 = Alternative Shutdown Method") #Is there another way?
+         print ("7 = Colour Flicker")#won't work on android
+         print ("8 = Call CMD")#DISABLE
+         print ("9 = Call Documents")#File Manager call?
+         print ("10 = Call A Python Shell")#os.system("python")?
+         print ("11 = Call Task Manager")#DISABLE
          print ("12 = Create folders in the same directory as this script.")
          print ("13 = Remove Directories")
          print ("14 = Create Files")
          print ("15 = Restart This Script (debug purposes)")
          print ("16 = Perform Operations With Numbers")
          print ("17 = Lock This Script")
-         print ("18 = Call Auto-Clicker")
-         print ("19 = Call Powershell")
+         print ("18 = Call Auto-Clicker")#DISABLE
+         print ("19 = Call Powershell")#DISABLE
          print ("20 = Exit")
          modewanted = int(input("Please enter the number of the mode that you want."))
          if modewanted == 1:
