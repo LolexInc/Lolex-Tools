@@ -17,5 +17,6 @@ env:
 
 install:
  - pip install -q Django=$DJANGO_VERSION 
- - python /Lolex-Tools/System/Frame/Main/JTTools.py 
- - python /Lolex-Tools/System/Frame/Install/JTToolsInstaller.py
+ - python start.py
+ - python JTTools.py 
+ - python JTToolsInstaller.py
