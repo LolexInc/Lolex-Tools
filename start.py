@@ -1,2 +1,2 @@
 import subprocess
-subprocess.call("/Lolex-Tools/System/Frame/Main/JTTools.py",shell = True)
+subprocess.call("JTTools.py",shell = True)
