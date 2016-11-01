@@ -340,7 +340,13 @@ try:
             except(IOError, WindowsError):
                 pass
         except(IOError, SyntaxError):
-            pass
+             pass
+        try:
+             shutil.copy("/Lolex-Tools/__pycache__/JTToolsOptions.cpython-37.pyc","/Lolex-Tools/")
+             os.rename("/Lolex-Tools/JTToolsOptions.cpython-37.pyc","/Lolex-Tools/JTToolsOptions.pyc")
+             shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-37.pyc","/Lolex-Tools/")
+             os.rename("/Lolex-Tools/verifonboot.cpython-37.pyc","/Lolex-Tools/verifonboot.pyc")
+
         try:
             shutil.copy("/Lolex-Tools/__pycache__/JTToolsOptions.cpython-36.pyc","/Lolex-Tools/")
             os.rename("/Lolex-Tools/JTToolsOptions.cpython-36.pyc","/Lolex-Tools/JTToolsOptions.pyc")
@@ -388,6 +394,9 @@ try:
                                     exit()
     if compileplugins == 1 or compileplugins == True:
         py_compile.compile("/Lolex-Tools/startplugins.py")
+        try:
+             shutil.copy("/Lolex-Tools/__pycache__/startplugins.cpython-37.pyc","/Lolex-Tools/")
+             os.rename("/Lolex-Tools/startplugins.cpython-37.pyc","/Lolex-Tools/startplugins.pyc")
         try:
             shutil.copy("/Lolex-Tools/__pycache__/startplugins.cpython-36.pyc","/Lolex-Tools/")
             os.rename("/Lolex-Tools/startplugins.cpython-36.pyc","/Lolex-Tools/startplugins.pyc")
