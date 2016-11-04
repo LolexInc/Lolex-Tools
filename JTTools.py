@@ -22,7 +22,9 @@ try:
 except(ImportError):
     pass
 try:
+    print("Verif") 
     import verifonboot
+    print("success verif.")
 except(ImportError):
     print("Starting installer due to missing data file...")
     subprocess.call("JTToolsInstaller.py", shell = True)
@@ -34,10 +36,12 @@ except(ImportError, ValueError, SyntaxError, TypeError, OSError, NameError):
     subprocess.call("JTToolsInstaller.py", shell = True)
 print("Welcome to Lolex-Tools version 8.002")
 try:
-    oneswappins = verifonboot.oneswappins
-    twoswappins = verifonboot.twoswappins
-    runtimeone = verifonboot.runtimeone
-    runtimetwo = verifonboot.runtimetwo
+    print("Enter try.")
+    if True:
+        oneswappins = verifonboot.oneswappins
+        twoswappins = verifonboot.twoswappins
+        runtimeone = verifonboot.runtimeone
+        runtimetwo = verifonboot.runtimetwo
     if JTToolsOptions.useusername == True:
         usernameenter = True
         while usernameenter != (JTToolsOptions.username1 or JTToolsOptions.username2):
@@ -233,7 +237,7 @@ try:
                                             os.rename("Lolex-Tools/verifonboot.cpython-30.pyc","/Lolex-Tools/verifonboot.pyc")
                                         except(IOError, OSError):
                                             print("Please be aware that Python 2 is NOT supported.")
-        while True:
+    while True:
             print ("Here is a list of modes available:")
             print ("1 = Restart")
             print ("2 = Logoff")
@@ -382,4 +386,5 @@ try:
 
   
 except():
-    pass
+    print("An Error occured.")
+    
