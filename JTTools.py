@@ -22,9 +22,7 @@ try:
 except(ImportError):
     pass
 try:
-    print("Verif") 
     import verifonboot
-    print("success verif.")
 except(ImportError):
     print("Starting installer due to missing data file...")
     subprocess.call("JTToolsInstaller.py", shell = True)
@@ -32,16 +30,18 @@ try:
     import startplugins
 except(ImportError, ValueError, SyntaxError, TypeError, OSError, NameError):
     print("Starting installer due to missing data file...")
-    sys.path.insert(0,"/Lolex-Tools/System")
+    sys.path.insert(0,"./System")
     subprocess.call("JTToolsInstaller.py", shell = True)
 print("Welcome to Lolex-Tools version 8.002")
 try:
-    print("Enter try.")
-    if True:
-        oneswappins = verifonboot.oneswappins
-        twoswappins = verifonboot.twoswappins
-        runtimeone = verifonboot.runtimeone
-        runtimetwo = verifonboot.runtimetwo
+    oneswappins = verifonboot.oneswappins
+    twoswappins = verifonboot.twoswappins
+    runtimeone = verifonboot.runtimeone
+    runtimetwo = verifonboot.runtimetwo
+    oneswapwords = verifonboot.oneswapwords
+    twoswapwords = verifonboot.twoswapwords
+    wordtimeone = verifonboot.wordtimeone
+    wordtimetwo = verifonboot.wordtimetwo
     if JTToolsOptions.useusername == True:
         usernameenter = True
         while usernameenter != (JTToolsOptions.username1 or JTToolsOptions.username2):
@@ -54,20 +54,30 @@ try:
                 oneswappins = False
             elif((JTToolsOptions.onepinthree == False) and (runtimeone == 2) or ((JTToolsOptions.onepinfour == False) and (runtimeone == 3)) or ((JTToolsOptions.onepinfive == False) and (runtimeone == 4)) or ((JTToolsOptions.onepinfive != False) and (runtimeone == 5)) or runtimeone == 0):
                  runtimeone = 1
-                 print("Changed runtime. 1 = 1")
+        if verifonboot.oneswapwords == True:
+            if JTToolsOptions.onewordtwo == False:
+                oneswapwords = False
+            elif ((JTToolsOptions.onewordthree == False) and (wordtimeone == 2) or ((JTToolsOptions.onewordfour == False) and (wordtimeone == 3)) or ((JTToolsOptions.onewordfive == False) and (wordtimeone == 4)) or ((JTToolsOptions.onewordfive != False) and (wordtimeone == 5)) or wordtimeone == 0):
+                wordtimeone = 1
             else:
-                runtimeone = runtimeone + 1
-                print("Changed runtime.1 + 1")
+                wordtimeone = wordtimeone + 1
+
     elif JTToolsOptions.username2 == usernameenter:
         if verifonboot.twoswappins == True:
             if JTToolsOptions.onepintwo == False:
                 twoswappins = False
             elif((JTToolsOptions.twopinthree == False) and (runtimetwo == 2) or ((JTToolsOptions.twopinfour == False) and (runtimetwo == 3)) or ((JTToolsOptions.twopinfive == False) and (runtimeone == 4)) or ((JTToolsOptions.twopinfive != False) and (runtimetwo == 5)) or runtimetwo == 0):
-                        runtimetwo = 1
-                        print("Changed runtime. 2 = 1")
+                    runtimetwo = 1
+
             else:
                 runtimetwo = runtimetwo + 1
-                print("Changed runtime 2  + 1.")
+        if verifonboot.twoswapwords == True:
+            if JTToolsOptions.twowordone == False:
+                twoswapwords = False
+            elif((JTToolsOptions.twowordthree == False) and (wordtimetwo == 2) or ((JTToolsOptions.twowordfour == False) and (wordtimetwo == 3)) or ((JTToolsOptions.twowordfive == False) and (wordtimeone == 4)) or ((JTToolsOptions.twowordfive != False) and (wordtimetwo == 5)) or wordtimetwo == 0):
+                wordtimetwo = 1
+            else:
+                wordtimetwo = wordtimetwo + 1
     if (JTToolsOptions.oneusepin == True and usernameenter == JTToolsOptions.username1) or (JTToolsOptions.twousepin == True and usernameenter == JTToolsOptions.username2):
         codeenter = int(input("Please enter your current PIN."))
         tries = 1
@@ -112,6 +122,7 @@ try:
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
+                    
         elif usernameenter == JTToolsOptions.username2:
             if runtimetwo == 1 or JTToolsOptions.twopintwo == False:
                 while codeenter != JTToolsOptions.twopinone:
@@ -153,16 +164,101 @@ try:
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
-    if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins):
+    if ((oneuseword == True and usernameenter == JTToolsOptions.username1)or(twouseword == True and usernameenter == JTToolsOptions.username2)):
+        wordenter = input("Please enter your current password.")
+        tries = 1
+        if usernameenter == JTToolsOptions.username1:
+            if oneswapwords == False or wordtimeone == 1:
+                while wordenter != JTToolsOptions.onewordone:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.onewordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimeone == 2:
+                while wordenter != JTToolsOptions.onewordtwo:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.onewordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimeone == 3:
+                while wordenter != JTToolsOptions.onewordthree:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.onewordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimeone == 4:
+                while wordenter != JTToolsOptions.onewordfour:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.onewordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimeone == 5:
+                while wordenter != JTToolsOptions.onewordfive:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.onewordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+        elif usernameenter == JTToolsOptions.username2:
+            if twoswapwords == False or wordtimetwo == 1:
+                while wordenter != JTToolsOptions.twowordone:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.twowordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimetwo == 2:
+                while wordenter != JTToolsOptions.twowordtwo:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.twowordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimetwo == 3:
+                while wordenter != JTToolsOptions.twowordthree:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.twowordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimetwo == 4:
+                while wordenter != JTToolsOptions.twowordfour:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.twowordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+            elif wordtimetwo == 5:
+                while wordenter != JTToolsOptions.twowordfive:
+                    if tries == 5:
+                        print("Sorry! You got the password wrong five times.")
+                        time.sleep(JTToolsOptions.twowordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
+    if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
         try:
-            os.remove("/Lolex-Tools/verifonboot.py")
+            os.remove("./verifonboot.py")
         except(IOError):
             pass
         try:
-            os.remove("/Lolex-Tools/verifoboot.pyc")
+            os.remove("./verifoboot.pyc")
         except(IOError):
                 print("verifonboot.pyc was not found.")
-        with open ("/Lolex-Tools/verifonboot.py","a") as outf:
+        with open ("./verifonboot.py","a") as outf:
             outf.write("oneswappins = ")
             outf.write(str(oneswappins))
             outf.write("\ntwoswappins = ")
@@ -173,71 +269,71 @@ try:
             outf.write(str(runtimetwo))
         if JTToolsOptions.compiler == True:
             try:
-                os.remove("/Lolex-Tools/verifonboot.cpython-37.pyc")
+                os.remove("./verifonboot.cpython-37.pyc")
             except(IOError, OSError):
                 try:
-                    os.remove("/Lolex-Tools/verifonboot.cpython-36.pyc")
+                    os.remove("./verifonboot.cpython-36.pyc")
                 except(IOError, OSError):
                     try:
-                        os.remove("/Lolex-Tools/verifonboot.cpython-35.pyc")
+                        os.remove("./verifonboot.cpython-35.pyc")
                     except(IOError, OSError):
 
                         try:
-                            os.remove("/Lolex-Tools/verifonboot.cpython-34.pyc")
+                            os.remove("./verifonboot.cpython-34.pyc")
                         except(IOError, OSError):
                             try:
-                                os.remove("/Lolex-Tools/verifonboot.cpython-33.pyc")
+                                os.remove("./verifonboot.cpython-33.pyc")
                             except(IOError, OSError):
                                 try:
-                                    os.remove("/Lolex-Tools/verifonboot.cpython-32.pyc")
+                                    os.remove("./verifonboot.cpython-32.pyc")
                                 except(IOError, OSError):
                                     try:
-                                        os.remove("/Lolex-Tools/verifonboot.cpython-31.pyc")
+                                        os.remove("./verifonboot.cpython-31.pyc")
                                     except(IOError, OSError):
                                         try:
-                                            os.remove("/Lolex-Tools/verifonboot.cpython-30.pyc")
+                                            os.remove("./verifonboot.cpython-30.pyc")
                                         except(IOError, OSError):
                                             pass
             #put renames in seperate try COPYING IS NOT THE PROBLEM
-            py_compile.compile("/Lolex-Tools/verifonboot.py")
+            py_compile.compile("./verifonboot.py")
             try:
-                os.remove("/Lolex-Tools/verifonboot.py")
+                os.remove("./verifonboot.py")
             except(IOError, OSError):
                 pass
             try:
-                shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-37.pyc","/Lolex-Tools")
-                os.rename("/Lolex-Tools/verifoboot.cpython-37.pyc","/Lolex-Tools/verifonboot.pyc")
+                shutil.copy("./__pycache__/verifonboot.cpython-37.pyc","./")
+                os.rename("./verifoboot.cpython-37.pyc","./verifonboot.pyc")
             except(IOError):
                 try:
-                    shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-36.pyc","/Lolex-Tools")
-                    os.rename("/Lolex-Tools/verifonboot.cpython-36.pyc","/Lolex-Tools/verifonboot.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-36.pyc","./")
+                    os.rename("./verifonboot.cpython-36.pyc","./verifonboot.pyc")
                 except(IOError, OSError):
                     try:
-                        shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-35.pyc","/Lolex-Tools")
-                        os.rename("/Lolex-Tools/verifonboot.cpython-35.pyc","/Lolex-Tools/verifonboot.pyc")
+                        shutil.copy("./__pycache__/verifonboot.cpython-35.pyc","./")
+                        os.rename("./verifonboot.cpython-35.pyc","./verifonboot.pyc")
                     except(IOError, OSError):
                         try:
-                            shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-34.pyc","/Lolex-Tools")
-                            os.rename("/Lolex-Tools/verifonboot.cpython-34.pyc","/Lolex-Tools/verifonboot.pyc")
+                            shutil.copy("./__pycache__/verifonboot.cpython-34.pyc","./")
+                            os.rename("./verifonboot.cpython-34.pyc","./verifonboot.pyc")
                         except(IOError, OSError):
                             try:
-                                shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-33.pyc","/Lolex-Tools")
-                                os.rename("/Lolex-Tools/verifonboot.cpython-33.pyc","/Lolex-Tools/verifonboot.pyc")
+                                shutil.copy("./__pycache__/verifonboot.cpython-33.pyc","./")
+                                os.rename("./verifonboot.cpython-33.pyc","./verifonboot.pyc")
                             except(IOError, OSError):
                                 try:
-                                    shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-32.pyc","/Lolex-Tools")
-                                    os.rename("/Lolex-Tools/verifonboot.cpython-32.pyc","/Lolex-Tools/verifonboot.pyc")
+                                    shutil.copy("./__pycache__/verifonboot.cpython-32.pyc","./")
+                                    os.rename("./verifonboot.cpython-32.pyc","./verifonboot.pyc")
                                 except(IOError, OSError):
                                     try:
-                                        shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-31.pyc","/Lolex-Tools")
-                                        os.rename("/Lolex-Tools/verifonboot.cpython-31.pyc","/Lolex-Tools/verifonboot.pyc")
+                                        shutil.copy("./__pycache__/verifonboot.cpython-31.pyc","./")
+                                        os.rename("./verifonboot.cpython-31.pyc","./verifonboot.pyc")
                                     except(IOError, OSError):
                                         try:
-                                            shutil.copy("/Lolex-Tools/__pycache__/verifonboot.cpython-30.pyc","/Lolex-Tools")
-                                            os.rename("Lolex-Tools/verifonboot.cpython-30.pyc","/Lolex-Tools/verifonboot.pyc")
+                                            shutil.copy("./__pycache__/verifonboot.cpython-30.pyc","./")
+                                            os.rename("Lolex-Tools/verifonboot.cpython-30.pyc","./verifonboot.pyc")
                                         except(IOError, OSError):
                                             print("Please be aware that Python 2 is NOT supported.")
-    while True:
+        while True:
             print ("Here is a list of modes available:")
             print ("1 = Restart")
             print ("2 = Logoff")
@@ -386,5 +482,4 @@ try:
 
   
 except():
-    print("An Error occured.")
-    
+    pass
