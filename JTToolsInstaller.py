@@ -401,7 +401,7 @@ try:
           outf.write((str(twoswapwords)))
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("compiledon = 8.002")
+          outf.write("compiledon = 8.100")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           outf.write("\nusername1 = ")
