@@ -1,4 +1,2 @@
-
-import subprocess,os
-os.system("python /sdcard/Lolex-Tools/JTTools.py")
-
+import subprocess
+subprocess.call("./JTTools.py",shell = True)
