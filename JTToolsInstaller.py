@@ -6,6 +6,18 @@ try:
 except(ImportError):
     print("Running as Travis CI...\nIf you aren't actually then create isnottravisci.py  to verify you aren't actually a bot.\nInstallation will commence upon the script restart and the file being present.")
     exit()
+if sys.version_info[0]<3:
+     print("Python 2 is not supported, please upgrade to at least Python 3.")
+     time.sleep(10)
+     exit()
+if sys.version_info[0]>3:
+     print("Python 4+ is not currently supported.")
+     time.sleep(10)
+     exit(None)
+if sys.version_info[0] == 3 and sys.version_info[1]>7:
+     print("Any version of Python higher than 3.7 is not supported currently.")
+     time.sleep(10)
+     exit(None)
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
      if continueon != 1:
