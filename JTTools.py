@@ -1,38 +1,19 @@
 #! python3
 import sys, time, subprocess, os, shutil, py_compile
 try:
-    import isnottravisci
-except(ImportError):
-    print("Running as Travis CI...\nIf you are human please create isnottravisci.py to continue.")
-    time.sleep(10)
-    exit()
-try:
-    import JTToolsOptions
-except(ImportError):
-    print("Starting installer due to missing options file...")
-    subprocess.call("JTToolsInstaller.py", shell = True)
-try:
     import JTToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
-    time.sleep(10)
-    exit()
-try:
-    import theme
-except(ImportError):
-    pass
 try:
     import verifonboot
-except(ImportError):
-    print("Starting installer due to missing data file...")
-    subprocess.call("JTToolsInstaller.py", shell = True)
+except(IOError):
+    exit(1)
 try:
-    import startplugins
-except(ImportError, ValueError, SyntaxError, TypeError, OSError, NameError):
-    print("Starting installer due to missing data file...")
-    sys.path.insert(0,"./System")
-    subprocess.call("JTToolsInstaller.py", shell = True)
-print("Welcome to Lolex-Tools version 8.002")
+    import JTToolsOptions
+except(IOError):
+    exit(1)
+JTToolsMethods.importtree()
+print("Welcome to Lolex-Tools version 8.100")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -390,23 +371,14 @@ try:
         print ("20 = Exit")
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
-            shutdown = int(input("Please enter 1 or 0 to confirm restart."))
-            local = time.asctime( time.localtime(time.time()) )
-            with open("JT Tools Log File.txt", "a") as f:
-                f.write(local)
-                f.write("    JT Tools :Restart (mode 1) entered.\n")
-            if shutdown == 1:
-                waittime = int(input("How long, in minutes, do you wish to wait?"))
-                time.sleep (waittime*60)
-                os.system ("shutdown -r -f")
-                os.system ("shutdown -l -f")
+            JTToolsMethods.mode1()
         elif modewanted == 2:
             logoff = int(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
                 waittime =int(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime*60)
                 os.system ("shutdown -l -f")
-        elif modewanted ==3:
+        elif modewanted == 3:
             altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
             if altlogoff ==1:
                 waittime =int(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
@@ -415,18 +387,18 @@ try:
         elif modewanted == 4:
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
-                waittime =int(input("How long, in minutes, do you wish to wait?"))
+                waittime = int(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime*60)
                 os.system ("shutdown -h -f")
         elif modewanted == 5:
             shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
             if shutdown == 1:
-                waittime =int(input("How long, in minutes, do you wish to wait?"))
+                waittime = int(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime*60)
                 os.system ("shutdown -s -f")
         elif modewanted == 6:
             altshutdown =int(input("Please enter 1 or 0 to confirm shutdown."))
-            if altshutdown ==1:
+            if altshutdown == 1:
                 waittime = int(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
                 time.sleep (waittime*60)
                 subprocess.call ("shutdown.exe")

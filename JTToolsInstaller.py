@@ -59,6 +59,7 @@ try:
           os.remove("./theme.py")
      except(IOError, OSError):
           pass
+     useros = int(input("Please enter 1 if you are running Windows or 0 if you are running Android."))
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
           print("Sorry! We only support 0 - 2 usernames currently.")
@@ -353,8 +354,27 @@ try:
           elif developer == 1:
                compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
                vanishprint = 0 #Feature for devs :)
-          theme = input("Here is a list of colours available: a - Neon Green, b - Light Blue, c - Neon Red, d - Light Purple/Pink, e - Neon Yellow, f - White, 1 - Dark Blue, 2 - Dark Green, 3 - Light Non-Neon Blue, 4 - Dark Red/Brown, 5 - Dark Purple, 6 - Non Neon Yellow, 7 - White/Light Gray, 8 - Dark Gray, 9 - Dark Neon Blue.The first colour will set the background colour, the second the text. Please enter color then your colour code.If any crashes occur try enclosing your colour code in speech marks.")
-          os.system(theme)
+          if useros == 1:
+               print("Here is a list of colours available:")
+               print("a - Neon Green")
+               print("b - Light Blue")
+               print("c - Neon Red")
+               print("d - Light Purple/Pink")
+               print("e - Neon Yellow")
+               print("f - White")
+               print("1 - Dark Blue")
+               print("2 - Dark Green")
+               print("3 - Light Non-Neon Blue")
+               print("4 - Dark Red/Brown")
+               print("5 - Dark Purple")
+               print("6 - Non Neon Yellow")
+               print("7 - White/Light Gray")
+               print("8 - Dark Gray")
+               print("9 - Dark Neon Blue")
+               print("The first colour will set the background colour, the second the text. Please enter color then your colour code.")
+               print("If any crashes occur try enclosing your colour code in speech marks.")
+               theme = input("Please set your theme.")
+               os.system(theme)
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if pluginconfirm == 1:
                try:
@@ -550,98 +570,158 @@ try:
                     pass
           except(IOError, SyntaxError):
                pass
-          try:
-               shutil.copy("./__pycache__/JTToolsOptions.cpython-37.pyc","./")
-               os.rename("./JTToolsOptions.cpython-37.pyc","./JTToolsOptions.pyc")
-               shutil.copy("./__pycache__/verifonboot.cpython-37.pyc","./")
-               os.rename("./verifonboot.cpython-37.pyc","./verifonboot.pyc")
-          except(IOError,OSError):
+          if sys.version_info[1] == 7:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-37.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-37.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-37.pyc","./")
+                    os.rename("./verifonboot.cpython-37.pyc","./verifonboot.pyc")
+               except(IOError,OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 6:
                try:
                  shutil.copy("./__pycache__/JTToolsOptions.cpython-36.pyc","./")
                  os.rename("./JTToolsOptions.cpython-36.pyc","./JTToolsOptions.pyc")
                  shutil.copy("./__pycache__/verifonboot.cpython-36.pyc","./")
                  os.rename("./verifonboot.cpython-36.pyc","./verifonboot.pyc")
-               except(IOError):
-                    try:
-                         shutil.copy("./__pycache__/JTToolsOptions.cpython-35.pyc","./")
-                         os.rename("./JTToolsOptions.cpython-35.pyc","./JTToolsOptions.pyc")
-                         shutil.copy("./__pycache__/verifonboot.cpython-35.pyc","./")
-                         os.rename("./verifonboot.cpython-35.pyc","./verifonboot.pyc")
-                    except(IOError):
-                         try:
-                              shutil.copy("./__pycache__/JTToolsOptions.cpython-34.pyc","./")
-                              os.rename("./JTToolsOptions.cpython-34.pyc","./JTToolsOptions.pyc")
-                              shutil.copy("./__pycache__/verifonboot.cpython-34.pyc","./")
-                              os.rename("./verifonboot.cpython-34.pyc","./verifonboot.pyc")
-                         except(IOError):
-                              try:
-                                   shutil.copy("./__pycache__/JTToolsOptions.cpython-33.pyc","./")
-                                   os.rename("./JTToolsOptions.cpython-33.pyc","./JTToolsOptions.pyc")
-                                   shutil.copy("./__pycache__/verifonboot.cpython-33.pyc","./")
-                                   os.rename("./verifonboot.cpython-33.pyc","./verifonboot.pyc")
-                              except(IOError):
-                                   try:
-                                        shutil.copy("./__pycache__/JTToolsOptions.cpython-32.pyc","./")
-                                        os.rename("./JTToolsOptions.cpython-32.pyc","./JTToolsOptions.pyc")
-                                        shutil.copy("./__pycache__/verifonboot.cpython-32.pyc","./")
-                                        os.rename("./verifonboot.cpython-32.pyc","./verifonboot.pyc")
-                                   except(IOError):
-                                        try:
-                                             shutil.copy("./__pycache__/JTToolsOptions.cpython-31.pyc","./")
-                                             os.rename("./JTToolsOptions.cpython-31.pyc","./JTToolsOptions.pyc")
-                                             shutil.copy("./__pycache__/verifonboot.cpython-31.pyc","./")
-                                             os.rename("./verifonboot.cpython-31.pyc","./verifonboot.pyc")
-                                        except(IOError):
-                                             try:
-                                                  shutil.copy("./__pycache__/JTToolsOptions.cpython-30.pyc","./")
-                                                  os.rename("./JTToolsOptions.cpython-30.pyc","./JTToolsOptions.pyc")
-                                                  shutil.copy("./__pycache__/verifonboot.cpython-30.pyc","./")
-                                                  os.rename("./verifonboot.cpython-30.pyc","./verifonboot.pyc")
-                                             except(IOError):
-                                                  print("Sorry! It appears you are not running Python 3.0 - 3.7 nightly.")
-                                                  time.sleep(3)
-                                                  exit()
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+                    
+          elif sys.version_info[1] == 5:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-35.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-35.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-35.pyc","./")
+                    os.rename("./verifonboot.cpython-35.pyc","./verifonboot.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 4:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-34.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-34.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-34.pyc","./")
+                    os.rename("./verifonboot.cpython-34.pyc","./verifonboot.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 3:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-33.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-33.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-33.pyc","./")
+                    os.rename("./verifonboot.cpython-33.pyc","./verifonboot.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 2:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-32.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-32.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-32.pyc","./")
+                    os.rename("./verifonboot.cpython-32.pyc","./verifonboot.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 1:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-31.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-31.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-31.pyc","./")
+                    os.rename("./verifonboot.cpython-31.pyc","./verifonboot.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          else:
+               try:
+                    shutil.copy("./__pycache__/JTToolsOptions.cpython-30.pyc","./")
+                    os.rename("./JTToolsOptions.cpython-30.pyc","./JTToolsOptions.pyc")
+                    shutil.copy("./__pycache__/verifonboot.cpython-30.pyc","./")
+                    os.rename("./verifonboot.cpython-30.pyc","./verifonboot.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
      if compileplugins == 1 or compileplugins == True:
           py_compile.compile("./startplugins.py")
-          try:
-               shutil.copy("./__pycache__/startplugins.cpython-37.pyc","./")
-               os.rename("./startplugins.cpython-37.pyc","./startplugins.pyc")
-          except(IOError,OSError):
+          if sys.version_info[1] == 7:
+               try:
+                    shutil.copy("./__pycache__/startplugins.cpython-37.pyc","./")
+                    os.rename("./startplugins.cpython-37.pyc","./startplugins.pyc")
+               except(IOError,OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 6:
                try:
                     shutil.copy("./__pycache__/startplugins.cpython-36.pyc","./")
                     os.rename("./startplugins.cpython-36.pyc","./startplugins.pyc")
-               except(IOError):
-                    try:
-                         shutil.copy("./__pycache__/startplugins.cpython-35.pyc","./")
-                         os.rename("./startplugins.cpython-35.pyc","./startplugins.pyc")
-                    except(IOError):
-                         try:
-                              shutil.copy("./__pycache__/startplugins.cpython-34.pyc","./")
-                              os.rename("./startplugins.cpython-34.pyc","./startplugins.pyc")
-                         except(IOError):
-                              try:
-                                   shutil.copy("./__pycache__/startplugins.cpython-33.pyc","./")
-                                   os.rename("./startplugins.cpython-33.pyc","./startplugins.pyc")
-                              except(IOError):
-                                   try:
-                                        shutil.copy("./__pycache__/startplugins.cpython-32.pyc","./")
-                                        os.rename("./startplugins.cpython-32.pyc","./startplugins.pyc")
-                                   except(IOError):
-                                        try:
-                                             shutil.copy("./__pycache__/startplugins.cpython-31.pyc","./")
-                                             os.rename("./startplugins.cpython-31.pyc","./startplugins.pyc")
-                                        except(IOError):
-                                             try:
-                                                  shutil.copy("./__pycache__/startplugins.cpython-30.pyc","./")
-                                                  os.rename("./startplugins.cpython-30.pyc","./startplugins.pyc")
-                                             except(IOError):
-                                                  print("Sorry! It appears you are not running Python 3.0 - 3.7 nightly.")
-                                                  time.sleep(3)
-                                                  exit()
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 5:
                try:
-                    os.remove("./startplugins.py")
-               except(IOError):
-                    pass
+                    shutil.copy("./__pycache__/startplugins.cpython-35.pyc","./")
+                    os.rename("./startplugins.cpython-35.pyc","./startplugins.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 4:
+               try:
+                    shutil.copy("./__pycache__/startplugins.cpython-34.pyc","./")
+                    os.rename("./startplugins.cpython-34.pyc","./startplugins.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 3:
+               try:
+                    shutil.copy("./__pycache__/startplugins.cpython-33.pyc","./")
+                    os.rename("./startplugins.cpython-33.pyc","./startplugins.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 2:
+               try:
+                    shutil.copy("./__pycache__/startplugins.cpython-32.pyc","./")
+                    os.rename("./startplugins.cpython-32.pyc","./startplugins.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          elif sys.version_info[1] == 1:
+               try:
+                    shutil.copy("./__pycache__/startplugins.cpython-31.pyc","./")
+                    os.rename("./startplugins.cpython-31.pyc","./startplugins.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+          else:
+               try:
+                    shutil.copy("./__pycache__/startplugins.cpython-30.pyc","./")
+                    os.rename("./startplugins.cpython-30.pyc","./startplugins.pyc")
+               except(IOError, OSError):
+                    print("An Unknown IOError occured.")
+                    time.sleep(3)
+                    exit(None)
+
+          try:
+               os.remove("./startplugins.py")
+          except(IOError):
+               pass
      try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):

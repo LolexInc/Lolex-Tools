@@ -13,7 +13,7 @@ def flicker():
      currentflashes = currentflashes+1
 
 def logo():
-    os.system ("color f9")
+
     print ("00000000000000000000000000000000000000000   00000000000000000000000")
     print ("00000000000000000000000000000000000000000   00000000000000000000000")
     print ("                                                    000000000")
@@ -40,3 +40,33 @@ def exitnow():
         print("Closing in", round (closing, +3),"seconds.")
         time.sleep(0.017)
         closing = closing -0.015
+def importtree():
+    try:
+        import isnottravisci
+    except(ImportError):
+        print("Running as Travis CI...\nIf you are human please create isnottravisci.py to continue.")
+        time.sleep(10)
+        exit()
+    try:
+        import JTToolsOptions
+    except(ImportError):
+        print("Starting installer due to missing options file...")
+        subprocess.call("JTToolsInstaller.py", shell = True)
+
+        time.sleep(10)
+        exit()
+    try:
+        import theme
+    except(ImportError):
+        pass
+    try:
+        import verifonboot
+    except(ImportError):
+        print("Starting installer due to missing data file...")
+        subprocess.call("JTToolsInstaller.py", shell = True)
+    try:
+        import startplugins
+    except(ImportError, ValueError, SyntaxError, TypeError, OSError, NameError):
+        print("Starting installer due to missing data file...")
+        sys.path.insert(0,"./System")
+        subprocess.call("JTToolsInstaller.py", shell = True)
