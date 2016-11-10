@@ -238,7 +238,7 @@ try:
         except(IOError):
             pass
         try:
-            os.remove("./verifoboot.pyc")
+            os.remove("./verifonboot.pyc")
         except(IOError):
                 print("verifonboot.pyc was not found.")
         with open ("./verifonboot.py","a") as outf:
@@ -302,7 +302,7 @@ try:
             if sys.version_info[1] == 7:
                 try:
                     shutil.copy("./__pycache__/verifonboot.cpython-37.pyc","./")
-                    os.rename("./verifoboot.cpython-37.pyc","./verifonboot.pyc")
+                    os.rename("./verifonboot.cpython-37.pyc","./verifonboot.pyc")
                 except(IOError):
                     print("An Unknown IOError occured.")
             elif sys.version_info[1] == 6:     
@@ -344,7 +344,7 @@ try:
             else:
                 try:
                     shutil.copy("./__pycache__/verifonboot.cpython-30.pyc","./")
-                    os.rename("Lolex-Tools/verifonboot.cpython-30.pyc","./verifonboot.pyc")
+                    os.rename("./verifonboot.cpython-30.pyc","./verifonboot.pyc")
                 except(IOError, OSError):
                     print("An Unknown IOError occured.")
     while True:
