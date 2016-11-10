@@ -1,6 +1,11 @@
 #! python3
 import sys, time, subprocess, os, shutil, py_compile
 try:
+	import isnottravisci
+except(ImportError):
+	print("Please create isnottravisci.py to continue.")
+	time.sleep(5)
+try:
     import JTToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
