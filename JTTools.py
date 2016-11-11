@@ -255,49 +255,55 @@ try:
             outf.write(str(runtimeone))
             outf.write("\nruntimetwo = ")
             outf.write(str(runtimetwo))
+            outf.write("\nwordtimeone = ")
+            outf.write(str(wordtimeone))
+            outf.write("\nwordtimetwo = ")
+            outf.write(str(wordtimetwo))
+            outf.write("\noneswapwords = ")
+            outf.write(str(oneswapwords))
+            outf.write("\ntwoswapwords = ")
+            outf.write(str(twoswapwords))
         if JTToolsOptions.compiler == True:
             if sys.version_info[1] == 7:
                 try:
                     os.remove("./verifonboot.cpython-37.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
+                    pass
             elif sys.version_info[1] == 6:
                 try:
                     os.remove("./verifonboot.cpython-36.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             elif sys.version_info[1] == 5:
                 try:
                     os.remove("./verifonboot.cpython-35.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             elif sys.version_info[1] == 4:
                 try:
                     os.remove("./verifonboot.cpython-34.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             elif sys.version_info[1] == 3:
                 try:
                     os.remove("./verifonboot.cpython-33.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             elif sys.version_info[1] == 2:
                 try:
                     os.remove("./verifonboot.cpython-32.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             elif sys.version_info[1] == 1:
                 try:
                     os.remove("./verifonboot.cpython-31.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             else:
                 try:
                     os.remove("./verifonboot.cpython-30.pyc")
                 except(IOError, OSError):
-                    print("An Unknown IOError occured.")
+                    pass
             #put renames in seperate try COPYING IS NOT THE PROBLEM
             py_compile.compile("./verifonboot.py")
             try:
@@ -346,7 +352,7 @@ try:
                     os.rename("./verifonboot.cpython-31.pyc","./verifonboot.pyc")
                 except(IOError, OSError):
                     print("An Unknown IOError occured.")
-            else:
+            elif sys.version_info[1] == 0:
                 try:
                     shutil.copy("./__pycache__/verifonboot.cpython-30.pyc","./")
                     os.rename("./verifonboot.cpython-30.pyc","./verifonboot.pyc")
