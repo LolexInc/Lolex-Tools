@@ -5,6 +5,7 @@ try:
 except(ImportError):
 	print("Please create isnottravisci.py to continue.")
 	time.sleep(5)
+	exit(None)
 try:
     import JTToolsMethods
 except(ImportError):
