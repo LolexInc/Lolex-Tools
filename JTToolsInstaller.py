@@ -5,6 +5,7 @@ try:
      import isnottravisci
 except(ImportError):
     print("Running as Travis CI...\nIf you aren't actually then create isnottravisci.py  to verify you aren't actually a bot.\nInstallation will commence upon the script restart and the file being present.")
+    time.sleep(5)
     exit()
 if sys.version_info[0]<3:
      print("Python 2 is not supported, please upgrade to at least Python 3.")
