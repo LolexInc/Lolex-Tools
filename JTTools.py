@@ -382,7 +382,7 @@ try:
         elif modewanted == 17:
             print ("Locked!!!")
         elif modewanted == 18:
-            print("Feature no longer available (license violations apply.")
+            print("Feature no longer available (license violations apply).")
         elif modewanted == 19:
             subprocess.call("powershell.exe")
         elif modewanted == 20:
