@@ -1,5 +1,5 @@
 #! python3
-import sys,time,subprocess,os,shutil,py_compile
+import sys,time,subprocess,os,shutil,py_compile,JTToolsMethods
 print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile")
 try:
      import isnottravisci
@@ -143,7 +143,6 @@ try:
           onewait = False
      if onepins == 0 or onepins == 1:
           onepintwo = False
-
      if onepins == 0 or onepins == 1 or onepins == 2:
           onepinthree = False
      if onepins == 0 or onepins == 1 or onepins == 2 or onepins == 3:
@@ -292,7 +291,6 @@ try:
                twouseword = False
           else:
                twouseword = True
-
           if twowords>0:
                twowordone = input("Please set your first password.")
                confirm = input("Please confirm your first password.")
@@ -328,7 +326,6 @@ try:
                twowordwait = False
           if twowords == 0 or twowords == 1:
                twowordtwo = False
-
           if twowords == 0 or twowords == 1 or twowords == 2:
                twowordthree = False
           if twowords == 0 or twowords == 1 or twowords == 2 or twowords == 3:
@@ -355,7 +352,9 @@ try:
           elif developer == 1:
                compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
                vanishprint = 0 #Feature for devs :)
-          if useros == 1:
+          if useros == 0:
+              theme = 0
+          elif useros == 1:
                print("Here is a list of colours available:")
                print("a - Neon Green")
                print("b - Light Blue")
@@ -386,19 +385,13 @@ try:
                with open ("./startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
                done = int(input("Please enter 1 if you are done, 0 if you aren't."))
                while done != 1:
-                    currentplugin = (str(input("Please enter the name of your next plugin.")))
+                    currentplugin = input("Please enter the name of your next plugin.")
                     with open ("./startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
                     done = int(input("Please enter 1 if you are done, 0 if you aren't."))
                if developer == 1:
                     compileplugins = int(input("Please enter 1 if you want your plugins compiling, or 0 if you don't."))
                else:
                     compileplugins = 1
-               if compileplugins == 1:
-                    try:
-                         py_compile.compile("./startplugins.py")
-                         os.remove("./startplugins.py")
-                    except(IOError):
-                         pass
      elif pluginconfirm != 1:
           compileplugins = 0
           try:
@@ -558,171 +551,10 @@ try:
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
-          try:
-               py_compile.compile("./JTToolsOptions.py")
-               py_compile.compile("./verifonboot.py")
-               try:
-                    os.remove("./JTToolsOptions.py")
-               except(IOError, WindowsError):
-                    pass
-               try:
-                    os.remove("./verifonboot.py")
-               except(IOError, WindowsError):
-                    pass
-          except(IOError, SyntaxError):
-               pass
-          if sys.version_info[1] == 7:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-37.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-37.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-37.pyc","./")
-                    os.rename("./verifonboot.cpython-37.pyc","./verifonboot.pyc")
-               except(IOError,OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 6:
-               try:
-                 shutil.copy("./__pycache__/JTToolsOptions.cpython-36.pyc","./")
-                 os.rename("./JTToolsOptions.cpython-36.pyc","./JTToolsOptions.pyc")
-                 shutil.copy("./__pycache__/verifonboot.cpython-36.pyc","./")
-                 os.rename("./verifonboot.cpython-36.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-                    
-          elif sys.version_info[1] == 5:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-35.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-35.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-35.pyc","./")
-                    os.rename("./verifonboot.cpython-35.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 4:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-34.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-34.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-34.pyc","./")
-                    os.rename("./verifonboot.cpython-34.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 3:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-33.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-33.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-33.pyc","./")
-                    os.rename("./verifonboot.cpython-33.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 2:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-32.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-32.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-32.pyc","./")
-                    os.rename("./verifonboot.cpython-32.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 1:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-31.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-31.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-31.pyc","./")
-                    os.rename("./verifonboot.cpython-31.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          else:
-               try:
-                    shutil.copy("./__pycache__/JTToolsOptions.cpython-30.pyc","./")
-                    os.rename("./JTToolsOptions.cpython-30.pyc","./JTToolsOptions.pyc")
-                    shutil.copy("./__pycache__/verifonboot.cpython-30.pyc","./")
-                    os.rename("./verifonboot.cpython-30.pyc","./verifonboot.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
+         JTToolsMethods.compiler("verifonboot")
+         JTToolsMethods.compiler("JTToolsOptions")
      if compileplugins == 1 or compileplugins == True:
-          py_compile.compile("./startplugins.py")
-          if sys.version_info[1] == 7:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-37.pyc","./")
-                    os.rename("./startplugins.cpython-37.pyc","./startplugins.pyc")
-               except(IOError,OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 6:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-36.pyc","./")
-                    os.rename("./startplugins.cpython-36.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 5:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-35.pyc","./")
-                    os.rename("./startplugins.cpython-35.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 4:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-34.pyc","./")
-                    os.rename("./startplugins.cpython-34.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 3:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-33.pyc","./")
-                    os.rename("./startplugins.cpython-33.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 2:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-32.pyc","./")
-                    os.rename("./startplugins.cpython-32.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          elif sys.version_info[1] == 1:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-31.pyc","./")
-                    os.rename("./startplugins.cpython-31.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-          else:
-               try:
-                    shutil.copy("./__pycache__/startplugins.cpython-30.pyc","./")
-                    os.rename("./startplugins.cpython-30.pyc","./startplugins.pyc")
-               except(IOError, OSError):
-                    print("An Unknown IOError occured.")
-                    time.sleep(3)
-                    exit(None)
-
-          try:
-               os.remove("./startplugins.py")
-          except(IOError):
-               pass
+          JTToolsMethods.compiler("startplugins")
      try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
@@ -736,7 +568,10 @@ try:
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               subprocess.call("./System/Frame/Main/JTTools.py", shell = True)
+               if useros == 1:
+                   subprocess.call("./JTTools.py", shell = True)
+               elif useros == 0:
+                   os.system("python ./JTTools.py")
           else:
                exit()
      except(TypeError, SyntaxError, ValueError):
