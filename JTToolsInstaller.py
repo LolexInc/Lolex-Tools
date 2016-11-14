@@ -60,6 +60,14 @@ try:
           os.remove("./theme.py")
      except(IOError, OSError):
           pass
+     try:
+          os.remove("./runningsys.pyc")
+     except(IOError):
+          pass
+     try:
+          os.remove("./runningsys.py")
+     except(IOError):
+          pass
      useros = platform.system()
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
@@ -89,7 +97,7 @@ try:
           twowordfive = False
           twowordwait = 0
      if useusername == True:
-          print("IF your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
+          print("If your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
           username1 = (str(input("Please set your username.")))
           confirm = (str(input("Please confirm your username.")))
           while username1 != confirm:
@@ -555,22 +563,25 @@ try:
           pass
      with open ("./runningsys.py","a") as outf:
           outf.write("system = " + '("' + useros + '")')
+
+     with open("./theme.py","a") as outf:
+          outf.write('import os\nos.system("')
+          outf.write(str(theme))
+          outf.write('")')
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
          JTToolsMethods.compiler("verifonboot")
          JTToolsMethods.compiler("JTToolsOptions")
          JTToolsMethods.compiler("runningsys")
+         JTToolsMethods.compiler("theme")
      if compileplugins == 1 or compileplugins == True:
           JTToolsMethods.compiler("startplugins")
      try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
           pass
-     with open("./theme.py","a") as outf:
-          outf.write('import os\nos.system("')
-          outf.write(str(theme))
-          outf.write('")')
+
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")
@@ -578,6 +589,7 @@ try:
                print("Starting Lolex-Tools...")
                if useros == "Windows":
                    subprocess.call("./JTTools.py", shell = True)
+
                elif useros == "Linux":
                    os.system("python ./JTTools.py")
           else:
@@ -587,7 +599,7 @@ try:
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(TypeError):
      print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(ValueError):
@@ -596,7 +608,7 @@ except(ValueError):
 except(IOError):
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
