@@ -291,34 +291,34 @@ try:
         if modewanted == 1:
             JTToolsMethods.mode1()
         elif modewanted == 2:
-            logoff = int(input("Please enter 1 or 0 to confirm logoff."))
+            logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
-                waittime =int(input("How long, in minutes, do you wish to wait?"))
-                time.sleep (waittime*60)
+                waittime = float(input("How long, in minutes, do you wish to wait?"))
+                time.sleep (waittime * 60)
                 os.system ("shutdown -l -f")
         elif modewanted == 3:
             altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
-            if altlogoff ==1:
-                waittime =int(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
-                time.sleep(waittime*60)
+            if altlogoff == 1:
+                waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
+                time.sleep(waittime * 60)
                 subprocess.call ("logoff.exe")
         elif modewanted == 4:
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
-                waittime = int(input("How long, in minutes, do you wish to wait?"))
-                time.sleep (waittime*60)
+                waittime = float(input("How long, in minutes, do you wish to wait?"))
+                time.sleep (waittime * 60)
                 os.system ("shutdown -h -f")
         elif modewanted == 5:
             shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
             if shutdown == 1:
-                waittime = int(input("How long, in minutes, do you wish to wait?"))
-                time.sleep (waittime*60)
+                waittime = float(input("How long, in minutes, do you wish to wait?"))
+                time.sleep (waittime * 60)
                 os.system ("shutdown -s -f")
         elif modewanted == 6:
-            altshutdown =int(input("Please enter 1 or 0 to confirm shutdown."))
+            altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
-                waittime = int(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
-                time.sleep (waittime*60)
+                waittime = float(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
+                time.sleep (waittime * 60)
                 subprocess.call ("shutdown.exe")
         elif modewanted == 7:
             JTToolsMethods.flicker()
@@ -341,10 +341,10 @@ try:
         elif modewanted == 14:
             import io,time
             filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
-            with io.FileIO(filename, "w"):
+            with io.FileIO (filename, "w"):
                 pass
         elif modewanted == 15:
-            confirmscriptrestart= int(input("Please input 1 to confirm restarting of this script."))
+            confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 subprocess.call("./JTTools.py",shell = True)
         elif modewanted == 16:
@@ -355,29 +355,29 @@ try:
             if submode == 1 or 2:
                 startnum = int(input("Please enter your starting number."))
                 addortakenum = int(input("Please input the number to be added. If you wish to take a number please put a - and then the number you wish to be taken."))
-                endnum=int(input("Please enter your end number."))
+                endnum = int(input("Please enter your end number."))
                 waittime = int(input("How long do you wish to wait before each operation is performed?"))
                 if endnum>startnum:
                     while endnum>startnum:
                         print(startnum)
                         if addortakenum<int(0):
-                            startnum = startnum-addortakenum
-                        elif addortakenum>int(0):
-                            startnum = startnum+addortakenum
+                            startnum = startnum - addortakenum
+                        elif addortakenum > int(0):
+                            startnum = startnum + addortakenum
                         time.sleep(waittime)
                     if startnum ==endnum or startnum>endnum:
-                        print("The closest number to your target number was:",startnum)
+                        print("The closest number to your target number was:" + (str(startnum)))
                         time.sleep (1)
-                    elif startnum>endnum:
-                        while startnum>endnum:
+                    elif startnum > endnum:
+                        while startnum > endnum:
                             print (startnum)
-                            if addortakenum<0:
-                                startnum = startnum+addortakenum
+                            if addortakenum < 0:
+                                startnum = startnum + addortakenum
                             if addortakenum>0:
-                                startnum = startnum = startnum-addortakenum
+                                startnum = startnum = startnum - addortakenum
                                 time.sleep (waittime)
                         if startnum == endnum or startnum<endnum:
-                            print ("The closest number to your target end number was:",startnum)
+                            print ("The closest number to your target end number was:" + (str(startnum)))
                             time.sleep (1)
         elif modewanted == 17:
             print ("Locked!!!")

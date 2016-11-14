@@ -9,6 +9,12 @@ def flicker():
      os.system ("color 4a")
      os.system ("color f9")
      currentflashes = currentflashes+1
+def mode1():
+    shutdown = int(input("Please enter 1 to confirm shutdown."))
+    if shutdown == 1:
+        waittime = int(input("How long, in minutes do you wish to wait."))
+        time.sleep(waittime*60)
+        os.system("shutdown -f")
 def logo():
     print("This function has been deprecated.")
 def exitnow():
