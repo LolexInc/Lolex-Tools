@@ -71,3 +71,4 @@ def compiler(name):
         next = (".cpython-30.pyc")
     shutil.copy("./__pycache__/"+name+next,"./")
     os.rename("./"+name+next,"./"+name+".pyc")
+    os.remove("./"+name+".py")

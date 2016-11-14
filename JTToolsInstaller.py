@@ -1,5 +1,5 @@
 #! python3
-import sys,time,subprocess,os,shutil,py_compile,JTToolsMethods
+import sys, time, subprocess, os, shutil, py_compile, platform, JTToolsMethods
 print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile")
 try:
      import isnottravisci
@@ -60,7 +60,7 @@ try:
           os.remove("./theme.py")
      except(IOError, OSError):
           pass
-     useros = int(input("Please enter 1 if you are running Windows or 0 if you are running Android."))
+     useros = platform.system()
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
           print("Sorry! We only support 0 - 2 usernames currently.")
@@ -352,9 +352,8 @@ try:
           elif developer == 1:
                compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
                vanishprint = 0 #Feature for devs :)
-          if useros == 0:
-              theme = 0
-          elif useros == 1:
+
+          if useros == "Windows":
                print("Here is a list of colours available:")
                print("a - Neon Green")
                print("b - Light Blue")
@@ -375,6 +374,8 @@ try:
                print("If any crashes occur try enclosing your colour code in speech marks.")
                theme = input("Please set your theme.")
                os.system(theme)
+          else:
+               theme = print()
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if pluginconfirm == 1:
                try:
@@ -548,11 +549,18 @@ try:
           outf.write(str(onewait))
           outf.write("\ntwowait = ")
           outf.write(str(twowait))
+     try:
+          os.remove("./runningsys.py")
+     except(IOError):
+          pass
+     with open ("./runningsys.py","a") as outf:
+          outf.write("system = " + '("' + useros + '")')
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
          JTToolsMethods.compiler("verifonboot")
          JTToolsMethods.compiler("JTToolsOptions")
+         JTToolsMethods.compiler("runningsys")
      if compileplugins == 1 or compileplugins == True:
           JTToolsMethods.compiler("startplugins")
      try:
@@ -568,9 +576,9 @@ try:
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               if useros == 1:
+               if useros == "Windows":
                    subprocess.call("./JTTools.py", shell = True)
-               elif useros == 0:
+               elif useros == "Linux":
                    os.system("python ./JTTools.py")
           else:
                exit()
@@ -579,7 +587,7 @@ try:
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(TypeError):
+except():
      print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(ValueError):
@@ -588,7 +596,7 @@ except(ValueError):
 except(IOError):
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(NameError):
+except():
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
