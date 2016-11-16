@@ -1,11 +1,11 @@
 #! python3
-import sys, time, subprocess, os, shutil, py_compile
+import sys, time, subprocess, os, shutil, py_compile, platform
 try:
-	import isnottravisci
+    import isnottravisci
 except(ImportError):
-	print("Please create isnottravisci.py to continue.")
-	time.sleep(5)
-	exit(None)
+    print("Please create isnottravisci.py to continue.")
+    time.sleep(5)
+    exit(None)
 try:
     import JTToolsMethods
 except(ImportError):
@@ -57,7 +57,7 @@ try:
             if JTToolsOptions.onepintwo == False:
                 twoswappins = False
             elif((JTToolsOptions.twopinthree == False) and (runtimetwo == 2) or ((JTToolsOptions.twopinfour == False) and (runtimetwo == 3)) or ((JTToolsOptions.twopinfive == False) and (runtimeone == 4)) or ((JTToolsOptions.twopinfive != False) and (runtimetwo == 5)) or runtimetwo == 0):
-                    runtimetwo = 1 
+                    runtimetwo = 1
             else:
                 runtimetwo = runtimetwo + 1
         if verifonboot.twoswapwords == True:
@@ -265,70 +265,81 @@ try:
             outf.write(str(twoswapwords))
         if JTToolsOptions.compiler == True:
             JTToolsMethods.compiler("verifonboot")
+    useros = platform.system()
     while True:
         print ("Here is a list of modes available:")
         print ("1 = Restart")
-        print ("2 = Logoff")
-        print ("3 = Alternative Logoff Method ")
-        print ("4 = Hibernate")
-        print ("5= Shutdown")
-        print ("6 = Alternative Shutdown Method")
-        print ("7 = Colour Flicker")
-        print ("8 = Call CMD")
-        print ("9 = Call Documents")
+        if useros == "Windows":
+                print ("2 = Logoff")
+                print ("3 = Alternative Logoff Method ")
+                print ("4 = Hibernate")
+        print ("5 = Shutdown")
+        if useros == "Windows":
+            print ("6 = Alternative Shutdown Method")
+            print ("7 = Colour Flicker")
+            print ("8 = Call CMD")
+            print ("9 = Call Documents")
         print ("10 = Call A Python Shell")
-        print ("11 = Call Task Manager")
+        if useros == "Windows":
+            print ("11 = Call Task Manager")
         print ("12 = Create folders in the same directory as this script.")
         print ("13 = Remove Directories")
         print ("14 = Create Files")
         print ("15 = Restart This Script (debug purposes)")
         print ("16 = Perform Operations With Numbers")
         print ("17 = Lock This Script")
-        print ("18 = Call Auto-Clicker")
-        print ("19 = Call Powershell")
+        if useros == "Windows":
+            print ("18 = Call Remote Desktop")
+            print ("19 = Call Powershell")
         print ("20 = Exit")
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             JTToolsMethods.mode1()
-        elif modewanted == 2:
+        elif modewanted == 2 and useros == "Windows" :
             logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime * 60)
                 os.system ("shutdown -l -f")
-        elif modewanted == 3:
+        elif modewanted == 3 and useros == "Windows" :
             altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
             if altlogoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
                 time.sleep(waittime * 60)
                 subprocess.call ("logoff.exe")
-        elif modewanted == 4:
+        elif modewanted == 4  and useros == "Windows" :
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime * 60)
                 os.system ("shutdown -h -f")
         elif modewanted == 5:
-            shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
-            if shutdown == 1:
-                waittime = float(input("How long, in minutes, do you wish to wait?"))
-                time.sleep (waittime * 60)
-                os.system ("shutdown -s -f")
-        elif modewanted == 6:
+                shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
+                if shutdown == 1:
+                    waittime = float(input("How long, in minutes, do you wish to wait?"))
+                    time.sleep (waittime * 60)
+                    if useros == "Windows":
+                        os.system ("shutdown -s -f")
+                    else:
+                        os.system("shutdown now")
+        elif modewanted == 6  and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
                 time.sleep (waittime * 60)
                 subprocess.call ("shutdown.exe")
-        elif modewanted == 7:
+        elif modewanted == 7  and useros == "Windows" :
             JTToolsMethods.flicker()
-        elif modewanted == 8:
+        elif modewanted == 8  and useros == "Windows" :
             subprocess.call("cmd.exe")
-        elif modewanted == 9:
+        elif modewanted == 9 and useros == "Windows" :
             subprocess.call("explorer.exe")
         elif modewanted == 10:
-            subprocess.call("python.exe")
-        elif modewanted == 11:
+            if useros == "Windows":
+                subprocess.call("python.exe")
+            else:
+                os.system("python")
+        elif modewanted == 11  and useros == "Windows" :
             subprocess.call("taskmgr.exe")
         elif modewanted == 12:
             foldername = input("Please input the name of your new folder.")
@@ -346,7 +357,10 @@ try:
         elif modewanted == 15:
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
-                subprocess.call("./JTTools.py",shell = True)
+                if useros == "Windows":
+                    subprocess.call("./JTTools.py",shell = True)
+                else:
+                    os.system("python ./JTTools.py")
         elif modewanted == 16:
             print ("Here is a list of operations:")
             print ("1 =Add")
@@ -381,11 +395,37 @@ try:
                             time.sleep (1)
         elif modewanted == 17:
             print ("Locked!!!")
-        elif modewanted == 18:
-            print("Feature no longer available (license violations apply).")
-        elif modewanted == 19:
+        elif modewanted == 18  and useros == "Windows" :
+            subprocess.call("mstsc.exe")
+        elif modewanted == 19 and useros == "Windows" :
             subprocess.call("powershell.exe")
         elif modewanted == 20:
             JTToolsMethods.exitnow()
-except():
-    pass
+        else:
+            print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
+except(SyntaxError):
+     print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(TypeError):
+     print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(ValueError):
+     print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(IOError):
+     print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(NameError):
+     print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(EOFError):
+     print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(AttributeError):
+     print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(OSError):
+     print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     time.sleep(10)
+except(ZeroDivisionError):
+    print("Sorry! A ZeroDivisionError occured. Please do not try to divide by zero.")
