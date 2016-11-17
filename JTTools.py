@@ -1,5 +1,5 @@
 #! python3
-import sys, time, subprocess, os, shutil, py_compile, platform
+import sys, time, subprocess, os, shutil, py_compile, platform, runningsys
 try:
     import isnottravisci
 except(ImportError):
@@ -79,38 +79,39 @@ try:
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
-            elif runtimeone == 2:
-                while codeenter != JTToolsOptions.onepintwo:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.onewait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            elif runtimeone == 3:
-                while codeenter != JTToolsOptions.onepinthree:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.onewait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            elif runtimeone == 4:
-                while codeenter != JTToolsOptions.onepinfour:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.onewait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            elif runtimeone == 5:
-                while codeenter != JTToolsOptions.onepinfive:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.onewait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
+            else:
+                if runtimeone == 2:
+                    while codeenter != JTToolsOptions.onepintwo:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.onewait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
+                elif runtimeone == 3:
+                    while codeenter != JTToolsOptions.onepinthree:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.onewait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
+                elif runtimeone == 4:
+                    while codeenter != JTToolsOptions.onepinfour:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.onewait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
+                elif runtimeone == 5:
+                    while codeenter != JTToolsOptions.onepinfive:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.onewait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
         elif usernameenter == JTToolsOptions.username2:
             if runtimetwo == 1 or JTToolsOptions.twopintwo == False:
                 while codeenter != JTToolsOptions.twopinone:
@@ -120,38 +121,39 @@ try:
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
-            elif runtimetwo == 2:
-                while codeenter != JTToolsOptions.twopintwo:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.twowait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            elif runtimetwo == 3:
-                while codeenter != JTToolsOptions.twopinthree:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.twowait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            elif runtimetwo == 4:
-                while codeenter != JTToolsOptions.twopinfour:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.twowait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            elif runtimetwo == 5:
-                while codeenter != JTToolsOptions.twopinfive:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.twowait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
+            else:
+                if runtimetwo == 2:
+                    while codeenter != JTToolsOptions.twopintwo:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.twowait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
+                elif runtimetwo == 3:
+                    while codeenter != JTToolsOptions.twopinthree:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.twowait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
+                elif runtimetwo == 4:
+                    while codeenter != JTToolsOptions.twopinfour:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.twowait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
+                elif runtimetwo == 5:
+                    while codeenter != JTToolsOptions.twopinfive:
+                        if tries == 5:
+                            print("Sorry! You got the code wrong five times.")
+                            time.sleep(JTToolsOptions.twowait)
+                            tries = 0
+                        codeenter = int(input("Please enter your current PIN."))
+                        tries = tries + 1
     if ((oneuseword == True and usernameenter == JTToolsOptions.username1)or(twouseword == True and usernameenter == JTToolsOptions.username2)):
         wordenter = input("Please enter your current password.")
         tries = 1
@@ -269,10 +271,10 @@ try:
     while True:
         print ("Here is a list of modes available:")
         print ("1 = Restart")
+        print ("2 = Logoff")
         if useros == "Windows":
-                print ("2 = Logoff")
-                print ("3 = Alternative Logoff Method ")
-                print ("4 = Hibernate")
+            print ("3 = Alternative Logoff Method ")
+        print ("4 = Hibernate")
         print ("5 = Shutdown")
         if useros == "Windows":
             print ("6 = Alternative Shutdown Method")
@@ -295,24 +297,30 @@ try:
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             JTToolsMethods.mode1()
-        elif modewanted == 2 and useros == "Windows" :
+        elif modewanted == 2:
             logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime * 60)
-                os.system ("shutdown -l -f")
+                if useros == "Windows":
+                    os.system ("shutdown -l -f")
+                else:
+                    os.system("logout")
         elif modewanted == 3 and useros == "Windows" :
             altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
             if altlogoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
                 time.sleep(waittime * 60)
                 subprocess.call ("logoff.exe")
-        elif modewanted == 4  and useros == "Windows" :
+        elif modewanted == 4:
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 time.sleep (waittime * 60)
-                os.system ("shutdown -h -f")
+                if useros == "Windows":
+                    os.system ("shutdown -h -f")
+                else:
+                    os.system("systemctl suspend")
         elif modewanted == 5:
                 shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
                 if shutdown == 1:

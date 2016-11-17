@@ -29,27 +29,27 @@ print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appea
 try:
      print("Resetting...This process could take a couple of minutes.")
      try:
-          os.remove("./JTToolsOptions.pyc")
+        os.remove("./JTToolsOptions.pyc")
      except(IOError, OSError):
           pass
      try:
-          os.remove("./JTToolsOptions.py")
+        os.remove("./JTToolsOptions.py")
      except(IOError, OSError):
           pass
      try:
-          os.remove("./verifonboot.pyc")
+        os.remove("./verifonboot.pyc")
      except(IOError, OSError):
           pass
      try:
-          os.remove("./verifonboot.py")
+        os.remove("./verifonboot.py")
      except(IOError, OSError):
           pass
      try:
-          os.remove("./startplugins.pyc")
+        os.remove("./startplugins.pyc")
      except(IOError, OSError):
           pass
      try:
-          os.remove("./startplugins.py")
+        os.remove("./startplugins.py")
      except(IOError, OSError):
           pass
      try:
@@ -122,40 +122,44 @@ try:
           while onepinone != confirm:
                onepinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
                confirm = int(input("Please confirm your first PIN."))
-     if onepins>1:
-          onepintwo = int(input("Please set your second PIN."))
-          confirm = int(input("Please confirm your second PIN."))
-          while onepintwo != confirm or onepintwo == onepinone:
-               onepintwo = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your second PIN."))
+          if onepins>1:
+               onepintwo = int(input("Please set your second PIN."))
                confirm = int(input("Please confirm your second PIN."))
-     if onepins>2:
-          onepinthree = int(input("Please set your third PIN."))
-          confirm = int(input("Please confirm your third PIN."))
-          while onepinthree != confirm or(onepinthree ==(onepintwo or onepinone)):
-               onepinthree = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your third PIN."))
-               confirm = int(input("Please confirm your third PIN."))
-     if onepins>3:
-          onepinfour = int(input("Please set your fourth PIN."))
-          confirm = int(input("Please confirm your fourth PIN."))
-          while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
-               onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
-               confirm = int(input("Please confirm your fourth PIN."))
-     if onepins>4:
-          onepinfive = int(input("Please set your fifth PIN."))
-          confirm = int(input("Please confirm your fifth PIN."))
-          while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
-               onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
-               confirm = int(input("Please confirm your fifth PIN."))
+               while onepintwo != confirm or onepintwo == onepinone:
+                    onepintwo = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your second PIN."))
+                    confirm = int(input("Please confirm your second PIN."))
+               if onepins>2:
+                    onepinthree = int(input("Please set your third PIN."))
+                    confirm = int(input("Please confirm your third PIN."))
+                    while onepinthree != confirm or(onepinthree ==(onepintwo or onepinone)):
+                         onepinthree = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your third PIN."))
+                         confirm = int(input("Please confirm your third PIN."))
+                    if onepins>3:
+                         onepinfour = int(input("Please set your fourth PIN."))
+                         confirm = int(input("Please confirm your fourth PIN."))
+                         while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
+                              onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
+                              confirm = int(input("Please confirm your fourth PIN."))
+
+                         if onepins>4:
+                              onepinfive = int(input("Please set your fifth PIN."))
+                              confirm = int(input("Please confirm your fifth PIN."))
+                              while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
+                                   onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
+                                   confirm = int(input("Please confirm your fifth PIN."))
+
+
+          
      if onepins == 0:
           onepinone = False
           onewait = False
-     if onepins == 0 or onepins == 1:
+     if onepins<2:
           onepintwo = False
-     if onepins == 0 or onepins == 1 or onepins == 2:
+     if onepins<3:
           onepinthree = False
-     if onepins == 0 or onepins == 1 or onepins == 2 or onepins == 3:
+     if onepins<4:
           onepinfour = False
-     if onepins == 0 or onepins == 1 or onepins == 2 or onepins == 3 or onepins == 4:
+     if onepins<5:
           onepinfive = False
      if onepins>0:
           oneusepin = True
@@ -209,13 +213,13 @@ try:
      if onewords == 0:
           onewordone = False
           onewordwait = False
-     if onewords == 0 or onewords == 1:
+     if onewords<2:
           onewordtwo = False
-     if onewords == 0 or onewords == 1 or onewords == 2:
+     if onewords<3:
           onewordthree = False
-     if onewords == 0 or onewords == 1 or onewords == 2 or onewords == 3:
+     if onewords<4:
           onewordfour = False
-     if onewords == 0 or onewords == 1 or onewords == 2 or onewords == 3 or onewords == 4:
+     if onewords<5:
           onewordfive = False
      if onewords>0:
           oneuseword = True
@@ -247,40 +251,40 @@ try:
                while twopinone != confirm:
                     twopinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
                     confirm = int(input("Please confirm your first PIN."))
-          if twopins>1:
-               twopintwo = int(input("Please set your second PIN."))
-               confirm = int(input("Please confirm your second PIN."))
-               while twopintwo != confirm or twopintwo == twopinone:
-                    twopintwo = int(input("Sorry! Your PINs didn't match! Please set your second PIN."))
+               if twopins>1:
+                    twopintwo = int(input("Please set your second PIN."))
                     confirm = int(input("Please confirm your second PIN."))
-          if twopins>2:
-               twopinthree = int(input("Please set your third PIN."))
-               confirm = int(input("Please confirm your third PIN."))
-               while twopinthree != confirm or (twopinthree ==(twopintwo or twopinone)):
-                    twopinthree = int(input("Sorry! Your PINs didn't match! Please set your third PIN."))
-                    confirm = int(input("Please confirm your third PIN."))
-          if twopins>3:
-               twopinfour = int(input("Please set your fourth PIN."))
-               confirm = int(input("Please confirm your fourth PIN."))
-               while twopinfour != confirm or (twopinfour == (twopinthree or twopintwo or twopinone)):
-                    twopinfour = int(input("Sorry! Your PINs didn't match! Please set your fourth PIN."))
-                    confirm = int(input("Please confirm your fourth PIN."))
-          if twopins>4:
-               twopinfive = int(input("Please set your fifth PIN."))
-               confirm = int(input("Please confirm your fifth PIN."))
-               while twopinfive != confirm or (twopinfive == (twopinfour or twopinthree or twopintwo or twopinone)):
-                    twopinfive = int(input("Sorry! Your PINs didn't match! Please set your fifth PIN."))
-                    confirm = int(input("Please confirm your fifth PIN."))
+                    while twopintwo != confirm or twopintwo == twopinone:
+                         twopintwo = int(input("Sorry! Your PINs didn't match! Please set your second PIN."))
+                         confirm = int(input("Please confirm your second PIN."))
+                    if twopins>2:
+                         twopinthree = int(input("Please set your third PIN."))
+                         confirm = int(input("Please confirm your third PIN."))
+                         while twopinthree != confirm or (twopinthree ==(twopintwo or twopinone)):
+                              twopinthree = int(input("Sorry! Your PINs didn't match! Please set your third PIN."))
+                              confirm = int(input("Please confirm your third PIN."))
+                         if twopins>3:
+                              twopinfour = int(input("Please set your fourth PIN."))
+                              confirm = int(input("Please confirm your fourth PIN."))
+                              while twopinfour != confirm or (twopinfour == (twopinthree or twopintwo or twopinone)):
+                                   twopinfour = int(input("Sorry! Your PINs didn't match! Please set your fourth PIN."))
+                                   confirm = int(input("Please confirm your fourth PIN."))
+                              if twopins>4:
+                                   twopinfive = int(input("Please set your fifth PIN."))
+                                   confirm = int(input("Please confirm your fifth PIN."))
+                                   while twopinfive != confirm or (twopinfive == (twopinfour or twopinthree or twopintwo or twopinone)):
+                                        twopinfive = int(input("Sorry! Your PINs didn't match! Please set your fifth PIN."))
+                                        confirm = int(input("Please confirm your fifth PIN."))
           if twopins == 0:
                twopinone = False
                twowait = False
-          if twopins == 0 or twopins == 1:
+          if twopins<2:
                twopintwo = False
-          if twopins == 0 or twopins == 1 or twopins == 2:
+          if twopins<3:
                twopinthree = False
-          if twopins == 0 or twopins == 1 or twopins == 2 or twopins == 3:
+          if twopins<4:
                twopinfour = False
-          if twopins == 0 or twopins == 1 or twopins == 2 or twopins == 3 or twopins ==  4:
+          if twopins<5:
                twopinfive = False
           if twopins>0:
                twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
@@ -305,40 +309,40 @@ try:
                while twowordone != confirm:
                     twowordone = input("Sorry! Your passwords didn't match! Please set your first password.")
                     confirm = input("Please confirm your first password.")
-          if twowords>1:
-               twowordtwo = input("Please set your second password.")
-               confirm = input("Please confirm your second password.")
-               while twowordtwo != confirm or twowordtwo == twowordone:
-                    twowordtwo = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your second password.")
+               if twowords>1:
+                    twowordtwo = input("Please set your second password.")
                     confirm = input("Please confirm your second password.")
-          if twowords>2:
-               twowordthree = input("Please set your third password.")
-               confirm = input("Please confirm your third password.")
-               while twowordthree != confirm or(twowordthree ==(twowordtwo or twowordone)):
-                    twowordthree = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your third password.")
-                    confirm = input("Please confirm your third password.")
-          if twowords>3:
-               twowordfour = input("Please set your fourth password.")
-               confirm = input("Please confirm your fourth password.")
-               while twowordfour != confirm or (twowordfour == (twowordthree or twowordtwo or twowordone)):
-                    twowordfour = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fourth password.")
-                    confirm = input("Please confirm your fourth password.")
-          if twowords>4:
-               twowordfive = input("Please set your fifth password.")
-               confirm = input("Please confirm your fifth password.")
-               while twowordfive != confirm or (twowordfive == (twowordfour or twowordthree or twowordtwo or twowordone)):
-                    twowordfive = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fifth password.")
-                    confirm = input("Please confirm your fifth password.")
+                    while twowordtwo != confirm or twowordtwo == twowordone:
+                         twowordtwo = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your second password.")
+                         confirm = input("Please confirm your second password.")
+                    if twowords>2:
+                         twowordthree = input("Please set your third password.")
+                         confirm = input("Please confirm your third password.")
+                         while twowordthree != confirm or(twowordthree ==(twowordtwo or twowordone)):
+                              twowordthree = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your third password.")
+                              confirm = input("Please confirm your third password.")
+                         if twowords>3:
+                              twowordfour = input("Please set your fourth password.")
+                              confirm = input("Please confirm your fourth password.")
+                              while twowordfour != confirm or (twowordfour == (twowordthree or twowordtwo or twowordone)):
+                                   twowordfour = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fourth password.")
+                                   confirm = input("Please confirm your fourth password.")
+                              if twowords>4:
+                                   twowordfive = input("Please set your fifth password.")
+                                   confirm = input("Please confirm your fifth password.")
+                                   while twowordfive != confirm or (twowordfive == (twowordfour or twowordthree or twowordtwo or twowordone)):
+                                        twowordfive = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fifth password.")
+                                        confirm = input("Please confirm your fifth password.")
           if twowords == 0:
                twowordone = False
                twowordwait = False
-          if twowords == 0 or twowords == 1:
+          if twowords<2:
                twowordtwo = False
-          if twowords == 0 or twowords == 1 or twowords == 2:
+          if twowords<3:
                twowordthree = False
-          if twowords == 0 or twowords == 1 or twowords == 2 or twowords == 3:
+          if twowords<4:
                onewordfour = False
-          if twowords == 0 or twowords == 1 or twowords == 2 or twowords == 3 or twowords == 4:
+          if twowords<5:
                twowordfive = False
           if twowords>0:
                twouseword = True
