@@ -1,5 +1,5 @@
 #! python3
-import sys, time, subprocess, os, shutil, py_compile, platform, runningsys
+import sys, time, subprocess, os, shutil, py_compile, platform
 try:
     import isnottravisci
 except(ImportError):
@@ -15,7 +15,7 @@ try:
 except(IOError):
     exit(1)
 try:
-    import JTToolsOptions
+    import JTToolsOptions, runningsys
 except(IOError):
     exit(1)
 JTToolsMethods.importtree()
