@@ -386,8 +386,6 @@ try:
                print("If any crashes occur try enclosing your colour code in speech marks.")
                theme = input("Please set your theme.")
                os.system(theme)
-          else:
-               theme = print()
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if useros == "Linux":
      	os.system("cd ./Lolex-Tools/")
