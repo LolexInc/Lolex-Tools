@@ -22,9 +22,9 @@ if sys.version_info[0] == 3 and sys.version_info[1]>7:
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
      if continueon != 1:
-          exit()
+          exit(None)
 except(ValueError, TypeError, SyntaxError):
-     exit()
+     exit(None)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
      print("Resetting...This process could take a couple of minutes.")
@@ -389,6 +389,8 @@ try:
           else:
                theme = print()
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
+     if useros == "Linux":
+     	os.system("cd ./Lolex-Tools/")
      if pluginconfirm == 1:
                try:
                     shutil.copy("./Defaults/startplugins.py","./")
@@ -569,9 +571,10 @@ try:
           outf.write("system = " + '("' + useros + '")')
 
      with open("./theme.py","a") as outf:
-          outf.write('import os\nos.system("')
-          outf.write(str(theme))
-          outf.write('")')
+     	 if useros == "Windows":
+               outf.write('import os\nos.system("')
+               outf.write(str(theme))
+               outf.write('")')
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:

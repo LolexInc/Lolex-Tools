@@ -11,14 +11,14 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
-    import verifonboot
-except(IOError):
-    exit(1)
-try:
-    import JTToolsOptions, runningsys
-except(IOError):
-    exit(1)
-JTToolsMethods.importtree()
+    import verifonboot, JTToolsOptions, runningsys
+except(ImportError):
+    system = platform.system()
+    if system == "Windows":
+    	subprocess.call("./JTToolsInstaller.py")
+    else:
+    	os.system("python ./Lolex-Tools/JTToolsInstaller.py")
+    exit(None)
 print("Welcome to Lolex-Tools version 8.100")
 try:
     oneswappins = verifonboot.oneswappins
