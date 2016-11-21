@@ -408,7 +408,7 @@ try:
         elif modewanted == 19 and useros == "Windows" :
             subprocess.call("powershell.exe")
         elif modewanted == 20:
-            JTToolsMethods.exitnow()
+            exit()
         else:
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
 except(SyntaxError):

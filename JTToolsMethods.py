@@ -22,12 +22,7 @@ def mode1():
 def logo():
     print("This function has been deprecated.")
 def exitnow():
-    closing = 5
-    while closing> -1:
-        print("Closing in" , closing, "seconds.")
-        time.sleep(1)
-        closing = closing -1
-    exit(None)
+    print("This function has been deprecated.")
 def compiler(name):
     try:
         os.remove("./"+name+".pyc")
