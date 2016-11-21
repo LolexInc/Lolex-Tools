@@ -15,7 +15,7 @@ try:
 except(ImportError):
     system = platform.system()
     if system == "Windows":
-    	subprocess.call("./JTToolsInstaller.py")
+    	subprocess.call("./JTToolsInstaller.py", shell = True)
     else:
     	os.system("python ./Lolex-Tools/JTToolsInstaller.py")
     exit(None)
