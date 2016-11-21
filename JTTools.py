@@ -17,7 +17,7 @@ except(ImportError):
     if system == "Windows":
     	subprocess.call("./JTToolsInstaller.py", shell = True)
     else:
-    	os.system("python ./Lolex-Tools/JTToolsInstaller.py")
+    	os.system("python ./JTToolsInstaller.py")
     exit(None)
 print("Welcome to Lolex-Tools version 8.100")
 try:

@@ -7,18 +7,7 @@ except(ImportError):
     print("Running as Travis CI...\nIf you aren't actually then create isnottravisci.py  to verify you aren't actually a bot.\nInstallation will commence upon the script restart and the file being present.")
     time.sleep(5)
     exit()
-if sys.version_info[0]<3:
-     print("Python 2 is not supported, please upgrade to at least Python 3.")
-     time.sleep(10)
-     exit()
-if sys.version_info[0]>3:
-     print("Python 4+ is not currently supported.")
-     time.sleep(10)
-     exit(None)
-if sys.version_info[0] == 3 and sys.version_info[1]>7:
-     print("Any version of Python higher than 3.7 is not supported currently.")
-     time.sleep(10)
-     exit(None)
+
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
      if continueon != 1:
@@ -62,11 +51,11 @@ try:
           pass
      try:
           os.remove("./runningsys.pyc")
-     except(IOError):
+     except(IOError, OSError):
           pass
      try:
           os.remove("./runningsys.py")
-     except(IOError):
+     except(IOError, OSError):
           pass
      useros = platform.system()
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
@@ -561,10 +550,7 @@ try:
           outf.write(str(onewait))
           outf.write("\ntwowait = ")
           outf.write(str(twowait))
-     try:
-          os.remove("./runningsys.py")
-     except(IOError):
-          pass
+
      with open ("./runningsys.py","a") as outf:
           outf.write("system = " + '("' + useros + '")')
 
@@ -610,7 +596,7 @@ except(TypeError):
 except(ValueError):
      print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(IOError):
+except():
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(NameError):
@@ -622,6 +608,6 @@ except(EOFError):
 except(AttributeError):
      print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(OSError):
+except():
      print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
