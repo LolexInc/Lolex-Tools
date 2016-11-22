@@ -300,7 +300,8 @@ try:
         if useros == "Windows":
             print ("18 = Call Remote Desktop")
             print ("19 = Call Powershell")
-        print ("20 = Exit")
+            print ("20 = Print SystemInfo")
+        print("21 = Exit")
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             JTToolsMethods.mode1()
@@ -414,7 +415,9 @@ try:
             subprocess.call("mstsc.exe")
         elif modewanted == 19 and useros == "Windows" :
             subprocess.call("powershell.exe")
-        elif modewanted == 20:
+        elif modewanted == 20 and useros == "Windows":
+            os.system("systeminf")
+        elif modewanted == 21:
             exit()
         else:
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
