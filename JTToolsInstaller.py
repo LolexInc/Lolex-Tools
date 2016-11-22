@@ -7,7 +7,10 @@ except(ImportError):
     print("Running as Travis CI...\nIf you aren't actually then create isnottravisci.py  to verify you aren't actually a bot.\nInstallation will commence upon the script restart and the file being present.")
     time.sleep(5)
     exit()
-
+if sys.version_info[0] !=3:
+     print("Only Python 3 is currently supported. Please install Python 3.")
+     time.sleep(5)
+     exit(None)
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
      if continueon != 1:
@@ -129,16 +132,12 @@ try:
                          while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
                               onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
                               confirm = int(input("Please confirm your fourth PIN."))
-
                          if onepins>4:
                               onepinfive = int(input("Please set your fifth PIN."))
                               confirm = int(input("Please confirm your fifth PIN."))
                               while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
                                    onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
                                    confirm = int(input("Please confirm your fifth PIN."))
-
-
-          
      if onepins == 0:
           onepinone = False
           onewait = False
@@ -353,7 +352,6 @@ try:
           elif developer == 1:
                compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
                vanishprint = 0 #Feature for devs :)
-
           if useros == "Windows":
                print("Here is a list of colours available:")
                print("a - Neon Green")
@@ -572,7 +570,6 @@ try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
           pass
-
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")

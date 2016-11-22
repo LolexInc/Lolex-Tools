@@ -6,6 +6,8 @@ except(ImportError):
     print("Please create isnottravisci.py to continue.")
     time.sleep(5)
     exit(None)
+if sys.version_info[0] != 3:
+    print("Only Python 3 is currently supported. Please install Python 3.")
 try:
     import JTToolsMethods
 except(ImportError):
@@ -20,6 +22,11 @@ except(ImportError):
     	os.system("python ./JTToolsInstaller.py")
     exit(None)
 print("Welcome to Lolex-Tools version 8.100")
+system = platform.system()
+if runningsys.system != system:
+    print("Cross compatibility through option files is not currently supported.")
+    time.sleep(5)
+    exit(None)
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
