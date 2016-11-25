@@ -7,7 +7,7 @@ except(ImportError):
     print("Running as Travis CI...\nIf you aren't actually then create isnottravisci.py  to verify you aren't actually a bot.\nInstallation will commence upon the script restart and the file being present.")
     time.sleep(5)
     exit()
-if sys.version_info[0] !=3:
+if sys.version_info.major !=3:
      print("Only Python 3 is currently supported. Please install Python 3.")
      time.sleep(5)
      exit(None)

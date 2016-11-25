@@ -6,8 +6,12 @@ except(ImportError):
     print("Please create isnottravisci.py to continue.")
     time.sleep(5)
     exit(None)
-if sys.version_info[0] != 3:
-    print("Only Python 3 is currently supported. Please install Python 3.")
+system = platform.system()
+if system == "Windows":
+    if sys.version_info.major != 3:
+        print("Only Python 3 is currently supported. Please install Python 3.")
+        time.sleep(3)
+
 try:
     import JTToolsMethods
 except(ImportError):

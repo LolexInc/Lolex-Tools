@@ -29,19 +29,19 @@ def compiler(name):
     except(IOError):
         pass
     py_compile.compile(name+".py")
-    if sys.version_info[1] == 7:
+    if sys.version_info.minor == 7:
         next = (".cpython-37.pyc")
-    elif sys.version_info[1] == 6:
+    elif sys.version_info.minor == 6:
         next = (".cpython-36.pyc")
-    elif sys.version_info[1] == 5:
+    elif sys.version_info.minor == 5:
         next = (".cpython-35.pyc")
-    elif sys.version_info[1] == 4:
+    elif sys.version_info.minor == 4:
         next = (".cpython-34.pyc")
-    elif sys.version_info[1] == 3:
+    elif sys.version_info.minor == 3:
         next = (".cpython-33.pyc")
-    elif sys.version_info[1] == 2:
+    elif sys.version_info.minor == 2:
         next = (".cpython-32.pyc")
-    elif sys.version_info[1] == 1:
+    elif sys.version_info.minor == 1:
         next = (".cpython-31.pyc")
     else:
         next = (".cpython-30.pyc")
