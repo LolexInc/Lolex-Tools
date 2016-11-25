@@ -19,6 +19,7 @@ except(ValueError, TypeError, SyntaxError):
      exit(None)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
+     systplatform.system
      print("Resetting...This process could take a couple of minutes.")
      try:
         os.remove("./JTToolsOptions.pyc")
@@ -61,6 +62,9 @@ try:
      except(IOError, OSError):
           pass
      useros = platform.system()
+     if useros != "Windows":
+          while useros != "Linux" or "Android":
+               useros = input("We have detected you are using Linux. Please enter 1 if you are using Android or 0 for other.")
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
           print("Sorry! We only support 0 - 2 usernames currently.")
