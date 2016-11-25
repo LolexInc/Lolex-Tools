@@ -17,20 +17,15 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
-    import verifonboot, JTToolsOptions, runningsys
+    import verifonboot, JTToolsOptions, runningsys, startplugins
 except(ImportError):
     system = platform.system()
     if system == "Windows":
     	subprocess.call("./JTToolsInstaller.py", shell = True)
     else:
-    	os.system("python ./JTToolsInstaller.py")
+    	os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.100")
-system = platform.system()
-if runningsys.system != system:
-    print("Cross compatibility through option files is not currently supported.")
-    time.sleep(5)
-    exit(None)
+print("Welcome to Lolex-Tools version 8.102patch1 18:07 GMT+0.0 25/11/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins

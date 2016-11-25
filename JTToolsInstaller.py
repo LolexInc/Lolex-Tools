@@ -9,7 +9,7 @@ except(ImportError):
     exit()
 if sys.version_info.major !=3:
      print("Only Python 3 is currently supported. Please install Python 3.")
-     time.sleep(5)
+     os.system("python3 JTToolsInstaller.py")
      exit(None)
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
@@ -19,7 +19,6 @@ except(ValueError, TypeError, SyntaxError):
      exit(None)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
-     systplatform.system
      print("Resetting...This process could take a couple of minutes.")
      try:
         os.remove("./JTToolsOptions.pyc")
@@ -63,8 +62,9 @@ try:
           pass
      useros = platform.system()
      if useros != "Windows":
-          while useros != "Linux" or "Android":
-               useros = input("We have detected you are using Linux. Please enter 1 if you are using Android or 0 for other.")
+          plat = int(input("Please enter 1 if you are using Android, or 0 for other."))
+          if plat == 1:
+              useros = "Android"
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
           print("Sorry! We only support 0 - 2 usernames currently.")
@@ -581,8 +581,9 @@ try:
                print("Starting Lolex-Tools...")
                if useros == "Windows":
                    subprocess.call("./JTTools.py", shell = True)
-
                elif useros == "Linux":
+                   os.system("python3 ./JTTools.py")
+               else:
                    os.system("python ./JTTools.py")
           else:
                exit()
