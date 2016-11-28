@@ -1,10 +1,22 @@
 import shutil, os, time
 init1 = time.time()
 try:
-	with open("./isnottravisci.py","a") as outf: pass
+	a = time.time()
+	os.remove("./isnottravisci.py")
+	b = time.time()
+	print("Took ",((b-a)*1000)," milliseconds to remove isnottravisci.py")
+except(IOError, OSError):
+	pass
+try:
+	local =time.asctime( time.localtime(time.time()) )
+	print(local,"    Attempting to copy isnottravisci.py...")
+	a = time.time()
+	shutil.copy("/sdcard/Lolex-Tools/isnottravisci.py","./")
+	b = time.time()
+	print("Took ",((b-a)*1000)," milliseconds to copy isnottravsci.py")
 except(IOError):
-	print("Couldn't create isnottravisci.py in ./")
-	exit()
+	print("Please create isnottravisci.py in /sdcard/Lolex-Tools. Ensure all files are present in /sdcard/Lolex-Tools. Please restart this script after this.")
+	exit(None)
 try:
 	local =time.asctime( time.localtime(time.time()) )
 	print(local,"    Attempting to remove folders...")
@@ -114,6 +126,10 @@ try:
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy busybox-x86")
 	a = time.time()
+	shutil.copy("/sdcard/Lolex-Tools/Androidstart.py","./")
+	b = time.time()
+	print("Took ",((b-a)*1000)," milliseconds to copy Androidstart.py")
+	a = time.time()
 	shutil.copytree("/sdcard/Lolex-Tools/Defaults","./Defaults")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy Defaults")
@@ -124,11 +140,9 @@ try:
 except():
 	print("Please ensure that all files are present in /sdcard/Lolex-Tools")
 	exit(None)
-with open ("./androidlolextoolsinit.py","a") as outf: pass
 init2 = time.time()
 print("Took ",((init2-init1)*1000),"milliseconds to setup Android environment")
 local =time.asctime( time.localtime(time.time()) )
 print(local,"    Running start.py")
 os.system("python ./start.py")
-exit()
 	
