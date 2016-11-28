@@ -379,7 +379,7 @@ try:
                os.system(theme)
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if useros == "Linux":
-     	os.system("cd ./Lolex-Tools/")
+        os.system("cd ./Lolex-Tools/")
      if pluginconfirm == 1:
                try:
                     shutil.copy("./Defaults/startplugins.py","./")
@@ -422,18 +422,23 @@ try:
      with open ("verifonboot.py","a") as outf:
           outf.write("oneswappins = ")
           outf.write((str(oneswappins)))
+          oneswappins = 0
           outf.write("\ntwoswappins = ")
           outf.write((str(twoswappins)))
+          twoswappins = 0
           outf.write("\nruntimeone = 0\nruntimetwo = 0")
           outf.write("\noneswapwords = ")
           outf.write((str(oneswapwords)))
+          oneswapwords = 0
           outf.write("\ntwoswapwords = ")
           outf.write((str(twoswapwords)))
+          twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("compiledon = 8.100")
+          outf.write("compiledon = 8.102")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
+          useusername = 0
           outf.write("\nusername1 = ")
           if username1 == False:
                outf.write(str(username1))
@@ -441,6 +446,7 @@ try:
                outf.write('("')
                outf.write(username1)
                outf.write('")')
+          username1 = 0
           outf.write("\nusername2 = ")
           if username2 == False:
                outf.write(str(username2))
@@ -448,119 +454,160 @@ try:
                outf.write('("')
                outf.write(username2)
                outf.write('")')
+          username2 = 0
           outf.write("\noneusepin = ")
           outf.write(str(oneusepin))
+          oneusepin = 0
           outf.write("\ntwousepin = ")
           outf.write(str(twousepin))
+          twousepin = 0
           outf.write("\nonepinone = ")
           outf.write(str(onepinone))
+          onepinone = 0
           outf.write("\nonepintwo = ")
           outf.write(str(onepintwo))
+          onepintwo = 0
           outf.write("\nonepinthree = ")
           outf.write(str(onepinthree))
+          onepinthree = 0
           outf.write("\nonepinfour = ")
           outf.write(str(onepinfour))
+          onepinfour = 0
           outf.write("\nonepinfive = ")
           outf.write(str(onepinfive))
+          onepinfive = 0
           outf.write("\ntwopinone = ")
           outf.write(str(twopinone))
+          twopinone = 0
           outf.write("\ntwopintwo = ")
           outf.write(str(twopintwo))
+          twopintwo = 0
           outf.write("\ntwopinthree = ")
           outf.write(str(twopinthree))
+          twopinthree = 0
           outf.write("\ntwopinfour = ")
           outf.write(str(twopinfour))
+          twopinfour = 0
           outf.write("\ntwopinfive = ")
           outf.write(str(twopinfive))
+          twopinfive = 0
           outf.write("\noneuseword = ")
           outf.write(str(oneuseword))
+          oneuseword = 0
           outf.write("\ntwouseword = ")
           outf.write(str(twouseword))
+          twouseword = 0
           outf.write("\nonewordone = ")
           if onewordone != False:
                outf.write('("')
           outf.write(str(onewordone))
+          
           if onewordone != False:
                outf.write('")')
+          onewordone = 0
           outf.write("\nonewordtwo = ")
           if onewordtwo != False:
                outf.write('("')
           outf.write(str(onewordtwo))
           if onewordtwo != False:
                outf.write('")')
+          onewordtwo = 0
           outf.write("\nonewordthree = ")
           if onewordthree != False:
                outf.write('("')
           outf.write(str(onewordthree))
           if onewordthree != False:
                outf.write('")')
+          onewordthree = 0
           outf.write("\nonewordfour = ")
           if onewordfour != False:
                outf.write('("')
           outf.write(str(onewordfour))
+          
           if onewordfour != False:
                outf.write('")')
+          onewordfour = 0
           outf.write("\nonewordfive = ")
           if onewordfive != False:
                outf.write('("')
           outf.write(str(onewordfive))
           if onewordfive != False:
                outf.write('")')
+          onewordfive = 0
           outf.write("\ntwowordone = ")
           if twowordone != False:
                outf.write('("')
           outf.write(str(twowordone))
+          
           if twowordone != False:
                outf.write('")')
+          twowordone = 0
           outf.write("\ntwowordtwo = ")
           if twowordtwo != False:
                outf.write('("')
           outf.write(str(twowordtwo))
           if twowordtwo != False:
                outf.write('")')
+          twowordtwo = 0
           outf.write("\ntwowordthree = ")
           if twowordthree != False:
                outf.write('("')
           outf.write(str(twowordthree))
           if twowordthree != False:
                outf.write('")')
+          twowordthree = 0
           outf.write("\ntwowordfour = ")
           if twowordfour != False:
                outf.write('("')
           outf.write(str(twowordfour))
           if twowordfour != False:
                outf.write('")')
+          twowordfour = 0
           outf.write("\ntwowordfive = ")
           if twowordfive != False:
                outf.write('("')
           outf.write(str(twowordfive))
           if twowordfive != False:
                outf.write('")')
+          twowordfive = 0
           outf.write("\nonewordwait = ")
           outf.write(str(onewordwait))
+          onewordwait = "None"
           outf.write("\ntwowordwait = ")
           outf.write(str(twowordwait))
+          twowordwait = "None"
           outf.write("\ndeveloper = ")
           outf.write(str(developer))
+          developer = "None"
           outf.write("\nvanishprint = ")
           outf.write(str(vanishprint))
+          vanishprint = "None"
           outf.write("\ncompiler = ")
           outf.write(str(compiler))
+          compiler = "None"
           outf.write("\ncompileplugins = ")
           outf.write(str(compileplugins))
+          compileplugins = "None"
           outf.write("\nonewait = ")
           outf.write(str(onewait))
+          onewait = "None"
           outf.write("\ntwowait = ")
           outf.write(str(twowait))
+          twowait = "None"
+          confirm = "None"
+          
 
      with open ("./runningsys.py","a") as outf:
           outf.write("system = " + '("' + useros + '")')
+     useros = 0
+
 
      with open("./theme.py","a") as outf:
-     	 if useros == "Windows":
+         if useros == "Windows":
                outf.write('import os\nos.system("')
                outf.write(str(theme))
                outf.write('")')
+     theme = "None"
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
@@ -570,6 +617,7 @@ try:
          JTToolsMethods.compiler("theme")
      if compileplugins == 1 or compileplugins == True:
           JTToolsMethods.compiler("startplugins")
+     JTToolsMethods = False
      try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
@@ -588,7 +636,7 @@ try:
           else:
                exit()
      except(TypeError, SyntaxError, ValueError):
-          exit()     
+          print("Failed to start.")
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
@@ -613,3 +661,4 @@ except(AttributeError):
 except():
      print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
+

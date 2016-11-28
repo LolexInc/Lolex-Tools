@@ -23,6 +23,7 @@ def logo():
     print("This function has been deprecated.")
 def exitnow():
     print("This function has been deprecated.")
+
 def compiler(name):
     try:
         os.remove("./"+name+".pyc")
@@ -30,21 +31,21 @@ def compiler(name):
         pass
     py_compile.compile(name+".py")
     if sys.version_info.minor == 7:
-        next = (".cpython-37.pyc")
+        nextone = (".cpython-37.pyc")
     elif sys.version_info.minor == 6:
-        next = (".cpython-36.pyc")
+        nextone = (".cpython-36.pyc")
     elif sys.version_info.minor == 5:
-        next = (".cpython-35.pyc")
+        nextone = (".cpython-35.pyc")
     elif sys.version_info.minor == 4:
-        next = (".cpython-34.pyc")
+        nextone = (".cpython-34.pyc")
     elif sys.version_info.minor == 3:
-        next = (".cpython-33.pyc")
+        nextone = (".cpython-33.pyc")
     elif sys.version_info.minor == 2:
-        next = (".cpython-32.pyc")
+        nextone = (".cpython-32.pyc")
     elif sys.version_info.minor == 1:
-        next = (".cpython-31.pyc")
+        nextone = (".cpython-31.pyc")
     else:
-        next = (".cpython-30.pyc")
-    shutil.copy("./__pycache__/"+name+next,"./")
-    os.rename("./"+name+next,"./"+name+".pyc")
+        nextone = (".cpython-30.pyc")
+    shutil.copy("./__pycache__/"+name+nextone,"./")
+    os.rename("./"+name+nextone,"./"+name+".pyc")
     os.remove("./"+name+".py")
