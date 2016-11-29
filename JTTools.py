@@ -17,7 +17,7 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
-    import verifonboot, JTToolsOptions, runningsys, startplugins, theme
+    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings
 except(ImportError):
     system = platform.system()
     if system == "Windows":
@@ -274,38 +274,111 @@ try:
         if JTToolsOptions.compiler == True:
             JTToolsMethods.compiler("verifonboot")
     useros = platform.system()
+    page = 0
     while True:
         print ("Here is a list of modes available:")
-        print ("1 = Restart")
-        print ("2 = Logoff")
-        if useros == "Windows":
-            print ("3 = Alternative Logoff Method ")
-        print ("4 = Hibernate")
-        print ("5 = Shutdown")
-        if useros == "Windows":
-            print ("6 = Alternative Shutdown Method")
-            print ("7 = Colour Flicker")
-            print ("8 = Call CMD")
-            print ("9 = Call Documents")
-        print ("10 = Call A Python Shell")
-        if useros == "Windows":
-            print ("11 = Call Task Manager")
-        print ("12 = Create folders in the same directory as this script.")
-        print ("13 = Remove Directories")
-        print ("14 = Create Files")
-        print ("15 = Restart This Script (debug purposes)")
-        print ("16 = Perform Operations With Numbers")
-        print ("17 = Lock This Script")
-        if useros == "Windows":
-            print ("18 = Call Remote Desktop")
-            print ("19 = Call Powershell")
-            print ("20 = Print SystemInfo")
-        print("21 = Start Installer")
-        print("22 = Exit")
+        if menusettings.layout == 0:
+            print("1 = Settings")
+            print ("2 = Restart")
+            print ("3 = Logoff")
+            if useros == "Windows":
+                print ("4 = Alternative Logoff Method ")
+            print ("5 = Hibernate")
+            print ("6 = Shutdown")
+            if useros == "Windows":
+                print ("7 = Alternative Shutdown Method")
+                print ("8 = Colour Flicker")
+                print ("9 = Call CMD")
+                print ("10 = Call Documents")
+            print ("11 = Call A Python Shell")
+            if useros == "Windows":
+                print ("12 = Call Task Manager")
+            print ("13 = Create folders in the same directory as this script.")
+            print ("14 = Remove Directories")
+            print ("15 = Create Files")
+            print ("16 = Restart This Script (debug purposes)")
+            print ("17 = Perform Operations With Numbers")
+            print ("18 = Lock This Script")
+            if useros == "Windows":
+                print ("19 = Call Remote Desktop")
+                print ("20 = Call Powershell")
+                print ("21 = Print SystemInfo")
+            print("22 = Start Installer")
+            print("23 = Exit")
+        elif menusettings.layout == 1:
+            if page == 0:
+                print("1 = Settings")
+                print ("2 = Restart")
+                print ("3 = Logoff")
+                if useros == "Windows":
+                    print ("4 = Alternative Logoff Method ")
+                print ("5 = Hibernate")
+                print("24 = Next Page")
+            elif page == 1:
+                print ("6 = Shutdown")
+                if useros == "Windows":
+                    print ("7 = Alternative Shutdown Method")
+                    print ("8 = Colour Flicker")
+                    print ("9 = Call CMD")
+                    print ("10 = Call Documents")
+                print("24 = Next Page")
+                print("25 = Back a Page")
+            elif page == 2:
+                print ("11 = Call A Python Shell")
+                if useros == "Windows":
+                    print ("12 = Call Task Manager")
+                print ("13 = Create folders in the same directory as this script.")
+                print ("14 = Remove Directories")
+                print ("15 = Create Files")
+                print("24 = Next Page")
+                print("25 = Back a Page")
+            elif page == 3:
+                print ("16 = Restart This Script (debug purposes)")
+                print ("17 = Perform Operations With Numbers")
+                print ("18 = Lock This Script")
+                if useros == "Windows":
+                    print ("19 = Call Remote Desktop")
+                    print ("20 = Call Powershell")
+                print("24 = Next Page")
+                print("25 = Back a Page")
+            elif page == 4:
+                if useros == "Windows":
+                    print ("21 = Print SystemInfo")
+                print("22 = Start Installer")
+                print("23 = Exit")
+                print("25 = Back a Page")
+                
+                
+            
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
-            JTToolsMethods.mode1()
+            print("1 = Menu Settings")
+            setting = int(input("Please enter the group of settings you wish to modify."))
+            if setting == 1:
+                print("Menu Layout")
+                if menusettings.layout != 0:
+                    print(" 0 = Default")
+                elif menusettings.layout != 1:
+                    print(" 1 = Pages")
+                settit = int(input("Please input the number of the setting you wish to apply."))
+                try:
+                    os.remove("./menusettings.py")
+                    os.remove("./menusettings.pyc")
+                except(IOError, OSError):
+                    pass
+                with open ("./menusettings.py","a") as outf:
+                    outf.write("layout = ")
+                    outf.write(str(settit))
+                print("This script will have to restart for changes to take effect.")
+                restartnow = int(input("Please enter 1 if you wish to restart the script now."))
+                if restartnow == 1:
+                    if useros == "Windows":
+                        os.system("python ./start.py")
+                    else:
+                        os.system("python3 ./start.py")
         elif modewanted == 2:
+            JTToolsMethods.mode1()
+        elif modewanted == 3:
             logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
@@ -314,13 +387,13 @@ try:
                     os.system ("shutdown -l -f")
                 else:
                     os.system("logout")
-        elif modewanted == 3 and useros == "Windows" :
+        elif modewanted == 4 and useros == "Windows" :
             altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
             if altlogoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
                 time.sleep(waittime * 60)
                 subprocess.call ("logoff.exe")
-        elif modewanted == 4:
+        elif modewanted == 5:
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
@@ -329,7 +402,7 @@ try:
                     os.system ("shutdown -h -f")
                 else:
                     os.system("systemctl suspend")
-        elif modewanted == 5:
+        elif modewanted == 6:
                 shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
                 if shutdown == 1:
                     waittime = float(input("How long, in minutes, do you wish to wait?"))
@@ -338,45 +411,45 @@ try:
                         os.system ("shutdown -s -f")
                     else:
                         os.system("shutdown now")
-        elif modewanted == 6  and useros == "Windows" :
+        elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
                 time.sleep (waittime * 60)
                 subprocess.call ("shutdown.exe")
-        elif modewanted == 7  and useros == "Windows" :
+        elif modewanted == 8 and useros == "Windows" :
             JTToolsMethods.flicker()
             import theme
-        elif modewanted == 8  and useros == "Windows" :
-            subprocess.call("cmd.exe")
         elif modewanted == 9 and useros == "Windows" :
+            subprocess.call("cmd.exe")
+        elif modewanted == 10 and useros == "Windows" :
             subprocess.call("explorer.exe")
-        elif modewanted == 10:
+        elif modewanted == 11:
             if useros == "Windows":
                 os.system("python")
-        elif modewanted == 11  and useros == "Windows" :
+        elif modewanted == 12 and useros == "Windows" :
             subprocess.call("taskmgr.exe")
-        elif modewanted == 12:
+        elif modewanted == 13:
             foldername = input("Please input the name of your new folder.")
             os.makedirs (foldername)
             cont = input("Success! Press any key then enter to continue...")
-        elif modewanted == 13:
+        elif modewanted == 14:
             foldername = input("Please input the name of the folder you wish to delete.")
             os.rmdir (foldername)
             cont = input("Success! Press any key then enter to continue...")
-        elif modewanted == 14:
+        elif modewanted == 15:
             import io,time
             filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
             with io.FileIO (filename, "w"):
                 pass
-        elif modewanted == 15:
+        elif modewanted == 16:
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 if useros == "Windows":
                     os.system("python ./start.py")
                 else:
                     os.system("python3 ./start.py")
-        elif modewanted == 16:
+        elif modewanted == 17:
             print ("Here is a list of operations:")
             print ("1 = Add")
             print ("2 = Take")
@@ -408,23 +481,27 @@ try:
                         if startnum == endnum or startnum<endnum:
                             print ("The closest number to your target end number was:" + (str(startnum)))
                             time.sleep (1)
-        elif modewanted == 17:
+        elif modewanted == 18:
             print ("Locked!!!")
-        elif modewanted == 18  and useros == "Windows" :
+        elif modewanted == 19  and useros == "Windows" :
             subprocess.call("mstsc.exe")
-        elif modewanted == 19 and useros == "Windows" :
+        elif modewanted == 20 and useros == "Windows" :
             subprocess.call("powershell.exe")
-        elif modewanted == 20 and useros == "Windows":
+        elif modewanted == 21 and useros == "Windows":
             os.system("systeminf")
-        elif modewanted == 21:
+        elif modewanted == 22:
             confirm = int(input("Please confirm (with a 1) to enter the installer."))
             if confirm == 1:
                 if useros == "Windows":
                     os.system("python ./JTToolsInstaller.py")
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
-        elif modewanted == 22:
+        elif modewanted == 23:
             exit()
+        elif modewanted == 24:
+            page = page + 1
+        elif modewanted == 25:
+            page = page - 1
         else:
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
 except(SyntaxError):

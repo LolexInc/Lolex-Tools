@@ -60,6 +60,15 @@ try:
           os.remove("./runningsys.py")
      except(IOError, OSError):
           pass
+     try:
+          os.remove("./menusettings.py")
+     except(IOError,OSError):
+          pass
+     try:
+          os.remove("./menusettings.pyc")
+     except(IOError, OSError):
+          pass
+     
      useros = platform.system()
      if useros == "Linux":
           print("This project requires Git for updating. Installing git...")
@@ -602,6 +611,8 @@ try:
 
      with open ("./runningsys.py","a") as outf:
           outf.write("system = " + '("' + useros + '")')
+     with open ("./menusettings.py","a") as outf:
+          outf.write("layout = 0")
 
 
 
@@ -624,13 +635,10 @@ try:
           theme = "None"
      with open("./theme.py","a") as outf:
                print("Writing theme...", theme)
-         
                outf.write('import os\nos.system("')
-               confirm = input(1)
+
                outf.write(str(theme))
-               confirm = input(2)
                outf.write('")')
-               confirm = input("...")
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")
