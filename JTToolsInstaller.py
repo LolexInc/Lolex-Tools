@@ -599,15 +599,10 @@ try:
 
      with open ("./runningsys.py","a") as outf:
           outf.write("system = " + '("' + useros + '")')
-     useros = 0
 
 
-     with open("./theme.py","a") as outf:
-         if useros == "Windows":
-               outf.write('import os\nos.system("')
-               outf.write(str(theme))
-               outf.write('")')
-     theme = "None"
+
+     #theme = "None"
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
@@ -622,6 +617,17 @@ try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
           pass
+     if useros == "Linux":
+          theme = "None"
+     with open("./theme.py","a") as outf:
+               print("Writing theme...", theme)
+         
+               outf.write('import os\nos.system("')
+               confirm = input(1)
+               outf.write(str(theme))
+               confirm = input(2)
+               outf.write('")')
+               confirm = input("...")
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")

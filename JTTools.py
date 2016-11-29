@@ -25,7 +25,7 @@ except(ImportError):
     else:
     	os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.102patch1 18:07 GMT+0.0 25/11/16")
+print("Welcome to Lolex-Tools version 8.11patch1 18:07 GMT+0.0 29/11/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -300,7 +300,8 @@ try:
             print ("18 = Call Remote Desktop")
             print ("19 = Call Powershell")
             print ("20 = Print SystemInfo")
-        print("21 = Exit")
+        print("21 = Start Installer")
+        print("22 = Exit")
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             JTToolsMethods.mode1()
@@ -351,8 +352,6 @@ try:
             subprocess.call("explorer.exe")
         elif modewanted == 10:
             if useros == "Windows":
-                subprocess.call("python.exe")
-            else:
                 os.system("python")
         elif modewanted == 11  and useros == "Windows" :
             subprocess.call("taskmgr.exe")
@@ -373,17 +372,17 @@ try:
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 if useros == "Windows":
-                    subprocess.call("./JTTools.py",shell = True)
+                    os.system("python ./start.py")
                 else:
-                    os.system("python ./JTTools.py")
+                    os.system("python3 ./start.py")
         elif modewanted == 16:
             print ("Here is a list of operations:")
-            print ("1 =Add")
+            print ("1 = Add")
             print ("2 = Take")
-            submode = int(input("Please enter the number of the operatino you wish to perform>"))
+            submode = int(input("Please enter the number of the operatino you wish to perform."))
             if submode == 1 or 2:
                 startnum = int(input("Please enter your starting number."))
-                addortakenum = int(input("Please input the number to be added. If you wish to take a number please put a - and then the number you wish to be taken."))
+                addortakenum = int(input("Please input the number to be added."))
                 endnum = int(input("Please enter your end number."))
                 waittime = int(input("How long do you wish to wait before each operation is performed?"))
                 if endnum>startnum:
@@ -417,6 +416,13 @@ try:
         elif modewanted == 20 and useros == "Windows":
             os.system("systeminf")
         elif modewanted == 21:
+            confirm = int(input("Please confirm (with a 1) to enter the installer."))
+            if confirm == 1:
+                if useros == "Windows":
+                    os.system("python ./JTToolsInstaller.py")
+                else:
+                    os.system("python3 ./JTToolsInstaller.py")
+        elif modewanted == 22:
             exit()
         else:
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
