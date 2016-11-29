@@ -61,6 +61,9 @@ try:
      except(IOError, OSError):
           pass
      useros = platform.system()
+     if useros == "Linux":
+          print("This project requires Git for updating. Installing git...")
+          os.system("apt install git")
      if useros != "Windows":
           plat = int(input("Please enter 1 if you are using Android, or 0 for other."))
           if plat == 1:

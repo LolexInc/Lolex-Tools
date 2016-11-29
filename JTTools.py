@@ -17,7 +17,7 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
-    import verifonboot, JTToolsOptions, runningsys, startplugins
+    import verifonboot, JTToolsOptions, runningsys, startplugins, theme
 except(ImportError):
     system = platform.system()
     if system == "Windows":
@@ -25,7 +25,7 @@ except(ImportError):
     else:
     	os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.11patch1 18:07 GMT+0.0 29/11/16")
+print("Welcome to Lolex-Tools version 8.11patch1 13:41 GMT+0.0 29/11/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -346,6 +346,7 @@ try:
                 subprocess.call ("shutdown.exe")
         elif modewanted == 7  and useros == "Windows" :
             JTToolsMethods.flicker()
+            import theme
         elif modewanted == 8  and useros == "Windows" :
             subprocess.call("cmd.exe")
         elif modewanted == 9 and useros == "Windows" :
