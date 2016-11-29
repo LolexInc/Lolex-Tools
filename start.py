@@ -1,10 +1,21 @@
-import subprocess,os, platform
+import subprocess,os, platform, shutil
 system = platform.system()
 print("Starting...")
 if "arm" in platform.platform():
     print("Starting on arm...")
     try:
         import androidinit
+        try:
+        	os.remove("./ver_old.py")
+        except(IOError, OSError):
+        	pass
+        os.rename("./ver.py","ver_old.py")
+        shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
+        import ver_old, ver
+        if ver.version>ver_old.version:
+        	print("Installing updates...")
+        	os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
+        	exit(None)
     except(ImportError):
         os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
         exit(None)

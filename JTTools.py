@@ -25,7 +25,7 @@ except(ImportError):
     else:
     	os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.11patch1 13:41 GMT+0.0 29/11/16")
+print("Welcome to Lolex-Tools version 8.12exp 1 7:55 GMT+0.0 29/11/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -276,7 +276,6 @@ try:
     useros = platform.system()
     page = 0
     while True:
-        print ("Here is a list of modes available:")
         if menusettings.layout == 0:
             print("1 = Settings")
             print ("2 = Restart")
@@ -482,7 +481,7 @@ try:
                             print ("The closest number to your target end number was:" + (str(startnum)))
                             time.sleep (1)
         elif modewanted == 18:
-            print ("Locked!!!")
+            print ("Feature currently unavailable(under development).")
         elif modewanted == 19  and useros == "Windows" :
             subprocess.call("mstsc.exe")
         elif modewanted == 20 and useros == "Windows" :

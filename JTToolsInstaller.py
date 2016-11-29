@@ -447,7 +447,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("compiledon = 8.102")
+          outf.write("compiledon = 8.111)
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -666,7 +666,7 @@ except(ValueError):
 except():
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(NameError):
+except():
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):

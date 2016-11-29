@@ -1,25 +1,12 @@
 import shutil, os, time
 init1 = time.time()
 try:
-	a = time.time()
-	os.remove("./isnottravisci.py")
-	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to remove isnottravisci.py")
-except(IOError, OSError):
-	pass
-try:
-	local =time.asctime( time.localtime(time.time()) )
-	print(local,"    Attempting to copy isnottravisci.py...")
-	a = time.time()
-	shutil.copy("/sdcard/Lolex-Tools/isnottravisci.py","./")
-	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to copy isnottravsci.py")
-except(IOError):
-	print("Please create isnottravisci.py in /sdcard/Lolex-Tools. Ensure all files are present in /sdcard/Lolex-Tools. Please restart this script after this.")
+	with open ("./isnottravisci.py","a") as outf: pass
+except():
 	exit(None)
 try:
 	local =time.asctime( time.localtime(time.time()) )
-	print(local,"    Attempting to remove folders...")
+	print(local,"    Attempting to remove folders...") 
 	a = time.time()
 	shutil.rmtree("./Defaults")
 	b = time.time()
@@ -85,15 +72,20 @@ try:
 
 except(IOError):
 	pass
-
 try:
 	a = time.time()
-	os.remove("./Androidstart.py")
+	os.remove("./Androidupdate.sh")
 	b = time.time()
-	print("Took ",((b-a)*1000),"milliseconds to remove Androidstart.py")
+	print("Took ",((b-a)*1000)," milliseconds to remove Androidupdate.sh")
 except(IOError):
 	pass
-    
+try:
+	a = time.time()
+	os.remove("./ver.py")
+	b = time.time()
+	print("Took ",((b-a)*1000),"milliseconds to remove ver.py")
+except(IOError):
+	pass
 try:
 	local =time.asctime( time.localtime(time.time()) )
 	print(local, "    Copying files and folders...")
@@ -118,6 +110,10 @@ try:
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy Androidfirsttimeinit.py")
 	a = time.time()
+	shutil.copy("/sdcard/Lolex-Tools/Androidupdate.sh","./")
+	b = time.time()
+	print("Took ",((b-a)*1000)," milliseconds to copy Androidupdate.sh")
+	a = time.time()
 	shutil.copy("/sdcard/Lolex-Tools/busybox-armeabi","./")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy busybox-armeabi")
@@ -126,9 +122,9 @@ try:
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy busybox-x86")
 	a = time.time()
-	shutil.copy("/sdcard/Lolex-Tools/Androidstart.py","./")
+	shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to copy Androidstart.py")
+	print("Took",((b-a)*1000),"milliseconds to copy ver.py")
 	a = time.time()
 	shutil.copytree("/sdcard/Lolex-Tools/Defaults","./Defaults")
 	b = time.time()
@@ -137,12 +133,13 @@ try:
 	shutil.copytree("/sdcard/Lolex-Tools/Tests","./Tests")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy Tests.")
-except():
+except(IOError, OSError):
 	print("Please ensure that all files are present in /sdcard/Lolex-Tools")
 	exit(None)
 init2 = time.time()
 print("Took ",((init2-init1)*1000),"milliseconds to setup Android environment")
 local =time.asctime( time.localtime(time.time()) )
 print(local,"    Running start.py")
+with open ("./androidinit.py","a") as outf:pass
 os.system("python ./start.py")
 	
