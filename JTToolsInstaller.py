@@ -447,7 +447,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("compiledon = 8.111)
+          outf.write("compiledon = 8.111")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -635,7 +635,7 @@ try:
           theme = "None"
      with open("./theme.py","a") as outf:
                print("Writing theme...", theme)
-               outf.write('import os\nos.system("')
+               outf.write('theme = ("')
 
                outf.write(str(theme))
                outf.write('")')
@@ -644,12 +644,10 @@ try:
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               if useros == "Windows":
-                   subprocess.call("./JTTools.py", shell = True)
-               elif useros == "Linux":
-                   os.system("python3 ./JTTools.py")
+               if useros == "Linux":
+                   os.system("python3 ./start.py")
                else:
-                   os.system("python ./JTTools.py")
+                   os.system("python ./start.py")
           else:
                exit()
      except(TypeError, SyntaxError, ValueError):

@@ -18,6 +18,7 @@ except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
     import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings
+    os.system(theme.theme)
 except(ImportError):
     system = platform.system()
     if system == "Windows":
@@ -25,7 +26,7 @@ except(ImportError):
     else:
     	os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.12exp 1 7:55 GMT+0.0 29/11/16")
+print("Welcome to Lolex-Tools version 8.12exp 17:55 GMT+0.0 29/11/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -498,9 +499,15 @@ try:
         elif modewanted == 23:
             exit()
         elif modewanted == 24:
-            page = page + 1
+            if page < 4:
+                page = page + 1
+            else:
+                page = 0
         elif modewanted == 25:
-            page = page - 1
+            if page > 0:
+                page = page - 1
+            else:
+                page = 4
         else:
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
 except(SyntaxError):

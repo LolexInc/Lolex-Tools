@@ -1,7 +1,7 @@
 import os, time, py_compile, shutil, sys, platform
 print ("Module JTToolsMethods is running, using modules os and time.")
 try:
-	import ver
+	import ver, theme
 except(ImportError):
 	print("Critical Error: missing file. Please redownload this project.")
 def version():
@@ -36,7 +36,7 @@ def flicker():
         os.system (colour[3])
         os.system (colour[4])
         currentflashes = currentflashes+1
-    import theme
+    os.system(theme.theme)
 def mode1():
     shutdown = int(input("Please enter 1 to confirm shutdown."))
     if shutdown == 1:
