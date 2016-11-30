@@ -277,12 +277,16 @@ try:
     useros = platform.system()
     page = 0
     while True:
+        modeone = "1 = Settings"
+        modetwo = "2 = Restart"
+        modethree = "3 = Logoff"
+        modefour = "4 = Alternative Logoff Method"
         if menusettings.layout == 0:
-            print("1 = Settings")
-            print ("2 = Restart")
-            print ("3 = Logoff")
+            print(modeone)
+            print (modetwo)
+            print (modethree)
             if useros == "Windows":
-                print ("4 = Alternative Logoff Method ")
+                print (modefour)
             print ("5 = Hibernate")
             print ("6 = Shutdown")
             if useros == "Windows":
@@ -307,39 +311,51 @@ try:
             print("23 = Exit")
         elif menusettings.layout == 1:
             if page == 0:
-                print("1 = Settings")
-                print ("2 = Restart")
-                print ("3 = Logoff")
+                print(modeone)
+                print (modetwo)
+                print (modethree)
                 if useros == "Windows":
-                    print ("4 = Alternative Logoff Method ")
+                    print (modefour)
                 print ("5 = Hibernate")
+                
+                if useros == "Linux":
+                	print("6 = Shutdown")
                 print("24 = Next Page")
             elif page == 1:
-                print ("6 = Shutdown")
                 if useros == "Windows":
+                    print("6 = Shutdown")
                     print ("7 = Alternative Shutdown Method")
                     print ("8 = Colour Flicker")
                     print ("9 = Call CMD")
                     print ("10 = Call Documents")
-                print("24 = Next Page")
-                print("25 = Back a Page")
-            elif page == 2:
+                    print("24 = Next Page")
+                    print("25 = Back a Page")
+                if useros == "Linux":
+                    page = page + 1
+            if page == 2:
                 print ("11 = Call A Python Shell")
                 if useros == "Windows":
                     print ("12 = Call Task Manager")
                 print ("13 = Create folders in the same directory as this script.")
                 print ("14 = Remove Directories")
                 print ("15 = Create Files")
+                if useros == "Linux":
+                	print("16 = Restart This Script (debug purposes)")
                 print("24 = Next Page")
                 print("25 = Back a Page")
             elif page == 3:
-                print ("16 = Restart This Script (debug purposes)")
+                if useros != "Linux":
+                    print ("16 = Restart This Script (debug purposes)")
                 print ("17 = Perform Operations With Numbers")
                 print ("18 = Lock This Script")
                 if useros == "Windows":
                     print ("19 = Call Remote Desktop")
                     print ("20 = Call Powershell")
-                print("24 = Next Page")
+                else:
+                    print("22 = Start Installer")
+                    print("23 = Exit")
+                if useros == "Windows":
+                    print("24 = Next Page")
                 print("25 = Back a Page")
             elif page == 4:
                 if useros == "Windows":
@@ -496,10 +512,10 @@ try:
                     os.system("python ./JTToolsInstaller.py")
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
-        elif modewanted == 23:
+        if modewanted == 23:
             exit()
         elif modewanted == 24:
-            if page < 4:
+            if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
             else:
                 page = 0
@@ -507,7 +523,10 @@ try:
             if page > 0:
                 page = page - 1
             else:
-                page = 4
+                if useros == "Windows":
+                    page = 4
+                else:
+                    page = 3
         else:
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
 except(SyntaxError):

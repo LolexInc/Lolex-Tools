@@ -616,7 +616,7 @@ try:
 
 
 
-     #theme = "None"
+     theme = ""
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
