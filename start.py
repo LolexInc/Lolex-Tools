@@ -15,11 +15,8 @@ if "arm" in platform.platform():
         if ver.version>ver_old.version:
         	print("Installing updates...")
         	os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
-        	exit(None)
     except(ImportError):
         os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
-        exit(None)
-    
 if system == "Windows":
     print("Starting on Windows...")
     os.system("python ./JTTools.py")
