@@ -639,6 +639,19 @@ try:
 
                outf.write(str(theme))
                outf.write('")')
+     try:
+          start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
+          print("Thank you for using Lolex-Tools Installer.")
+          if start == 1:
+               print("Starting Lolex-Tools...")
+               if useros == "Linux":
+                   os.system("python3 ./JTTools.py")
+               else:
+                   os.system("python ./JTTools.py")
+          else:
+               exit()
+     except(TypeError, SyntaxError, ValueError):
+          print("Failed to start.")
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
