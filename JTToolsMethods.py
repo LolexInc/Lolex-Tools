@@ -1,9 +1,16 @@
 import os, time, py_compile, shutil, sys, platform
 print ("Module JTToolsMethods is running, using modules os and time.")
 try:
-	import ver, theme
+	import theme
 except(ImportError):
 	print("Critical Error: missing file. Please redownload this project.")
+try:
+	import ver
+except(ImportError):
+	if "arm" not in platform.platform():
+		pass
+	else:
+		print("Please redownload this repository to access all features.")
 def version():
 	print(ver.version)
 	

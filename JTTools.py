@@ -512,9 +512,7 @@ try:
                     os.system("python ./JTToolsInstaller.py")
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
-        elif modewanted == 23:
-            print("Exiting...")
-            exit(None)
+                exit(None)
         elif modewanted == 24:
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
@@ -528,6 +526,10 @@ try:
                     page = 4
                 else:
                     page = 3
+        elif modewanted == 23:
+            print("Exiting...")
+            sys.exit()
+            print("Should have exited...")
         else:
             print(modewanted)
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")

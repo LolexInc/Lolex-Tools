@@ -20,8 +20,8 @@ if "arm" in platform.platform():
 if system == "Windows":
     print("Starting on Windows...")
     os.system("python ./JTTools.py")
-    exit()
+    exit(None)
 else:
     print("Starting on Linux...")
     os.system("python3 ./JTTools.py")
-    exit()
+    exit(None)
