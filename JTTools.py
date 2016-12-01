@@ -371,7 +371,7 @@ try:
             print("1 = Menu Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
             if setting == 1:
-                print(" Modiy Menu Layout")
+                print("Menu Layout")
                 if menusettings.layout != 0:
                     print(" 0 = Default")
                 elif menusettings.layout != 1:
@@ -512,9 +512,8 @@ try:
                     os.system("python ./JTToolsInstaller.py")
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
-        elif modewanted == 23:
-            print("Exiting...")
-            exit(None)
+        if modewanted == 23:
+            exit()
         elif modewanted == 24:
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
@@ -529,7 +528,6 @@ try:
                 else:
                     page = 3
         else:
-            print(modewanted)
             print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")

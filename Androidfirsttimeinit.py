@@ -141,4 +141,5 @@ print("Took ",((init2-init1)*1000),"milliseconds to setup Android environment")
 local =time.asctime( time.localtime(time.time()) )
 print(local,"    Running start.py")
 with open ("./androidinit.py","a") as outf:pass
-
+os.system("python ./start.py")
+	
