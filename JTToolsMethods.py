@@ -7,13 +7,12 @@ except(ImportError):
 try:
 	import ver
 except(ImportError):
-	if "arm" not in platform.platform():
+	if "arm" in platform.platform() == False:
 		pass
 	else:
 		print("Please redownload this repository to access all features.")
 def version():
 	print(ver.version)
-	
 def flicker():
     suretoflash = int(input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy."))
     if suretoflash == 1:
@@ -35,7 +34,7 @@ def flicker():
     print("7 - White/Light Gray")
     print("8 - Dark Gray")
     print("9 - Dark Neon Blue")
-    colour = (input("Please enter your first colour with color prefixed."),input("Please enter your second colour, with color"), input("Please enter your third colour, with color."), input("Please enter your fourth colour, with color prefixed."), input("Please enter your fifth colour, with color prefixed."))
+    colour = (input("Please enter your first colour with color prefixed.  "),input("Please enter your second colour, with color prefixed.  "), input("Please enter your third colour, with color prefixed.  "), input("Please enter your fourth colour, with color prefixed.  "), input("Please enter your fifth colour, with color prefixed.  "))
     while howlongtoflashfor != currentflashes:
         os.system (colour[0])
         os.system (colour[1])
@@ -45,7 +44,7 @@ def flicker():
         currentflashes = currentflashes+1
     os.system(theme.theme)
 def mode1():
-    shutdown = int(input("Please enter 1 to confirm shutdown."))
+    shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
         waittime = int(input("How long, in minutes do you wish to wait."))
         time.sleep(waittime*60)
@@ -58,7 +57,6 @@ def logo():
     print("This function has been deprecated.")
 def exitnow():
     print("This function has been deprecated.")
-
 def compiler(name):
     try:
         os.remove("./"+name+".pyc")

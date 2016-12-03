@@ -1,5 +1,5 @@
 #! python3
-import sys, time, subprocess, os, shutil, py_compile, platform
+import sys, time, subprocess, os, shutil, py_compile, platform, io
 try:
     import isnottravisci
 except(ImportError):
@@ -276,96 +276,160 @@ try:
             JTToolsMethods.compiler("verifonboot")
     useros = platform.system()
     page = 0
+    layout = menusettings.layout
     while True:
-        modeone = "1 = Settings"
-        modetwo = "2 = Restart"
-        modethree = "3 = Logoff"
-        modefour = "4 = Alternative Logoff Method"
-        if menusettings.layout == 0:
+        modeone = "1 = Settings" #all
+        modetwo = "2 = Restart" #all
+        modethree = "3 = Logoff" #Windows
+        modefour = "4 = Alternative Logoff Method" #Windows
+        modefourlinux = "4 = Hibernate"  #all
+        modefive = "5 = Hibernate"
+        modefivelinux = "5 = Shutdown" #all
+        modesix = "6 = Shutdown"
+        modesixlinux = "6 = Call A Python Shell" #all
+        modesevenlinux = "7 = Create folders in the current location" #all
+        modeseven = "7 = Alternative Shutdown Method" #Windows
+        modeeight = "8 = Colour Flicker" #Windows
+        modeeightlinux = "8 = Remove Directories" #all
+        modenine = "9 = Call CMD"
+        modeninelinux = "9 = Create files in the current location"
+        modeten = "10 = Call Documents"
+        modetenlinux = "10 = Restart This Script (debug purposes)"
+        modeeleven = "11 = Call A Python Shell"
+        modeelevenlinux = "11 = Perform Operations With Numbers"
+        modetwelve = "12 = Call Task Manager"
+        modetwelvelinux = "12 = Lock This Script"
+        modethirteen = "13 = Create folders in the current location"
+        modethirteenlinux = "13 = Start Installer"
+        modefourteen = "14 = Remove Directories"
+        exitmodelinux = "14 = Exit"
+        modefifteen = "15 = Create files in the current location"
+        modesixteen = "16 = Restart This Script (debug purposes)"
+        modeseventeen = "17 = Perform Operations With Numbers"
+        modeeightteen = "18 = Lock This Script"
+        modenineteen = "19 = Call Remote Desktop"
+        modetwenty = "20 = Call Powershell"
+        modetwentyone = "21 = Print Systeminfo"
+        modetwentytwo = "22 = Start Installer"
+        exitmode = "23 = Exit"
+        nextpage = "24 = Next Page"
+        nextpagelinux = "15 = Next Page"
+        backpage = "25 = Back A Page"
+        backpagelinux = "16 = Back A Page"
+        if layout == 0:
             print(modeone)
             print (modetwo)
             print (modethree)
             if useros == "Windows":
                 print (modefour)
-            print ("5 = Hibernate")
-            print ("6 = Shutdown")
+                print(modefive)
+                print(modesix)
+            else:
+                print(modefourlinux)
+                print(modefivelinux)
+                print(modesixlinux)
+                print(modesevenlinux)
             if useros == "Windows":
-                print ("7 = Alternative Shutdown Method")
-                print ("8 = Colour Flicker")
-                print ("9 = Call CMD")
-                print ("10 = Call Documents")
-            print ("11 = Call A Python Shell")
+                print (modeseven)
+                print (modeeight)
+                print (modenine)
+                print (modeten)
+                print (modeeleven)
             if useros == "Windows":
-                print ("12 = Call Task Manager")
-            print ("13 = Create folders in the same directory as this script.")
-            print ("14 = Remove Directories")
-            print ("15 = Create Files")
-            print ("16 = Restart This Script (debug purposes)")
-            print ("17 = Perform Operations With Numbers")
-            print ("18 = Lock This Script")
+                print (modetwelve)
+                print (modethirteen)
+                print (modefourteen)
+                print (modefifteen)
+                print(modesixteen)
+                print(modeseventeen)
+                print(modeeighteen)
+            else:
+                print(modeeightlinux)
+                print(modeninelinux)
+                print(modetenlinux)
+                print(modeelevenlinux)
+                print(modetwelvelinux)
+                print(modethirteenlinux)
+                print(exitmodelinux)
             if useros == "Windows":
-                print ("19 = Call Remote Desktop")
-                print ("20 = Call Powershell")
-                print ("21 = Print SystemInfo")
-            print("22 = Start Installer")
-            print("23 = Exit")
-        elif menusettings.layout == 1:
+                print (modeninteen)
+                print (modetwenty)
+                print (modetwentyone)
+                print(modetwentytwo)
+                print(exitmode)
+        elif layout == 1:
             if page == 0:
                 print(modeone)
                 print (modetwo)
                 print (modethree)
                 if useros == "Windows":
                     print (modefour)
-                print ("5 = Hibernate")
-                
-                if useros == "Linux":
-                	print("6 = Shutdown")
-                print("24 = Next Page")
+                    print (modefive)
+                    print (nextpage)
+                else:
+                    print(modefourlinux)
+                    print(modefivelinux)
+                    print(nextpagelinux)
             elif page == 1:
                 if useros == "Windows":
-                    print("6 = Shutdown")
-                    print ("7 = Alternative Shutdown Method")
-                    print ("8 = Colour Flicker")
-                    print ("9 = Call CMD")
-                    print ("10 = Call Documents")
-                    print("24 = Next Page")
-                    print("25 = Back a Page")
-                if useros == "Linux":
+                    print(modesix)
+                    print (modeseven)
+                    print (modeeight)
+                    print (modenine)
+                    print (modeten)
+                    print(nextpage)
+                    print(backpage)
+                elif useros == "Linux":
                     page = page + 1
             if page == 2:
-                print ("11 = Call A Python Shell")
-                if useros == "Windows":
-                    print ("12 = Call Task Manager")
-                print ("13 = Create folders in the same directory as this script.")
-                print ("14 = Remove Directories")
-                print ("15 = Create Files")
                 if useros == "Linux":
-                	print("16 = Restart This Script (debug purposes)")
-                print("24 = Next Page")
-                print("25 = Back a Page")
+                    print(modesixlinux)  
+                elif useros == "Windows":
+                    print(modeeleven)
+                if useros == "Linux":
+                    print(modesevenlinux)
+                    print(modeeightlinux)
+                    print(modeninelinux)
+                    print(modetenlinux)
+                    print(modeelevenlinux)
+                    print(nextpagelinux)
+                    print(backpagelinux)
+                elif useros == "Windows":
+                    print (modetwelve)
+                    print (modethirteen)
+                    print (modefourteen)
+                    print (modefifteen)
+                    print(modesixteen)
+                    print(nextpage)
+                    print(backpage)
             elif page == 3:
                 if useros != "Linux":
-                    print ("16 = Restart This Script (debug purposes)")
-                print ("17 = Perform Operations With Numbers")
-                print ("18 = Lock This Script")
-                if useros == "Windows":
-                    print ("19 = Call Remote Desktop")
-                    print ("20 = Call Powershell")
+                    print (modesixteen)
+                    print (modeseventeen)
+                    print (modeeightteen)
                 else:
-                    print("22 = Start Installer")
-                    print("23 = Exit")
+                    print(modetwelvelinux)
+                    print(modethirteenlinux)
+                    print(exitmodelinux)
                 if useros == "Windows":
-                    print("24 = Next Page")
-                print("25 = Back a Page")
+                    print (modeninteen)
+                    print (modetwenty)
+                    print(modetwentytwo)
+                    print(exitmode)
+                if useros == "Windows":
+                    print(nextpage)
+                    print(backpage)
+                else:
+                    print(nextpagelinux)
+                    print(backpagelinux)
             elif page == 4:
                 if useros == "Windows":
-                    print ("21 = Print SystemInfo")
-                print("22 = Start Installer")
-                print("23 = Exit")
-                print("25 = Back a Page")
-                
-                
-            
+                    print (modetwentyone)
+                    print(modetwentytwo)
+                    print(exitmode)
+                    print(backpage)
+                else:
+                    print(backpagelinux)
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             print("1 = Menu Settings")
@@ -376,7 +440,7 @@ try:
                     print(" 0 = Default")
                 elif menusettings.layout != 1:
                     print(" 1 = Pages")
-                settit = int(input("Please input the number of the setting you wish to apply."))
+                layout = int(input("Please input the number of the setting you wish to apply."))
                 try:
                     os.remove("./menusettings.py")
                     os.remove("./menusettings.pyc")
@@ -384,14 +448,7 @@ try:
                     pass
                 with open ("./menusettings.py","a") as outf:
                     outf.write("layout = ")
-                    outf.write(str(settit))
-                print("This script will have to restart for changes to take effect.")
-                restartnow = int(input("Please enter 1 if you wish to restart the script now."))
-                if restartnow == 1:
-                    if useros == "Windows":
-                        os.system("python ./start.py")
-                    else:
-                        os.system("python3 ./start.py")
+                    outf.write(str(layout))
         elif modewanted == 2:
             JTToolsMethods.mode1()
         elif modewanted == 3:
@@ -409,7 +466,7 @@ try:
                 waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
                 time.sleep(waittime * 60)
                 subprocess.call ("logoff.exe")
-        elif modewanted == 5:
+        elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
@@ -418,7 +475,7 @@ try:
                     os.system ("shutdown -h -f")
                 else:
                     os.system("systemctl suspend")
-        elif modewanted == 6:
+        elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux"):
                 shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
                 if shutdown == 1:
                     waittime = float(input("How long, in minutes, do you wish to wait?"))
@@ -440,32 +497,44 @@ try:
             subprocess.call("cmd.exe")
         elif modewanted == 10 and useros == "Windows" :
             subprocess.call("explorer.exe")
-        elif modewanted == 11:
+        elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux"):
             if useros == "Windows":
                 os.system("python")
+            else:
+                os.system("python3")
         elif modewanted == 12 and useros == "Windows" :
             subprocess.call("taskmgr.exe")
-        elif modewanted == 13:
+        elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux"):
             foldername = input("Please input the name of your new folder.")
-            os.makedirs (foldername)
-            cont = input("Success! Press any key then enter to continue...")
-        elif modewanted == 14:
+            try:
+                os.makedirs (foldername)
+                cont = input("Success! Press any key then enter to continue...")
+            except(IOError, OSError):
+                print("Failed to create folder: ",foldername)
+        elif (modewanted == 14 and useros == "Windows") or (modewanted == 8 and useros == "Linux"):
             foldername = input("Please input the name of the folder you wish to delete.")
-            os.rmdir (foldername)
-            cont = input("Success! Press any key then enter to continue...")
-        elif modewanted == 15:
-            import io,time
-            filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
-            with io.FileIO (filename, "w"):
-                pass
-        elif modewanted == 16:
+            try:
+                 os.rmdir (foldername)
+                 cont = input("Success! Press any key then enter to continue...")
+            except(IOError, OSError):
+                print("Folder does not exist!")
+        elif (modewanted == 15 and useros == "Windows") or (modewanted == 9 and useros == "Linux"):
+            try:
+                filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
+                with io.FileIO (filename, "w"):
+                    pass
+                cont = input("Success! Press any key then enter to continue...")
+            except(IOError, OSError):
+                print("Failed to create file: ",filename)
+        elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux"):
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 if useros == "Windows":
                     os.system("python ./start.py")
                 else:
                     os.system("python3 ./start.py")
-        elif modewanted == 17:
+                exit(None)
+        elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux"):
             print ("Here is a list of operations:")
             print ("1 = Add")
             print ("2 = Take")
@@ -497,7 +566,7 @@ try:
                         if startnum == endnum or startnum<endnum:
                             print ("The closest number to your target end number was:" + (str(startnum)))
                             time.sleep (1)
-        elif modewanted == 18:
+        elif (modewanted == 18 and useros == "Windows") or (modewanted == 12 and useros == "Linux"):
             print ("Feature currently unavailable(under development).")
         elif modewanted == 19  and useros == "Windows" :
             subprocess.call("mstsc.exe")
@@ -505,7 +574,7 @@ try:
             subprocess.call("powershell.exe")
         elif modewanted == 21 and useros == "Windows":
             os.system("systeminf")
-        elif modewanted == 22:
+        elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux"):
             confirm = int(input("Please confirm (with a 1) to enter the installer."))
             if confirm == 1:
                 if useros == "Windows":
@@ -513,20 +582,25 @@ try:
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
                 exit(None)
-        elif modewanted == 24:
+        elif (modewanted == 24 and useros == "Windows") or (modewanted == 15 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
             else:
                 page = 0
-        elif modewanted == 25:
-            if page > 0:
-                page = page - 1
+        elif (modewanted == 25 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
+            if page == 2 and useros == "Linux":
+            	page = 0
+            elif page == 3 and useros == "Linux":
+                page = 1
+            elif page < 0:
+            	page = page - 1
             else:
                 if useros == "Windows":
                     page = 4
                 else:
                     page = 3
-        elif modewanted == 23:
+            
+        elif (modewanted == 23 and useros == "Windows") or (modewanted == 14 and useros == "Linux"):
             print("Exiting...")
             sys.exit()
             print("Should have exited...")
