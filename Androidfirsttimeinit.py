@@ -2,7 +2,7 @@ import shutil, os, time
 init1 = time.time()
 try:
 	with open ("./isnottravisci.py","a") as outf: pass
-except():
+except(IOError):
 	exit(None)
 try:
 	local =time.asctime( time.localtime(time.time()) )
@@ -11,14 +11,14 @@ try:
 	shutil.rmtree("./Defaults")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove Defaults")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	shutil.rmtree("./Tests")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove Tests.")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	local =time.asctime( time.localtime(time.time()) )
@@ -27,64 +27,63 @@ try:
 	os.remove("./JTTools.py")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove JTTools.py.")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./JTToolsInstaller.py")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove JTToolsInstaller.py")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./JTToolsMethods.py")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove JTToolsMethods.py")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./start.py")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove start.py")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./Androidfirsttimeinit.py")
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to remove Androidfirsttimeinit.py")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./busybox-armeabi")
 	b = time.time()
 	print("Took ",((b-a)*1000),"milliseconds to remove busybox-armeabi")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./busybox-x86")
 	b = time.time()
 	print("Took ",((b-a)*1000),"milliseconds to remove busybox-x86")
-
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
-	os.remove("./Androidupdate.sh")
+	os.remove("./Androidautoupdate.sh")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to remove Androidupdate.sh")
-except(IOError):
+	print("Took ",((b-a)*1000)," milliseconds to remove Androidautoupdate.sh")
+except(IOError, OSError):
 	pass
 try:
 	a = time.time()
 	os.remove("./ver.py")
 	b = time.time()
 	print("Took ",((b-a)*1000),"milliseconds to remove ver.py")
-except(IOError):
+except(IOError, OSError):
 	pass
 try:
 	local =time.asctime( time.localtime(time.time()) )
@@ -110,9 +109,9 @@ try:
 	b = time.time()
 	print("Took ",((b-a)*1000)," milliseconds to copy Androidfirsttimeinit.py")
 	a = time.time()
-	shutil.copy("/sdcard/Lolex-Tools/Androidupdate.sh","./")
+	shutil.copy("/sdcard/Lolex-Tools/Androidautoupdate.sh","./")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to copy Androidupdate.sh")
+	print("Took ",((b-a)*1000)," milliseconds to copy Androidautoupdate.sh")
 	a = time.time()
 	shutil.copy("/sdcard/Lolex-Tools/busybox-armeabi","./")
 	b = time.time()
@@ -139,6 +138,6 @@ except(IOError, OSError):
 init2 = time.time()
 print("Took ",((init2-init1)*1000),"milliseconds to setup Android environment")
 local =time.asctime( time.localtime(time.time()) )
-print(local,"    Running start.py")
 with open ("./androidinit.py","a") as outf:pass
+print("Initialized... Starting...")
 
