@@ -305,7 +305,7 @@ try:
         modefourteenandroid = "14 = Show uptime and average load"
         modefifteenandroid = "15 = Play Boot Animation"
         exitmodelinux = "14 = Exit"
-        exitmodeandroid = "16 = Exit"
+        exitmodeandroid = "18 = Exit"
         modefifteen = "15 = Create files in the current location"
         modesixteen = "16 = Restart This Script (debug purposes)"
         modeseventeen = "17 = Perform Operations With Numbers"
@@ -637,7 +637,7 @@ try:
                 else:
                     page = 3
             
-        elif (modewanted == 23 and useros == "Windows") or (modewanted == 14 and useros == "Linux" and "arm" in platform.platform() == False) or (modewanted == 16 and "arm" in platform.platform()):
+        elif (modewanted == 23 and useros == "Windows") or (modewanted == 14 and useros == "Linux" and "arm" in platform.platform() == False) or (modewanted == 18 and "arm" in platform.platform()):
             print("Exiting...")
             sys.exit()
             print("Should have exited...")
