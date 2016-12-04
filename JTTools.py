@@ -302,7 +302,10 @@ try:
         modethirteen = "13 = Create folders in the current location"
         modethirteenlinux = "13 = Start Installer"
         modefourteen = "14 = Remove Directories"
+        modefourteenandroid = "14 = Show uptime and average load"
+        modefifteenandroid = "15 = Play Boot Animation"
         exitmodelinux = "14 = Exit"
+        exitmodeandroid = "16 = Exit"
         modefifteen = "15 = Create files in the current location"
         modesixteen = "16 = Restart This Script (debug purposes)"
         modeseventeen = "17 = Perform Operations With Numbers"
@@ -313,8 +316,10 @@ try:
         modetwentytwo = "22 = Start Installer"
         exitmode = "23 = Exit"
         nextpage = "24 = Next Page"
-        nextpagelinux = "15 = Next Page"
+        nextpageandroid= "16 = Next Page"
         backpage = "25 = Back A Page"
+        backpageandroid = "17 = Back A Page"
+        nextpagelinux = "15 = Next Page"
         backpagelinux = "16 = Back A Page"
         if layout == 0:
             print(modeone)
@@ -350,7 +355,12 @@ try:
                 print(modeelevenlinux)
                 print(modetwelvelinux)
                 print(modethirteenlinux)
-                print(exitmodelinux)
+                if "arm" in platform.platform():
+                    print(modefourteenandroid)
+                    print(modefifteenandroid)
+                    print(exitmodeandroid)
+                else:
+                    print(exitmodelinux)
             if useros == "Windows":
                 print (modeninteen)
                 print (modetwenty)
@@ -369,7 +379,13 @@ try:
                 else:
                     print(modefourlinux)
                     print(modefivelinux)
+                if "arm" in platform.platform():
+                    print(nextpageandroid)
+                    print(backpageandroid)
+                else:
                     print(nextpagelinux)
+                    print(backpagelinux)
+                    
             elif page == 1:
                 if useros == "Windows":
                     print(modesix)
@@ -391,9 +407,12 @@ try:
                     print(modeeightlinux)
                     print(modeninelinux)
                     print(modetenlinux)
-                    print(modeelevenlinux)
-                    print(nextpagelinux)
-                    print(backpagelinux)
+                    if "arm" in platform.platform():
+                        print(nextpageandroid)
+                        print(backpageandroid)
+                    else:
+                        print(nextpagelinux)
+                        print(backpagelinux)
                 elif useros == "Windows":
                     print (modetwelve)
                     print (modethirteen)
@@ -408,9 +427,14 @@ try:
                     print (modeseventeen)
                     print (modeeightteen)
                 else:
+                    print(modeelevenlinux)
                     print(modetwelvelinux)
                     print(modethirteenlinux)
                     print(exitmodelinux)
+                if "arm" in platform.platform():
+                    print(modefourteenandroid)
+                    print(modefifteenandroid)
+                    print(exitmodeandroid)
                 if useros == "Windows":
                     print (modeninteen)
                     print (modetwenty)
@@ -420,8 +444,12 @@ try:
                     print(nextpage)
                     print(backpage)
                 else:
-                    print(nextpagelinux)
-                    print(backpagelinux)
+                    if "arm" in platform.platform():
+                        print(nextpageandroid)
+                        print(backpageandroid)
+                    else:
+                        print(nextpagelinux)
+                        print(backpagelinux)
             elif page == 4:
                 if useros == "Windows":
                     print (modetwentyone)
@@ -429,7 +457,10 @@ try:
                     print(exitmode)
                     print(backpage)
                 else:
-                    print(backpagelinux)
+                    if "arm" in platform.platform():
+                        print(backpageandroid)
+                    else:
+                        print(backpagelinux)
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             print("1 = Menu Settings")
@@ -482,8 +513,10 @@ try:
                     time.sleep (waittime * 60)
                     if useros == "Windows":
                         os.system ("shutdown -s -f")
-                    else:
+                    elif "arm" in platform.platform==False:
                         os.system("shutdown now")
+                    else:
+                        os.system("shutdown -p")
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
@@ -582,12 +615,16 @@ try:
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
                 exit(None)
-        elif (modewanted == 24 and useros == "Windows") or (modewanted == 15 and useros == "Linux"):
+        elif (modewanted == 14 and useros == "Linux" and "arm" in platform.platform()):
+            os.system("uptime")
+        elif modewanted == 15 and useros == "Linux" and "arm" in platform.platform():
+            os.system("su -c bootanimation")
+        elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
             else:
                 page = 0
-        elif (modewanted == 25 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
+        elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux"):
             if page == 2 and useros == "Linux":
             	page = 0
             elif page == 3 and useros == "Linux":
@@ -600,7 +637,7 @@ try:
                 else:
                     page = 3
             
-        elif (modewanted == 23 and useros == "Windows") or (modewanted == 14 and useros == "Linux"):
+        elif (modewanted == 23 and useros == "Windows") or (modewanted == 14 and useros == "Linux" and "arm" in platform.platform() == False) or (modewanted == 16 and "arm" in platform.platform()):
             print("Exiting...")
             sys.exit()
             print("Should have exited...")
