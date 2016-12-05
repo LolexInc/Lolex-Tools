@@ -513,10 +513,10 @@ try:
                     time.sleep (waittime * 60)
                     if useros == "Windows":
                         os.system ("shutdown -s -f")
-                    elif "arm" in platform.platform==False:
+                    elif "arm" in platform.platform()==False:
                         os.system("shutdown now")
                     else:
-                        os.system("shutdown -p")
+                        os.system("reboot -p")
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
