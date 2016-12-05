@@ -304,7 +304,7 @@ try:
         modefourteen = "14 = Remove Directories"
         modefourteenandroid = "14 = Show uptime and average load"
         modefifteenandroid = "15 = Play Boot Animation"
-        exitmodelinux = "14 = Exit"
+        exitmodelinux = "16 = Exit"
         exitmodeandroid = "18 = Exit"
         modefifteen = "15 = Create files in the current location"
         modesixteen = "16 = Restart This Script (debug purposes)"
@@ -358,7 +358,6 @@ try:
                 if "arm" in platform.platform():
                     print(modefourteenandroid)
                     print(modefifteenandroid)
-                    print(exitmodeandroid)
                 else:
                     print(exitmodelinux)
             if useros == "Windows":
@@ -467,9 +466,9 @@ try:
             setting = int(input("Please enter the group of settings you wish to modify."))
             if setting == 1:
                 print(" Modiy Menu Layout")
-                if menusettings.layout != 0:
+                if layout != 0:
                     print(" 0 = Default")
-                elif menusettings.layout != 1:
+                elif layout != 1:
                     print(" 1 = Pages")
                 layout = int(input("Please input the number of the setting you wish to apply."))
                 try:
@@ -490,7 +489,7 @@ try:
                 if useros == "Windows":
                     os.system ("shutdown -l -f")
                 else:
-                    os.system("logout")
+                    os.system("gnome-session-quit --force")
         elif modewanted == 4 and useros == "Windows" :
             altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
             if altlogoff == 1:
@@ -637,7 +636,7 @@ try:
                 else:
                     page = 3
             
-        elif (modewanted == 23 and useros == "Windows") or (modewanted == 14 and useros == "Linux" and "arm" in platform.platform() == False) or (modewanted == 18 and "arm" in platform.platform()):
+        elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
             print("Exiting...")
             sys.exit()
             print("Should have exited...")
