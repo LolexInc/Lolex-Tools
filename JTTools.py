@@ -319,8 +319,8 @@ try:
         nextpageandroid= "16 = Next Page"
         backpage = "25 = Back A Page"
         backpageandroid = "17 = Back A Page"
-        nextpagelinux = "15 = Next Page"
-        backpagelinux = "16 = Back A Page"
+        nextpagelinux = "17 = Next Page"
+        backpagelinux = "18 = Back A Page"
         if layout == 0:
             print(modeone)
             print (modetwo)
