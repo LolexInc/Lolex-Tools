@@ -303,7 +303,7 @@ try:
         modethirteenlinux = "13 = Start Installer"
         modefourteen = "14 = Remove Directories"
         modefourteenandroid = "14 = Show uptime and average load"
-        modefifteenandroid = "15 = Play Boot Animation"
+        modefifteenandroid = "15 = Dump system information into terminal"
         exitmodelinux = "16 = Exit"
         exitmodeandroid = "18 = Exit"
         modefifteen = "15 = Create files in the current location"
@@ -316,9 +316,9 @@ try:
         modetwentytwo = "22 = Start Installer"
         exitmode = "23 = Exit"
         nextpage = "24 = Next Page"
-        nextpageandroid= "16 = Next Page"
+        nextpageandroid= "17= Next Page"
         backpage = "25 = Back A Page"
-        backpageandroid = "17 = Back A Page"
+        backpageandroid = "18 = Back A Page"
         nextpagelinux = "17 = Next Page"
         backpagelinux = "18 = Back A Page"
         if layout == 0:
@@ -378,10 +378,6 @@ try:
                 else:
                     print(modefourlinux)
                     print(modefivelinux)
-                if "arm" in platform.platform():
-                    print(nextpageandroid)
-                    print(backpageandroid)
-                else:
                     print(nextpagelinux)
                     print(backpagelinux)
                     
@@ -406,12 +402,8 @@ try:
                     print(modeeightlinux)
                     print(modeninelinux)
                     print(modetenlinux)
-                    if "arm" in platform.platform():
-                        print(nextpageandroid)
-                        print(backpageandroid)
-                    else:
-                        print(nextpagelinux)
-                        print(backpagelinux)
+                    print(nextpagelinux)
+                    print(backpagelinux)
                 elif useros == "Windows":
                     print (modetwelve)
                     print (modethirteen)
@@ -429,11 +421,10 @@ try:
                     print(modeelevenlinux)
                     print(modetwelvelinux)
                     print(modethirteenlinux)
+                    if "arm" in platform.platform():
+                        print(modefourteenandroid)
+                        print(modefifteenandroid)
                     print(exitmodelinux)
-                if "arm" in platform.platform():
-                    print(modefourteenandroid)
-                    print(modefifteenandroid)
-                    print(exitmodeandroid)
                 if useros == "Windows":
                     print (modeninteen)
                     print (modetwenty)
@@ -443,10 +434,6 @@ try:
                     print(nextpage)
                     print(backpage)
                 else:
-                    if "arm" in platform.platform():
-                        print(nextpageandroid)
-                        print(backpageandroid)
-                    else:
                         print(nextpagelinux)
                         print(backpagelinux)
             elif page == 4:
@@ -456,10 +443,7 @@ try:
                     print(exitmode)
                     print(backpage)
                 else:
-                    if "arm" in platform.platform():
-                        print(backpageandroid)
-                    else:
-                        print(backpagelinux)
+                    print(backpagelinux)
         modewanted = int(input("Please enter the number of the mode that you want."))
         if modewanted == 1:
             print("1 = Menu Settings")
@@ -480,7 +464,7 @@ try:
                     outf.write("layout = ")
                     outf.write(str(layout))
         elif modewanted == 2:
-            JTToolsMethods.mode1()
+            JTToolsMethods.mode2()
         elif modewanted == 3:
             logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
@@ -515,7 +499,7 @@ try:
                     elif "arm" in platform.platform()==False:
                         os.system("shutdown now")
                     else:
-                        os.system("reboot -p")
+                        os.system("/system/bin/reboot -p")
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
@@ -562,7 +546,7 @@ try:
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 if useros == "Windows":
-                    os.system("python ./start.py")
+                    os.system("python .\start.py")
                 else:
                     os.system("python3 ./start.py")
                 exit(None)
@@ -610,14 +594,16 @@ try:
             confirm = int(input("Please confirm (with a 1) to enter the installer."))
             if confirm == 1:
                 if useros == "Windows":
-                    os.system("python ./JTToolsInstaller.py")
+                    os.system("python .\JTToolsInstaller.py")
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
                 exit(None)
         elif (modewanted == 14 and useros == "Linux" and "arm" in platform.platform()):
-            os.system("uptime")
+            os.system("/system/bin/uptime")
         elif modewanted == 15 and useros == "Linux" and "arm" in platform.platform():
-            os.system("su -c bootanimation")
+            if os.system("su -c /system/bin/dumpsys") == 256:
+                print("Cannot load as much information due to lack of root.")
+                os.system("/system/bin/dumpsys")
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1

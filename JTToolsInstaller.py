@@ -106,8 +106,8 @@ try:
           twowordwait = 0
      if useusername == True:
           print("If your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
-          username1 = (str(input("Please set your username.")))
-          confirm = (str(input("Please confirm your username.")))
+          username1 = input("Please set your username.")
+          confirm = (str(input("Please confirm your username.")
           while username1 != confirm:
                username1 = input("Your usernames didn't match. Please set your username.")
                confirm = input("Please confirm your username.")
@@ -513,7 +513,6 @@ try:
           if onewordone != False:
                outf.write('("')
           outf.write(str(onewordone))
-          
           if onewordone != False:
                outf.write('")')
           onewordone = 0
@@ -535,7 +534,6 @@ try:
           if onewordfour != False:
                outf.write('("')
           outf.write(str(onewordfour))
-          
           if onewordfour != False:
                outf.write('")')
           onewordfour = 0
@@ -607,15 +605,10 @@ try:
           outf.write(str(twowait))
           twowait = "None"
           confirm = "None"
-          
-
      with open ("./runningsys.py","a") as outf:
           outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
           outf.write("layout = 0")
-
-
-
      theme = "cd ./"
      if compiler == 0 or False:
           pass
@@ -636,7 +629,6 @@ try:
      with open("./theme.py","a") as outf:
                print("Writing theme...", theme)
                outf.write('theme = ("')
-
                outf.write(str(theme))
                outf.write('")')
      try:
@@ -647,7 +639,7 @@ try:
                if useros == "Linux":
                    os.system("python3 ./JTTools.py")
                else:
-                   os.system("python ./JTTools.py")
+                   os.system("python .\JTTools.py")
           else:
                exit()
      except(TypeError, SyntaxError, ValueError):
@@ -661,10 +653,10 @@ except(TypeError):
 except(ValueError):
      print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(IOError):
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
@@ -673,7 +665,7 @@ except(EOFError):
 except(AttributeError):
      print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(OSError):
      print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 

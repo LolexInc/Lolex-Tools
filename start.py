@@ -1,8 +1,7 @@
-import subprocess,os, platform, shutil
+import os, platform, shutil
 system = platform.system()
 print("Starting...")
 if "arm" in platform.platform():
-    print("Starting on arm...")
     try:
         import androidinit
         try:
@@ -19,7 +18,7 @@ if "arm" in platform.platform():
         os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 if system == "Windows":
     print("Starting on Windows...")
-    os.system("python ./JTTools.py")
+    os.system("python .\JTTools.py")
     exit(None)
 else:
     print("Starting on Linux...")

@@ -39,7 +39,7 @@ def flicker():
         os.system (colour[4])
         currentflashes = currentflashes+1
     os.system(theme.theme)
-def mode1():
+def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
         waittime = int(input("How long, in minutes do you wish to wait."))
@@ -47,8 +47,10 @@ def mode1():
         useros = platform.system()
         if useros != "Linux":
             os.system("shutdown -r -f")
+        elif "arm" in platform.platform():
+            os.system("/system/bin/reboot")
         else:
-            os.system('reboot')
+            os.system("reboot")
 def logo():
     print("This function has been deprecated.")
 def exitnow():
