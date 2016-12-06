@@ -302,8 +302,8 @@ try:
         modethirteen = "13 = Create folders in the current location"
         modethirteenlinux = "13 = Start Installer"
         modefourteen = "14 = Remove Directories"
-        modefourteenandroid = "14 = Show uptime and average load"
-        modefifteenandroid = "15 = Dump system information into terminal"
+        modefourteenlinux = "14 = Show uptime and average load"
+        modefifteenlinux = "15 = Dump system information into terminal"
         exitmodelinux = "16 = Exit"
         exitmodeandroid = "18 = Exit"
         modefifteen = "15 = Create files in the current location"
@@ -420,9 +420,8 @@ try:
                     print(modeelevenlinux)
                     print(modetwelvelinux)
                     print(modethirteenlinux)
-                    if "arm" in platform.platform():
-                        print(modefourteenandroid)
-                        print(modefifteenandroid)
+                    print(modefourteenlinux)
+                    print(modefifteenlinux)
                     print(exitmodelinux)
                 if useros == "Windows":
                     print (modenineteen)
@@ -599,12 +598,18 @@ try:
                 else:
                     os.system("python3 ./JTToolsInstaller.py")
                 exit(None)
-        elif (modewanted == 14 and useros == "Linux" and "arm" in platform.platform()):
-            os.system("/system/bin/uptime")
-        elif modewanted == 15 and useros == "Linux" and "arm" in platform.platform():
-            if os.system("su -c /system/bin/dumpsys") == 256:
-                print("Cannot load as much information due to lack of root.")
-                os.system("/system/bin/dumpsys")
+        elif (modewanted == 14 and useros == "Linux"):
+            if "arm" in platform.platform():
+                os.system("/system/bin/uptime")
+            else:
+                os.system("uptime")
+        elif modewanted == 15 and useros == "Linux":
+            if "arm" in platform.platform():
+                if os.system("su -c /system/bin/dumpsys") != 0:
+                    print("Cannot load as much information due to lack of root.")
+                    os.system("/system/bin/dumpsys")
+            else:
+                os.system("sudo lshw")
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
