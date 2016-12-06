@@ -107,7 +107,7 @@ try:
      if useusername == True:
           print("If your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
           username1 = input("Please set your username.")
-          confirm = (str(input("Please confirm your username.")
+          confirm = input("Please confirm your username.")
           while username1 != confirm:
                username1 = input("Your usernames didn't match. Please set your username.")
                confirm = input("Please confirm your username.")
