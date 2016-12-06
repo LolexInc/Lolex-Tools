@@ -447,7 +447,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("compiledon = 8.111")
+          outf.write("compiledon = 8.127")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -640,9 +640,9 @@ try:
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               if useros == "Linux":
+               if useros == "Linux" or "Android":
                    os.system("python3 ./JTTools.py")
-               else:
+               elif useros == "Windows":
                    os.system("python .\JTTools.py")
           else:
                exit()

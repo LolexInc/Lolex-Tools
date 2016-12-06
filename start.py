@@ -10,12 +10,24 @@ if "arm" in platform.platform():
         	pass
         os.rename("./ver.py","ver_old.py")
         shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
-        import ver_old, ver
+        import ver, ver_old
         if ver.version>ver_old.version:
         	print("Installing updates...")
         	os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
     except(ImportError):
         os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
+try:
+    import JTToolsOptions
+    if JTToolsOptions.compiledon<8.127:
+        if platform.system() == "Windows":
+            os.system("python .\JTToolsInstaller.py")
+        else:
+            os.system("python3 ./JTToolsInstaller.py")
+except(ImportError):
+    if platform.system() == "Windows":
+        os.system("python .\JTToolsInstaller.py")
+    else:
+        os.system("python3 ./JTToolsInstaller.py")
 if system == "Windows":
     print("Starting on Windows...")
     os.system("python .\JTTools.py")

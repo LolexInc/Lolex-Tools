@@ -17,6 +17,7 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
+    print("Attempting to import 10 modules...")
     import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, shutdownsettings, restartsettings, hibernatesettings, logoffsettings
     os.system(theme.theme)
 except(ImportError):
@@ -26,7 +27,7 @@ except(ImportError):
     else:
         os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.12exp 17:55 GMT+0.0 29/11/16")
+print("Welcome to Lolex-Tools version 8.12exp 16:40 GMT+0.0 6/12/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -323,14 +324,19 @@ try:
         backpagelinux = "18 = Back A Page"
         if layout == 0:
             print(modeone)
-            print (modetwo)
-            print (modethree)
+            if restartsettings.hidden != True:
+                print (modetwo)
+            if logoffsettings.hidden != True:
+                print (modethree)
             if useros == "Windows":
-                print (modefour)
-                print(modefive)
+                if logoffsettings.hidden != True:
+                    print (modefour)
+                if hibernatesettings.hidden != True:
+                    print(modefive)
                 print(modesix)
             else:
-                print(modefourlinux)
+                if hibernatesettings.hidden != True:
+                    print(modefourlinux)
                 print(modefivelinux)
                 print(modesixlinux)
                 print(modesevenlinux)
@@ -355,11 +361,9 @@ try:
                 print(modeelevenlinux)
                 print(modetwelvelinux)
                 print(modethirteenlinux)
-                if "arm" in platform.platform():
-                    print(modefourteenandroid)
-                    print(modefifteenandroid)
-                else:
-                    print(exitmodelinux)
+                print(modefourteenlinux)
+                print(modefifteenlinux)
+                print(exitmodelinux)
             if useros == "Windows":
                 print (modenineteen)
                 print (modetwenty)
@@ -369,14 +373,19 @@ try:
         elif layout == 1:
             if page == 0:
                 print(modeone)
-                print (modetwo)
-                print (modethree)
+                if restartsettings.hidden != True:
+                    print (modetwo)
+                if logoffsettings.hidden != True:
+                    print (modethree)
                 if useros == "Windows":
-                    print (modefour)
-                    print (modefive)
+                    if logoffsettings.hidden != True:
+                        print (modefour)
+                    if hibernatesettings.hidden != True:
+                        print (modefive)
                     print (nextpage)
                 else:
-                    print(modefourlinux)
+                    if hibernatesettings.hidden != True:
+                        print(modefourlinux)
                     print(modefivelinux)
                     print(nextpagelinux)
                     print(backpagelinux)
@@ -447,8 +456,9 @@ try:
         while modewanted < 1:
             modewanted = modewanted + 25
         if modewanted == 1:
+            restartneeded = False
             print("1 = Menu Settings")
-			print("2 = Mode Settings")
+            print("2 = Mode Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
             if setting == 1:
                 print(" Modiy Menu Layout")
@@ -465,24 +475,63 @@ try:
                 with open ("./menusettings.py","a") as outf:
                     outf.write("layout = ")
                     outf.write(str(layout))
-			elif setting == 2:
-				print("1 = Disable power menu modes.")
-				settinga = int(input("Please input the number of the setting you wish to modify.")
-				if settinga == 1:
-					print(modetwo, "hidden = ", restartsettings.hidden)
-					print(modethree, "hidden = ", logoffsettings.hidden)
-					print(modefourlinux, "hidden = ", hibernatesettings.hidden)
-					print(modefivelinux, "hidden = ", shutdownsettings.hiddden)
-					hidestate = int(input("Please select the number of the mode."))
-					if hidestate == 2:
-						if restartsettings.hidden == False:
-							restartsettings.hidden = True
-						else:
-							restartsettings.hidden = False
-					
-					
-					
-
+            elif setting == 2:
+                print("1 = Disable power menu modes.")
+                settinga = int(input("Please input the number of the setting you wish to modify."))
+                if settinga == 1:
+                    print(modetwo, "hidden = ", restartsettings.hidden)
+                    print(modethree, "hidden = ", logoffsettings.hidden)
+                    print(modefourlinux, "hidden = ", hibernatesettings.hidden)
+                    print(modefivelinux, "hidden = ", shutdownsettings.hidden)
+                    hidestate = int(input("Please select the number of the mode."))
+                    if hidestate == 2:
+                        if restartsettings.hidden == False:
+                            restartsettingshidden = True
+                        else:
+                            restartsettingshidden = False
+                        try:
+                             os.remove("./restartsettings.py")
+                             os.remove("./restartsettings.pyc")
+                        except(IOError):
+                             pass
+                        with open ("./restartsettings.py","a") as outf: 
+                            outf.write("hidden = ")
+                            outf.write(str(restartsettingshidden))
+                        restartneeded = True
+                    elif hidestate == 3:
+                        if logoffsettings.hidden == False:
+                            logoffsettingshidden = True
+                        else:
+                            logoffsettingshidden = False
+                        try:
+                            os.remove("./logoffsettings.py")
+                            os.remove("./logoffsettings.pyc")
+                        except(IOError):
+                            pass
+                        with open ("./logoffsettings.py","a") as outf:
+                            outf.write("hidden = ")
+                            outf.write(str(logoffsettingshidden))
+                        restartneeded = True
+                    elif hidestate == 4:
+                        if hibernatesettings.hidden == False:
+                            hibernatesettingshidden = True
+                        else:
+                            hibernatesettingshidden = False
+                        try:
+                            os.remove("./hibernatesettings.py")
+                            os.remove("./hibernatesettings.pyc")
+                        except(IOError):
+                            pass
+                        with open ("./hibernatesettings.py","a") as outf:
+                            outf.write("hidden = ")
+                            outf.write(str(hibernatesettingshidden))
+                        restartneeded = True
+                    if restartneeded == True:
+                        if useros == "Windows":
+                            os.system("python .\start.py")
+                        else:
+                            os.system("python3 ./start.py")
+                        exit(None)
         elif modewanted == 2:
             JTToolsMethods.mode2()
         elif modewanted == 3:
@@ -623,12 +672,14 @@ try:
             else:
                 os.system("uptime")
         elif modewanted == 15 and useros == "Linux":
+        	
             if "arm" in platform.platform():
                 if os.system("su -c /system/bin/dumpsys") != 0:
                     print("Cannot load as much information due to lack of root.")
                     os.system("/system/bin/dumpsys")
             else:
                 os.system("sudo lshw")
+            print("\n")
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
