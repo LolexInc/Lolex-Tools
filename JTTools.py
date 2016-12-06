@@ -17,7 +17,7 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
-    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings
+    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, shutdownsettings, restartsettings, hibernatesettings, logoffsettings
     os.system(theme.theme)
 except(ImportError):
     system = platform.system()
@@ -280,7 +280,7 @@ try:
     while True:
         modeone = "1 = Settings" #all
         modetwo = "2 = Restart" #all
-        modethree = "3 = Logoff" #Windows
+        modethree = "3 = Logoff" #all
         modefour = "4 = Alternative Logoff Method" #Windows
         modefourlinux = "4 = Hibernate"  #all
         modefive = "5 = Hibernate"
@@ -448,6 +448,7 @@ try:
             modewanted = modewanted + 25
         if modewanted == 1:
             print("1 = Menu Settings")
+			print("2 = Mode Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
             if setting == 1:
                 print(" Modiy Menu Layout")
@@ -464,6 +465,24 @@ try:
                 with open ("./menusettings.py","a") as outf:
                     outf.write("layout = ")
                     outf.write(str(layout))
+			elif setting == 2:
+				print("1 = Disable power menu modes.")
+				settinga = int(input("Please input the number of the setting you wish to modify.")
+				if settinga == 1:
+					print(modetwo, "hidden = ", restartsettings.hidden)
+					print(modethree, "hidden = ", logoffsettings.hidden)
+					print(modefourlinux, "hidden = ", hibernatesettings.hidden)
+					print(modefivelinux, "hidden = ", shutdownsettings.hiddden)
+					hidestate = int(input("Please select the number of the mode."))
+					if hidestate == 2:
+						if restartsettings.hidden == False:
+							restartsettings.hidden = True
+						else:
+							restartsettings.hidden = False
+					
+					
+					
+
         elif modewanted == 2:
             JTToolsMethods.mode2()
         elif modewanted == 3:

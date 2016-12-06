@@ -631,6 +631,10 @@ try:
                outf.write('theme = ("')
                outf.write(str(theme))
                outf.write('")')
+     with open("./restartsettings.py", "a") as outf: outf.write("hidden = False")
+     with open("./logoffsettings.py", "a") as outf: outf.write("hidden = False")
+     with open("./hibernatesettings.py", "a") as outf: outf.write("hidden = False")
+     with open("shutdownsettings.py", "a") as outf: outf.write("hidden = False")
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")
