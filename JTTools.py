@@ -22,9 +22,9 @@ try:
 except(ImportError):
     system = platform.system()
     if system == "Windows":
-    	subprocess.call("./JTToolsInstaller.py", shell = True)
+        subprocess.call("./JTToolsInstaller.py", shell = True)
     else:
-    	os.system("python3 ./JTToolsInstaller.py")
+        os.system("python3 ./JTToolsInstaller.py")
     exit(None)
 print("Welcome to Lolex-Tools version 8.12exp 17:55 GMT+0.0 29/11/16")
 try:
@@ -347,7 +347,7 @@ try:
                 print (modefifteen)
                 print(modesixteen)
                 print(modeseventeen)
-                print(modeeighteen)
+                print(modeeightteen)
             else:
                 print(modeeightlinux)
                 print(modeninelinux)
@@ -361,7 +361,7 @@ try:
                 else:
                     print(exitmodelinux)
             if useros == "Windows":
-                print (modeninteen)
+                print (modenineteen)
                 print (modetwenty)
                 print (modetwentyone)
                 print(modetwentytwo)
@@ -409,7 +409,6 @@ try:
                     print (modethirteen)
                     print (modefourteen)
                     print (modefifteen)
-                    print(modesixteen)
                     print(nextpage)
                     print(backpage)
             elif page == 3:
@@ -426,10 +425,9 @@ try:
                         print(modefifteenandroid)
                     print(exitmodelinux)
                 if useros == "Windows":
-                    print (modeninteen)
+                    print (modenineteen)
                     print (modetwenty)
-                    print(modetwentytwo)
-                    print(exitmode)
+                    
                 if useros == "Windows":
                     print(nextpage)
                     print(backpage)
@@ -445,6 +443,10 @@ try:
                 else:
                     print(backpagelinux)
         modewanted = int(input("Please enter the number of the mode that you want."))
+        while modewanted > 25:
+            modewanted = modewanted - 25
+        while modewanted < 1:
+            modewanted = modewanted + 25
         if modewanted == 1:
             print("1 = Menu Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
@@ -508,7 +510,6 @@ try:
                 subprocess.call ("shutdown.exe")
         elif modewanted == 8 and useros == "Windows" :
             JTToolsMethods.flicker()
-            import theme
         elif modewanted == 9 and useros == "Windows" :
             subprocess.call("cmd.exe")
         elif modewanted == 10 and useros == "Windows" :
@@ -526,7 +527,7 @@ try:
                 os.makedirs (foldername)
                 cont = input("Success! Press any key then enter to continue...")
             except(IOError, OSError):
-                print("Failed to create folder: ",foldername)
+                print("Failed to create folder: ", foldername)
         elif (modewanted == 14 and useros == "Windows") or (modewanted == 8 and useros == "Linux"):
             foldername = input("Please input the name of the folder you wish to delete.")
             try:
@@ -611,11 +612,11 @@ try:
                 page = 0
         elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux"):
             if page == 2 and useros == "Linux":
-            	page = 0
+                page = 0
             elif page == 3 and useros == "Linux":
                 page = 1
             elif page < 0:
-            	page = page - 1
+                page = page - 1
             else:
                 if useros == "Windows":
                     page = 4
@@ -626,9 +627,6 @@ try:
             print("Exiting...")
             sys.exit()
             print("Should have exited...")
-        else:
-            print(modewanted)
-            print("Sorry! There is no such mode as the one specified. Please make a feature request on Github if you wish to see more functionality.")
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
@@ -641,7 +639,7 @@ except(ValueError):
 except(IOError):
      print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(NameError):
+except():
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):

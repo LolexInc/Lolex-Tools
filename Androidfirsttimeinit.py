@@ -1,11 +1,13 @@
-import shutil, os, time
+import shutil, os, time, platform
 init1 = time.time()
+if "arm" not in platform.platform():
+        exit(None)
 try:
 	with open ("./isnottravisci.py","a") as outf: pass
 except(IOError):
 	exit(None)
 try:
-	local =time.asctime( time.localtime(time.time()) )
+	local = time.asctime( time.localtime(time.time()) )
 	print(local,"    Attempting to remove folders...") 
 	a = time.time()
 	shutil.rmtree("./Defaults")
@@ -21,7 +23,7 @@ try:
 except(IOError, OSError):
 	pass
 try:
-	local =time.asctime( time.localtime(time.time()) )
+	local = time.asctime( time.localtime(time.time()) )
 	print(local,"    Attempting to remove files...")
 	a = time.time()
 	os.remove("./JTTools.py")
@@ -86,7 +88,7 @@ try:
 except(IOError, OSError):
 	pass
 try:
-	local =time.asctime( time.localtime(time.time()) )
+	local = time.asctime( time.localtime(time.time()) )
 	print(local, "    Copying files and folders...")
 	a = time.time()
 	shutil.copy("/sdcard/Lolex-Tools/JTTools.py","./")

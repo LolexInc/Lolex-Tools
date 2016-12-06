@@ -30,14 +30,14 @@ def flicker():
     print("7 - White/Light Gray")
     print("8 - Dark Gray")
     print("9 - Dark Neon Blue")
-    colour = (input("Please enter your first colour with color prefixed.  "),input("Please enter your second colour, with color prefixed.  "), input("Please enter your third colour, with color prefixed.  "), input("Please enter your fourth colour, with color prefixed.  "), input("Please enter your fifth colour, with color prefixed.  "))
+    colour = (input("Please enter your first colour with color prefixed.  "), input("Please enter your second colour, with color prefixed.  "), input("Please enter your third colour, with color prefixed.  "), input("Please enter your fourth colour, with color prefixed.  "), input("Please enter your fifth colour, with color prefixed.  "))
     while howlongtoflashfor != currentflashes:
         os.system (colour[0])
         os.system (colour[1])
         os.system (colour[2])
         os.system (colour[3])
         os.system (colour[4])
-        currentflashes = currentflashes+1
+        currentflashes = currentflashes + 1
     os.system(theme.theme)
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
