@@ -639,7 +639,7 @@ try:
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               if useros == "Linux" or "Android":
+               if useros == "Linux" or useros == "Android":
                    os.system("python3 ./JTTools.py")
                elif useros == "Windows":
                    os.system("python .\JTTools.py")
