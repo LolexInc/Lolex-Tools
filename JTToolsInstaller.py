@@ -609,7 +609,6 @@ try:
           outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
           outf.write("layout = 0")
-     theme = "cd ./"
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
