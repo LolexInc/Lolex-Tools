@@ -19,7 +19,8 @@ except(ImportError):
 try:
     print("Attempting to import 10 modules...")
     import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, shutdownsettings, restartsettings, hibernatesettings, logoffsettings
-    os.system(theme.theme)
+    if platform.system() == "Windows":
+        os.system(theme.theme)
 except(ImportError):
     system = platform.system()
     if system == "Windows":
@@ -278,6 +279,7 @@ try:
     useros = platform.system()
     page = 0
     layout = menusettings.layout
+    restartneeded = False
     while True:
         modeone = "1 = Settings" #all
         modetwo = "2 = Restart" #all
@@ -333,11 +335,13 @@ try:
                     print (modefour)
                 if hibernatesettings.hidden != True:
                     print(modefive)
-                print(modesix)
+                if shutdownsettings.hidden != True:
+               	    print(modesix)
             else:
                 if hibernatesettings.hidden != True:
                     print(modefourlinux)
-                print(modefivelinux)
+                if shutdownsettings.hidden != True:
+                    print(modefivelinux)
                 print(modesixlinux)
                 print(modesevenlinux)
             if useros == "Windows":
@@ -386,13 +390,15 @@ try:
                 else:
                     if hibernatesettings.hidden != True:
                         print(modefourlinux)
-                    print(modefivelinux)
+                    if shutdownsettings.hidden != True:
+                        print(modefivelinux)
                     print(nextpagelinux)
                     print(backpagelinux)
                     
             elif page == 1:
                 if useros == "Windows":
-                    print(modesix)
+                    if shutdownsettings.hidden != True:
+                        print(modesix)
                     print (modeseven)
                     print (modeeight)
                     print (modenine)
@@ -476,7 +482,7 @@ try:
                     outf.write("layout = ")
                     outf.write(str(layout))
             elif setting == 2:
-                print("1 = Disable power menu modes.")
+                print("1 = Hide power menu modes.")
                 settinga = int(input("Please input the number of the setting you wish to modify."))
                 if settinga == 1:
                     print(modetwo, "hidden = ", restartsettings.hidden)
@@ -485,46 +491,16 @@ try:
                     print(modefivelinux, "hidden = ", shutdownsettings.hidden)
                     hidestate = int(input("Please select the number of the mode."))
                     if hidestate == 2:
-                        if restartsettings.hidden == False:
-                            restartsettingshidden = True
-                        else:
-                            restartsettingshidden = False
-                        try:
-                             os.remove("./restartsettings.py")
-                             os.remove("./restartsettings.pyc")
-                        except(IOError):
-                             pass
-                        with open ("./restartsettings.py","a") as outf: 
-                            outf.write("hidden = ")
-                            outf.write(str(restartsettingshidden))
+                        JTToolsMethods.modehide("restart", restartsettings.hidden)
                         restartneeded = True
                     elif hidestate == 3:
-                        if logoffsettings.hidden == False:
-                            logoffsettingshidden = True
-                        else:
-                            logoffsettingshidden = False
-                        try:
-                            os.remove("./logoffsettings.py")
-                            os.remove("./logoffsettings.pyc")
-                        except(IOError):
-                            pass
-                        with open ("./logoffsettings.py","a") as outf:
-                            outf.write("hidden = ")
-                            outf.write(str(logoffsettingshidden))
+                        JTToolsMethods.modehide("logoff", logoffsettings.hidden)
                         restartneeded = True
                     elif hidestate == 4:
-                        if hibernatesettings.hidden == False:
-                            hibernatesettingshidden = True
-                        else:
-                            hibernatesettingshidden = False
-                        try:
-                            os.remove("./hibernatesettings.py")
-                            os.remove("./hibernatesettings.pyc")
-                        except(IOError):
-                            pass
-                        with open ("./hibernatesettings.py","a") as outf:
-                            outf.write("hidden = ")
-                            outf.write(str(hibernatesettingshidden))
+                        JTToolsMethods.modehide("hibernate", hibernatesettings.hidden)
+                        restartneeded = True
+                    elif hidestate == 5:
+                        JTToolsMethods.modehide("shutdown", shutdownsettings.hidden)
                         restartneeded = True
                     if restartneeded == True:
                         if useros == "Windows":

@@ -80,3 +80,16 @@ def compiler(name):
     shutil.copy("./__pycache__/"+name+nextone,"./")
     os.rename("./"+name+nextone,"./"+name+".pyc")
     os.remove("./"+name+".py")
+def modehide(name, state):
+    if state == False:
+        newstate = True
+    else:
+        newstate = False
+    try:
+        os.remove("./"+name+".py")
+        os.remove("./"+name+".pyc")
+    except(IOError):
+        pass
+    with open ("./"+name+"settings.py","a") as outf: 
+        outf.write("hidden = ")
+        outf.write(str(newstate))
