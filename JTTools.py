@@ -542,7 +542,7 @@ try:
                     if useros == "Windows":
                         os.system ("shutdown -s -f")
                     elif "arm" in platform.platform()==False:
-                        os.system("shutdown now")
+                        os.system("poweroff")
                     else:
                         os.system("/system/bin/reboot -p")
         elif modewanted == 7 and useros == "Windows" :
