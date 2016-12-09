@@ -492,7 +492,7 @@ try:
                     print(modethree, "hidden = ", logoffsettings.hidden)
                     print(modefourlinux, "hidden = ", hibernatesettings.hidden)
                     print(modefivelinux, "hidden = ", shutdownsettings.hidden)
-                    print(exitmode, "hidden = ", exitmodesettings.hidden)
+                    print(exitmode, "hidden = ", exitsettings.hidden)
                     hidestate = int(input("Please select the number of the mode."))
                     if hidestate == 2:
                         JTToolsMethods.modehide("restart", restartsettings.hidden)
@@ -548,10 +548,10 @@ try:
                     time.sleep (waittime * 60)
                     if useros == "Windows":
                         os.system ("shutdown -s -f")
-                    elif "arm" in platform.platform()==False:
-                        os.system("poweroff")
-                    else:
+                    elif "arm" in platform.platform():
                         os.system("/system/bin/reboot -p")
+                    else:
+                        os.system("poweroff")
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
