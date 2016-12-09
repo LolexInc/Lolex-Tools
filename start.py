@@ -23,6 +23,12 @@ try:
             os.system("python .\JTToolsInstaller.py")
         else:
             os.system("python3 ./JTToolsInstaller.py")
+    try:
+       import ver
+       if ver.version <= 8.129211346:
+           with open ("./exitsettings.py","a") as f: f.write("hidden = False")
+    except(IOError, ImportError):
+        pass
 except(ImportError):
     if platform.system() == "Windows":
         os.system("python .\JTToolsInstaller.py")

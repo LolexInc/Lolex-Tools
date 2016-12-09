@@ -18,7 +18,7 @@ except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
     print("Attempting to import 10 modules...")
-    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, shutdownsettings, restartsettings, hibernatesettings, logoffsettings
+    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, shutdownsettings, restartsettings, hibernatesettings, logoffsettings, exitsettings
     if platform.system() == "Windows":
         os.system(theme.theme)
 except(ImportError):
@@ -319,7 +319,7 @@ try:
         modetwentytwo = "22 = Start Installer"
         exitmode = "23 = Exit"
         nextpage = "24 = Next Page"
-        nextpageandroid= "17= Next Page"
+        nextpageandroid= "17 = Next Page"
         backpage = "25 = Back A Page"
         backpageandroid = "18 = Back A Page"
         nextpagelinux = "17 = Next Page"
@@ -367,13 +367,15 @@ try:
                 print(modethirteenlinux)
                 print(modefourteenlinux)
                 print(modefifteenlinux)
-                print(exitmodelinux)
+                if exitsettings.hidden != True:
+                    print(exitmodelinux)
             if useros == "Windows":
                 print (modenineteen)
                 print (modetwenty)
                 print (modetwentyone)
                 print(modetwentytwo)
-                print(exitmode)
+                if exitsettings.hidden != True:
+                    print(exitmode)
         elif layout == 1:
             if page == 0:
                 print(modeone)
@@ -446,13 +448,14 @@ try:
                     print(nextpage)
                     print(backpage)
                 else:
-                        print(nextpagelinux)
-                        print(backpagelinux)
+                    print(nextpagelinux)
+                    print(backpagelinux)
             elif page == 4:
                 if useros == "Windows":
                     print (modetwentyone)
                     print(modetwentytwo)
-                    print(exitmode)
+                    if exitsettings.hidden != True:
+                        print(exitmode)
                     print(backpage)
                 else:
                     print(backpagelinux)
@@ -489,6 +492,7 @@ try:
                     print(modethree, "hidden = ", logoffsettings.hidden)
                     print(modefourlinux, "hidden = ", hibernatesettings.hidden)
                     print(modefivelinux, "hidden = ", shutdownsettings.hidden)
+                    print(exitmode, "hidden = ", exitmodesettings.hidden)
                     hidestate = int(input("Please select the number of the mode."))
                     if hidestate == 2:
                         JTToolsMethods.modehide("restart", restartsettings.hidden)
@@ -501,6 +505,9 @@ try:
                         restartneeded = True
                     elif hidestate == 5:
                         JTToolsMethods.modehide("shutdown", shutdownsettings.hidden)
+                        restartneeded = True
+                    elif hidestate == 23:
+                        JTToolsMethods.modehide("exit", exitsettings.hidden)
                         restartneeded = True
                     if restartneeded == True:
                         if useros == "Windows":
