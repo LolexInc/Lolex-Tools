@@ -49,25 +49,33 @@ try:
             runtimeone = 1
         else:
             runtimeone = runtimeone + 1
-        if runtimeone == 1 or oneswappins == False:
-            pin = JTToolsOptions.onepinone
-            print("pinone")
-        elif runtimeone == 2:
-            pin = JTToolsOptions.onepintwo
-        elif runtimeone == 3:
-            pin = JTToolsOptions.onepinthree
-            print("pinthree")
-        elif runtimeone == 4:
-            pin = JTToolsOptions.onepinfour
-        elif runtimeone == 5:
-            pin = JTToolsOptions.onepinfive
-        else:
-            pin = False
-            print(False)
-        codeenter = input("Please enter your PIN.")
-        
-        while codeenter != pin:
-            codeenter = input("Please enter your current PIN.")
+        if JTToolsOptions.onepintotal != 0:
+            if runtimeone == 1 or oneswappins == False:
+                pin = int(JTToolsOptions.onepinone)
+                print("pinone")
+            elif runtimeone == 2:
+                pin = int(JTToolsOptions.onepintwo)
+            elif runtimeone == 3:
+                pin = int(JTToolsOptions.onepinthree)
+                print("pinthree")
+            elif runtimeone == 4:
+                pin = int(JTToolsOptions.onepinfour)
+            elif runtimeone == 5:
+                pin = int(JTToolsOptions.onepinfive)
+            else:
+                pin = False
+                print(False)
+            codeenter = int(input("Please enter your current PIN."))
+            print(pin)
+            tries = 1
+            if codeenter != pin:
+                while codeenter != pin:
+                    if tries == 5:
+                        print("You got your PIN wrong 5 times.")
+                        time.sleep(JTToolsOptions.onewait)
+                        tries = 0
+                    codeenter = int(input("Please enter your current PIN."))
+                    tries = tries + 1
         if verifonboot.oneswapwords == True:
             if JTToolsOptions.onewordtwo == False:
                 oneswapwords = False
@@ -91,52 +99,7 @@ try:
             else:
                 wordtimetwo = wordtimetwo + 1
     if (JTToolsOptions.oneusepin == True and usernameenter == JTToolsOptions.username1) or (JTToolsOptions.twousepin == True and usernameenter == JTToolsOptions.username2):
-        codeenter = int(input("Please enter your current PIN."))
-        print("looptwo")
-        tries = 1
-        if usernameenter == JTToolsOptions.username1:
-            if oneswappins == False or runtimeone == 1:
-                while codeenter != JTToolsOptions.onepinone:
-                    if tries == 5:
-                        print("Sorry! You got the code wrong five times.")
-                        time.sleep(JTToolsOptions.onewait)
-                        tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
-                    tries = tries + 1
-            else:
-                if runtimeone == 2:
-                    while codeenter != JTToolsOptions.onepintwo:
-                        if tries == 5:
-                            print("Sorry! You got the code wrong five times.")
-                            time.sleep(JTToolsOptions.onewait)
-                            tries = 0
-                        codeenter = int(input("Please enter your current PIN."))
-                        tries = tries + 1
-                elif runtimeone == 3:
-                    while codeenter != JTToolsOptions.onepinthree:
-                        if tries == 5:
-                            print("Sorry! You got the code wrong five times.")
-                            time.sleep(JTToolsOptions.onewait)
-                            tries = 0
-                        codeenter = int(input("Please enter your current PIN."))
-                        tries = tries + 1
-                elif runtimeone == 4:
-                    while codeenter != JTToolsOptions.onepinfour:
-                        if tries == 5:
-                            print("Sorry! You got the code wrong five times.")
-                            time.sleep(JTToolsOptions.onewait)
-                            tries = 0
-                        codeenter = int(input("Please enter your current PIN."))
-                        tries = tries + 1
-                elif runtimeone == 5:
-                    while codeenter != JTToolsOptions.onepinfive:
-                        if tries == 5:
-                            print("Sorry! You got the code wrong five times.")
-                            time.sleep(JTToolsOptions.onewait)
-                            tries = 0
-                        codeenter = int(input("Please enter your current PIN."))
-                        tries = tries + 1
-        elif usernameenter == JTToolsOptions.username2:
+        if usernameenter == JTToolsOptions.username2:
             if runtimetwo == 1 or JTToolsOptions.twopintwo == False:
                 while codeenter != JTToolsOptions.twopinone:
                     if tries == 5:

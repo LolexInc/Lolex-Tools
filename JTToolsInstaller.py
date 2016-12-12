@@ -87,7 +87,7 @@ try:
      else:
           useusername = True
      if howmanyunames == 0 or 1:
-          username2 = False
+          username2 = "aFalse"
           twoswappins = False
           twousepin = False
           twouseword = False
@@ -498,12 +498,11 @@ try:
                outf.write('")')
           username1 = 0
           outf.write("\nusername2 = ")
-          if username2 == False:
-               outf.write(str(username2))
-          else:
-               outf.write('("')
-               outf.write(username2)
-               outf.write('")')
+          
+
+          outf.write('("')
+          outf.write(username2)
+          outf.write('")')
           username2 = 0
           outf.write("\noneusepin = ")
           outf.write(str(oneusepin))
