@@ -1,4 +1,5 @@
 ### Lolex Tools
+###Quantified Code checker <br>[![Code Issues](https://www.quantifiedcode.com/api/v1/project/ed746cf494f24911b477070327cc0f48/badge.svg)](https://www.quantifiedcode.com/app/project/ed746cf494f24911b477070327cc0f48)
 ```
                      GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
