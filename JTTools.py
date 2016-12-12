@@ -17,10 +17,8 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
 try:
-    print("Attempting to import 10 modules...")
-    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, shutdownsettings, restartsettings, hibernatesettings, logoffsettings, exitsettings
-    if platform.system() == "Windows":
-        os.system(theme.theme)
+    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings
+    os.system(theme.theme)
 except(ImportError):
     system = platform.system()
     if system == "Windows":
@@ -28,7 +26,7 @@ except(ImportError):
     else:
         os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.12exp 16:40 GMT+0.0 6/12/16")
+print("Welcome to Lolex-Tools version 8.12exp 17:55 GMT+0.0 29/11/16")
 try:
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
@@ -47,13 +45,29 @@ try:
     elif JTToolsOptions.useusername == False:
         usernameenter = JTToolsOptions.username1
     if JTToolsOptions.username1 == usernameenter:
-        if verifonboot.oneswappins == True:
-            if JTToolsOptions.onepintwo == False:
-                oneswappins = False
-            elif((JTToolsOptions.onepinthree == False) and (runtimeone == 2) or ((JTToolsOptions.onepinfour == False) and (runtimeone == 3)) or ((JTToolsOptions.onepinfive == False) and (runtimeone == 4)) or ((JTToolsOptions.onepinfive != False) and (runtimeone == 5)) or runtimeone == 0):
-                 runtimeone = 1
-            else:
-                 runtimeone = runtimeone +1
+        if runtimeone == JTToolsOptions.onepintotal:
+            runtimeone = 1
+        else:
+            runtimeone = runtimeone + 1
+        if runtimeone == 1 or oneswappins == False:
+            pin = JTToolsOptions.onepinone
+            print("pinone")
+        elif runtimeone == 2:
+            pin = JTToolsOptions.onepintwo
+        elif runtimeone == 3:
+            pin = JTToolsOptions.onepinthree
+            print("pinthree")
+        elif runtimeone == 4:
+            pin = JTToolsOptions.onepinfour
+        elif runtimeone == 5:
+            pin = JTToolsOptions.onepinfive
+        else:
+            pin = False
+            print(False)
+        codeenter = input("Please enter your PIN.")
+        
+        while codeenter != pin:
+            codeenter = input("Please enter your current PIN.")
         if verifonboot.oneswapwords == True:
             if JTToolsOptions.onewordtwo == False:
                 oneswapwords = False
@@ -78,6 +92,7 @@ try:
                 wordtimetwo = wordtimetwo + 1
     if (JTToolsOptions.oneusepin == True and usernameenter == JTToolsOptions.username1) or (JTToolsOptions.twousepin == True and usernameenter == JTToolsOptions.username2):
         codeenter = int(input("Please enter your current PIN."))
+        print("looptwo")
         tries = 1
         if usernameenter == JTToolsOptions.username1:
             if oneswappins == False or runtimeone == 1:
@@ -279,11 +294,10 @@ try:
     useros = platform.system()
     page = 0
     layout = menusettings.layout
-    restartneeded = False
     while True:
         modeone = "1 = Settings" #all
         modetwo = "2 = Restart" #all
-        modethree = "3 = Logoff" #all
+        modethree = "3 = Logoff" #Windows
         modefour = "4 = Alternative Logoff Method" #Windows
         modefourlinux = "4 = Hibernate"  #all
         modefive = "5 = Hibernate"
@@ -319,29 +333,22 @@ try:
         modetwentytwo = "22 = Start Installer"
         exitmode = "23 = Exit"
         nextpage = "24 = Next Page"
-        nextpageandroid= "17 = Next Page"
+        nextpageandroid= "17= Next Page"
         backpage = "25 = Back A Page"
         backpageandroid = "18 = Back A Page"
         nextpagelinux = "17 = Next Page"
         backpagelinux = "18 = Back A Page"
         if layout == 0:
             print(modeone)
-            if restartsettings.hidden != True:
-                print (modetwo)
-            if logoffsettings.hidden != True:
-                print (modethree)
+            print (modetwo)
+            print (modethree)
             if useros == "Windows":
-                if logoffsettings.hidden != True:
-                    print (modefour)
-                if hibernatesettings.hidden != True:
-                    print(modefive)
-                if shutdownsettings.hidden != True:
-               	    print(modesix)
+                print (modefour)
+                print(modefive)
+                print(modesix)
             else:
-                if hibernatesettings.hidden != True:
-                    print(modefourlinux)
-                if shutdownsettings.hidden != True:
-                    print(modefivelinux)
+                print(modefourlinux)
+                print(modefivelinux)
                 print(modesixlinux)
                 print(modesevenlinux)
             if useros == "Windows":
@@ -365,42 +372,35 @@ try:
                 print(modeelevenlinux)
                 print(modetwelvelinux)
                 print(modethirteenlinux)
-                print(modefourteenlinux)
-                print(modefifteenlinux)
-                if exitsettings.hidden != True:
+                if "arm" in platform.platform():
+                    print(modefourteenandroid)
+                    print(modefifteenandroid)
+                else:
                     print(exitmodelinux)
             if useros == "Windows":
                 print (modenineteen)
                 print (modetwenty)
                 print (modetwentyone)
                 print(modetwentytwo)
-                if exitsettings.hidden != True:
-                    print(exitmode)
+                print(exitmode)
         elif layout == 1:
             if page == 0:
                 print(modeone)
-                if restartsettings.hidden != True:
-                    print (modetwo)
-                if logoffsettings.hidden != True:
-                    print (modethree)
+                print (modetwo)
+                print (modethree)
                 if useros == "Windows":
-                    if logoffsettings.hidden != True:
-                        print (modefour)
-                    if hibernatesettings.hidden != True:
-                        print (modefive)
+                    print (modefour)
+                    print (modefive)
                     print (nextpage)
                 else:
-                    if hibernatesettings.hidden != True:
-                        print(modefourlinux)
-                    if shutdownsettings.hidden != True:
-                        print(modefivelinux)
+                    print(modefourlinux)
+                    print(modefivelinux)
                     print(nextpagelinux)
                     print(backpagelinux)
                     
             elif page == 1:
                 if useros == "Windows":
-                    if shutdownsettings.hidden != True:
-                        print(modesix)
+                    print(modesix)
                     print (modeseven)
                     print (modeeight)
                     print (modenine)
@@ -448,14 +448,13 @@ try:
                     print(nextpage)
                     print(backpage)
                 else:
-                    print(nextpagelinux)
-                    print(backpagelinux)
+                        print(nextpagelinux)
+                        print(backpagelinux)
             elif page == 4:
                 if useros == "Windows":
                     print (modetwentyone)
                     print(modetwentytwo)
-                    if exitsettings.hidden != True:
-                        print(exitmode)
+                    print(exitmode)
                     print(backpage)
                 else:
                     print(backpagelinux)
@@ -465,9 +464,7 @@ try:
         while modewanted < 1:
             modewanted = modewanted + 25
         if modewanted == 1:
-            restartneeded = False
             print("1 = Menu Settings")
-            print("2 = Mode Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
             if setting == 1:
                 print(" Modiy Menu Layout")
@@ -484,37 +481,6 @@ try:
                 with open ("./menusettings.py","a") as outf:
                     outf.write("layout = ")
                     outf.write(str(layout))
-            elif setting == 2:
-                print("1 = Hide power menu modes.")
-                settinga = int(input("Please input the number of the setting you wish to modify."))
-                if settinga == 1:
-                    print(modetwo, "hidden = ", restartsettings.hidden)
-                    print(modethree, "hidden = ", logoffsettings.hidden)
-                    print(modefourlinux, "hidden = ", hibernatesettings.hidden)
-                    print(modefivelinux, "hidden = ", shutdownsettings.hidden)
-                    print(exitmode, "hidden = ", exitsettings.hidden)
-                    hidestate = int(input("Please select the number of the mode."))
-                    if hidestate == 2:
-                        JTToolsMethods.modehide("restart", restartsettings.hidden)
-                        restartneeded = True
-                    elif hidestate == 3:
-                        JTToolsMethods.modehide("logoff", logoffsettings.hidden)
-                        restartneeded = True
-                    elif hidestate == 4:
-                        JTToolsMethods.modehide("hibernate", hibernatesettings.hidden)
-                        restartneeded = True
-                    elif hidestate == 5:
-                        JTToolsMethods.modehide("shutdown", shutdownsettings.hidden)
-                        restartneeded = True
-                    elif hidestate == 23:
-                        JTToolsMethods.modehide("exit", exitsettings.hidden)
-                        restartneeded = True
-                    if restartneeded == True:
-                        if useros == "Windows":
-                            os.system("python .\start.py")
-                        else:
-                            os.system("python3 ./start.py")
-                        exit(None)
         elif modewanted == 2:
             JTToolsMethods.mode2()
         elif modewanted == 3:
@@ -548,10 +514,10 @@ try:
                     time.sleep (waittime * 60)
                     if useros == "Windows":
                         os.system ("shutdown -s -f")
-                    elif "arm" in platform.platform():
-                        os.system("/system/bin/reboot -p")
+                    elif "arm" in platform.platform()==False:
+                        os.system("shutdown now")
                     else:
-                        os.system("poweroff")
+                        os.system("/system/bin/reboot -p")
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
@@ -655,14 +621,12 @@ try:
             else:
                 os.system("uptime")
         elif modewanted == 15 and useros == "Linux":
-        	
             if "arm" in platform.platform():
                 if os.system("su -c /system/bin/dumpsys") != 0:
                     print("Cannot load as much information due to lack of root.")
                     os.system("/system/bin/dumpsys")
             else:
                 os.system("sudo lshw")
-            print("\n")
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
@@ -703,7 +667,7 @@ except():
 except(EOFError):
      print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(AttributeError):
+except():
      print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(OSError):

@@ -68,7 +68,7 @@ try:
           os.remove("./menusettings.pyc")
      except(IOError, OSError):
           pass
-     
+
      useros = platform.system()
      if useros == "Linux":
           print("This project requires Git for updating. Installing git...")
@@ -112,61 +112,99 @@ try:
                username1 = input("Your usernames didn't match. Please set your username.")
                confirm = input("Please confirm your username.")
      onepins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
-     while onepins<0 or onepins>5:
-          onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
      if onepins == 0:
-          onewait = 0
+          onepintotal = 0
+     else:
+          onepintotal = 1
+     while onepintotal < onepins + 1 and onepins != 0:
+          onepin = int(input("Please set your PIN."))
+          confirm = int(input("Please confirm your PIN."))
+          while onepin != confirm:
+               onepin = int(input("Please set your PIN so it matches."))
+               confirm = int(input("Please confirm your PIN."))
+          with open ("./JTToolsOptions.py","a") as outf:
+               if onepintotal == 1:
+                    outf.write("\nonepinone = ")
+               elif onepintotal == 2:
+                    outf.write("\nonepintwo = ")
+               elif onepintotal == 3:
+                    outf.write("\nonepinthree = ")
+               elif onepintotal == 4:
+                    outf.write("\nonepinfour = ")
+               elif onepintotal == 5:
+                    outf.write("\nonepinfive = ")
+               else:
+                    print("Error: PIN overflow.")
+               outf.write(str(onepin))
+               onepintotal = onepintotal + 1
+     with open ("./JTToolsOptions.py","a") as outf:
+          outf.write("\nonepintotal = ")
+          outf.write(str(onepintotal))
+     if onepins == 0:
+          onewait = False
+     if onepins>0:
+          oneusepin = True
+     else:
+          oneusepin = False
      if onepins>1:
           oneswappins = True
      else:
           oneswappins = False
-     if onepins == 0:
-          oneusepin = False
-     else:
-          oneusepin = True
-     if onepins>0:
-          onepinone = int(input("Please set your first PIN."))
-          confirm = int(input("Please confirm your first PIN."))
-          while onepinone != confirm:
-               onepinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
-               confirm = int(input("Please confirm your first PIN."))
-          if onepins>1:
-               onepintwo = int(input("Please set your second PIN."))
-               confirm = int(input("Please confirm your second PIN."))
-               while onepintwo != confirm or onepintwo == onepinone:
-                    onepintwo = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your second PIN."))
-                    confirm = int(input("Please confirm your second PIN."))
-               if onepins>2:
-                    onepinthree = int(input("Please set your third PIN."))
-                    confirm = int(input("Please confirm your third PIN."))
-                    while onepinthree != confirm or(onepinthree ==(onepintwo or onepinone)):
-                         onepinthree = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your third PIN."))
-                         confirm = int(input("Please confirm your third PIN."))
-                    if onepins>3:
-                         onepinfour = int(input("Please set your fourth PIN."))
-                         confirm = int(input("Please confirm your fourth PIN."))
-                         while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
-                              onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
-                              confirm = int(input("Please confirm your fourth PIN."))
-                         if onepins>4:
-                              onepinfive = int(input("Please set your fifth PIN."))
-                              confirm = int(input("Please confirm your fifth PIN."))
-                              while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
-                                   onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
-                                   confirm = int(input("Please confirm your fifth PIN."))
-     if onepins == 0:
-          onepinone = False
-          onewait = False
-     if onepins<2:
-          onepintwo = False
-     if onepins<3:
-          onepinthree = False
-     if onepins<4:
-          onepinfour = False
-     if onepins<5:
-          onepinfive = False
-     if onepins>0:
-          oneusepin = True
+##     while onepins<0 or onepins>5:
+##          onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
+##     if onepins == 0:
+##          onewait = 0
+##     if onepins>1:
+##          oneswappins = True
+##     else:
+##          oneswappins = False
+##     if onepins == 0:
+##          oneusepin = False
+##     else:
+##          oneusepin = True
+##     if onepins>0:
+##          onepinone = int(input("Please set your first PIN."))
+##          confirm = int(input("Please confirm your first PIN."))
+##          while onepinone != confirm:
+##               onepinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
+##               confirm = int(input("Please confirm your first PIN."))
+##          if onepins>1:
+##               onepintwo = int(input("Please set your second PIN."))
+##               confirm = int(input("Please confirm your second PIN."))
+##               while onepintwo != confirm or onepintwo == onepinone:
+##                    onepintwo = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your second PIN."))
+##                    confirm = int(input("Please confirm your second PIN."))
+##               if onepins>2:
+##                    onepinthree = int(input("Please set your third PIN."))
+##                    confirm = int(input("Please confirm your third PIN."))
+##                    while onepinthree != confirm or(onepinthree ==(onepintwo or onepinone)):
+##                         onepinthree = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your third PIN."))
+##                         confirm = int(input("Please confirm your third PIN."))
+##                    if onepins>3:
+##                         onepinfour = int(input("Please set your fourth PIN."))
+##                         confirm = int(input("Please confirm your fourth PIN."))
+##                         while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
+##                              onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
+##                              confirm = int(input("Please confirm your fourth PIN."))
+##                         if onepins>4:
+##                              onepinfive = int(input("Please set your fifth PIN."))
+##                              confirm = int(input("Please confirm your fifth PIN."))
+##                              while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
+##                                   onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
+##                                   confirm = int(input("Please confirm your fifth PIN."))
+##     if onepins == 0:
+##          onepinone = False
+##          onewait = False
+##     if onepins<2:
+##          onepintwo = False
+##     if onepins<3:
+##          onepinthree = False
+##     if onepins<4:
+##          onepinfour = False
+##     if onepins<5:
+##          onepinfive = False
+##     if onepins>0:
+##          oneusepin = True
      if onepins>0:
           onewait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
           while onewait<0:
@@ -447,7 +485,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("compiledon = 8.127")
+          outf.write("\ncompiledon = 8.111")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -473,21 +511,21 @@ try:
           outf.write("\ntwousepin = ")
           outf.write(str(twousepin))
           twousepin = 0
-          outf.write("\nonepinone = ")
-          outf.write(str(onepinone))
-          onepinone = 0
-          outf.write("\nonepintwo = ")
-          outf.write(str(onepintwo))
-          onepintwo = 0
-          outf.write("\nonepinthree = ")
-          outf.write(str(onepinthree))
-          onepinthree = 0
-          outf.write("\nonepinfour = ")
-          outf.write(str(onepinfour))
-          onepinfour = 0
-          outf.write("\nonepinfive = ")
-          outf.write(str(onepinfive))
-          onepinfive = 0
+##          outf.write("\nonepinone = ")
+##          outf.write(str(onepinone))
+##          onepinone = 0
+##          outf.write("\nonepintwo = ")
+##          outf.write(str(onepintwo))
+##          onepintwo = 0
+##          outf.write("\nonepinthree = ")
+##          outf.write(str(onepinthree))
+##          onepinthree = 0
+##          outf.write("\nonepinfour = ")
+##          outf.write(str(onepinfour))
+##          onepinfour = 0
+##          outf.write("\nonepinfive = ")
+##          outf.write(str(onepinfive))
+##          onepinfive = 0
           outf.write("\ntwopinone = ")
           outf.write(str(twopinone))
           twopinone = 0
@@ -548,7 +586,7 @@ try:
           if twowordone != False:
                outf.write('("')
           outf.write(str(twowordone))
-          
+
           if twowordone != False:
                outf.write('")')
           twowordone = 0
@@ -609,6 +647,7 @@ try:
           outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
           outf.write("layout = 0")
+     theme = "cd ./"
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
@@ -630,19 +669,14 @@ try:
                outf.write('theme = ("')
                outf.write(str(theme))
                outf.write('")')
-     with open("./restartsettings.py", "a") as outf: outf.write("hidden = False")
-     with open("./logoffsettings.py", "a") as outf: outf.write("hidden = False")
-     with open("./hibernatesettings.py", "a") as outf: outf.write("hidden = False")
-     with open("./shutdownsettings.py", "a") as outf: outf.write("hidden = False")
-     with open("./exitsettings.py","a") as outf: outf.write("hidden = False") 
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               if useros == "Linux" or useros == "Android":
+               if useros == "Linux":
                    os.system("python3 ./JTTools.py")
-               elif useros == "Windows":
+               else:
                    os.system("python .\JTTools.py")
           else:
                exit()
@@ -660,13 +694,13 @@ except(ValueError):
 except(IOError):
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(NameError):
+except():
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
      print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(AttributeError):
+except():
      print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(OSError):
