@@ -116,7 +116,7 @@ try:
           onepintotal = 0
      else:
           onepintotal = 1
-     while onepintotal < onepins + 1 and onepins != 0:
+     while onepintotal < onepins + 1 and onepins != 0 and done != 0:
           onepin = int(input("Please set your PIN."))
           confirm = int(input("Please confirm your PIN."))
           while onepin != confirm:
@@ -136,7 +136,10 @@ try:
                else:
                     print("Error: PIN overflow.")
                outf.write(str(onepin))
-               onepintotal = onepintotal + 1
+               if onepintotal != onepins:
+                    onepintotal = onepintotal + 1
+               else:
+                    done = 0
      with open ("./JTToolsOptions.py","a") as outf:
           outf.write("\nonepintotal = ")
           outf.write(str(onepintotal))
@@ -150,6 +153,9 @@ try:
           oneswappins = True
      else:
           oneswappins = False
+     with open ("./verifonboot.py","a") as outf:
+          outf.write("\noneswappins = ")
+          outf.write(str(oneswappins))
 ##     while onepins<0 or onepins>5:
 ##          onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
 ##     if onepins == 0:
@@ -210,59 +216,54 @@ try:
           while onewait<0:
                onewait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      onewords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
-     while onewords<0 or onewords>5:
-          onewords = int(input("We only support between 0-5 PINs currently.\nHow many passwords do you wish to use?"))
      if onewords == 0:
-          onewordwait = 0
+          onewordtotal = 0
+     else:
+          onewordtotal = 1
+     while onewordtotal < onewords + 1 and onewords != 0:
+          oneword = input("Please set your password.")
+          confirm = input("Please confirm your password.")
+          while oneword != confirm:
+               oneword = input("Please set your password so it matches.")
+               confirm = input("Please confirm your password.")
+          with open ("./JTToolsOptions.py","a") as outf:
+               if onewordtotal == 1:
+                    outf.write("\nonewordone = ")
+               elif onewordtotal == 2:
+                    outf.write("\nonewordtwo = ")
+               elif onewordtotal == 3:
+                    outf.write("\nonewordthree = ")
+               elif onewordtotal == 4:
+                    outf.write("\nonewordfour = ")
+               elif onewordtotal == 5:
+                    outf.write("\nonewordfive = ")
+               else:
+                    print("Error: password overflow.")
+               outf.write('"')
+               outf.write(str(oneword))
+               outf.write('"')
+               if onewordtotal != onewords:
+                    onewordtotal = onewordtotal + 1
+               else:
+                    onewords = 0
+     with open ("./JTToolsOptions.py","a") as outf:
+          outf.write("\nonewordtotal = ")
+          outf.write(str(onewordtotal))
+     if onewords == 0:
+          onewordwait = False
+     if onewords>0:
+          oneuseword = True
+     else:
+          oneuseword = False
      if onewords>1:
           oneswapwords = True
      else:
           oneswapwords = False
+     with open ("./verifonboot.py","a") as outf:
+          outf.write("\noneswapwords = ")
+          outf.write(str(oneswapwords))
      if onewords == 0:
-          oneuseword = False
-     else:
-          oneuseword = True
-     if onewords>0:
-          onewordone = input("Please set your first password.")
-          confirm = input("Please confirm your first password.")
-          while onewordone != confirm:
-               onewordone = input("Sorry! Your passwords didn't match! Please set your first password.")
-               confirm = input("Please confirm your first password.")
-     if onewords>1:
-          onewordtwo = input("Please set your second password.")
-          confirm = input("Please confirm your second password.")
-          while onewordtwo != confirm or onewordtwo == onewordone:
-               onewordtwo = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your second password.")
-               confirm = input("Please confirm your second password.")
-     if onewords>2:
-          onewordthree = input("Please set your third password.")
-          confirm = input("Please confirm your third password.")
-          while onewordthree != confirm or(onewordthree ==(onewordtwo or onewordone)):
-               onewordthree = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your third password.")
-               confirm = input("Please confirm your third password.")
-     if onewords>3:
-          onewordfour = input("Please set your fourth password.")
-          confirm = input("Please confirm your fourth password.")
-          while onewordfour != confirm or (onewordfour == (onewordthree or onewordtwo or onewordone)):
-               onewordfour = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fourth password.")
-               confirm = input("Please confirm your fourth password.")
-     if onewords>4:
-          onewordfive = input("Please set your fifth password.")
-          confirm = input("Please confirm your fifth password.")
-          while onewordfive != confirm or (onewordfive == (onewordfour or onewordthree or onewordtwo or onewordone)):
-               onewordfive = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fifth password.")
-               confirm = input("Please confirm your fifth password.")
-     if onewords == 0:
-          onewordone = False
           onewordwait = False
-     if onewords<2:
-          onewordtwo = False
-     if onewords<3:
-          onewordthree = False
-     if onewords<4:
-          onewordfour = False
-     if onewords<5:
-          onewordfive = False
      if onewords>0:
           oneuseword = True
      if onewords>0:
@@ -470,22 +471,16 @@ try:
      print("Applying new options...")
      shutil.copy("./Defaults/verifonboot.py","./")
      with open ("verifonboot.py","a") as outf:
-          outf.write("oneswappins = ")
-          outf.write((str(oneswappins)))
-          oneswappins = 0
-          outf.write("\ntwoswappins = ")
+          outf.write("\ntwowappins = ")
           outf.write((str(twoswappins)))
           twoswappins = 0
           outf.write("\nruntimeone = 0\nruntimetwo = 0")
-          outf.write("\noneswapwords = ")
-          outf.write((str(oneswapwords)))
-          oneswapwords = 0
           outf.write("\ntwoswapwords = ")
           outf.write((str(twoswapwords)))
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("JTToolsOptions.py","a") as outf:
-          outf.write("\ncompiledon = 8.111")
+          outf.write("\ncompiledon = 8.20")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -546,41 +541,41 @@ try:
           outf.write("\ntwouseword = ")
           outf.write(str(twouseword))
           twouseword = 0
-          outf.write("\nonewordone = ")
-          if onewordone != False:
-               outf.write('("')
-          outf.write(str(onewordone))
-          if onewordone != False:
-               outf.write('")')
-          onewordone = 0
-          outf.write("\nonewordtwo = ")
-          if onewordtwo != False:
-               outf.write('("')
-          outf.write(str(onewordtwo))
-          if onewordtwo != False:
-               outf.write('")')
-          onewordtwo = 0
-          outf.write("\nonewordthree = ")
-          if onewordthree != False:
-               outf.write('("')
-          outf.write(str(onewordthree))
-          if onewordthree != False:
-               outf.write('")')
-          onewordthree = 0
-          outf.write("\nonewordfour = ")
-          if onewordfour != False:
-               outf.write('("')
-          outf.write(str(onewordfour))
-          if onewordfour != False:
-               outf.write('")')
-          onewordfour = 0
-          outf.write("\nonewordfive = ")
-          if onewordfive != False:
-               outf.write('("')
-          outf.write(str(onewordfive))
-          if onewordfive != False:
-               outf.write('")')
-          onewordfive = 0
+##          outf.write("\nonewordone = ")
+##          if onewordone != False:
+##               outf.write('("')
+##          outf.write(str(onewordone))
+##          if onewordone != False:
+##               outf.write('")')
+##          onewordone = 0
+##          outf.write("\nonewordtwo = ")
+##          if onewordtwo != False:
+##               outf.write('("')
+##          outf.write(str(onewordtwo))
+##          if onewordtwo != False:
+##               outf.write('")')
+##          onewordtwo = 0
+##          outf.write("\nonewordthree = ")
+##          if onewordthree != False:
+##               outf.write('("')
+##          outf.write(str(onewordthree))
+##          if onewordthree != False:
+##               outf.write('")')
+##          onewordthree = 0
+##          outf.write("\nonewordfour = ")
+##          if onewordfour != False:
+##               outf.write('("')
+##          outf.write(str(onewordfour))
+##          if onewordfour != False:
+##               outf.write('")')
+##          onewordfour = 0
+##          outf.write("\nonewordfive = ")
+##          if onewordfive != False:
+##               outf.write('("')
+##          outf.write(str(onewordfive))
+##          if onewordfive != False:
+##               outf.write('")')
+##          onewordfive = 0
           outf.write("\ntwowordone = ")
           if twowordone != False:
                outf.write('("')
@@ -668,6 +663,11 @@ try:
                outf.write('theme = ("')
                outf.write(str(theme))
                outf.write('")')
+     with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
+     with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
+     with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
+     with open ("./shutdownsettings.py","a") as outf: outf.write("hidden = False")
+     with open ("./exitsettings.py","a") as outf: outf.write("hidden = False")
      try:
           start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
           print("Thank you for using Lolex-Tools Installer.")

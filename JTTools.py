@@ -16,13 +16,14 @@ try:
     import JTToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
+    exit(None)
 try:
-    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings
+    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
     os.system(theme.theme)
 except(ImportError):
     system = platform.system()
     if system == "Windows":
-        subprocess.call("./JTToolsInstaller.py", shell = True)
+        subprocess.call(".\JTToolsInstaller.py", shell = True)
     else:
         os.system("python3 ./JTToolsInstaller.py")
     exit(None)
@@ -52,12 +53,10 @@ try:
         if JTToolsOptions.onepintotal != 0:
             if runtimeone == 1 or oneswappins == False:
                 pin = int(JTToolsOptions.onepinone)
-                print("pinone")
             elif runtimeone == 2:
                 pin = int(JTToolsOptions.onepintwo)
             elif runtimeone == 3:
                 pin = int(JTToolsOptions.onepinthree)
-                print("pinthree")
             elif runtimeone == 4:
                 pin = int(JTToolsOptions.onepinfour)
             elif runtimeone == 5:
@@ -77,12 +76,31 @@ try:
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
         if verifonboot.oneswapwords == True:
-            if JTToolsOptions.onewordtwo == False:
-                oneswapwords = False
-            elif ((JTToolsOptions.onewordthree == False) and (wordtimeone == 2) or ((JTToolsOptions.onewordfour == False) and (wordtimeone == 3)) or ((JTToolsOptions.onewordfive == False) and (wordtimeone == 4)) or ((JTToolsOptions.onewordfive != False) and (wordtimeone == 5)) or wordtimeone == 0):
+            if JTToolsOptions.onewordtotal == wordtimeone:
                 wordtimeone = 1
             else:
                 wordtimeone = wordtimeone + 1
+            if wordtimeone == 1 or oneswapwords == False:
+                word = JTToolsOptions.onewordone
+            elif wordtimeone == 2:
+                word = JTToolsOptions.onewordtwo
+            elif wordtimeone == 3:
+                word = JTToolsOptions.onewordthree
+            elif wordtimeone == 4:
+                word = JTToolsOptions.onewordfour
+            elif wordtimeone == 5:
+                word = JTToolsOptions.onewordfive
+            else:
+                word = False
+            wordenter = input("Please enter your current password.")
+            tries = 1
+            while wordenter != word:
+                if tries == 5:
+                    print("You got your password wrong 5 times.")
+                    time.sleep(JTToolsOptions.onewordwait)
+                    tries = 0
+                wordenter = input("Please enter your current password.")
+                tries = tries + 1
     elif JTToolsOptions.username2 == usernameenter:
         if verifonboot.twoswappins == True:
             if JTToolsOptions.onepintwo == False:
@@ -143,49 +161,49 @@ try:
                         tries = tries + 1
     if ((oneuseword == True and usernameenter == JTToolsOptions.username1)or(twouseword == True and usernameenter == JTToolsOptions.username2)):
         wordenter = input("Please enter your current password.")
-        tries = 1
-        if usernameenter == JTToolsOptions.username1:
-            if oneswapwords == False or wordtimeone == 1:
-                while wordenter != JTToolsOptions.onewordone:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.onewordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimeone == 2:
-                while wordenter != JTToolsOptions.onewordtwo:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.onewordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimeone == 3:
-                while wordenter != JTToolsOptions.onewordthree:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.onewordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimeone == 4:
-                while wordenter != JTToolsOptions.onewordfour:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.onewordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimeone == 5:
-                while wordenter != JTToolsOptions.onewordfive:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.onewordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-        elif usernameenter == JTToolsOptions.username2:
+##        tries = 1
+##        if usernameenter == JTToolsOptions.username1:
+##            if oneswapwords == False or wordtimeone == 1:
+##                while wordenter != JTToolsOptions.onewordone:
+##                    if tries == 5:
+##                        print("Sorry! You got the password wrong five times.")
+##                        time.sleep(JTToolsOptions.onewordwait)
+##                        tries = 0
+##                    wordenter = input("Please enter your current password.")
+##                    tries = tries + 1
+##            elif wordtimeone == 2:
+##                while wordenter != JTToolsOptions.onewordtwo:
+##                    if tries == 5:
+##                        print("Sorry! You got the password wrong five times.")
+##                        time.sleep(JTToolsOptions.onewordwait)
+##                        tries = 0
+##                    wordenter = input("Please enter your current password.")
+##                    tries = tries + 1
+##            elif wordtimeone == 3:
+##                while wordenter != JTToolsOptions.onewordthree:
+##                    if tries == 5:
+##                        print("Sorry! You got the password wrong five times.")
+##                        time.sleep(JTToolsOptions.onewordwait)
+##                        tries = 0
+##                    wordenter = input("Please enter your current password.")
+##                    tries = tries + 1
+##            elif wordtimeone == 4:
+##                while wordenter != JTToolsOptions.onewordfour:
+##                    if tries == 5:
+##                        print("Sorry! You got the password wrong five times.")
+##                        time.sleep(JTToolsOptions.onewordwait)
+##                        tries = 0
+##                    wordenter = input("Please enter your current password.")
+##                    tries = tries + 1
+##            elif wordtimeone == 5:
+##                while wordenter != JTToolsOptions.onewordfive:
+##                    if tries == 5:
+##                        print("Sorry! You got the password wrong five times.")
+##                        time.sleep(JTToolsOptions.onewordwait)
+##                        tries = 0
+##                    wordenter = input("Please enter your current password.")
+##                    tries = tries + 1
+        if usernameenter == JTToolsOptions.username2:
             if twoswapwords == False or wordtimetwo == 1:
                 while wordenter != JTToolsOptions.twowordone:
                     if tries == 5:
@@ -303,15 +321,22 @@ try:
         backpagelinux = "18 = Back A Page"
         if layout == 0:
             print(modeone)
-            print (modetwo)
-            print (modethree)
+            if restartsettings.hidden != True:
+                print (modetwo)
+            if logoffsettings.hidden != True:
+                print (modethree)
             if useros == "Windows":
-                print (modefour)
-                print(modefive)
-                print(modesix)
+                if logoffsettings.hidden != True:
+                    print (modefour)
+                if hibernatesettings.hidden != True:
+                    print(modefive)
+                if shutdownsettings.hidden != True:
+               	    print(modesix)
             else:
-                print(modefourlinux)
-                print(modefivelinux)
+                if hibernatesettings.hidden != True:
+                    print(modefourlinux)
+                if shutdownsettings.hidden != True:
+                    print(modefivelinux)
                 print(modesixlinux)
                 print(modesevenlinux)
             if useros == "Windows":
@@ -335,11 +360,9 @@ try:
                 print(modeelevenlinux)
                 print(modetwelvelinux)
                 print(modethirteenlinux)
-                if "arm" in platform.platform():
-                    print(modefourteenandroid)
-                    print(modefifteenandroid)
-                else:
-                    print(exitmodelinux)
+                print(modefourteenlinux)
+                print(modefifteenlinux)
+                print(exitmodelinux)
             if useros == "Windows":
                 print (modenineteen)
                 print (modetwenty)
@@ -349,21 +372,28 @@ try:
         elif layout == 1:
             if page == 0:
                 print(modeone)
-                print (modetwo)
-                print (modethree)
+                if restartsettings.hidden != True:
+                    print (modetwo)
+                if logoffsettings.hidden != True:
+                    print (modethree)
                 if useros == "Windows":
-                    print (modefour)
-                    print (modefive)
+                    if logoffsettings.hidden != True:
+                        print (modefour)
+                    if hibernatesettings.hidden != True:
+                        print (modefive)
                     print (nextpage)
                 else:
-                    print(modefourlinux)
-                    print(modefivelinux)
+                    if hibernatesettings.hidden != True:
+                        print(modefourlinux)
+                    if shutdownsettings.hidden != True:
+                        print(modefivelinux)
                     print(nextpagelinux)
                     print(backpagelinux)
                     
             elif page == 1:
                 if useros == "Windows":
-                    print(modesix)
+                    if shutdownsettings.hidden != True:
+                        print(modesix)
                     print (modeseven)
                     print (modeeight)
                     print (modenine)
@@ -429,7 +459,7 @@ try:
         if modewanted == 1:
             print("1 = Menu Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
-            if setting == 1:
+        if setting == 1:
                 print(" Modiy Menu Layout")
                 if layout != 0:
                     print(" 0 = Default")
@@ -444,6 +474,33 @@ try:
                 with open ("./menusettings.py","a") as outf:
                     outf.write("layout = ")
                     outf.write(str(layout))
+        elif setting == 2:
+            print("1 = Hide power menu modes.")
+            settinga = int(input("Please input the number of the setting you wish to modify."))
+            if settinga == 1:
+                print(modetwo, "hidden = ", restartsettings.hidden)
+                print(modethree, "hidden = ", logoffsettings.hidden)
+                print(modefourlinux, "hidden = ", hibernatesettings.hidden)
+                print(modefivelinux, "hidden = ", shutdownsettings.hidden)
+                hidestate = int(input("Please select the number of the mode."))
+                if hidestate == 2:
+                    JTToolsMethods.modehide("restart", restartsettings.hidden)
+                    restartneeded = True
+                elif hidestate == 3:
+                    JTToolsMethods.modehide("logoff", logoffsettings.hidden)
+                    restartneeded = True
+                elif hidestate == 4:
+                    JTToolsMethods.modehide("hibernate", hibernatesettings.hidden)
+                    restartneeded = True
+                elif hidestate == 5:
+                    JTToolsMethods.modehide("shutdown", shutdownsettings.hidden)
+                    restartneeded = True
+                if restartneeded == True:
+                    if useros == "Windows":
+                        os.system("python .\start.py")
+                    else:
+                        os.system("python3 ./start.py")
+                    exit(None)
         elif modewanted == 2:
             JTToolsMethods.mode2()
         elif modewanted == 3:
