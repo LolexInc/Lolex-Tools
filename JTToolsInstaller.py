@@ -220,7 +220,8 @@ try:
           onewordtotal = 0
      else:
           onewordtotal = 1
-     while onewordtotal < onewords + 1 and onewords != 0:
+     done = 1
+     while onewordtotal < onewords + 1 and onewords != 0 and done != 0:
           oneword = input("Please set your password.")
           confirm = input("Please confirm your password.")
           while oneword != confirm:
@@ -245,7 +246,7 @@ try:
                if onewordtotal != onewords:
                     onewordtotal = onewordtotal + 1
                else:
-                    onewords = 0
+                    done = 0
      with open ("./JTToolsOptions.py","a") as outf:
           outf.write("\nonewordtotal = ")
           outf.write(str(onewordtotal))
