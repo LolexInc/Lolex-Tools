@@ -19,7 +19,6 @@ except(ImportError):
     exit(None)
 try:
     import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-    os.system(theme.theme)
 except(ImportError):
     system = platform.system()
     if system == "Windows":
@@ -29,6 +28,7 @@ except(ImportError):
     exit(None)
 print("Welcome to Lolex-Tools version 8.12exp 17:55 GMT+0.0 29/11/16")
 try:
+    os.system(theme.theme)
     oneswappins = verifonboot.oneswappins
     twoswappins = verifonboot.twoswappins
     runtimeone = verifonboot.runtimeone

@@ -116,6 +116,7 @@ try:
           onepintotal = 0
      else:
           onepintotal = 1
+     done = 1
      while onepintotal < onepins + 1 and onepins != 0 and done != 0:
           onepin = int(input("Please set your PIN."))
           confirm = int(input("Please confirm your PIN."))
@@ -153,9 +154,7 @@ try:
           oneswappins = True
      else:
           oneswappins = False
-     with open ("./verifonboot.py","a") as outf:
-          outf.write("\noneswappins = ")
-          outf.write(str(oneswappins))
+
 ##     while onepins<0 or onepins>5:
 ##          onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
 ##     if onepins == 0:
@@ -260,9 +259,7 @@ try:
           oneswapwords = True
      else:
           oneswapwords = False
-     with open ("./verifonboot.py","a") as outf:
-          outf.write("\noneswapwords = ")
-          outf.write(str(oneswapwords))
+
      if onewords == 0:
           onewordwait = False
      if onewords>0:
@@ -472,7 +469,11 @@ try:
      print("Applying new options...")
      shutil.copy("./Defaults/verifonboot.py","./")
      with open ("verifonboot.py","a") as outf:
-          outf.write("\ntwowappins = ")
+          outf.write("\noneswappins = ")
+          outf.write(str(oneswappins))
+          outf.write("\noneswapwords = ")
+          outf.write(str(oneswapwords))
+          outf.write("\ntwoswappins = ")
           outf.write((str(twoswappins)))
           twoswappins = 0
           outf.write("\nruntimeone = 0\nruntimetwo = 0")
