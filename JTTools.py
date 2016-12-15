@@ -26,7 +26,7 @@ except(ImportError):
     else:
         os.system("python3 ./JTToolsInstaller.py")
     exit(None)
-print("Welcome to Lolex-Tools version 8.12exp 17:55 GMT+0.0 29/11/16")
+print("Welcome to Lolex-Tools version 8.2exp 12:33 GMT+0.0 15/12/16")
 try:
     os.system(theme.theme)
     oneswappins = verifonboot.oneswappins
@@ -80,18 +80,19 @@ try:
                 wordtimeone = 1
             else:
                 wordtimeone = wordtimeone + 1
-            if wordtimeone == 1 or oneswapwords == False:
-                word = JTToolsOptions.onewordone
-            elif wordtimeone == 2:
-                word = JTToolsOptions.onewordtwo
-            elif wordtimeone == 3:
-                word = JTToolsOptions.onewordthree
-            elif wordtimeone == 4:
-                word = JTToolsOptions.onewordfour
-            elif wordtimeone == 5:
-                word = JTToolsOptions.onewordfive
-            else:
-                word = False
+            if JTToolsOptions.onewordtotal != 0:
+                if wordtimeone == 1 or oneswapwords == False:
+                    word = JTToolsOptions.onewordone
+                elif wordtimeone == 2:
+                    word = JTToolsOptions.onewordtwo
+                elif wordtimeone == 3:
+                    word = JTToolsOptions.onewordthree
+                elif wordtimeone == 4:
+                    word = JTToolsOptions.onewordfour
+                elif wordtimeone == 5:
+                    word = JTToolsOptions.onewordfive
+                else:
+                    word = False
             wordenter = input("Please enter your current password.")
             tries = 1
             while wordenter != word:
@@ -160,90 +161,91 @@ try:
                         codeenter = int(input("Please enter your current PIN."))
                         tries = tries + 1
     if ((oneuseword == True and usernameenter == JTToolsOptions.username1)or(twouseword == True and usernameenter == JTToolsOptions.username2)):
-        wordenter = input("Please enter your current password.")
-##        tries = 1
-##        if usernameenter == JTToolsOptions.username1:
-##            if oneswapwords == False or wordtimeone == 1:
-##                while wordenter != JTToolsOptions.onewordone:
-##                    if tries == 5:
-##                        print("Sorry! You got the password wrong five times.")
-##                        time.sleep(JTToolsOptions.onewordwait)
-##                        tries = 0
-##                    wordenter = input("Please enter your current password.")
-##                    tries = tries + 1
-##            elif wordtimeone == 2:
-##                while wordenter != JTToolsOptions.onewordtwo:
-##                    if tries == 5:
-##                        print("Sorry! You got the password wrong five times.")
-##                        time.sleep(JTToolsOptions.onewordwait)
-##                        tries = 0
-##                    wordenter = input("Please enter your current password.")
-##                    tries = tries + 1
-##            elif wordtimeone == 3:
-##                while wordenter != JTToolsOptions.onewordthree:
-##                    if tries == 5:
-##                        print("Sorry! You got the password wrong five times.")
-##                        time.sleep(JTToolsOptions.onewordwait)
-##                        tries = 0
-##                    wordenter = input("Please enter your current password.")
-##                    tries = tries + 1
-##            elif wordtimeone == 4:
-##                while wordenter != JTToolsOptions.onewordfour:
-##                    if tries == 5:
-##                        print("Sorry! You got the password wrong five times.")
-##                        time.sleep(JTToolsOptions.onewordwait)
-##                        tries = 0
-##                    wordenter = input("Please enter your current password.")
-##                    tries = tries + 1
-##            elif wordtimeone == 5:
-##                while wordenter != JTToolsOptions.onewordfive:
-##                    if tries == 5:
-##                        print("Sorry! You got the password wrong five times.")
-##                        time.sleep(JTToolsOptions.onewordwait)
-##                        tries = 0
-##                    wordenter = input("Please enter your current password.")
-##                    tries = tries + 1
         if usernameenter == JTToolsOptions.username2:
-            if twoswapwords == False or wordtimetwo == 1:
-                while wordenter != JTToolsOptions.twowordone:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.twowordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimetwo == 2:
-                while wordenter != JTToolsOptions.twowordtwo:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.twowordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimetwo == 3:
-                while wordenter != JTToolsOptions.twowordthree:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.twowordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimetwo == 4:
-                while wordenter != JTToolsOptions.twowordfour:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.twowordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
-            elif wordtimetwo == 5:
-                while wordenter != JTToolsOptions.twowordfive:
-                    if tries == 5:
-                        print("Sorry! You got the password wrong five times.")
-                        time.sleep(JTToolsOptions.twowordwait)
-                        tries = 0
-                    wordenter = input("Please enter your current password.")
-                    tries = tries + 1
+            wordenter = input("Please enter your current password.")
+    ##        tries = 1
+    ##        if usernameenter == JTToolsOptions.username1:
+    ##            if oneswapwords == False or wordtimeone == 1:
+    ##                while wordenter != JTToolsOptions.onewordone:
+    ##                    if tries == 5:
+    ##                        print("Sorry! You got the password wrong five times.")
+    ##                        time.sleep(JTToolsOptions.onewordwait)
+    ##                        tries = 0
+    ##                    wordenter = input("Please enter your current password.")
+    ##                    tries = tries + 1
+    ##            elif wordtimeone == 2:
+    ##                while wordenter != JTToolsOptions.onewordtwo:
+    ##                    if tries == 5:
+    ##                        print("Sorry! You got the password wrong five times.")
+    ##                        time.sleep(JTToolsOptions.onewordwait)
+    ##                        tries = 0
+    ##                    wordenter = input("Please enter your current password.")
+    ##                    tries = tries + 1
+    ##            elif wordtimeone == 3:
+    ##                while wordenter != JTToolsOptions.onewordthree:
+    ##                    if tries == 5:
+    ##                        print("Sorry! You got the password wrong five times.")
+    ##                        time.sleep(JTToolsOptions.onewordwait)
+    ##                        tries = 0
+    ##                    wordenter = input("Please enter your current password.")
+    ##                    tries = tries + 1
+    ##            elif wordtimeone == 4:
+    ##                while wordenter != JTToolsOptions.onewordfour:
+    ##                    if tries == 5:
+    ##                        print("Sorry! You got the password wrong five times.")
+    ##                        time.sleep(JTToolsOptions.onewordwait)
+    ##                        tries = 0
+    ##                    wordenter = input("Please enter your current password.")
+    ##                    tries = tries + 1
+    ##            elif wordtimeone == 5:
+    ##                while wordenter != JTToolsOptions.onewordfive:
+    ##                    if tries == 5:
+    ##                        print("Sorry! You got the password wrong five times.")
+    ##                        time.sleep(JTToolsOptions.onewordwait)
+    ##                        tries = 0
+    ##                    wordenter = input("Please enter your current password.")
+    ##                    tries = tries + 1
+            if usernameenter == JTToolsOptions.username2:
+                if twoswapwords == False or wordtimetwo == 1:
+                    while wordenter != JTToolsOptions.twowordone:
+                        if tries == 5:
+                            print("Sorry! You got the password wrong five times.")
+                            time.sleep(JTToolsOptions.twowordwait)
+                            tries = 0
+                        wordenter = input("Please enter your current password.")
+                        tries = tries + 1
+                elif wordtimetwo == 2:
+                    while wordenter != JTToolsOptions.twowordtwo:
+                        if tries == 5:
+                            print("Sorry! You got the password wrong five times.")
+                            time.sleep(JTToolsOptions.twowordwait)
+                            tries = 0
+                        wordenter = input("Please enter your current password.")
+                        tries = tries + 1
+                elif wordtimetwo == 3:
+                    while wordenter != JTToolsOptions.twowordthree:
+                        if tries == 5:
+                            print("Sorry! You got the password wrong five times.")
+                            time.sleep(JTToolsOptions.twowordwait)
+                            tries = 0
+                        wordenter = input("Please enter your current password.")
+                        tries = tries + 1
+                elif wordtimetwo == 4:
+                    while wordenter != JTToolsOptions.twowordfour:
+                        if tries == 5:
+                            print("Sorry! You got the password wrong five times.")
+                            time.sleep(JTToolsOptions.twowordwait)
+                            tries = 0
+                        wordenter = input("Please enter your current password.")
+                        tries = tries + 1
+                elif wordtimetwo == 5:
+                    while wordenter != JTToolsOptions.twowordfive:
+                        if tries == 5:
+                            print("Sorry! You got the password wrong five times.")
+                            time.sleep(JTToolsOptions.twowordwait)
+                            tries = 0
+                        wordenter = input("Please enter your current password.")
+                        tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
         try:
             os.remove("./verifonboot.py")
