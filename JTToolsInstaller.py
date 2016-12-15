@@ -276,115 +276,152 @@ try:
                username2 = input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")
                confirm = input("Please confirm your username.")
           twopins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
-          while twopins<0 or twopins>5:
-               twopins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
+          if twopins == 0:
+               twopintotal = 0
+          else:
+               twopintotal = 1
+          done = 1
+          while twopintotal < twopins + 1 and twopins != 0 and done != 0:
+               twopin = int(input("Please set your PIN."))
+               confirm = int(input("Please confirm your PIN."))
+               while twopin != confirm:
+                    twopin = int(input("Please set your PIN so it matches."))
+                    confirm = int(input("Please confirm your PIN."))
+               with open ("./JTToolsOptions.py","a") as outf:
+                    if twopintotal == 1:
+                         outf.write("\ntwopinone = ")
+                    elif twopintotal == 2:
+                         outf.write("\ntwopintwo = ")
+                    elif twopintotal == 3:
+                         outf.write("\ntwopinthree = ")
+                    elif twopintotal == 4:
+                         outf.write("\ntwopinfour = ")
+                    elif twopintotal == 5:
+                         outf.write("\ntwopinfive = ")
+                    else:
+                         print("Error: PIN overflow.")
+                    outf.write(str(twopin))
+                    if twopintotal != twopins:
+                         twopintotal = twopintotal + 1
+                    else:
+                         done = 0
+          with open ("./JTToolsOptions.py","a") as outf:
+               outf.write("\ntwopintotal = ")
+               outf.write(str(twopintotal))
+          if twopins == 0:
+               twowait = False
+          if onepins>0:
+               twousepin = True
+          else:
+               twousepin = False
           if twopins>1:
                twoswappins = True
           else:
                twoswappins = False
-          if twopins == 0:
-               twousepin = False
-          else:
-               twousepin = True
-          if twopins>0:
-               twopinone = int(input("Please set your first PIN."))
-               confirm = int(input("Please confirm your first PIN."))
-               while twopinone != confirm:
-                    twopinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
-                    confirm = int(input("Please confirm your first PIN."))
-               if twopins>1:
-                    twopintwo = int(input("Please set your second PIN."))
-                    confirm = int(input("Please confirm your second PIN."))
-                    while twopintwo != confirm or twopintwo == twopinone:
-                         twopintwo = int(input("Sorry! Your PINs didn't match! Please set your second PIN."))
-                         confirm = int(input("Please confirm your second PIN."))
-                    if twopins>2:
-                         twopinthree = int(input("Please set your third PIN."))
-                         confirm = int(input("Please confirm your third PIN."))
-                         while twopinthree != confirm or (twopinthree ==(twopintwo or twopinone)):
-                              twopinthree = int(input("Sorry! Your PINs didn't match! Please set your third PIN."))
-                              confirm = int(input("Please confirm your third PIN."))
-                         if twopins>3:
-                              twopinfour = int(input("Please set your fourth PIN."))
-                              confirm = int(input("Please confirm your fourth PIN."))
-                              while twopinfour != confirm or (twopinfour == (twopinthree or twopintwo or twopinone)):
-                                   twopinfour = int(input("Sorry! Your PINs didn't match! Please set your fourth PIN."))
-                                   confirm = int(input("Please confirm your fourth PIN."))
-                              if twopins>4:
-                                   twopinfive = int(input("Please set your fifth PIN."))
-                                   confirm = int(input("Please confirm your fifth PIN."))
-                                   while twopinfive != confirm or (twopinfive == (twopinfour or twopinthree or twopintwo or twopinone)):
-                                        twopinfive = int(input("Sorry! Your PINs didn't match! Please set your fifth PIN."))
-                                        confirm = int(input("Please confirm your fifth PIN."))
-          if twopins == 0:
-               twopinone = False
-               twowait = False
-          if twopins<2:
-               twopintwo = False
-          if twopins<3:
-               twopinthree = False
-          if twopins<4:
-               twopinfour = False
-          if twopins<5:
-               twopinfive = False
-          if twopins>0:
-               twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
+##          twopins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
+##          while twopins<0 or twopins>5:
+##               twopins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
+##          if twopins>1:
+##               twoswappins = True
+##          else:
+##               twoswappins = False
+##          if twopins == 0:
+##               twousepin = False
+##          else:
+##               twousepin = True
+##          if twopins>0:
+##               twopinone = int(input("Please set your first PIN."))
+##               confirm = int(input("Please confirm your first PIN."))
+##               while twopinone != confirm:
+##                    twopinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
+##                    confirm = int(input("Please confirm your first PIN."))
+##               if twopins>1:
+##                    twopintwo = int(input("Please set your second PIN."))
+##                    confirm = int(input("Please confirm your second PIN."))
+##                    while twopintwo != confirm or twopintwo == twopinone:
+##                         twopintwo = int(input("Sorry! Your PINs didn't match! Please set your second PIN."))
+##                         confirm = int(input("Please confirm your second PIN."))
+##                    if twopins>2:
+##                         twopinthree = int(input("Please set your third PIN."))
+##                         confirm = int(input("Please confirm your third PIN."))
+##                         while twopinthree != confirm or (twopinthree ==(twopintwo or twopinone)):
+##                              twopinthree = int(input("Sorry! Your PINs didn't match! Please set your third PIN."))
+##                              confirm = int(input("Please confirm your third PIN."))
+##                         if twopins>3:
+##                              twopinfour = int(input("Please set your fourth PIN."))
+##                              confirm = int(input("Please confirm your fourth PIN."))
+##                              while twopinfour != confirm or (twopinfour == (twopinthree or twopintwo or twopinone)):
+##                                   twopinfour = int(input("Sorry! Your PINs didn't match! Please set your fourth PIN."))
+##                                   confirm = int(input("Please confirm your fourth PIN."))
+##                              if twopins>4:
+##                                   twopinfive = int(input("Please set your fifth PIN."))
+##                                   confirm = int(input("Please confirm your fifth PIN."))
+##                                   while twopinfive != confirm or (twopinfive == (twopinfour or twopinthree or twopintwo or twopinone)):
+##                                        twopinfive = int(input("Sorry! Your PINs didn't match! Please set your fifth PIN."))
+##                                        confirm = int(input("Please confirm your fifth PIN."))
+##          if twopins == 0:
+##               twopinone = False
+##               twowait = False
+##          if twopins<2:
+##               twopintwo = False
+##          if twopins<3:
+##               twopinthree = False
+##          if twopins<4:
+##               twopinfour = False
+##          if twopins<5:
+##               twopinfive = False
+##          if twopins>0:
+          twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
           while twowait<0:
                twowait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
           twowords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
-          while twowords<0 or twowords>5:
-               twowords = int(input("We only support between 0-5 PINs currently.\nHow many passwords do you wish to use?"))
           if twowords == 0:
-               twowordwait = 0
+               twowordtotal = 0
+          else:
+               twowordtotal = 1
+          done = 1
+          while twowordtotal < twowords + 1 and twowords != 0 and done != 0:
+               twoword = input("Please set your password.")
+               confirm = input("Please confirm your password.")
+               while twoword != confirm:
+                    twoword = input("Please set your password so it matches.")
+                    confirm = input("Please confirm your password.")
+               with open ("./JTToolsOptions.py","a") as outf:
+                    if twowordtotal == 1:
+                         outf.write("\ntwowordone = ")
+                    elif twowordtotal == 2:
+                         outf.write("\ntwowordtwo = ")
+                    elif twowordtotal == 3:
+                         outf.write("\ntwowordthree = ")
+                    elif twowordtotal == 4:
+                         outf.write("\ntwowordfour = ")
+                    elif onewordtotal == 5:
+                         outf.write("\ntwowordfive = ")
+                    else:
+                         print("Error: password overflow.")
+                    outf.write('"')
+                    outf.write(str(twoword))
+                    outf.write('"')
+                    if twowordtotal != twowords:
+                         twowordtotal = twowordtotal + 1
+                    else:
+                         done = 0
+          with open ("./JTToolsOptions.py","a") as outf:
+               outf.write("\ntwowordtotal = ")
+               outf.write(str(twowordtotal))
+          if twowords == 0:
+               twowordwait = False
+          if twowords>0:
+               twouseword = True
+          else:
+               twouseword = False
           if twowords>1:
                twoswapwords = True
           else:
                twoswapwords = False
+
           if twowords == 0:
-               twouseword = False
-          else:
-               twouseword = True
-          if twowords>0:
-               twowordone = input("Please set your first password.")
-               confirm = input("Please confirm your first password.")
-               while twowordone != confirm:
-                    twowordone = input("Sorry! Your passwords didn't match! Please set your first password.")
-                    confirm = input("Please confirm your first password.")
-               if twowords>1:
-                    twowordtwo = input("Please set your second password.")
-                    confirm = input("Please confirm your second password.")
-                    while twowordtwo != confirm or twowordtwo == twowordone:
-                         twowordtwo = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your second password.")
-                         confirm = input("Please confirm your second password.")
-                    if twowords>2:
-                         twowordthree = input("Please set your third password.")
-                         confirm = input("Please confirm your third password.")
-                         while twowordthree != confirm or(twowordthree ==(twowordtwo or twowordone)):
-                              twowordthree = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your third password.")
-                              confirm = input("Please confirm your third password.")
-                         if twowords>3:
-                              twowordfour = input("Please set your fourth password.")
-                              confirm = input("Please confirm your fourth password.")
-                              while twowordfour != confirm or (twowordfour == (twowordthree or twowordtwo or twowordone)):
-                                   twowordfour = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fourth password.")
-                                   confirm = input("Please confirm your fourth password.")
-                              if twowords>4:
-                                   twowordfive = input("Please set your fifth password.")
-                                   confirm = input("Please confirm your fifth password.")
-                                   while twowordfive != confirm or (twowordfive == (twowordfour or twowordthree or twowordtwo or twowordone)):
-                                        twowordfive = input("Sorry! Your passwords didn't match or they matched an earlier password! Please set your fifth password.")
-                                        confirm = input("Please confirm your fifth password.")
-          if twowords == 0:
-               twowordone = False
                twowordwait = False
-          if twowords<2:
-               twowordtwo = False
-          if twowords<3:
-               twowordthree = False
-          if twowords<4:
-               onewordfour = False
-          if twowords<5:
-               twowordfive = False
           if twowords>0:
                twouseword = True
           if twowords>0:
@@ -522,21 +559,21 @@ try:
 ##          outf.write("\nonepinfive = ")
 ##          outf.write(str(onepinfive))
 ##          onepinfive = 0
-          outf.write("\ntwopinone = ")
-          outf.write(str(twopinone))
-          twopinone = 0
-          outf.write("\ntwopintwo = ")
-          outf.write(str(twopintwo))
-          twopintwo = 0
-          outf.write("\ntwopinthree = ")
-          outf.write(str(twopinthree))
-          twopinthree = 0
-          outf.write("\ntwopinfour = ")
-          outf.write(str(twopinfour))
-          twopinfour = 0
-          outf.write("\ntwopinfive = ")
-          outf.write(str(twopinfive))
-          twopinfive = 0
+##          outf.write("\ntwopinone = ")
+##          outf.write(str(twopinone))
+##          twopinone = 0
+##          outf.write("\ntwopintwo = ")
+##          outf.write(str(twopintwo))
+##          twopintwo = 0
+##          outf.write("\ntwopinthree = ")
+##          outf.write(str(twopinthree))
+##          twopinthree = 0
+##          outf.write("\ntwopinfour = ")
+##          outf.write(str(twopinfour))
+##          twopinfour = 0
+##          outf.write("\ntwopinfive = ")
+##          outf.write(str(twopinfive))
+##          twopinfive = 0
           outf.write("\noneuseword = ")
           outf.write(str(oneuseword))
           oneuseword = 0
@@ -578,42 +615,42 @@ try:
 ##          if onewordfive != False:
 ##               outf.write('")')
 ##          onewordfive = 0
-          outf.write("\ntwowordone = ")
-          if twowordone != False:
-               outf.write('("')
-          outf.write(str(twowordone))
-
-          if twowordone != False:
-               outf.write('")')
-          twowordone = 0
-          outf.write("\ntwowordtwo = ")
-          if twowordtwo != False:
-               outf.write('("')
-          outf.write(str(twowordtwo))
-          if twowordtwo != False:
-               outf.write('")')
-          twowordtwo = 0
-          outf.write("\ntwowordthree = ")
-          if twowordthree != False:
-               outf.write('("')
-          outf.write(str(twowordthree))
-          if twowordthree != False:
-               outf.write('")')
-          twowordthree = 0
-          outf.write("\ntwowordfour = ")
-          if twowordfour != False:
-               outf.write('("')
-          outf.write(str(twowordfour))
-          if twowordfour != False:
-               outf.write('")')
-          twowordfour = 0
-          outf.write("\ntwowordfive = ")
-          if twowordfive != False:
-               outf.write('("')
-          outf.write(str(twowordfive))
-          if twowordfive != False:
-               outf.write('")')
-          twowordfive = 0
+##          outf.write("\ntwowordone = ")
+##          if twowordone != False:
+##               outf.write('("')
+##          outf.write(str(twowordone))
+##
+##          if twowordone != False:
+##               outf.write('")')
+##          twowordone = 0
+##          outf.write("\ntwowordtwo = ")
+##          if twowordtwo != False:
+##               outf.write('("')
+##          outf.write(str(twowordtwo))
+##          if twowordtwo != False:
+##               outf.write('")')
+##          twowordtwo = 0
+##          outf.write("\ntwowordthree = ")
+##          if twowordthree != False:
+##               outf.write('("')
+##          outf.write(str(twowordthree))
+##          if twowordthree != False:
+##               outf.write('")')
+##          twowordthree = 0
+##          outf.write("\ntwowordfour = ")
+##          if twowordfour != False:
+##               outf.write('("')
+##          outf.write(str(twowordfour))
+##          if twowordfour != False:
+##               outf.write('")')
+##          twowordfour = 0
+##          outf.write("\ntwowordfive = ")
+##          if twowordfive != False:
+##               outf.write('("')
+##          outf.write(str(twowordfive))
+##          if twowordfive != False:
+##               outf.write('")')
+##          twowordfive = 0
           outf.write("\nonewordwait = ")
           outf.write(str(onewordwait))
           onewordwait = "None"
