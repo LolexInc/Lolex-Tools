@@ -27,6 +27,8 @@ except(ImportError):
     else:
         os.system("python3 ./JTToolsInstaller.py")
     exit(None)
+if system == "Windows":
+    os.system(theme.theme)
 print("Welcome to Lolex-Tools version 8.2exp 12:33 GMT+0.0 15/12/16")
 try:
     os.system(theme.theme)
