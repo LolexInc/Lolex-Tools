@@ -1,5 +1,5 @@
 #! python3
-import sys, time, subprocess, os, shutil, py_compile, platform, JTToolsMethods
+import sys, time, subprocess, os, shutil, py_compile, platform, LolexToolsMethods
 print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile")
 try:
      import isnottravisci
@@ -9,7 +9,7 @@ except(ImportError):
     exit()
 if sys.version_info.major !=3:
      print("Only Python 3 is currently supported. Please install Python 3.")
-     os.system("python3 JTToolsInstaller.py")
+     os.system("python3 LolexToolsInstaller.py")
      exit(None)
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
@@ -21,11 +21,11 @@ print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appea
 try:
      print("Resetting...This process could take a couple of minutes.")
      try:
-        os.remove("./JTToolsOptions.pyc")
+        os.remove("./LolexToolsOptions.pyc")
      except(IOError, OSError):
           pass
      try:
-        os.remove("./JTToolsOptions.py")
+        os.remove("./LolexToolsOptions.py")
      except(IOError, OSError):
           pass
      try:
@@ -123,7 +123,7 @@ try:
           while onepin != confirm:
                onepin = int(input("Please set your PIN so it matches."))
                confirm = int(input("Please confirm your PIN."))
-          with open ("./JTToolsOptions.py","a") as outf:
+          with open ("./LolexToolsOptions.py","a") as outf:
                if onepintotal == 1:
                     outf.write("\nonepinone = ")
                elif onepintotal == 2:
@@ -141,7 +141,7 @@ try:
                     onepintotal = onepintotal + 1
                else:
                     done = 0
-     with open ("./JTToolsOptions.py","a") as outf:
+     with open ("./LolexToolsOptions.py","a") as outf:
           outf.write("\nonepintotal = ")
           outf.write(str(onepintotal))
      if onepins == 0:
@@ -226,7 +226,7 @@ try:
           while oneword != confirm:
                oneword = input("Please set your password so it matches.")
                confirm = input("Please confirm your password.")
-          with open ("./JTToolsOptions.py","a") as outf:
+          with open ("./LolexToolsOptions.py","a") as outf:
                if onewordtotal == 1:
                     outf.write("\nonewordone = ")
                elif onewordtotal == 2:
@@ -246,7 +246,7 @@ try:
                     onewordtotal = onewordtotal + 1
                else:
                     done = 0
-     with open ("./JTToolsOptions.py","a") as outf:
+     with open ("./LolexToolsOptions.py","a") as outf:
           outf.write("\nonewordtotal = ")
           outf.write(str(onewordtotal))
      if onewords == 0:
@@ -287,7 +287,7 @@ try:
                while twopin != confirm:
                     twopin = int(input("Please set your PIN so it matches."))
                     confirm = int(input("Please confirm your PIN."))
-               with open ("./JTToolsOptions.py","a") as outf:
+               with open ("./LolexToolsOptions.py","a") as outf:
                     if twopintotal == 1:
                          outf.write("\ntwopinone = ")
                     elif twopintotal == 2:
@@ -305,7 +305,7 @@ try:
                          twopintotal = twopintotal + 1
                     else:
                          done = 0
-          with open ("./JTToolsOptions.py","a") as outf:
+          with open ("./LolexToolsOptions.py","a") as outf:
                outf.write("\ntwopintotal = ")
                outf.write(str(twopintotal))
           if twopins == 0:
@@ -386,7 +386,7 @@ try:
                while twoword != confirm:
                     twoword = input("Please set your password so it matches.")
                     confirm = input("Please confirm your password.")
-               with open ("./JTToolsOptions.py","a") as outf:
+               with open ("./LolexToolsOptions.py","a") as outf:
                     if twowordtotal == 1:
                          outf.write("\ntwowordone = ")
                     elif twowordtotal == 2:
@@ -406,7 +406,7 @@ try:
                          twowordtotal = twowordtotal + 1
                     else:
                          done = 0
-          with open ("./JTToolsOptions.py","a") as outf:
+          with open ("./LolexToolsOptions.py","a") as outf:
                outf.write("\ntwowordtotal = ")
                outf.write(str(twowordtotal))
           if twowords == 0:
@@ -518,7 +518,7 @@ try:
           outf.write((str(twoswapwords)))
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
-     with open ("JTToolsOptions.py","a") as outf:
+     with open ("LolexToolsOptions.py","a") as outf:
           outf.write("\ncompiledon = 8.20")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
@@ -685,13 +685,13 @@ try:
      if compiler == 0 or False:
           pass
      elif compiler == 1 or compiler == True:
-         JTToolsMethods.compiler("verifonboot")
-         JTToolsMethods.compiler("JTToolsOptions")
-         JTToolsMethods.compiler("runningsys")
-         JTToolsMethods.compiler("theme")
+         LolexToolsMethods.compiler("verifonboot")
+         LolexToolsMethods.compiler("LolexToolsOptions")
+         LolexToolsMethods.compiler("runningsys")
+         LolexToolsMethods.compiler("theme")
      if compileplugins == 1 or compileplugins == True:
-          JTToolsMethods.compiler("startplugins")
-     JTToolsMethods = False
+          LolexToolsMethods.compiler("startplugins")
+     LolexToolsMethods = False
      try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
@@ -714,11 +714,10 @@ try:
           if start == 1:
                print("Starting Lolex-Tools...")
                if useros == "Linux":
-                   os.system("python3 ./JTTools.py")
+                   os.system("python3 ./LolexTools.py")
                else:
-                   os.system("python .\JTTools.py")
-          else:
-               exit()
+                   os.system("LolexTools.py")
+          exit()
      except(TypeError, SyntaxError, ValueError):
           print("Failed to start.")
 except(SyntaxError):

@@ -14,18 +14,18 @@ if system == "Windows":
         time.sleep(3)
 
 try:
-    import JTToolsMethods
+    import LolexToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
     exit(None)
 try:
-    import verifonboot, JTToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+    import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
     system = platform.system()
     if system == "Windows":
-        subprocess.call(".\JTToolsInstaller.py", shell = True)
+        subprocess.call(".\LolexToolsInstaller.py", shell = True)
     else:
-        os.system("python3 ./JTToolsInstaller.py")
+        os.system("python3 ./LolexToolsInstaller.py")
     exit(None)
 if system == "Windows":
     os.system(theme.theme)
@@ -40,34 +40,34 @@ try:
     twoswapwords = verifonboot.twoswapwords
     wordtimeone = verifonboot.wordtimeone
     wordtimetwo = verifonboot.wordtimetwo
-    oneuseword = JTToolsOptions.oneuseword
-    twouseword = JTToolsOptions.twouseword
-    if JTToolsOptions.useusername == True:
+    oneuseword = LolexToolsOptions.oneuseword
+    twouseword = LolexToolsOptions.twouseword
+    if LolexToolsOptions.useusername == True:
         usernameenter = input("Please enter your username.")
-        while usernameenter != JTToolsOptions.username1 and usernameenter != JTToolsOptions.username2:
-            print(JTToolsOptions.username1)
-            print(JTToolsOptions.username2)
-            print(usernameenter, JTToolsOptions.username1, JTToolsOptions.username2)
+        while usernameenter != LolexToolsOptions.username1 and usernameenter != LolexToolsOptions.username2:
+            print(LolexToolsOptions.username1)
+            print(LolexToolsOptions.username2)
+            print(usernameenter, LolexToolsOptions.username1, LolexToolsOptions.username2)
             usernameenter = input("Please enter a valid username.")
             
-    elif JTToolsOptions.useusername == False:
-        usernameenter = JTToolsOptions.username1
-    if JTToolsOptions.username1 == usernameenter:
-        if runtimeone == JTToolsOptions.onepintotal:
+    elif LolexToolsOptions.useusername == False:
+        usernameenter = LolexToolsOptions.username1
+    if LolexToolsOptions.username1 == usernameenter:
+        if runtimeone == LolexToolsOptions.onepintotal:
             runtimeone = 1
         else:
             runtimeone = runtimeone + 1
-        if JTToolsOptions.onepintotal != 0:
+        if LolexToolsOptions.onepintotal != 0:
             if runtimeone == 1 or oneswappins == False:
-                pin = int(JTToolsOptions.onepinone)
+                pin = int(LolexToolsOptions.onepinone)
             elif runtimeone == 2:
-                pin = int(JTToolsOptions.onepintwo)
+                pin = int(LolexToolsOptions.onepintwo)
             elif runtimeone == 3:
-                pin = int(JTToolsOptions.onepinthree)
+                pin = int(LolexToolsOptions.onepinthree)
             elif runtimeone == 4:
-                pin = int(JTToolsOptions.onepinfour)
+                pin = int(LolexToolsOptions.onepinfour)
             elif runtimeone == 5:
-                pin = int(JTToolsOptions.onepinfive)
+                pin = int(LolexToolsOptions.onepinfive)
             else:
                 pin = False
                 print(False)
@@ -78,26 +78,26 @@ try:
                 while codeenter != pin:
                     if tries == 5:
                         print("You got your PIN wrong 5 times.")
-                        time.sleep(JTToolsOptions.onewait)
+                        time.sleep(LolexToolsOptions.onewait)
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
         if verifonboot.oneswapwords == True:
-            if JTToolsOptions.onewordtotal == wordtimeone:
+            if LolexToolsOptions.onewordtotal == wordtimeone:
                 wordtimeone = 1
             else:
                 wordtimeone = wordtimeone + 1
-            if JTToolsOptions.onewordtotal != 0:
+            if LolexToolsOptions.onewordtotal != 0:
                 if wordtimeone == 1 or oneswapwords == False:
-                    word = JTToolsOptions.onewordone
+                    word = LolexToolsOptions.onewordone
                 elif wordtimeone == 2:
-                    word = JTToolsOptions.onewordtwo
+                    word = LolexToolsOptions.onewordtwo
                 elif wordtimeone == 3:
-                    word = JTToolsOptions.onewordthree
+                    word = LolexToolsOptions.onewordthree
                 elif wordtimeone == 4:
-                    word = JTToolsOptions.onewordfour
+                    word = LolexToolsOptions.onewordfour
                 elif wordtimeone == 5:
-                    word = JTToolsOptions.onewordfive
+                    word = LolexToolsOptions.onewordfive
                 else:
                     word = False
             wordenter = input("Please enter your current password.")
@@ -105,26 +105,26 @@ try:
             while wordenter != word:
                 if tries == 5:
                     print("You got your password wrong 5 times.")
-                    time.sleep(JTToolsOptions.onewordwait)
+                    time.sleep(LolexToolsOptions.onewordwait)
                     tries = 0
                 wordenter = input("Please enter your current password.")
                 tries = tries + 1
-    elif JTToolsOptions.username2 == usernameenter:
-        if runtimetwo == JTToolsOptions.twopintotal:
+    elif LolexToolsOptions.username2 == usernameenter:
+        if runtimetwo == LolexToolsOptions.twopintotal:
             runtimetwo = 1
         else:
             runtimetwo = runtimetwo + 1
-        if JTToolsOptions.twopintotal != 0:
+        if LolexToolsOptions.twopintotal != 0:
             if runtimetwo == 1 or twoswappins == False:
-                pin = int(JTToolsOptions.twopinone)
+                pin = int(LolexToolsOptions.twopinone)
             elif runtimetwo == 2:
-                pin = int(JTToolsOptions.twopintwo)
+                pin = int(LolexToolsOptions.twopintwo)
             elif runtimetwo == 3:
-                pin = int(JTToolsOptions.twopinthree)
+                pin = int(LolexToolsOptions.twopinthree)
             elif runtimetwo == 4:
-                pin = int(JTToolsOptions.twopinfour)
+                pin = int(LolexToolsOptions.twopinfour)
             elif runtimetwo == 5:
-                pin = int(JTToolsOptions.twopinfive)
+                pin = int(LolexToolsOptions.twopinfive)
             else:
                 pin = False
                 print(False)
@@ -135,26 +135,26 @@ try:
                 while codeenter != pin:
                     if tries == 5:
                         print("You got your PIN wrong 5 times.")
-                        time.sleep(JTToolsOptions.twowait)
+                        time.sleep(LolexToolsOptions.twowait)
                         tries = 0
                     codeenter = int(input("Please enter your current PIN."))
                     tries = tries + 1
         if verifonboot.twoswapwords == True:
-            if JTToolsOptions.twowordtotal == wordtimetwo:
+            if LolexToolsOptions.twowordtotal == wordtimetwo:
                 wordtimetwo = 1
             else:
                 wordtimetwo = wordtimetwo + 1
-            if JTToolsOptions.twowordtotal != 0:
+            if LolexToolsOptions.twowordtotal != 0:
                 if wordtimetwo == 1 or twoswapwords == False:
-                    word = JTToolsOptions.twowordone
+                    word = LolexToolsOptions.twowordone
                 elif wordtimetwo == 2:
-                    word = JTToolsOptions.twowordtwo
+                    word = LolexToolsOptions.twowordtwo
                 elif wordtimetwo == 3:
-                    word = JTToolsOptions.twowordthree
+                    word = LolexToolsOptions.twowordthree
                 elif wordtimetwo == 4:
-                    word = JTToolsOptions.twowordfour
+                    word = LolexToolsOptions.twowordfour
                 elif wordtimetwo == 5:
-                    word = JTToolsOptions.twowordfive
+                    word = LolexToolsOptions.twowordfive
                 else:
                     word = False
             wordenter = input("Please enter your current password.")
@@ -162,134 +162,134 @@ try:
             while wordenter != word:
                 if tries == 5:
                     print("You got your password wrong 5 times.")
-                    time.sleep(JTToolsOptions.twowordwait)
+                    time.sleep(LolexToolsOptions.twowordwait)
                     tries = 0
                 wordenter = input("Please enter your current password.")
                 tries = tries + 1
-##            if runtimetwo == 1 or JTToolsOptions.twopintwo == False:
-##                while codeenter != JTToolsOptions.twopinone:
+##            if runtimetwo == 1 or LolexToolsOptions.twopintwo == False:
+##                while codeenter != LolexToolsOptions.twopinone:
 ##                    if tries == 5:
 ##                        print("Sorry! You got the code wrong five times.")
-##                        time.sleep(JTToolsOptions.twowait)
+##                        time.sleep(LolexToolsOptions.twowait)
 ##                        tries = 0
 ##                    codeenter = int(input("Please enter your current PIN."))
 ##                    tries = tries + 1
 ##            else:
 ##                if runtimetwo == 2:
-##                    while codeenter != JTToolsOptions.twopintwo:
+##                    while codeenter != LolexToolsOptions.twopintwo:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(JTToolsOptions.twowait)
+##                            time.sleep(LolexToolsOptions.twowait)
 ##                            tries = 0
 ##                        codeenter = int(input("Please enter your current PIN."))
 ##                        tries = tries + 1
 ##                elif runtimetwo == 3:
-##                    while codeenter != JTToolsOptions.twopinthree:
+##                    while codeenter != LolexToolsOptions.twopinthree:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(JTToolsOptions.twowait)
+##                            time.sleep(LolexToolsOptions.twowait)
 ##                            tries = 0
 ##                        codeenter = int(input("Please enter your current PIN."))
 ##                        tries = tries + 1
 ##                elif runtimetwo == 4:
-##                    while codeenter != JTToolsOptions.twopinfour:
+##                    while codeenter != LolexToolsOptions.twopinfour:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(JTToolsOptions.twowait)
+##                            time.sleep(LolexToolsOptions.twowait)
 ##                            tries = 0
 ##                        codeenter = int(input("Please enter your current PIN."))
 ##                        tries = tries + 1
 ##                elif runtimetwo == 5:
-##                    while codeenter != JTToolsOptions.twopinfive:
+##                    while codeenter != LolexToolsOptions.twopinfive:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(JTToolsOptions.twowait)
+##                            time.sleep(LolexToolsOptions.twowait)
 ##                            tries = 0
 ##                        codeenter = int(input("Please enter your current PIN."))
 ##                        tries = tries + 1
-##    if ((oneuseword == True and usernameenter == JTToolsOptions.username1)or(twouseword == True and usernameenter == JTToolsOptions.username2)):
-##        if usernameenter == JTToolsOptions.username2:
+##    if ((oneuseword == True and usernameenter == LolexToolsOptions.username1)or(twouseword == True and usernameenter == LolexToolsOptions.username2)):
+##        if usernameenter == LolexToolsOptions.username2:
 ##            wordenter = input("Please enter your current password.")
 ##    ##        tries = 1
-##    ##        if usernameenter == JTToolsOptions.username1:
+##    ##        if usernameenter == LolexToolsOptions.username1:
 ##    ##            if oneswapwords == False or wordtimeone == 1:
-##    ##                while wordenter != JTToolsOptions.onewordone:
+##    ##                while wordenter != LolexToolsOptions.onewordone:
 ##    ##                    if tries == 5:
 ##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(JTToolsOptions.onewordwait)
+##    ##                        time.sleep(LolexToolsOptions.onewordwait)
 ##    ##                        tries = 0
 ##    ##                    wordenter = input("Please enter your current password.")
 ##    ##                    tries = tries + 1
 ##    ##            elif wordtimeone == 2:
-##    ##                while wordenter != JTToolsOptions.onewordtwo:
+##    ##                while wordenter != LolexToolsOptions.onewordtwo:
 ##    ##                    if tries == 5:
 ##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(JTToolsOptions.onewordwait)
+##    ##                        time.sleep(LolexToolsOptions.onewordwait)
 ##    ##                        tries = 0
 ##    ##                    wordenter = input("Please enter your current password.")
 ##    ##                    tries = tries + 1
 ##    ##            elif wordtimeone == 3:
-##    ##                while wordenter != JTToolsOptions.onewordthree:
+##    ##                while wordenter != LolexToolsOptions.onewordthree:
 ##    ##                    if tries == 5:
 ##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(JTToolsOptions.onewordwait)
+##    ##                        time.sleep(LolexToolsOptions.onewordwait)
 ##    ##                        tries = 0
 ##    ##                    wordenter = input("Please enter your current password.")
 ##    ##                    tries = tries + 1
 ##    ##            elif wordtimeone == 4:
-##    ##                while wordenter != JTToolsOptions.onewordfour:
+##    ##                while wordenter != LolexToolsOptions.onewordfour:
 ##    ##                    if tries == 5:
 ##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(JTToolsOptions.onewordwait)
+##    ##                        time.sleep(LolexToolsOptions.onewordwait)
 ##    ##                        tries = 0
 ##    ##                    wordenter = input("Please enter your current password.")
 ##    ##                    tries = tries + 1
 ##    ##            elif wordtimeone == 5:
-##    ##                while wordenter != JTToolsOptions.onewordfive:
+##    ##                while wordenter != LolexToolsOptions.onewordfive:
 ##    ##                    if tries == 5:
 ##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(JTToolsOptions.onewordwait)
+##    ##                        time.sleep(LolexToolsOptions.onewordwait)
 ##    ##                        tries = 0
 ##    ##                    wordenter = input("Please enter your current password.")
 ##    ##                    tries = tries + 1
-##            if usernameenter == JTToolsOptions.username2:
+##            if usernameenter == LolexToolsOptions.username2:
 ##                if twoswapwords == False or wordtimetwo == 1:
-##                    while wordenter != JTToolsOptions.twowordone:
+##                    while wordenter != LolexToolsOptions.twowordone:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(JTToolsOptions.twowordwait)
+##                            time.sleep(LolexToolsOptions.twowordwait)
 ##                            tries = 0
 ##                        wordenter = input("Please enter your current password.")
 ##                        tries = tries + 1
 ##                elif wordtimetwo == 2:
-##                    while wordenter != JTToolsOptions.twowordtwo:
+##                    while wordenter != LolexToolsOptions.twowordtwo:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(JTToolsOptions.twowordwait)
+##                            time.sleep(LolexToolsOptions.twowordwait)
 ##                            tries = 0
 ##                        wordenter = input("Please enter your current password.")
 ##                        tries = tries + 1
 ##                elif wordtimetwo == 3:
-##                    while wordenter != JTToolsOptions.twowordthree:
+##                    while wordenter != LolexToolsOptions.twowordthree:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(JTToolsOptions.twowordwait)
+##                            time.sleep(LolexToolsOptions.twowordwait)
 ##                            tries = 0
 ##                        wordenter = input("Please enter your current password.")
 ##                        tries = tries + 1
 ##                elif wordtimetwo == 4:
-##                    while wordenter != JTToolsOptions.twowordfour:
+##                    while wordenter != LolexToolsOptions.twowordfour:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(JTToolsOptions.twowordwait)
+##                            time.sleep(LolexToolsOptions.twowordwait)
 ##                            tries = 0
 ##                        wordenter = input("Please enter your current password.")
 ##                        tries = tries + 1
 ##                elif wordtimetwo == 5:
-##                    while wordenter != JTToolsOptions.twowordfive:
+##                    while wordenter != LolexToolsOptions.twowordfive:
 ##                        if tries == 5:
 ##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(JTToolsOptions.twowordwait)
+##                            time.sleep(LolexToolsOptions.twowordwait)
 ##                            tries = 0
 ##                        wordenter = input("Please enter your current password.")
 ##                        tries = tries + 1
@@ -319,8 +319,8 @@ try:
             outf.write(str(oneswapwords))
             outf.write("\ntwoswapwords = ")
             outf.write(str(twoswapwords))
-        if JTToolsOptions.compiler == True:
-            JTToolsMethods.compiler("verifonboot")
+        if LolexToolsOptions.compiler == True:
+            LolexToolsMethods.compiler("verifonboot")
     useros = platform.system()
     page = 0
     layout = menusettings.layout
@@ -533,16 +533,16 @@ try:
                     print(modefivelinux, "hidden = ", shutdownsettings.hidden)
                     hidestate = int(input("Please select the number of the mode."))
                     if hidestate == 2:
-                        JTToolsMethods.modehide("restart", restartsettings.hidden)
+                        LolexToolsMethods.modehide("restart", restartsettings.hidden)
                         restartneeded = True
                     elif hidestate == 3:
-                        JTToolsMethods.modehide("logoff", logoffsettings.hidden)
+                        LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
                         restartneeded = True
                     elif hidestate == 4:
-                        JTToolsMethods.modehide("hibernate", hibernatesettings.hidden)
+                        LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
                         restartneeded = True
                     elif hidestate == 5:
-                        JTToolsMethods.modehide("shutdown", shutdownsettings.hidden)
+                        LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
                         restartneeded = True
                     if restartneeded == True:
                         if useros == "Windows":
@@ -551,7 +551,7 @@ try:
                             os.system("python3 ./start.py")
                         exit(None)
         elif modewanted == 2:
-            JTToolsMethods.mode2()
+            LolexToolsMethods.mode2()
         elif modewanted == 3:
             logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
@@ -594,7 +594,7 @@ try:
                 time.sleep (waittime * 60)
                 subprocess.call ("shutdown.exe")
         elif modewanted == 8 and useros == "Windows" :
-            JTToolsMethods.flicker()
+            LolexToolsMethods.flicker()
         elif modewanted == 9 and useros == "Windows" :
             subprocess.call("cmd.exe")
         elif modewanted == 10 and useros == "Windows" :
@@ -680,9 +680,9 @@ try:
             confirm = int(input("Please confirm (with a 1) to enter the installer."))
             if confirm == 1:
                 if useros == "Windows":
-                    os.system("python .\JTToolsInstaller.py")
+                    os.system("LolexToolsInstaller.py")
                 else:
-                    os.system("python3 ./JTToolsInstaller.py")
+                    os.system("python3 ./LolexToolsInstaller.py")
                 exit(None)
         elif (modewanted == 14 and useros == "Linux"):
             if "arm" in platform.platform():

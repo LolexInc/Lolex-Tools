@@ -1,5 +1,5 @@
 import os, time, py_compile, shutil, sys, platform
-print ("Module JTToolsMethods is running, using modules os and time.")
+print ("Module LolexToolsMethods is running, using modules os and time.")
 try:
 	import ver
 except(ImportError):

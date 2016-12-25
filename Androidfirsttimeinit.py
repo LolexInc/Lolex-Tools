@@ -26,23 +26,23 @@ try:
 	local = time.asctime( time.localtime(time.time()) )
 	print(local,"    Attempting to remove files...")
 	a = time.time()
-	os.remove("./JTTools.py")
+	os.remove("./LolexTools.py")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to remove JTTools.py.")
+	print("Took ",((b-a)*1000)," milliseconds to remove LolexTools.py.")
 except(IOError, OSError):
 	pass
 try:
 	a = time.time()
-	os.remove("./JTToolsInstaller.py")
+	os.remove("./LolexToolsInstaller.py")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to remove JTToolsInstaller.py")
+	print("Took ",((b-a)*1000)," milliseconds to remove LolexToolsInstaller.py")
 except(IOError, OSError):
 	pass
 try:
 	a = time.time()
-	os.remove("./JTToolsMethods.py")
+	os.remove("./LolexToolsMethods.py")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to remove JTToolsMethods.py")
+	print("Took ",((b-a)*1000)," milliseconds to remove LolexToolsMethods.py")
 except(IOError, OSError):
 	pass
 try:
@@ -91,17 +91,17 @@ try:
 	local = time.asctime( time.localtime(time.time()) )
 	print(local, "    Copying files and folders...")
 	a = time.time()
-	shutil.copy("/sdcard/Lolex-Tools/JTTools.py","./")
+	shutil.copy("/sdcard/Lolex-Tools/LolexTools.py","./")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to copy JTTools.py")
+	print("Took ",((b-a)*1000)," milliseconds to copy LolexTools.py")
 	a = time.time()
-	shutil.copy("/sdcard/Lolex-Tools/JTToolsInstaller.py","./")
+	shutil.copy("/sdcard/Lolex-Tools/LolexToolsInstaller.py","./")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to copy JTToolsInstaller.py")
+	print("Took ",((b-a)*1000)," milliseconds to copy LolexToolsInstaller.py")
 	a = time.time()
-	shutil.copy("/sdcard/Lolex-Tools/JTToolsMethods.py","./")
+	shutil.copy("/sdcard/Lolex-Tools/LolexToolsMethods.py","./")
 	b = time.time()
-	print("Took ",((b-a)*1000)," milliseconds to copy JTToolsMethods.py")
+	print("Took ",((b-a)*1000)," milliseconds to copy LolexToolsMethods.py")
 	a = time.time()
 	shutil.copy("/sdcard/Lolex-Tools/start.py","./")
 	b = time.time()
