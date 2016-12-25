@@ -1,24 +1,50 @@
 os:
  - windows
+
 language: python
+
 python:
- - "3.2" 
- - "3.3" 
- - "3.4" 
- - "3.5" 
- - "3.5-dev" 
- - "3.6-dev"
- - "nightly"
+ 
+- "3.2" 
+ 
+- "3.3" 
+ 
+- "3.4" 
+ 
+- "3.5" 
+ 
+- "3.5-dev" 
+ 
+- "3.6-dev"
+- "3.6"
+ 
+- "nightly"
+
 script: nosetests
+
 env: 
- - DJANGO_VERSION==1.10.2
- - DJANGO_VERSION==1.10.1 
- - DJANGO_VERSION==1.10
- - DJANGO_VERSION==1.9.10
- - DJANGO_VERSION==1.8.15
+ 
+- DJANGO_VERSION==1.10.4
+- DJANGO_VERSION==1.10.3
+- DJANGO_VERSION==1.10.2
+ 
+- DJANGO_VERSION==1.10.1 
+ 
+- DJANGO_VERSION==1.10
+ 
+- DJANGO_VERSION==1.9.10
+ 
+- DJANGO_VERSION==1.8.15
+
 
 install:
- - pip install -q Django=$DJANGO_VERSION 
- - python start.py
- - python JTTools.py 
- - python JTToolsInstaller.py
+ 
+- pip install -q Django=$DJANGO_VERSION 
+ 
+- python start.py
+ 
+- python LolexTools.py 
+ 
+- python LolexToolsInstaller.py
+
+- python LolexToolsMethods.py
