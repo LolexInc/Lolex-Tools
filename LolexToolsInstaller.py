@@ -1,6 +1,6 @@
 #! python3
 import sys, time, subprocess, os, shutil, py_compile, platform, LolexToolsMethods
-print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile")
+print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile, platform, LolexToolsMethods")
 try:
      import isnottravisci
 except(ImportError):

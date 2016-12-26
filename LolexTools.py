@@ -23,7 +23,7 @@ try:
 except(ImportError):
     system = platform.system()
     if system == "Windows":
-        subprocess.call(".\LolexToolsInstaller.py", shell = True)
+        subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
     else:
         os.system("python3 ./LolexToolsInstaller.py")
     exit(None)
@@ -49,7 +49,6 @@ try:
             print(LolexToolsOptions.username2)
             print(usernameenter, LolexToolsOptions.username1, LolexToolsOptions.username2)
             usernameenter = input("Please enter a valid username.")
-            
     elif LolexToolsOptions.useusername == False:
         usernameenter = LolexToolsOptions.username1
     if LolexToolsOptions.username1 == usernameenter:
@@ -166,133 +165,6 @@ try:
                     tries = 0
                 wordenter = input("Please enter your current password.")
                 tries = tries + 1
-##            if runtimetwo == 1 or LolexToolsOptions.twopintwo == False:
-##                while codeenter != LolexToolsOptions.twopinone:
-##                    if tries == 5:
-##                        print("Sorry! You got the code wrong five times.")
-##                        time.sleep(LolexToolsOptions.twowait)
-##                        tries = 0
-##                    codeenter = int(input("Please enter your current PIN."))
-##                    tries = tries + 1
-##            else:
-##                if runtimetwo == 2:
-##                    while codeenter != LolexToolsOptions.twopintwo:
-##                        if tries == 5:
-##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowait)
-##                            tries = 0
-##                        codeenter = int(input("Please enter your current PIN."))
-##                        tries = tries + 1
-##                elif runtimetwo == 3:
-##                    while codeenter != LolexToolsOptions.twopinthree:
-##                        if tries == 5:
-##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowait)
-##                            tries = 0
-##                        codeenter = int(input("Please enter your current PIN."))
-##                        tries = tries + 1
-##                elif runtimetwo == 4:
-##                    while codeenter != LolexToolsOptions.twopinfour:
-##                        if tries == 5:
-##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowait)
-##                            tries = 0
-##                        codeenter = int(input("Please enter your current PIN."))
-##                        tries = tries + 1
-##                elif runtimetwo == 5:
-##                    while codeenter != LolexToolsOptions.twopinfive:
-##                        if tries == 5:
-##                            print("Sorry! You got the code wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowait)
-##                            tries = 0
-##                        codeenter = int(input("Please enter your current PIN."))
-##                        tries = tries + 1
-##    if ((oneuseword == True and usernameenter == LolexToolsOptions.username1)or(twouseword == True and usernameenter == LolexToolsOptions.username2)):
-##        if usernameenter == LolexToolsOptions.username2:
-##            wordenter = input("Please enter your current password.")
-##    ##        tries = 1
-##    ##        if usernameenter == LolexToolsOptions.username1:
-##    ##            if oneswapwords == False or wordtimeone == 1:
-##    ##                while wordenter != LolexToolsOptions.onewordone:
-##    ##                    if tries == 5:
-##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(LolexToolsOptions.onewordwait)
-##    ##                        tries = 0
-##    ##                    wordenter = input("Please enter your current password.")
-##    ##                    tries = tries + 1
-##    ##            elif wordtimeone == 2:
-##    ##                while wordenter != LolexToolsOptions.onewordtwo:
-##    ##                    if tries == 5:
-##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(LolexToolsOptions.onewordwait)
-##    ##                        tries = 0
-##    ##                    wordenter = input("Please enter your current password.")
-##    ##                    tries = tries + 1
-##    ##            elif wordtimeone == 3:
-##    ##                while wordenter != LolexToolsOptions.onewordthree:
-##    ##                    if tries == 5:
-##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(LolexToolsOptions.onewordwait)
-##    ##                        tries = 0
-##    ##                    wordenter = input("Please enter your current password.")
-##    ##                    tries = tries + 1
-##    ##            elif wordtimeone == 4:
-##    ##                while wordenter != LolexToolsOptions.onewordfour:
-##    ##                    if tries == 5:
-##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(LolexToolsOptions.onewordwait)
-##    ##                        tries = 0
-##    ##                    wordenter = input("Please enter your current password.")
-##    ##                    tries = tries + 1
-##    ##            elif wordtimeone == 5:
-##    ##                while wordenter != LolexToolsOptions.onewordfive:
-##    ##                    if tries == 5:
-##    ##                        print("Sorry! You got the password wrong five times.")
-##    ##                        time.sleep(LolexToolsOptions.onewordwait)
-##    ##                        tries = 0
-##    ##                    wordenter = input("Please enter your current password.")
-##    ##                    tries = tries + 1
-##            if usernameenter == LolexToolsOptions.username2:
-##                if twoswapwords == False or wordtimetwo == 1:
-##                    while wordenter != LolexToolsOptions.twowordone:
-##                        if tries == 5:
-##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowordwait)
-##                            tries = 0
-##                        wordenter = input("Please enter your current password.")
-##                        tries = tries + 1
-##                elif wordtimetwo == 2:
-##                    while wordenter != LolexToolsOptions.twowordtwo:
-##                        if tries == 5:
-##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowordwait)
-##                            tries = 0
-##                        wordenter = input("Please enter your current password.")
-##                        tries = tries + 1
-##                elif wordtimetwo == 3:
-##                    while wordenter != LolexToolsOptions.twowordthree:
-##                        if tries == 5:
-##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowordwait)
-##                            tries = 0
-##                        wordenter = input("Please enter your current password.")
-##                        tries = tries + 1
-##                elif wordtimetwo == 4:
-##                    while wordenter != LolexToolsOptions.twowordfour:
-##                        if tries == 5:
-##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowordwait)
-##                            tries = 0
-##                        wordenter = input("Please enter your current password.")
-##                        tries = tries + 1
-##                elif wordtimetwo == 5:
-##                    while wordenter != LolexToolsOptions.twowordfive:
-##                        if tries == 5:
-##                            print("Sorry! You got the password wrong five times.")
-##                            time.sleep(LolexToolsOptions.twowordwait)
-##                            tries = 0
-##                        wordenter = input("Please enter your current password.")
-##                        tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
         try:
             os.remove("./verifonboot.py")
@@ -327,47 +199,47 @@ try:
     while True:
         modeone = "1 = Settings" #all
         modetwo = "2 = Restart" #all
-        modethree = "3 = Logoff" #Windows
+        modethree = "3 = Logoff" #Not Android
         modefour = "4 = Alternative Logoff Method" #Windows
         modefourlinux = "4 = Hibernate"  #all
-        modefive = "5 = Hibernate"
+        modefive = "5 = Hibernate" #Windows and halfish on Linux NOT ANDROID!
         modefivelinux = "5 = Shutdown" #all
-        modesix = "6 = Shutdown"
+        modesix = "6 = Shutdown"#all
         modesixlinux = "6 = Call A Python Shell" #all
         modesevenlinux = "7 = Create folders in the current location" #all
         modeseven = "7 = Alternative Shutdown Method" #Windows
         modeeight = "8 = Colour Flicker" #Windows
         modeeightlinux = "8 = Remove Directories" #all
-        modenine = "9 = Call CMD"
-        modeninelinux = "9 = Create files in the current location"
-        modeten = "10 = Call Documents"
-        modetenlinux = "10 = Restart This Script (debug purposes)"
-        modeeleven = "11 = Call A Python Shell"
-        modeelevenlinux = "11 = Perform Operations With Numbers"
-        modetwelve = "12 = Call Task Manager"
-        modetwelvelinux = "12 = Lock This Script"
-        modethirteen = "13 = Create folders in the current location"
-        modethirteenlinux = "13 = Start Installer"
-        modefourteen = "14 = Remove Directories"
-        modefourteenlinux = "14 = Show uptime and average load"
-        modefifteenlinux = "15 = Dump system information into terminal"
-        exitmodelinux = "16 = Exit"
-        exitmodeandroid = "18 = Exit"
-        modefifteen = "15 = Create files in the current location"
-        modesixteen = "16 = Restart This Script (debug purposes)"
-        modeseventeen = "17 = Perform Operations With Numbers"
-        modeeightteen = "18 = Lock This Script"
-        modenineteen = "19 = Call Remote Desktop"
-        modetwenty = "20 = Call Powershell"
-        modetwentyone = "21 = Print Systeminfo"
-        modetwentytwo = "22 = Start Installer"
-        exitmode = "23 = Exit"
-        nextpage = "24 = Next Page"
-        nextpageandroid= "17= Next Page"
-        backpage = "25 = Back A Page"
-        backpageandroid = "18 = Back A Page"
-        nextpagelinux = "17 = Next Page"
-        backpagelinux = "18 = Back A Page"
+        modenine = "9 = Call CMD"#Windows
+        modeninelinux = "9 = Create files in the current location"#all
+        modeten = "10 = Call Documents"#Windows
+        modetenlinux = "10 = Restart This Script (debug purposes)"#all
+        modeeleven = "11 = Call A Python Shell"#all
+        modeelevenlinux = "11 = Perform Operations With Numbers"#all
+        modetwelve = "12 = Call Task Manager"#Windows
+        modetwelvelinux = "12 = Lock This Script"#all
+        modethirteen = "13 = Create folders in the current location"#all
+        modethirteenlinux = "13 = Start Installer"#all
+        modefourteen = "14 = Remove Directories"#all
+        modefourteenlinux = "14 = Show uptime and average load"#Linux/Android
+        modefifteenlinux = "15 = Dump system information into terminal"#Linux/Android
+        exitmodelinux = "16 = Exit"#all
+        exitmodeandroid = "18 = Exit"#all
+        modefifteen = "15 = Create files in the current location"#all
+        modesixteen = "16 = Restart This Script (debug purposes)"#all
+        modeseventeen = "17 = Perform Operations With Numbers"#all
+        modeeightteen = "18 = Lock This Script"#all
+        modenineteen = "19 = Call Remote Desktop"#Windows
+        modetwenty = "20 = Call Powershell"#Windows
+        modetwentyone = "21 = Print Systeminfo"#Windows
+        modetwentytwo = "22 = Start Installer"#all
+        exitmode = "23 = Exit"#all
+        nextpage = "24 = Next Page"#all
+        nextpageandroid= "17 = Next Page"#all
+        backpage = "25 = Back A Page"#all
+        backpageandroid = "18 = Back A Page"#all
+        nextpagelinux = "17 = Next Page"#all
+        backpagelinux = "18 = Back A Page"#all
         if layout == 0:
             print(modeone)
             if restartsettings.hidden != True:
@@ -566,7 +438,7 @@ try:
             if altlogoff == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
                 time.sleep(waittime * 60)
-                subprocess.call ("logoff.exe")
+                subprocess.Popen ("logoff.exe")
         elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
             hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
             if hibernate == 1:
@@ -584,28 +456,31 @@ try:
                     if useros == "Windows":
                         os.system ("shutdown -s -f")
                     elif "arm" in platform.platform()==False:
-                        os.system("shutdown now")
+                        os.system("poweroff")
                     else:
-                        os.system("/system/bin/reboot -p")
+                        if os.system("su -c reboot -p") != 0:
+                            if os.system("/system/bin/reboot -p") != 0:
+                                print("Failed to execute reboot binary.")
+                            
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
                 waittime = float(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
                 time.sleep (waittime * 60)
-                subprocess.call ("shutdown.exe")
+                subprocess.Popen ("shutdown.exe")
         elif modewanted == 8 and useros == "Windows" :
             LolexToolsMethods.flicker()
         elif modewanted == 9 and useros == "Windows" :
-            subprocess.call("cmd.exe")
+            subprocess.Popen("cmd.exe")
         elif modewanted == 10 and useros == "Windows" :
-            subprocess.call("explorer.exe")
+            subprocess.Popen("explorer.exe")
         elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux"):
             if useros == "Windows":
-                os.system("python")
+                subprocess.Popen("python.exe")
             else:
                 os.system("python3")
         elif modewanted == 12 and useros == "Windows" :
-            subprocess.call("taskmgr.exe")
+            subprocess.Popen("taskmgr.exe")
         elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux"):
             foldername = input("Please input the name of your new folder.")
             try:
@@ -632,7 +507,7 @@ try:
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 if useros == "Windows":
-                    os.system("python .\start.py")
+                    os.system(".\start.py")
                 else:
                     os.system("python3 ./start.py")
                 exit(None)
@@ -671,9 +546,20 @@ try:
         elif (modewanted == 18 and useros == "Windows") or (modewanted == 12 and useros == "Linux"):
             print ("Feature currently unavailable(under development).")
         elif modewanted == 19  and useros == "Windows" :
-            subprocess.call("mstsc.exe")
+            path = input("Please input the full path of the RDP file.")
+            length = len(path) - 1
+            if path[length] == "p":
+                length = length - 1
+                if path[length] == "d":
+                    length = length - 1
+                    if path[length] == "r":
+                        length = length - 1
+                        if path[length] == ".":
+                            os.system(path)
+            else:
+                print("Not a valid rdp file.")
         elif modewanted == 20 and useros == "Windows" :
-            subprocess.call("powershell.exe")
+            subprocess.Popen("powershell.exe")
         elif modewanted == 21 and useros == "Windows":
             os.system("systeminf")
         elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux"):
@@ -686,14 +572,16 @@ try:
                 exit(None)
         elif (modewanted == 14 and useros == "Linux"):
             if "arm" in platform.platform():
-                os.system("/system/bin/uptime")
+                if os.system("/system/bin/uptime")!= 0:
+                    print("Failed to run uptime script.")
             else:
                 os.system("uptime")
         elif modewanted == 15 and useros == "Linux":
             if "arm" in platform.platform():
                 if os.system("su -c /system/bin/dumpsys") != 0:
                     print("Cannot load as much information due to lack of root.")
-                    os.system("/system/bin/dumpsys")
+                    if os.system("/system/bin/dumpsys") != 0:
+                        print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
             else:
                 os.system("sudo lshw")
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
@@ -713,11 +601,9 @@ try:
                     page = 4
                 else:
                     page = 3
-            
         elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
             print("Exiting...")
-            sys.exit()
-            print("Should have exited...")
+            exit(None)
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
@@ -730,13 +616,13 @@ except(ValueError):
 except(IOError):
      print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
      print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(AttributeError):
      print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(OSError):
