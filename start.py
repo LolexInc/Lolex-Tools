@@ -17,12 +17,13 @@ if "arm" in platform.platform():
     except(ImportError):
         os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 try:
-    import JTToolsOptions
-    if JTToolsOptions.compiledon<8.127:
+    import LolexToolsOptions
+    if LolexToolsOptions.compiledon<8.127:
         if platform.system() == "Windows":
-            os.system("python .\JTToolsInstaller.py")
+            os.system("LolexToolsInstaller.py")
         else:
-            os.system("python3 ./JTToolsInstaller.py")
+            os.system("python3 ./LolexToolsInstaller.py")
+        exit()
     try:
        import ver
        if ver.version <= 8.129211346:
@@ -31,14 +32,15 @@ try:
         pass
 except(ImportError):
     if platform.system() == "Windows":
-        os.system("python .\JTToolsInstaller.py")
+        os.system("LolexToolsInstaller.py")
     else:
-        os.system("python3 ./JTToolsInstaller.py")
+        os.system("python3 ./LolexToolsInstaller.py")
+    exit()
 if system == "Windows":
     print("Starting on Windows...")
-    os.system("python .\JTTools.py")
+    os.system("LolexTools.py")
     exit(None)
 else:
     print("Starting on Linux...")
-    os.system("python3 ./JTTools.py")
+    os.system("python3 ./LolexTools.py")
     exit(None)
