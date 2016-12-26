@@ -26,7 +26,7 @@ Call Remote Desktop or Powershell: Windows (or wine on Linux if you know what yo
 Exit: None <br><br>
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
-
+##License GPL 3.0
 
 ```
                      GNU GENERAL PUBLIC LICENSE
