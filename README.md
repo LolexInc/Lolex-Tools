@@ -1,5 +1,33 @@
 # Lolex Tools 2014-2016 LolexOrg
 ###Quantified Code checker <br>[![Code Issues](https://www.quantifiedcode.com/api/v1/project/ed746cf494f24911b477070327cc0f48/badge.svg)](https://www.quantifiedcode.com/app/project/ed746cf494f24911b477070327cc0f48)
+##Features and requirements
+##Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
+
+Settings: Read-Write Permissions to relveant partition (may need root on some later Android devices)<br><br>
+Restart: Relevant SE Linux and root permissions<br><br>
+Logoff: Windows or Linux<br><br>
+Hibernate: Windows or Linux<br><br>
+Shutdown: Android: Root Maybe Needed  (on some devices SE Linux being not set to the highest level may not require root) Other Platforms: None <br><br>
+Alternative methods for Shutdown and Logoff: Windows<br><br>
+Call a Python Shell: None<br><br>
+Create Folders: RW permissions to relveant disk/partition<br><br>
+Colour Flicker: Windows (may add something like Mintty at some point for other platforms)<br><br>
+Remove Directories: Relevant permissions to the relevant disk<br><br>
+Call CMD: Windows<br><br>
+Create files: Relevant file permissions<br><br>
+Restart The Script: Files present<br><br>
+Perform Operations With Numbers: None <br><br>
+Call Task Manager: Windows <br><br>
+Lock This Script: None <br><br>
+Start Installer : Installer needs to be present in the original directory form which you ran start.py<br><br>
+Show Uptime and Average Load : Linux/Android (root may be needed on Android)<br><br>
+Dump system information into terminal: Linux/Android (root required Android, sudo password required on Linux), bat permissions required on Windows<br><br>
+Call Remote Desktop or Powershell: Windows (or wine on Linux if you know what you're doing)<br><br>
+Exit: None <br><br>
+
+Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
+
+
 ```
                      GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
