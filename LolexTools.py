@@ -19,6 +19,17 @@ except(ImportError):
     print("Missing library. Please redownload this application.")
     exit(None)
 try:
+    import JTToolsOptions
+    try:
+        os.rename("./JTToolsOptions.py","LolexToolsOptions.py")
+    except(IOError, OSError):
+        try:
+            os.rename("./JTToolsOptions.pyc","LolexToolsOptions.pyc")
+        except(IOError, OSError):
+            pass
+except(ImportError):
+    pass
+try:
     import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
     system = platform.system()
