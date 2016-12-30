@@ -259,7 +259,6 @@ try:
           oneswapwords = True
      else:
           oneswapwords = False
-
      if onewords == 0:
           onewordwait = False
      if onewords>0:
@@ -318,59 +317,6 @@ try:
                twoswappins = True
           else:
                twoswappins = False
-##          twopins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
-##          while twopins<0 or twopins>5:
-##               twopins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
-##          if twopins>1:
-##               twoswappins = True
-##          else:
-##               twoswappins = False
-##          if twopins == 0:
-##               twousepin = False
-##          else:
-##               twousepin = True
-##          if twopins>0:
-##               twopinone = int(input("Please set your first PIN."))
-##               confirm = int(input("Please confirm your first PIN."))
-##               while twopinone != confirm:
-##                    twopinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
-##                    confirm = int(input("Please confirm your first PIN."))
-##               if twopins>1:
-##                    twopintwo = int(input("Please set your second PIN."))
-##                    confirm = int(input("Please confirm your second PIN."))
-##                    while twopintwo != confirm or twopintwo == twopinone:
-##                         twopintwo = int(input("Sorry! Your PINs didn't match! Please set your second PIN."))
-##                         confirm = int(input("Please confirm your second PIN."))
-##                    if twopins>2:
-##                         twopinthree = int(input("Please set your third PIN."))
-##                         confirm = int(input("Please confirm your third PIN."))
-##                         while twopinthree != confirm or (twopinthree ==(twopintwo or twopinone)):
-##                              twopinthree = int(input("Sorry! Your PINs didn't match! Please set your third PIN."))
-##                              confirm = int(input("Please confirm your third PIN."))
-##                         if twopins>3:
-##                              twopinfour = int(input("Please set your fourth PIN."))
-##                              confirm = int(input("Please confirm your fourth PIN."))
-##                              while twopinfour != confirm or (twopinfour == (twopinthree or twopintwo or twopinone)):
-##                                   twopinfour = int(input("Sorry! Your PINs didn't match! Please set your fourth PIN."))
-##                                   confirm = int(input("Please confirm your fourth PIN."))
-##                              if twopins>4:
-##                                   twopinfive = int(input("Please set your fifth PIN."))
-##                                   confirm = int(input("Please confirm your fifth PIN."))
-##                                   while twopinfive != confirm or (twopinfive == (twopinfour or twopinthree or twopintwo or twopinone)):
-##                                        twopinfive = int(input("Sorry! Your PINs didn't match! Please set your fifth PIN."))
-##                                        confirm = int(input("Please confirm your fifth PIN."))
-##          if twopins == 0:
-##               twopinone = False
-##               twowait = False
-##          if twopins<2:
-##               twopintwo = False
-##          if twopins<3:
-##               twopinthree = False
-##          if twopins<4:
-##               twopinfour = False
-##          if twopins<5:
-##               twopinfive = False
-##          if twopins>0:
           twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
           while twowait<0:
                twowait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
@@ -464,8 +410,6 @@ try:
                theme = input("Please set your theme.")
                os.system(theme)
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
-     if useros == "Linux":
-        os.system("cd ./Lolex-Tools/")
      if pluginconfirm == 1:
                try:
                     shutil.copy("./Defaults/startplugins.py","./")
@@ -544,113 +488,12 @@ try:
           outf.write("\ntwousepin = ")
           outf.write(str(twousepin))
           twousepin = 0
-##          outf.write("\nonepinone = ")
-##          outf.write(str(onepinone))
-##          onepinone = 0
-##          outf.write("\nonepintwo = ")
-##          outf.write(str(onepintwo))
-##          onepintwo = 0
-##          outf.write("\nonepinthree = ")
-##          outf.write(str(onepinthree))
-##          onepinthree = 0
-##          outf.write("\nonepinfour = ")
-##          outf.write(str(onepinfour))
-##          onepinfour = 0
-##          outf.write("\nonepinfive = ")
-##          outf.write(str(onepinfive))
-##          onepinfive = 0
-##          outf.write("\ntwopinone = ")
-##          outf.write(str(twopinone))
-##          twopinone = 0
-##          outf.write("\ntwopintwo = ")
-##          outf.write(str(twopintwo))
-##          twopintwo = 0
-##          outf.write("\ntwopinthree = ")
-##          outf.write(str(twopinthree))
-##          twopinthree = 0
-##          outf.write("\ntwopinfour = ")
-##          outf.write(str(twopinfour))
-##          twopinfour = 0
-##          outf.write("\ntwopinfive = ")
-##          outf.write(str(twopinfive))
-##          twopinfive = 0
           outf.write("\noneuseword = ")
           outf.write(str(oneuseword))
           oneuseword = 0
           outf.write("\ntwouseword = ")
           outf.write(str(twouseword))
           twouseword = 0
-##          outf.write("\nonewordone = ")
-##          if onewordone != False:
-##               outf.write('("')
-##          outf.write(str(onewordone))
-##          if onewordone != False:
-##               outf.write('")')
-##          onewordone = 0
-##          outf.write("\nonewordtwo = ")
-##          if onewordtwo != False:
-##               outf.write('("')
-##          outf.write(str(onewordtwo))
-##          if onewordtwo != False:
-##               outf.write('")')
-##          onewordtwo = 0
-##          outf.write("\nonewordthree = ")
-##          if onewordthree != False:
-##               outf.write('("')
-##          outf.write(str(onewordthree))
-##          if onewordthree != False:
-##               outf.write('")')
-##          onewordthree = 0
-##          outf.write("\nonewordfour = ")
-##          if onewordfour != False:
-##               outf.write('("')
-##          outf.write(str(onewordfour))
-##          if onewordfour != False:
-##               outf.write('")')
-##          onewordfour = 0
-##          outf.write("\nonewordfive = ")
-##          if onewordfive != False:
-##               outf.write('("')
-##          outf.write(str(onewordfive))
-##          if onewordfive != False:
-##               outf.write('")')
-##          onewordfive = 0
-##          outf.write("\ntwowordone = ")
-##          if twowordone != False:
-##               outf.write('("')
-##          outf.write(str(twowordone))
-##
-##          if twowordone != False:
-##               outf.write('")')
-##          twowordone = 0
-##          outf.write("\ntwowordtwo = ")
-##          if twowordtwo != False:
-##               outf.write('("')
-##          outf.write(str(twowordtwo))
-##          if twowordtwo != False:
-##               outf.write('")')
-##          twowordtwo = 0
-##          outf.write("\ntwowordthree = ")
-##          if twowordthree != False:
-##               outf.write('("')
-##          outf.write(str(twowordthree))
-##          if twowordthree != False:
-##               outf.write('")')
-##          twowordthree = 0
-##          outf.write("\ntwowordfour = ")
-##          if twowordfour != False:
-##               outf.write('("')
-##          outf.write(str(twowordfour))
-##          if twowordfour != False:
-##               outf.write('")')
-##          twowordfour = 0
-##          outf.write("\ntwowordfive = ")
-##          if twowordfive != False:
-##               outf.write('("')
-##          outf.write(str(twowordfive))
-##          if twowordfive != False:
-##               outf.write('")')
-##          twowordfive = 0
           outf.write("\nonewordwait = ")
           outf.write(str(onewordwait))
           onewordwait = "None"
@@ -716,7 +559,10 @@ try:
                if useros == "Linux":
                    os.system("python3 ./LolexTools.py")
                else:
-                   os.system("LolexTools.py")
+                   if sys.version_info.minor>5:
+                       os.system("py .\LolexTools.py")
+                   else:
+                       os.system("python .\LolexTools.py")
           exit()
      except(TypeError, SyntaxError, ValueError):
           print("Failed to start.")

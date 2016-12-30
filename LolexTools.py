@@ -18,26 +18,26 @@ try:
 except(ImportError):
     print("Missing library. Please redownload this application.")
     exit(None)
-try:
-    import JTToolsOptions
-    try:
-        os.rename("./JTToolsOptions.py","LolexToolsOptions.py")
-    except(IOError, OSError):
-        try:
-            os.rename("./JTToolsOptions.pyc","LolexToolsOptions.pyc")
-        except(IOError, OSError):
-            pass
-except(ImportError):
-    pass
+
 try:
     import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-except(ImportError):
+except():
     system = platform.system()
     if system == "Windows":
         subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
     else:
         os.system("python3 ./LolexToolsInstaller.py")
     exit(None)
+if LolexToolsOptions.compiledon<8.3:
+    if system == "Windows":
+        if sys.version_info.minor>5:
+            os.system ("py ./update.py")
+            pass
+        else:
+            os.system("python update.py")
+    else:
+        os.system ("python3 ./update.py")
+        
 if system == "Windows":
     os.system(theme.theme)
 print("Welcome to Lolex-Tools version 8.2exp 12:33 GMT+0.0 15/12/16")
@@ -56,9 +56,6 @@ try:
     if LolexToolsOptions.useusername == True:
         usernameenter = input("Please enter your username.")
         while usernameenter != LolexToolsOptions.username1 and usernameenter != LolexToolsOptions.username2:
-            print(LolexToolsOptions.username1)
-            print(LolexToolsOptions.username2)
-            print(usernameenter, LolexToolsOptions.username1, LolexToolsOptions.username2)
             usernameenter = input("Please enter a valid username.")
     elif LolexToolsOptions.useusername == False:
         usernameenter = LolexToolsOptions.username1
@@ -82,7 +79,6 @@ try:
                 pin = False
                 print(False)
             codeenter = int(input("Please enter your current PIN."))
-            print(pin)
             tries = 1
             if codeenter != pin:
                 while codeenter != pin:
@@ -139,7 +135,6 @@ try:
                 pin = False
                 print(False)
             codeenter = int(input("Please enter your current PIN."))
-            print(pin)
             tries = 1
             if codeenter != pin:
                 while codeenter != pin:
@@ -429,7 +424,10 @@ try:
                         restartneeded = True
                     if restartneeded == True:
                         if useros == "Windows":
-                            os.system("python .\start.py")
+                            if sys.version_info.minor>5:
+                                os.system("py .\start.py")
+                            else:
+                                os.system("python .\start.py")
                         else:
                             os.system("python3 ./start.py")
                         exit(None)
@@ -577,7 +575,10 @@ try:
             confirm = int(input("Please confirm (with a 1) to enter the installer."))
             if confirm == 1:
                 if useros == "Windows":
-                    os.system("LolexToolsInstaller.py")
+                    if sys.version_info.minor>5:
+                        os.system("py .\LolexToolsInstaller.py")
+                    else:
+                        os.system("python .\LolexToolsInstaller.py")
                 else:
                     os.system("python3 ./LolexToolsInstaller.py")
                 exit(None)
