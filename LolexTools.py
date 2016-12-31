@@ -40,7 +40,7 @@ if LolexToolsOptions.compiledon<8.3:
         
 if system == "Windows":
     os.system(theme.theme)
-print("Welcome to Lolex-Tools version 8.2exp 12:33 GMT+0.0 15/12/16")
+print("Welcome to Lolex-Tools version 8.3 15:11 GMT+0.0 31/12/16")
 try:
     os.system(theme.theme)
     oneswappins = verifonboot.oneswappins
@@ -379,10 +379,14 @@ try:
                 else:
                     print(backpagelinux)
         modewanted = int(input("Please enter the number of the mode that you want."))
-        while modewanted > 25:
-            modewanted = modewanted - 25
+        if useros == "Windows":
+            maxmode = 25
+        else:
+            maxmode = 18
+        while modewanted > maxmode:
+            modewanted = modewanted - maxmode
         while modewanted < 1:
-            modewanted = modewanted + 25
+            modewanted = modewanted + maxmode
         if modewanted == 1:
             print("1 = Menu Settings")
             setting = int(input("Please enter the group of settings you wish to modify."))
@@ -470,7 +474,6 @@ try:
                         if os.system("su -c reboot -p") != 0:
                             if os.system("/system/bin/reboot -p") != 0:
                                 print("Failed to execute reboot binary.")
-                            
         elif modewanted == 7 and useros == "Windows" :
             altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
             if altshutdown == 1:
@@ -606,7 +609,7 @@ try:
                 page = 0
             elif page == 3 and useros == "Linux":
                 page = 1
-            elif page < 0:
+            elif page > 0:
                 page = page - 1
             else:
                 if useros == "Windows":

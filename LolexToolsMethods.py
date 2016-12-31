@@ -38,6 +38,7 @@ def flicker():
         os.system (colour[3])
         os.system (colour[4])
         currentflashes = currentflashes + 1
+    import theme
     os.system(theme.theme)
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
