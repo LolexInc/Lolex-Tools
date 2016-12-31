@@ -539,7 +539,7 @@ try:
           shutil.copy("./Defaults/theme.py","./User/Data")
      except(IOError):
           pass
-     if useros == "Linux":
+     if useros == "Linux" or useros == "Android":
           theme = "None"
      with open("./theme.py","a") as outf:
                print("Writing theme...", theme)
