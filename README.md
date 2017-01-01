@@ -30,6 +30,8 @@ Exit: None <br><br>
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
 ##License GPL 3.0
+##for news and more visit our website at :
+[![website][lolexorg.wixsite.com/lolextool)]
 
 ```
                      GNU GENERAL PUBLIC LICENSE
