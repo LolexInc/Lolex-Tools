@@ -6,7 +6,7 @@
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # NOTE: Android x86 devices are not currently supported.
 # Visit our website for more information and news
-[a link](http://lolexorg.wixsite.com/lolextool)
+[Our official website](http://lolexorg.wixsite.com/lolextool)
 
 Settings: Read-Write Permissions to relveant partition (may need root on some later Android devices)<br><br>
 Restart: Relevant SE Linux and root permissions<br><br>
