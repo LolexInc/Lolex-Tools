@@ -27,11 +27,11 @@ Show Uptime and Average Load : Linux/Android (root may be needed on Android)<br>
 Dump system information into terminal: Linux/Android (root required Android, sudo password required on Linux), bat permissions required on Windows<br><br>
 Call Remote Desktop or Powershell: Windows (or wine on Linux if you know what you're doing)<br><br>
 Exit: None <br><br>
+##for news and more visit our website at :
+lolexorg.wixsite.com/lolextool
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
 ##License GPL 3.0
-##for news and more visit our website at :
-[![website][lolexorg.wixsite.com/lolextool)]
 
 ```
                      GNU GENERAL PUBLIC LICENSE
