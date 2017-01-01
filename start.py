@@ -1,6 +1,6 @@
-import os, platform, shutil, sys
+import os, platform, shutil, sys, time
+a = time.time()
 system = platform.system()
-print("Starting...")
 if "arm" in platform.platform():
     try:
         import androidinit
@@ -56,11 +56,41 @@ except(ImportError, IOError, OSError):
 if system == "Windows":
     print("Starting on Windows...")
     if sys.version_info.minor>5:
+        os.system("py .\sys/bootanim.py")
+        print("Starting...")
+        b = time.time()
+        local = time.asctime(time.localtime(time.time()))
+        with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
+            outf.write(local)
+            outf.write("     Took ")
+            outf.write((str(b-a)))
+            outf.write("seconds to initilaize on Windows Python >3.5\n")
+        time.sleep(3)
         os.system("py .\LolexTools.py")
     else:
+        os.system("python .\sys/bootanim.py")
+        print("Starting...")
+        b = time.time()
+        local = time.asctime(time.localtime(time.time()))
+        with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
+            outf.write(local)
+            outf.write("     Took ")
+            outf.write((str(b-a)))
+            outf.write("seconds to initilaize on Windows Python < 3.6.\n")
+        time.sleep(3)
         os.system("python LolexTools.py")
     exit(None)
 else:
     print("Starting on Linux...")
+    os.system("python3 ./sys/bootanim.py")
+    print("Starting...")
+    b = time.time()
+    local = time.asctime(time.localtime(time.time()))
+    with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
+            outf.write(local)
+            outf.write("     Took ")
+            outf.write((str(b-a)))
+            soutf.write("seconds to initilaize on Linux Python 3.\n")
+    time.sleep(3)
     os.system("python3 ./LolexTools.py")
     exit(None)
