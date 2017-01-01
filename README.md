@@ -5,6 +5,8 @@
 ## Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # NOTE: Android x86 devices are not currently supported.
+# Visit our website for more information and news
+[a link](http://lolexorg.wixsite.com/lolextool)
 
 Settings: Read-Write Permissions to relveant partition (may need root on some later Android devices)<br><br>
 Restart: Relevant SE Linux and root permissions<br><br>
@@ -27,8 +29,7 @@ Show Uptime and Average Load : Linux/Android (root may be needed on Android)<br>
 Dump system information into terminal: Linux/Android (root required Android, sudo password required on Linux), bat permissions required on Windows<br><br>
 Call Remote Desktop or Powershell: Windows (or wine on Linux if you know what you're doing)<br><br>
 Exit: None <br><br>
-##for news and more visit our website at :
-lolexorg.wixsite.com/lolextool
+
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
 ##License GPL 3.0
