@@ -1,5 +1,5 @@
 import os, platform, time
-if platform.system == "Linux":
+if platform.system() == "Linux":
     clear = "clear"
 else:
     clear = "cls"
