@@ -4,7 +4,7 @@ if platform.system() == "Linux":
 else:
     clear = "cls"
     os.system("color 0a")
-print(platform.system)
+print(platform.system())
 
 print("0")
 print(" 0                000000   0         000000     0  0     000000    00000    000000")
