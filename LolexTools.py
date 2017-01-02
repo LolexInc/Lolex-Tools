@@ -21,7 +21,7 @@ except(ImportError):
 
 try:
     import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-except():
+except(ImportError):
     system = platform.system()
     if system == "Windows":
         subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
@@ -483,7 +483,7 @@ try:
         elif modewanted == 8 and useros == "Windows" :
             LolexToolsMethods.flicker()
         elif modewanted == 9 and useros == "Windows" :
-            subprocess.Popen("cmd.exe")
+            subprocess.call("cmd.exe")
         elif modewanted == 10 and useros == "Windows" :
             subprocess.Popen("explorer.exe")
         elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux"):
@@ -571,7 +571,7 @@ try:
             else:
                 print("Not a valid rdp file.")
         elif modewanted == 20 and useros == "Windows" :
-            subprocess.Popen("powershell.exe")
+            subprocess.call("powershell.exe")
         elif modewanted == 21 and useros == "Windows":
             os.system("systeminf")
         elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux"):
@@ -618,20 +618,22 @@ try:
                     page = 3
         elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
             print("Exiting...")
-            exit(None)
+            print("Giving all threads 5 seconds to exit...")
+            time.sleep(5)
+            os._exit(0)
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(TypeError):
+except():
      print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(ValueError):
+except():
      print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(IOError):
      print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except(NameError):
+except():
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):

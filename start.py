@@ -1,6 +1,7 @@
 import os, platform, shutil, sys, time
 a = time.time()
 system = platform.system()
+
 if "arm" in platform.platform():
     try:
         import androidinit
@@ -55,6 +56,7 @@ except(ImportError, IOError, OSError):
     exit()
 if system == "Windows":
     print("Starting on Windows...")
+    os.system("TITLE Lolex-Tools")
     if sys.version_info.minor>5:
         os.system("py .\sys/bootanim.py")
         print("Starting...")
@@ -68,6 +70,7 @@ if system == "Windows":
         time.sleep(3)
         os.system("py .\LolexTools.py")
     else:
+        sys.stdout.write("\x1b]2;Lolex-Tools\x07")
         os.system("python .\sys/bootanim.py")
         print("Starting...")
         b = time.time()

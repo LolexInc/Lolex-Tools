@@ -1,4 +1,4 @@
-import os, time, py_compile, shutil, sys, platform
+import os, time, py_compile, shutil, sys, platform, threading
 print ("Module LolexToolsMethods is running, using modules os and time.")
 try:
 	import ver
@@ -13,7 +13,7 @@ def flicker():
     suretoflash = int(input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy."))
     if suretoflash == 1:
         howlongtoflashfor = int(input("How many loops do you wish to occur?"))
-        currentflashes= int(0)
+        
     print("Here is a list of colours available:")
     print("a - Neon Green")
     print("b - Light Blue")
@@ -30,28 +30,46 @@ def flicker():
     print("7 - White/Light Gray")
     print("8 - Dark Gray")
     print("9 - Dark Neon Blue")
-    colour = (input("Please enter your first colour with color prefixed.  "), input("Please enter your second colour, with color prefixed.  "), input("Please enter your third colour, with color prefixed.  "), input("Please enter your fourth colour, with color prefixed.  "), input("Please enter your fifth colour, with color prefixed.  "))
+    colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour, with color prefixed.  "))
+    flickerthread = threading.Thread(target=flickerp2, args=[colour, howlongtoflashfor])
+    flickerthread.start()
+def flickerp2(colour, howlongtoflashfor):
+    currentflashes= int(0)
     while howlongtoflashfor != currentflashes:
         os.system (colour[0])
+        time.sleep(0.2) # these delays are needed otherwise outputs mess up
         os.system (colour[1])
+        time.sleep(0.2)
         os.system (colour[2])
+        time.sleep(0.2)
         os.system (colour[3])
+        time.sleep(0.2)
         os.system (colour[4])
+        time.sleep(0.2)
         currentflashes = currentflashes + 1
+        print(currentflashes)
     import theme
     os.system(theme.theme)
+    exit()
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
         waittime = int(input("How long, in minutes do you wish to wait."))
-        time.sleep(waittime*60)
-        useros = platform.system()
-        if useros != "Linux":
-            os.system("shutdown -r -f")
-        elif "arm" in platform.platform():
-            os.system("/system/bin/reboot")
-        else:
-            os.system("reboot")
+    restartthread = threading.Thread(target = restart, args = [waittime])
+    restartthread.start()
+def restart(waittime):
+    time.sleep(waittime*60)
+    print("RESTART thread: Restarting device...")
+    useros = platform.system()
+    if useros != "Linux":
+        pass
+        #os.system("shutdown -r -f")
+    elif "arm" in platform.platform():
+        pass
+        #os.system("/system/bin/reboot")
+    else:
+        pass
+        #os.system("reboot")
 def logo():
     print("This function has been deprecated.")
 def exitnow():
