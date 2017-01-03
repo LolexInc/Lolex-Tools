@@ -30,7 +30,7 @@ def flicker():
     print("7 - White/Light Gray")
     print("8 - Dark Gray")
     print("9 - Dark Neon Blue")
-    colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour, with color prefixed.  "))
+    colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour  "))
     flickerthread = threading.Thread(target=flickerp2, args=[colour, howlongtoflashfor])
     flickerthread.start()
 def flickerp2(colour, howlongtoflashfor):
@@ -47,7 +47,6 @@ def flickerp2(colour, howlongtoflashfor):
         os.system (colour[4])
         time.sleep(0.2)
         currentflashes = currentflashes + 1
-        print(currentflashes)
     import theme
     os.system(theme.theme)
     exit()
@@ -62,14 +61,13 @@ def restart(waittime):
     print("RESTART thread: Restarting device...")
     useros = platform.system()
     if useros != "Linux":
-        pass
-        #os.system("shutdown -r -f")
+        os.system("shutdown -r -f")
     elif "arm" in platform.platform():
-        pass
-        #os.system("/system/bin/reboot")
+        
+        os.system("/system/bin/reboot")
     else:
-        pass
-        #os.system("reboot")
+        
+        os.system("reboot")
 def logo():
     print("This function has been deprecated.")
 def exitnow():
