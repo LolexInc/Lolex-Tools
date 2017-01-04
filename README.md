@@ -1,11 +1,16 @@
-# Lolex Tools 2014-2016 LolexOrg
+# Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # This is : Lolex-Tools 8.3
+## People
+Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
+AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
+
 ### Quantified Code checker <br>[![Code Issues](https://www.quantifiedcode.com/api/v1/project/ed746cf494f24911b477070327cc0f48/badge.svg)](https://www.quantifiedcode.com/app/project/ed746cf494f24911b477070327cc0f48)
 ## Features and requirements
 ## Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # NOTE: Android x86 devices are not currently supported.
 # Visit our website for more information and news
+# lolexorg.github.io/Lolex-Tools will be closed with all services by 31.1.17. Please go to:
 [Our official website](http://lolexorg.wixsite.com/lolextool)
 
 Settings: Read-Write Permissions to relveant partition (may need root on some later Android devices)<br><br>
