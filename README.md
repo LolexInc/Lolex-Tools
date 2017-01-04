@@ -11,7 +11,7 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 # NOTE: Android x86 devices are not currently supported.
 # Visit our website for more information and news
 # lolexorg.github.io/Lolex-Tools will be closed with all services by 31.1.17. Please go to:
-[Our official website](http://lolexorg.wixsite.com/lolextool)
+[Our official website](http://lolexorg.wixsite.com/lolex-tools)
 
 Settings: Read-Write Permissions to relveant partition (may need root on some later Android devices)<br><br>
 Restart: Relevant SE Linux and root permissions<br><br>
