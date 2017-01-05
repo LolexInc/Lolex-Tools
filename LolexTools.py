@@ -488,7 +488,7 @@ try:
             subprocess.Popen("explorer.exe")
         elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux"):
             if useros == "Windows":
-                subprocess.Popen("python.exe")
+                subprocess.call("python.exe")
             else:
                 os.system("python3")
         elif modewanted == 12 and useros == "Windows" :
