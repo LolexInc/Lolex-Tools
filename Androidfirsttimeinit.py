@@ -72,7 +72,6 @@ try:
 	shutil.copy("/sdcard/Lolex-Tools/busybox-armeabi","./")
 	shutil.copy("/sdcard/Lolex-Tools/busybox-x86","./")
 	shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
-	shutil.copy("/sdcard/Lolex-Tools/update.py",
 	print("Copying folders...")
 	shutil.copytree("/sdcard/Lolex-Tools/Defaults","./Defaults")
 	shutil.copytree("/sdcard/Lolex-Tools/Tests","./Tests")
