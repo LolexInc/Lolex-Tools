@@ -37,6 +37,8 @@ try:
             else:
                 os.system("python .\LolexToolsInstaller.py")
         else:
+        	if "arm" in platform.system():
+        		os.system("cd ./Lolex-Tools")
             os.system("python3 ./LolexToolsInstaller.py")
         exit()
     try:
@@ -52,6 +54,7 @@ except(ImportError, IOError, OSError):
         else:
             os.system("python .\LolexToolsInstaller.py")
     else:
+    	if " arm" in platform.platform():
         os.system("python3 ./LolexToolsInstaller.py")
     exit()
 if system == "Windows":
@@ -93,7 +96,7 @@ else:
             outf.write(local)
             outf.write("     Took ")
             outf.write((str(b-a)))
-            soutf.write("seconds to initilaize on Linux Python 3.\n")
+            outf.write("seconds to initilaize on Linux Python 3.\n")
     time.sleep(3)
     os.system("python3 ./LolexTools.py")
     exit(None)

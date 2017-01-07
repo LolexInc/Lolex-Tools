@@ -68,7 +68,6 @@ try:
           os.remove("./menusettings.pyc")
      except(IOError, OSError):
           pass
-
      useros = platform.system()
      if useros == "Linux":
           print("This project requires Git for updating. Installing git...")
@@ -154,62 +153,6 @@ try:
           oneswappins = True
      else:
           oneswappins = False
-
-##     while onepins<0 or onepins>5:
-##          onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
-##     if onepins == 0:
-##          onewait = 0
-##     if onepins>1:
-##          oneswappins = True
-##     else:
-##          oneswappins = False
-##     if onepins == 0:
-##          oneusepin = False
-##     else:
-##          oneusepin = True
-##     if onepins>0:
-##          onepinone = int(input("Please set your first PIN."))
-##          confirm = int(input("Please confirm your first PIN."))
-##          while onepinone != confirm:
-##               onepinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
-##               confirm = int(input("Please confirm your first PIN."))
-##          if onepins>1:
-##               onepintwo = int(input("Please set your second PIN."))
-##               confirm = int(input("Please confirm your second PIN."))
-##               while onepintwo != confirm or onepintwo == onepinone:
-##                    onepintwo = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your second PIN."))
-##                    confirm = int(input("Please confirm your second PIN."))
-##               if onepins>2:
-##                    onepinthree = int(input("Please set your third PIN."))
-##                    confirm = int(input("Please confirm your third PIN."))
-##                    while onepinthree != confirm or(onepinthree ==(onepintwo or onepinone)):
-##                         onepinthree = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your third PIN."))
-##                         confirm = int(input("Please confirm your third PIN."))
-##                    if onepins>3:
-##                         onepinfour = int(input("Please set your fourth PIN."))
-##                         confirm = int(input("Please confirm your fourth PIN."))
-##                         while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
-##                              onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
-##                              confirm = int(input("Please confirm your fourth PIN."))
-##                         if onepins>4:
-##                              onepinfive = int(input("Please set your fifth PIN."))
-##                              confirm = int(input("Please confirm your fifth PIN."))
-##                              while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
-##                                   onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
-##                                   confirm = int(input("Please confirm your fifth PIN."))
-##     if onepins == 0:
-##          onepinone = False
-##          onewait = False
-##     if onepins<2:
-##          onepintwo = False
-##     if onepins<3:
-##          onepinthree = False
-##     if onepins<4:
-##          onepinfour = False
-##     if onepins<5:
-##          onepinfive = False
-##     if onepins>0:
-##          oneusepin = True
      if onepins>0:
           onewait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
           while onewait<0:
@@ -365,7 +308,6 @@ try:
                twoswapwords = True
           else:
                twoswapwords = False
-
           if twowords == 0:
                twowordwait = False
           if twowords>0:
@@ -463,7 +405,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("LolexToolsOptions.py","a") as outf:
-          outf.write("\ncompiledon = 8.20")
+          outf.write("\ncompiledon = 8.3")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -476,8 +418,6 @@ try:
                outf.write('")')
           username1 = 0
           outf.write("\nusername2 = ")
-          
-
           outf.write('("')
           outf.write(username2)
           outf.write('")')
@@ -556,7 +496,7 @@ try:
           print("Thank you for using Lolex-Tools Installer.")
           if start == 1:
                print("Starting Lolex-Tools...")
-               if useros == "Linux":
+               if useros == "Linux" or useros == "Android":
                    os.system("python3 ./LolexTools.py")
                else:
                    if sys.version_info.minor>5:
@@ -578,16 +518,15 @@ except(ValueError):
 except(IOError):
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
      print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(AttributeError):
      print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(OSError):
      print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-

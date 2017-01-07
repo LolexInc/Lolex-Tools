@@ -12,13 +12,11 @@ if system == "Windows":
     if sys.version_info.major != 3:
         print("Only Python 3 is currently supported. Please install Python 3.")
         time.sleep(3)
-
 try:
     import LolexToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
     exit(None)
-
 try:
     import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
@@ -31,13 +29,12 @@ except(ImportError):
 if LolexToolsOptions.compiledon<8.3:
     if system == "Windows":
         if sys.version_info.minor>5:
-            os.system ("py ./update.py")
+            os.system ("py ./update/83.py")
             pass
         else:
-            os.system("python update.py")
+            os.system("python ./update/83.py")
     else:
-        os.system ("python3 ./update.py")
-        
+        os.system ("python3 ./update/83.py")
 if system == "Windows":
     os.system(theme.theme)
 print("Welcome to Lolex-Tools version 8.3 15:11 GMT+0.0 31/12/16")
@@ -316,7 +313,6 @@ try:
                         print(modefivelinux)
                     print(nextpagelinux)
                     print(backpagelinux)
-                    
             elif page == 1:
                 if useros == "Windows":
                     if shutdownsettings.hidden != True:
@@ -624,16 +620,16 @@ try:
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(TypeError):
      print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(ValueError):
      print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(IOError):
      print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
