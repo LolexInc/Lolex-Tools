@@ -62,23 +62,18 @@ try:
         else:
             runtimeone = runtimeone + 1
         if LolexToolsOptions.onepintotal != 0:
-            if runtimeone == 1 or oneswappins == False:
-                pin = int(LolexToolsOptions.onepinone)
-            elif runtimeone == 2:
-                pin = int(LolexToolsOptions.onepintwo)
-            elif runtimeone == 3:
-                pin = int(LolexToolsOptions.onepinthree)
-            elif runtimeone == 4:
-                pin = int(LolexToolsOptions.onepinfour)
-            elif runtimeone == 5:
-                pin = int(LolexToolsOptions.onepinfive)
-            else:
-                pin = False
-                print(False)
+            try:
+                os.remove("./onepinner.py")
+            except(IOError, OSError):
+                pass
+            with open ("./onepinner.py","a") as outf:
+                outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
+                outf.write(str(runtimeone))
+            import onepinner
             codeenter = int(input("Please enter your current PIN."))
             tries = 1
-            if codeenter != pin:
-                while codeenter != pin:
+            if codeenter != onepinner.pin:
+                while codeenter != onepinner.pin:
                     if tries == 5:
                         print("You got your PIN wrong 5 times.")
                         time.sleep(LolexToolsOptions.onewait)
@@ -91,50 +86,40 @@ try:
             else:
                 wordtimeone = wordtimeone + 1
             if LolexToolsOptions.onewordtotal != 0:
-                if wordtimeone == 1 or oneswapwords == False:
-                    word = LolexToolsOptions.onewordone
-                elif wordtimeone == 2:
-                    word = LolexToolsOptions.onewordtwo
-                elif wordtimeone == 3:
-                    word = LolexToolsOptions.onewordthree
-                elif wordtimeone == 4:
-                    word = LolexToolsOptions.onewordfour
-                elif wordtimeone == 5:
-                    word = LolexToolsOptions.onewordfive
-                else:
-                    word = False
-            wordenter = input("Please enter your current password.")
-            tries = 1
-            while wordenter != word:
-                if tries == 5:
-                    print("You got your password wrong 5 times.")
-                    time.sleep(LolexToolsOptions.onewordwait)
-                    tries = 0
+                try:
+                    os.remove("./oneworder.py")
+                except(IOError, OSError):
+                	pass
+                with open("./oneworder.py","a") as outf:
+                    outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
+                    outf.write(str(wordtimeone))
                 wordenter = input("Please enter your current password.")
-                tries = tries + 1
+                tries = 1
+                while wordenter != oneworder.word:
+                    if tries == 5:
+                        print("You got your password wrong 5 times.")
+                        time.sleep(LolexToolsOptions.onewordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
     elif LolexToolsOptions.username2 == usernameenter:
         if runtimetwo == LolexToolsOptions.twopintotal:
             runtimetwo = 1
         else:
             runtimetwo = runtimetwo + 1
         if LolexToolsOptions.twopintotal != 0:
-            if runtimetwo == 1 or twoswappins == False:
-                pin = int(LolexToolsOptions.twopinone)
-            elif runtimetwo == 2:
-                pin = int(LolexToolsOptions.twopintwo)
-            elif runtimetwo == 3:
-                pin = int(LolexToolsOptions.twopinthree)
-            elif runtimetwo == 4:
-                pin = int(LolexToolsOptions.twopinfour)
-            elif runtimetwo == 5:
-                pin = int(LolexToolsOptions.twopinfive)
-            else:
-                pin = False
-                print(False)
+            try:
+                os.remove("./twopinner.py")
+            except(IOError, OSError):
+                pass
+            with open ("./twopinner.py","a") as outf:
+                outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
+                outf.write(str(runtimetwo))
+            import twopinner
             codeenter = int(input("Please enter your current PIN."))
             tries = 1
-            if codeenter != pin:
-                while codeenter != pin:
+            if codeenter != twopinner.pin:
+                while codeenter != twopinner.pin:
                     if tries == 5:
                         print("You got your PIN wrong 5 times.")
                         time.sleep(LolexToolsOptions.twowait)
@@ -147,27 +132,24 @@ try:
             else:
                 wordtimetwo = wordtimetwo + 1
             if LolexToolsOptions.twowordtotal != 0:
-                if wordtimetwo == 1 or twoswapwords == False:
-                    word = LolexToolsOptions.twowordone
-                elif wordtimetwo == 2:
-                    word = LolexToolsOptions.twowordtwo
-                elif wordtimetwo == 3:
-                    word = LolexToolsOptions.twowordthree
-                elif wordtimetwo == 4:
-                    word = LolexToolsOptions.twowordfour
-                elif wordtimetwo == 5:
-                    word = LolexToolsOptions.twowordfive
-                else:
-                    word = False
-            wordenter = input("Please enter your current password.")
-            tries = 1
-            while wordenter != word:
-                if tries == 5:
-                    print("You got your password wrong 5 times.")
-                    time.sleep(LolexToolsOptions.twowordwait)
-                    tries = 0
+                try:
+                	os.remove("./twoworder.py")
+                except(IOError, OSError):
+                    pass
+                with open ("./twoworder.py","a") as outf:
+                    outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
+                    outf.write(str(wordtimetwo))
+                
+                import twoworder
                 wordenter = input("Please enter your current password.")
-                tries = tries + 1
+                tries = 1
+                while wordenter != twoworder.word:
+                    if tries == 5:
+                        print("You got your password wrong 5 times.")
+                        time.sleep(LolexToolsOptions.twowordwait)
+                        tries = 0
+                    wordenter = input("Please enter your current password.")
+                    tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
         try:
             os.remove("./verifonboot.py")

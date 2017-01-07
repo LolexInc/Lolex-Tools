@@ -90,18 +90,8 @@ try:
           twoswappins = False
           twousepin = False
           twouseword = False
-          twopinone = False
-          twopintwo = False
-          twopinthree = False
-          twopinfour = False
-          twopinfive = False
           twowait = 0
           twowords = 0
-          twowordone = False
-          twowordtwo = False
-          twowordthree = False
-          twowordfour = False
-          twowordfive = False
           twowordwait = 0
      if useusername == True:
           print("If your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
@@ -123,18 +113,9 @@ try:
                onepin = int(input("Please set your PIN so it matches."))
                confirm = int(input("Please confirm your PIN."))
           with open ("./LolexToolsOptions.py","a") as outf:
-               if onepintotal == 1:
-                    outf.write("\nonepinone = ")
-               elif onepintotal == 2:
-                    outf.write("\nonepintwo = ")
-               elif onepintotal == 3:
-                    outf.write("\nonepinthree = ")
-               elif onepintotal == 4:
-                    outf.write("\nonepinfour = ")
-               elif onepintotal == 5:
-                    outf.write("\nonepinfive = ")
-               else:
-                    print("Error: PIN overflow.")
+               outf.write("\nonepin")
+               outf.write(str(onepintotal))
+               outf.write(" = ")
                outf.write(str(onepin))
                if onepintotal != onepins:
                     onepintotal = onepintotal + 1
@@ -170,18 +151,9 @@ try:
                oneword = input("Please set your password so it matches.")
                confirm = input("Please confirm your password.")
           with open ("./LolexToolsOptions.py","a") as outf:
-               if onewordtotal == 1:
-                    outf.write("\nonewordone = ")
-               elif onewordtotal == 2:
-                    outf.write("\nonewordtwo = ")
-               elif onewordtotal == 3:
-                    outf.write("\nonewordthree = ")
-               elif onewordtotal == 4:
-                    outf.write("\nonewordfour = ")
-               elif onewordtotal == 5:
-                    outf.write("\nonewordfive = ")
-               else:
-                    print("Error: password overflow.")
+               outf.write("\noneword")
+               outf.write(str(onewordtotal))
+               outf.write(" = ")
                outf.write('"')
                outf.write(str(oneword))
                outf.write('"')
@@ -230,18 +202,9 @@ try:
                     twopin = int(input("Please set your PIN so it matches."))
                     confirm = int(input("Please confirm your PIN."))
                with open ("./LolexToolsOptions.py","a") as outf:
-                    if twopintotal == 1:
-                         outf.write("\ntwopinone = ")
-                    elif twopintotal == 2:
-                         outf.write("\ntwopintwo = ")
-                    elif twopintotal == 3:
-                         outf.write("\ntwopinthree = ")
-                    elif twopintotal == 4:
-                         outf.write("\ntwopinfour = ")
-                    elif twopintotal == 5:
-                         outf.write("\ntwopinfive = ")
-                    else:
-                         print("Error: PIN overflow.")
+                    outf.write("\ntwopin")
+                    outf.write(str(twopintotal))
+                    outf.write(" = ")
                     outf.write(str(twopin))
                     if twopintotal != twopins:
                          twopintotal = twopintotal + 1
@@ -276,18 +239,9 @@ try:
                     twoword = input("Please set your password so it matches.")
                     confirm = input("Please confirm your password.")
                with open ("./LolexToolsOptions.py","a") as outf:
-                    if twowordtotal == 1:
-                         outf.write("\ntwowordone = ")
-                    elif twowordtotal == 2:
-                         outf.write("\ntwowordtwo = ")
-                    elif twowordtotal == 3:
-                         outf.write("\ntwowordthree = ")
-                    elif twowordtotal == 4:
-                         outf.write("\ntwowordfour = ")
-                    elif onewordtotal == 5:
-                         outf.write("\ntwowordfive = ")
-                    else:
-                         print("Error: password overflow.")
+                    outf.write("\ntwoword")
+                    outf.write(str(twowordtotal))
+                    outf.write(" = ")
                     outf.write('"')
                     outf.write(str(twoword))
                     outf.write('"')
@@ -405,7 +359,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("LolexToolsOptions.py","a") as outf:
-          outf.write("\ncompiledon = 8.3")
+          outf.write("\ncompiledon = 9.0")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
