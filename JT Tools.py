@@ -158,7 +158,7 @@ while repeat == int(1):
  elif modewanted == 17:
      print ("Locked!!!")
  elif modewanted == 18:
-  subprocess.call("\\Autoclicker.exe")
+  print("Feature not available.")
  elif modewanted == 19:
      subprocess.call("powershell.exe")
 if repeat != 1:
