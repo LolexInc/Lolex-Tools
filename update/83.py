@@ -1,5 +1,6 @@
 import os
 os.system("cd ..")
+import LolexToolsOptions, LolexToolsMethods,
 onepintotal = 0
 if LolexToolsOptions.onepinone != False:
     onepintotal = onepintotal + 1
