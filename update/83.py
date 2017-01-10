@@ -1,6 +1,6 @@
-import os
-os.system("cd ..")
-import LolexToolsOptions, LolexToolsMethods,
+import sys
+sys.path.insert(0,"cd ..")
+import LolexToolsOptions, LolexToolsMethods
 onepintotal = 0
 if LolexToolsOptions.onepinone != False:
     onepintotal = onepintotal + 1
@@ -45,7 +45,6 @@ if LolexToolsOptions.twowordone != False:
                 twowordtotal = twowordtotal + 1
                 if LolexToolsOptions.twowordfive != False:
                     twowordtotal = twowordtotal + 1
-compiledon = 8.3
 try:
     os.remove("./LolexToolsOptions.py")
     os.remove("./LolexToolsOptions.pyc")
@@ -228,10 +227,3 @@ with open ("./LolexToolsOptions.py","a")as outf:
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("LolexToolsOptions")
 print("Finished updating...")
-    
-
-    
-    
-
-
-    
