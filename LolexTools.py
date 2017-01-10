@@ -37,7 +37,7 @@ if LolexToolsOptions.compiledon<8.3:
         os.system ("python3 ./update/83.py")
 if system == "Windows":
     os.system(theme.theme)
-print("Welcome to Lolex-Tools version 8.3 15:11 GMT+0.0 31/12/16")
+print("Welcome to Lolex-Tools version 9.0exp 17:44 GMT+0.0 10/1/17")
 try:
     os.system(theme.theme)
     oneswappins = verifonboot.oneswappins
@@ -139,7 +139,6 @@ try:
                 with open ("./twoworder.py","a") as outf:
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
                     outf.write(str(wordtimetwo))
-                
                 import twoworder
                 wordenter = input("Please enter your current password.")
                 tries = 1
@@ -150,6 +149,14 @@ try:
                         tries = 0
                     wordenter = input("Please enter your current password.")
                     tries = tries + 1
+# This probably isn't the way to go, so I will rewrite it
+# Doesn't allow for reauth on reenter while loop
+# Auto generating files will probably come
+# if runtimeone == 1:
+#   pinneeded = LolexToolsOptions.onepin1
+# if runtimeone == 1000: #Highly doubtful
+#   pinneeded == ___.onepin1000
+# etc etc
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
         try:
             os.remove("./verifonboot.py")
@@ -610,18 +617,18 @@ except(ValueError):
      time.sleep(10)
 except(IOError):
      print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
+     time.sleep(5)
 except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
+     time.sleep(5)
 except(EOFError):
      print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
+     time.sleep(5)
 except(AttributeError):
      print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
+     time.sleep(5)
 except(OSError):
      print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
+     time.sleep(5)
 except(ZeroDivisionError):
     print("Sorry! A ZeroDivisionError occured. Please do not try to divide by zero.")
