@@ -1,8 +1,4 @@
-import sys
-sys.path.insert(0, "..")
-import LolexToolsOptions
-sys.path.insert(0, "..")
-import LolexToolsMethods
+import LolexToolsOptions, LolexToolsMethods
 onepintotal = 0
 if LolexToolsOptions.oneusepin != False:
     if LolexToolsOptions.onepinone != False:
