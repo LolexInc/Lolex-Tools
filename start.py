@@ -86,8 +86,6 @@ if system == "Windows":
 	exit(None)
 else:
 	print("Starting on Linux...")
-	os.system("sudo apt-get install xdotool")
-	os.system("xdotool key ctrl+super+Up")
 	os.system("python3 ./sys/bootanim.py")
 	print("Starting...")
 	b = time.time()

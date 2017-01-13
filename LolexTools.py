@@ -30,11 +30,18 @@ if LolexToolsOptions.compiledon<8.3:
     if system == "Windows":
         if sys.version_info.minor>5:
             os.system ("py ./update/83.py")
-            pass
         else:
             os.system("python ./update/83.py")
     else:
         os.system ("python3 ./update/83.py")
+    if system == "Windows":
+        if sys.version_info.minor>5:
+            os.system("py .\start.py")
+        else:
+            os.system("python .\start.py")
+    else:
+        os.system("python3 ./start.py")
+    exit(None)
 if system == "Windows":
     os.system(theme.theme)
 print("Welcome to Lolex-Tools version 9.0exp 17:44 GMT+0.0 10/1/17")
