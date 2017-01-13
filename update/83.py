@@ -1,50 +1,56 @@
 import sys
-sys.path.insert(0,"cd ..")
-import LolexToolsOptions, LolexToolsMethods
+sys.path.insert(0, "..")
+import LolexToolsOptions
+sys.path.insert(0, "..")
+import LolexToolsMethods
 onepintotal = 0
-if LolexToolsOptions.onepinone != False:
-    onepintotal = onepintotal + 1
-    if LolexToolsOptions.onepintwo != False:
+if LolexToolsOptions.oneusepin != False:
+    if LolexToolsOptions.onepinone != False:
         onepintotal = onepintotal + 1
-        if LolexToolsOptions.onepinthree != False:
+        if LolexToolsOptions.onepintwo != False:
             onepintotal = onepintotal + 1
-            if LolexToolsOptions.onepinfour != False:
+            if LolexToolsOptions.onepinthree != False:
                 onepintotal = onepintotal + 1
-                if LolexToolsOptions.onepinfive != False:
+                if LolexToolsOptions.onepinfour != False:
                     onepintotal = onepintotal + 1
+                    if LolexToolsOptions.onepinfive != False:
+                        onepintotal = onepintotal + 1
 onewordtotal = 0
-if LolexToolsOptions.onewordone != False:
-    onewordtotal = onewordtotal + 1
-    if LolexToolsOptions.onewordtwo != False:
+if LolexToolsOptions.oneuseword != False:
+    if LolexToolsOptions.onewordone != False:
         onewordtotal = onewordtotal + 1
-        if LolexToolsOptions.onewordthree != False:
+        if LolexToolsOptions.onewordtwo != False:
             onewordtotal = onewordtotal + 1
-            if LolexToolsOptions.onewordfour != False:
+            if LolexToolsOptions.onewordthree != False:
                 onewordtotal = onewordtotal + 1
-                if LolexToolsOptions.onewordfive != False:
+                if LolexToolsOptions.onewordfour != False:
                     onewordtotal = onewordtotal + 1
+                    if LolexToolsOptions.onewordfive != False:
+                        onewordtotal = onewordtotal + 1
 twopintotal = 0
-if LolexToolsOptions.twopinone != False:
-    twopintotal = twopintotal + 1
-    if LolexToolsOptions.twopintwo != False:
+if LolexToolsOptions.twousepin != False:
+    if LolexToolsOptions.twopinone != False:
         twopintotal = twopintotal + 1
-        if LolexToolsOptions.twopinthree != False:
+        if LolexToolsOptions.twopintwo != False:
             twopintotal = twopintotal + 1
-            if LolexToolsOptions.twopinfour != False:
+            if LolexToolsOptions.twopinthree != False:
                 twopintotal = twopintotal + 1
-                if LolexToolsOptions.twopinfive != False:
+                if LolexToolsOptions.twopinfour != False:
                     twopintotal = twopintotal + 1
+                    if LolexToolsOptions.twopinfive != False:
+                        twopintotal = twopintotal + 1
 twowordtotal = 0
-if LolexToolsOptions.twowordone != False:
-    twowordtotal = twowordtotal + 1
-    if LolexToolsOptions.twowordtwo != False:
+if LolexToolsOptions.twouseword != False:
+    if LolexToolsOptions.twowordone != False:
         twowordtotal = twowordtotal + 1
-        if LolexToolsOptions.twowordthree != False:
+        if LolexToolsOptions.twowordtwo != False:
             twowordtotal = twowordtotal + 1
-            if LolexToolsOptions.twowordfour != False:
+            if LolexToolsOptions.twowordthree != False:
                 twowordtotal = twowordtotal + 1
-                if LolexToolsOptions.twowordfive != False:
+                if LolexToolsOptions.twowordfour != False:
                     twowordtotal = twowordtotal + 1
+                    if LolexToolsOptions.twowordfive != False:
+                        twowordtotal = twowordtotal + 1
 try:
     os.remove("./LolexToolsOptions.py")
     os.remove("./LolexToolsOptions.pyc")
