@@ -27,13 +27,15 @@ except(ImportError):
         os.system("python3 ./LolexToolsInstaller.py")
     exit(None)
 if LolexToolsOptions.compiledon<8.3:
+    shutil.copy("./update/83.py","./")
     if system == "Windows":
         if sys.version_info.minor>5:
-            os.system ("py ./update/83.py")
+            os.system ("py ./83.py")
         else:
-            os.system("python ./update/83.py")
+            os.system("python ./83.py")
     else:
-        os.system ("python3 ./update/83.py")
+        os.system ("python3 ./83.py")
+    os.remove("./83.py")
     if system == "Windows":
         if sys.version_info.minor>5:
             os.system("py .\start.py")
