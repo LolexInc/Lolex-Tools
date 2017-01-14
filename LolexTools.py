@@ -8,7 +8,6 @@ except(ImportError):
     exit(None)
 system = platform.system()
 if system == "Windows":
-    os.system("mode 1000")
     if sys.version_info.major != 3:
         print("Only Python 3 is currently supported. Please install Python 3.")
         time.sleep(3)
@@ -46,7 +45,7 @@ if LolexToolsOptions.compiledon<8.3:
     exit(None)
 if system == "Windows":
     os.system(theme.theme)
-print("Welcome to Lolex-Tools version 9.0exp 17:44 GMT+0.0 10/1/17")
+print("Welcome to Lolex-Tools version 9.0exp 17:58 GMT+0.0 14/1/17")
 try:
     os.system(theme.theme)
     oneswappins = verifonboot.oneswappins
@@ -198,49 +197,49 @@ try:
     page = 0
     layout = menusettings.layout
     while True:
-        modeone = "1 = Settings" #all
-        modetwo = "2 = Restart" #all
-        modethree = "3 = Logoff" #Not Android
-        modefour = "4 = Alternative Logoff Method" #Windows
-        modefourlinux = "4 = Hibernate"  #all
-        modefive = "5 = Hibernate" #Windows and halfish on Linux NOT ANDROID!
-        modefivelinux = "5 = Shutdown" #all
-        modesix = "6 = Shutdown"#all
-        modesixlinux = "6 = Call A Python Shell" #all
-        modesevenlinux = "7 = Create folders in the current location" #all
-        modeseven = "7 = Alternative Shutdown Method" #Windows
-        modeeight = "8 = Colour Flicker" #Windows
-        modeeightlinux = "8 = Remove Directories" #all
-        modenine = "9 = Call CMD"#Windows
-        modeninelinux = "9 = Create files in the current location"#all
-        modeten = "10 = Call Documents"#Windows
-        modetenlinux = "10 = Restart This Script (debug purposes)"#all
-        modeeleven = "11 = Call A Python Shell"#all
-        modeelevenlinux = "11 = Perform Operations With Numbers"#all
-        modetwelve = "12 = Call Task Manager"#Windows
-        modetwelvelinux = "12 = Lock This Script"#all
-        modethirteen = "13 = Create folders in the current location"#all
-        modethirteenlinux = "13 = Start Installer"#all
-        modefourteen = "14 = Remove Directories"#all
-        modefourteenlinux = "14 = Show uptime and average load"#Linux/Android
-        modefifteenlinux = "15 = Dump system information into terminal"#Linux/Android
-        exitmodelinux = "16 = Exit"#all
-        exitmodeandroid = "18 = Exit"#all
-        modefifteen = "15 = Create files in the current location"#all
-        modesixteen = "16 = Restart This Script (debug purposes)"#all
-        modeseventeen = "17 = Perform Operations With Numbers"#all
-        modeeightteen = "18 = Lock This Script"#all
-        modenineteen = "19 = Call Remote Desktop"#Windows
-        modetwenty = "20 = Call Powershell"#Windows
-        modetwentyone = "21 = Print Systeminfo"#Windows
-        modetwentytwo = "22 = Start Installer"#all
-        exitmode = "23 = Exit"#all
-        nextpage = "24 = Next Page"#all
-        nextpageandroid= "17 = Next Page"#all
-        backpage = "25 = Back A Page"#all
-        backpageandroid = "18 = Back A Page"#all
-        nextpagelinux = "17 = Next Page"#all
-        backpagelinux = "18 = Back A Page"#all
+        modeone = "1 = Settings"
+        modetwo = "2 = Restart"
+        modethree = "3 = Logoff"
+        modefour = "4 = Alternative Logoff Method"
+        modefourlinux = "4 = Hibernate"
+        modefive = "5 = Hibernate"
+        modefivelinux = "5 = Shutdown"
+        modesix = "6 = Shutdown"
+        modesixlinux = "6 = Call A Python Shell"
+        modesevenlinux = "7 = Create folders in the current location"
+        modeseven = "7 = Alternative Shutdown Method"
+        modeeight = "8 = Colour Flicker"
+        modeeightlinux = "8 = Remove Directories"
+        modenine = "9 = Call CMD"
+        modeninelinux = "9 = Create files in the current location"
+        modeten = "10 = Call Documents"
+        modetenlinux = "10 = Restart This Script (debug purposes)"
+        modeeleven = "11 = Call A Python Shell"
+        modeelevenlinux = "11 = Perform Operations With Numbers"
+        modetwelve = "12 = Call Task Manager"
+        modetwelvelinux = "12 = Lock This Script"
+        modethirteen = "13 = Create folders in the current location"
+        modethirteenlinux = "13 = Start Installer"
+        modefourteen = "14 = Remove Directories"
+        modefourteenlinux = "14 = Show uptime and average load"
+        modefifteenlinux = "15 = Dump system information into terminal"
+        exitmodelinux = "16 = Exit"
+        exitmodeandroid = "18 = Exit"
+        modefifteen = "15 = Create files in the current location"
+        modesixteen = "16 = Restart This Script (debug purposes)"
+        modeseventeen = "17 = Perform Operations With Numbers"
+        modeeightteen = "18 = Lock This Script"
+        modenineteen = "19 = Call Remote Desktop"
+        modetwenty = "20 = Call Powershell"
+        modetwentyone = "21 = Print Systeminfo"
+        modetwentytwo = "22 = Start Installer"
+        exitmode = "23 = Exit"
+        nextpage = "24 = Next Page"
+        nextpageandroid= "17 = Next Page"
+        backpage = "25 = Back A Page"
+        backpageandroid = "18 = Back A Page"
+        nextpagelinux = "17 = Next Page"
+        backpagelinux = "18 = Back A Page"
         if layout == 0:
             print(modeone)
             if restartsettings.hidden != True:
@@ -626,18 +625,18 @@ except(ValueError):
      time.sleep(10)
 except(IOError):
      print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(5)
+     time.sleep(10)
 except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(5)
+     time.sleep(10)
 except(EOFError):
      print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(5)
+     time.sleep(10)
 except(AttributeError):
      print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(5)
+     time.sleep(10)
 except(OSError):
      print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(5)
+     time.sleep(10)
 except(ZeroDivisionError):
     print("Sorry! A ZeroDivisionError occured. Please do not try to divide by zero.")
