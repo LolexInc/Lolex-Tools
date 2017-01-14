@@ -58,6 +58,7 @@ except(ImportError, IOError, OSError):
 if system == "Windows":
 	print("Starting on Windows...")
 	os.system("TITLE Lolex-Tools")
+	os.system("mode 1000")
 	if sys.version_info.minor>5:
 		os.system("py .\sys/bootanim.py")
 		print("Starting...")
