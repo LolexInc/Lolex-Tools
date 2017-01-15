@@ -74,7 +74,7 @@ if system == "Windows":
 	else:
 		sys.stdout.write("\x1b]2;Lolex-Tools\x07")
 		os.system("sudo apt-get install xdotool")
- 		os.system("xdotool key ctrl+super+Up")
+		os.system("xdotool key ctrl+super+Up")
 		os.system("python .\sys/bootanim.py")
 		print("Starting...")
 		b = time.time()
