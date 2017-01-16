@@ -40,7 +40,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(str(onepintotal))
         outf.write(" = ")
         outf.write(str(onepin))
-twomorepins = int(input("Please enter how many more PINs you wish to add for user 1?"))
+twomorepins = int(input("Please enter how many more PINs you wish to add for user 2?"))
 with open("./LolexToolsOptions.py","a") as outf:
     if twopintotal>0:
         outf.write("\ntwopin1 = ")
@@ -69,7 +69,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(str(twopintotal))
         outf.write(" = ")
         outf.write(str(twopin))
-onemorewords = int(input("Please enter how many more PINs you wish to add for user 1?"))
+onemorewords = int(input("Please enter how many more passwords you wish to add for user 1?"))
 with open("./LolexToolsOptions.py","a") as outf:
     if onewordtotal>0:
         outf.write("\noneword1 = ")
@@ -98,7 +98,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(str(onewordtotal))
         outf.write(" = ")
         outf.write(str(oneword))
-twomorewords = int(input("Please enter how many more PINs you wish to add for user 1?"))
+twomorewords = int(input("Please enter how many more passwords you wish to add for user 2?"))
 with open("./LolexToolsOptions.py","a") as outf:
     if twowordtotal>0:
         outf.write("\ntwoword1 = ")
