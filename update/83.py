@@ -1,4 +1,4 @@
-import LolexToolsOptions, LolexToolsMethods
+import os, LolexToolsOptions, LolexToolsMethods
 onepintotal = 0
 if LolexToolsOptions.oneusepin != False:
     if LolexToolsOptions.onepinone != False:
