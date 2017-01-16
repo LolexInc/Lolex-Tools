@@ -127,67 +127,68 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(str(twowordtotal))
         outf.write(" = ")
         outf.write(str(twoword))
-outf.write("compiledon = 9.0")
-outf.write("\nonepintotal = ")
-outf.write(str(onepintotal))
-outf.write("\ntwopintotal = ")
-outf.write(str(twopintotal))
-outf.write("\nonewordtotal = ")
-outf.write(str(onewordtotal))
-outf.write("\ntwowordtotal = ")
-outf.write(str(twowordtotal))
-outf.write("\nuseusername = ")
-outf.write(str(LolexToolsOptions.useusername))
-useusername = 0
-outf.write("\nusername1 = ")
-if LolexToolsOptions.username1 == False:
-   outf.write(str(LolexToolsOptions.username1))
-else:
-   outf.write('("')
-   outf.write(LolexToolsOptions.username1)
-   outf.write('")')
-username1 = 0
-outf.write("\nusername2 = ")
-outf.write('("')
-outf.write(LolexToolsOptions.username2)
-outf.write('")')
-username2 = 0
-outf.write("\noneusepin = ")
-outf.write(str(LolexToolsOptions.oneusepin))
-oneusepin = 0
-outf.write("\ntwousepin = ")
-outf.write(str(LolexToolsOptions.twousepin))
-twousepin = 0
-outf.write("\noneuseword = ")
-outf.write(str(LolexToolsOptions.oneuseword))
-oneuseword = 0
-outf.write("\ntwouseword = ")
-outf.write(str(LolexToolsOptions.twouseword))
-twouseword = 0
-outf.write("\nonewordwait = ")
-outf.write(str(LolexToolsOptions.onewordwait))
-onewordwait = "None"
-outf.write("\ntwowordwait = ")
-outf.write(str(LolexToolsOptions.twowordwait))
-twowordwait = "None"
-outf.write("\ndeveloper = ")
-outf.write(str(LolexToolsOptions.developer))
-developer = "None"
-outf.write("\nvanishprint = ")
-outf.write(str(LolexToolsOptions.vanishprint))
-vanishprint = "None"
-outf.write("\ncompiler = ")
-outf.write(str(LolexToolsOptions.compiler))
-compiler = "None"
-outf.write("\ncompileplugins = ")
-outf.write(str(LolexToolsOptions.compileplugins))
-compileplugins = "None"
-outf.write("\nonewait = ")
-outf.write(str(LolexToolsOptions.onewait))
-onewait = "None"
-outf.write("\ntwowait = ")
-outf.write(str(LolexToolsOptions.twowait))
-twowait = "None"
-confirm = "None"
+with open ("./LolexToolsOptions.py","a") as outf:
+    outf.write("compiledon = 9.0")
+    outf.write("\nonepintotal = ")
+    outf.write(str(onepintotal))
+    outf.write("\ntwopintotal = ")
+    outf.write(str(twopintotal))
+    outf.write("\nonewordtotal = ")
+    outf.write(str(onewordtotal))
+    outf.write("\ntwowordtotal = ")
+    outf.write(str(twowordtotal))
+    outf.write("\nuseusername = ")
+    outf.write(str(LolexToolsOptions.useusername))
+    useusername = 0
+    outf.write("\nusername1 = ")
+    if LolexToolsOptions.username1 == False:
+       outf.write(str(LolexToolsOptions.username1))
+    else:
+       outf.write('("')
+       outf.write(LolexToolsOptions.username1)
+       outf.write('")')
+    username1 = 0
+    outf.write("\nusername2 = ")
+    outf.write('("')
+    outf.write(LolexToolsOptions.username2)
+    outf.write('")')
+    username2 = 0
+    outf.write("\noneusepin = ")
+    outf.write(str(LolexToolsOptions.oneusepin))
+    oneusepin = 0
+    outf.write("\ntwousepin = ")
+    outf.write(str(LolexToolsOptions.twousepin))
+    twousepin = 0
+    outf.write("\noneuseword = ")
+    outf.write(str(LolexToolsOptions.oneuseword))
+    oneuseword = 0
+    outf.write("\ntwouseword = ")
+    outf.write(str(LolexToolsOptions.twouseword))
+    twouseword = 0
+    outf.write("\nonewordwait = ")
+    outf.write(str(LolexToolsOptions.onewordwait))
+    onewordwait = "None"
+    outf.write("\ntwowordwait = ")
+    outf.write(str(LolexToolsOptions.twowordwait))
+    twowordwait = "None"
+    outf.write("\ndeveloper = ")
+    outf.write(str(LolexToolsOptions.developer))
+    developer = "None"
+    outf.write("\nvanishprint = ")
+    outf.write(str(LolexToolsOptions.vanishprint))
+    vanishprint = "None"
+    outf.write("\ncompiler = ")
+    outf.write(str(LolexToolsOptions.compiler))
+    compiler = "None"
+    outf.write("\ncompileplugins = ")
+    outf.write(str(LolexToolsOptions.compileplugins))
+    compileplugins = "None"
+    outf.write("\nonewait = ")
+    outf.write(str(LolexToolsOptions.onewait))
+    onewait = "None"
+    outf.write("\ntwowait = ")
+    outf.write(str(LolexToolsOptions.twowait))
+    twowait = "None"
+    confirm = "None"
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("LolexToolsOptions")
