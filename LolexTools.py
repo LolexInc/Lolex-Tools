@@ -1,5 +1,5 @@
 #! python3
-import sys, time, subprocess, os, shutil, py_compile, platform, io
+import sys, time, subprocess, os, shutil, py_compile, platform, io, zipfile
 try:
     import isnottravisci
 except(ImportError):
@@ -385,7 +385,7 @@ try:
                     print(backpagelinux)
         modewanted = int(input("Please enter the number of the mode that you want."))
         if useros == "Windows":
-            maxmode = 25
+            maxmode = 26
         else:
             maxmode = 18
         while modewanted > maxmode:
@@ -607,6 +607,15 @@ try:
                         print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
             else:
                 os.system("sudo lshw")
+        elif (modewanted == 26 and useros == "Windows"):
+            print("Checking for updates...")
+            print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
+            os.system("python -m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
+# search for zips instead :P
+            zip_ref = zipfile.ZipFile("./Lolex-Tools-master.zip", "r")
+            print("Extracting...")
+            zip_ref.extractall("newversion")
+            zip_ref.close()
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
