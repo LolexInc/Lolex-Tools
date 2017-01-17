@@ -45,6 +45,7 @@ if LolexToolsOptions.compiledon<9.0:
     else:
         os.system ("python3 ./90.py")
     os.remove("./90.py")
+    print("Restarting to finish updating...")
     if system == "Windows":
         if sys.version_info.minor>5:
           os.system("py .\start.py")
@@ -55,7 +56,7 @@ if LolexToolsOptions.compiledon<9.0:
     exit(None)
 if system == "Windows":
     os.system(theme.theme)
-print("Welcome to Lolex-Tools version 9.0exp 17:58 GMT+0.0 14/1/17")
+print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
 try:
     os.system(theme.theme)
     oneswappins = verifonboot.oneswappins
@@ -522,7 +523,10 @@ try:
             confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
             if confirmscriptrestart == 1:
                 if useros == "Windows":
-                    os.system(".\start.py")
+                    if sys.version_info.minor<6:
+                        os.system("python .\start.py")
+                    else:
+                        os.system("py .\start.py")
                 else:
                     os.system("python3 ./start.py")
                 exit(None)
