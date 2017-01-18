@@ -610,13 +610,25 @@ try:
         elif (modewanted == 26 and useros == "Windows"):
             print("Checking for updates...")
             print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
-            os.system("python -m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
-            confirm = input("Press enter to continue...")
-# search for zips instead :P
-            zip_ref = zipfile.ZipFile("./Lolex-Tools-master.zip", "r")
-            print("Extracting...")
-            zip_ref.extractall("newversion")
-            zip_ref.close()
+            if os.system("git clone https://github.com/lolexorg/Lolex-Tools.git") != 0:
+                continueto = int(input("Git was not found. Please press 1 to initiate webbrowser method or 0 to cancel."))
+                if continueto == 1:
+                    print("Please save your zip to Lolex-Tools newversion folder.")
+                    os.system("python -m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
+                    confirm = input("Press enter to continue...")
+                    try:
+                        os.remove("./newversion")
+                    except(IOError, OSError):
+                        pass
+                    os.mkdirs("./newversion")
+                    newver = os.listdirs("./newversion")
+                                
+        # search for zips instead :P
+                    zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
+                    print("Extracting...")
+                    zip_ref.extractall("newversion")
+                    zip_ref.close()
+                    
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
             if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
                 page = page + 1
