@@ -77,25 +77,7 @@ def compiler(name):
         os.remove("./"+name+".pyc")
     except(IOError):
         pass
-    py_compile.compile(name+".py")
-    if sys.version_info.minor == 7:
-        nextone = (".cpython-37.pyc")
-    elif sys.version_info.minor == 6:
-        nextone = (".cpython-36.pyc")
-    elif sys.version_info.minor == 5:
-        nextone = (".cpython-35.pyc")
-    elif sys.version_info.minor == 4:
-        nextone = (".cpython-34.pyc")
-    elif sys.version_info.minor == 3:
-        nextone = (".cpython-33.pyc")
-    elif sys.version_info.minor == 2:
-        nextone = (".cpython-32.pyc")
-    elif sys.version_info.minor == 1:
-        nextone = (".cpython-31.pyc")
-    else:
-        nextone = (".cpython-30.pyc")
-    shutil.copy("./__pycache__/"+name+nextone,"./")
-    os.rename("./"+name+nextone,"./"+name+".pyc")
+    py_compile.compile(name+".py","./"+name+".pyc")
     os.remove("./"+name+".py")
 def modehide(name, state):
     if state == False:
