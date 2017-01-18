@@ -611,6 +611,7 @@ try:
             print("Checking for updates...")
             print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
             os.system("python -m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
+            confirm = input("Press enter to continue...")
 # search for zips instead :P
             zip_ref = zipfile.ZipFile("./Lolex-Tools-master.zip", "r")
             print("Extracting...")
