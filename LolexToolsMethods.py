@@ -50,6 +50,40 @@ def flickerp2(colour, howlongtoflashfor):
     import theme
     os.system(theme.theme)
     exit()
+def windowsnonpage(page):
+        if page == 0 or page == -1:
+                print("1 = Settings")
+                print("2 = Restart")
+                print("3 = Logoff")
+                print("4 = Alternative Logoff Method")
+                print("5 = Hibernate")
+        if page == 1 or page == -1:
+                print("6 = Shutdown")
+                print("7 = Alternative Shutdown Method")
+                print("8 = Colour Flicker")
+                print("9 = Call CMD")
+                print("10 = Call Documents")
+        if page == 2 or page == -1:
+                print("11 = Call A Python Shell")
+                print("12 = Call Task Manager")
+                print("13 = Create folders")
+                print("14 = Remove Directories")
+                print("15 = Create Files")
+        if page == 3 or page == -1:
+                print("16 = Restart This Script")
+                print("17 = Perform Arithmetic Operations")
+                print("18 = Lock This Script")
+                print("19 = Call Remote Desktop")
+                print("20 = Call Powershell")
+        if page == 4 or page == -1:
+                print("21 = Print SystemInfo")
+                print("22 = Start Installer")
+                print("23 = Exit")
+        if page != -1:
+                print("24 = Next Page")
+                print("25 = Back A Page")
+                
+                
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
