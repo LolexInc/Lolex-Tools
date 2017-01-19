@@ -252,141 +252,143 @@ try:
         backpageandroid = "18 = Back A Page"
         nextpagelinux = "17 = Next Page"
         backpagelinux = "18 = Back A Page"
-        if useros != "Windows":
-            if layout == 0:
-                print(modeone)
-                if restartsettings.hidden != True:
-                    print (modetwo)
-                if logoffsettings.hidden != True:
-                    print (modethree)
-                if useros == "Windows":
-                    if logoffsettings.hidden != True:
-                        print (modefour)
-                    if hibernatesettings.hidden != True:
-                        print(modefive)
-                    if shutdownsettings.hidden != True:
-                        print(modesix)
-                else:
-                    if hibernatesettings.hidden != True:
-                        print(modefourlinux)
-                    if shutdownsettings.hidden != True:
-                        print(modefivelinux)
-                    print(modesixlinux)
-                    print(modesevenlinux)
-                if useros == "Windows":
-                    print (modeseven)
-                    print (modeeight)
-                    print (modenine)
-                    print (modeten)
-                    print (modeeleven)
-                if useros == "Windows":
-                    print (modetwelve)
-                    print (modethirteen)
-                    print (modefourteen)
-                    print (modefifteen)
-                    print(modesixteen)
-                    print(modeseventeen)
-                    print(modeeightteen)
-                else:
-                    print(modeeightlinux)
-                    print(modeninelinux)
-                    print(modetenlinux)
-                    print(modeelevenlinux)
-                    print(modetwelvelinux)
-                    print(modethirteenlinux)
-                    print(modefourteenlinux)
-                    print(modefifteenlinux)
-                    print(exitmodelinux)
-                if useros == "Windows":
-                    print (modenineteen)
-                    print (modetwenty)
-                    print (modetwentyone)
-                    print(modetwentytwo)
-                    print(exitmode)
-            elif layout == 1:
-                if page == 0:
-                    print(modeone)
-                    if restartsettings.hidden != True:
-                        print (modetwo)
-                    if logoffsettings.hidden != True:
-                        print (modethree)
-                    if useros == "Windows":
-                        if logoffsettings.hidden != True:
-                            print (modefour)
-                        if hibernatesettings.hidden != True:
-                            print (modefive)
-                        print (nextpage)
-                    else:
-                        if hibernatesettings.hidden != True:
-                            print(modefourlinux)
-                        if shutdownsettings.hidden != True:
-                            print(modefivelinux)
-                        print(nextpagelinux)
-                        print(backpagelinux)
-                elif page == 1:
-                    if useros == "Windows":
-                        if shutdownsettings.hidden != True:
-                            print(modesix)
-                        print (modeseven)
-                        print (modeeight)
-                        print (modenine)
-                        print (modeten)
-                        print(nextpage)
-                        print(backpage)
-                    elif useros == "Linux":
-                        page = page + 1
-                if page == 2:
-                    if useros == "Linux":
-                        print(modesixlinux)  
-                    elif useros == "Windows":
-                        print(modeeleven)
-                    if useros == "Linux":
-                        print(modesevenlinux)
-                        print(modeeightlinux)
-                        print(modeninelinux)
-                        print(modetenlinux)
-                        print(nextpagelinux)
-                        print(backpagelinux)
-                    elif useros == "Windows":
-                        print (modetwelve)
-                        print (modethirteen)
-                        print (modefourteen)
-                        print (modefifteen)
-                        print(nextpage)
-                        print(backpage)
-                elif page == 3:
-                    if useros != "Linux":
-                        print (modesixteen)
-                        print (modeseventeen)
-                        print (modeeightteen)
-                    else:
-                        print(modeelevenlinux)
-                        print(modetwelvelinux)
-                        print(modethirteenlinux)
-                        print(modefourteenlinux)
-                        print(modefifteenlinux)
-                        print(exitmodelinux)
-                    if useros == "Windows":
-                        print (modenineteen)
-                        print (modetwenty)
-                        
-                    if useros == "Windows":
-                        print(nextpage)
-                        print(backpage)
-                    else:
-                            print(nextpagelinux)
-                            print(backpagelinux)
-                elif page == 4:
-                    if useros == "Windows":
-                        print (modetwentyone)
-                        print(modetwentytwo)
-                        print(exitmode)
-                        print(backpage)
-                    else:
-                        print(backpagelinux)
+##        if useros != "Windows":
+##            if layout == 0:
+##                print(modeone)
+##                if restartsettings.hidden != True:
+##                    print (modetwo)
+##                if logoffsettings.hidden != True:
+##                    print (modethree)
+##                if useros == "Windows":
+##                    if logoffsettings.hidden != True:
+##                        print (modefour)
+##                    if hibernatesettings.hidden != True:
+##                        print(modefive)
+##                    if shutdownsettings.hidden != True:
+##                        print(modesix)
+##                else:
+##                    if hibernatesettings.hidden != True:
+##                        print(modefourlinux)
+##                    if shutdownsettings.hidden != True:
+##                        print(modefivelinux)
+##                    print(modesixlinux)
+##                    print(modesevenlinux)
+##                if useros == "Windows":
+##                    print (modeseven)
+##                    print (modeeight)
+##                    print (modenine)
+##                    print (modeten)
+##                    print (modeeleven)
+##                if useros == "Windows":
+##                    print (modetwelve)
+##                    print (modethirteen)
+##                    print (modefourteen)
+##                    print (modefifteen)
+##                    print(modesixteen)
+##                    print(modeseventeen)
+##                    print(modeeightteen)
+##                else:
+##                    print(modeeightlinux)
+##                    print(modeninelinux)
+##                    print(modetenlinux)
+##                    print(modeelevenlinux)
+##                    print(modetwelvelinux)
+##                    print(modethirteenlinux)
+##                    print(modefourteenlinux)
+##                    print(modefifteenlinux)
+##                    print(exitmodelinux)
+##                if useros == "Windows":
+##                    print (modenineteen)
+##                    print (modetwenty)
+##                    print (modetwentyone)
+##                    print(modetwentytwo)
+##                    print(exitmode)
+##            elif layout == 1:
+##                if page == 0:
+##                    print(modeone)
+##                    if restartsettings.hidden != True:
+##                        print (modetwo)
+##                    if logoffsettings.hidden != True:
+##                        print (modethree)
+##                    if useros == "Windows":
+##                        if logoffsettings.hidden != True:
+##                            print (modefour)
+##                        if hibernatesettings.hidden != True:
+##                            print (modefive)
+##                        print (nextpage)
+##                    else:
+##                        if hibernatesettings.hidden != True:
+##                            print(modefourlinux)
+##                        if shutdownsettings.hidden != True:
+##                            print(modefivelinux)
+##                        print(nextpagelinux)
+##                        print(backpagelinux)
+##                elif page == 1:
+##                    if useros == "Windows":
+##                        if shutdownsettings.hidden != True:
+##                            print(modesix)
+##                        print (modeseven)
+##                        print (modeeight)
+##                        print (modenine)
+##                        print (modeten)
+##                        print(nextpage)
+##                        print(backpage)
+##                    elif useros == "Linux":
+##                        page = page + 1
+##                if page == 2:
+##                    if useros == "Linux":
+##                        print(modesixlinux)  
+##                    elif useros == "Windows":
+##                        print(modeeleven)
+##                    if useros == "Linux":
+##                        print(modesevenlinux)
+##                        print(modeeightlinux)
+##                        print(modeninelinux)
+##                        print(modetenlinux)
+##                        print(nextpagelinux)
+##                        print(backpagelinux)
+##                    elif useros == "Windows":
+##                        print (modetwelve)
+##                        print (modethirteen)
+##                        print (modefourteen)
+##                        print (modefifteen)
+##                        print(nextpage)
+##                        print(backpage)
+##                elif page == 3:
+##                    if useros != "Linux":
+##                        print (modesixteen)
+##                        print (modeseventeen)
+##                        print (modeeightteen)
+##                    else:
+##                        print(modeelevenlinux)
+##                        print(modetwelvelinux)
+##                        print(modethirteenlinux)
+##                        print(modefourteenlinux)
+##                        print(modefifteenlinux)
+##                        print(exitmodelinux)
+##                    if useros == "Windows":
+##                        print (modenineteen)
+##                        print (modetwenty)
+##                        
+##                    if useros == "Windows":
+##                        print(nextpage)
+##                        print(backpage)
+##                    else:
+##                            print(nextpagelinux)
+##                            print(backpagelinux)
+##                elif page == 4:
+##                    if useros == "Windows":
+##                        print (modetwentyone)
+##                        print(modetwentytwo)
+##                        print(exitmode)
+##                        print(backpage)
+##                    else:
+##                        print(backpagelinux)
 
         if useros == "Windows":
-            LolexToolsMethods.windowsnonpage(page)
+            LolexToolsMethods.windowspage(page)
+        elif useros == "Linux":
+            LolexToolsMethods.linuxpage(page)
         modewanted = int(input("Please enter the number of the mode that you want."))
         if useros == "Windows":
             maxmode = 26
@@ -636,22 +638,18 @@ try:
                     zip_ref.close()
                     
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
-            if (page < 4 and useros == "Windows") or (page < 3 and useros == "Linux"):
+            if (page < 4 and useros == "Windows") or (page < 2 and useros == "Linux"):
                 page = page + 1
             else:
                 page = 0
         elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux"):
-            if page == 2 and useros == "Linux":
-                page = 0
-            elif page == 3 and useros == "Linux":
-                page = 1
-            elif page > 0:
+            if page > 0:
                 page = page - 1
             else:
                 if useros == "Windows":
                     page = 4
                 else:
-                    page = 3
+                    page = 2
         elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
             print("Exiting...")
             print("Giving all threads 5 seconds to exit...")

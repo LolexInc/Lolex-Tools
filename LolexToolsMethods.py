@@ -12,8 +12,7 @@ def version():
 def flicker():
     suretoflash = int(input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy."))
     if suretoflash == 1:
-        howlongtoflashfor = int(input("How many loops do you wish to occur?"))
-        
+        howlongtoflashfor = int(input("How many loops do you wish to occur?")) 
     print("Here is a list of colours available:")
     print("a - Neon Green")
     print("b - Light Blue")
@@ -50,29 +49,29 @@ def flickerp2(colour, howlongtoflashfor):
     import theme
     os.system(theme.theme)
     exit()
-def windowsnonpage(page):
+def windowspage(page):
         if page == 0 or page == -1:
                 print("1 = Settings")
                 print("2 = Restart")
                 print("3 = Logoff")
-                print("4 = Alternative Logoff Method")
+                print("4 = Alternative logoff method")
                 print("5 = Hibernate")
         if page == 1 or page == -1:
                 print("6 = Shutdown")
-                print("7 = Alternative Shutdown Method")
+                print("7 = Alternative shutdown method")
                 print("8 = Colour Flicker")
                 print("9 = Call CMD")
-                print("10 = Call Documents")
+                print("10 = Call documents")
         if page == 2 or page == -1:
-                print("11 = Call A Python Shell")
+                print("11 = Call a Python shell")
                 print("12 = Call Task Manager")
                 print("13 = Create folders")
-                print("14 = Remove Directories")
-                print("15 = Create Files")
+                print("14 = Remove folders")
+                print("15 = Create files")
         if page == 3 or page == -1:
-                print("16 = Restart This Script")
-                print("17 = Perform Arithmetic Operations")
-                print("18 = Lock This Script")
+                print("16 = Restart this script")
+                print("17 = Perform arithmetic operations")
+                print("18 = Lock this script")
                 print("19 = Call Remote Desktop")
                 print("20 = Call Powershell")
         if page == 4 or page == -1:
@@ -81,9 +80,31 @@ def windowsnonpage(page):
                 print("23 = Exit")
         if page != -1:
                 print("24 = Next Page")
-                print("25 = Back A Page")
+                print("25 = Back a Page")
                 
-                
+def linuxpage(page):
+        if page == 0 or page == -1:
+                print("1 = Settings")
+                print("2 = Restart")
+                print("3 = Logoff")
+                print("4 = Hibernate")
+                print("5 = Shutdown")
+        if page == 1 or page == -1:
+                print("6 = Call a Python Shell")
+                print("7 = Create folders")
+                print("8 = Remove folders")
+                print("9 = Create files")
+                print("10 = Restart this script")
+        if page == 2 or page == -1:
+                print("11 = Perform arithmetic operations")
+                print("12 = Lock this script")
+                print("13 = Start Installer")
+                print("14 = Show Uptime and Average load")
+                print("15 = Print SystemInfo")
+                print("16 = Exit")
+        if page != -1:
+                print("17 = Next Page")
+                print("18 = Back a Page")
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
