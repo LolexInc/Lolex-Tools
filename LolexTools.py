@@ -414,7 +414,7 @@ try:
                     with open ("./menusettings.py","a") as outf:
                         outf.write("layout = ")
                         outf.write(str(layout))
-                    if layout = 0:
+                    if layout == 0:
                         page = -1
             elif setting == 2:
                 print("1 = Hide power menu modes.")
