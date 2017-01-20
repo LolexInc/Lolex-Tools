@@ -206,8 +206,11 @@ try:
         if LolexToolsOptions.compiler == True:
             LolexToolsMethods.compiler("verifonboot")
     useros = platform.system()
-    page = 0
     layout = menusettings.layout
+    if layout == 0:
+        page = -1
+    else:
+        page = 0
     while True:
         modeone = "1 = Settings"
         modetwo = "2 = Restart"
@@ -637,12 +640,12 @@ try:
                     zip_ref.extractall("newversion")
                     zip_ref.close()
                     
-        elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux"):
+        elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux") and page != -1:
             if (page < 4 and useros == "Windows") or (page < 2 and useros == "Linux"):
                 page = page + 1
             else:
                 page = 0
-        elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux"):
+        elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux") and page != -1:
             if page > 0:
                 page = page - 1
             else:
