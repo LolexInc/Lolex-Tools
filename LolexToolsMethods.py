@@ -1,4 +1,4 @@
-import os, time, py_compile, shutil, sys, platform, threading
+import os, time, py_compile, shutil, sys, platform, threading, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 print ("Module LolexToolsMethods is running, using modules os and time.")
 try:
 	import ver
@@ -52,7 +52,8 @@ def flickerp2(colour, howlongtoflashfor):
 def windowspage(page):
         if page == 0 or page == -1:
                 print("1 = Settings")
-                print("2 = Restart")
+		if restartsettings.hidden == False:
+                	print("2 = Restart")
                 print("3 = Logoff")
                 print("4 = Alternative logoff method")
                 print("5 = Hibernate")
