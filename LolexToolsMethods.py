@@ -52,8 +52,8 @@ def flickerp2(colour, howlongtoflashfor):
 def windowspage(page):
         if page == 0 or page == -1:
                 print("1 = Settings")
-		if restartsettings.hidden == False:
-                	print("2 = Restart")
+                if restartsettings.hidden == False:
+                    print("2 = Restart")
                 print("3 = Logoff")
                 print("4 = Alternative logoff method")
                 print("5 = Hibernate")
