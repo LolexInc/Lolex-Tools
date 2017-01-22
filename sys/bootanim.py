@@ -1,7 +1,6 @@
 import os, platform, time
 if platform.system() == "Linux":
         if "arm" in platform.platform():
-
                 clear = "reset"
         else:
                 clear = "clear"
@@ -202,11 +201,3 @@ print("   0             00     0  0         00000       00   000000    00       
 print("    0            00     0  0         0          0  0            00       0      0    0      0   0              0")
 print("     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000")
 time.sleep(1.5)
-
-
-
-
-
-
-
-
