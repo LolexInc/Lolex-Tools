@@ -384,7 +384,7 @@ try:
                         elif addortakenum > int(0):
                             startnum = startnum + addortakenum
                         time.sleep(waittime)
-                    if startnum ==endnum or startnum>endnum:
+                    if startnum == endnum or startnum>endnum:
                         print("The closest number to your target number was:" + (str(startnum)))
                         time.sleep (1)
                     elif startnum > endnum:
@@ -430,8 +430,9 @@ try:
                 exit(None)
         elif (modewanted == 14 and useros == "Linux"):
             if "arm" in platform.platform():
-                if os.system("/system/bin/uptime")!= 0:
-                    print("Failed to run uptime script.")
+                if os.system("su -c uptime") != 0:
+                    if os.system("/system/bin/uptime")!= 0:
+                        print("Failed to run uptime script.")
             else:
                 os.system("uptime")
         elif modewanted == 15 and useros == "Linux":
@@ -462,8 +463,7 @@ try:
                     zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
                     print("Extracting...")
                     zip_ref.extractall("newversion")
-                    zip_ref.close()
-                    
+                    zip_ref.close()   
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux") and page != -1:
             if (page < 4 and useros == "Windows") or (page < 2 and useros == "Linux"):
                 page = page + 1
