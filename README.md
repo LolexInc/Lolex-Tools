@@ -1,5 +1,7 @@
 # Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # This is : Lolex-Tools 9.0exp
+# This is a nightly build. Do not use for production purposes<br>
+# Highly unstable at the minute
 ## People
 Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
 AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
