@@ -45,14 +45,6 @@ try:
 except(IOError, OSError):
 	pass
 try:
-	os.remove("./busybox-armeabi")
-except(IOError, OSError):
-	pass
-try:
-	os.remove("./busybox-x86")
-except(IOError, OSError):
-	pass
-try:
 	os.remove("./Androidautoupdate.sh")
 except(IOError, OSError):
 	pass
@@ -69,8 +61,6 @@ try:
 	shutil.copy("/sdcard/Lolex-Tools/start.py","./")
 	shutil.copy("/sdcard/Lolex-Tools/Androidfirsttimeinit.py","./")
 	shutil.copy("/sdcard/Lolex-Tools/Androidautoupdate.sh","./")
-	shutil.copy("/sdcard/Lolex-Tools/busybox-armeabi","./")
-	shutil.copy("/sdcard/Lolex-Tools/busybox-x86","./")
 	shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
 	print("Copying folders...")
 	shutil.copytree("/sdcard/Lolex-Tools/Defaults","./Defaults")
