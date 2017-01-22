@@ -118,12 +118,12 @@ def restart(waittime):
     useros = platform.system()
     if useros != "Linux":
         os.system("shutdown -r -f")
-    elif "arm" in platform.platform():
-        
-        os.system("/system/bin/reboot")
-    else:
-        
-        os.system("reboot")
+	else:
+		if "arm" in platform.platform():
+			if os.system("su -c reboot") != 0:
+				os.system("reboot")
+		else:
+			os.system("reboot")
 def logo():
     print("This function has been deprecated.")
 def exitnow():
