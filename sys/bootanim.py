@@ -1,14 +1,13 @@
 import os, platform, time
 if platform.system() == "Linux":
-        if "arm" in platform.platform():
-                clear = "reset"
-        else:
-                clear = "clear"
+    if "arm" in platform.platform():
+        clear = "reset"
+    else:
+        clear = "clear"
 else:
     clear = "cls"
     os.system("color 0a")
     os.system("MODE 1000")
-print(platform.system())
 
 print("0")
 print(" 0                000000   0         000000     0  0     000000    00000    000000")

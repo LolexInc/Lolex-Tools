@@ -55,20 +55,20 @@ def flickerp2(colour, howlongtoflashfor):
     exit()
 def windowspage(page):
     if page == 0 or page == -1:
-        print("1 = Settings")
+        print("1  = Settings")
         if restartsettings.hidden == False:
-            print("2 = Restart")
+            print("2  = Restart")
         if logoffsettings.hidden == False:
-            print("3 = Logoff")
-            print("4 = Alternative logoff method")
+            print("3  = Logoff")
+            print("4  = Alternative logoff method")
         if hibernatesettings.hidden == False:
-            print("5 = Hibernate")
+            print("5  = Hibernate")
     if page == 1 or page == -1:
         if shutdownsettings.hidden == False:
-            print("6 = Shutdown")
-            print("7 = Alternative shutdown method")
-        print("8 = Colour Flicker")
-        print("9 = Call CMD")
+            print("6  = Shutdown")
+            print("7  = Alternative shutdown method")
+        print("8  = Colour Flicker")
+        print("9  = Call CMD")
         print("10 = Call documents")
     if page == 2 or page == -1:
             print("11 = Call a Python shell")
@@ -93,20 +93,20 @@ def windowspage(page):
             
 def linuxpage(page):
     if page == 0 or page == -1:
-        print("1 = Settings")
+        print("1  = Settings")
         if restartsettings.hidden == False:
-            print("2 = Restart")
+            print("2  = Restart")
         if logoffsettings.hidden == False:
-            print("3 = Logoff")
+            print("3  = Logoff")
         if hibernatesettings.hidden == False:
-            print("4 = Hibernate")
+            print("4  = Hibernate")
         if shutdownsettings.hidden == False:
-            print("5 = Shutdown")
+            print("5  = Shutdown")
     if page == 1 or page == -1:
-        print("6 = Call a Python Shell")
-        print("7 = Create folders")
-        print("8 = Remove folders")
-        print("9 = Create files")
+        print("6  = Call a Python Shell")
+        print("7  = Create folders")
+        print("8  = Remove folders")
+        print("9  = Create files")
         print("10 = Restart this script")
     if page == 2 or page == -1:
         print("11 = Perform arithmetic operations")
