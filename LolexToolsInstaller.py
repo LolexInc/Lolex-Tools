@@ -344,7 +344,7 @@ try:
           twoswapwords = False
      print("OK. Reset completed with a 1.")
      print("Applying new options...")
-     shutil.copy("./Defaults/verifonboot.py","./")
+
      with open ("verifonboot.py","a") as outf:
           outf.write("\noneswappins = ")
           outf.write(str(oneswappins))
