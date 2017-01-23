@@ -1,4 +1,4 @@
-import os, time, py_compile, shutil, sys, platform, threading, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+import os, time, py_compile, shutil, sys, platform, threading
 print ("Module LolexToolsMethods is running, using modules os and time.")
 try:
 	import ver
@@ -7,6 +7,10 @@ except(ImportError):
 		pass
 	else:
 		print("Please redownload this repository to access all features.")
+try:
+        import menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+except(ImportError):
+        pass
 def version():
 	print(ver.version)
 def flicker():
