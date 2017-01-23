@@ -245,6 +245,8 @@ try:
                         outf.write(str(layout))
                     if layout == 0:
                         page = -1
+                    else:
+                        page = 0
             elif setting == 2:
                 print("1 = Hide power menu modes.")
                 settinga = int(input("Please input the number of the setting you wish to modify."))
