@@ -54,62 +54,71 @@ def flickerp2(colour, howlongtoflashfor):
     os.system(theme.theme)
     exit()
 def windowspage(page):
-        if page == 0 or page == -1:
-                print("1 = Settings")
-                if restartsettings.hidden == False:
-                    print("2 = Restart")
-                print("3 = Logoff")
-                print("4 = Alternative logoff method")
-                print("5 = Hibernate")
-        if page == 1 or page == -1:
-                print("6 = Shutdown")
-                print("7 = Alternative shutdown method")
-                print("8 = Colour Flicker")
-                print("9 = Call CMD")
-                print("10 = Call documents")
-        if page == 2 or page == -1:
-                print("11 = Call a Python shell")
-                print("12 = Call Task Manager")
-                print("13 = Create folders")
-                print("14 = Remove folders")
-                print("15 = Create files")
-        if page == 3 or page == -1:
-                print("16 = Restart this script")
-                print("17 = Perform arithmetic operations")
-                print("18 = Lock this script")
-                print("19 = Call Remote Desktop")
-                print("20 = Call Powershell")
-        if page == 4 or page == -1:
-                print("21 = Print SystemInfo")
-                print("22 = Start Installer")
+    if page == 0 or page == -1:
+        print("1 = Settings")
+        if restartsettings.hidden == False:
+            print("2 = Restart")
+        if logoffsettings.hidden == False:
+            print("3 = Logoff")
+            print("4 = Alternative logoff method")
+        if hibernatesettings.hidden == False:
+            print("5 = Hibernate")
+    if page == 1 or page == -1:
+        if shutdownsettings.hidden == False:
+            print("6 = Shutdown")
+            print("7 = Alternative shutdown method")
+        print("8 = Colour Flicker")
+        print("9 = Call CMD")
+        print("10 = Call documents")
+    if page == 2 or page == -1:
+            print("11 = Call a Python shell")
+            print("12 = Call Task Manager")
+            print("13 = Create folders")
+            print("14 = Remove folders")
+            print("15 = Create files")
+    if page == 3 or page == -1:
+            print("16 = Restart this script")
+            print("17 = Perform arithmetic operations")
+            print("18 = Lock this script")
+            print("19 = Call Remote Desktop")
+            print("20 = Call Powershell")
+    if page == 4 or page == -1:
+            print("21 = Print SystemInfo")
+            print("22 = Start Installer")
+            if exitsettings.hidden == False:
                 print("23 = Exit")
-        if page != -1:
-                print("24 = Next Page")
-                print("25 = Back a Page")
-                
+    if page != -1:
+            print("24 = Next Page")
+            print("25 = Back a Page")
+            
 def linuxpage(page):
-        if page == 0 or page == -1:
-                print("1 = Settings")
-                print("2 = Restart")
-                print("3 = Logoff")
-                print("4 = Hibernate")
-                print("5 = Shutdown")
-        if page == 1 or page == -1:
-                print("6 = Call a Python Shell")
-                print("7 = Create folders")
-                print("8 = Remove folders")
-                print("9 = Create files")
-                print("10 = Restart this script")
-        if page == 2 or page == -1:
-                print("11 = Perform arithmetic operations")
-                print("12 = Lock this script")
-                print("13 = Start Installer")
-                print("14 = Show Uptime and Average load")
-                print("15 = Print SystemInfo")
-                print("16 = Exit")
-        if page != -1:
-                print("17 = Next Page")
-                print("18 = Back a Page")
+    if page == 0 or page == -1:
+        print("1 = Settings")
+        if restartsettings.hidden == False:
+            print("2 = Restart")
+        if logoffsettings.hidden == False:
+            print("3 = Logoff")
+        if hibernatesettings.hidden == False:
+            print("4 = Hibernate")
+        if shutdownsettings.hidden == False:
+            print("5 = Shutdown")
+    if page == 1 or page == -1:
+        print("6 = Call a Python Shell")
+        print("7 = Create folders")
+        print("8 = Remove folders")
+        print("9 = Create files")
+        print("10 = Restart this script")
+    if page == 2 or page == -1:
+        print("11 = Perform arithmetic operations")
+        print("12 = Lock this script")
+        print("13 = Start Installer")
+        print("14 = Show Uptime and Average load")
+        print("15 = Print SystemInfo")
+        if exitsettings.hidden == False:
+            print("16 = Exit")
+    if page != -1:
+        print("17 = Next Page")
+        print("18 = Back a Page")
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
