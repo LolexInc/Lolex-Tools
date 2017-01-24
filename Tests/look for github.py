@@ -12,6 +12,8 @@ while search.done != 1:
         githubpath = "C:/Users/" + users[look] + "/AppData/Local/"
         print("Checking for Github...")
         arraylen = len(os.listdir(githubpath)) - 1
+        if arraylen == 0:
+            break;
         githubis = os.listdir(githubpath)
         while arraylen != 0:
             if githubis[arraylen] != "GitHub":
