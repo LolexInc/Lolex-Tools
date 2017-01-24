@@ -57,6 +57,7 @@ if LolexToolsOptions.compiledon<9.0:
 if system == "Windows":
     os.system(theme.theme)
     os.system("mode 1000")
+    os.system("title Lolex-Tools")
 print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
 try:
     os.system(theme.theme)
