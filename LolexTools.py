@@ -246,7 +246,7 @@ try:
                         outf.write(str(layout))
                     if layout == 0:
                         page = -1
-                    else:
+                    elif layout == 1:
                         page = 0
             elif setting == 2:
                 print("1 = Hide power menu modes.")
@@ -263,6 +263,9 @@ try:
                     print("10 = Restart this script hidden = ", scriptloopsettings.hidden)
                     print("11 = Perform arithmetic operations hidden = ", mathmodesettings.hidden)
                     print("12 = Lock this script hidden = ", scriptlocksettings.hidden)
+                    print("13 = Start Installer hidden = ", installerstartsettings.hidden)
+                    print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
+                    print("15 = Exit hidden = ", exitsettings.hidden)
                     hidestate = int(input("Please select the number of the mode."))
                     if hidestate == 2:
                         LolexToolsMethods.modehide("restart", restartsettings.hidden)
@@ -286,6 +289,14 @@ try:
                         LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
                     elif hidestate == 12:
                         LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
+                    elif hidestate == 13:
+                        LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
+                    elif hidestate == 14:
+                        LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
+                    elif hidestate == 15:
+                        LolexToolsMethods.modehide("exit", exitsettings.hidden)
+                    #if useros == "Windows":
+                        
                     if useros == "Windows":
                         if sys.version_info.minor>5:
                             os.system("py .\start.py")
