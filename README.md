@@ -1,6 +1,7 @@
 # Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # This is : Lolex-Tools 9.0exp
 # This is a nightly build. Do not use for production purposes<br>
+# Developmet will be slowing for a while (problems)
 # Highly unstable at the minute
 ## People
 Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
