@@ -1,13 +1,13 @@
 # Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # This is : Lolex-Tools 9.0exp
 # This is a nightly build. Do not use for production purposes<br>
-# Developmet will be slowing for a while (problems)
+# Development will be slowing for a while (problems(schoolwork etc etc)
 # Highly unstable at the minute
 ## People
 Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
 AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
 
-### Quantified Code checker <br>[![Code Issues](https://www.quantifiedcode.com/api/v1/project/ed746cf494f24911b477070327cc0f48/badge.svg)](https://www.quantifiedcode.com/app/project/ed746cf494f24911b477070327cc0f48)
+### Quantified Code checker <br>[![Code Issues](Sch(https://www.quantifiedcode.com/api/v1/project/ed746cf494f24911b477070327cc0f48/badge.svg)](https://www.quantifiedcode.com/app/project/ed746cf494f24911b477070327cc0f48)
 ## Features and requirements
 ## Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
@@ -16,11 +16,11 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 # lolexorg.github.io/Lolex-Tools will be closed with all services by 31.1.17. Please go to:
 [Our official website](http://lolexorg.wixsite.com/lolex-tools)
 
-Settings: Read-Write Permissions to relveant partition (may need root on some later Android devices)<br><br>
+Settings: Read-Write Permissions to relvant partition (may need root on some later Android devices)<br><br>
 Restart: Relevant SE Linux and root permissions<br><br>
 Logoff: Windows or Linux<br><br>
 Hibernate: Windows or Linux<br><br>
-Shutdown: Android: Root Maybe Needed  (on some devices SE Linux being not set to the highest level may not require root) Other Platforms: None <br><br>
+Shutdown: Android: Root Maybe Needed  (on some devices SE Linux being not set to the highest level may require root) Other Platforms: None <br><br>
 Alternative methods for Shutdown and Logoff: Windows<br><br>
 Call a Python Shell: None<br><br>
 Create Folders: RW permissions to relveant disk/partition<br><br>
@@ -40,7 +40,8 @@ Exit: None <br><br>
 
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
-##License LGPL 3.0
+# Lolex-Tools is licensed under LGPL 3.0
+## License LGPL 3.0
 
 ```
 GNU LESSER GENERAL PUBLIC LICENSE
