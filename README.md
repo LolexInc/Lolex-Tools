@@ -1,7 +1,7 @@
 # Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # This is : Lolex-Tools 9.0exp
 # This is a nightly build. Do not use for production purposes<br>
-# Development will be slowing for a while (problems(schoolwork etc etc)
+# Development will be slowing for a while (problems(schoolwork etc etc))
 # Highly unstable at the minute
 ## People
 Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
@@ -13,7 +13,7 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # NOTE: Android x86 devices are not currently supported.
 # Visit our website for more information and news
-# lolexorg.github.io/Lolex-Tools will be closed with all services by 31.1.17. Please go to:
+# Please go to:
 [Our official website](http://lolexorg.wixsite.com/lolex-tools)
 
 Settings: Read-Write Permissions to relvant partition (may need root on some later Android devices)<br><br>
