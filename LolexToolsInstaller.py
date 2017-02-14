@@ -135,7 +135,7 @@ try:
      else:
           oneswappins = False
      if onepins>0:
-          onewait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
+          onewait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
           while onewait<0:
                onewait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      onewords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
@@ -179,7 +179,7 @@ try:
      if onewords>0:
           oneuseword = True
      if onewords>0:
-          onewordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed?"))
+          onewordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
           while onewordwait<0:
                onewordwait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      if howmanyunames>1:
@@ -223,7 +223,7 @@ try:
                twoswappins = True
           else:
                twoswappins = False
-          twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
+          twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
           while twowait<0:
                twowait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
           twowords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
@@ -267,7 +267,7 @@ try:
           if twowords>0:
                twouseword = True
           if twowords>0:
-               twowordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed?"))
+               twowordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
                while twowordwait<0:
                     twowordwait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      print("Setting up general options...")
