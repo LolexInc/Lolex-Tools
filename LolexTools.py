@@ -495,7 +495,7 @@ try:
                     zip_ref.extractall("newversion")
                     zip_ref.close()   
         elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux") and page != -1:
-            if (page < 4 and useros == "Windows") or (page < 2 and useros == "Linux"):
+            if (page < 5 and useros == "Windows") or (page < 2 and useros == "Linux"):
                 page = page + 1
             else:
                 page = 0
@@ -504,7 +504,7 @@ try:
                 page = page - 1
             else:
                 if useros == "Windows":
-                    page = 4
+                    page = 5
                 else:
                     page = 2
         elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
