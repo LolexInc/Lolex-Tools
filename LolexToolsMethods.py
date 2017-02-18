@@ -66,8 +66,8 @@ def windowspage(page):
     if page == 1 or page == -1:
         if shutdownsettings.hidden == False:
             print("6  = Shutdown")
-            print("7  = Alternative shutdown method")
-        print("8  = Colour Flicker")
+            print("7  = Alternative shutdown method")        
+		print("8  = Colour Flicker")
         print("9  = Call CMD")
         print("10 = Call documents")
     if page == 2 or page == -1:
@@ -85,8 +85,10 @@ def windowspage(page):
     if page == 4 or page == -1:
             print("21 = Print SystemInfo")
             print("22 = Start Installer")
+    if page == 5 or page == -1
             if exitsettings.hidden == False:
                 print("23 = Exit")
+            print("26 = Experimental auto-update")
     if page != -1:
             print("24 = Next Page")
             print("25 = Back a Page")
