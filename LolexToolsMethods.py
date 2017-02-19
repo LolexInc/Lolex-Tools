@@ -85,7 +85,7 @@ def windowspage(page):
     if page == 4 or page == -1:
             print("21 = Print SystemInfo")
             print("22 = Start Installer")
-    if page == 5 or page == -1
+    if page == 5 or page == -1:
             if exitsettings.hidden == False:
                 print("23 = Exit")
             print("26 = Experimental auto-update")
