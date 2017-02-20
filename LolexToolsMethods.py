@@ -123,9 +123,37 @@ def linuxpage(page):
 def mode2():
     shutdown = int(input("Please enter 1 to confirm restart."))
     if shutdown == 1:
-        waittime = int(input("How long, in minutes do you wish to wait."))
+        waittime = int(input("How long, in minutes do you wish to wait?"))
     restartthread = threading.Thread(target = restart, args = [waittime])
     restartthread.start()
+def logoff():
+    logoff = int(input("Please enter 1 to confirm logoff."))
+    if logoff == 1:
+        waittime = int(input("How long, in minutes do you wish to wait?"))
+    loggeroff = threading.Thread(target = logoffthread, args = [waittime])
+    loggeroff.start()
+def logoffthread(waittime):
+    time.sleep(waittime*60)
+    print("LOGOFF thread: Logging off...")
+    useros = platform.system()
+    if useros != "Linux":
+        os.system("shutdown -l -f")
+    else:
+        os.system("gnome-session-quit --force")
+def hibernate():
+    hibernate = int(input("Please enter 1 to confirm logoff."))
+    if hibernate == 1:
+        waittime = int(input("How long, in minutes do you wish to wait?"))
+    hibernatethread = threading.Thread(target = hibernatethread, args = [waittime])
+    hibernatethread.start()
+def hibernatethread(waittime):
+    time.sleep(waittime*60)
+    print("HIBERNATE thread: Hibernating...")
+    useros = platform.system()
+    if useros != "Linux":
+        os.system("shutdown -h -f")
+    else:
+        os.system("systemctl suspend")
 def restart(waittime):
     time.sleep(waittime*60)
     print("RESTART thread: Restarting device...")
