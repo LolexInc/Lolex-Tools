@@ -1,5 +1,6 @@
 import os, time, py_compile, shutil, sys, platform, threading
-print ("Module LolexToolsMethods is running, using modules os and time.")
+print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
+print("This module is intended for 9.0nann0, please do not mix and match for compatibility purposes.")
 try:
 	import ver
 except(ImportError):
@@ -53,7 +54,7 @@ def flickerp2(colour, howlongtoflashfor):
     import theme
     os.system(theme.theme)
     exit()
-def windowspage(page):
+def windowspage(page, layout):
     if page == 0 or page == -1:
         print("1  = Settings")
         if restartsettings.hidden == False:
@@ -63,36 +64,38 @@ def windowspage(page):
             print("4  = Alternative logoff method")
         if hibernatesettings.hidden == False:
             print("5  = Hibernate")
-    if page == 1 or page == -1:
+    elif page == 1 or page == -1:
         if shutdownsettings.hidden == False:
             print("6  = Shutdown")
             print("7  = Alternative shutdown method")        
         print("8  = Colour Flicker")
         print("9  = Call CMD")
         print("10 = Call documents")
-    if page == 2 or page == -1:
+    elif page == 2 or page == -1:
             print("11 = Call a Python shell")
             print("12 = Call Task Manager")
             print("13 = Create folders")
             print("14 = Remove folders")
             print("15 = Create files")
-    if page == 3 or page == -1:
+    elif page == 3 or page == -1:
             print("16 = Restart this script")
             print("17 = Perform arithmetic operations")
             print("18 = Lock this script")
             print("19 = Call Remote Desktop")
             print("20 = Call Powershell")
-    if page == 4 or page == -1:
+    elif page == 4 or page == -1:
             print("21 = Print SystemInfo")
             print("22 = Start Installer")
-    if page == 5 or page == -1:
+    elif page == 5 or page == -1:
             if exitsettings.hidden == False:
                 print("23 = Exit")
             print("26 = Experimental auto-update")
-    if page != -1:
+    if layout != 0:
             print("24 = Next Page")
-            print("25 = Back a Page")    
-def linuxpage(page):
+            print("25 = Back a Page") 
+            page = page + 1
+            windowspage(page, layout)
+def linuxpage(page, layout):
     if page == 0 or page == -1:
         print("1  = Settings")
         if restartsettings.hidden == False:
@@ -103,13 +106,13 @@ def linuxpage(page):
             print("4  = Hibernate")
         if shutdownsettings.hidden == False:
             print("5  = Shutdown")
-    if page == 1 or page == -1:
+    elif page == 1 or page == -1:
         print("6  = Call a Python Shell")
         print("7  = Create folders")
         print("8  = Remove folders")
         print("9  = Create files")
         print("10 = Restart this script")
-    if page == 2 or page == -1:
+    elif page == 2 or page == -1:
         print("11 = Perform arithmetic operations")
         print("12 = Lock this script")
         print("13 = Start Installer")
@@ -117,27 +120,32 @@ def linuxpage(page):
         print("15 = Print SystemInfo")
         if exitsettings.hidden == False:
             print("16 = Exit")
-    if page != -1:
+    if layout != 0:
         print("17 = Next Page")
         print("18 = Back a Page")
-def mode2():
-    shutdown = int(input("Please enter 1 to confirm restart."))
-    if shutdown == 1:
+        page = page + 1
+        linuxpage(page, layout)
+def restart():
+    restart = int(input("Please enter 1 to confirm restart."))
+    if restart == 1:
         waittime = int(input("How long, in minutes do you wish to wait?"))
     restartthread = threading.Thread(target = restart, args = [waittime])
     restartthread.start()
-def logoff():
+def logoff(type):
     logoff = int(input("Please enter 1 to confirm logoff."))
     if logoff == 1:
         waittime = int(input("How long, in minutes do you wish to wait?"))
-    loggeroff = threading.Thread(target = logoffthread, args = [waittime])
+    loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
     loggeroff.start()
-def logoffthread(waittime):
+def logoffthread(waittime, type):
     time.sleep(waittime*60)
     print("LOGOFF thread: Logging off...")
     useros = platform.system()
     if useros != "Linux":
-        os.system("shutdown -l -f")
+        if type == 0:
+            os.system("shutdown -l -f")
+        else:
+            subprocess.call("logoff.exe")
     else:
         os.system("gnome-session-quit --force")
 def hibernate():
