@@ -214,9 +214,9 @@ try:
         page = 0
     while True:
         if useros == "Windows":
-            LolexToolsMethods.windowspage(page)
+            LolexToolsMethods.windowspage(page, menusettings.layout)
         elif useros == "Linux":
-            LolexToolsMethods.linuxpage(page)
+            LolexToolsMethods.linuxpage(page, menusettings.layout)
         modewanted = int(input("Please enter the number of the mode that you want."))
         if useros == "Windows":
             maxmode = 26
@@ -306,7 +306,7 @@ try:
                         os.system("python3 ./start.py")
                     exit(None)
         elif modewanted == 2:
-            LolexToolsMethods.mode2()
+            LolexToolsMethods.restart()
         elif modewanted == 3:
             logoff = float(input("Please enter 1 or 0 to confirm logoff."))
             if logoff == 1:
