@@ -8,13 +8,15 @@ python:
 - "3.6-dev"
 - "3.6"
 - "nightly"
-script: nosetests
+
 env: 
 - DJANGO_VERSION==1.10.5
 - DJANGO_VERSION==1.10.4
 - DJANGO_VERSION==1.10.3
 install:
 - pip install -q Django=$DJANGO_VERSION 
+
+script:
 - python ./sys/bootanim.py
 - python start.py
 - python LolexTools.py 
