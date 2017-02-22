@@ -90,9 +90,11 @@ def windowspage(page, layout):
             if exitsettings.hidden == False:
                 print("23 = Exit")
             print("26 = Experimental auto-update")
-    if layout != 0:
+    if layout == 0:
             print("24 = Next Page")
-            print("25 = Back a Page") 
+            print("25 = Back a Page")
+    else:
+        if page < 5:
             page = page + 1
             windowspage(page, layout)
 def linuxpage(page, layout):
@@ -120,11 +122,13 @@ def linuxpage(page, layout):
         print("15 = Print SystemInfo")
         if exitsettings.hidden == False:
             print("16 = Exit")
-    if layout != 0:
+    if layout == 0:
         print("17 = Next Page")
         print("18 = Back a Page")
-        page = page + 1
-        linuxpage(page, layout)
+    else:
+        if page < 2:
+            page = page + 1
+            linuxpage(page, layout)
 def restart():
     restart = int(input("Please enter 1 to confirm restart."))
     if restart == 1:
