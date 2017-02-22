@@ -89,10 +89,10 @@ def windowspage(page, layout):
     elif page == 5 or page == -1:
             if exitsettings.hidden == False:
                 print("23 = Exit")
-            print("26 = Experimental auto-update")
+            print("24 = Experimental auto-update")
     if layout == 0:
-            print("24 = Next Page")
-            print("25 = Back a Page")
+            print("25 = Next Page")
+            print("26 = Back a Page")
     else:
         if page < 5:
             page = page + 1
