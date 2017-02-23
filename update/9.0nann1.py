@@ -20,4 +20,7 @@ with open ("./verifonboot.py","a") as outf:
     if LolexToolsOptions.twowordtotal>0:
         outf.write("twoswappins = True\nwordtimetwo = ")
         outf.write(str(verifonboot.wordtimetwo))
+if LolexToolsOptions.compiler == True:
+    LolexToolsMethods.compiler("verifonboot")
+print("Finished updating to 9.0nann1...")
         
