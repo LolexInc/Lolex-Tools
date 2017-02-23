@@ -36,15 +36,15 @@ if LolexToolsOptions.compiledon<9.0:
         else:
             os.system ("python3 ./8.3release.py")
         os.remove("./8.3release.py")
-    shutil.copy("./update/90n1.py","./")
+    shutil.copy("./update/9.0n1.py","./")
     if system == "Windows":
         if sys.version_info.minor>5:
-            os.system ("py ./90n1.py")
+            os.system ("py ./9.0n1.py")
         else:
-            os.system("python ./90n1.py")
+            os.system("python ./9.0n1.py")
     else:
-        os.system ("python3 ./90n1.py")
-    os.remove("./90n1.py")
+        os.system ("python3 ./9.0n1.py")
+    os.remove("./9.0n1.py")
     print("Restarting to finish updating...")
     if system == "Windows":
         if sys.version_info.minor>5:
