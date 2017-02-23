@@ -27,15 +27,15 @@ except(ImportError):
     exit(None)
 if LolexToolsOptions.compiledon<9.0:
     if LolexToolsOptions.compiledon<8.3:
-        shutil.copy("./update/83.py","./")
+        shutil.copy("./update/8.3release.py","./")
         if system == "Windows":
             if sys.version_info.minor>5:
-                os.system ("py ./83.py")
+                os.system ("py ./8.3release.py")
             else:
-                os.system("python ./83.py")
+                os.system("python ./8.3release.py")
         else:
-            os.system ("python3 ./83.py")
-        os.remove("./83.py")
+            os.system ("python3 ./8.3release.py")
+        os.remove("./8.3release.py")
     shutil.copy("./update/90n1.py","./")
     if system == "Windows":
         if sys.version_info.minor>5:
