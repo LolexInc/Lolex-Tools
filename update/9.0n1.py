@@ -192,4 +192,4 @@ with open ("./LolexToolsOptions.py","a") as outf:
     confirm = "None"
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("LolexToolsOptions")
-print("Finished updating to 9.0...")
+print("Finished updating to 9.0n1...")
