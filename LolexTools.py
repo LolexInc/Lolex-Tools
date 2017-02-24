@@ -25,6 +25,11 @@ except(ImportError):
     else:
         os.system("python3 ./LolexToolsInstaller.py")
     exit(None)
+try:
+    import madeon
+    LolexToolsOptions.compiledon = madeon.compiledon
+except(ImportError):
+    pass
 if LolexToolsOptions.compiledon<9.00001:
     if LolexToolsOptions.compiledon<8.3:
         shutil.copy("./update/8.3release.py","./")
