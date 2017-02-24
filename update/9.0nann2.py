@@ -11,15 +11,23 @@ with open ("./verifonboot.py","a") as outf:
     if LolexToolsOptions.onepintotal>1:
         outf.write("oneswappins = True\nruntimeone = ")
         outf.write(str(verifonboot.runtimeone))
+    else:
+        outf.write("oneswappins = False\nruntimeone = 0")
     if LolexToolsOptions.onewordtotal>1:
-        outf.write("oneswapwords = True\nwordtimeone = ")
+        outf.write("\noneswapwords = True\nwordtimeone = ")
         outf.write(str(verifonboot.wordtimeone))
+    else:
+        outf.write("\noneswapwords = False\nwordtimeone = 0")
     if LolexToolsOptions.twopintotal>1:
-        outf.write("twoswappins = True\nruntimetwo = ")
+        outf.write("\ntwoswappins = True\nruntimetwo = ")
         outf.write(str(verifonboot.runtimetwo))
+    else:
+        outf.write("\ntwoswappins = False\nruntimetwo = 0")
     if LolexToolsOptions.twowordtotal>1:
-        outf.write("twoswappins = True\nwordtimetwo = ")
+        outf.write("\ntwoswapwords = True\nwordtimetwo = ")
         outf.write(str(verifonboot.wordtimetwo))
+    else:
+        outf.write("\ntwoswapwords = False\nwordtimetwo = 0")
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("verifonboot")
 print("Finished updating to 9.0nann2...")
