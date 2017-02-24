@@ -54,12 +54,12 @@ if LolexToolsOptions.compiledon<9.00001:
     shutil.copy("./update/9.0nann1.py","./")
     if system == "Windows":
         if sys.version_info.minor>5:
-            os.system ("py ./9.0nann1.py")
+            os.system ("py ./9.0nann2.py")
         else:
-            os.system("python ./9.0nann1.py")
+            os.system("python ./9.0nann2.py")
     else:
-        os.system ("python3 ./9.0nann1.py")
-    os.remove("./9.0nann1.py")
+        os.system ("python3 ./9.0nann2.py")
+    os.remove("./9.0nann2.py")
     print("Restarting to finish updating...")
     if system == "Windows":
         if sys.version_info.minor>5:
