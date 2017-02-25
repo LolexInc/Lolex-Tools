@@ -22,3 +22,4 @@ script:
 - python LolexTools.py 
 - python LolexToolsInstaller.py
 - python LolexToolsMethods.py
+- python CICompile.py
