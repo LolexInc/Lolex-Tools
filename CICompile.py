@@ -10,10 +10,10 @@ while vars.arraypos < vars.arraylength:
     try:
         os.listdir(vars.root[vars.arraypos])
         vars.folders.append("./" + vars.root[vars.arraypos])
-        print(vars.folders)
+        #print(vars.folders)
     except(IOError, OSError):
         vars.files.append("./" + vars.root[vars.arraypos])
-    print(vars.files)
+    #print(vars.files)
     vars.arraypos = vars.arraypos + 1
 vars.arraypos = 0
 vars.arraylength = len(vars.folders)
@@ -27,11 +27,11 @@ while vars.arraypos<vars.arraylength:
         try:
             os.listdir(number2.currsub[number2.arraypos])
             vars.folders.append(vars.path + number2.currsub[number2.arraypos])
-            print(vars.folders)
+            #print(vars.folders)
             number2.arraypos = number2.arraypos + 1
         except(IOError, OSError):
             vars.files.append(vars.path + number2.currsub[number2.arraypos])
-        print(vars.files)
+        #print(vars.files)
         number2.arraypos = number2.arraypos + 1
 filearraylen = len(vars.files)
 vars.arraypos = 0
