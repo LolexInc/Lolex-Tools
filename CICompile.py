@@ -27,7 +27,7 @@ while vars.arraypos<vars.arraylength:
             vars.folders.append(vars.path + number2.currsub[number2.arraypos])
             number2.arraypos = number2.arraypos + 1
         except(IOError, OSError):
-            vars.files.append(vars.path + number.currsub[number2.arraypos])
+            vars.files.append(vars.path + number2.currsub[number2.arraypos])
         number2.arraypos = number2.arraypos + 1
 filearraylen = len(vars.files)
 vars.arraypos = 0
