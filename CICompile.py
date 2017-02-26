@@ -6,6 +6,10 @@ class vars:
     files = []
     arraypos = 0
     arraylength = len(root)
+try:
+    os.remove("./git")
+except(IOError, OSError):
+    print(1)
 while vars.arraypos < vars.arraylength:
     try:
         os.listdir(vars.root[vars.arraypos])
