@@ -2,6 +2,7 @@ import os, py_compile
 class vars:
     path = "./"
     root = os.listdir("./")
+    print(root)
     folders = ["./"]
     files = ["ver.py"]
     arraypos = 1
@@ -10,6 +11,7 @@ while vars.arraypos < vars.arraylength:
     try:
         if ".git" in vars.root[vars.arraypos] == False:
             os.listdir(vars.root[vars.arraypos])
+            print(vars.root[vars.arraypos])
             vars.folders.append("./" + vars.root[vars.arraypos])
         #print(vars.folders)
     except(IOError, OSError):
@@ -23,12 +25,14 @@ while vars.arraypos<vars.arraylength:
     vars.path = "./" + vars.folders[vars.arraypos]
     class number2:
         currsub = os.listdir(vars.path)
+        print(currsub)
         arraypos = 1
         arraylength = len(currsub)
     while number2.arraypos<number2.arraylength:
         try:
             if ".git" in number2.currsub[number2.arraypos] == False:
                 os.listdir(number2.currsub[number2.arraypos])
+                print(number2.currsub[number2.arraypos])
                 vars.folders.append(vars.path + number2.currsub[number2.arraypos])
             #print(vars.folders)
             number2.arraypos = number2.arraypos + 1
@@ -36,6 +40,7 @@ while vars.arraypos<vars.arraylength:
             vars.files.append(vars.path + number2.currsub[number2.arraypos])
         number2.arraypos = number2.arraypos + 1
         print(len(vars.folders), " and ", len(vars.files), "discovered.")
+    vars.arraypos = vars.arraypos + 1
 print("Compiling files...")
 filearraylen = len(vars.files)
 print("Seperating ", filearraylen, "files into .py and non-.py files...")
