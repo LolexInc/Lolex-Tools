@@ -2,9 +2,9 @@ import os, py_compile
 class vars:
     path = "./"
     root = os.listdir("./")
-    folders = []
-    files = []
-    arraypos = 0
+    folders = ["./"]
+    files = ["ver.py"]
+    arraypos = 1
     arraylength = len(root)
 while vars.arraypos < vars.arraylength:
     try:
@@ -23,7 +23,7 @@ while vars.arraypos<vars.arraylength:
     vars.path = "./" + vars.folders[vars.arraypos]
     class number2:
         currsub = os.listdir(vars.path)
-        arraypos = 0
+        arraypos = 1
         arraylength = len(currsub)
     while number2.arraypos<number2.arraylength:
         try:
