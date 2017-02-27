@@ -14,8 +14,8 @@ while vars.arraypos < vars.arraylength:
         #print(vars.folders)
     except(IOError, OSError):
         vars.files.append("./" + vars.root[vars.arraypos])
-    #print(vars.files)
     vars.arraypos = vars.arraypos + 1
+    print(len(vars.folders), " and ", len(vars.files), "discovered.")
 print("Discovering subfolders...")
 vars.arraypos = 0
 vars.arraylength = len(vars.folders)
@@ -34,14 +34,16 @@ while vars.arraypos<vars.arraylength:
             number2.arraypos = number2.arraypos + 1
         except(IOError, OSError):
             vars.files.append(vars.path + number2.currsub[number2.arraypos])
-        #print(vars.files)
         number2.arraypos = number2.arraypos + 1
+        print(len(vars.folders), " and ", len(vars.files), "discovered.")
 print("Compiling files...")
 filearraylen = len(vars.files)
+print("Seperating ", filearraylen, "files into .py and non-.py files...")
 vars.arraypos = 0
 while vars.arraypos<filearraylen:
     indivlen = len(vars.files[vars.arraypos])
-    if vars.files[vars.arraypos[indiveln - 2]] == "y" and vars.files[vars.arraypos[indiveln - 3]] == "p" and vars.files[vars.arraypos[indiveln - 4]] == ".":
+    if vars.files[vars.arraypos[indivlen - 2]] == "y" and vars.files[vars.arraypos[indivlen - 3]] == "p" and vars.files[vars.arraypos[indivlen - 4]] == ".":
         py_compile.compile(vars.files[vars.arraypos])
         print("Successfully compiled " + vars.files[vars.arraypos])
         vars.arraypos = vars.arraypos + 1
+print("Done!")
