@@ -3,9 +3,9 @@ class vars:
     path = "./"
     root = os.listdir("./")
     print(root)
-    folders = ["./"]
-    files = ["ver.py"]
-    arraypos = 1
+    folders = []
+    files = []
+    arraypos = 0
     arraylength = len(root)
 while vars.arraypos < vars.arraylength:
     try:
@@ -26,7 +26,7 @@ while vars.arraypos<vars.arraylength:
     class number2:
         currsub = os.listdir(vars.path)
         print(currsub)
-        arraypos = 1
+        arraypos = 0
         arraylength = len(currsub)
     while number2.arraypos<number2.arraylength:
         try:
@@ -47,7 +47,7 @@ print("Seperating ", filearraylen, "files into .py and non-.py files...")
 vars.arraypos = 0
 while vars.arraypos<filearraylen:
     indivlen = len(vars.files[vars.arraypos])
-    if vars.files[vars.arraypos[indivlen - 2]] == "y" and vars.files[vars.arraypos[indivlen - 3]] == "p" and vars.files[vars.arraypos[indivlen - 4]] == ".":
+    if vars.files[vars.arraypos][indivlen - 2] == "y" and vars.files[vars.arraypos][indivlen - 3] == "p" and vars.files[vars.arraypos][indivlen - 4] == ".":
         py_compile.compile(vars.files[vars.arraypos])
         print("Successfully compiled " + vars.files[vars.arraypos])
         vars.arraypos = vars.arraypos + 1
