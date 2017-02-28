@@ -8,14 +8,18 @@ class vars:
     arraypos = 0
     arraylength = len(root)
 while vars.arraypos < vars.arraylength:
+    print(vars.files)
     try:
+        print(vars.files)
         if ".git" in vars.root[vars.arraypos] == False:
             os.listdir(vars.root[vars.arraypos])
             print(vars.root[vars.arraypos])
             vars.folders.append("./" + vars.root[vars.arraypos])
+            print("Added a folder...")
         #print(vars.folders)
     except(IOError, OSError):
         vars.files.append("./" + vars.root[vars.arraypos])
+        print("Added a file...")
     vars.arraypos = vars.arraypos + 1
     print(len(vars.folders), " and ", len(vars.files), "discovered.")
 print("Discovering subfolders...")
@@ -29,7 +33,9 @@ while vars.arraypos<vars.arraylength:
         arraypos = 0
         arraylength = len(currsub)
     while number2.arraypos<number2.arraylength:
+        print(vars.files)
         try:
+            print(vars.files)
             if ".git" in number2.currsub[number2.arraypos] == False:
                 os.listdir(number2.currsub[number2.arraypos])
                 print(number2.currsub[number2.arraypos])
