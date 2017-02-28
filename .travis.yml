@@ -1,25 +1,12 @@
 language: python
 python:
-- "3.2" 
-- "3.3" 
-- "3.4" 
-- "3.5" 
-- "3.5-dev" 
 - "3.6-dev"
 - "3.6"
 - "nightly"
 
 env: 
 - DJANGO_VERSION==1.10.5
-- DJANGO_VERSION==1.10.4
-- DJANGO_VERSION==1.10.3
 install:
 - pip install -q Django=$DJANGO_VERSION 
-
 script:
-- python ./sys/bootanim.py
-- python start.py
-- python LolexTools.py 
-- python LolexToolsInstaller.py
-- python LolexToolsMethods.py
 - python CICompile.py
