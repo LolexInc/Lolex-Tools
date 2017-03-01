@@ -21,7 +21,7 @@ while arraypos<len(folders):
     currsub = os.listdir(path)
     tarraypos = 0
     sublen = len(currsub)
-    while tarrypos<sublen:
+    while tarraypos<sublen:
         if (".git" in root[arraypos]) == False:
             if "." in root[arraypos]:
                 clen = len(currsub[tarraypos])
