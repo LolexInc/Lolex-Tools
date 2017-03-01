@@ -3,6 +3,7 @@ folders = []
 files = []
 root = os.listdir("./")
 arraypos = 0
+filesl = 0
 while arraypos < len(root):
     if (".git" in root[arraypos]) == False:
         if "." in root[arraypos] or "LICENSE" in root[arraypos]:
@@ -12,10 +13,14 @@ while arraypos < len(root):
             dot = root[arraypos][length - 4]
             if p == "p" and y == "y" and dot == ".":
                 files.append("./" + root[arraypos])
+                filesl = filesl + 1
+                print(filesl + "files")
         else:
             folders.append("./" + root[arraypos])
     arraypos = arraypos + 1
 arraypos = 0
+print(len(folders))
+print("Files:" + len(files))
 while arraypos<len(folders):
     path = folders[arraypos]
     currsub = os.listdir(path)
@@ -36,6 +41,7 @@ while arraypos<len(folders):
     arraypos = arraypos + 1
 flen = len(files)
 arraypos = 0
+print("Compiling...")
 while arraypos<flen:
     currfile = file[arraypos]
     py_compile.compile(currfile)
