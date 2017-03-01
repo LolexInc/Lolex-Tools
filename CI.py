@@ -33,15 +33,15 @@ while arraypos<len(folders):
                     files.append(path + currsub[tarraypos])
                 else:
                     folders.append(path + currsub[tarraypos])
-          tarraypos = tarraypos + 1
-      arraypos = arraypos + 1
+        tarraypos = tarraypos + 1
+    arraypos = arraypos + 1
 flen = len(files)
 arraypos = 0
 while arraypos<flen:
-  currfile = file[arraypos]
-  py_compile.compile(currfile)
-  print("Successfully compiled " + currfile)
-  arraypos = arraypos + 1
+    currfile = file[arraypos]
+    py_compile.compile(currfile)
+    print("Successfully compiled " + currfile)
+    arraypos = arraypos + 1
         
                 
                 
