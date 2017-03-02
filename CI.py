@@ -39,7 +39,7 @@ flen = len(files)
 arraypos = 0
 print("Compiling...")
 while arraypos<flen:
-    currfile = file[arraypos]
+    currfile = files[arraypos]
     py_compile.compile(currfile)
     print("Successfully compiled " + (str(currfile)))
     arraypos = arraypos + 1
