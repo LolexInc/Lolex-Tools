@@ -13,8 +13,6 @@ while arraypos < len(root):
             dot = root[arraypos][length - 3]
             if p == "p" and y == "y" and dot == ".":
                 files.append("./" + root[arraypos])
-                filesl = filesl + 1
-                print(filesl + "files")
         else:
             folders.append("./" + root[arraypos])
     arraypos = arraypos + 1
@@ -45,5 +43,5 @@ print("Compiling...")
 while arraypos<flen:
     currfile = file[arraypos]
     py_compile.compile(currfile)
-    print("Successfully compiled " + currfile)
+    print("Successfully compiled " + (str(currfile)))
     arraypos = arraypos + 1
