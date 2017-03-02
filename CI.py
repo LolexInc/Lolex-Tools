@@ -17,8 +17,6 @@ while arraypos < len(root):
             folders.append("./" + root[arraypos])
     arraypos = arraypos + 1
 arraypos = 0
-print(len(folders))
-print("Files:" + len(files))
 while arraypos<len(folders):
     path = folders[arraypos]
     currsub = os.listdir(path)
