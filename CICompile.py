@@ -53,7 +53,7 @@ print("Seperating ", filearraylen, "files into .py and non-.py files...")
 vars.arraypos = 0
 while vars.arraypos<filearraylen:
     indivlen = len(vars.files[vars.arraypos])
-    if vars.files[vars.arraypos][indivlen - 2] == "y" and vars.files[vars.arraypos][indivlen - 3] == "p" and vars.files[vars.arraypos][indivlen - 4] == ".":
+    if vars.files[vars.arraypos][indivlen - 1] == "y" and vars.files[vars.arraypos][indivlen - 2] == "p" and vars.files[vars.arraypos][indivlen - 3] == ".":
         py_compile.compile(vars.files[vars.arraypos])
         print("Successfully compiled " + vars.files[vars.arraypos])
         vars.arraypos = vars.arraypos + 1
