@@ -8,9 +8,9 @@ while arraypos < len(root):
     if (".git" in root[arraypos]) == False:
         if "." in root[arraypos] or "LICENSE" in root[arraypos]:
             length = len(root[arraypos])
-            p = root[arraypos][length - 3]
-            y = root[arraypos][length - 2]
-            dot = root[arraypos][length - 4]
+            p = root[arraypos][length - 2]
+            y = root[arraypos][length - 1]
+            dot = root[arraypos][length - 3]
             if p == "p" and y == "y" and dot == ".":
                 files.append("./" + root[arraypos])
                 filesl = filesl + 1
@@ -30,9 +30,9 @@ while arraypos<len(folders):
         if (".git" in root[arraypos]) == False:
             if "." in root[arraypos]:
                 clen = len(currsub[tarraypos])
-                p = currsub[tarraypos][clen - 3]
-                y = currsub[tarraypos][clen - 2]
-                dot = currsub[tarraypos][clen - 4]
+                p = currsub[tarraypos][clen - 2]
+                y = currsub[tarraypos][clen - 1]
+                dot = currsub[tarraypos][clen - 3]
                 if p == "p" and y == "y" and dot == ".":
                     files.append(path + currsub[tarraypos])
             else:
