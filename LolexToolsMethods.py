@@ -1,3 +1,9 @@
+##0
+## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000
+##  0              00     0  0         0           00             00       0      0    0      0   0          0
+##   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000
+##    0            00     0  0         0          0  0            00       0      0    0      0   0              0
+##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 import os, time, py_compile, shutil, sys, platform, threading
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 print("This module is intended for 9.0nann0, please do not mix and match for compatibility purposes.")
