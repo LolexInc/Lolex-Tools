@@ -16,7 +16,7 @@ while arraypos < len(root):
         else:
             folders.append("./" + root[arraypos])
     arraypos = arraypos + 1
-arraypos = 0
+arraypos = -1
 print(folders)
 while arraypos<len(folders):
     path = folders[arraypos] + "/"
@@ -36,6 +36,7 @@ while arraypos<len(folders):
                 folders.append(path + currsub[tarraypos])
         tarraypos = tarraypos + 1
     arraypos = arraypos + 1
+print(files)
 flen = len(files)
 arraypos = 0
 print("Compiling...")
