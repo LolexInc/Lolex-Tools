@@ -208,3 +208,21 @@ def modehide(name, state):
     with open ("./"+name+"settings.py","a") as outf: 
         outf.write("hidden = ")
         outf.write(str(newstate))
+def bak(name, path, reinstall, attrestore, regenerate):
+    if path == 0:
+        path = "./"
+    content = os.listdir(path)
+    arraypos = 0
+    found = False
+    while arraypos < len(content):
+        if name + ".pyc" in content[arraypos] and len(content[arraypos]) < len(name) + 5:
+            found = True
+            try:
+                os.mkdir("./Backup")
+            except(IOError, OSError):
+                pass
+            dir1 = ("./Backup/" + (str(ver.version)) + " " + (str(time.time())) + "/" + name + ".pyc.notpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])))
+            os.rename("./" + name + ".pyc", dir1)
+            break;
+        arraypos = arraypos + 1
+        
