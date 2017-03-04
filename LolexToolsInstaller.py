@@ -330,10 +330,6 @@ try:
                     compileplugins = 1
      elif pluginconfirm != 1:
           compileplugins = 0
-          try:
-               shutil.copy("./Defaults/startplugins.py","./")
-          except(IOError, OSError):
-               print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
      if developer == 1:
           developer = True
      else:
@@ -435,10 +431,6 @@ try:
      if compileplugins == 1 or compileplugins == True:
           LolexToolsMethods.compiler("startplugins")
      LolexToolsMethods = False
-     try:
-          shutil.copy("./Defaults/theme.py","./User/Data")
-     except(IOError):
-          pass
      if useros == "Linux" or useros == "Android":
           theme = "None"
      with open("./theme.py","a") as outf:
