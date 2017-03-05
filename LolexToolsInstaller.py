@@ -313,10 +313,6 @@ try:
                os.system(theme)
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if pluginconfirm == 1:
-               try:
-                    shutil.copy("./Defaults/startplugins.py","./")
-               except(IOError, OSError):
-                    print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
                currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions! Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
                with open ("./startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
                done = int(input("Please enter 1 if you are done, 0 if you aren't."))
@@ -344,9 +340,13 @@ try:
           compiler = False
      if twowords<2:
           twoswapwords = False
+     with open("./theme.py","a") as outf:
+          print("Writing theme...", theme)
+          outf.write('theme = ("')
+          outf.write(str(theme))
+          outf.write('")')
      print("OK. Reset completed with a 1.")
      print("Applying new options...")
-
      with open ("verifonboot.py","a") as outf:
           outf.write("\noneswappins = ")
           outf.write(str(oneswappins))
@@ -361,7 +361,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("LolexToolsOptions.py","a") as outf:
-          outf.write("\ncompiledon = 9.00001")
+          outf.write("\ncompiledon = 9.000011754")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -431,13 +431,6 @@ try:
      if compileplugins == 1 or compileplugins == True:
           LolexToolsMethods.compiler("startplugins")
      LolexToolsMethods = False
-     if useros == "Linux" or useros == "Android":
-          theme = "None"
-     with open("./theme.py","a") as outf:
-               print("Writing theme...", theme)
-               outf.write('theme = ("')
-               outf.write(str(theme))
-               outf.write('")')
      with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
      with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
      with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
