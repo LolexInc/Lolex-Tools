@@ -37,6 +37,10 @@ with open ("./verifonboot.py","a") as outf:
         outf.write("\ntwoswapwords = False\nwordtimetwo = 0")
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("verifonboot")
-print("Finished updating to 9.0nann2...")
-with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.00001")
+print("Finished updating to 9.0nann3...")
+try:
+    os.remove("./madeon.py")
+except(IOError, OSError):
+    pass
+with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.00001002")
         
