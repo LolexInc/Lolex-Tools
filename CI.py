@@ -5,24 +5,24 @@
 ##    0            00     0  0         0          0  0            00       0      0    0      0   0              0
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 import os, py_compile
-folders = []
+folders = ["./"]
 files = []
 root = os.listdir("./")
 arraypos = 0
 filesl = 0
-while arraypos < len(root):
-    if (".git" in root[arraypos]) == False:
-        if "." in root[arraypos] or "LICENSE" in root[arraypos]:
-            length = len(root[arraypos])
-            p = root[arraypos][length - 2]
-            y = root[arraypos][length - 1]
-            dot = root[arraypos][length - 3]
-            if p == "p" and y == "y" and dot == ".":
-                files.append("./" + root[arraypos])
-        else:
-            folders.append("./" + root[arraypos])
-    arraypos = arraypos + 1
-arraypos = 0
+#while arraypos < len(root):
+    #if (".git" in root[arraypos]) == False:
+        #if "." in root[arraypos] or "LICENSE" in root[arraypos]:
+            #length = len(root[arraypos])
+            #p = root[arraypos][length - 2]
+            #y = root[arraypos][length - 1]
+            #dot = root[arraypos][length - 3]
+            #if p == "p" and y == "y" and dot == ".":
+                #files.append("./" + root[arraypos])
+       # else:
+            #folders.append("./" + root[arraypos])
+    #arraypos = arraypos + 1
+#arraypos = 0
 print(folders)
 while arraypos<len(folders):
     path = folders[arraypos] + "/"
