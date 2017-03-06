@@ -298,14 +298,22 @@ def bak(name, path, reinstall, attrestore, regenerate):
     elif attrestore == 1:
         backup = os.listdir("./Backup")
         arraypos = 0
+        found = False
         while arraypos < len(backup):
             currsub = os.listdir(backup[arraypos])
             tarraypos = 0
             while tarraypos < len(backup):
                 if name + ".pyc" in currsub[tarraypos] and (".pycnotpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])) in currsub[tarraypos]) == False:
+                    found = True
                     os.rename("./Backup" + backup[arraypos] + cursub[tarraypos], "./" + name + ".pyc")
                     with open ("./compile.py", "a") as outf:
-                        outf.write("name = 'LolexToolsOptions'")
-                    subprocess.Popen()
+                        outf.write("name = '")
+                        outf.write(str(name))
+                        outf.write("'")
+                    subprocess.Popen("./LolexTools.py", shell = True)
+                    exit(None)
+        if found == False:
+            subprocess.Popen("./LolexToolsInstaller.py", shell = True)
+            exit(None)
         
         
