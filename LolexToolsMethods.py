@@ -209,6 +209,10 @@ def modehide(name, state):
         outf.write("hidden = ")
         outf.write(str(newstate))
 def bak(name, path, reinstall, attrestore, regenerate):
+    try:
+        os.remove("./compile.py")
+    except(IOError, OSError):
+        pass
     if path == 0:
         path = "./"
     content = os.listdir(path)
@@ -225,4 +229,83 @@ def bak(name, path, reinstall, attrestore, regenerate):
             os.rename("./" + name + ".pyc", dir1)
             break;
         arraypos = arraypos + 1
+    if found == False:
+        print((str(name)) + " not found for backing up.")
+    else:
+        pass
+    if regnerate == 1 and name == "LolexToolsOptions":
+        attrestore = 1
+        regenerate = 0
+        reinstall = 0
+    elif name == "verifonboot" or name == "theme" or name == "startplugins" or "settings" in name:
+        regenerate = 1
+        attrestore = 0
+        reinstall = 0
+    if "settings" in name:
+        if name != "menusettings":
+            with open ("./" + name + ".py", "a") as outf: outf.write("hidden = False")
+        else:
+            with open ("./menusettings.py", "a") as outf: outf.write("layout = 0")
+        with open ("./compile.py", "a") as outf:
+            outf.write("name = '")
+            outf.write(str(name))
+            outf.write("'")
+        subprocess.Popen("./LolexTools.py", shell = True)
+        exit(None)
+    elif name == "verifonboot":
+        import LolexToolsOptions
+        if LolexToolsOptions.onepintotal > 1:
+            oneswappins = True
+        else:
+            oneswappins = False
+        if LolexToolsOptions.onewordtotal > 1:
+            oneswapwords = True
+        else:
+            oneswapwords = False
+        if LolexToolsOptions.twopintotal > 1:
+            twoswappins = True
+        else:
+            twoswappins = False
+        if LolexToolsOptions.twowordtotal > 1:
+            twoswapwords = True
+        else:
+            twoswapwords = False
+        with open ("./verifonboot.py", "a") as outf:
+            outf.write("compiledon = ")
+            outf.write(str(ver.version))
+            outf.write("\nruntimeone = 0\nruntimetwo = 0\nwordtimeone = 0\nwordtimetwo = 0")
+            outf.write("\noneswappins = ")
+            outf.write(str(oneswappins))
+            outf.write("\noneswapwords = ")
+            outf.write(str(oneswapwords))
+            outf.write("\ntwoswappins = ")
+            outf.write(str(twoswappins))
+            outf.write("\ntwoswapwords = ")
+            outf.write(str(twoswapwords))
+    elif name == "theme":
+        # will add theme changing at some point
+        with open ("./theme.py", "a") as outf: pass
+    elif name == "startplugins":
+        # will add ability to add plugins at some point
+        with open ("./startplugins.py", "a") as outf: pass
+    if name == "verifonboot" or name == "theme" or name == "startplugins":
+        with open ("./compile.py", "a") as outf:
+            outf.write("name = '")
+            outf.write(str(name))
+            outf.write("'")
+        subprocess.Popen("./LolexTools.py", shell = True)
+        exit(None)
+    elif attrestore == 1:
+        backup = os.listdir("./Backup")
+        arraypos = 0
+        while arraypos < len(backup):
+            currsub = os.listdir(backup[arraypos])
+            tarraypos = 0
+            while tarraypos < len(backup):
+                if name + ".pyc" in currsub[tarraypos] and (".pycnotpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])) in currsub[tarraypos]) == False:
+                    os.rename("./Backup" + backup[arraypos] + cursub[tarraypos], "./" + name + ".pyc")
+                    with open ("./compile.py", "a") as outf:
+                        outf.write("name = 'LolexToolsOptions'")
+                    subprocess.Popen()
+        
         
