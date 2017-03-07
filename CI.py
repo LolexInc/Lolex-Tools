@@ -31,6 +31,7 @@ while arraypos<len(folders):
     tarraypos = 0
     sublen = len(currsub)
     while tarraypos<sublen:
+        print(3)
         if (".git" in root[arraypos]) == False:
             if "." in root[arraypos]:
                 clen = len(currsub[tarraypos])
