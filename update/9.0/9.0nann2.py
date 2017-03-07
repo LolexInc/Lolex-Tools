@@ -37,5 +37,4 @@ with open ("./verifonboot.py","a") as outf:
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("verifonboot")
 print("Finished updating to 9.0nann2...")
-with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.00001")
-        
+with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.00001");
