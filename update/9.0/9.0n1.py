@@ -148,11 +148,11 @@ with open ("./LolexToolsOptions.py","a") as outf:
     useusername = 0
     outf.write("\nusername1 = ")
     if LolexToolsOptions.username1 == False:
-       outf.write(str(LolexToolsOptions.username1))
+        outf.write(str(LolexToolsOptions.username1))
     else:
-       outf.write('("')
-       outf.write(LolexToolsOptions.username1)
-       outf.write('")')
+        outf.write('("')
+        outf.write(LolexToolsOptions.username1)
+        outf.write('")')
     username1 = 0
     outf.write("\nusername2 = ")
     outf.write('("')
