@@ -25,6 +25,7 @@ while arraypos < len(root):
 arraypos = 0
 print(folders)
 while arraypos<len(folders):
+    print(2)
     path = folders[arraypos] + "/"
     currsub = os.listdir(path)
     tarraypos = 0
