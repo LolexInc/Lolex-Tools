@@ -40,6 +40,8 @@ while arraypos<len(folders):
                     files.append(path + currsub[tarraypos])
             else:
                 folders.append(path + currsub[tarraypos])
+                print(folders)
+                # sub-sub-folders don't seem to be working :/
         tarraypos = tarraypos + 1
     arraypos = arraypos + 1
 print(files)
