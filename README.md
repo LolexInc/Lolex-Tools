@@ -2,6 +2,7 @@
 # This is : Lolex-Tools 9.0nann2/3 (not-released-yet)
 # This is a nightly build. Do not use for production purposes<br>
 # Highly unstable at the minute
+## Also ensure you read Logs/README.md for our agreements
 ## People
 Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
 AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
@@ -37,9 +38,9 @@ Call Remote Desktop or Powershell: Windows (or wine on Linux if you know what yo
 Exit: None <br><br>
 
 
-Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements.
+Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
 # Lolex-Tools is licensed under LGPL 3.0
-## License LGPL 3.0
+## License: LGPL 3.0
 
 ```
 GNU LESSER GENERAL PUBLIC LICENSE
