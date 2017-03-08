@@ -5,6 +5,7 @@
 ##    0            00     0  0         0          0  0            00       0      0    0      0   0              0
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 import os, py_compile
+print("CI version 1.7.2")
 folders = []
 files = []
 root = os.listdir("./")
@@ -25,13 +26,11 @@ while arraypos < len(root):
 arraypos = 0
 print(folders)
 while arraypos<len(folders):
-    print(2)
     path = folders[arraypos] + "/"
     currsub = os.listdir(path)
     tarraypos = 0
     sublen = len(currsub)
     while tarraypos<sublen:
-        print(3)
         if (".git" in currsub[tarraypos]) == False:
             if "." in currsub[tarraypos]:
                 clen = len(currsub[tarraypos])
@@ -42,11 +41,8 @@ while arraypos<len(folders):
                     files.append(path + currsub[tarraypos])
             else:
                 folders.append(path + currsub[tarraypos])
-                print(folders)
-                # sub-sub-folders don't seem to be working :/
         tarraypos = tarraypos + 1
     arraypos = arraypos + 1
-print(files)
 flen = len(files)
 arraypos = 0
 print("Compiling...")
