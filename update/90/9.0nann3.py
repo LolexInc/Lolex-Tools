@@ -14,7 +14,7 @@ try:
 except(IOError, OSError):
     pass
 with open ("./verifonboot.py","a") as outf:
-    outf.write("compiledon = 9.00001001754")
+    outf.write("compiledon = 9.00001002")
     if LolexToolsOptions.onepintotal>1:
         outf.write("oneswappins = True\nruntimeone = ")
         outf.write(str(verifonboot.runtimeone))
