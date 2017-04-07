@@ -5,6 +5,8 @@
 ##   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000
 ##    0            00     0  0         0          0  0            00       0      0    0      0   0              0
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
+## 
+## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, LolexToolsMethods
 print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile, platform, LolexToolsMethods")
 try:
