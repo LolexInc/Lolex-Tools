@@ -9,3 +9,6 @@ install:
 - pip install -q Django=$DJANGO_VERSION 
 script:
 - python CI.py
+notifications:
+  gitter:
+    on_success: always
