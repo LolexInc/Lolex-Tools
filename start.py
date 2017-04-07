@@ -6,6 +6,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 import os, platform, shutil, sys, time
 a = time.time()
+print("Detecting system...")
 system = platform.system()
 if "arm" in platform.platform():
 	try:
@@ -72,7 +73,7 @@ if system == "Windows":
 		local = time.asctime(time.localtime(time.time()))
 		with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
 			outf.write(local)
-			outf.write("     Took ")
+			outf.write("	 Took ")
 			outf.write((str(b-a)))
 			outf.write("seconds to initilaize on Windows Python >3.5\n")
 		time.sleep(3)
@@ -84,26 +85,26 @@ if system == "Windows":
 		local = time.asctime(time.localtime(time.time()))
 		with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
 			outf.write(local)
-			outf.write("     Took ")
+			outf.write("	 Took ")
 			outf.write((str(b-a)))
 			outf.write("seconds to initilaize on Windows Python < 3.6.\n")
 		time.sleep(3)
 		os.system("python LolexTools.py")
 	exit(None)
 else:
-        print("Starting on Linux...")
-        sys.stdout.write("\x1b]2;Lolex-Tools\x07")
-        os.system("sudo apt-get install xdotool")
-        os.system("xdotool key ctrl+super+Up")
-        os.system("python3 ./sys/bootanim.py")
-        print("Starting...")
-        b = time.time()
-        local = time.asctime(time.localtime(time.time()))
-        with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
-                outf.write(local)
-                outf.write("     Took ")
-                outf.write((str(b-a)))
-                outf.write("seconds to initilaize on Linux Python 3.\n")
-        time.sleep(3)
-        os.system("python3 ./LolexTools.py")
-        exit(None)
+		print("Starting on Linux...")
+		sys.stdout.write("\x1b]2;Lolex-Tools\x07")
+		os.system("sudo apt-get install xdotool")
+		os.system("xdotool key ctrl+super+Up")
+		os.system("python3 ./sys/bootanim.py")
+		print("Starting...")
+		b = time.time()
+		local = time.asctime(time.localtime(time.time()))
+		with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
+				outf.write(local)
+				outf.write("	 Took ")
+				outf.write((str(b-a)))
+				outf.write("seconds to initilaize on Linux Python 3.\n")
+		time.sleep(3)
+		os.system("python3 ./LolexTools.py")
+		exit(None)
