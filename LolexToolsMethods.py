@@ -8,7 +8,7 @@
 ## authors = Monkeyboy2805
 import os, time, py_compile, shutil, sys, platform, threading
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
-print("This module is intended for 9.0nann0, please do not mix and match for compatibility purposes.")
+print("This module is intended for 9.0nann2/3, please do not mix and match for compatibility purposes.")
 try:
 	import ver
 except(ImportError):
@@ -63,7 +63,7 @@ def flickerp2(colour, howlongtoflashfor):
 	os.system(theme.theme)
 	exit()
 def windowspage(page, layout):
-	if page == 0 or page == -1:
+	if page == 0:
 		print("1  = Settings")
 		if restartsettings.hidden == False:
 			print("2  = Restart")
@@ -72,29 +72,29 @@ def windowspage(page, layout):
 			print("4  = Alternative logoff method")
 		if hibernatesettings.hidden == False:
 			print("5  = Hibernate")
-	elif page == 1 or page == -1:
+	elif page == 1:
 		if shutdownsettings.hidden == False:
 			print("6  = Shutdown")
 			print("7  = Alternative shutdown method")		 
 		print("8  = Colour Flicker")
 		print("9  = Call CMD")
 		print("10 = Call documents")
-	elif page == 2 or page == -1:
+	elif page == 2:
 			print("11 = Call a Python shell")
 			print("12 = Call Task Manager")
 			print("13 = Create folders")
 			print("14 = Remove folders")
 			print("15 = Create files")
-	elif page == 3 or page == -1:
+	elif page == 3:
 			print("16 = Restart this script")
 			print("17 = Perform arithmetic operations")
 			print("18 = Lock this script")
 			print("19 = Call Remote Desktop")
 			print("20 = Call Powershell")
-	elif page == 4 or page == -1:
+	elif page == 4:
 			print("21 = Print SystemInfo")
 			print("22 = Start Installer")
-	elif page == 5 or page == -1:
+	elif page == 5:
 			if exitsettings.hidden == False:
 				print("23 = Exit")
 			print("24 = Experimental auto-update")
@@ -102,11 +102,11 @@ def windowspage(page, layout):
 			print("25 = Next Page")
 			print("26 = Back a Page")
 	else:
-		if page < 5:
+		if page < 5 and page != -1:
 			page = page + 1
 			windowspage(page, layout)
 def linuxpage(page, layout):
-	if page == 0 or page == -1:
+	if page == 0:
 		print("1  = Settings")
 		if restartsettings.hidden == False:
 			print("2  = Restart")
@@ -116,13 +116,13 @@ def linuxpage(page, layout):
 			print("4  = Hibernate")
 		if shutdownsettings.hidden == False:
 			print("5  = Shutdown")
-	elif page == 1 or page == -1:
+	elif page == 1:
 		print("6  = Call a Python Shell")
 		print("7  = Create folders")
 		print("8  = Remove folders")
 		print("9  = Create files")
 		print("10 = Restart this script")
-	elif page == 2 or page == -1:
+	elif page == 2:
 		print("11 = Perform arithmetic operations")
 		print("12 = Lock this script")
 		print("13 = Start Installer")
@@ -134,9 +134,43 @@ def linuxpage(page, layout):
 		print("17 = Next Page")
 		print("18 = Back a Page")
 	else:
-		if page < 2:
+		if page < 2 and page != -1:
 			page = page + 1
 			linuxpage(page, layout)
+		else:
+			page = 0
+			linuxpage (page, layout)
+def androidpage(page, layout):
+	if page == 0:
+		print("1 = Settings")
+		if restartsettings.hidden == False:
+			print("2  = Restart")
+		if shutdownsettings.hidden == False:
+			print("3 = Shutdown")
+		print("4  = Call a Python Shell")
+		print("5  = Create folders")
+	elif page == 1:
+		print("6  = Remove folders")
+		print("7  = Create files")
+		print("8 = Restart this script")
+		print("9 = Perform arithmetic operations")
+		print("10 = Lock this script")
+	elif page == 2:
+		print("11 = Start Installer")
+		print("12 = Show Uptime and Average load")
+		print("13 = Print SystemInfo")
+		if exitsettings.hidden == False:
+			print("14 = Exit")
+	if layout == 0:
+		print("15 = Next Page")
+		print("16 = Back a Page")
+	else:
+		if page < 2 and page != -1:
+			page = page + 1
+			androidpage(page, layout)
+		else:
+			page = 0
+			androidpage (page, layout)
 def restart():
 	restart = int(input("Please enter 1 to confirm restart."))
 	if restart == 1:
