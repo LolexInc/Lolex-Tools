@@ -13,7 +13,7 @@ try:
 except(ImportError):
 	print("Please create isnottravisci.py to continue.")
 	time.sleep(5)
-	exit(None)
+	exit(0)
 system = platform.system()
 if system == "Windows":
 	if sys.version_info.major != 3:
@@ -23,7 +23,7 @@ try:
 	import LolexToolsMethods
 except(ImportError):
 	print("Missing library. Please redownload this application.")
-	exit(None)
+	exit(0)
 try:
         import menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
@@ -36,7 +36,7 @@ except(ImportError):
 		subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
 	else:
 		os.system("python3 ./LolexToolsInstaller.py")
-	exit(None)
+	exit(0)
 try:
 	import madeon
 	LolexToolsOptions.compiledon = madeon.compiledon
@@ -80,7 +80,7 @@ if LolexToolsOptions.compiledon<9.00001:
 		   os.system("python .\start.py")
 	else:
 		os.system("python3 ./start.py")
-	exit(None)
+	exit(0)
 if system == "Windows":
 	os.system(theme.theme)
 	os.system("mode 1000")
@@ -323,7 +323,7 @@ try:
 							os.system("python .\start.py")
 					else:
 						os.system("python3 ./start.py")
-					exit(None)
+					exit(0)
 		elif modewanted == 2:
 			LolexToolsMethods.restart()
 		elif modewanted == 3:
@@ -414,7 +414,7 @@ try:
 						os.system("py .\start.py")
 				else:
 					os.system("python3 ./start.py")
-				exit(None)
+				exit(0)
 		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux"):
 			print ("Here is a list of operations:")
 			print ("1 = Add")
@@ -476,7 +476,7 @@ try:
 						os.system("python .\LolexToolsInstaller.py")
 				else:
 					os.system("python3 ./LolexToolsInstaller.py")
-				exit(None)
+				exit(0)
 		elif (modewanted == 14 and useros == "Linux"):
 			if "arm" in platform.platform():
 				if os.system("su -c uptime") != 0:
