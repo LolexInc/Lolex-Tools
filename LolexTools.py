@@ -25,7 +25,11 @@ except(ImportError):
 	print("Missing library. Please redownload this application.")
 	exit(None)
 try:
-	import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+        import menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+except(ImportError):
+        pass
+try:
+	import verifonboot, LolexToolsOptions, runningsys, startplugins, theme
 except(ImportError):
 	system = platform.system()
 	if system == "Windows":
@@ -193,14 +197,6 @@ try:
 						tries = 0
 					wordenter = input("Please enter your current password.")
 					tries = tries + 1
-# This probably isn't the way to go, so I will rewrite it
-# Doesn't allow for reauth on reenter while loop
-# Auto generating files will probably come
-# if runtimeone == 1:
-#	pinneeded = LolexToolsOptions.onepin1
-# if runtimeone == 1000: #Highly doubtful
-#	pinneeded == ___.onepin1000
-# etc etc
 	if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
 		try:
 			os.remove("./verifonboot.py")
