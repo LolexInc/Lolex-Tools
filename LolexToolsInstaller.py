@@ -328,14 +328,11 @@ try:
                                     compileplugins = 1
      elif pluginconfirm != 1:
               compileplugins = 0
+              with open ("./startplugins.py", "a") as outf: pass
      if developer == 1:
               developer = True
      else:
               developer = False
-     if pluginconfirm !=1:
-              compileplugins = 0
-     else:
-              pass
      if compiler == 1:
               compiler = True
      else:
@@ -458,7 +455,7 @@ try:
                                        os.system("py .\LolexTools.py")
                                else:
                                        os.system("python .\LolexTools.py")
-              exit()
+              exit(None)
      except(TypeError, SyntaxError, ValueError):
               print("Failed to start.")
 except(SyntaxError):
