@@ -76,6 +76,10 @@ try:
               os.remove("./menusettings.pyc")
      except(IOError, OSError):
               pass
+     try:
+          os.remove("./madeon.py")
+     except(IOError, OSError):
+          pass
      useros = platform.system()
      if useros == "Linux":
               print("This project requires Git for updating. Installing git...")
