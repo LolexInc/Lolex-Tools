@@ -282,6 +282,8 @@ try:
                        twowordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
                        while twowordwait<0:
                                     twowordwait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
+     else:
+          with open ("./LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
      print("Setting up general options...")
      developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
      if (oneusepin == True or 1) or (twousepin == True or 1):

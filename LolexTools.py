@@ -29,7 +29,7 @@ try:
 except(ImportError):
         pass
 try:
-	import verifonboot, LolexToolsOptions, runningsys, startplugins, theme
+	import LolexToolsOptions, runningsys, startplugins, theme
 except(ImportError):
 	system = platform.system()
 	if system == "Windows":
@@ -37,6 +37,10 @@ except(ImportError):
 	else:
 		os.system("python3 ./LolexToolsInstaller.py")
 	exit(0)
+try:
+        import verifonboot
+except(ImportError):
+        LolexToolsMethods.bak("verifonboot", 0, 0, 0, 1)
 try:
 	import madeon
 	LolexToolsOptions.compiledon = madeon.compiledon
@@ -200,11 +204,11 @@ try:
 	if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
 		try:
 			os.remove("./verifonboot.py")
-		except(IOError):
+		except(IOError, OSError):
 			pass
 		try:
 			os.remove("./verifonboot.pyc")
-		except(IOError):
+		except(IOError, OSError):
 				print("verifonboot.pyc was not found.")
 		with open ("./verifonboot.py","a") as outf:
 			outf.write("oneswappins = ")
@@ -552,7 +556,7 @@ except(EOFError):
 except(AttributeError):
 	 print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	 time.sleep(10)
-except(OSError):
+except():
 	 print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	 time.sleep(10)
 except(ZeroDivisionError):

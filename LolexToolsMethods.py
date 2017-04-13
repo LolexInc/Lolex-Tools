@@ -6,7 +6,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, time, py_compile, shutil, sys, platform, threading
+import os, time, py_compile, shutil, sys, platform, threading, subprocess
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 print("This module is intended for 9.0nann2/3, please do not mix and match for compatibility purposes.")
 try:
@@ -269,7 +269,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		print((str(name)) + " not found for backing up.")
 	else:
 		pass
-	if regnerate == 1 and name == "LolexToolsOptions":
+	if regenerate == 1 and name == "LolexToolsOptions":
 		attrestore = 1
 		regenerate = 0
 		reinstall = 0
