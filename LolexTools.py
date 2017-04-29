@@ -8,12 +8,6 @@
 ##
 ## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, io, zipfile
-try:
-	import isnottravisci
-except(ImportError):
-	print("Please create isnottravisci.py to continue.")
-	time.sleep(5)
-	exit(0)
 system = platform.system()
 if system == "Windows":
 	if sys.version_info.major != 3:
@@ -85,7 +79,7 @@ if LolexToolsOptions.compiledon<9.00001:
 			os.system ("python3 ./9.0nann2.py")
 		os.remove("./9.0nann2.py")
 	if LolexToolsOptions.compiledon<9.0001:
-		shutil.copy("./update/9.0nann3.py", "./")
+		shutil.copy("./update/90/9.0nann3.py", "./")
 		if system == "Windows":
 			if sys.version_info>5:
 				os.system("py ./9.0nann3.py")
@@ -95,7 +89,7 @@ if LolexToolsOptions.compiledon<9.00001:
 			os.system("python3 ./9.0nann3.py")
 		os.remove("./9.0nann3.py")
 	if LolexToolsOptions.compiledon < 9.001:
-		shutil.copy("./update/9.0nann4.py", "./")
+		shutil.copy("./update/90/9.0nann4.py", "./")
 		if system == "Windows":
 			if sys.version_info.minor > 5:
 				os.system("py ./9.0nann4.py")
