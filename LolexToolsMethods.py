@@ -1,3 +1,4 @@
+#! python3
 ##0
 ## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000
 ##  0              00     0  0         0           00             00       0      0    0      0   0          0
@@ -295,7 +296,13 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			outf.write("name = '")
 			outf.write(str(name))
 			outf.write("'")
-		subprocess.Popen("./LolexTools.py", shell = True)
+		if platform.system() == "Windows":
+			if sys.version_info.minor>5:
+				os.system("py .\Lolex-Tools.py")
+			else:
+				os.system("python .\LolexTools.py")
+		else:
+			os.system("python3 ./LolexTools.py")
 		exit(None)
 	elif name == "verifonboot":
 		import LolexToolsOptions
@@ -338,7 +345,13 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			outf.write("name = '")
 			outf.write(str(name))
 			outf.write("'")
-		subprocess.Popen("./LolexTools.py", shell = True)
+		if platform.system() == "Windows":
+			if sys.version_info.minor>5:
+				os.system("py .\LolexTools.py")
+			else:
+				os.system("python .\LolexTools.py")
+		else:
+			os.system("python3 ./LolexTools.py")
 		exit(None)
 	elif attrestore == 1:
 		backup = os.listdir("./Backup")
@@ -355,10 +368,20 @@ def bak(name, path, reinstall, attrestore, regenerate):
 						outf.write("name = '")
 						outf.write(str(name))
 						outf.write("'")
-					subprocess.Popen("./LolexTools.py", shell = True)
+					if platform.system() == "Windows":
+						if sys.version_info.minor>5:
+							os.system("py .\LolexTools.py")
+						else:
+							os.system("python .\LolexTools.py")
+					else:
+						<os.system("python3 ./LolexTools.py")
 					exit(None)
 		if found == False:
-			subprocess.Popen("./LolexToolsInstaller.py", shell = True)
+			if platform.system() == "Windows":
+				if sys.version_info.minor>5:
+					os.system("py .\LolexToolsInstaller.py")
+				else:
+					os.system("python .\LolexToolsInstaller.py")
+			else:
+				os.system("python3 ./LolexToolsInstaller.py")
 			exit(None)
-		
-		
