@@ -41,6 +41,7 @@ try:
         import verifonboot
 except(ImportError):
         LolexToolsMethods.bak("verifonboot", 0, 0, 0, 1)
+        import verifonboot
 try:
 	import madeon
 	LolexToolsOptions.compiledon = madeon.compiledon
@@ -91,7 +92,6 @@ if system == "Windows":
 	os.system("title Lolex-Tools")
 print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
 try:
-	os.system(theme.theme)
 	oneswappins = verifonboot.oneswappins
 	twoswappins = verifonboot.twoswappins
 	runtimeone = verifonboot.runtimeone
