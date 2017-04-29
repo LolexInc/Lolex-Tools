@@ -53,4 +53,4 @@ try:
     os.remove("./madeon.py")
 except(IOError, OSError):
     pass
-with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.00001002");
+with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.0001");
