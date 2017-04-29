@@ -1,3 +1,4 @@
+#! python3
 ##0
 ## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000
 ##  0              00     0  0         0           00             00       0      0    0      0   0          0
@@ -53,4 +54,4 @@ try:
     os.remove("./madeon.py")
 except(IOError, OSError):
     pass
-with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.0001");
+with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.0001o");
