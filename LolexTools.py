@@ -34,7 +34,7 @@ except(ImportError):
 	system = platform.system()
 	if system == "Windows":
 		subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
-	else:
+	elif system == "Linux":
 		os.system("python3 ./LolexToolsInstaller.py")
 	exit(0)
 try:

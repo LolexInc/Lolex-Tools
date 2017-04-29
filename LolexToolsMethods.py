@@ -17,7 +17,16 @@ except(ImportError):
 	else:
 		print("Please redownload this repository to access all features.")
 try:
-		import menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+	import menusettings
+except(ImportError):
+	system = platform.system()
+	if system == "Windows":
+		subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
+	elif system == "Linux":
+		os.system("python3 ./LolexToolsInstaller.py")
+	exit(0)
+try:
+		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
 		pass
 def version():
