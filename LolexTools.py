@@ -257,6 +257,7 @@ try:
 			modewanted = modewanted + maxmode
 		if modewanted == 1:
 			print("1 = Menu Settings")
+			print("2 = Hide modes")
 			setting = int(input("Please enter the group of settings you wish to modify."))
 			if setting == 1:
 					print(" Modiy Menu Layout")
@@ -278,62 +279,59 @@ try:
 					elif layout == 1:
 						page = 0
 			elif setting == 2:
-				print("1 = Hide power menu modes.")
-				settinga = int(input("Please input the number of the setting you wish to modify."))
-				if settinga == 1:
-					print("2 = Restart hidden = ", restartsettings.hidden)
-					print("3 = Logoff hidden = ", logoffsettings.hidden)
-					print("4 = Hibernate hidden = ", hibernatesettings.hidden)
-					print("5 = Shutdown hidden = ", shutdownsettings.hidden)
-					print("6 = Call a Python Shell hidden = ", pyshellsettings.hidden)
-					print("7 = Create folders hidden = ", foldercreatesettings.hidden)
-					print("8 = Remove folders hidden = ", exfoldersettings.hidden)
-					print("9 = Create files hidden = ", addfilesettings.hidden)
-					print("10 = Restart this script hidden = ", scriptloopsettings.hidden)
-					print("11 = Perform arithmetic operations hidden = ", mathmodesettings.hidden)
-					print("12 = Lock this script hidden = ", scriptlocksettings.hidden)
-					print("13 = Start Installer hidden = ", installerstartsettings.hidden)
-					print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
-					print("15 = Exit hidden = ", exitsettings.hidden)
-					hidestate = int(input("Please select the number of the mode."))
-					if hidestate == 2:
-						LolexToolsMethods.modehide("restart", restartsettings.hidden)
-					elif hidestate == 3:
-						LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
-					elif hidestate == 4:
-						LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
-					elif hidestate == 5:
-						LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
-					elif hidestate == 6:
-						LolexToolsMethods.modehide("pyshell", pyshellsettings.hidden)
-					elif hidestate == 7:
-						LolexToolsMethods.modehide("foldercreate", foldercreatesettings.hidden)
-					elif hidestate == 8:
-						LolexToolsMethods.modehide("exfolder", exfoldersettings.hidden)
-					elif hidestate == 9:
-						LolexToolsMethods.modehide("addfile", addfilesettings.hidden)
-					elif hidestate == 10:
-						LolexToolsMethods.modehide("scriptloop", scriptloopsettings.hidden)
-					elif hidestate == 11:
-						LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
-					elif hidestate == 12:
-						LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
-					elif hidestate == 13:
-						LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
-					elif hidestate == 14:
-						LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
-					elif hidestate == 15:
-						LolexToolsMethods.modehide("exit", exitsettings.hidden)
+				print("2 = Restart hidden = ", restartsettings.hidden)
+				print("3 = Logoff hidden = ", logoffsettings.hidden)
+				print("4 = Hibernate hidden = ", hibernatesettings.hidden)
+				print("5 = Shutdown hidden = ", shutdownsettings.hidden)
+				print("6 = Call a Python Shell hidden = ", pyshellsettings.hidden)
+				print("7 = Create folders hidden = ", foldercreatesettings.hidden)
+				print("8 = Remove folders hidden = ", exfoldersettings.hidden)
+				print("9 = Create files hidden = ", addfilesettings.hidden)
+				print("10 = Restart this script hidden = ", scriptloopsettings.hidden)
+				print("11 = Perform arithmetic operations hidden = ", mathmodesettings.hidden)
+				print("12 = Lock this script hidden = ", scriptlocksettings.hidden)
+				print("13 = Start Installer hidden = ", installerstartsettings.hidden)
+				print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
+				print("15 = Exit hidden = ", exitsettings.hidden)
+				hidestate = int(input("Please select the number of the mode."))
+				if hidestate == 2:
+					LolexToolsMethods.modehide("restart", restartsettings.hidden)
+				elif hidestate == 3:
+					LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
+				elif hidestate == 4:
+					LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
+				elif hidestate == 5:
+					LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
+				elif hidestate == 6:
+					LolexToolsMethods.modehide("pyshell", pyshellsettings.hidden)
+				elif hidestate == 7:
+					LolexToolsMethods.modehide("foldercreate", foldercreatesettings.hidden)
+				elif hidestate == 8:
+					LolexToolsMethods.modehide("exfolder", exfoldersettings.hidden)
+				elif hidestate == 9:
+					LolexToolsMethods.modehide("addfile", addfilesettings.hidden)
+				elif hidestate == 10:
+					LolexToolsMethods.modehide("scriptloop", scriptloopsettings.hidden)
+				elif hidestate == 11:
+					LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
+				elif hidestate == 12:
+					LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
+				elif hidestate == 13:
+					LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
+				elif hidestate == 14:
+					LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
+				elif hidestate == 15:
+					LolexToolsMethods.modehide("exit", exitsettings.hidden)
 					#if useros == "Windows":
 						
-					if useros == "Windows":
-						if sys.version_info.minor>5:
-							os.system("py .\start.py")
-						else:
-							os.system("python .\start.py")
+				if useros == "Windows":
+					if sys.version_info.minor>5:
+						os.system("py .\start.py")
 					else:
-						os.system("python3 ./start.py")
-					exit(0)
+						os.system("python .\start.py")
+				else:
+					os.system("python3 ./start.py")
+				exit(0)
 		elif modewanted == 2:
 			LolexToolsMethods.restart()
 		elif modewanted == 3 and useros != "Android":
