@@ -503,13 +503,13 @@ try:
 						print("Failed to run uptime script.")
 			else:
 				os.system("uptime")
-		elif modewanted == 13 and useros == "Android":
+		elif (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
 			if os.system("su -c /system/bin/dumpsys") != 0:
 				print("Cannot load as much information due to lack of root.")
 				if os.system("/system/bin/dumpsys") != 0:
 					print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
-		else:
-			os.system("sudo lshw")
+			else:
+				os.system("sudo lshw")
 		elif (modewanted == 24 and useros == "Windows"):
 			print("Checking for updates...")
 			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
