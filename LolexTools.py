@@ -304,37 +304,35 @@ try:
 				print("13 = Start Installer hidden = ", installerstartsettings.hidden)
 				print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
 				print("15 = Exit hidden = ", exitsettings.hidden)
-				hidestate = int(input("Please select the number of the mode."))
-				if hidestate == 2:
+				modetochange = int(input("Please select the number of the mode."))
+				if modetochange == 2:
 					LolexToolsMethods.modehide("restart", restartsettings.hidden)
-				elif hidestate == 3:
+				elif modetochange == 3:
 					LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
-				elif hidestate == 4:
+				elif modetochange == 4:
 					LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
-				elif hidestate == 5:
+				elif modetochange == 5:
 					LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
-				elif hidestate == 6:
+				elif modetochange == 6:
 					LolexToolsMethods.modehide("pyshell", pyshellsettings.hidden)
-				elif hidestate == 7:
+				elif modetochange == 7:
 					LolexToolsMethods.modehide("foldercreate", foldercreatesettings.hidden)
-				elif hidestate == 8:
+				elif modetochange == 8:
 					LolexToolsMethods.modehide("exfolder", exfoldersettings.hidden)
-				elif hidestate == 9:
+				elif modetochange == 9:
 					LolexToolsMethods.modehide("addfile", addfilesettings.hidden)
-				elif hidestate == 10:
+				elif modetochange == 10:
 					LolexToolsMethods.modehide("scriptloop", scriptloopsettings.hidden)
-				elif hidestate == 11:
+				elif modetochange == 11:
 					LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
-				elif hidestate == 12:
+				elif modetochange == 12:
 					LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
-				elif hidestate == 13:
+				elif modetochange == 13:
 					LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
-				elif hidestate == 14:
+				elif modetochange == 14:
 					LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
-				elif hidestate == 15:
+				elif modetochange == 15:
 					LolexToolsMethods.modehide("exit", exitsettings.hidden)
-					#if useros == "Windows":
-						
 				if useros == "Windows":
 					if sys.version_info.minor>5:
 						os.system("py .\start.py")
