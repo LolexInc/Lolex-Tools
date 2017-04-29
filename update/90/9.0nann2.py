@@ -6,7 +6,16 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, LolexToolsOptions, LolexToolsMethods, verifonboot
+import os, platform, LolexToolsMethods
+try:
+	import verifonboot, LolexToolsOptions
+except(ImportError):
+	system = platform.system()
+	if system == "Windows":
+		subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
+	elif system == "Linux":
+		os.system("python3 ./LolexToolsInstaller.py")
+	exit(0)
 try:
     os.remove("./verifonboot.py")
 except(IOError, OSError):

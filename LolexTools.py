@@ -68,21 +68,32 @@ if LolexToolsOptions.compiledon<9.00001:
 		else:
 			os.system ("python3 ./9.0n1.py")
 		os.remove("./9.0n1.py")
-	shutil.copy("./update/90/9.0nann2.py","./")
-	if system == "Windows":
-		if sys.version_info.minor>5:
-			os.system ("py ./9.0nann2.py")
+	if LolexToolsOptions.compiledon<9.00001:
+		shutil.copy("./update/90/9.0nann2.py","./")
+		if system == "Windows":
+			if sys.version_info.minor>5:
+				os.system ("py ./9.0nann2.py")
+			else:
+				os.system("python ./9.0nann2.py")
 		else:
-			os.system("python ./9.0nann2.py")
-	else:
-		os.system ("python3 ./9.0nann2.py")
-	os.remove("./9.0nann2.py")
+			os.system ("python3 ./9.0nann2.py")
+		os.remove("./9.0nann2.py")
+	if LolexToolsOptions.compiledon<9.00001002:
+		shutil.copy("./update/9.0nann3.py", "./")
+		if system == "Windows":
+			if sys.version_info>5:
+				os.system("py ./9.0nann3.py")
+			else:
+				os.system("python ./9.0nann3.py")
+		else:
+			os.system("python3 ./9.0nann3.py")
+		os.remove("./9.0nann3.py")
 	print("Restarting to finish updating...")
 	if system == "Windows":
 		if sys.version_info.minor>5:
-		  os.system("py .\start.py")
+			os.system("py .\start.py")
 		else:
-		   os.system("python .\start.py")
+		 	os.system("python .\start.py")
 	else:
 		os.system("python3 ./start.py")
 	exit(0)
