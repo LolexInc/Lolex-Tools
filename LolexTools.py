@@ -230,6 +230,8 @@ try:
 		if LolexToolsOptions.compiler == True:
 			LolexToolsMethods.compiler("verifonboot")
 	useros = platform.system()
+	if "arm" in platform.platform():
+		useros = "Android"
 	layout = menusettings.layout
 	if layout == 0:
 		page = -1
@@ -240,11 +242,15 @@ try:
 			LolexToolsMethods.windowspage(page, menusettings.layout)
 		elif useros == "Linux":
 			LolexToolsMethods.linuxpage(page, menusettings.layout)
+		elif useros == "Android":
+			LolexToolsMethods.androidpage(page, menusettings.layout)
 		modewanted = int(input("Please enter the number of the mode that you want."))
 		if useros == "Windows":
 			maxmode = 26
-		else:
+		elif useros == "Linux":
 			maxmode = 18
+		elif useros == "Android":
+			maxmode = 14
 		while modewanted > maxmode:
 			modewanted = modewanted - maxmode
 		while modewanted < 1:
@@ -330,7 +336,7 @@ try:
 					exit(0)
 		elif modewanted == 2:
 			LolexToolsMethods.restart()
-		elif modewanted == 3:
+		elif modewanted == 3 and useros != "Android":
 			logoff = float(input("Please enter 1 or 0 to confirm logoff."))
 			if logoff == 1:
 				waittime = float(input("How long, in minutes, do you wish to wait?"))
@@ -354,14 +360,14 @@ try:
 					os.system ("shutdown -h -f")
 				else:
 					os.system("systemctl suspend")
-		elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux"):
+		elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux") or (modewanted == 3 and useros == "Android"):
 				shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
 				if shutdown == 1:
 					waittime = float(input("How long, in minutes, do you wish to wait?"))
 					time.sleep (waittime * 60)
 					if useros == "Windows":
 						os.system ("shutdown -s -f")
-					elif "arm" in platform.platform()==False:
+					elif "arm" not in platform.platform():
 						os.system("poweroff")
 					else:
 						if os.system("su -c reboot -p") != 0:
@@ -379,28 +385,28 @@ try:
 			subprocess.call("cmd.exe")
 		elif modewanted == 10 and useros == "Windows" :
 			subprocess.Popen("explorer.exe")
-		elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux"):
+		elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux") or (modewanted == 4 and useros == "Android"):
 			if useros == "Windows":
 				subprocess.call("python.exe")
 			else:
 				os.system("python3")
 		elif modewanted == 12 and useros == "Windows" :
 			subprocess.Popen("taskmgr.exe")
-		elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux"):
+		elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux") or (modewanted == 5 and useros == "Android"):
 			foldername = input("Please input the name of your new folder.")
 			try:
 				os.makedirs (foldername)
 				cont = input("Success! Press any key then enter to continue...")
 			except(IOError, OSError):
 				print("Failed to create folder: ", foldername)
-		elif (modewanted == 14 and useros == "Windows") or (modewanted == 8 and useros == "Linux"):
+		elif (modewanted == 14 and useros == "Windows") or (modewanted == 8 and useros == "Linux") or (modewanted == 6 and useros == "Android"):
 			foldername = input("Please input the name of the folder you wish to delete.")
 			try:
 				 os.rmdir (foldername)
 				 cont = input("Success! Press any key then enter to continue...")
 			except(IOError, OSError):
 				print("Folder does not exist!")
-		elif (modewanted == 15 and useros == "Windows") or (modewanted == 9 and useros == "Linux"):
+		elif (modewanted == 15 and useros == "Windows") or (modewanted == 9 and useros == "Linux") or (modewanted == 7 and useros == "Android"):
 			try:
 				filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
 				with io.FileIO (filename, "w"):
@@ -408,7 +414,7 @@ try:
 				cont = input("Success! Press any key then enter to continue...")
 			except(IOError, OSError):
 				print("Failed to create file: ",filename)
-		elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux"):
+		elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
 			confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
 			if confirmscriptrestart == 1:
 				if useros == "Windows":
@@ -419,7 +425,7 @@ try:
 				else:
 					os.system("python3 ./start.py")
 				exit(0)
-		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux"):
+		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
 			print ("Here is a list of operations:")
 			print ("1 = Add")
 			print ("2 = Take")
@@ -451,7 +457,7 @@ try:
 						if startnum == endnum or startnum<endnum:
 							print ("The closest number to your target end number was:" + (str(startnum)))
 							time.sleep (1)
-		elif (modewanted == 18 and useros == "Windows") or (modewanted == 12 and useros == "Linux"):
+		elif (modewanted == 18 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
 			print ("Feature currently unavailable(under development).")
 		elif modewanted == 19  and useros == "Windows" :
 			path = input("Please input the full path of the RDP file.")
@@ -470,7 +476,7 @@ try:
 			subprocess.call("powershell.exe")
 		elif modewanted == 21 and useros == "Windows":
 			os.system("systeminf")
-		elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux"):
+		elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
 			confirm = int(input("Please confirm (with a 1) to enter the installer."))
 			if confirm == 1:
 				if useros == "Windows":
@@ -481,21 +487,20 @@ try:
 				else:
 					os.system("python3 ./LolexToolsInstaller.py")
 				exit(0)
-		elif (modewanted == 14 and useros == "Linux"):
+		elif (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
 			if "arm" in platform.platform():
 				if os.system("su -c uptime") != 0:
 					if os.system("/system/bin/uptime")!= 0:
 						print("Failed to run uptime script.")
 			else:
 				os.system("uptime")
-		elif modewanted == 15 and useros == "Linux":
-			if "arm" in platform.platform():
-				if os.system("su -c /system/bin/dumpsys") != 0:
-					print("Cannot load as much information due to lack of root.")
-					if os.system("/system/bin/dumpsys") != 0:
-						print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
-			else:
-				os.system("sudo lshw")
+		elif modewanted == 13 and useros == "Android":
+			if os.system("su -c /system/bin/dumpsys") != 0:
+				print("Cannot load as much information due to lack of root.")
+				if os.system("/system/bin/dumpsys") != 0:
+					print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
+		else:
+			os.system("sudo lshw")
 		elif (modewanted == 24 and useros == "Windows"):
 			print("Checking for updates...")
 			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
@@ -517,8 +522,8 @@ try:
 					print("Extracting...")
 					zip_ref.extractall("newversion")
 					zip_ref.close()	  
-		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") and menusettings.layout == 1:
-			if (page < 5 and useros == "Windows") or (page < 2 and useros == "Linux"):
+		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
+			if (page < 5 and useros == "Windows") or (page < 2 and (useros == "Linux" or useros == "Android")):
 				page = page + 1
 			else:
 				page = 0
@@ -528,9 +533,9 @@ try:
 			else:
 				if useros == "Windows":
 					page = 5
-				else:
+				elif useros == "Linux" or useros == "Android":
 					page = 2
-		elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
+		elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
 			print("Exiting...")
 			print("Giving all threads 5 seconds to exit...")
 			time.sleep(5)
@@ -556,7 +561,7 @@ except(EOFError):
 except(AttributeError):
 	 print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	 time.sleep(10)
-except():
+except(OSError):
 	 print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	 time.sleep(10)
 except(ZeroDivisionError):
@@ -564,4 +569,5 @@ except(ZeroDivisionError):
 	time.sleep(10)
 except(KeyboardInterrupt):
 	print("User input caused a crash.")
+	# shouldn't be as much of a problem with threads
 	time.sleep(10)
