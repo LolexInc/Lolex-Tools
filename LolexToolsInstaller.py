@@ -420,6 +420,7 @@ try:
               outf.write(str(twowait))
               twowait = "None"
               confirm = "None"
+      with open ("./patches.py", "a"
      with open ("./runningsys.py","a") as outf:
               outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
