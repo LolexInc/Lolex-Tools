@@ -70,7 +70,10 @@ if LolexToolsOptions.compiledon<9.00001:
 				os.system("python ./9.0n1.py")
 		else:
 			os.system ("python3 ./9.0n1.py")
-		os.remove("./9.0n1.py")
+		try:
+			os.remove("./9.0n1.py")
+		except(IOError, OSError):
+			pass
 	if LolexToolsOptions.compiledon<9.00001:
 		shutil.copy("./update/90/9.0nann2.py","./")
 		if system == "Windows":
@@ -91,6 +94,16 @@ if LolexToolsOptions.compiledon<9.00001:
 		else:
 			os.system("python3 ./9.0nann3.py")
 		os.remove("./9.0nann3.py")
+	if LolexToolsOptions.compiledon < 9.001:
+		shutil.copy("./update/9.0nann4.py", "./")
+		if system == "Windows":
+			if sys.version_info.minor > 5:
+				os.system("py ./9.0nann4.py")
+			else:
+				os.system("python ./9.0nann4.py")
+		elif system == "Linux":
+			os.system("python3 ./9.0nann4.py")
+		os.remove("./9.0nann4.py")
 	print("Restarting to finish updating...")
 	if system == "Windows":
 		if sys.version_info.minor>5:

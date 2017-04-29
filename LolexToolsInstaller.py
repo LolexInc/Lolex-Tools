@@ -366,7 +366,7 @@ try:
               twoswapwords = 0
               outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("LolexToolsOptions.py","a") as outf:
-              outf.write("\ncompiledon = 9.0001")
+              outf.write("\ncompiledon = 9.001")
               outf.write("\nuseusername = ")
               outf.write(str(useusername))
               useusername = 0
@@ -420,7 +420,7 @@ try:
               outf.write(str(twowait))
               twowait = "None"
               confirm = "None"
-      with open ("./patches.py", "a"
+      with open ("./patches.py", "a") as outf: outf.write('applied = "9.0nann4"')
      with open ("./runningsys.py","a") as outf:
               outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
