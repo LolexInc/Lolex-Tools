@@ -467,15 +467,15 @@ except(SyntaxError) as a:
 except(TypeError) as b:
     print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     print(b)
-	time.sleep(10)
+    time.sleep(10)
 except(ValueError) as c:
     print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
     print(c)
-	time.sleep(10)
+    time.sleep(10)
 except(IOError) as d:
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      print(d)
-    time.sleep(10)
+     time.sleep(10)
 except(NameError) as e:
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      print(e)
