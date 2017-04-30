@@ -374,7 +374,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 						else:
 							os.system("python .\LolexTools.py")
 					else:
-						<os.system("python3 ./LolexTools.py")
+						os.system("python3 ./LolexTools.py")
 					exit(None)
 		if found == False:
 			if platform.system() == "Windows":

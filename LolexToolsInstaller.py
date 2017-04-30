@@ -415,7 +415,7 @@ try:
               outf.write(str(twowait))
               twowait = "None"
               confirm = "None"
-      with open ("./patches.py", "a") as outf: outf.write('applied = "9.0nann4"')
+     with open ("./patches.py", "a") as outf: outf.write('applied = "9.0nann4"')
      with open ("./runningsys.py","a") as outf:
               outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
