@@ -98,19 +98,19 @@ def windowspage(page, layout):
 	elif page == 3:
 			print("16 = Restart this script")
 			print("17 = Perform arithmetic operations")
-			print("18 = Lock this script")
-			print("19 = Call Remote Desktop")
-			print("20 = Call Powershell")
+			print("18 = Call Remote Desktop")
+			print("19 = Call Powershell")
+			print("20 = Print SystemInfo")
 	elif page == 4:
-			print("21 = Print SystemInfo")
-			print("22 = Start Installer")
-	elif page == 5:
+			print("21 = Start Installer")
 			if exitsettings.hidden == False:
-				print("23 = Exit")
-			print("24 = Experimental auto-update")
+				print("22 = Exit")
+		elif page == 5:
+			print("UNSTABLE FEATURES:
+			print("23 = Experimental auto-update")
 	if layout == 0:
-			print("25 = Next Page")
-			print("26 = Back a Page")
+			print("24 = Next Page")
+			print("25 = Back a Page")
 	else:
 		if page < 5 and page != -1:
 			page = page + 1
@@ -134,15 +134,14 @@ def linuxpage(page, layout):
 		print("10 = Restart this script")
 	elif page == 2:
 		print("11 = Perform arithmetic operations")
-		print("12 = Lock this script")
-		print("13 = Start Installer")
-		print("14 = Show Uptime and Average load")
-		print("15 = Print SystemInfo")
+		print("12 = Start Installer")
+		print("13 = Show Uptime and Average load")
+		print("14 = Print SystemInfo")
 		if exitsettings.hidden == False:
-			print("16 = Exit")
+			print("15 = Exit")
 	if layout == 0:
-		print("17 = Next Page")
-		print("18 = Back a Page")
+		print("16 = Next Page")
+		print("17 = Back a Page")
 	else:
 		if page < 2 and page != -1:
 			page = page + 1
@@ -164,16 +163,15 @@ def androidpage(page, layout):
 		print("7  = Create files")
 		print("8 = Restart this script")
 		print("9 = Perform arithmetic operations")
-		print("10 = Lock this script")
+		print("10 = Start Installer")
 	elif page == 2:
-		print("11 = Start Installer")
-		print("12 = Show Uptime and Average load")
-		print("13 = Print SystemInfo")
+		print("11 = Show Uptime and Average load")
+		print("12 = Print SystemInfo")
 		if exitsettings.hidden == False:
-			print("14 = Exit")
+			print("13 = Exit")
 	if layout == 0:
-		print("15 = Next Page")
-		print("16 = Back a Page")
+		print("14 = Next Page")
+		print("15 = Back a Page")
 	else:
 		if page < 2 and page != -1:
 			page = page + 1

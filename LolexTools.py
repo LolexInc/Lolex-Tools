@@ -474,9 +474,7 @@ try:
 						if startnum == endnum or startnum<endnum:
 							print ("The closest number to your target end number was:" + (str(startnum)))
 							time.sleep (1)
-		elif (modewanted == 18 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
-			print ("Feature currently unavailable(under development).")
-		elif modewanted == 19  and useros == "Windows" :
+		elif modewanted == 18  and useros == "Windows" :
 			path = input("Please input the full path of the RDP file.")
 			length = len(path) - 1
 			if path[length] == "p":
@@ -489,9 +487,9 @@ try:
 							os.system(path)
 			else:
 				print("Not a valid rdp file.")
-		elif modewanted == 20 and useros == "Windows" :
+		elif modewanted == 19 and useros == "Windows" :
 			subprocess.call("powershell.exe")
-		elif (modewanted == 21 and useros == "Windows") or (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
+		elif (modewanted == 20 and useros == "Windows") or (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
 			if useros == "Windows":
 				os.system("systeminf")
 			elif useros == "Linux":
@@ -501,7 +499,7 @@ try:
 					print("Cannot load as much information due to lack of root.")
 					if os.system("/system/bin/dumpsys") != 0:
 						print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
-		elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
+		elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
 			confirm = int(input("Please confirm (with a 1) to enter the installer."))
 			if confirm == 1:
 				if useros == "Windows":
@@ -512,14 +510,14 @@ try:
 				else:
 					os.system("python3 ./LolexToolsInstaller.py")
 				exit(0)
-		elif (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
+		elif (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
 			if "arm" in platform.platform():
 				if os.system("su -c uptime") != 0:
-					if os.system("/system/bin/uptime")!= 0:
+					if os.system("/system/bin/uptime") != 0:
 						print("Failed to run uptime script.")
 			else:
 				os.system("uptime")
-		elif (modewanted == 24 and useros == "Windows"):
+		elif (modewanted == 23 and useros == "Windows"):
 			print("Checking for updates...")
 			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
 			if os.system("git clone https://github.com/lolexorg/Lolex-Tools.git") != 0:
@@ -540,12 +538,12 @@ try:
 					print("Extracting...")
 					zip_ref.extractall("newversion")
 					zip_ref.close()	  
-		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
+		elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android") and menusettings.layout == 1:
 			if (page < 5 and useros == "Windows") or (page < 2 and (useros == "Linux" or useros == "Android")):
 				page = page + 1
 			else:
 				page = 0
-		elif (modewanted == 26 and useros == "Windows") or (modewanted == 18 and useros == "Linux") and menusettings.layout == 1:
+		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			if page > 0:
 				page = page - 1
 			else:
@@ -553,7 +551,7 @@ try:
 					page = 5
 				elif useros == "Linux" or useros == "Android":
 					page = 2
-		elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
+		elif (modewanted == 22 and useros == "Windows") or (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
 			print("Exiting...")
 			print("Giving all threads 5 seconds to exit...")
 			time.sleep(5)
