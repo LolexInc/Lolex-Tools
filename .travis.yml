@@ -4,18 +4,8 @@ python:
 - "3.6"
 - "nightly"
 env:
-- DJANGO_VERSION==1.10.5
+- DJANGO_VERSION==1.11
 install:
 - pip install -q Django=$DJANGO_VERSION 
 script:
 - python CI.py
-notifications:
-  webhooks:
-    urls:
-      - YOUR_WEBHOOK_URL
-    on_success: always  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: always    # options: [always|never|change] default: always
-notifications:
-  gitter:
-    on_success: always
