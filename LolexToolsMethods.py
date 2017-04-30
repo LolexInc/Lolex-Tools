@@ -26,6 +26,10 @@ except(ImportError):
 	elif system == "Linux":
 		os.system("python3 ./LolexToolsInstaller.py")
 	exit(0)
+class uos:
+	uos.useros = platform.system()
+	if "arm" in platform.platform():
+		uos.useros = "Android"
 try:
 		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
@@ -183,19 +187,19 @@ def restart():
 	restart = int(input("Please enter 1 to confirm restart."))
 	if restart == 1:
 		waittime = int(input("How long, in minutes do you wish to wait?"))
-	restartthread = threading.Thread(target = restart, args = [waittime])
+	restartthread = threading.Thread(target = restartthread, args = [waittime])
 	restartthread.start()
 def logoff(type):
-	logoff = int(input("Please enter 1 to confirm logoff."))
-	if logoff == 1:
+	logoff = input("Please enter 1 to confirm logoff.")
+	if logoff == "1":
 		waittime = int(input("How long, in minutes do you wish to wait?"))
 	loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
 	loggeroff.start()
 def logoffthread(waittime, type):
 	time.sleep(waittime*60)
 	print("LOGOFF thread: Logging off...")
-	useros = platform.system()
-	if useros != "Linux":
+	uos.useros = platform.system()
+	if uos.useros != "Linux":
 		if type == 0:
 			os.system("shutdown -l -f")
 		else:
@@ -203,24 +207,24 @@ def logoffthread(waittime, type):
 	else:
 		os.system("gnome-session-quit --force")
 def hibernate():
-	hibernate = int(input("Please enter 1 to confirm logoff."))
-	if hibernate == 1:
-		waittime = int(input("How long, in minutes do you wish to wait?"))
+	hibernate = input("Please enter 1 to confirm logoff.")
+	if hibernate == "1":
+		waittime = input("How long, in minutes do you wish to wait?")
 	hibernatethread = threading.Thread(target = hibernatethread, args = [waittime])
 	hibernatethread.start()
 def hibernatethread(waittime):
 	time.sleep(waittime*60)
 	print("HIBERNATE thread: Hibernating...")
-	useros = platform.system()
-	if useros == "Windows":
+	uos.useros = platform.system()
+	if uos.useros == "Windows":
 		os.system("shutdown -h -f")
-	elif useros == "Linux":
+	elif uos.useros == "Linux":
 		os.system("systemctl suspend")
-def restart(waittime):
+def restartthread(waittime):
 	time.sleep(waittime*60)
 	print("RESTART thread: Restarting device...")
-	useros = platform.system()
-	if useros != "Linux":
+	uos.useros = platform.system()
+	if uos.useros != "Linux":
 		os.system("shutdown -r -f")
 	else:
 		if "arm" in platform.platform():
@@ -228,6 +232,23 @@ def restart(waittime):
 				os.system("reboot")
 		else:
 			os.system("reboot")
+def shutdown():
+	shutdown = input("Please enter 1 to shutdown.")
+	if shutdown == "1":
+		waittime = int(input("How long, in minutes, do you wish to wait?"))
+	shutdownthread = threading.Thread(target = shutdownthread, args = [waittime])
+	shutdownthread.start()
+def shutdownthread(waittime):
+	time.sleep(waittime*60)
+	print("SHUTDOWN thread: shutting device down...")
+	if uos.useros == "Windows":
+		os.system ("shutdown -s -f")
+	elif uos.useros == "Linux":
+		os.system("poweroff")
+	elif useros == "Android":
+		if os.system("su -c reboot -p") != 0:
+			if os.system("/system/bin/reboot -p") != 0:
+				print("Failed to execute reboot binary.")
 def logo():
 	print("This function has been deprecated.")
 def exitnow():

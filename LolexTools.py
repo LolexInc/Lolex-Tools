@@ -358,18 +358,7 @@ try:
 		elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
 			LolexToolsMethods.hibernate()
 		elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux") or (modewanted == 3 and useros == "Android"):
-				shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
-				if shutdown == 1:
-					waittime = float(input("How long, in minutes, do you wish to wait?"))
-					time.sleep (waittime * 60)
-					if useros == "Windows":
-						os.system ("shutdown -s -f")
-					elif "arm" not in platform.platform():
-						os.system("poweroff")
-					else:
-						if os.system("su -c reboot -p") != 0:
-							if os.system("/system/bin/reboot -p") != 0:
-								print("Failed to execute reboot binary.")
+				LolexToolsMethods.shutdown()
 		elif modewanted == 7 and useros == "Windows" :
 			altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
 			if altshutdown == 1:
