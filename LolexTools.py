@@ -491,8 +491,16 @@ try:
 				print("Not a valid rdp file.")
 		elif modewanted == 20 and useros == "Windows" :
 			subprocess.call("powershell.exe")
-		elif modewanted == 21 and useros == "Windows":
-			os.system("systeminf")
+		elif (modewanted == 21 and useros == "Windows") or (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
+			if useros == "Windows":
+				os.system("systeminf")
+			elif useros == "Linux":
+				os.system("sudo lshw")
+			else:
+				if os.system("su -c dumpsys") != 0:
+					print("Cannot load as much information due to lack of root.")
+					if os.system("/system/bin/dumpsys") != 0:
+						print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
 		elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
 			confirm = int(input("Please confirm (with a 1) to enter the installer."))
 			if confirm == 1:
@@ -511,13 +519,6 @@ try:
 						print("Failed to run uptime script.")
 			else:
 				os.system("uptime")
-		elif (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
-			if os.system("su -c /system/bin/dumpsys") != 0:
-				print("Cannot load as much information due to lack of root.")
-				if os.system("/system/bin/dumpsys") != 0:
-					print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
-			else:
-				os.system("sudo lshw")
 		elif (modewanted == 24 and useros == "Windows"):
 			print("Checking for updates...")
 			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
