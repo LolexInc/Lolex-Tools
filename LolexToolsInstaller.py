@@ -62,14 +62,15 @@ try:
               os.remove("./runningsys.py")
      except(IOError, OSError):
               pass
-     try:
-              os.remove("./*settings.py")
-     except(IOError,OSError):
-              pass
-     try:
-              os.remove("./*settings.pyc")
-     except(IOError, OSError):
-              pass
+     class settings:
+      	dir = os.listdir("./")
+      	file = ""
+     for settings.file in settings.dir:
+     	if settings.file.endswith("settings.py") or settings.file.endswith("settings.pyc"):
+     		try:
+     			os.remove(os.path.join(settings.dir, settings.file))
+     		except(IOError, OSError):
+     			pass
      try:
           os.remove("./madeon.py")
      except(IOError, OSError):
