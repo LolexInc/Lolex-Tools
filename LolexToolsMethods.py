@@ -212,9 +212,9 @@ def hibernatethread(waittime):
 	time.sleep(waittime*60)
 	print("HIBERNATE thread: Hibernating...")
 	useros = platform.system()
-	if useros != "Linux":
+	if useros == "Windows":
 		os.system("shutdown -h -f")
-	else:
+	elif useros == "Linux":
 		os.system("systemctl suspend")
 def restart(waittime):
 	time.sleep(waittime*60)

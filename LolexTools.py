@@ -353,30 +353,10 @@ try:
 				exit(0)
 		elif modewanted == 2:
 			LolexToolsMethods.restart()
-		elif modewanted == 3 and useros != "Android":
-			logoff = float(input("Please enter 1 or 0 to confirm logoff."))
-			if logoff == 1:
-				waittime = float(input("How long, in minutes, do you wish to wait?"))
-				time.sleep (waittime * 60)
-				if useros == "Windows":
-					os.system ("shutdown -l -f")
-				else:
-					os.system("gnome-session-quit --force")
-		elif modewanted == 4 and useros == "Windows" :
-			altlogoff = int(input("Please enter 1 or 0 to confirm logoff."))
-			if altlogoff == 1:
-				waittime = float(input("How long, in minutes, do you wish to wait before logoff proceeds?"))
-				time.sleep(waittime * 60)
-				subprocess.Popen ("logoff.exe")
+		elif (modewanted == 3 and useros != "Android") or (modewanted == 4 and useros == "Windows"):
+			LolexToolsMethods.logoff(modewanted-3)
 		elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
-			hibernate = int(input("Please enter 1 or 0 to confirm hibernate."))
-			if hibernate == 1:
-				waittime = float(input("How long, in minutes, do you wish to wait?"))
-				time.sleep (waittime * 60)
-				if useros == "Windows":
-					os.system ("shutdown -h -f")
-				else:
-					os.system("systemctl suspend")
+			LolexToolsMethods.hibernate()
 		elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux") or (modewanted == 3 and useros == "Android"):
 				shutdown = int(input("Please enter 1 or 0 (no) to confirm shutdown."))
 				if shutdown == 1:
