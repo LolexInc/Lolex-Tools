@@ -460,27 +460,35 @@ try:
               exit(None)
      except(TypeError, SyntaxError, ValueError):
               print("Failed to start.")
-except(SyntaxError):
+except(SyntaxError) as a:
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     print(a)
      time.sleep(10)
-except(TypeError):
-     print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
-except(ValueError):
-     print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
-except(IOError):
+except(TypeError) as b:
+    print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    print(b)
+	time.sleep(10)
+except(ValueError) as c:
+    print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+    print(c)
+	time.sleep(10)
+except(IOError) as d:
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-     time.sleep(10)
-except(NameError):
+     print(d)
+    time.sleep(10)
+except(NameError) as e:
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     print(e)
      time.sleep(10)
-except(EOFError):
+except(EOFError) as f:
      print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     print(f)
      time.sleep(10)
-except(AttributeError):
+except(AttributeError) as g:
      print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     print(g)
      time.sleep(10)
-except(OSError):
+except(OSError) as h:
      print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+     print(h)
      time.sleep(10)

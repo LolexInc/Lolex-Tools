@@ -557,34 +557,44 @@ try:
 			print("Giving all threads 5 seconds to exit...")
 			time.sleep(5)
 			os._exit(0)
-except(SyntaxError):
-	 print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(TypeError):
-	 print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(ValueError):
-	 print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(IOError):
-	 print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(NameError):
-	 print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(EOFError):
-	 print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(AttributeError):
-	 print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(OSError):
-	 print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
-	 time.sleep(10)
-except(ZeroDivisionError):
-	print("Sorry! A ZeroDivisionError occured. Please do not try to divide by zero.")
+except(SyntaxError) as a:
+	print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(a)
 	time.sleep(10)
-except(KeyboardInterrupt):
+except(TypeError) as b:
+	print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(b)
+	time.sleep(10)
+except(ValueError) as c:
+	print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(c)
+	time.sleep(10)
+except(IOError) as d:
+	print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(d)
+	time.sleep(10)
+except(NameError) as e:
+	print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(e)
+	time.sleep(10)
+except(EOFError) as f:
+	print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(f)
+	time.sleep(10)
+except(AttributeError) as g:
+	print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(g)
+	time.sleep(10)
+except(OSError) as h:
+	print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
+	print(h)
+	time.sleep(10)
+except(ZeroDivisionError) as j: # not i for for loops
+	print("Sorry! A ZeroDivisionError occured. Please do not try to divide by zero.")
+	print(j)
+	time.sleep(10)
+except(KeyboardInterrupt) as k:
 	print("User input caused a crash.")
+	print(k)
 	# shouldn't be as much of a problem with threads
 	time.sleep(10)
