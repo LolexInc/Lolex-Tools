@@ -88,7 +88,7 @@ if LolexToolsOptions.compiledon<9.00001:
 		else:
 			os.system("python3 ./9.0nann3.py")
 		os.remove("./9.0nann3.py")
-	if LolexToolsOptions.compiledon < 9.001:
+	if LolexToolsOptions.compiledon < 9.00101:
 		shutil.copy("./update/90/9.0nann4.py", "./")
 		if system == "Windows":
 			if sys.version_info.minor > 5:
