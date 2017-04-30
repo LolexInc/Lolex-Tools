@@ -63,11 +63,11 @@ try:
      except(IOError, OSError):
               pass
      try:
-              os.remove("./menusettings.py")
+              os.remove("./*settings.py")
      except(IOError,OSError):
               pass
      try:
-              os.remove("./menusettings.pyc")
+              os.remove("./*settings.pyc")
      except(IOError, OSError):
               pass
      try:
