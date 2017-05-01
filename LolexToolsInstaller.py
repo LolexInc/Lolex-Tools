@@ -12,13 +12,13 @@ print("This installer uses the following modules:sys, time, os, shutil, platform
 if sys.version_info.major !=3:
      print("Only Python 3 is currently supported. Please install Python 3.")
      os.system("python3 LolexToolsInstaller.py")
-     exit(None)
+     exit(0)
 try:
      continueon = int(input("Please enter 1 to continue, or 0 to exit."))
      if continueon != 1:
-              exit(None)
+              exit(0)
 except(ValueError, TypeError, SyntaxError):
-     exit(None)
+     exit(0)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
      print("Resetting...This process could take a couple of minutes.")
@@ -457,7 +457,7 @@ try:
                                        os.system("py .\LolexTools.py")
                                else:
                                        os.system("python .\LolexTools.py")
-              exit(None)
+              exit(0)
      except(TypeError, SyntaxError, ValueError):
               print("Failed to start.")
 except(SyntaxError) as a:
