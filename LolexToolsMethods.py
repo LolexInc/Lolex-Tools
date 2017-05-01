@@ -333,6 +333,13 @@ def enterinstall():
 		else:
 			os.system("python3 ./LolexToolsInstaller.py")
 		exit(0)
+def uptime():
+	if "arm" in platform.platform():
+		if os.system("su -c uptime") != 0:
+			if os.system("/system/bin/uptime") != 0:
+				print("Failed to run uptime script.")
+	else:
+		os.system("uptime")
 def logo():
 	print("This function has been deprecated.")
 def exitnow():
