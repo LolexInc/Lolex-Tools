@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import sys, time, subprocess, os, shutil, py_compile, platform, io, zipfile
+import sys, time, subprocess, os, shutil, py_compile, platform, zipfile
 system = platform.system()
 if system == "Windows":
 	if sys.version_info.major != 3:
@@ -388,7 +388,7 @@ try:
 		elif (modewanted == 15 and useros == "Windows") or (modewanted == 9 and useros == "Linux") or (modewanted == 7 and useros == "Android"):
 			try:
 				filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
-				with io.FileIO (filename, "w"):
+				open(filename, "a")
 					pass
 				cont = input("Success! Press any key then enter to continue...")
 			except(IOError, OSError):
