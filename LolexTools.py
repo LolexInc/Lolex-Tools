@@ -415,16 +415,7 @@ try:
 		elif (modewanted == 20 and useros == "Windows") or (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
 			LolexToolsMethods.dumpme()
 		elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
-			confirm = int(input("Please confirm (with a 1) to enter the installer."))
-			if confirm == 1:
-				if useros == "Windows":
-					if sys.version_info.minor>5:
-						os.system("py .\LolexToolsInstaller.py")
-					else:
-						os.system("python .\LolexToolsInstaller.py")
-				else:
-					os.system("python3 ./LolexToolsInstaller.py")
-				exit(0)
+			LolexToolsMethods.enterinstall()
 		elif (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
 			if "arm" in platform.platform():
 				if os.system("su -c uptime") != 0:
