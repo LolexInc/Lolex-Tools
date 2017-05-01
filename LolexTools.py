@@ -368,10 +368,7 @@ try:
 		elif modewanted == 10 and useros == "Windows" :
 			subprocess.Popen("explorer.exe")
 		elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux") or (modewanted == 4 and useros == "Android"):
-			if useros == "Windows":
-				subprocess.call("python.exe")
-			else:
-				os.system("python3")
+			LolexToolsMethods.pyshell()
 		elif modewanted == 12 and useros == "Windows" :
 			subprocess.Popen("taskmgr.exe")
 		elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux") or (modewanted == 5 and useros == "Android"):

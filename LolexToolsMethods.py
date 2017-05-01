@@ -267,6 +267,17 @@ def pyshell():
 				subprocess.Popen("pythonw.exe")
 	else:
 		os.system("python3")
+def scriptrestart():
+	confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
+	if confirmscriptrestart == 1:
+		if useros == "Windows":
+			if sys.version_info.minor<6:
+				os.system("python .\start.py")
+			else:
+				os.system("py .\start.py")
+		else:
+			os.system("python3 ./start.py")
+		exit(0)
 def logo():
 	print("This function has been deprecated.")
 def exitnow():
