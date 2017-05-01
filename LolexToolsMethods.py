@@ -278,6 +278,38 @@ def scriptrestart():
 		else:
 			os.system("python3 ./start.py")
 		exit(0)
+def numops():
+	print ("Here is a list of operations:")
+	print ("1 = Add")
+	print ("2 = Take")
+	submode = int(input("Please enter the number of the operatino you wish to perform."))
+	if submode == 1 or 2:
+		startnum = int(input("Please enter your starting number."))
+		addortakenum = int(input("Please input the number to be added."))
+		endnum = int(input("Please enter your end number."))
+		waittime = int(input("How long do you wish to wait before each operation is performed?"))
+		if endnum>startnum:
+			while endnum>startnum:
+				print(startnum)
+				if addortakenum<int(0):
+					startnum = startnum - addortakenum
+				elif addortakenum > int(0):
+					startnum = startnum + addortakenum
+				time.sleep(waittime)
+			if startnum == endnum or startnum>endnum:
+				print("The closest number to your target number was:" + (str(startnum)))
+				time.sleep (1)
+		elif startnum > endnum:
+			while startnum > endnum:
+				print (startnum)
+				if addortakenum < 0:
+					startnum = startnum + addortakenum
+				if addortakenum>0:
+					startnum = startnum = startnum - addortakenum
+				time.sleep (waittime)
+			if startnum == endnum or startnum<endnum:
+				print ("The closest number to your target end number was:" + (str(startnum)))
+				time.sleep (1)
 def logo():
 	print("This function has been deprecated.")
 def exitnow():
