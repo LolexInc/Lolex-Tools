@@ -27,9 +27,9 @@ except(ImportError):
 		os.system("python3 ./LolexToolsInstaller.py")
 	exit(0)
 class uos:
-	uos.uos.useros = platform.system()
+	uos.useros = platform.system()
 	if "arm" in platform.platform():
-		uos.uos.useros = "Android"
+		uos.useros = "Android"
 try:
 		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
@@ -198,8 +198,8 @@ def logoff(type):
 def logoffthread(waittime, type):
 	time.sleep(waittime*60)
 	print("LOGOFF thread: Logging off...")
-	uos.uos.useros = platform.system()
-	if uos.uos.useros != "Linux":
+	uos.useros = platform.system()
+	if uos.useros != "Linux":
 		if type == 0:
 			os.system("shutdown -l -f")
 		else:
@@ -215,16 +215,16 @@ def hibernate():
 def hibernatethread(waittime):
 	time.sleep(waittime*60)
 	print("HIBERNATE thread: Hibernating...")
-	uos.uos.useros = platform.system()
-	if uos.uos.useros == "Windows":
+	uos.useros = platform.system()
+	if uos.useros == "Windows":
 		os.system("shutdown -h -f")
-	elif uos.uos.useros == "Linux":
+	elif uos.useros == "Linux":
 		os.system("systemctl suspend")
 def restartthread(waittime):
 	time.sleep(waittime*60)
 	print("RESTART thread: Restarting device...")
-	uos.uos.useros = platform.system()
-	if uos.uos.useros != "Linux":
+	uos.useros = platform.system()
+	if uos.useros != "Linux":
 		os.system("shutdown -r -f")
 	else:
 		if "arm" in platform.platform():
@@ -241,19 +241,19 @@ def shutdown(type):
 def shutdownthread(waittime, type):
 	time.sleep(waittime*60)
 	print("SHUTDOWN thread: shutting device down...")
-	if uos.uos.useros == "Windows":
+	if uos.useros == "Windows":
 		if type == 0:
 			os.system ("shutdown -s -f")
 		elif type == 1:
 			subprocess.Popen("shutdown.exe")
-	elif uos.uos.useros == "Linux":
+	elif uos.useros == "Linux":
 		os.system("poweroff")
 	elif uos.useros == "Android":
 		if os.system("su -c reboot -p") != 0:
 			if os.system("/system/bin/reboot -p") != 0:
 				print("Failed to execute reboot binary.")
 def pyshell():
-	if uos.uos.useros == "Windows":
+	if uos.useros == "Windows":
 		option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
 		if option == "0":
 			if sys.version_info.minor>5:
@@ -325,7 +325,7 @@ def dumpme():
 def enterinstall():
 	confirm = int(input("Please confirm (with a 1) to enter the installer."))
 	if confirm == 1:
-		if useros == "Windows":
+		if uos.useros == "Windows":
 			if sys.version_info.minor>5:
 				os.system("py .\LolexToolsInstaller.py")
 			else:
