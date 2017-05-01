@@ -63,15 +63,15 @@ def flickerp2(colour, howlongtoflashfor):
 	currentflashes= int(0)
 	while howlongtoflashfor != currentflashes:
 		os.system (colour[0])
-		time.sleep(0.2) # these delays are needed otherwise outputs mess up
+		time.sleep()
 		os.system (colour[1])
-		time.sleep(0.2)
+		time.sleep()
 		os.system (colour[2])
-		time.sleep(0.2)
+		time.sleep()
 		os.system (colour[3])
-		time.sleep(0.2)
+		time.sleep()
 		os.system (colour[4])
-		time.sleep(0.2)
+		time.sleep()
 		currentflashes = currentflashes + 1
 	import theme
 	os.system(theme.theme)
