@@ -396,37 +396,7 @@ try:
 		elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
 			LolexToolsMethods.scriptrestart()
 		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
-			print ("Here is a list of operations:")
-			print ("1 = Add")
-			print ("2 = Take")
-			submode = int(input("Please enter the number of the operatino you wish to perform."))
-			if submode == 1 or 2:
-				startnum = int(input("Please enter your starting number."))
-				addortakenum = int(input("Please input the number to be added."))
-				endnum = int(input("Please enter your end number."))
-				waittime = int(input("How long do you wish to wait before each operation is performed?"))
-				if endnum>startnum:
-					while endnum>startnum:
-						print(startnum)
-						if addortakenum<int(0):
-							startnum = startnum - addortakenum
-						elif addortakenum > int(0):
-							startnum = startnum + addortakenum
-						time.sleep(waittime)
-					if startnum == endnum or startnum>endnum:
-						print("The closest number to your target number was:" + (str(startnum)))
-						time.sleep (1)
-					elif startnum > endnum:
-						while startnum > endnum:
-							print (startnum)
-							if addortakenum < 0:
-								startnum = startnum + addortakenum
-							if addortakenum>0:
-								startnum = startnum = startnum - addortakenum
-								time.sleep (waittime)
-						if startnum == endnum or startnum<endnum:
-							print ("The closest number to your target end number was:" + (str(startnum)))
-							time.sleep (1)
+			LolexToolsMethods.numops()
 		elif modewanted == 18  and useros == "Windows" :
 			path = input("Please input the full path of the RDP file.")
 			length = len(path) - 1
