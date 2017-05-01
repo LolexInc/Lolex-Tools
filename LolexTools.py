@@ -417,12 +417,7 @@ try:
 		elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
 			LolexToolsMethods.enterinstall()
 		elif (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
-			if "arm" in platform.platform():
-				if os.system("su -c uptime") != 0:
-					if os.system("/system/bin/uptime") != 0:
-						print("Failed to run uptime script.")
-			else:
-				os.system("uptime")
+			LolexToolsMethods.uptime()
 		elif (modewanted == 23 and useros == "Windows"):
 			print("Checking for updates...")
 			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
