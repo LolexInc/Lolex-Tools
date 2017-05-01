@@ -358,13 +358,9 @@ try:
 		elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
 			LolexToolsMethods.hibernate()
 		elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux") or (modewanted == 3 and useros == "Android"):
-				LolexToolsMethods.shutdown()
+			LolexToolsMethods.shutdown(0)
 		elif modewanted == 7 and useros == "Windows" :
-			altshutdown = int(input("Please enter 1 or 0 to confirm shutdown."))
-			if altshutdown == 1:
-				waittime = float(input("How long, in minutes, do you wish to wait before shutdown proceeds?"))
-				time.sleep (waittime * 60)
-				subprocess.Popen ("shutdown.exe")
+			LolexToolsMethods.shutdown(1)
 		elif modewanted == 8 and useros == "Windows" :
 			LolexToolsMethods.flicker()
 		elif modewanted == 9 and useros == "Windows" :

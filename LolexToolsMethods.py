@@ -232,17 +232,20 @@ def restartthread(waittime):
 				os.system("reboot")
 		else:
 			os.system("reboot")
-def shutdown():
+def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
 		waittime = int(input("How long, in minutes, do you wish to wait?"))
-	shutdownthread = threading.Thread(target = shutdownthread, args = [waittime])
+	shutdownthread = threading.Thread(target = shutdownthread, args = [waittime,type])
 	shutdownthread.start()
-def shutdownthread(waittime):
+def shutdownthread(waittime, type):
 	time.sleep(waittime*60)
 	print("SHUTDOWN thread: shutting device down...")
 	if uos.useros == "Windows":
-		os.system ("shutdown -s -f")
+		if type == 0:
+			os.system ("shutdown -s -f")
+		elif type == 1:
+			subprocess.Popen("shutdown.exe")
 	elif uos.useros == "Linux":
 		os.system("poweroff")
 	elif useros == "Android":
