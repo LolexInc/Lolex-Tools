@@ -109,9 +109,9 @@ def windowspage(page, layout):
 			print("21 = Start Installer")
 			if exitsettings.hidden == False:
 				print("22 = Exit")
-		elif page == 5:
-			print("UNSTABLE FEATURES:")
-			print("23 = Experimental auto-update")
+	elif page == 5:
+		print("UNSTABLE FEATURES:")
+		print("23 = Experimental auto-update")
 	if layout == 0:
 			print("24 = Next Page")
 			print("25 = Back a Page")
