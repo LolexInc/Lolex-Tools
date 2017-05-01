@@ -361,7 +361,7 @@ try:
               twoswapwords = 0
               outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("LolexToolsOptions.py","a") as outf:
-              outf.write("\ncompiledon = 9.001")
+              outf.write("\ncompiledon = 9.00101")
               outf.write("\nuseusername = ")
               outf.write(str(useusername))
               useusername = 0
@@ -415,7 +415,7 @@ try:
               outf.write(str(twowait))
               twowait = "None"
               confirm = "None"
-     with open ("./patches.py", "a") as outf: outf.write('applied = "9.0nann4"')
+     with open ("./patches.py", "a") as outf: outf.write('applied = "/90/9.0nann4"')
      with open ("./runningsys.py","a") as outf:
               outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
@@ -444,7 +444,7 @@ try:
      with open ("./scriptloopsettings.py","a") as outf: outf.write("hidden = False")
      with open ("./mathmodesettings.py","a") as outf: outf.write("hidden = False")
      with open ("./scriptlocksettings.py","a") as outf: outf.write("hidden = False")
-     with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00001")
+     with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00101")
      try:
               start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
               print("Thank you for using Lolex-Tools Installer.")
