@@ -267,11 +267,11 @@ try:
 			LolexToolsMethods.androidpage(page, menusettings.layout)
 		modewanted = int(input("Please enter the number of the mode that you want."))
 		if useros == "Windows":
-			maxmode = 26
+			maxmode = 25
 		elif useros == "Linux":
-			maxmode = 18
+			maxmode = 17
 		elif useros == "Android":
-			maxmode = 14
+			maxmode = 13
 		while modewanted > maxmode:
 			modewanted = modewanted - maxmode
 		while modewanted < 1:
