@@ -256,12 +256,12 @@ def pyshell():
 	if uos.useros == "Windows":
 		option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
 		if option == "0":
-			if sys.version_info.minor>5:
+			if sys.version_info.minor > 5:
 				subprocess.call("py.exe")
 			else:
 				subprocess.call("python.exe")
 		elif option == "1":
-			if sys.version_info.minor>5:
+			if sys.version_info.minor > 5:
 				subprocess.Popen("pyw.exe")
 			else:
 				subprocess.Popen("pythonw.exe")
@@ -271,7 +271,7 @@ def scriptrestart():
 	confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
 	if confirmscriptrestart == 1:
 		if uos.useros == "Windows":
-			if sys.version_info.minor<6:
+			if sys.version_info.minor < 6:
 				os.system("python .\start.py")
 			else:
 				os.system("py .\start.py")
@@ -290,15 +290,15 @@ def addortake():
 	addortakenum = int(input("Please input the number to be added."))
 	endnum = int(input("Please enter your end number."))
 	waittime = int(input("How long do you wish to wait before each operation is performed?"))
-	if endnum>startnum:
-		while endnum>startnum:
+	if endnum > startnum:
+		while endnum > startnum:
 			print(startnum)
-			if addortakenum<int(0):
+			if addortakenum < int(0):
 				startnum = startnum - addortakenum
 			elif addortakenum > int(0):
 				startnum = startnum + addortakenum
 			time.sleep(waittime)
-		if startnum == endnum or startnum>endnum:
+		if startnum == endnum or startnum > endnum:
 			print("The closest number to your target number was:" + (str(startnum)))
 			time.sleep (1)
 	elif startnum > endnum:
@@ -306,10 +306,10 @@ def addortake():
 			print (startnum)
 			if addortakenum < 0:
 				startnum = startnum + addortakenum
-			if addortakenum>0:
+			if addortakenum > 0:
 				startnum = startnum = startnum - addortakenum
 			time.sleep (waittime)
-		if startnum == endnum or startnum<endnum:
+		if startnum == endnum or startnum < endnum:
 			print ("The closest number to your target end number was:" + (str(startnum)))
 			time.sleep (1)
 def dumpme():
@@ -326,7 +326,7 @@ def enterinstall():
 	confirm = int(input("Please confirm (with a 1) to enter the installer."))
 	if confirm == 1:
 		if uos.useros == "Windows":
-			if sys.version_info.minor>5:
+			if sys.version_info.minor > 5:
 				os.system("py .\LolexToolsInstaller.py")
 			else:
 				os.system("python .\LolexToolsInstaller.py")
@@ -479,7 +479,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 						outf.write(str(name))
 						outf.write("'")
 					if platform.system() == "Windows":
-						if sys.version_info.minor>5:
+						if sys.version_info.minor > 5:
 							os.system("py .\LolexTools.py")
 						else:
 							os.system("python .\LolexTools.py")
@@ -488,7 +488,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 					exit(None)
 		if found == False:
 			if platform.system() == "Windows":
-				if sys.version_info.minor>5:
+				if sys.version_info.minor > 5:
 					os.system("py .\LolexToolsInstaller.py")
 				else:
 					os.system("python .\LolexToolsInstaller.py")

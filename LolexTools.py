@@ -44,21 +44,21 @@ try:
 	LolexToolsOptions.compiledon = madeon.compiledon
 except(ImportError):
 	pass
-if LolexToolsOptions.compiledon<9.00001:
-	if LolexToolsOptions.compiledon<8.3:
+if LolexToolsOptions.compiledon < 9.00001:
+	if LolexToolsOptions.compiledon < 8.3:
 		shutil.copy("./update/83/8.3release.py","./")
 		if system == "Windows":
-			if sys.version_info.minor>5:
+			if sys.version_info.minor > 5:
 				os.system ("py ./8.3release.py")
 			else:
 				os.system("python ./8.3release.py")
 		else:
 			os.system ("python3 ./8.3release.py")
 		os.remove("./8.3release.py")
-	if LolexToolsOptions.compiledon<9.0:
+	if LolexToolsOptions.compiledon < 9.0:
 		shutil.copy("./update/90/9.0n1.py","./")
 		if system == "Windows":
-			if sys.version_info.minor>5:
+			if sys.version_info.minor > 5:
 				os.system ("py ./9.0n1.py")
 			else:
 				os.system("python ./9.0n1.py")
@@ -68,17 +68,17 @@ if LolexToolsOptions.compiledon<9.00001:
 			os.remove("./9.0n1.py")
 		except(IOError, OSError):
 			pass
-	if LolexToolsOptions.compiledon<9.00001:
+	if LolexToolsOptions.compiledon < 9.00001:
 		shutil.copy("./update/90/9.0nann2.py","./")
 		if system == "Windows":
-			if sys.version_info.minor>5:
+			if sys.version_info.minor > 5:
 				os.system ("py ./9.0nann2.py")
 			else:
 				os.system("python ./9.0nann2.py")
 		else:
 			os.system ("python3 ./9.0nann2.py")
 		os.remove("./9.0nann2.py")
-	if LolexToolsOptions.compiledon<9.0001:
+	if LolexToolsOptions.compiledon < 9.0001:
 		shutil.copy("./update/90/9.0nann3.py", "./")
 		if system == "Windows":
 			if sys.version_info>5:
@@ -100,7 +100,7 @@ if LolexToolsOptions.compiledon<9.00001:
 		os.remove("./9.0nann4.py")
 	print("Restarting to finish updating...")
 	if system == "Windows":
-		if sys.version_info.minor>5:
+		if sys.version_info.minor > 5:
 			os.system("py .\start.py")
 		else:
 		 	os.system("python .\start.py")
@@ -314,34 +314,34 @@ try:
 				print("13 = Start Installer hidden = ", installerstartsettings.hidden)
 				print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
 				print("15 = Exit hidden = ", exitsettings.hidden)
-				modetochange = int(input("Please select the number of the mode."))
-				if modetochange == 2:
+				chngm = int(input("Please select the number of the mode."))
+				if chngm == 2:
 					LolexToolsMethods.modehide("restart", restartsettings.hidden)
-				elif modetochange == 3:
+				elif chngm == 3:
 					LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
-				elif modetochange == 4:
+				elif chngm == 4:
 					LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
-				elif modetochange == 5:
+				elif chngm == 5:
 					LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
-				elif modetochange == 6:
+				elif chngm == 6:
 					LolexToolsMethods.modehide("pyshell", pyshellsettings.hidden)
-				elif modetochange == 7:
+				elif chngm == 7:
 					LolexToolsMethods.modehide("foldercreate", foldercreatesettings.hidden)
-				elif modetochange == 8:
+				elif chngm == 8:
 					LolexToolsMethods.modehide("exfolder", exfoldersettings.hidden)
-				elif modetochange == 9:
+				elif chngm == 9:
 					LolexToolsMethods.modehide("addfile", addfilesettings.hidden)
-				elif modetochange == 10:
+				elif chngm == 10:
 					LolexToolsMethods.modehide("scriptloop", scriptloopsettings.hidden)
-				elif modetochange == 11:
+				elif chngm == 11:
 					LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
-				elif modetochange == 12:
+				elif chngm == 12:
 					LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
-				elif modetochange == 13:
+				elif chngm == 13:
 					LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
-				elif modetochange == 14:
+				elif chngm == 14:
 					LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
-				elif modetochange == 15:
+				elif chngm == 15:
 					LolexToolsMethods.modehide("exit", exitsettings.hidden)
 				if useros == "Windows":
 					if sys.version_info.minor>5:
@@ -389,7 +389,6 @@ try:
 			try:
 				filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
 				open(filename, "a")
-					pass
 				cont = input("Success! Press any key then enter to continue...")
 			except(IOError, OSError):
 				print("Failed to create file: ",filename)
@@ -433,7 +432,6 @@ try:
 						pass
 					os.mkdirs("./newversion")
 					newver = os.listdirs("./newversion")
-								
 		# search for zips instead :P
 					zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
 					print("Extracting...")
