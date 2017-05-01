@@ -413,15 +413,7 @@ try:
 		elif modewanted == 19 and useros == "Windows" :
 			subprocess.call("powershell.exe")
 		elif (modewanted == 20 and useros == "Windows") or (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
-			if useros == "Windows":
-				os.system("systeminf")
-			elif useros == "Linux":
-				os.system("sudo lshw")
-			else:
-				if os.system("su -c dumpsys") != 0:
-					print("Cannot load as much information due to lack of root.")
-					if os.system("/system/bin/dumpsys") != 0:
-						print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
+			LolexToolsMethods.dumpme()
 		elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
 			confirm = int(input("Please confirm (with a 1) to enter the installer."))
 			if confirm == 1:
