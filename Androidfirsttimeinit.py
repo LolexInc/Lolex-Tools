@@ -13,9 +13,8 @@ try:
 	with open ("./isnottravisci.py","a") as outf: pass
 except(IOError):
 	exit(None)
-try:
-	local = time.asctime( time.localtime(time.time()) )
-	print(local,"    Attempting to remove folders...")
+local = time.asctime( time.localtime(time.time()) )
+print(local,"    Attempting to remove folders...")
 try:
 	shutil.rmtree("./sys")
 except(IOError, OSError):
