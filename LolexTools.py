@@ -394,16 +394,7 @@ try:
 			except(IOError, OSError):
 				print("Failed to create file: ",filename)
 		elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
-			confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
-			if confirmscriptrestart == 1:
-				if useros == "Windows":
-					if sys.version_info.minor<6:
-						os.system("python .\start.py")
-					else:
-						os.system("py .\start.py")
-				else:
-					os.system("python3 ./start.py")
-				exit(0)
+			LolexToolsMethods.scriptrestart()
 		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
 			print ("Here is a list of operations:")
 			print ("1 = Add")
