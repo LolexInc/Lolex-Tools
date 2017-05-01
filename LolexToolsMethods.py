@@ -252,6 +252,21 @@ def shutdownthread(waittime, type):
 		if os.system("su -c reboot -p") != 0:
 			if os.system("/system/bin/reboot -p") != 0:
 				print("Failed to execute reboot binary.")
+def pyshell():
+	if uos.useros == "Windows":
+		option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
+		if option == "0":
+			if sys.version_info.minor>5:
+				subprocess.call("py.exe")
+			else:
+				subprocess.call("python.exe")
+		elif option == "1":
+			if sys.version_info.minor>5:
+				subprocess.Popen("pyw.exe")
+			else:
+				subprocess.Popen("pythonw.exe")
+	else:
+		os.system("python3")
 def logo():
 	print("This function has been deprecated.")
 def exitnow():
