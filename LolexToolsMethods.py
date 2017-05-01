@@ -322,6 +322,17 @@ def dumpme():
 			print("Cannot load as much information due to lack of root.")
 			if os.system("/system/bin/dumpsys") != 0:
 				print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
+def enterinstall():
+	confirm = int(input("Please confirm (with a 1) to enter the installer."))
+	if confirm == 1:
+		if useros == "Windows":
+			if sys.version_info.minor>5:
+				os.system("py .\LolexToolsInstaller.py")
+			else:
+				os.system("python .\LolexToolsInstaller.py")
+		else:
+			os.system("python3 ./LolexToolsInstaller.py")
+		exit(0)
 def logo():
 	print("This function has been deprecated.")
 def exitnow():
