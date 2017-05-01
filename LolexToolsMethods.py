@@ -75,7 +75,7 @@ def flickerp2(colour, howlongtoflashfor):
 		currentflashes = currentflashes + 1
 	import theme
 	os.system(theme.theme)
-	exit()
+	exit(0)
 def windowspage(page, layout):
 	if page == 0:
 		print("1  = Settings")
