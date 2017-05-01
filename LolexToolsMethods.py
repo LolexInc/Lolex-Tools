@@ -27,9 +27,9 @@ except(ImportError):
 		os.system("python3 ./LolexToolsInstaller.py")
 	exit(0)
 class uos:
-	uos.useros = platform.system()
+	uos.uos.useros = platform.system()
 	if "arm" in platform.platform():
-		uos.useros = "Android"
+		uos.uos.useros = "Android"
 try:
 		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
@@ -198,8 +198,8 @@ def logoff(type):
 def logoffthread(waittime, type):
 	time.sleep(waittime*60)
 	print("LOGOFF thread: Logging off...")
-	uos.useros = platform.system()
-	if uos.useros != "Linux":
+	uos.uos.useros = platform.system()
+	if uos.uos.useros != "Linux":
 		if type == 0:
 			os.system("shutdown -l -f")
 		else:
@@ -215,16 +215,16 @@ def hibernate():
 def hibernatethread(waittime):
 	time.sleep(waittime*60)
 	print("HIBERNATE thread: Hibernating...")
-	uos.useros = platform.system()
-	if uos.useros == "Windows":
+	uos.uos.useros = platform.system()
+	if uos.uos.useros == "Windows":
 		os.system("shutdown -h -f")
-	elif uos.useros == "Linux":
+	elif uos.uos.useros == "Linux":
 		os.system("systemctl suspend")
 def restartthread(waittime):
 	time.sleep(waittime*60)
 	print("RESTART thread: Restarting device...")
-	uos.useros = platform.system()
-	if uos.useros != "Linux":
+	uos.uos.useros = platform.system()
+	if uos.uos.useros != "Linux":
 		os.system("shutdown -r -f")
 	else:
 		if "arm" in platform.platform():
@@ -241,19 +241,19 @@ def shutdown(type):
 def shutdownthread(waittime, type):
 	time.sleep(waittime*60)
 	print("SHUTDOWN thread: shutting device down...")
-	if uos.useros == "Windows":
+	if uos.uos.useros == "Windows":
 		if type == 0:
 			os.system ("shutdown -s -f")
 		elif type == 1:
 			subprocess.Popen("shutdown.exe")
-	elif uos.useros == "Linux":
+	elif uos.uos.useros == "Linux":
 		os.system("poweroff")
-	elif useros == "Android":
+	elif uos.useros == "Android":
 		if os.system("su -c reboot -p") != 0:
 			if os.system("/system/bin/reboot -p") != 0:
 				print("Failed to execute reboot binary.")
 def pyshell():
-	if uos.useros == "Windows":
+	if uos.uos.useros == "Windows":
 		option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
 		if option == "0":
 			if sys.version_info.minor>5:
@@ -270,7 +270,7 @@ def pyshell():
 def scriptrestart():
 	confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
 	if confirmscriptrestart == 1:
-		if useros == "Windows":
+		if uos.useros == "Windows":
 			if sys.version_info.minor<6:
 				os.system("python .\start.py")
 			else:
@@ -284,7 +284,7 @@ def numops():
 	print ("2 = Take")
 	submode = int(input("Please enter the number of the operatino you wish to perform."))
 	if submode == 1 or submode == 2:
-		
+		addortake()
 def addortake():
 	startnum = int(input("Please enter your starting number."))
 	addortakenum = int(input("Please input the number to be added."))
@@ -312,6 +312,16 @@ def addortake():
 		if startnum == endnum or startnum<endnum:
 			print ("The closest number to your target end number was:" + (str(startnum)))
 			time.sleep (1)
+def dumpme():
+	if uos.useros == "Windows":
+		os.system("systeminf")
+	elif uos.useros == "Linux":
+		os.system("sudo lshw")
+	else:
+		if os.system("su -c dumpsys") != 0:
+			print("Cannot load as much information due to lack of root.")
+			if os.system("/system/bin/dumpsys") != 0:
+				print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
 def logo():
 	print("This function has been deprecated.")
 def exitnow():
