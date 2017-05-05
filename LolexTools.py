@@ -35,11 +35,7 @@ except(ImportError):
 try:
 	import LolexToolsOptions, runningsys, startplugins, theme
 except(ImportError):
-	system = platform.system()
-	if system == "Windows":
-		os.system(py + "LolexToolsInstaler.py")
-	elif system == "Linux":
-		os.system(py + "LolexToolsInstaller.py")
+	os.system(py + "LolexToolsInstaler.py")
 	exit(0)
 try:
         import verifonboot
@@ -54,47 +50,29 @@ except(ImportError):
 if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:
 		shutil.copy("./update/83/8.3release.py","./")
-		if system == "Windows":
-			os.system (py + "8.3release.py")
-		else:
-			os.system (py + "8.3release.py")
+		os.system (py + "8.3release.py")
 		os.remove("./8.3release.py")
 	if LolexToolsOptions.compiledon < 9.0:
 		shutil.copy("./update/90/9.0n1.py","./")
-		if system == "Windows":
-			os.system (py + "9.0n1.py")
-		else:
-			os.system (py + "9.0n1.py")
+		os.system (py + "9.0n1.py")
 		try:
 			os.remove("./9.0n1.py")
 		except(IOError, OSError):
 			pass
 	if LolexToolsOptions.compiledon < 9.00001:
 		shutil.copy("./update/90/9.0nann2.py","./")
-		if system == "Windows":
-			os.system (py + "9.0nann2.py")
-		else:
-			os.system (py + "9.0nann2.py")
+		os.system (py + "9.0nann2.py")
 		os.remove("./9.0nann2.py")
 	if LolexToolsOptions.compiledon < 9.0001:
 		shutil.copy("./update/90/9.0nann3.py", "./")
-		if system == "Windows":
-			os.system(py + "9.0nann3.py")
-		else:
-			os.system(py + "9.0nann3.py")
+		os.system(py + "9.0nann3.py")
 		os.remove("./9.0nann3.py")
 	if LolexToolsOptions.compiledon < 9.00101:
 		shutil.copy("./update/90/9.0nann4.py", "./")
-		if system == "Windows":
-			os.system(py + "9.0nann4.py")
-		elif system == "Linux":
-			os.system(py + "9.0nann4.py")
+		os.system(py + "9.0nann4.py")
 		os.remove("./9.0nann4.py")
 	print("Restarting to finish updating...")
-	if system == "Windows":
-			os.system(py + "start.py")
-	else:
-		os.system(py + "start.py")
+	os.system(py + "start.py")
 	exit(0)
 if system == "Windows":
 	os.system(theme.theme)
@@ -333,8 +311,6 @@ try:
 				elif chngm == 15:
 					LolexToolsMethods.modehide("exit", exitsettings.hidden)
 				if useros == "Windows":
-					os.system(py + "start.py")
-				else:
 					os.system(py + "start.py")
 				exit(0)
 		elif modewanted == 2:
