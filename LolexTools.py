@@ -20,10 +20,10 @@ except(ImportError):
 	exit(0)
 if useros == "Windows":
 	if sys.version_info.minor > 5:
-		py = "py .\"
+		py = "py .\\"
 		pyo = "py"
 	else:
-		py = "python .\"
+		py = "python .\\"
 		pyo = "python"
 elif useros == "Linux":
 	py = "python3 ./"
@@ -67,7 +67,7 @@ if LolexToolsOptions.compiledon < 9.00001:
 			print("Could not update: files missing!")
 			time.sleep(5)
 			exit(0)
-		os.system (py + "9.0n1.py")
+		os.system(py + "9.0n1.py")
 		try:
 			os.remove("./9.0n1.py")
 		except(IOError, OSError):
