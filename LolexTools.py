@@ -18,14 +18,14 @@ try:
 except(ImportError):
 	print("Missing library. Please redownload this application.")
 	exit(0)
-if useros == "Windows":
+if platform.system() == "Windows":
 	if sys.version_info.minor > 5:
 		py = "py .\\"
 		pyo = "py"
 	else:
 		py = "python .\\"
 		pyo = "python"
-elif useros == "Linux":
+elif platform.system() == "Linux":
 	py = "python3 ./"
 	pyo = "python3"
 try:
