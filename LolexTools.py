@@ -51,7 +51,10 @@ if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:
 		shutil.copy("./update/83/8.3release.py","./")
 		os.system (py + "8.3release.py")
-		os.remove("./8.3release.py")
+		try:
+			os.remove("./8.3release.py")
+		except(IOError, OSError):
+			pass
 	if LolexToolsOptions.compiledon < 9.0:
 		shutil.copy("./update/90/9.0n1.py","./")
 		os.system (py + "9.0n1.py")
@@ -62,15 +65,24 @@ if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 9.00001:
 		shutil.copy("./update/90/9.0nann2.py","./")
 		os.system (py + "9.0nann2.py")
-		os.remove("./9.0nann2.py")
+		try:
+			os.remove("./9.0nann2.py")
+		except(IOError, OSError):
+			pass
 	if LolexToolsOptions.compiledon < 9.0001:
 		shutil.copy("./update/90/9.0nann3.py", "./")
 		os.system(py + "9.0nann3.py")
-		os.remove("./9.0nann3.py")
+		try:
+			os.remove("./9.0nann3.py")
+		except(IOError, OSError):
+			pass
 	if LolexToolsOptions.compiledon < 9.00101:
 		shutil.copy("./update/90/9.0nann4.py", "./")
 		os.system(py + "9.0nann4.py")
-		os.remove("./9.0nann4.py")
+		try:
+			os.remove("./9.0nann4.py")
+		except(IOError, OSError):
+			pass
 	print("Restarting to finish updating...")
 	os.system(py + "start.py")
 	exit(0)
