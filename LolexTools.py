@@ -18,16 +18,6 @@ try:
 except(ImportError):
 	print("Missing library. Please redownload this application.")
 	exit(0)
-if platform.system() == "Windows":
-	if sys.version_info.minor > 5:
-		py = "py .\\"
-		pyo = "py"
-	else:
-		py = "python .\\"
-		pyo = "python"
-elif platform.system() == "Linux":
-	py = "python3 ./"
-	pyo = "python3"
 try:
         import menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError):
@@ -35,7 +25,7 @@ except(ImportError):
 try:
 	import LolexToolsOptions, runningsys, startplugins, theme
 except(ImportError):
-	os.system(py + "LolexToolsInstaler.py")
+	os.system(LolexToolsMethods.py + "LolexToolsInstaler.py")
 	exit(0)
 try:
         import verifonboot
@@ -55,7 +45,7 @@ if LolexToolsOptions.compiledon < 9.00001:
 			print("Could not update: files missing!")
 			time.sleep(5)
 			exit(0)
-		os.system (py + "8.3release.py")
+		os.system (LolexToolsMethods.py + "8.3release.py")
 		try:
 			os.remove("./8.3release.py")
 		except(IOError, OSError):
@@ -67,7 +57,7 @@ if LolexToolsOptions.compiledon < 9.00001:
 			print("Could not update: files missing!")
 			time.sleep(5)
 			exit(0)
-		os.system(py + "9.0n1.py")
+		os.system(LolexToolsMethods.py + "9.0n1.py")
 		try:
 			os.remove("./9.0n1.py")
 		except(IOError, OSError):
@@ -79,7 +69,7 @@ if LolexToolsOptions.compiledon < 9.00001:
 			print("Could not update: files missing!")
 			time.sleep(5)
 			exit(0)
-		os.system (py + "9.0nann2.py")
+		os.system (LolexToolsMethods.py + "9.0nann2.py")
 		try:
 			os.remove("./9.0nann2.py")
 		except(IOError, OSError):
@@ -91,7 +81,7 @@ if LolexToolsOptions.compiledon < 9.00001:
 			print("Could not update: files missing!")
 			time.sleep(5)
 			exit(0)
-		os.system(py + "9.0nann3.py")
+		os.system(LolexToolsMethods.py + "9.0nann3.py")
 		try:
 			os.remove("./9.0nann3.py")
 		except(IOError, OSError):
@@ -103,13 +93,13 @@ if LolexToolsOptions.compiledon < 9.00001:
 			print("Could not update: files missing!")
 			time.sleep(5)
 			exit(0)
-		os.system(py + "9.0nann4.py")
+		os.system(LolexToolsMethods.py + "9.0nann4.py")
 		try:
 			os.remove("./9.0nann4.py")
 		except(IOError, OSError):
 			pass
 	print("Restarting to finish updating...")
-	os.system(py + "start.py")
+	os.system(LolexToolsMethods.py + "start.py")
 	exit(0)
 if system == "Windows":
 	os.system(theme.theme)
@@ -348,7 +338,7 @@ try:
 				elif chngm == 15:
 					LolexToolsMethods.modehide("exit", exitsettings.hidden)
 				if useros == "Windows":
-					os.system(py + "start.py")
+					os.system(LolexToolsMethods.py + "start.py")
 				exit(0)
 		elif modewanted == 2:
 			LolexToolsMethods.restart()
@@ -423,7 +413,7 @@ try:
 				continueto = int(input("Git was not found. Please press 1 to initiate webbrowser method or 0 to cancel."))
 				if continueto == 1:
 					print("Please save your zip to Lolex-Tools newversion folder.")
-					os.system(pyo + "-m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
+					os.system(LolexToolsMethods.pyo + "-m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
 					confirm = input("Press enter to continue...")
 					try:
 						os.remove("./newversion")

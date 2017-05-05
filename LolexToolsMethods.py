@@ -10,7 +10,16 @@
 import os, time, py_compile, shutil, sys, platform, threading, subprocess
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 print("This module is intended for 9.0nann4, please do not mix and match for compatibility purposes.")
-
+if platform.system() == "Windows":
+	if sys.version_info.minor > 5:
+		py = "py .\\"
+		pyo = "py"
+	else:
+		py = "python .\\"
+		pyo = "python"
+elif platform.system() == "Linux":
+	py = "python3 ./"
+	pyo = "python3"
 try:
 	import ver
 except(ImportError):
@@ -22,10 +31,7 @@ try:
 	import menusettings
 except(ImportError):
 	system = platform.system()
-	if system == "Windows":
-		subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
-	elif system == "Linux":
-		os.system("python3 ./LolexToolsInstaller.py")
+		os.system(py + "LolexToolsInstaller.py")
 	exit(0)
 class uos:
 	uos.useros = platform.system()
@@ -204,7 +210,7 @@ def logoffthread(waittime, type):
 		if type == 0:
 			os.system("shutdown -l -f")
 		else:
-			subprocess.call("logoff.exe")
+			subprocess.Popen("logoff.exe")
 	else:
 		os.system("gnome-session-quit --force")
 def hibernate():
@@ -256,28 +262,16 @@ def shutdownthread(waittime, type):
 def pyshell():
 	if uos.useros == "Windows":
 		option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
-		if option == "0":
-			if sys.version_info.minor > 5:
-				subprocess.call("py.exe")
-			else:
-				subprocess.call("python.exe")
-		elif option == "1":
-			if sys.version_info.minor > 5:
-				subprocess.Popen("pyw.exe")
-			else:
-				subprocess.Popen("pythonw.exe")
 	else:
-		os.system("python3")
+		option = "0"
+	if option == "0":
+		subprocess.call(pyo + ".exe")
+	elif option == "1":
+		subprocess.Popen(pyo + "w.exe")
 def scriptrestart():
 	confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
 	if confirmscriptrestart == 1:
-		if uos.useros == "Windows":
-			if sys.version_info.minor < 6:
-				os.system("python .\start.py")
-			else:
-				os.system("py .\start.py")
-		else:
-			os.system("python3 ./start.py")
+		os.system(py + "start.py")
 		exit(0)
 def numops():
 	print ("Here is a list of operations:")
@@ -326,13 +320,7 @@ def dumpme():
 def enterinstall():
 	confirm = int(input("Please confirm (with a 1) to enter the installer."))
 	if confirm == 1:
-		if uos.useros == "Windows":
-			if sys.version_info.minor > 5:
-				os.system("py .\LolexToolsInstaller.py")
-			else:
-				os.system("python .\LolexToolsInstaller.py")
-		else:
-			os.system("python3 ./LolexToolsInstaller.py")
+		os.system(py + "LolexToolsInstaller.py")
 		exit(0)
 def uptime():
 	if "arm" in platform.platform():
