@@ -483,12 +483,12 @@ try:
         elif modewanted == 8 and useros == "Windows" :
             LolexToolsMethods.flicker()
         elif modewanted == 9 and useros == "Windows" :
-            subprocess.Popen("cmd.exe")
+            subprocess.call("cmd.exe")
         elif modewanted == 10 and useros == "Windows" :
             subprocess.Popen("explorer.exe")
         elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux"):
             if useros == "Windows":
-                subprocess.Popen("python.exe")
+                subprocess.call("python.exe")
             else:
                 os.system("python3")
         elif modewanted == 12 and useros == "Windows" :
@@ -571,7 +571,7 @@ try:
             else:
                 print("Not a valid rdp file.")
         elif modewanted == 20 and useros == "Windows" :
-            subprocess.Popen("powershell.exe")
+            subprocess.call("powershell.exe")
         elif modewanted == 21 and useros == "Windows":
             os.system("systeminf")
         elif (modewanted == 22 and useros == "Windows") or (modewanted == 13 and useros == "Linux"):
