@@ -16,7 +16,8 @@ if system == "Windows":
 		time.sleep(3)
 try:
 	import LolexToolsMethods
-except(ImportError):
+except(ImportError) as e:
+	print(e)
 	print("Missing library. Please redownload this application.")
 	exit(0)
 try:
