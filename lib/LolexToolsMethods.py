@@ -33,7 +33,7 @@ try:
 	import menusettings
 except(ImportError):
 	system = platform.system()
-		os.system(py + ".."+ s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
+	os.system(py + ".."+ s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 	exit(0)
 class uos:
 	uos.useros = platform.system()
