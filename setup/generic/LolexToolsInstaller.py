@@ -9,7 +9,8 @@
 ## authors = Monkeyboy2805
 import sys, time, os, shutil, platform
 syslen = len(sys.path)
-sys.path.extend(("./../../"))
+sys.path.extend(("./../../lib/"))
+print("Importing...")
 import LolexToolsMethods
 print("This installer uses the following modules:sys, time, os, shutil, platform, LolexToolsMethods")
 if sys.version_info.major !=3:
