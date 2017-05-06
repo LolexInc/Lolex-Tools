@@ -46,6 +46,7 @@ while arraypos<len(folders):
 				folders.append(path + currsub[tarraypos])
 		tarraypos = tarraypos + 1
 	arraypos = arraypos + 1
+print(files)
 flen = len(files)
 arraypos = 0
 print("Compiling...")
@@ -61,4 +62,4 @@ while arraypos<flen:
 		else:
 			aarraypos = aarraypos + 3
 			print("Successfully compiled " + (str(currfile)))
-		arraypos = arraypos + 1
+	arraypos = arraypos + 1
