@@ -8,6 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import os, platform, shutil, sys, time
+sys.path.extend(("./lib/"))
 a = time.time()
 print("Detecting system...")
 system = platform.system()
