@@ -53,6 +53,14 @@ arraypos = 0
 print("Compiling...")
 while arraypos<flen:
     currfile = files[arraypos]
+    aarraypos = 0
     py_compile.compile(currfile)
+    while aaraypos < len(currfile):
+    	if currfile[aarraypos] == "." and currfile[aarraypos  + 1] == "." and currfile[aarraypos + 2] == "/":
+    	    del currfile[aarraypos]
+            del currfile[aarraypos + 1]
+            del currfile[aarraypos + 2]
+        else:
+        	aarraypos = aarraypos + 3
     print("Successfully compiled " + (str(currfile)))
     arraypos = arraypos + 1
