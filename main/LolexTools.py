@@ -8,14 +8,15 @@
 ##
 ## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, zipfile
-sys.path.append("./../lib/")
+sys.path.append("./../Lib")
+print(sys.path)
 system = platform.system()
 if system == "Windows":
 	if sys.version_info.major != 3:
 		print("Only Python 3 is currently supported. Please install Python 3.")
 		time.sleep(3)
 try:
-	import LolexToolsMethods
+	from .. from dirLib import LolexToolsMethods
 except(ImportError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
