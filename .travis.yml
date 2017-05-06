@@ -8,4 +8,4 @@ env:
 install:
 - pip install -q Django=$DJANGO_VERSION 
 script:
-- python CI.py
+- python ./ci/CI.py
