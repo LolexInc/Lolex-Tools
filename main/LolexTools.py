@@ -8,7 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, zipfile
-sys.path.append("./../Lib")
+sys.path.append("./Lib")
 print(sys.path)
 system = platform.system()
 if system == "Windows":
