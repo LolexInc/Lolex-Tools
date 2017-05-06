@@ -188,7 +188,7 @@ try:
 		try:
 			os.remove("./verifonboot.pyc")
 		except(IOError, OSError):
-				print("verifonboot.pyc was not found.")
+				pass
 		with open ("./verifonboot.py","a") as outf:
 			outf.write("oneswappins = ")
 			outf.write(str(oneswappins))

@@ -10,7 +10,6 @@
 import os, time, py_compile, shutil, sys, platform, threading, subprocess
 syslen = len(sys.path)
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
-print("This module is intended for 9.0nann4, please do not mix and match for compatibility purposes.")
 if platform.system() == "Windows":
 	if sys.version_info.minor > 5:
 		py = "py .\\"
@@ -37,7 +36,6 @@ class uos:
 	useros = platform.system()
 	if "arm" in platform.platform():
 		useros = "Android"
-		print("Detected Android")
 try:
 		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
 except(ImportError):

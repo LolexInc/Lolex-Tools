@@ -10,7 +10,6 @@
 import os, platform, shutil, sys, time
 sys.path.extend(("./lib/"))
 a = time.time()
-print("Detecting system...")
 system = platform.system()
 if "arm" in platform.platform():
 	try:
@@ -66,12 +65,10 @@ except(ImportError, IOError, OSError):
         else:
                 os.system("python3 ./setup/generic/LolexToolsInstaller.py")
 if system == "Windows":
-        print("Starting on Windows...")
         os.system("TITLE Lolex-Tools")
         os.system("MODE 1000")
         if sys.version_info.minor>5:
                 os.system("py .\sys\\bootanim.py")
-                print("Starting...")
                 b = time.time()
                 local = time.asctime(time.localtime(time.time()))
                 with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
@@ -83,7 +80,6 @@ if system == "Windows":
                 os.system("py .\main\\LolexTools.py")
         else:
                 os.system("python .\sys\\bootanim.py")
-                print("Starting...")
                 b = time.time()
                 local = time.asctime(time.localtime(time.time()))
                 with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
@@ -95,13 +91,11 @@ if system == "Windows":
                 os.system("python .\main\\LolexTools.py")
         exit(None)
 else:
-        print("Starting on Linux...")
         sys.stdout.write("\x1b]2;Lolex-Tools\x07")
-        os.system("sudo apt-get install xdotool")
-        os.system("xdotool key ctrl+super+Up")
-        if "arm" not in platform.platform():
+        if "arm" in platform.platform() == False:
             os.system("python3 ./sys/bootanim.py")
-        print("Starting...")
+            os.system("sudo apt-get install xdotool")
+            os.system("xdotool key ctrl+super+Up")
         b = time.time()
         local = time.asctime(time.localtime(time.time()))
         with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
