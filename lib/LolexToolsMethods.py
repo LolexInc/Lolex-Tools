@@ -9,7 +9,6 @@
 ## authors = Monkeyboy2805
 import os, time, py_compile, shutil, sys, platform, threading, subprocess
 syslen = len(sys.path)
-sys.path.append("./../")
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 print("This module is intended for 9.0nann4, please do not mix and match for compatibility purposes.")
 if platform.system() == "Windows":
@@ -25,24 +24,22 @@ elif platform.system() == "Linux":
 	pyo = "python3"
 	s = "/"
 try:
+	sys.path.append("./")
 	import ver
-except(ImportError):
+except(ImportError) as e:
 	if "arm" in platform.platform() == False:
 		pass
 	else:
 		print("Please redownload this repository to access all features.")
-try:
-	import menusettings
-except(ImportError):
-	system = platform.system()
-	os.system(py + ".."+ s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
-	exit(0)
+		print(e)
+		exit(0)
 class uos:
-	uos.useros = platform.system()
+	useros = platform.system()
 	if "arm" in platform.platform():
-		uos.useros = "Android"
+		useros = "Android"
+		print("Detected Android")
 try:
-		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
 except(ImportError):
 		pass
 def version():
@@ -123,13 +120,15 @@ def windowspage(page, layout):
 	elif page == 5:
 		print("UNSTABLE FEATURES:")
 		print("23 = Experimental auto-update")
-	if layout == 0:
+	if layout == 1:
 			print("24 = Next Page")
 			print("25 = Back a Page")
 	else:
 		if page < 5 and page != -1:
 			page = page + 1
-			windowspage(page, layout)
+		else:
+			return;
+		windowspage(page, layout)
 def linuxpage(page, layout):
 	if page == 0:
 		print("1  = Settings")
@@ -154,28 +153,27 @@ def linuxpage(page, layout):
 		print("14 = Print SystemInfo")
 		if exitsettings.hidden == False:
 			print("15 = Exit")
-	if layout == 0:
+	if layout == 1:
 		print("16 = Next Page")
 		print("17 = Back a Page")
 	else:
-		if page < 2 and page != -1:
+		if page < 2:
 			page = page + 1
-			linuxpage(page, layout)
 		else:
-			page = 0
-			linuxpage (page, layout)
+			return;
+		linuxpage (page, layout)
 def androidpage(page, layout):
 	if page == 0:
 		print("1 = Settings")
 		if restartsettings.hidden == False:
-			print("2  = Restart")
+			print("2 = Restart")
 		if shutdownsettings.hidden == False:
 			print("3 = Shutdown")
-		print("4  = Call a Python Shell")
-		print("5  = Create folders")
+		print("4 = Call a Python Shell")
+		print("5 = Create folders")
 	elif page == 1:
-		print("6  = Remove folders")
-		print("7  = Create files")
+		print("6 = Remove folders")
+		print("7 = Create files")
 		print("8 = Restart this script")
 		print("9 = Perform arithmetic operations")
 		print("10 = Start Installer")
@@ -184,28 +182,27 @@ def androidpage(page, layout):
 		print("12 = Print SystemInfo")
 		if exitsettings.hidden == False:
 			print("13 = Exit")
-	if layout == 0:
+	if layout == 1:
 		print("14 = Next Page")
 		print("15 = Back a Page")
 	else:
-		if page < 2 and page != -1:
+		if page < 2:
 			page = page + 1
-			androidpage(page, layout)
 		else:
-			page = 0
-			androidpage (page, layout)
+			return;
+		androidpage (page, layout)
 def restart():
 	restart = int(input("Please enter 1 to confirm restart."))
 	if restart == 1:
 		waittime = int(input("How long, in minutes do you wish to wait?"))
-	restartthread = threading.Thread(target = restartthread, args = [waittime])
-	restartthread.start()
+		restartthreader = threading.Thread(target = restartthread, args = [waittime])
+		restartthreader.start()
 def logoff(type):
 	logoff = input("Please enter 1 to confirm logoff.")
 	if logoff == "1":
 		waittime = int(input("How long, in minutes do you wish to wait?"))
-	loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
-	loggeroff.start()
+		loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
+		loggeroff.start()
 def logoffthread(waittime, type):
 	time.sleep(waittime*60)
 	print("LOGOFF thread: Logging off...")
@@ -221,8 +218,8 @@ def hibernate():
 	hibernate = input("Please enter 1 to confirm logoff.")
 	if hibernate == "1":
 		waittime = input("How long, in minutes do you wish to wait?")
-	hibernatethread = threading.Thread(target = hibernatethread, args = [waittime])
-	hibernatethread.start()
+		hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
+		hibernatethreader.start()
 def hibernatethread(waittime):
 	time.sleep(waittime*60)
 	print("HIBERNATE thread: Hibernating...")
@@ -247,8 +244,8 @@ def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
 		waittime = int(input("How long, in minutes, do you wish to wait?"))
-	shutdownthread = threading.Thread(target = shutdownthread, args = [waittime,type])
-	shutdownthread.start()
+		shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
+		shutdownthreader.start()
 def shutdownthread(waittime, type):
 	time.sleep(waittime*60)
 	print("SHUTDOWN thread: shutting device down...")
@@ -257,25 +254,25 @@ def shutdownthread(waittime, type):
 			os.system ("shutdown -s -f")
 		elif type == 1:
 			subprocess.Popen("shutdown.exe")
-	elif uos.useros == "Linux":
-		os.system("poweroff")
 	elif uos.useros == "Android":
 		if os.system("su -c reboot -p") != 0:
 			if os.system("/system/bin/reboot -p") != 0:
 				print("Failed to execute reboot binary.")
+	elif uos.useros == "Linux":
+		os.system("poweroff")
 def pyshell():
-	if uos.useros == "Windows":
+	if uos.useros == "Android" or uos.useros == "Linux":
+		os.system("python3")
+	elif uos.useros == "Windows":
 		option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
-	else:
-		option = "0"
-	if option == "0":
-		subprocess.call(pyo + ".exe")
-	elif option == "1":
-		subprocess.Popen(pyo + "w.exe")
+		if option == "0":
+			subprocess.call(pyo + ".exe")
+		elif option == "1":
+			subprocess.Popen(pyo + "w.exe")
 def scriptrestart():
 	confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
 	if confirmscriptrestart == 1:
-		os.system(py + ".." + s + "start.py")
+		os.system(py + "start.py")
 		exit(0)
 def numops():
 	print ("Here is a list of operations:")
@@ -288,7 +285,7 @@ def addortake():
 	startnum = int(input("Please enter your starting number."))
 	addortakenum = int(input("Please input the number to be added."))
 	endnum = int(input("Please enter your end number."))
-	waittime = int(input("How long do you wish to wait before each operation is performed?"))
+	waittime = float(input("How long do you wish to wait before each operation is performed?"))
 	if endnum > startnum:
 		while endnum > startnum:
 			print(startnum)
@@ -324,7 +321,7 @@ def dumpme():
 def enterinstall():
 	confirm = int(input("Please confirm (with a 1) to enter the installer."))
 	if confirm == 1:
-		os.system(py + ".." + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
+		os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 		exit(0)
 def uptime():
 	if "arm" in platform.platform():
@@ -339,31 +336,31 @@ def exitnow():
 	print("This function has been deprecated.")
 def compiler(name):
 	try:
-		os.remove("./../" + name+".pyc")
+		os.remove("./" + name+".pyc")
 	except(IOError):
 		pass
-	py_compile.compile(name+".py","./../"+name+".pyc")
-	os.remove("./../"+name+".py")
+	py_compile.compile(name+".py","./"+name+".pyc")
+	os.remove("./"+name+".py")
 def modehide(name, state):
 	if state == False:
 		newstate = True
 	else:
 		newstate = False
 	try:
-		os.remove("./../"+name+".py")
-		os.remove("./../"+name+".pyc")
+		os.remove("./"+name+".py")
+		os.remove("./"+name+".pyc")
 	except(IOError):
 		pass
-	with open ("./../"+name+"settings.py","a") as outf: 
+	with open ("./"+name+"settings.py","a") as outf: 
 		outf.write("hidden = ")
 		outf.write(str(newstate))
 def bak(name, path, reinstall, attrestore, regenerate):
 	try:
-		os.remove("./../compile.py")
+		os.remove("./compile.py")
 	except(IOError, OSError):
 		pass
 	if path == 0:
-		path = "./../"
+		path = "./"
 	content = os.listdir(path)
 	arraypos = 0
 	found = False
@@ -371,11 +368,11 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		if name + ".pyc" in content[arraypos] and len(content[arraypos]) < len(name) + 5:
 			found = True
 			try:
-				os.mkdir("./../Backup")
+				os.mkdir("./Backup")
 			except(IOError, OSError):
 				pass
-			dir1 = ("./../Backup/" + (str(ver.version)) + " " + (str(time.time())) + "/" + name + ".pyc.notpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])))
-			os.rename("./../" + name + ".pyc", dir1)
+			dir1 = ("./Backup/" + (str(ver.version)) + " " + (str(time.time())) + "/" + name + ".pyc.notpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])))
+			os.rename("./" + name + ".pyc", dir1)
 			break;
 		arraypos = arraypos + 1
 	if found == False:
@@ -392,10 +389,10 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		reinstall = 0
 	if "settings" in name:
 		if name != "menusettings":
-			with open ("./../" + name + ".py", "a") as outf: outf.write("hidden = False")
+			with open ("./" + name + ".py", "a") as outf: outf.write("hidden = False")
 		else:
-			with open ("./../menusettings.py", "a") as outf: outf.write("layout = 0")
-		with open ("./../compile.py", "a") as outf:
+			with open ("./menusettings.py", "a") as outf: outf.write("layout = 0")
+		with open ("./compile.py", "a") as outf:
 			outf.write("name = '")
 			outf.write(str(name))
 			outf.write("'")
@@ -419,7 +416,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			twoswapwords = True
 		else:
 			twoswapwords = False
-		with open ("./../verifonboot.py", "a") as outf:
+		with open ("./verifonboot.py", "a") as outf:
 			outf.write("compiledon = ")
 			outf.write(str(ver.version))
 			outf.write("\nruntimeone = 0\nruntimetwo = 0\nwordtimeone = 0\nwordtimetwo = 0")
@@ -433,19 +430,19 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			outf.write(str(twoswapwords))
 	elif name == "theme":
 		# will add theme changing at some point
-		with open ("./../theme.py", "a") as outf: pass
+		with open ("./theme.py", "a") as outf: pass
 	elif name == "startplugins":
 		# will add ability to add plugins at some point
-		with open ("./../startplugins.py", "a") as outf: pass
+		with open ("./startplugins.py", "a") as outf: pass
 	if name == "verifonboot" or name == "theme" or name == "startplugins":
-		with open ("./../compile.py", "a") as outf:
+		with open ("./compile.py", "a") as outf:
 			outf.write("name = '")
 			outf.write(str(name))
 			outf.write("'")
-		os.system(py + ".." + s + "main" + s + "LolexTools.py")
+		os.system(py + "main" + s + "LolexTools.py")
 		exit(None)
 	elif attrestore == 1:
-		backup = os.listdir("./../Backup")
+		backup = os.listdir("./Backup")
 		arraypos = 0
 		found = False
 		while arraypos < len(backup):
@@ -454,14 +451,14 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			while tarraypos < len(backup):
 				if name + ".pyc" in currsub[tarraypos] and (".pycnotpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])) in currsub[tarraypos]) == False:
 					found = True
-					os.rename("./../Backup" + backup[arraypos] + cursub[tarraypos], "./../" + name + ".pyc")
-					with open ("./../compile.py", "a") as outf:
+					os.rename("./Backup" + backup[arraypos] + cursub[tarraypos], "./" + name + ".pyc")
+					with open ("./compile.py", "a") as outf:
 						outf.write("name = '")
 						outf.write(str(name))
 						outf.write("'")
-					os.system(py + ".." + s + "main" + s + LolexTools.py")
+					os.system(py + "main" + s + "LolexTools.py")
 					exit(None)
 		if found == False:
-			os.system(py + ".." + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
+			os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)
 del sys.path[syslen]
