@@ -61,7 +61,6 @@ try:
 	print(local, "    Copying files...")
 	shutil.copy("/sdcard/Lolex-Tools/start.py", "./")
 	shutil.copy("/sdcard/Lolex-Tools/Androidfirsttimeinit.py", "./")
-	shutil.copy("/sdcard/Lolex-Tools/Androidautoupdate.sh", "./")
 	shutil.copy("/sdcard/Lolex-Tools/ver.py", "./")
 	print("Copying folders...")
 	shutil.copytree("/sdcard/Lolex-Tools/ci/" ,"./ci/")
