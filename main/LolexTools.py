@@ -16,7 +16,7 @@ if system == "Windows":
 		print("Only Python 3 is currently supported. Please install Python 3.")
 		time.sleep(3)
 try:
-	from .. from dirLib import LolexToolsMethods
+	from ..dirLib import LolexToolsMethods
 except(ImportError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
