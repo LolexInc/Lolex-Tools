@@ -399,7 +399,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			outf.write("name = '")
 			outf.write(str(name))
 			outf.write("'")
-		os.system(py + ".." + s + "LolexTools.py")
+		os.system(py + ".." + s + "main" + s + "LolexTools.py")
 		exit(None)
 	elif name == "verifonboot":
 		import LolexToolsOptions
@@ -442,7 +442,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			outf.write("name = '")
 			outf.write(str(name))
 			outf.write("'")
-		os.system(py + ".." + s + "LolexTools.py")
+		os.system(py + ".." + s + "main" + s + "LolexTools.py")
 		exit(None)
 	elif attrestore == 1:
 		backup = os.listdir("./../Backup")
@@ -459,7 +459,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
 						outf.write("name = '")
 						outf.write(str(name))
 						outf.write("'")
-					os.system(py + ".." + s + "LolexTools.py")
+					os.system(py + ".." + s + "main" + s + LolexTools.py")
 					exit(None)
 		if found == False:
 			os.system(py + ".." + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")

@@ -8,6 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, zipfile
+sys.path.append("./../lib/")
 system = platform.system()
 if system == "Windows":
 	if sys.version_info.major != 3:
@@ -25,7 +26,7 @@ except(ImportError):
 try:
 	import LolexToolsOptions, runningsys, startplugins, theme
 except(ImportError):
-	os.system(LolexToolsMethods.py + "LolexToolsInstaler.py")
+	os.system(LolexToolsMethods.py + ".." + LolexToolsMethods.s + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)
 try:
         import verifonboot
@@ -40,19 +41,19 @@ except(ImportError):
 fail = False
 if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:
-		if os.system (LolexToolsMethods.py + "83" + LolexToolsMethods.s + "8.3release.py") != 0:
+		if os.system (LolexToolsMethods.py + ".." + LolexToolsMethods.s + "83" + LolexToolsMethods.s + "8.3release.py") != 0:
 			fail = True
 	if LolexToolsOptions.compiledon < 9.0:
-		if os.system(LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0n1.py") != 0:
+		if os.system(LolexToolsMethods.py +  ".." + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0n1.py") != 0:
 			fail = True
 	if LolexToolsOptions.compiledon < 9.00001:
-		if os.system (LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0nann2.py"):
+		if os.system (LolexToolsMethods.py + ".." + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann2.py"):
 			fail = True
 	if LolexToolsOptions.compiledon < 9.0001:
-		if os.system(LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0nann3.py") != 0:
+		if os.system(LolexToolsMethods.py + ".." + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann3.py") != 0:
 			fail = True
 	if LolexToolsOptions.compiledon < 9.00101:
-		if os.system(LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0nann4.py") != 0:
+		if os.system(LolexToolsMethods.py +  ".." + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann4.py") != 0:
 			fail = True
 	if fail == True:
 		print("Couldn't update: files missing!")
@@ -89,10 +90,10 @@ try:
 			runtimeone = runtimeone + 1
 		if LolexToolsOptions.onepintotal != 0:
 			try:
-				os.remove("./onepinner.py")
+				os.remove("./../onepinner.py")
 			except(IOError, OSError):
 				pass
-			with open ("./onepinner.py","a") as outf:
+			with open ("./../onepinner.py","a") as outf:
 				outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
 				outf.write(str(runtimeone))
 			import onepinner
@@ -113,10 +114,10 @@ try:
 				wordtimeone = wordtimeone + 1
 			if LolexToolsOptions.onewordtotal != 0:
 				try:
-					os.remove("./oneworder.py")
+					os.remove("./../oneworder.py")
 				except(IOError, OSError):
 					pass
-				with open("./oneworder.py","a") as outf:
+				with open("./../oneworder.py","a") as outf:
 					outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
 					outf.write(str(wordtimeone))
 				wordenter = input("Please enter your current password.")
@@ -135,10 +136,10 @@ try:
 			runtimetwo = runtimetwo + 1
 		if LolexToolsOptions.twopintotal != 0:
 			try:
-				os.remove("./twopinner.py")
+				os.remove("./../twopinner.py")
 			except(IOError, OSError):
 				pass
-			with open ("./twopinner.py","a") as outf:
+			with open ("./../twopinner.py","a") as outf:
 				outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
 				outf.write(str(runtimetwo))
 			import twopinner
@@ -159,10 +160,10 @@ try:
 				wordtimetwo = wordtimetwo + 1
 			if LolexToolsOptions.twowordtotal != 0:
 				try:
-					os.remove("./twoworder.py")
+					os.remove("./../twoworder.py")
 				except(IOError, OSError):
 					pass
-				with open ("./twoworder.py","a") as outf:
+				with open ("./../twoworder.py","a") as outf:
 					outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
 					outf.write(str(wordtimetwo))
 				import twoworder
@@ -177,14 +178,14 @@ try:
 					tries = tries + 1
 	if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
 		try:
-			os.remove("./verifonboot.py")
+			os.remove("./../verifonboot.py")
 		except(IOError, OSError):
 			pass
 		try:
-			os.remove("./verifonboot.pyc")
+			os.remove("./../verifonboot.pyc")
 		except(IOError, OSError):
 				print("verifonboot.pyc was not found.")
-		with open ("./verifonboot.py","a") as outf:
+		with open ("./../verifonboot.py","a") as outf:
 			outf.write("oneswappins = ")
 			outf.write(str(oneswappins))
 			outf.write("\ntwoswappins = ")
@@ -241,11 +242,11 @@ try:
 						print(" 1 = Pages")
 					layout = int(input("Please input the number of the setting you wish to apply."))
 					try:
-						os.remove("./menusettings.py")
-						os.remove("./menusettings.pyc")
+						os.remove("./../menusettings.py")
+						os.remove("./../menusettings.pyc")
 					except(IOError, OSError):
 						pass
-					with open ("./menusettings.py","a") as outf:
+					with open ("./../menusettings.py","a") as outf:
 						outf.write("layout = ")
 						outf.write(str(layout))
 					if layout == 0:
@@ -375,13 +376,13 @@ try:
 					os.system(LolexToolsMethods.pyo + "-m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
 					confirm = input("Press enter to continue...")
 					try:
-						os.remove("./newversion")
+						os.remove("./../newversion")
 					except(IOError, OSError):
 						pass
-					os.mkdirs("./newversion")
-					newver = os.listdirs("./newversion")
+					os.mkdirs("./../newversion")
+					newver = os.listdirs("./../newversion")
 		# search for zips instead :P
-					zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
+					zip_ref = zipfile.ZipFile("./../newversion"+newver[0], "r")
 					print("Extracting...")
 					zip_ref.extractall("newversion")
 					zip_ref.close()	  

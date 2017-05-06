@@ -49,8 +49,6 @@ try:
                                 else:
                                         os.system("python .\setup\generic\LolexToolsInstaller.py")
                         else:
-                                if "arm" in platform.system():
-                                        os.system("cd ./Lolex-Tools")
                                 if platform.system() == "Linux":
                                         os.system("python3 ./setup/generic/LolexToolsInstaller.py")
                 try:
@@ -72,7 +70,7 @@ if system == "Windows":
         os.system("TITLE Lolex-Tools")
         os.system("MODE 1000")
         if sys.version_info.minor>5:
-                os.system("py .\sys/bootanim.py")
+                os.system("py .\sys\\bootanim.py")
                 print("Starting...")
                 b = time.time()
                 local = time.asctime(time.localtime(time.time()))
@@ -82,9 +80,9 @@ if system == "Windows":
                         outf.write((str(b-a)))
                         outf.write("seconds to initilaize on Windows Python >3.5\n")
                 time.sleep(3)
-                os.system("py .\LolexTools.py")
+                os.system("py .\main\\LolexTools.py")
         else:
-                os.system("python .\sys/bootanim.py")
+                os.system("python .\sys\\bootanim.py")
                 print("Starting...")
                 b = time.time()
                 local = time.asctime(time.localtime(time.time()))
@@ -94,7 +92,7 @@ if system == "Windows":
                         outf.write((str(b-a)))
                         outf.write("seconds to initilaize on Windows Python < 3.6.\n")
                 time.sleep(3)
-                os.system("python LolexTools.py")
+                os.system("python .\main\\LolexTools.py")
         exit(None)
 else:
         print("Starting on Linux...")
@@ -111,5 +109,5 @@ else:
                 outf.write((str(b-a)))
                 outf.write("seconds to initilaize on Linux Python 3.\n")
         time.sleep(3)
-        os.system("python3 ./LolexTools.py")
+        os.system("python3 ./main/LolexTools.py")
         exit(None)

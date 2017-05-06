@@ -455,12 +455,12 @@ try:
               if start == 1:
                        print("Starting Lolex-Tools...")
                        if useros == "Linux" or useros == "Android":
-                               os.system("python3 ./../../LolexTools.py")
+                               os.system("python3 ./../../main/LolexTools.py")
                        else:
                                if sys.version_info.minor>5:
-                                       os.system("py .\LolexTools.py")
+                                       os.system("py .\..\..\main\LolexTools.py")
                                else:
-                                       os.system("python .\LolexTools.py")
+                                       os.system("python .\..\..\main\LolexTools.py")
               exit(0)
      except(TypeError, SyntaxError, ValueError):
               print("Failed to start.")
