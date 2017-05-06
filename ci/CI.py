@@ -16,7 +16,9 @@ arraypos = 0
 filesl = 0
 while arraypos < len(root):
     if (".git" in root[arraypos]) == False:
-        if "." in root[arraypos] or "LICENSE" in root[arraypos]:
+        if "LICENSE" in root[arraypos]:
+        	pass
+        elif "." in root[arraypos]:
             length = len(root[arraypos])
             p = root[arraypos][length - 2]
             y = root[arraypos][length - 1]
