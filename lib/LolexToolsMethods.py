@@ -8,6 +8,8 @@
 ##
 ## authors = Monkeyboy2805
 import os, time, py_compile, shutil, sys, platform, threading, subprocess
+syslen = len(sys.path)
+sys.path.append("./../")
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 print("This module is intended for 9.0nann4, please do not mix and match for compatibility purposes.")
 if platform.system() == "Windows":
@@ -311,7 +313,7 @@ def addortake():
 			time.sleep (1)
 def dumpme():
 	if uos.useros == "Windows":
-		os.system("systeminf")
+		os.system(".\resources\systeminf")
 	elif uos.useros == "Linux":
 		os.system("sudo lshw")
 	else:
@@ -462,3 +464,4 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		if found == False:
 			os.system(py + ".." + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)
+del sys.path[syslen]
