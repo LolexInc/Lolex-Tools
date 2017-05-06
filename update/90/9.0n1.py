@@ -7,21 +7,23 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
+import sys
+sys.path.append("./../../")
 import os, LolexToolsOptions, LolexToolsMethods
 onepintotal = LolexToolsOptions.onepintotal
 twopintotal = LolexToolsOptions.twopintotal
 onewordtotal = LolexToolsOptions.onewordtotal
 twowordtotal = LolexToolsOptions.twowordtotal
 try:
-    os.remove("LolexToolsOptions.py")
+    os.remove("./../../LolexToolsOptions.py")
 except(IOError, OSError):
     pass
 try:
-    os.remove("LolexToolsOptions.pyc")
+    os.remove("./../../LolexToolsOptions.pyc")
 except(IOError, OSError):
     pass
 onemorepins = int(input("Please enter how many more PINs you wish to add for user 1?"))
-with open("./LolexToolsOptions.py","a") as outf:
+with open("./../../LolexToolsOptions.py","a") as outf:
     if onepintotal>0:
         outf.write("\nonepin1 = ")
         outf.write(str(LolexToolsOptions.onepinone))
@@ -50,7 +52,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(" = ")
         outf.write(str(onepin))
 twomorepins = int(input("Please enter how many more PINs you wish to add for user 2?"))
-with open("./LolexToolsOptions.py","a") as outf:
+with open("./../../LolexToolsOptions.py","a") as outf:
     if twopintotal>0:
         outf.write("\ntwopin1 = ")
         outf.write(str(LolexToolsOptions.twopinone))
@@ -79,7 +81,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(" = ")
         outf.write(str(twopin))
 onemorewords = int(input("Please enter how many more passwords you wish to add for user 1?"))
-with open("./LolexToolsOptions.py","a") as outf:
+with open("./../../LolexToolsOptions.py","a") as outf:
     if onewordtotal>0:
         outf.write("\noneword1 = ")
         outf.write(str(LolexToolsOptions.onewordone))
@@ -108,7 +110,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(" = ")
         outf.write(str(oneword))
 twomorewords = int(input("Please enter how many more passwords you wish to add for user 2?"))
-with open("./LolexToolsOptions.py","a") as outf:
+with open("./../../LolexToolsOptions.py","a") as outf:
     if twowordtotal>0:
         outf.write("\ntwoword1 = ")
         outf.write(str(LolexToolsOptions.twowordone))
@@ -136,7 +138,7 @@ with open("./LolexToolsOptions.py","a") as outf:
         outf.write(str(twowordtotal))
         outf.write(" = ")
         outf.write(str(twoword))
-with open ("./LolexToolsOptions.py","a") as outf:
+with open ("./../../LolexToolsOptions.py","a") as outf:
     outf.write("compiledon = 9.0")
     outf.write("\nonepintotal = ")
     outf.write(str(onepintotal))
@@ -202,3 +204,4 @@ with open ("./LolexToolsOptions.py","a") as outf:
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("LolexToolsOptions")
 print("Finished updating to 9.0n1...")
+del sys.path[syslen]

@@ -37,67 +37,26 @@ try:
 	LolexToolsOptions.compiledon = madeon.compiledon
 except(ImportError):
 	pass
+fail = False
 if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:
-		try:
-			shutil.copy("./update/83/8.3release.py","./")
-		except(IOError, OSError):
-			print("Could not update: files missing!")
-			time.sleep(5)
-			exit(0)
-		os.system (LolexToolsMethods.py + "8.3release.py")
-		try:
-			os.remove("./8.3release.py")
-		except(IOError, OSError):
-			pass
+		if os.system (LolexToolsMethods.py + "83" + LolexToolsMethods.s + "8.3release.py") != 0:
+			fail = True
 	if LolexToolsOptions.compiledon < 9.0:
-		try:
-			shutil.copy("./update/90/9.0n1.py","./")
-		except(IOError, OSError):
-			print("Could not update: files missing!")
-			time.sleep(5)
-			exit(0)
-		os.system(LolexToolsMethods.py + "9.0n1.py")
-		try:
-			os.remove("./9.0n1.py")
-		except(IOError, OSError):
-			pass
+		if os.system(LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0n1.py") != 0:
+			fail = True
 	if LolexToolsOptions.compiledon < 9.00001:
-		try:
-			shutil.copy("./update/90/9.0nann2.py","./")
-		except(IOError, OSError):
-			print("Could not update: files missing!")
-			time.sleep(5)
-			exit(0)
-		os.system (LolexToolsMethods.py + "9.0nann2.py")
-		try:
-			os.remove("./9.0nann2.py")
-		except(IOError, OSError):
-			pass
+		if os.system (LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0nann2.py"):
+			fail = True
 	if LolexToolsOptions.compiledon < 9.0001:
-		try:
-			shutil.copy("./update/90/9.0nann3.py", "./")
-		except(IOError, OSError):
-			print("Could not update: files missing!")
-			time.sleep(5)
-			exit(0)
-		os.system(LolexToolsMethods.py + "9.0nann3.py")
-		try:
-			os.remove("./9.0nann3.py")
-		except(IOError, OSError):
-			pass
+		if os.system(LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0nann3.py") != 0:
+			fail = True
 	if LolexToolsOptions.compiledon < 9.00101:
-		try:
-			shutil.copy("./update/90/9.0nann4.py", "./")
-		except(IOError, OSError):
-			print("Could not update: files missing!")
-			time.sleep(5)
-			exit(0)
-		os.system(LolexToolsMethods.py + "9.0nann4.py")
-		try:
-			os.remove("./9.0nann4.py")
-		except(IOError, OSError):
-			pass
+		if os.system(LolexToolsMethods.py + "90" + LolexToolsMethods.s + "9.0nann4.py") != 0:
+			fail = True
+	if fail == True:
+		print("Couldn't update: files missing!")
+		exit(0)
 	print("Restarting to finish updating...")
 	os.system(LolexToolsMethods.py + "start.py")
 	exit(0)

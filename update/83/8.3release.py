@@ -7,6 +7,9 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
+import sys
+syslen(sys.path)
+sys.path.append("./../../")
 import os, LolexToolsOptions, LolexToolsMethods
 onepintotal = 0
 if LolexToolsOptions.oneusepin != False:
@@ -238,3 +241,4 @@ with open ("./LolexToolsOptions.py","a")as outf:
 if LolexToolsOptions.compiler == True:
 	LolexToolsMethods.compiler("LolexToolsOptions")
 print("Finished updating to 8.3...")
+del sys.path[syslen]
