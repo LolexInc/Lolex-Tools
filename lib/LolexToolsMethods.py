@@ -341,7 +341,7 @@ def compiler(name):
 	except(IOError):
 		pass
 	py_compile.compile(name+".py","./../"+name+".pyc")
-	os.remove("./../+name+".py")
+	os.remove("./../"+name+".py")
 def modehide(name, state):
 	if state == False:
 		newstate = True
