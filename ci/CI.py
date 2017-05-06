@@ -61,5 +61,5 @@ while arraypos<flen:
 			del currfile[aarraypos + 2]
 		else:
 			aarraypos = aarraypos + 3
-			print("Successfully compiled " + (str(currfile)))
+	print("Successfully compiled " + (str(currfile)))
 	arraypos = arraypos + 1
