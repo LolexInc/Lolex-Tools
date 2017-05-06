@@ -45,14 +45,14 @@ try:
                 if LolexToolsOptions.compiledon<8.127:
                         if platform.system() == "Windows":
                                 if sys.version_info.minor>5:
-                                        os.system(" py .\LolexToolsInstaller.py")
+                                        os.system(" py .\setup\generic\LolexToolsInstaller.py")
                                 else:
-                                        os.system("python .\LolexToolsInstaller.py")
+                                        os.system("python .\setup\generic\LolexToolsInstaller.py")
                         else:
                                 if "arm" in platform.system():
                                         os.system("cd ./Lolex-Tools")
                                 if platform.system() == "Linux":
-                                        os.system("python3 ./LolexToolsInstaller.py")
+                                        os.system("python3 ./setup/generic/LolexToolsInstaller.py")
                 try:
                         import ver
                         if ver.version <= 8.129211346:
@@ -62,12 +62,11 @@ try:
 except(ImportError, IOError, OSError):
         if platform.system() == "Windows":
                 if sys.version_info.minor>5:
-                        os.system("py .\LolexToolsInstaller.py")
+                        os.system("py .\setup\generic\LolexToolsInstaller.py")
                 else:
-                        os.system("python .\LolexToolsInstaller.py")
+                        os.system("python .\setup\generic\LolexToolsInstaller.py")
         else:
-                os.system("python3 ./LolexToolsInstaller.py")
-
+                os.system("python3 ./setup/generic/LolexToolsInstaller.py")
 if system == "Windows":
         print("Starting on Windows...")
         os.system("TITLE Lolex-Tools")
