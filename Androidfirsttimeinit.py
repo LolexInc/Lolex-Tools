@@ -9,10 +9,6 @@
 ## authors = Monkeyboy2805
 import shutil, os, time, platform
 init1 = time.time()
-try:
-	with open ("./isnottravisci.py","a") as outf: pass
-except(IOError):
-	exit(None)
 local = time.asctime( time.localtime(time.time()) )
 print(local,"    Attempting to remove folders...")
 try:
@@ -28,19 +24,26 @@ try:
 except(IOError, OSError):
 	pass
 try:
-	local = time.asctime( time.localtime(time.time()) )
-	print(local,"    Attempting to remove files...")
-	os.remove("./LolexTools.py")
+	shutil.rmtree("./resources")
 except(IOError, OSError):
 	pass
 try:
-	os.remove("./LolexToolsInstaller.py")
+	shutil.rmtree("./main")
 except(IOError, OSError):
 	pass
 try:
-	os.remove("./LolexToolsMethods.py")
+	shutil.rmtree("./ci")
 except(IOError, OSError):
 	pass
+try:
+	shutil.rmtree("./lib")
+except(IOError, OSError):
+	pass
+try:
+	shutil.rmtree("./setup")
+except(IOError, OSError):
+	pass
+print("Removing files...")
 try:
 	os.remove("./start.py")
 except(IOError, OSError):
@@ -50,33 +53,27 @@ try:
 except(IOError, OSError):
 	pass
 try:
-	os.remove("./Androidautoupdate.sh")
-except(IOError, OSError):
-	pass
-try:
 	os.remove("./ver.py")
-except(IOError, OSError):
-	pass
-try:
-	os.remove("./CI.py")
 except(IOError, OSError):
 	pass
 try:
 	local = time.asctime(time.localtime(time.time()))
 	print(local, "    Copying files...")
-	shutil.copy("/sdcard/Lolex-Tools/LolexTools.py", "./")
-	shutil.copy("/sdcard/Lolex-Tools/LolexToolsInstaller.py", "./")
-	shutil.copy("/sdcard/Lolex-Tools/LolexToolsMethods.py", "./")
 	shutil.copy("/sdcard/Lolex-Tools/start.py", "./")
 	shutil.copy("/sdcard/Lolex-Tools/Androidfirsttimeinit.py", "./")
 	shutil.copy("/sdcard/Lolex-Tools/Androidautoupdate.sh", "./")
 	shutil.copy("/sdcard/Lolex-Tools/ver.py", "./")
-	shutil.copy("/sdcard/Lolex-Tools/CI.py", "./")
 	print("Copying folders...")
+	shutil.copytree("/sdcard/Lolex-Tools/ci/" ,"./ci/")
+	shutil.copytree("/sdcard/Lolex-Tools/setup/", "./setup/")
+	shutil.copytree("/sdcard/Lolex-Tools/main/", "./main/")
+	shutil.copytree("/sdcard/Lolex-Tools/resources/", "./resources/")
+	shutil.copytree("/sdcard/Lolex-Tools/lib/", "./lib")
 	shutil.copytree("/sdcard/Lolex-Tools/Logs", "./Logs")
 	shutil.copytree("/sdcard/Lolex-Tools/sys", "./sys")
 	shutil.copytree("/sdcard/Lolex-Tools/update", "./update")
-except(IOError, OSError):
+except(IOError, OSError) as e:
+	print(e)
 	print("Please ensure that all files are present in /sdcard/Lolex-Tools")
 	exit(None)
 try:
