@@ -385,17 +385,18 @@ try:
 					zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
 					print("Extracting...")
 					zip_ref.extractall("newversion")
-					zip_ref.close()	  
-		elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android") and menusettings.layout == 1:
+					zip_ref.close()
+		  elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
+			path = os.getcwd()
+			LolexToolsMethods.explorer(0, 1, 1, 0, "/" , 1)
+		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			print(page)
 			if (page < 5 and useros == "Windows") or (page < 2 and (useros == "Linux" or useros == "Android")):
 				page = page + 1
 			else:
 				page = 0
-		elif modewanted == 27:
-			path = os.getcwd()
-			LolexToolsMethods.explorer(0, 1, 1, 0, "/sdcard/" , 1)
-		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
+		
+		elif (modewanted == 26 and useros == "Windows") or (modewanted == 18 and useros == "Linux") or (modewanted == 16 and useros == "Android") and menusettings.layout == 1:
 			print(page)
 			if page > 0:
 				page = page - 1
