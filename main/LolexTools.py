@@ -386,12 +386,12 @@ try:
 					print("Extracting...")
 					zip_ref.extractall("newversion")
 					zip_ref.close()
-		  elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
+		elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
 			path = os.getcwd()
 			LolexToolsMethods.explorer(0, 1, 1, 0, "/" , 1)
 		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			print(page)
-			if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2)):
+			if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2):
 				page = page + 1
 			else:
 				page = 0
@@ -415,7 +415,7 @@ except(SyntaxError) as a:
 	print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(a)
 	time.sleep(10)
-except() as b:
+except(TypeError) as b:
 	print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(b)
 	time.sleep(10)
@@ -427,7 +427,7 @@ except(IOError) as d:
 	print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(d)
 	time.sleep(10)
-except() as e:
+except(NameError) as e:
 	print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(e)
 	time.sleep(10)
