@@ -288,16 +288,9 @@ try:
      developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
      if (oneusepin == True or 1) or (twousepin == True or 1):
               if developer !=1:
-                       vanishprint = int(input("How many lines do you wish to be printed to hide your PIN (as a number)?"))
-                       confirm = 0
-                       while vanishprint<500 and confirm!=1:
-                                    confirm = int(input("SECURITY WARNING: this number may not be secure. Please enter 0 to change it, or 1 to confirm it.\nPlease be aware that less than 0 lines is invalid."))
-                                    if confirm != 1 or vanishprint<0:
-                                             vanishprint = int(input("Please enter a valid number of lines."))
                        compiler = True
               elif developer == 1:
                        compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
-                       vanishprint = 0 #Feature for devs :)
               if useros == "Windows":
                        print("Here is a list of colours available:")
                        print("a - Neon Green")
@@ -407,9 +400,6 @@ try:
               outf.write("\ndeveloper = ")
               outf.write(str(developer))
               developer = "None"
-              outf.write("\nvanishprint = ")
-              outf.write(str(vanishprint))
-              vanishprint = "None"
               outf.write("\ncompiler = ")
               outf.write(str(compiler))
               compiler = "None"

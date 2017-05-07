@@ -71,6 +71,10 @@ if system == "Windows":
 	os.system("title Lolex-Tools")
 print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
 try:
+	if LolexToolsMethods.uos.useros == "Windows":
+		clear = "cls"
+	elif platform.system() == "Linux":
+		clear = "clear"
 	oneswappins = verifonboot.oneswappins
 	twoswappins = verifonboot.twoswappins
 	runtimeone = verifonboot.runtimeone
@@ -102,6 +106,7 @@ try:
 				outf.write(str(runtimeone))
 			import onepinner
 			codeenter = int(input("Please enter your current PIN."))
+			os.system(clear)
 			tries = 1
 			if codeenter != onepinner.pin:
 				while codeenter != onepinner.pin:
@@ -110,6 +115,7 @@ try:
 						time.sleep(LolexToolsOptions.onewait)
 						tries = 0
 					codeenter = int(input("Please enter your current PIN."))
+					os.system(clear)
 					tries = tries + 1
 		if verifonboot.oneswapwords == True:
 			if LolexToolsOptions.onewordtotal == wordtimeone:
@@ -125,6 +131,7 @@ try:
 					outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
 					outf.write(str(wordtimeone))
 				wordenter = input("Please enter your current password.")
+				os.system(clear)
 				tries = 1
 				while wordenter != oneworder.word:
 					if tries == 5:
@@ -132,6 +139,7 @@ try:
 						time.sleep(LolexToolsOptions.onewordwait)
 						tries = 0
 					wordenter = input("Please enter your current password.")
+					os.system(clear)
 					tries = tries + 1
 	elif LolexToolsOptions.username2 == usernameenter:
 		if runtimetwo == LolexToolsOptions.twopintotal:
@@ -148,6 +156,7 @@ try:
 				outf.write(str(runtimetwo))
 			import twopinner
 			codeenter = int(input("Please enter your current PIN."))
+			os.system(clear)
 			tries = 1
 			if codeenter != twopinner.pin:
 				while codeenter != twopinner.pin:
@@ -156,6 +165,7 @@ try:
 						time.sleep(LolexToolsOptions.twowait)
 						tries = 0
 					codeenter = int(input("Please enter your current PIN."))
+					os.system(clear)
 					tries = tries + 1
 		if verifonboot.twoswapwords == True:
 			if LolexToolsOptions.twowordtotal == wordtimetwo:
@@ -172,6 +182,7 @@ try:
 					outf.write(str(wordtimetwo))
 				import twoworder
 				wordenter = input("Please enter your current password.")
+				os.system(clear)
 				tries = 1
 				while wordenter != twoworder.word:
 					if tries == 5:
@@ -179,6 +190,7 @@ try:
 						time.sleep(LolexToolsOptions.twowordwait)
 						tries = 0
 					wordenter = input("Please enter your current password.")
+					os.system(clear)
 					tries = tries + 1
 	if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
 		try:
@@ -214,7 +226,7 @@ try:
 	layout = menusettings.layout
 	page = 0
 	while True:
-		time.sleep(0.5)
+		time.sleep(0.1)
 		if useros == "Windows":
 			LolexToolsMethods.windowspage(page, menusettings.layout)
 		elif useros == "Linux":
@@ -390,13 +402,11 @@ try:
 			path = os.getcwd()
 			LolexToolsMethods.explorer(0, 1, 1, 0, "/" , 1)
 		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
-			print(page)
 			if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2):
 				page = page + 1
 			else:
 				page = 0
 		elif (modewanted == 26 and useros == "Windows") or (modewanted == 18 and useros == "Linux") or (modewanted == 16 and useros == "Android") and menusettings.layout == 1:
-			print(page)
 			if page > 0:
 				page = page - 1
 			else:
