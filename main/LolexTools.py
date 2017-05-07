@@ -394,7 +394,7 @@ try:
 				page = 0
 		elif modewanted == 27:
 			path = os.getcwd()
-			LolexToolsMethods.explorer(0, 1,0, 0, "/sdcard/" ,1)
+			LolexToolsMethods.explorer(0, 1, 1, 0, "/sdcard/" , 1)
 		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			print(page)
 			if page > 0:
@@ -413,7 +413,7 @@ except(SyntaxError) as a:
 	print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(a)
 	time.sleep(10)
-except(TypeError) as b:
+except() as b:
 	print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(b)
 	time.sleep(10)
@@ -425,7 +425,7 @@ except(IOError) as d:
 	print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(d)
 	time.sleep(10)
-except(NameError) as e:
+except() as e:
 	print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(e)
 	time.sleep(10)

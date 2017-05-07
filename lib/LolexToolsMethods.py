@@ -459,6 +459,26 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		if found == False:
 			os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)
+def correctfile(path):
+	slash = "\\"
+	if len(path) > 2:
+		path = path.replace(slash[0], "/")
+		path = path.replace("//", "/")
+		if path[0] == "." and path[1] == "/":
+			path = path[:0]
+			path = path[:1]
+			path = os.getcwd() + path
+	return path;
+def validatefile(path):
+	path = correctfile(path)
+	class a:
+		a = path
+	valid = True
+	try:
+		open(a.a, "a")
+	except(IOError, OSError):
+		valid = False
+	return valid;
 def correctpath(path):
 	print("Correcting...")
 	slash = "\\"
@@ -469,25 +489,23 @@ def correctpath(path):
 			zz.p = zz.p + "/"
 		zz.p = zz.p.replace(slash[0], "/")
 		if zz.p[0] == "." and zz.p[1] == "/":
+			zz.p = zz.p[:0]
+			zz.p = zz.p[:1]
 			zz.p = os.getcwd() + zz.p
 		j = 0
 	if len(zz.p) > 2:
-		while j !=  len(zz.p) - 1:
-			if zz.p[j] == "/":
-				if zz.p[j + 1] == "/":
-					del zz.p[j]
-					j = j - 1
-			j = j + 1
+		zz.p.replace("//", "/")
 	return zz.p;
 def validate(path):
+	path = correctpath(path)
 	class v:
 		p = path
 	readin = True
 	try:
-		os.path.exists(v.p)
+		os.path.isdir(v.p)
 	except(IOError, OSError):
 		readin = False
-	if readin == True and not os.path.exists(v.p):
+	if readin == True and not os.path.isdir(v.p):
 		readin = False
 	elif readin == True:
 		try:
@@ -503,7 +521,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 	expl.path = path
 	file = 0
 	auto = 0
-	if (rtnofolders == 1 and rtnofiles == 1) or (platform.system() != "Windows" and platform.system() != "Linux"):
+	if (platform.system() != "Windows" and platform.system() != "Linux"):
 		clear = "<>"
 	elif uos.useros == "Windows":
 		clear = "cls"
@@ -568,10 +586,10 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 							safedir = True
 							break;
 						print("Out of loop...")
-						#y = validate(expl.path)
-						#if y == True:
-						safedir == True
-						break;
+						y = validate(expl.path)
+						if y == True:
+							safedir == True
+							break;
 						
 				else:
 					print("Already at highest directory")
@@ -589,7 +607,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				else:
 					print("Operation not completed!")
 					time.sleep(5)
-			elif expl.file != "///s":
+			elif expl.file != "///s" and expl.file != "///o":
 				o = False
 				found = 0
 				arraypos = 0
@@ -618,13 +636,13 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 						found = 1
 					else: pass
 					if found == 1:
-						expl.newpath = expl.path + possibles[0]
+						expl.newpath = expl.path + "/" + possibles[0]
 						if validate(expl.path) == False:
 							auto = 1
 							expl.file = ".."
 						else:
 							file = 0
-							if os.path.exists(expl.newpath) == False:
+							if os.path.isdir(expl.newpath) == False:
 								file = 1
 								try:
 									open(expl.newpath, "a")
@@ -653,20 +671,21 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 								expl.path = expl.newpath + "/"
 								if tofinishop == True or rtnofolders == 0:
 									return expl.path;
-							if file == 0 and expl.file == "///o":
-								o = True
 					elif found == 0:
 						print("No such file or directory found!")
-			elif expl.file == "///s":
+			elif expl.file == "///s" or expl.file == "///o":
 				o = True
+				expl.newpath = expl.path
 			else: pass
 			if o == True:
+				op = 0
 				while op != 7:
 					if expl.file == "///s":
-						op = 0
+						pass
 					else:
-						print("\n" + expl.path + "\n")
+						print("\n" + expl.newpath + "\n")
 						print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder")
+						op = int(input("Please enter the number of the operation you wish to execute."))
 					if op == 0 and expl.file == "///s":
 						search = searchpath(input("Please enter the characters to search for."), expl.path, int(input("Please enter 1 to exlude this name, or 0 to include it.")), int(input("Please enter 1 to only include results with the characters at the end, or 0 to not.")), int(input("Please enter 1 to include folders, or 0 to not.")), int(input("Please enter 1 to include files, or 0 to not,")))
 						if search == "INVALID<>":
@@ -689,40 +708,57 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 											print(k + " = " + search[k])
 										break;
 					elif op == 1:
-						confirm = input("Please enter 1 to confirm delete.")
-						if confirm == 1:
-							if file == 0:
+						confirm = int(input("Please enter 1 to confirm delete."))
+						if confirm == int(1):
+							if os.path.isdir(expl.newpath) == True:
+								print("Deleting...")
 								try:
-									shutil.rmtree(expl.path)
+									shutil.rmtree(expl.newpath)
 								except(IOError, OSError) as e:
 									print(e)
+									print("Couldn't delete folder.")
+									time.sleep(3)
 							else:
+								print("Deleting...")
 								try:
 									os.remove(expl.newpath)
 								except(IOError, OSError) as f:
 									print(f)
+									print("Couldn't delete folder.")
+									time.sleep(3)
+							op = 7
+							auto = 1
+							expl.file = ".."
 					elif op == 2:
-						if file == 1:
+						if validatefile(expl.newpath) == True:
 							print("Cannot create files/folders inside files!")
 						else:
 							oq = int(input("1 = Make a folder\n2 = Make a file\nPlease enter the number of the object you would like to create."))
 							class create:
-								if oq == 1:
+								if oq == int(1):
 									typ = "folder"
-								elif oq == 2:
+								elif oq == int(2):
 									typ = "file"
-								newname = input("Please enter the name of your new " + typ)
-							if oq == 1:
+								newname = input("Please enter the name of your new " + typ + "  ")
+							if oq == int(1):
+								array.append(create.newname)
 								try:
-									os.mkdir(create.newname)
+									print("Creating folder...")
+									os.mkdir(expl.path + create.newname)
 								except(IOError, OSError) as g:
 									print(g)
-							elif oq == 2:
+									time.sleep(3)
+									del array[len(array) - 1]
+							elif oq == int(2):
+								array.append(create.newname)
 								try:
-									open(create.newname, "a")
+									print("Creating file...")
+									open(expl.path + create.newname, "a")
 								except(IOError, OSError) as h:
 									print(h)
-					elif op == 6:
+									time.sleep(3)
+									del array[len(array) - 1]
+					if op == 7:
 						if tofinishop == 1:
 							return expl.path;
 						break;
