@@ -459,4 +459,275 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		if found == False:
 			os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)
+def correctpath(path):
+	print("Correcting...")
+	slash = "\\"
+	class zz:
+		p = path
+	if len(zz.p) > 2:
+		if zz.p[len(zz.p) - 1] != "/" and (zz.p[len(zz.p) - 1] + zz.p[len(zz.p) - 2] != "\\"):
+			zz.p = zz.p + "/"
+		zz.p = zz.p.replace(slash[0], "/")
+		if zz.p[0] == "." and zz.p[1] == "/":
+			zz.p = os.getcwd() + zz.p
+		j = 0
+	if len(zz.p) > 2:
+		while j !=  len(zz.p) - 1:
+			if zz.p[j] == "/":
+				if zz.p[j + 1] == "/":
+					del zz.p[j]
+					j = j - 1
+			j = j + 1
+	return zz.p;
+def validate(path):
+	class v:
+		p = path
+	readin = True
+	try:
+		os.path.exists(v.p)
+	except(IOError, OSError):
+		readin = False
+	if readin == True and not os.path.exists(v.p):
+		readin = False
+	elif readin == True:
+		try:
+			os.listdir(v.p)
+		except(IOError, OSError):
+			readin = False
+	return readin;
+class expl:
+	path = "/"
+	newpath = "/"
+	file = ""
+def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
+	expl.path = path
+	file = 0
+	auto = 0
+	if (rtnofolders == 1 and rtnofiles == 1) or (platform.system() != "Windows" and platform.system() != "Linux"):
+		clear = "<>"
+	elif uos.useros == "Windows":
+		clear = "cls"
+	elif platform.system() == "Linux":
+		clear = "clear"
+	else: pass
+	if clear == "<>":
+		return 1;
+	if clear != "<>":
+		while True:
+			print(expl.path)
+			expl.path = correctpath(expl.path)
+			y = validate(expl.path)
+			if y == False:
+				expl.file == ".."
+				auto = 1
+			if auto == 0:
+				#os.system(clear)
+				print("\n " + expl.path + "\n")
+				if otext == 0:
+					otext = "Start/finish operations on this folder"
+				if allowexit == 0:
+					exittext = "You cannot exit until the current operation is complete"
+				else:
+					exittext = "Exit file explorer"
+				print("\n\n///o - " + otext + "\n./ - Go to your current working directory\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+				array = os.listdir(expl.path)
+				for i in range(0, len(array) - 1):
+					print(array[i])
+				expl.file = input("\nSelect/Open (Name): ")
+			if expl.file == "///":
+				pass
+			elif expl.file == "./":
+				expl.path = "./"
+			elif expl.file == "..":
+				if expl.path != "/":
+					safedir = False
+					while safedir == False:
+						slash = False
+						arraypos = len(expl.path) - 2
+						if len(expl.path) > 2:
+							while slash == False:
+								if expl.path[arraypos] == "/":
+									slash = True
+									endpoint = arraypos
+								else:
+									arraypos = arraypos - 1
+									endpoint = -1
+								if arraypos < 1 and slash != True:
+									path = "/"
+									safedir = True
+									slash = True
+									break;
+							if slash == True and expl.path != "/":
+								arraypos = len(expl.path) - 2
+								while arraypos > endpoint:
+									expl.path = expl.path[:arraypos]
+									arraypos = arraypos - 1
+						else:
+							expl.path = "/"
+							slash = True
+							safedir = True
+							break;
+						print("Out of loop...")
+						#y = validate(expl.path)
+						#if y == True:
+						safedir == True
+						break;
+						
+				else:
+					print("Already at highest directory")
+					time.sleep(3)
+					break;
+			if auto != 0:
+				auto = 0
+			else: pass
+			if expl.file == "///?":
+				print("Type names from here to enter/select files and folders.")
+				time.sleep(5)
+			elif expl.file == "///exit":
+				if allowexit == 1:
+					return 1;
+				else:
+					print("Operation not completed!")
+					time.sleep(5)
+			elif expl.file != "///s":
+				o = False
+				found = 0
+				arraypos = 0
+				possibles = []
+				if validate(expl.path) == False:
+					auto = 1
+					expl.file = ".."
+				else:
+					array = os.listdir(expl.path)
+					arraylen = len(array)
+					while arraypos < arraylen:
+						if array[arraypos] == expl.file:
+							possibles.append(array[arraypos])
+							found = found + 1
+						arraypos = arraypos + 1
+					if found == 2:
+						if tofinishop == 1 or rtnofiles == 1:
+							which = 1
+						elif rtnofolders == 1:
+							which = 0
+						else:
+							which = int(input("Please enter 1 for the folder, 0 for the file."))
+							while which != 1 or which != 0:
+								which = which - 2
+						del possibles[which]
+						found = 1
+					else: pass
+					if found == 1:
+						expl.newpath = expl.path + possibles[0]
+						if validate(expl.path) == False:
+							auto = 1
+							expl.file = ".."
+						else:
+							file = 0
+							if os.path.exists(expl.newpath) == False:
+								file = 1
+								try:
+									open(expl.newpath, "a")
+								except(IOError, OSError):
+									file = 2
+							else:
+								try:
+									os.listdir(expl.newpath + "/")
+								except(IOError, OSError):
+									file = 3
+							if file != 0 and tofinishop == 1:
+								file = 4
+								print("Please select a (valid) folder to complete the operation.")
+								time.sleep(3)
+							if file == 2:
+								print("Could not access file!")
+								time.sleep(3)
+							elif file == 3:
+								print("Could not access folder!")
+								time.sleep(3)
+							elif file == 1:
+								if rtnofiles != 1:
+									return expl.newpath;
+								o = True
+							elif file == 0:
+								expl.path = expl.newpath + "/"
+								if tofinishop == True or rtnofolders == 0:
+									return expl.path;
+							if file == 0 and expl.file == "///o":
+								o = True
+					elif found == 0:
+						print("No such file or directory found!")
+			elif expl.file == "///s":
+				o = True
+			else: pass
+			if o == True:
+				while op != 7:
+					if expl.file == "///s":
+						op = 0
+					else:
+						print("\n" + expl.path + "\n")
+						print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder")
+					if op == 0 and expl.file == "///s":
+						search = searchpath(input("Please enter the characters to search for."), expl.path, int(input("Please enter 1 to exlude this name, or 0 to include it.")), int(input("Please enter 1 to only include results with the characters at the end, or 0 to not.")), int(input("Please enter 1 to include folders, or 0 to not.")), int(input("Please enter 1 to include files, or 0 to not,")))
+						if search == "INVALID<>":
+							print("Folder could not be accessed or no return was selected.")
+							time.sleep(3)
+							break;
+						elif searchpath.rtfiles == 1 and searchpath.rtfolders == searchpath.files:
+							if search == "None" or (len(search) == 1 and search[0] == "END_OF_ARRAY<>"):
+								print(search)
+							else:
+								print("Files:")
+								for i in range(0, len(search) - 1):
+									if search[i] != "END_OF_ARRAY<>":
+										print( i + " = " + search[i])
+									elif searchpath.rtfolders == 1:
+										endfiles = i - 1
+										j = i + 1
+										print("Folders:")
+										for k in range(j, len(search) - 1):
+											print(k + " = " + search[k])
+										break;
+					elif op == 1:
+						confirm = input("Please enter 1 to confirm delete.")
+						if confirm == 1:
+							if file == 0:
+								try:
+									shutil.rmtree(expl.path)
+								except(IOError, OSError) as e:
+									print(e)
+							else:
+								try:
+									os.remove(expl.newpath)
+								except(IOError, OSError) as f:
+									print(f)
+					elif op == 2:
+						if file == 1:
+							print("Cannot create files/folders inside files!")
+						else:
+							oq = int(input("1 = Make a folder\n2 = Make a file\nPlease enter the number of the object you would like to create."))
+							class create:
+								if oq == 1:
+									typ = "folder"
+								elif oq == 2:
+									typ = "file"
+								newname = input("Please enter the name of your new " + typ)
+							if oq == 1:
+								try:
+									os.mkdir(create.newname)
+								except(IOError, OSError) as g:
+									print(g)
+							elif oq == 2:
+								try:
+									open(create.newname, "a")
+								except(IOError, OSError) as h:
+									print(h)
+					elif op == 6:
+						if tofinishop == 1:
+							return expl.path;
+						break;
+							
+
+			
 del sys.path[syslen]
+	

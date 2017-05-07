@@ -223,11 +223,11 @@ try:
 			LolexToolsMethods.androidpage(page, menusettings.layout)
 		modewanted = int(input("Please enter the number of the mode that you want."))
 		if useros == "Windows":
-			maxmode = 25
+			maxmode = 27
 		elif useros == "Linux":
-			maxmode = 17
+			maxmode = 27 # 17
 		elif useros == "Android":
-			maxmode = 15
+			maxmode = 27 # 15
 		while modewanted > maxmode:
 			modewanted = modewanted - maxmode
 		while modewanted < 1:
@@ -392,6 +392,9 @@ try:
 				page = page + 1
 			else:
 				page = 0
+		elif modewanted == 27:
+			path = os.getcwd()
+			LolexToolsMethods.explorer(0, 1,0, 0, "/sdcard/" ,1)
 		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			print(page)
 			if page > 0:
@@ -422,7 +425,7 @@ except(IOError) as d:
 	print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(d)
 	time.sleep(10)
-except(NameError) as e:
+except() as e:
 	print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(e)
 	time.sleep(10)
