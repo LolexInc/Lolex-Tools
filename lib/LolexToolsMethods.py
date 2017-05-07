@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, time, py_compile, shutil, sys, platform, threading, subprocess
+import os, time, py_compile, shutil, sys, platform, threading, subprocess, glob
 syslen = len(sys.path)
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 if platform.system() == "Windows":
@@ -459,6 +459,29 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		if found == False:
 			os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)
+def dirdisc(rtfiles, rtfolders, path):
+	path = correctpath(path)
+	files = []
+	folders = []
+	if validate(path) == True:
+		array = glob.glob(path + "*") + glob.glob(path + "*/")
+		for i in range(0, len(array) - 1):
+			if validate(array[i]) == True:
+				folders.append(array[i])
+			elif validatefile(array[i]) == True:
+				files.append(array[i])
+		if rtfiles == 1 and rtfolders == 1:
+			files.append("END_OF_ARRAY<>")
+			returns = files + folders
+			return returns;
+		elif rtfiles == 1:
+			return files;
+		elif rtfolders == 1:
+			return folders;
+		else:
+			return "None";
+	else:
+		return "INVALID<>";
 def correctfile(path):
 	slash = "\\"
 	if len(path) > 2:
@@ -480,12 +503,11 @@ def validatefile(path):
 		valid = False
 	return valid;
 def correctpath(path):
-	print("Correcting...")
 	slash = "\\"
 	class zz:
 		p = path
 	if len(zz.p) > 2:
-		if zz.p[len(zz.p) - 1] != "/" and (zz.p[len(zz.p) - 1] + zz.p[len(zz.p) - 2] != "\\"):
+		if zz.p[len(zz.p) - 1] != "/" and (zz.p[len(zz.p) - 1] + zz.p[len(zz.p) - 1] != slash[0]):
 			zz.p = zz.p + "/"
 		zz.p = zz.p.replace(slash[0], "/")
 		if zz.p[0] == "." and zz.p[1] == "/":
@@ -539,7 +561,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				expl.file == ".."
 				auto = 1
 			if auto == 0:
-				#os.system(clear)
+				os.system(clear)
 				print("\n " + expl.path + "\n")
 				if otext == 0:
 					otext = "Start/finish operations on this folder"
@@ -590,7 +612,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 						if y == True:
 							safedir == True
 							break;
-						
 				else:
 					print("Already at highest directory")
 					time.sleep(3)
