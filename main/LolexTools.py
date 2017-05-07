@@ -223,11 +223,11 @@ try:
 			LolexToolsMethods.androidpage(page, menusettings.layout)
 		modewanted = int(input("Please enter the number of the mode that you want."))
 		if useros == "Windows":
-			maxmode = 27
+			maxmode = 26
 		elif useros == "Linux":
-			maxmode = 27 # 17
+			maxmode = 18
 		elif useros == "Android":
-			maxmode = 27 # 15
+			maxmode = 16
 		while modewanted > maxmode:
 			modewanted = modewanted - maxmode
 		while modewanted < 1:
@@ -395,7 +395,6 @@ try:
 				page = page + 1
 			else:
 				page = 0
-		
 		elif (modewanted == 26 and useros == "Windows") or (modewanted == 18 and useros == "Linux") or (modewanted == 16 and useros == "Android") and menusettings.layout == 1:
 			print(page)
 			if page > 0:
