@@ -425,7 +425,7 @@ except(IOError) as d:
 	print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(d)
 	time.sleep(10)
-except() as e:
+except(NameError) as e:
 	print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 	print(e)
 	time.sleep(10)
