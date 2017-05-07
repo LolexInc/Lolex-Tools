@@ -391,7 +391,7 @@ try:
 			LolexToolsMethods.explorer(0, 1, 1, 0, "/" , 1)
 		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			print(page)
-			if (page < 5 and useros == "Windows") or (page < 2 and (useros == "Linux" or useros == "Android")):
+			if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2)):
 				page = page + 1
 			else:
 				page = 0
@@ -402,7 +402,9 @@ try:
 			else:
 				if useros == "Windows":
 					page = 5
-				elif useros == "Linux" or useros == "Android":
+				elif useros == "Linux":
+					page = 3
+				elif useros == "Android":
 					page = 2
 		elif (modewanted == 22 and useros == "Windows") or (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
 			print("Exiting...")
