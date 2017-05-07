@@ -118,7 +118,7 @@ def windowspage(page, layout):
 	elif page == 5:
 		print("EXPERIMENTAL FEATURES:")
 		print("23 = Update")
-		print("24 = Start File Explorer")
+		print("24 = Start File Explorer\n")
 	if layout == 1:
 			print("25 = Next Page")
 			print("26 = Back a Page")
@@ -154,7 +154,7 @@ def linuxpage(page, layout):
 			print("15 = Exit")
 	elif page == 3:
 		print("EXPERIMENTAL FEATURES:")
-		print("16 = Start File Explorer")
+		print("16 = Start File Explorer\n")
 	if layout == 1:
 		print("17 = Next Page")
 		print("18 = Back a Page")
@@ -185,7 +185,7 @@ def androidpage(page, layout):
 		if exitsettings.hidden == False:
 			print("13 = Exit")
 		print("EXPERIMENTAL FEATURES:")
-		print("14 = Start File Explorer")
+		print("14 = Start File Explorer\n")
 	if layout == 1:
 		print("15 = Next Page")
 		print("16 = Back a Page")
