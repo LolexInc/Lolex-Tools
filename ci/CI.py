@@ -12,7 +12,6 @@ sys.path.append("./lib")
 from LolexToolsMethods import dirdisc
 print("CI version 1.8.0.1")
 files = dirdisc(1, 0, "./lolexorg/lolex-tools")
-print(files)
 flen = len(files)
 arraypos = 0
 print("Compiling...")
