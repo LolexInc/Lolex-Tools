@@ -7,7 +7,8 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, time, py_compile, shutil, sys, platform, threading, subprocess, glob
+import os, time, py_compile, shutil, sys, platform, threading, subprocess
+from glob import glob
 syslen = len(sys.path)
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 if platform.system() == "Windows":
@@ -462,26 +463,33 @@ def bak(name, path, reinstall, attrestore, regenerate):
 def dirdisc(rtfiles, rtfolders, path):
 	path = correctpath(path)
 	files = []
-	folders = []
+	folders = [path]
+	fullfolders = []
 	if validate(path) == True:
-		array = glob.glob(path + "*") + glob.glob(path + "*/")
-		for i in range(0, len(array) - 1):
-			if validate(array[i]) == True:
-				folders.append(array[i])
-			elif validatefile(array[i]) == True:
-				files.append(array[i])
-		if rtfiles == 1 and rtfolders == 1:
-			files.append("END_OF_ARRAY<>")
-			returns = files + folders
-			return returns;
-		elif rtfiles == 1:
-			return files;
-		elif rtfolders == 1:
-			return folders;
-		else:
-			return "None";
+		while len(a.folders) != 0:
+			a.folders[0] = correctpath(a.folders[0])
+			class b:
+				cont = os.listdir(a.folders[0])
+			while len(b.cont) != 0:
+				if validate(a.folders[0] + b.cont[0]) == True:
+					patha = correctpath(a.folders[0] + b.cont[0])
+					a.folders.append(patha)
+					a.fullfolders.append(patha)
+				elif validatefile(a.folders[0] + b.cont[0]) == True:
+					patha = correctfile(a.folders[0] + b.cont[0])
+					a.files.append(patha)
 	else:
 		return "INVALID<>";
+	if rtfiles == 1 and rtfolders == 1:
+		files.append("END_OF_ARRAY<>")
+		returns = files + folders
+		return returns;
+	elif rtfiles == 1:
+		return files;
+	elif rtfolders == 1:
+		return folders;
+	else:
+		return "None";
 def correctfile(path):
 	slash = "\\"
 	if len(path) > 2:

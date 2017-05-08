@@ -7,45 +7,11 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, py_compile
-print("CI version 1.7.2")
-folders = []
-files = []
-root = os.listdir("./../")
-arraypos = 0
-filesl = 0
-while arraypos < len(root):
-	if (".git" in root[arraypos]) == False:
-		if "." in root[arraypos]:
-			length = len(root[arraypos])
-			p = root[arraypos][length - 2]
-			y = root[arraypos][length - 1]
-			dot = root[arraypos][length - 3]
-			if p == "p" and y == "y" and dot == ".":
-				files.append("./../" + root[arraypos])
-		else:
-			folders.append("./../" + root[arraypos])
-	arraypos = arraypos + 1
-arraypos = 0
-print(folders)
-while arraypos<len(folders):
-	path = folders[arraypos] + "/"
-	currsub = os.listdir(path)
-	tarraypos = 0
-	sublen = len(currsub)
-	while tarraypos<sublen:
-		if (".git" in currsub[tarraypos]) == False:
-			if "." in currsub[tarraypos]:
-				clen = len(currsub[tarraypos])
-				p = currsub[tarraypos][clen - 2]
-				y = currsub[tarraypos][clen - 1]
-				dot = currsub[tarraypos][clen - 3]
-				if p == "p" and y == "y" and dot == ".":
-					files.append(path + currsub[tarraypos])
-			else:
-				folders.append(path + currsub[tarraypos])
-		tarraypos = tarraypos + 1
-	arraypos = arraypos + 1
+import os, py_compile, sys
+sys.path.append("./lib")
+from LolexToolsMethods import dirdisc
+print("CI version 1.8.0")
+files = dirdisc(1, 0, "./")
 print(files)
 flen = len(files)
 arraypos = 0
