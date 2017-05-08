@@ -462,9 +462,10 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			exit(0)
 def dirdisc(rtfiles, rtfolders, path):
 	path = correctpath(path)
-	files = []
-	folders = [path]
-	fullfolders = []
+	class a:
+		files = []
+		folders = [path]
+		fullfolders = []
 	if validate(path) == True:
 		while len(a.folders) != 0:
 			a.folders[0] = correctpath(a.folders[0])
