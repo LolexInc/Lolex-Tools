@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import sys, time, subprocess, os, shutil, py_compile, platform, zipfile
+import sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
 sys.path.append("./lib/")
 system = platform.system()
 if system == "Windows":
@@ -20,24 +20,28 @@ except(ImportError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
 	exit(0)
-optionsfiles = ["verifonboot", "menusettings", "restartsettings", "logoffsettings", "hibernatesettings", "exitsettings", "shutdownsettings", "pyshellsettings", "foldercreatesettings", "exfoldersettings", "addfilesettngs", "scriptloopsettings", "mathmodesettings", "scriptlocksettings", "theme", "menusetings"]
-try:
-    sys.path.append("./")
-    import menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-except(ImportError):
-        pass
+class options
+	optionsfiles = ["verifonboot", "menusettings", "restartsettings", "logoffsettings", "hibernatesettings", "exitsettings", "shutdownsettings", "pyshellsettings", "foldercreatesettings", "exfoldersettings", "addfilesettngs", "scriptloopsettings", "mathmodesettings", "scriptlocksettings", "theme", "menusetings"]
+	arraypos = 0
+sys.path.append("./")
+while options.arraypos < len(options.optionsfiles):
+	if os.path.exists("./" + options.optionsfiles[options.arraypos] + ".py") or os.path.exists("./" + options.optionsfiles[options.arraypos] + ".pyc"):
+		a = LolexToolsMethods.validatefile("./" + options.optionsfiles[options.arraypos] + ".py")
+		b = LolexToolsMethods.validatefile("./" + options.optionsfiles[options.arraypos] + ".pyc")
+		if a == True:
+			importlib.import_module(options.optionsfiles[options.arraypos] + ".py")
+		elif b == True:
+			importlib.import_module(options.optionsfiles[options.arraypos] + ".pyc")
+		else:
+			LolexToolsMethods.bak(options.optionsfiles[options.arraypos], 0, 0, 0, 1)
+			importlib.import_module(options.optionsfiles[options.arraypos] + ".py")
 try:
 	sys.path.append("./")
-	import LolexToolsOptions, runningsys, startplugins, theme, patches
+	import LolexToolsOptions, runningsys, startplugins, patches
 except(ImportError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)
-try:
-        import verifonboot
-except(ImportError):
-        LolexToolsMethods.bak("verifonboot", 0, 0, 0, 1)
-        import verifonboot
 try:
 	import madeon
 	LolexToolsOptions.compiledon = madeon.compiledon
