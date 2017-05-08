@@ -444,7 +444,7 @@ try:
      with open ("./scriptlocksettings.py","a") as outf: outf.write("hidden = False")
      with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00101")
      array = os.listdir("./")
-	for i in range(0, len(array) - 1):
+	 for i in range(0, len(array) - 1):
 		if array[i].endswith("settings.py"):
 			py_compile.compile(array[i])
 			os.remove(array[i])
