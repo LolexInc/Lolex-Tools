@@ -27,7 +27,7 @@ except(ImportError):
         pass
 try:
 	sys.path.append("./")
-	import LolexToolsOptions, runningsys, startplugins, theme
+	import LolexToolsOptions, runningsys, startplugins, theme, patches
 except(ImportError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
@@ -43,6 +43,10 @@ try:
 except(ImportError):
 	pass
 fail = False
+try:
+	import requiredpatches
+except(ImportError):
+	print("Required file missing.")
 if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:
 		if os.system (LolexToolsMethods.py + "update" + LolexToolsMethods.s + "83" + LolexToolsMethods.s + "8.3release.py") != 0:
@@ -59,6 +63,15 @@ if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 9.00101:
 		if os.system(LolexToolsMethods.py +  "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann4.py") != 0:
 			fail = True
+	arraypos = 1
+	if len(patches.applied) != len(requiredpatches.patches):
+		arraypos = (len(requiredpatches.patches) - len(patches.applied))
+		while arraypos < len(requiredpatches.patches):
+			if os.system(LolexToolsMethods.pyo + "." + requiredpatches.patches[arraypos]  + ".py") != 0:
+				print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
+				time.sleep(5)
+				exit(0)
+			arraypos = arraypos + 1
 	if fail == True:
 		print("Couldn't update: files missing!")
 		exit(0)
