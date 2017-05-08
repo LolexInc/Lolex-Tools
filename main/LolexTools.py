@@ -34,7 +34,10 @@ while options.arraypos < len(options.optionsfiles):
 			importlib.import_module(options.optionsfiles[options.arraypos] + ".pyc")
 		else:
 			LolexToolsMethods.bak(options.optionsfiles[options.arraypos], 0, 0, 0, 1)
-			importlib.import_module(options.optionsfiles[options.arraypos] + ".py")
+			if LolexToolsOptions.compiledon != True:
+				importlib.import_module(options.optionsfiles[options.arraypos] + ".py")
+			else:
+				importlib.import_module(options.optionsfiles[options.arraypos] + ".pyc")
 try:
 	sys.path.append("./")
 	import LolexToolsOptions, runningsys, startplugins, patches

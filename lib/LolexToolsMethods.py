@@ -396,10 +396,8 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			with open ("./" + name + ".py", "a") as outf: outf.write("hidden = False")
 		else:
 			with open ("./menusettings.py", "a") as outf: outf.write("layout = 0")
-		with open ("./compile.py", "a") as outf:
-			outf.write("name = '")
-			outf.write(str(name))
-			outf.write("'")
+		if LolexToolsOptions.compiler == True:
+			compiler(name + ".py")
 		os.system(py + ".." + s + "main" + s + "LolexTools.py")
 		exit(None)
 	elif name == "verifonboot":
@@ -439,10 +437,8 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		# will add ability to add plugins at some point
 		with open ("./startplugins.py", "a") as outf: pass
 	if name == "verifonboot" or name == "theme" or name == "startplugins":
-		with open ("./compile.py", "a") as outf:
-			outf.write("name = '")
-			outf.write(str(name))
-			outf.write("'")
+		if LolexToolsOptions.compiler == True:
+			compiler(name + ".py")
 		os.system(py + "main" + s + "LolexTools.py")
 		exit(None)
 	elif attrestore == 1:
@@ -456,10 +452,8 @@ def bak(name, path, reinstall, attrestore, regenerate):
 				if name + ".pyc" in currsub[tarraypos] and (".pycnotpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])) in currsub[tarraypos]) == False:
 					found = True
 					os.rename("./Backup" + backup[arraypos] + cursub[tarraypos], "./" + name + ".pyc")
-					with open ("./compile.py", "a") as outf:
-						outf.write("name = '")
-						outf.write(str(name))
-						outf.write("'")
+					if LolexToolsOptions.compiler == True:
+						compiler(name + ".py")
 					os.system(py + "main" + s + "LolexTools.py")
 					exit(None)
 		if found == False:
