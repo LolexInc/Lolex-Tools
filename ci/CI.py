@@ -11,7 +11,7 @@ import os, py_compile, sys
 sys.path.append("./lib")
 from LolexToolsMethods import dirdisc
 print("CI version 1.8.0.1")
-files = dirdisc(1, 0, "./")
+files = dirdisc(1, 0, "./lolexorg/lolex-tools")
 print(files)
 flen = len(files)
 arraypos = 0
@@ -19,13 +19,7 @@ print("Compiling...")
 while arraypos<flen:
 	currfile = files[arraypos]
 	aarraypos = 0
-	py_compile.compile(currfile)
-	while aarraypos < len(currfile):
-		if currfile[aarraypos] == "." and currfile[aarraypos  + 1] == "." and currfile[aarraypos + 2] == "/":
-			del currfile[aarraypos]
-			del currfile[aarraypos + 1]
-			del currfile[aarraypos + 2]
-		else:
-			aarraypos = aarraypos + 3
-	print("Successfully compiled " + (str(currfile)))
+	if currfile.endswith(".py"):
+		py_compile.compile(currfile)
+		print("Successfully compiled " + (str(currfile)))
 	arraypos = arraypos + 1
