@@ -10,7 +10,7 @@
 import os, py_compile, sys
 sys.path.append("./lib")
 from LolexToolsMethods import dirdisc
-print("CI version 1.8.0")
+print("CI version 1.8.0.1")
 files = dirdisc(1, 0, "./")
 print(files)
 flen = len(files)

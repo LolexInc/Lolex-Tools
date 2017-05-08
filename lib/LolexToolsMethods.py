@@ -479,6 +479,8 @@ def dirdisc(rtfiles, rtfolders, path):
 				elif validatefile(a.folders[0] + b.cont[0]) == True:
 					patha = correctfile(a.folders[0] + b.cont[0])
 					a.files.append(patha)
+				del b.cont[0]
+			del a.folders[0]
 	else:
 		return "INVALID<>";
 	if rtfiles == 1 and rtfolders == 1:
@@ -488,7 +490,7 @@ def dirdisc(rtfiles, rtfolders, path):
 	elif rtfiles == 1:
 		return files;
 	elif rtfolders == 1:
-		return folders;
+		return fullfolders;
 	else:
 		return "None";
 def correctfile(path):
