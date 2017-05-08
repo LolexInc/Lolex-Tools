@@ -485,12 +485,12 @@ def dirdisc(rtfiles, rtfolders, path):
 		return "INVALID<>";
 	if rtfiles == 1 and rtfolders == 1:
 		files.append("END_OF_ARRAY<>")
-		returns = files + folders
+		returns = a.files + a.fullfolders
 		return returns;
 	elif rtfiles == 1:
-		return files;
+		return a.files;
 	elif rtfolders == 1:
-		return fullfolders;
+		return a.fullfolders;
 	else:
 		return "None";
 def correctfile(path):
