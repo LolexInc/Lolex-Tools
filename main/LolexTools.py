@@ -20,7 +20,7 @@ except(ImportError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
 	exit(0)
-class options
+class options:
 	optionsfiles = ["verifonboot", "menusettings", "restartsettings", "logoffsettings", "hibernatesettings", "exitsettings", "shutdownsettings", "pyshellsettings", "foldercreatesettings", "exfoldersettings", "addfilesettngs", "scriptloopsettings", "mathmodesettings", "scriptlocksettings", "theme", "menusetings"]
 	arraypos = 0
 sys.path.append("./")
