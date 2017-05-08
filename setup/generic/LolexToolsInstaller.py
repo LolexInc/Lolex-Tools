@@ -444,10 +444,10 @@ try:
      with open ("./scriptlocksettings.py","a") as outf: outf.write("hidden = False")
      with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00101")
      array = os.listdir("./")
-	 for i in range(0, len(array) - 1):
-		if array[i].endswith("settings.py"):
-			py_compile.compile(array[i])
-			os.remove(array[i])
+     for i in range(0, len(array) - 1):
+         if array[i].endswith("settings.py"):
+              py_compile.compile(array[i])
+              os.remove(array[i])
      try:
               start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
               print("Thank you for using Lolex-Tools Installer.")
