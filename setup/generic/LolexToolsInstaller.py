@@ -12,7 +12,7 @@ syslen = len(sys.path)
 sys.path.append("./lib/")
 print("Importing...")
 import LolexToolsMethods
-print("This installer uses the following modules:sys, time, os, shutil, platform, LolexToolsMethods")
+print("This installer uses the following modules: sys, time, os, shutil, platform, LolexToolsMethods")
 if sys.version_info.major !=3:
      print("Only Python 3 is currently supported. Please install Python 3.")
      os.system("python3 LolexToolsInstaller.py")
@@ -106,7 +106,6 @@ try:
               twowords = 0
               twowordwait = 0
      if useusername == True:
-              print("If your script instance crashes in this bit, enclose your username in speech marks\nThis crash is known to happen on the Python 3.4.1 shell.")
               username1 = input("Please set your username.")
               confirm = input("Please confirm your username.")
               while username1 != confirm:
@@ -309,7 +308,6 @@ try:
                        print("8 - Dark Gray")
                        print("9 - Dark Neon Blue")
                        print("The first colour will set the background colour, the second the text. Please enter color then your colour code.")
-                       print("If any crashes occur try enclosing your colour code in speech marks.")
                        theme = input("Please set your theme.")
                        os.system(theme)
               else:
@@ -340,7 +338,6 @@ try:
               compiler = False
      if twowords<2:
               twoswapwords = False
-      
      with open("./theme.py","a") as outf:
               print("Writing theme...", theme)
               outf.write('theme = ("')
