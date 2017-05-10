@@ -9,7 +9,7 @@
 ## authors = Monkeyboy2805
 import sys
 syslen = len(sys.path)
-sys.path.append("./../../")
+sys.path.append("./")
 import os, LolexToolsMethods
 try:
 	import verifonboot, LolexToolsOptions
@@ -18,23 +18,23 @@ except(ImportError):
 	if system == "Windows":
 		if platform.system() == "Windows":
 			if sys.version_info.minor>5:
-				os.system("py .\..\..\LolexTools.py")
+				os.system("py .\LolexTools.py")
 			else:
-				os.system("python .\..\..\LolexTools.py")
+				os.system("python .\LolexTools.py")
 		else:
-			os.system("python3 ./../../LolexTools.py")
+			os.system("python3 ./LolexTools.py")
 	elif system == "Linux":
-		os.system("python3 ./../../LolexToolsInstaller.py")
+		os.system("python3 ./LolexToolsInstaller.py")
 	exit(0)
 try:
-    os.remove("./../../verifonboot.py")
+    os.remove("./verifonboot.py")
 except(IOError, OSError):
     pass
 try:
-    os.remove("./../../verifonboot.pyc")
+    os.remove("./verifonboot.pyc")
 except(IOError, OSError):
     pass
-with open ("./../../verifonboot.py","a") as outf:
+with open ("./verifonboot.py","a") as outf:
     outf.write("compiledon = 9.00001002")
     if LolexToolsOptions.onepintotal>1:
         outf.write("oneswappins = True\nruntimeone = ")
@@ -60,8 +60,9 @@ if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("verifonboot")
 print("Finished updating to 9.0nann3...")
 try:
-    os.remove("./../../madeon.py")
+    os.remove("./madeon.py")
 except(IOError, OSError):
     pass
-with open("./../../madeon.py", "a") as outf: outf.write("compiledon = 9.0001");
+with open("./madeon.py", "a") as outf: outf.write("compiledon = 9.0001");
 del sys.path[syslen]
+print("Finished updating to 9.0nann3")
