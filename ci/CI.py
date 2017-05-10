@@ -20,7 +20,7 @@ while arraypos<flen:
 	y = len(currfile) - 1
 	p = len(currfile) - 2
 	dot = len(currfile) - 3
-	if currfile[y] == "y" and currfile[p] == "p" and currfile[dot] == ".":
+	if ".py" in currfile:
 		print("Successfully compiled " + (str(currfile)))
 		py_compile.compile(currfile)
 	arraypos = arraypos + 1
