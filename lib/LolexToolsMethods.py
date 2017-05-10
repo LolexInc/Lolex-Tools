@@ -466,7 +466,7 @@ def dirdisc(rtfiles, rtfolders, path):
 		files = []
 		folders = [path]
 		fullfolders = []
-	if sys.version_info.minor < 5:
+	if True:
 		if validate(path) == True:
 			while len(a.folders) != 0:
 				a.folders[0] = correctpath(a.folders[0])
@@ -484,25 +484,6 @@ def dirdisc(rtfiles, rtfolders, path):
 				del a.folders[0]
 		else:
 			return "INVALID<>";
-	else:
-		fullfolders = glob("./**/", recursive = True)
-		files = glob("./**/*", recursive = True)
-		print(fullfolders)
-		print(files)
-		a.fullfolders = fullfolders
-		a.files = files
-		arraypos = 0
-		while arraypos < len(a.fullfolders):
-			if validate(a.fullfolders[arraypos]) == False:
-				del a.fullfolders[arraypos]
-				arraypos = arraypos - 1
-			arraypos = arraypos + 1
-		arraypos = 0
-		while arraypos < len(a.files):
-			if validatefile(a.files[arraypos]) == False:
-				del a.files[arraypos]
-				arraypos = arraypos - 1
-			arraypos = arraypos + 1
 	if rtfiles == 1 and rtfolders == 1:
 		files.append("END_OF_ARRAY<>")
 		returns = a.files + a.fullfolders
