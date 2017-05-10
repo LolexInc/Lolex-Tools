@@ -489,7 +489,8 @@ def dirdisc(rtfiles, rtfolders, path):
 		files = glob("./**/*", recursive = True)
 		print(fullfolders)
 		print(files)
-			
+		a.fullfolders = fullfolders
+		a.files = files
 		arraypos = 0
 		while arraypos < len(a.fullfolders):
 			if validate(a.fullfolders[arraypos]) == False:
