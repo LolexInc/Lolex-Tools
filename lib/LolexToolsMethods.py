@@ -466,23 +466,39 @@ def dirdisc(rtfiles, rtfolders, path):
 		files = []
 		folders = [path]
 		fullfolders = []
-	if validate(path) == True:
-		while len(a.folders) != 0:
-			a.folders[0] = correctpath(a.folders[0])
-			class b:
-				cont = os.listdir(a.folders[0])
-			while len(b.cont) != 0:
-				if validate(a.folders[0] + b.cont[0]) == True:
-					patha = correctpath(a.folders[0] + b.cont[0])
-					a.folders.append(patha)
-					a.fullfolders.append(patha)
-				elif validatefile(a.folders[0] + b.cont[0]) == True:
-					patha = correctfile(a.folders[0] + b.cont[0])
-					a.files.append(patha)
-				del b.cont[0]
-			del a.folders[0]
+	if sys.version_info.minor < 5:
+		if validate(path) == True:
+			while len(a.folders) != 0:
+				a.folders[0] = correctpath(a.folders[0])
+				class b:
+					cont = os.listdir(a.folders[0])
+				while len(b.cont) != 0:
+					if validate(a.folders[0] + b.cont[0]) == True:
+						patha = correctpath(a.folders[0] + b.cont[0])
+						a.folders.append(patha)
+						a.fullfolders.append(patha)
+					elif validatefile(a.folders[0] + b.cont[0]) == True:
+						patha = correctfile(a.folders[0] + b.cont[0])
+						a.files.append(patha)
+					del b.cont[0]
+				del a.folders[0]
+		else:
+			return "INVALID<>";
 	else:
-		return "INVALID<>";
+		a.fullfolders = glob("./**/", recursive = True)
+		a.files = glob("./**/*", recursive = True)
+		arraypos = 0
+		while arraypos < len(a.fullfolders):
+			if validate(a.fullfolders[arraypos]) == False:
+				del a.fullfolders[arraypos]
+				arraypos = arraypos - 1
+			arraypos = arraypos + 1
+		arraypos = 0
+		while arraypos < len(a.files):
+			if validatefile(a.files[arraypos] == False:
+				del a.files[arraypos]
+				arraypos = arraypos - 1
+			arraypos = arraypos + 1
 	if rtfiles == 1 and rtfolders == 1:
 		files.append("END_OF_ARRAY<>")
 		returns = a.files + a.fullfolders
