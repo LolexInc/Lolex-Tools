@@ -360,30 +360,6 @@ def modehide(name, state):
 		outf.write("hidden = ")
 		outf.write(str(newstate))
 def bak(name, path, reinstall, attrestore, regenerate):
-	try:
-		os.remove("./compile.py")
-	except(IOError, OSError):
-		pass
-	if path == 0:
-		path = "./"
-	content = os.listdir(path)
-	arraypos = 0
-	found = False
-	while arraypos < len(content):
-		if name + ".pyc" in content[arraypos] and len(content[arraypos]) < len(name) + 5:
-			found = True
-			try:
-				os.mkdir("./Backup")
-			except(IOError, OSError):
-				pass
-			dir1 = ("./Backup/" + (str(ver.version)) + " " + (str(time.time())) + "/" + name + ".pyc.notpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])))
-			os.rename("./" + name + ".pyc", dir1)
-			break;
-		arraypos = arraypos + 1
-	if found == False:
-		print((str(name)) + " not found for backing up.")
-	else:
-		pass
 	if regenerate == 1 and name == "LolexToolsOptions":
 		attrestore = 1
 		regenerate = 0
@@ -399,8 +375,8 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			with open ("./menusettings.py", "a") as outf: outf.write("layout = 0")
 		if LolexToolsOptions.compiler == True:
 			compiler(name + ".py")
-		os.system(py + ".." + s + "main" + s + "LolexTools.py")
-		exit(None)
+		#os.system(py + s + "main" + s + "LolexTools.py")
+		#exit(None)
 	elif name == "verifonboot":
 		import LolexToolsOptions
 		if LolexToolsOptions.onepintotal > 1:
@@ -440,8 +416,8 @@ def bak(name, path, reinstall, attrestore, regenerate):
 	if name == "verifonboot" or name == "theme" or name == "startplugins":
 		if LolexToolsOptions.compiler == True:
 			compiler(name + ".py")
-		os.system(py + "main" + s + "LolexTools.py")
-		exit(None)
+		# os.system(py + "main" + s + "LolexTools.py")
+		#exit(None)
 	elif attrestore == 1:
 		backup = os.listdir("./Backup")
 		arraypos = 0
@@ -455,8 +431,8 @@ def bak(name, path, reinstall, attrestore, regenerate):
 					os.rename("./Backup" + backup[arraypos] + cursub[tarraypos], "./" + name + ".pyc")
 					if LolexToolsOptions.compiler == True:
 						compiler(name + ".py")
-					os.system(py + "main" + s + "LolexTools.py")
-					exit(None)
+					#os.system(py + "main" + s + "LolexTools.py")
+					#exit(None)
 		if found == False:
 			os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)

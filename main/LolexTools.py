@@ -20,25 +20,6 @@ except(ImportError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
 	exit(0)
-class options:
-	optionsfiles = ["verifonboot", "menusettings", "restartsettings", "logoffsettings", "hibernatesettings", "exitsettings", "shutdownsettings", "pyshellsettings", "foldercreatesettings", "exfoldersettings", "addfilesettngs", "scriptloopsettings", "mathmodesettings", "scriptlocksettings", "theme", "menusetings"]
-	arraypos = 0
-sys.path.append("./")
-while options.arraypos < len(options.optionsfiles):
-	if os.path.exists("./" + options.optionsfiles[options.arraypos] + ".py") or os.path.exists("./" + options.optionsfiles[options.arraypos] + ".pyc"):
-		a = LolexToolsMethods.validatefile("./" + options.optionsfiles[options.arraypos] + ".py")
-		b = LolexToolsMethods.validatefile("./" + options.optionsfiles[options.arraypos] + ".pyc")
-		if a == True:
-			importlib.import_module(options.optionsfiles[options.arraypos] + ".py")
-		elif b == True:
-			importlib.import_module(options.optionsfiles[options.arraypos] + ".pyc")
-		else:
-			LolexToolsMethods.bak(options.optionsfiles[options.arraypos], 0, 0, 0, 1)
-			if LolexToolsOptions.compiledon != True:
-				importlib.import_module(options.optionsfiles[options.arraypos] + ".py")
-			else:
-				importlib.import_module(options.optionsfiles[options.arraypos] + ".pyc")
-	options.arraypos = options.arraypos + 1
 try:
 	sys.path.append("./")
 	import LolexToolsOptions, runningsys, startplugins, patches
@@ -46,6 +27,16 @@ except(ImportError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)
+try:
+	import verifonboot, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+except():
+	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
+	exit(0)
+try:
+	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettngs, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
+except(ImportError):
+	pass
+sys.path.append("./")
 try:
 	import madeon
 	LolexToolsOptions.compiledon = madeon.compiledon
@@ -64,7 +55,7 @@ if LolexToolsOptions.compiledon < 9.00001:
 		if os.system(LolexToolsMethods.py +  "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0n1.py") != 0:
 			fail = True
 	if LolexToolsOptions.compiledon < 9.00001:
-		if os.system (LolexToolsMethods.py + "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann2.py"):
+		if os.system (LolexToolsMethods.py + "update" + LolexToolsMethods.s + "90" + LolexTopyolsMethods.s + "9.0nann2.py"):
 			fail = True
 	if LolexToolsOptions.compiledon < 9.0001:
 		if os.system(LolexToolsMethods.py + "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann3.py") != 0:
@@ -74,13 +65,20 @@ if LolexToolsOptions.compiledon < 9.00001:
 			fail = True
 	arraypos = 1
 	if len(patches.applied) != len(requiredpatches.patches):
-		arraypos = (len(requiredpatches.patches) - len(patches.applied))
+		arraypos = (len(requiredpatches.patches) - len(patches.applied)) + 1
 		while arraypos < len(requiredpatches.patches):
 			if os.system(LolexToolsMethods.pyo + "." + requiredpatches.patches[arraypos]  + ".py") != 0:
 				print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
 				time.sleep(5)
 				exit(0)
 			arraypos = arraypos + 1
+		try:
+			os.remove("./patches.py")
+		except(IOError, OSError):
+			pass
+		with open("./patches.py") as outf: 
+			outf.write('applied = ')
+			outf.write((str(requiredpatches.patches)))
 	if fail == True:
 		print("Couldn't update: files missing!")
 		exit(0)
