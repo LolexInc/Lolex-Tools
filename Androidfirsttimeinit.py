@@ -57,11 +57,16 @@ try:
 except(IOError, OSError):
 	pass
 try:
+	os.remove("./requiredpatches.py")
+except(IOError, OSError):
+	pass
+try:
 	local = time.asctime(time.localtime(time.time()))
 	print(local, "    Copying files...")
 	shutil.copy("/sdcard/Lolex-Tools/start.py", "./")
 	shutil.copy("/sdcard/Lolex-Tools/Androidfirsttimeinit.py", "./")
 	shutil.copy("/sdcard/Lolex-Tools/ver.py", "./")
+	shutil.copy("/sdcard/Lolex-Tools/requiredpatches.py", "./")
 	print("Copying folders...")
 	shutil.copytree("/sdcard/Lolex-Tools/ci/" ,"./ci/")
 	shutil.copytree("/sdcard/Lolex-Tools/setup/", "./setup/")
