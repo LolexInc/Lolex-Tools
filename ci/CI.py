@@ -17,9 +17,6 @@ arraypos = 0
 print("Compiling...")
 while arraypos<flen:
 	currfile = files[arraypos]
-	y = len(currfile) - 1
-	p = len(currfile) - 2
-	dot = len(currfile) - 3
 	if currfile.endswith(".py"):
 		print("Successfully compiled " + (str(currfile)))
 		py_compile.compile(currfile)
