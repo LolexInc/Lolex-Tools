@@ -50,6 +50,7 @@ try:
                         else:
                                 if platform.system() == "Linux":
                                         os.system("python3 ./setup/generic/LolexToolsInstaller.py")
+                        exit(0)
                 try:
                         import ver
                         if ver.version <= 8.129211346:
@@ -64,6 +65,7 @@ except(ImportError, IOError, OSError):
                         os.system("python .\setup\generic\LolexToolsInstaller.py")
         else:
                 os.system("python3 ./setup/generic/LolexToolsInstaller.py")
+        exit(0)
 if system == "Windows":
         os.system("TITLE Lolex-Tools")
         os.system("MODE 1000")
