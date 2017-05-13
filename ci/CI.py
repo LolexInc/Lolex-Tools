@@ -13,7 +13,6 @@ folders = []
 files = []
 root = os.listdir("./")
 arraypos = 0
-filesl = 0
 while arraypos < len(root):
 	if (".git" in root[arraypos]) == False:
 		readin = True
@@ -22,7 +21,7 @@ while arraypos < len(root):
 		except(IOError, OSError):
 			readin = False
 		if readin == True:
-			if root[arraypos].endswith(".py"): #and ".pyc" not in root[arraypos]:
+			if root[arraypos].endswith(".py"):
 				files.append("./" + root[arraypos])
 		else: pass
 		if readin == False:
@@ -61,7 +60,6 @@ while arraypos<len(folders):
 					folders.append(path + currsub[tarraypos])
 		tarraypos = tarraypos + 1
 	arraypos = arraypos + 1
-print(files)
 flen = len(files)
 arraypos = 0
 print("Compiling...")
