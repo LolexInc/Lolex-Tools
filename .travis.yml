@@ -4,7 +4,7 @@ python:
 - "3.6"
 - "nightly"
 env:
-- DJANGO_VERSION==1.11
+- DJANGO_VERSION==1.11.1
 install:
 - pip install -q Django=$DJANGO_VERSION 
 script:
