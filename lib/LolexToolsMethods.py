@@ -436,13 +436,12 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		if found == False:
 			os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 			exit(0)
-def dirdisc(rtfiles, rtfolders, path):
-	path = correctpath(path)
+def dirdisc(rtfiles, rtfolders, stpath):
+	stpath = correctpath(stpath)
 	folders = []
 	files = []
-	root = os.listdir("./")
+	root = os.listdir(stpath)
 	arraypos = 0
-	filesl = 0
 	while arraypos < len(root):
 		readin = True
 		try:
@@ -450,7 +449,7 @@ def dirdisc(rtfiles, rtfolders, path):
 		except(IOError, OSError):
 			readin = False
 		if readin == True:
-			files.append("./" + root[arraypos])
+			files.append(stpath + root[arraypos])
 		else: pass
 		if readin == False:
 			readin2 = True
@@ -459,7 +458,7 @@ def dirdisc(rtfiles, rtfolders, path):
 			except(IOError, OSError):
 				readin2 = False
 			if readin2 == True:
-				folders.append("./" + root[arraypos])
+				folders.append(stpath + root[arraypos])
 		arraypos = arraypos + 1
 	arraypos = 0
 	while arraypos<len(folders):
