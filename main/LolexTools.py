@@ -267,6 +267,8 @@ try:
 			maxmode = 18
 		elif useros == "Android":
 			maxmode = 16
+		if menusettings.layout == 0:
+			maxmode = maxmode - 2
 		while modewanted > maxmode:
 			modewanted = modewanted - maxmode
 		while modewanted < 1:
