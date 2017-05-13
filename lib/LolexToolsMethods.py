@@ -442,29 +442,28 @@ def dirdisc(rtfiles, rtfolders, path):
 		files = []
 		folders = [path]
 		fullfolders = []
-	if True:
-		if validate(path) == True:
-			while len(a.folders) != 0:
-				a.folders[0] = correctpath(a.folders[0])
-				class b:
-					readin = True
-					try:
-						cont = os.listdir(a.folders[0])
-					except(IOError):
-						readin = False
-						cont = []
-					if readin == True:
-						cont = os.listdir(a.folders[0])
-				while len(b.cont) != 0:
-					if validate(a.folders[0] + b.cont[0]) == True:
-						patha = correctpath(a.folders[0] + b.cont[0])
-						a.folders.append(patha)
-						a.fullfolders.append(patha)
-					elif validatefile(a.folders[0] + b.cont[0]) == True:
-						patha = correctfile(a.folders[0] + b.cont[0])
-						a.files.append(patha)
-					del b.cont[0]
-				del a.folders[0]
+	if validate(path) == True:
+		while len(a.folders) != 0:
+			a.folders[0] = correctpath(a.folders[0])
+			class b:
+				readin = True
+				try:
+					cont = os.listdir(a.folders[0])
+				except(IOError):
+					readin = False
+					cont = []
+				if readin == True:
+					cont = os.listdir(a.folders[0])
+			while len(b.cont) != 0:
+				if validate(a.folders[0] + b.cont[0]) == True:
+					patha = correctpath(a.folders[0] + b.cont[0])
+					a.folders.append(patha)
+					a.fullfolders.append(patha)
+				elif validatefile(a.folders[0] + b.cont[0]) == True:
+					patha = correctfile(a.folders[0] + b.cont[0])
+					a.files.append(patha)
+				del b.cont[0]
+			del a.folders[0]
 		else:
 			return "INVALID<>";
 	if rtfiles == 1 and rtfolders == 1:
