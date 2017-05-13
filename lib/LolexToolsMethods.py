@@ -438,44 +438,63 @@ def bak(name, path, reinstall, attrestore, regenerate):
 			exit(0)
 def dirdisc(rtfiles, rtfolders, path):
 	path = correctpath(path)
-	class a:
-		files = []
-		folders = [path]
-		fullfolders = []
-	if validate(path) == True:
-		while len(a.folders) != 0:
-			a.folders[0] = correctpath(a.folders[0])
-			class b:
-				readin = True
+	folders = []
+	files = []
+	root = os.listdir("./")
+	arraypos = 0
+	filesl = 0
+	while arraypos < len(root):
+		readin = True
+		try:
+			r = open(root[arraypos], "a")
+		except(IOError, OSError):
+			readin = False
+		if readin == True:
+			files.append("./" + root[arraypos])
+		else: pass
+		if readin == False:
+			readin2 = True
+			try:
+				os.listdir(root[arraypos])
+			except(IOError, OSError):
+				readin2 = False
+			if readin2 == True:
+				folders.append("./" + root[arraypos])
+		arraypos = arraypos + 1
+	arraypos = 0
+	while arraypos<len(folders):
+		path = folders[arraypos] + "/"
+		currsub = os.listdir(path)
+		tarraypos = 0
+		sublen = len(currsub)
+		while tarraypos<sublen:
+			readin3 = True
+			try:
+				r = open(path + currsub[tarraypos])
+			except(IOError, OSError):
+				readin3 = False
+			if readin3 == True:
+				if currsub[tarraypos].endswith(".py"):
+					files.append(path + currsub[tarraypos])
+			else: pass
+			if readin3 == False:
+				readin4 = True
 				try:
-					os.listdir(a.folders[0])
+					os.listdir(path + currsub[tarraypos])
 				except(IOError, OSError):
-					readin = False
-					cont = []
-				if readin == True:
-					cont = os.listdir(a.folders[0])
-			while len(b.cont) != 0:
-				if validate(a.folders[0] + b.cont[0]) == True:
-					b.cont[0] = b.cont[0].replace(b.cont[0], "/" + b.cont[0])
-					b.cont[0] = correctpath(b.cont[0])
-					patha = a.folders[0] + b.cont[0]
-					a.folders.append(patha)
-					a.fullfolders.append(patha)
-				elif validatefile(a.folders[0] + b.cont[0]) == True:
-					b.cont[0] = b.cont[0].replace(b.cont[0], "/" + b.cont[0])
-					b.cont[0] = correctfile(b.cont[0])
-					patha = a.folders[0] + b.cont[0]
-					a.files.append(patha)
-				del b.cont[0]
-			del a.folders[0]
+					readin4 = False
+				if readin4 == True:
+					folders.append(path + currsub[tarraypos])
+			tarraypos = tarraypos + 1
+		arraypos = arraypos + 1
 		if rtfiles == 1 and rtfolders == 1:
-			a.files.append("END_OF_ARRAY<>")
-			returns = a.files + a.fullfolders
+			files.append("END_OF_ARRAY<>")
+			returns = files + folders
 			return returns;
 		elif rtfiles == 1:
-			return a.files;
+			return files;
 		elif rtfolders == 1:
-			return a.fullfolders;
+			return fullfolders;
 		else:
 			return "None";
 	else:
