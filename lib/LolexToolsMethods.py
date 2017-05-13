@@ -448,34 +448,38 @@ def dirdisc(rtfiles, rtfolders, path):
 			class b:
 				readin = True
 				try:
-					cont = os.listdir(a.folders[0])
-				except(IOError):
+					os.listdir(a.folders[0])
+				except(IOError, OSError):
 					readin = False
 					cont = []
 				if readin == True:
 					cont = os.listdir(a.folders[0])
 			while len(b.cont) != 0:
 				if validate(a.folders[0] + b.cont[0]) == True:
-					patha = correctpath(a.folders[0] + b.cont[0])
+					b.cont[0] = b.cont[0].replace(b.cont[0], "/" + b.cont[0])
+					b.cont[0] = correctpath(b.cont[0])
+					patha = a.folders[0] + b.cont[0]
 					a.folders.append(patha)
 					a.fullfolders.append(patha)
 				elif validatefile(a.folders[0] + b.cont[0]) == True:
-					patha = correctfile(a.folders[0] + b.cont[0])
+					b.cont[0] = b.cont[0].replace(b.cont[0], "/" + b.cont[0])
+					b.cont[0] = correctfile(b.cont[0])
+					patha = a.folders[0] + b.cont[0]
 					a.files.append(patha)
 				del b.cont[0]
 			del a.folders[0]
+		if rtfiles == 1 and rtfolders == 1:
+			a.files.append("END_OF_ARRAY<>")
+			returns = a.files + a.fullfolders
+			return returns;
+		elif rtfiles == 1:
+			return a.files;
+		elif rtfolders == 1:
+			return a.fullfolders;
 		else:
-			return "INVALID<>";
-	if rtfiles == 1 and rtfolders == 1:
-		files.append("END_OF_ARRAY<>")
-		returns = a.files + a.fullfolders
-		return returns;
-	elif rtfiles == 1:
-		return a.files;
-	elif rtfolders == 1:
-		return a.fullfolders;
+			return "None";
 	else:
-		return "None";
+		return "INVALID<>";
 def correctfile(path):
 	slash = "\\"
 	if len(path) > 2:
@@ -565,15 +569,18 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					exittext = "Exit file explorer"
 				print("\n\n///o - " + otext + "\n./ - Go to your current working directory\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
 				array = os.listdir(expl.path)
-				for i in range(0, len(array) - 1):
+				for i in range(0, len(array)):
 					print(array[i])
 				expl.file = input("\nSelect/Open (Name): ")
 			if expl.file == "///":
 				pass
 			elif expl.file == "./":
-				expl.path = "./"
+				expl.path = os.getcwd() + "/"
 			elif expl.file == "..":
-				if expl.path != "/":
+				if expl.path != "/" or len(expl.path) == 0:
+					print(len(expl.path))
+					if expl.path[len(expl.path)-1] == "/" and expl.path[len(expl.path)-2] == "/":
+						path = path[:len(expl.path) - 1]
 					safedir = False
 					while safedir == False:
 						slash = False
@@ -607,7 +614,9 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 							safedir == True
 							break;
 				else:
-					print("Already at highest directory")
+					if expl.path == "/":
+						print("Already at highest directory")
+					expl.path = "/"
 					time.sleep(3)
 					break;
 			if auto != 0:
@@ -683,7 +692,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 									return expl.newpath;
 								o = True
 							elif file == 0:
-								expl.path = expl.newpath + "/"
+								expl.path = expl.newpath
 								if tofinishop == True or rtnofolders == 0:
 									return expl.path;
 					elif found == 0:
@@ -692,6 +701,9 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				o = True
 				expl.newpath = expl.path
 			else: pass
+			expl.newpath = correctfile(expl.newpath)
+			if file == 0:
+				expl.newpath = correctpath(expl.newpath)
 			if o == True:
 				op = 0
 				while op != 7:
@@ -733,6 +745,9 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 									print(e)
 									print("Couldn't delete folder.")
 									time.sleep(3)
+								op = 7
+								auto = 1
+								expl.file = ".."
 							else:
 								print("Deleting...")
 								try:
@@ -741,9 +756,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 									print(f)
 									print("Couldn't delete folder.")
 									time.sleep(3)
-							op = 7
-							auto = 1
-							expl.file = ".."
 					elif op == 2:
 						if validatefile(expl.newpath) == True:
 							print("Cannot create files/folders inside files!")
