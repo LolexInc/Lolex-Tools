@@ -447,7 +447,14 @@ def dirdisc(rtfiles, rtfolders, path):
 			while len(a.folders) != 0:
 				a.folders[0] = correctpath(a.folders[0])
 				class b:
-					cont = os.listdir(a.folders[0])
+					readin = True
+					try:
+						cont = os.listdir(a.folders[0])
+					except(IOError):
+						readin = False
+						cont = []
+					if readin == True:
+						cont = os.listdir(a.folders[0])
 				while len(b.cont) != 0:
 					if validate(a.folders[0] + b.cont[0]) == True:
 						patha = correctpath(a.folders[0] + b.cont[0])

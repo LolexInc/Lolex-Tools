@@ -29,13 +29,14 @@ except(ImportError) as e:
 	exit(0)
 try:
 	import verifonboot, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-except(ImportError):
+except(ImportError) as e:
+	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)
 try:
-	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettngs, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
-except(ImportError):
-	pass
+	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
+except(ImportError) as e:
+	print(e)
 sys.path.append("./")
 try:
 	import madeon
@@ -63,9 +64,16 @@ if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 9.00101:
 		if os.system(LolexToolsMethods.py +  "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann4.py") != 0:
 			fail = True
+update = False
 if len(patches.applied) != len(requiredpatches.patches):
-	arraypos = (len(requiredpatches.patches) - len(patches.applied)) + 1
+	arraypos = (len(requiredpatches.patches) - len(patches.applied))
+	update = True
+elif len(patches.applied) == 0:
+	arraypos = 0
+	update = True
+if update == True:
 	while arraypos != len(requiredpatches.patches):
+		print(arraypos)
 		if os.system(LolexToolsMethods.pyo + " ./update" + requiredpatches.patches[arraypos]  + ".py") != 0:
 			print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
 			time.sleep(5)
@@ -77,7 +85,7 @@ if len(patches.applied) != len(requiredpatches.patches):
 		pass
 	with open("./patches.py", "a") as outf: 
 		outf.write('applied = ')
-		outf.write((str(requiredpatches.patches)))
+		outf.write('"/90/9.0nann4", "/90/9.0nann7"')
 	if fail == True:
 		print("Couldn't update: files missing!")
 		exit(0)
