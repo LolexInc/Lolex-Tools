@@ -57,7 +57,8 @@ while arraypos<len(folders):
 					os.listdir(path + currsub[tarraypos])
 				except(IOError, OSError):
 					readin4 = False
-				folders.append(path + currsub[tarraypos])
+				if readin4 == True
+					folders.append(path + currsub[tarraypos])
 		tarraypos = tarraypos + 1
 	arraypos = arraypos + 1
 print(files)
