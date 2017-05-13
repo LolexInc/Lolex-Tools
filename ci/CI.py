@@ -8,7 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import os, py_compile
-print("CI version 1.7.2")
+print("CI version 1.9.0")
 folders = []
 files = []
 root = os.listdir("./")
@@ -16,18 +16,25 @@ arraypos = 0
 filesl = 0
 while arraypos < len(root):
 	if (".git" in root[arraypos]) == False:
-		if "." in root[arraypos]:
-			length = len(root[arraypos])
-			p = root[arraypos][length - 2]
-			y = root[arraypos][length - 1]
-			dot = root[arraypos][length - 3]
-			if p == "p" and y == "y" and dot == ".":
+		readin = True
+		try:
+			r = open(root[arraypos], "a")
+		except(IOError, OSError):
+			readin = False
+		if readin == True:
+			if root[arraypos].endswith(".py"): #and ".pyc" not in root[arraypos]:
 				files.append("./" + root[arraypos])
-		else:
-			folders.append("./" + root[arraypos])
+		else: pass
+		if readin == False:
+			readin2 = True
+			try:
+				os.listdir(root[arraypos])
+			except(IOError, OSError):
+				readin2 = False
+			if readin2 == True:
+				folders.append("./" + root[arraypos])
 	arraypos = arraypos + 1
 arraypos = 0
-print(folders)
 while arraypos<len(folders):
 	path = folders[arraypos] + "/"
 	currsub = os.listdir(path)
@@ -35,14 +42,21 @@ while arraypos<len(folders):
 	sublen = len(currsub)
 	while tarraypos<sublen:
 		if (".git" in currsub[tarraypos]) == False:
-			if "." in currsub[tarraypos]:
-				clen = len(currsub[tarraypos])
-				p = currsub[tarraypos][clen - 2]
-				y = currsub[tarraypos][clen - 1]
-				dot = currsub[tarraypos][clen - 3]
-				if p == "p" and y == "y" and dot == ".":
+			readin3 = True
+			try:
+				r = open(path + currsub[tarraypos])
+			except(IOError, OSError):
+				readin3 = False
+			if readin3 == True:
+				if currsub[tarraypos].endswith(".py"):
 					files.append(path + currsub[tarraypos])
-			else:
+			else: pass
+			if readin3 == False:
+				readin4 = True
+				try:
+					os.listdir(path + currsub[tarraypos])
+				except(IOError, OSError):
+					readin4 = False
 				folders.append(path + currsub[tarraypos])
 		tarraypos = tarraypos + 1
 	arraypos = arraypos + 1
