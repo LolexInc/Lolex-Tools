@@ -451,7 +451,7 @@ def dirdisc(rtfiles, rtfolders, stpath):
 		if readin == True:
 			files.append(stpath + root[arraypos])
 		else: pass
-		if readin == False:
+		if readin == False and os.path.isdir(root[arraypos]) == True:
 			readin2 = True
 			try:
 				os.listdir(root[arraypos])
@@ -461,7 +461,7 @@ def dirdisc(rtfiles, rtfolders, stpath):
 				folders.append(stpath + root[arraypos])
 		arraypos = arraypos + 1
 	arraypos = 0
-	while arraypos<len(folders):
+	while arraypos < len(folders):
 		path = folders[arraypos] + "/"
 		currsub = os.listdir(path)
 		tarraypos = 0
@@ -476,7 +476,7 @@ def dirdisc(rtfiles, rtfolders, stpath):
 				if currsub[tarraypos].endswith(".py"):
 					files.append(path + currsub[tarraypos])
 			else: pass
-			if readin3 == False:
+			if readin3 == False and os.path.isdir(currsub[tarraypos]) == True:
 				readin4 = True
 				try:
 					os.listdir(path + currsub[tarraypos])
@@ -499,48 +499,47 @@ def dirdisc(rtfiles, rtfolders, stpath):
 	else:
 		return "INVALID<>";
 def correctfile(path):
+	print(path)
 	slash = "\\"
+	if path[0] == "." and path[1] == "/":
+			tlen = 2
+			path = correctpath(os.getcwd()) + path[:midlen] + path[midlen + 2:]
 	if len(path) > 2:
 		path = path.replace(slash[0], "/")
 		path = path.replace("//", "/")
-		if path[0] == "." and path[1] == "/":
-			path = path[:0]
-			path = path[:1]
-			path = os.getcwd() + path
+		print(2, path)
+	if path[len(path) - 1] == "/":
+		path = path[:len(path) - 1]
+		print(3, path)
 	return path;
 def validatefile(path):
+	if validate(path) == True:
+		return "WrongFunction";
 	path = correctfile(path)
 	class a:
 		a = path
 	valid = True
 	try:
 		open(a.a, "a")
-	except(IOError, OSError):
+	except(IOError, OSError) as e:
+		print(e)
 		valid = False
 	return valid;
 def correctpath(path):
 	slash = "\\"
-	print(path)
 	class zz:
 		p = path
 	if len(zz.p) > 2:
 		zz.p = zz.p.replace(slash[0], "/")
 		if zz.p[0] == "." and zz.p[1] == "/":
-			zz.p = zz.p[:0]
-			zz.p = zz.p[:1]
-			zz.p = os.getcwd() + zz.p
-		print("2   ", zz.p)
+			tlen = 2
+			zz.p = correctpath(os.getcwd()) + zz.p[:midlen] + zz.p[midlen + 2:]
 		j = 0
 	if zz.p[len(zz.p) - 1] != "/":
 		zz.p = zz.p.replace(zz.p, zz.p + "/")
-		print("1   ", zz.p)
 	if len(zz.p) > 2:
-		print("Replacing...")
 		for i in range(0, len(zz.p) - 1):
 			zz.p = zz.p.replace("//", "/")
-		print("Replaced")
-		print("Final:    ", zz.p)
-	time.sleep(3)
 	return zz.p;
 def validate(path):
 	path = correctpath(path)
@@ -563,10 +562,7 @@ class expl:
 	path = "/"
 	newpath = "/"
 	file = ""
-def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
-	expl.path = path
-	file = 0
-	auto = 0
+	loaded = False
 	if (platform.system() != "Windows" and platform.system() != "Linux"):
 		clear = "<>"
 	elif uos.useros == "Windows":
@@ -574,10 +570,24 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 	elif platform.system() == "Linux":
 		clear = "clear"
 	else: pass
-	if clear == "<>":
+def loading():
+	start = int(1)
+	while expl.loaded == False:
+		print("\n\n\n\n\n\n                      Loading: Large directories may take a while...\n          (" + (str(start)) + ") seconds elapsed.")
+		time.sleep(1)
+		os.system(expl.clear)
+		start = int(start) + int(1)
+		if expl.loaded == True:
+			return;
+def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
+	expl.path = path
+	file = 0
+	auto = 0
+	if expl.clear == "<>":
 		return 1;
 	else:
 		while True:
+			expl.loaded = False
 			o = False
 			expl.path = correctpath(expl.path)
 			y = validate(expl.path)
@@ -585,7 +595,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				expl.file == ".."
 				auto = 1
 			if auto == 0:
-				os.system(clear)
+				os.system(expl.clear)
 				print("\n " + expl.path + "\n")
 				if otext == 0:
 					otext = "Start/finish operations on this folder"
@@ -593,8 +603,12 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					exittext = "You cannot exit until the current operation is complete"
 				else:
 					exittext = "Exit file explorer"
-				print("\n\n///o - " + otext + "\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+				loadingthread = threading.Thread(target=loading, args=[])
+				loadingthread.start()
 				array = os.listdir(expl.path)
+				expl.loaded = True
+				time.sleep(1.5)
+				print("\n\n///o - " + otext + "\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
 				for i in range(0, len(array)):
 					print(array[i])
 				expl.file = input("\nSelect/Open (Name): ")
@@ -791,6 +805,8 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 									typ = "folder"
 								elif oq == int(2):
 									typ = "file"
+								else:
+									typ = "folder"
 								newname = input("Please enter the name of your new " + typ + "  ")
 							if oq == int(1):
 								array.append(create.newname)
