@@ -400,7 +400,8 @@ try:
 			else:
 				print("Not a valid rdp file.")
 		elif modewanted == 19 and useros == "Windows" :
-			subprocess.call("powershell.exe")
+			os.system("start powershell")
+			# may cause hangs if you're not running the scriot in Powershell
 		elif (modewanted == 20 and useros == "Windows") or (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
 			LolexToolsMethods.dumpme()
 		elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
