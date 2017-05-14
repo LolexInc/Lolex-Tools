@@ -643,7 +643,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					expl.path = "/"
 					time.sleep(3)
 					break;
-				expl.path = correctpath(expl.path)
 			if auto != 0:
 				auto = 0
 			else: pass
@@ -717,11 +716,8 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 									return expl.newpath;
 								o = True
 							elif file == 0:
-								print("Running correctpath...")
 								expl.newpath = correctpath(expl.newpath)
 								expl.path = expl.newpath
-								print(expl.newpath)
-								time.sleep(3)
 								if tofinishop == True or rtnofolders == 0:
 									return expl.path;
 					elif found == 0:
@@ -731,10 +727,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				o = True
 				expl.newpath = expl.path
 			else: pass
-			if file == 0:
-				expl.newpath = correctpath(expl.newpath)
-				expl.path = expl.newpath
-			elif file == 1:
+			if file == 1:
 				expl.newpath = correctfile(expl.newpath)
 			if o == True:
 				op = 0
