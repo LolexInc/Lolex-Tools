@@ -520,19 +520,27 @@ def validatefile(path):
 	return valid;
 def correctpath(path):
 	slash = "\\"
+	print(path)
 	class zz:
 		p = path
 	if len(zz.p) > 2:
-		if zz.p[len(zz.p) - 1] != "/" and (zz.p[len(zz.p) - 1] + zz.p[len(zz.p) - 1] != slash[0]):
-			zz.p = zz.p + "/"
 		zz.p = zz.p.replace(slash[0], "/")
 		if zz.p[0] == "." and zz.p[1] == "/":
 			zz.p = zz.p[:0]
 			zz.p = zz.p[:1]
 			zz.p = os.getcwd() + zz.p
+		print("2   ", zz.p)
 		j = 0
+	if zz.p[len(zz.p) - 1] != "/":
+		zz.p = zz.p.replace(zz.p, zz.p + "/")
+		print("1   ", zz.p)
 	if len(zz.p) > 2:
+		print(zz.p)
+		print("Replacing...")
 		zz.p.replace("//", "/")
+		print("Replaced")
+		print("Final:    ", zz.p)
+	time.sleep(3)
 	return zz.p;
 def validate(path):
 	path = correctpath(path)
@@ -568,9 +576,9 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 	else: pass
 	if clear == "<>":
 		return 1;
-	if clear != "<>":
+	else:
 		while True:
-			print(expl.path)
+			o = False
 			expl.path = correctpath(expl.path)
 			y = validate(expl.path)
 			if y == False:
@@ -585,16 +593,15 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					exittext = "You cannot exit until the current operation is complete"
 				else:
 					exittext = "Exit file explorer"
-				print("\n\n///o - " + otext + "\n./ - Go to your current working directory\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+				print("\n\n///o - " + otext + "\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
 				array = os.listdir(expl.path)
 				for i in range(0, len(array)):
 					print(array[i])
 				expl.file = input("\nSelect/Open (Name): ")
 			if expl.file == "///":
 				pass
-			elif expl.file == "./":
-				expl.path = os.getcwd() + "/"
 			elif expl.file == "..":
+				arraypos = 0
 				if expl.path != "/" or len(expl.path) == 0:
 					print(len(expl.path))
 					if expl.path[len(expl.path)-1] == "/" and expl.path[len(expl.path)-2] == "/":
@@ -603,14 +610,13 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					while safedir == False:
 						slash = False
 						arraypos = len(expl.path) - 2
-						if len(expl.path) > 2:
+						if len(expl.path) > 3:
 							while slash == False:
 								if expl.path[arraypos] == "/":
 									slash = True
 									endpoint = arraypos
 								else:
 									arraypos = arraypos - 1
-									endpoint = -1
 								if arraypos < 1 and slash != True:
 									path = "/"
 									safedir = True
@@ -637,6 +643,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					expl.path = "/"
 					time.sleep(3)
 					break;
+				expl.path = correctpath(expl.path)
 			if auto != 0:
 				auto = 0
 			else: pass
@@ -649,7 +656,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				else:
 					print("Operation not completed!")
 					time.sleep(5)
-			elif expl.file != "///s" and expl.file != "///o":
+			elif expl.file != "///s" and expl.file != "///o" and expl.file != "..":
 				o = False
 				found = 0
 				arraypos = 0
@@ -678,7 +685,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 						found = 1
 					else: pass
 					if found == 1:
-						expl.newpath = expl.path + "/" + possibles[0]
+						expl.newpath = expl.path + possibles[0]
 						if validate(expl.path) == False:
 							auto = 1
 							expl.file = ".."
@@ -710,18 +717,25 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 									return expl.newpath;
 								o = True
 							elif file == 0:
+								print("Running correctpath...")
+								expl.newpath = correctpath(expl.newpath)
 								expl.path = expl.newpath
+								print(expl.newpath)
+								time.sleep(3)
 								if tofinishop == True or rtnofolders == 0:
 									return expl.path;
 					elif found == 0:
 						print("No such file or directory found!")
+						file = 5
 			elif expl.file == "///s" or expl.file == "///o":
 				o = True
 				expl.newpath = expl.path
 			else: pass
-			expl.newpath = correctfile(expl.newpath)
 			if file == 0:
 				expl.newpath = correctpath(expl.newpath)
+				expl.path = expl.newpath
+			elif file == 1:
+				expl.newpath = correctfile(expl.newpath)
 			if o == True:
 				op = 0
 				while op != 7:
