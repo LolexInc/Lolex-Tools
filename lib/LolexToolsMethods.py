@@ -535,9 +535,9 @@ def correctpath(path):
 		zz.p = zz.p.replace(zz.p, zz.p + "/")
 		print("1   ", zz.p)
 	if len(zz.p) > 2:
-		print(zz.p)
 		print("Replacing...")
-		zz.p.replace("//", "/")
+		for i in range(0, len(zz.p) - 1):
+			zz.p = zz.p.replace("//", "/")
 		print("Replaced")
 		print("Final:    ", zz.p)
 	time.sleep(3)
