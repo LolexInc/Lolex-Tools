@@ -200,12 +200,16 @@ def restart():
 	restart = int(input("Please enter 1 to confirm restart."))
 	if restart == 1:
 		waittime = int(input("How long, in minutes do you wish to wait?"))
+		while waittime > 69905 or waittime < 0:
+			waittime = int(input("Please select a time in between 0 and 69905 minutes.\nHow long, in minutes do you wish to wait?"))
 		restartthreader = threading.Thread(target = restartthread, args = [waittime])
 		restartthreader.start()
 def logoff(type):
 	logoff = input("Please enter 1 to confirm logoff.")
 	if logoff == "1":
 		waittime = int(input("How long, in minutes do you wish to wait?"))
+		while waittime > 69905 or waittime < 0:
+			waittime = int(input("Please select a time in between 0 and 69905 minutes.\nHow long, in minutes do you wish to wait?"))
 		loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
 		loggeroff.start()
 def logoffthread(waittime, type):
@@ -222,7 +226,9 @@ def logoffthread(waittime, type):
 def hibernate():
 	hibernate = input("Please enter 1 to confirm logoff.")
 	if hibernate == "1":
-		waittime = input("How long, in minutes do you wish to wait?")
+		waittime = int(input("How long, in minutes do you wish to wait?"))
+		while waittime > 69905 or waittime < 0:
+			waittime = int(input("Please select a time in between 0 and 69905 minutes.\nHow long, in minutes do you wish to wait?"))
 		hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
 		hibernatethreader.start()
 def hibernatethread(waittime):
@@ -248,7 +254,9 @@ def restartthread(waittime):
 def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
-		waittime = int(input("How long, in minutes, do you wish to wait?"))
+		waittime = int(input("How long, in minutes do you wish to wait?"))
+		while waittime > 69905 or waittime < 0:
+			waittime = int(input("Please select a time in between 0 and 69905 minutes.\nHow long, in minutes do you wish to wait?"))
 		shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
 		shutdownthreader.start()
 def shutdownthread(waittime, type):
@@ -290,7 +298,9 @@ def addortake():
 	startnum = int(input("Please enter your starting number."))
 	addortakenum = int(input("Please input the number to be added."))
 	endnum = int(input("Please enter your end number."))
-	waittime = float(input("How long do you wish to wait before each operation is performed?"))
+	waittime = int(input("How long, in minutes do you wish to wait?"))
+	while waittime > 69905 or waittime < 0:
+		waittime = int(input("Please select a time in between 0 and 69905 minutes.\nHow long, in minutes do you wish to wait?"))
 	if endnum > startnum:
 		while endnum > startnum:
 			print(startnum)
