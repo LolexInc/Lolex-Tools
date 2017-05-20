@@ -150,9 +150,9 @@ try:
      else:
               oneswappins = False
      if onepins>0:
-              onewait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
+              onewait = float(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
               while onewait<0 or onewait > 4194304:
-                       onewait = int(input("Less than 0 or more than 4194304 seconds is invalid. Please enter a valid number of seconds."))
+                       onewait = float(input("Less than 0 or more than 4194304 seconds is invalid. Please enter a valid number of seconds."))
      onewords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
      if onewords == 0:
               onewordtotal = 0
@@ -194,9 +194,9 @@ try:
      if onewords>0:
               oneuseword = True
      if onewords>0:
-              onewordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
+              onewordwait = float(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
               while onewordwait<0 or onewordwait > 4194304:
-                       onewordwait = int(input("Less than 0 or more than 4194304 seconds is invalid. Please enter a valid number of seconds."))
+                       onewordwait = float(input("Less than 0 or more than 4194304 seconds is invalid. Please enter a valid number of seconds."))
      if howmanyunames>1:
               print("Setting up user 2...")
               username2 = input("Please set your username.")
@@ -239,9 +239,9 @@ try:
               else:
                        twoswappins = False
               if twopins > 0:
-                  twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
+                  twowait = float(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
                   while twowait<0 or twowait > 4194304:
-                      twowait = int(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
+                      twowait = float(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
               twowords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
               if twowords == 0:
                        twowordtotal = 0
@@ -283,9 +283,9 @@ try:
               if twowords>0:
                        twouseword = True
               if twowords>0:
-                       twowordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
+                       twowordwait = float(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
                        while twowordwait<0 or twowordwait > 4194304:
-                                    twowordwait = int(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
+                                    twowordwait = float(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
      else:
           with open ("./LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
      print("Setting up general options...")
