@@ -309,10 +309,7 @@ def addortake():
 			elif addortakenum > int(0):
 				startnum = startnum + addortakenum
 			time.sleep(waittime)
-		if startnum == endnum or startnum > endnum:
-			print("The closest number to your target number was:" + (str(startnum)))
-			time.sleep (1)
-	elif startnum > endnum:
+	if startnum > endnum:
 		while startnum > endnum:
 			print (startnum)
 			if addortakenum < 0:
@@ -320,9 +317,8 @@ def addortake():
 			if addortakenum > 0:
 				startnum = startnum = startnum - addortakenum
 			time.sleep (waittime)
-		if startnum == endnum or startnum < endnum:
-			print ("The closest number to your target end number was:" + (str(startnum)))
-			time.sleep (1)
+	print ("The closest number to your target end number was:" + (str(startnum)))
+	time.sleep (1)
 def dumpme():
 	if uos.useros == "Windows":
 		os.system(".\resources\systeminf")
