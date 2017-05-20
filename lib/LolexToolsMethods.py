@@ -614,7 +614,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				array = os.listdir(expl.path)
 				expl.loaded = True
 				time.sleep(1.5)
-				print("\n\n///o - " + otext + "\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+				print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
 				for i in range(0, len(array)):
 					print(array[i])
 				expl.file = input("\nSelect/Open (Name): ")
@@ -657,6 +657,11 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 						if y == True:
 							safedir == True
 							break;
+						else:
+							expl.path = "/"
+							slash = True
+							safedir = True
+							break;
 				else:
 					if expl.path == "/":
 						print("Already at highest directory")
@@ -675,7 +680,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				else:
 					print("Operation not completed!")
 					time.sleep(5)
-			elif expl.file != "///s" and expl.file != "///o" and expl.file != "..":
+			elif expl.file != "///s" and expl.file != "///o" and expl.file != ".." and expl.file != "./":
 				o = False
 				found = 0
 				arraypos = 0
@@ -836,8 +841,9 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 						if tofinishop == 1:
 							return expl.path;
 						break;
-							
-
+			if expl.file == "./":
+				expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
+				expl.newpath = expl.path
 			
 del sys.path[syslen]
 	
