@@ -449,6 +449,7 @@ try:
 		elif (modewanted == 22 and useros == "Windows") or (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
 			print("Exiting...")
 			print("Giving all threads 5 seconds to exit...")
+			LolexToolsMethods.stopping = True
 			time.sleep(5)
 			os._exit(0)
 except(SyntaxError) as a:

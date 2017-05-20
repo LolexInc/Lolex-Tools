@@ -33,6 +33,7 @@ except(ImportError) as e:
 		print("Please redownload this repository to access all features.")
 		print(e)
 		exit(0)
+stopping = False
 class uos:
 	useros = platform.system()
 	if "arm" in platform.platform():
@@ -68,7 +69,7 @@ def flicker():
 	flickerthread.start()
 def flickerp2(colour, howlongtoflashfor):
 	currentflashes= int(0)
-	while howlongtoflashfor != currentflashes:
+	while howlongtoflashfor != currentflashes and stopping != True:
 		os.system (colour[0])
 		time.sleep()
 		os.system (colour[1])
@@ -213,16 +214,19 @@ def logoff(type):
 		loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
 		loggeroff.start()
 def logoffthread(waittime, type):
-	time.sleep(waittime*60)
-	print("LOGOFF thread: Logging off...")
-	uos.useros = platform.system()
-	if uos.useros != "Linux":
-		if type == 0:
-			os.system("shutdown -l -f")
+	while waittime > 0.1:
+		time.sleep(0.1)
+		waittime = waittime - 0.1
+	if stopping != True:
+		print("LOGOFF thread: Logging off...")
+		uos.useros = platform.system()
+		if uos.useros != "Linux":
+			if type == 0:
+				os.system("shutdown -l -f")
+			else:
+				subprocess.Popen("logoff.exe")
 		else:
-			subprocess.Popen("logoff.exe")
-	else:
-		os.system("gnome-session-quit --force")
+			os.system("gnome-session-quit --force")
 def hibernate():
 	hibernate = input("Please enter 1 to confirm logoff.")
 	if hibernate == "1":
@@ -232,25 +236,31 @@ def hibernate():
 		hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
 		hibernatethreader.start()
 def hibernatethread(waittime):
-	time.sleep(waittime*60)
-	print("HIBERNATE thread: Hibernating...")
-	uos.useros = platform.system()
-	if uos.useros == "Windows":
-		os.system("shutdown -h -f")
-	elif uos.useros == "Linux":
-		os.system("systemctl suspend")
+	while waittime > 0.1:
+		time.sleep(0.1)
+		waittime = waittime - 0.1
+	if stopping != True:
+		print("HIBERNATE thread: Hibernating...")
+		uos.useros = platform.system()
+		if uos.useros == "Windows":
+			os.system("shutdown -h -f")
+		elif uos.useros == "Linux":
+			os.system("systemctl suspend")
 def restartthread(waittime):
-	time.sleep(waittime*60)
-	print("RESTART thread: Restarting device...")
-	uos.useros = platform.system()
-	if uos.useros != "Linux":
-		os.system("shutdown -r -f")
-	else:
-		if "arm" in platform.platform():
-			if os.system("su -c reboot") != 0:
-				os.system("reboot")
+	while waittime > 0.1:
+		time.sleep(0.1)
+		waittime = waittime - 0.1
+	if stopping != True:
+		print("RESTART thread: Restarting device...")
+		uos.useros = platform.system()
+		if uos.useros != "Linux":
+			os.system("shutdown -r -f")
 		else:
-			os.system("reboot")
+			if "arm" in platform.platform():
+				if os.system("su -c reboot") != 0:
+					os.system("reboot")
+			else:
+				os.system("reboot")
 def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
@@ -260,19 +270,22 @@ def shutdown(type):
 		shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
 		shutdownthreader.start()
 def shutdownthread(waittime, type):
-	time.sleep(waittime*60)
-	print("SHUTDOWN thread: shutting device down...")
-	if uos.useros == "Windows":
-		if type == 0:
-			os.system ("shutdown -s -f")
-		elif type == 1:
-			subprocess.Popen("shutdown.exe")
-	elif uos.useros == "Android":
-		if os.system("su -c reboot -p") != 0:
-			if os.system("/system/bin/reboot -p") != 0:
-				print("Failed to execute reboot binary.")
-	elif uos.useros == "Linux":
-		os.system("poweroff")
+	while waittime > 0.1:
+		time.sleep(0.1)
+		waittime = waittime - 0.1
+	if stopping != True:
+		print("SHUTDOWN thread: shutting device down...")
+		if uos.useros == "Windows":
+			if type == 0:
+				os.system ("shutdown -s -f")
+			elif type == 1:
+				subprocess.Popen("shutdown.exe")
+		elif uos.useros == "Android":
+			if os.system("su -c reboot -p") != 0:
+				if os.system("/system/bin/reboot -p") != 0:
+					print("Failed to execute reboot binary.")
+		elif uos.useros == "Linux":
+			os.system("poweroff")
 def pyshell():
 	if uos.useros == "Android" or uos.useros == "Linux":
 		os.system("python3")
