@@ -238,9 +238,10 @@ try:
                        twoswappins = True
               else:
                        twoswappins = False
-              twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
-              while twowait<0 or twowait > 4194304:
-                       twowait = int(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
+              if twopins > 0:
+                  twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
+                  while twowait<0 or twowait > 4194304:
+                      twowait = int(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
               twowords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
               if twowords == 0:
                        twowordtotal = 0
