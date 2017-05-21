@@ -38,6 +38,11 @@ class uos:
 	useros = platform.system()
 	if os.path.exists("/system/build.prop") == True and os.path.isdir("/system/build.prop") and platform.system() == "Linux":
 		useros = "Android"
+class threads:
+	shutdown = False
+	logoff = False
+	restart = False
+	hibernate = False
 try:
 		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
 except(ImportError):
@@ -214,6 +219,10 @@ def logoff(type):
 		loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
 		loggeroff.start()
 def logoffthread(waittime, type):
+	if threads.logoff == True:
+		print("LOGOFF thread: Logoff already scheduled.")
+		return;
+	threads.logoff = True
 	waittime = waittime * 60
 	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
@@ -230,6 +239,7 @@ def logoffthread(waittime, type):
 			os.system("gnome-session-quit --force")
 	else:
 		print("LOGOFF thread: Stopping...")
+	threads.logoff = False
 def hibernate():
 	hibernate = input("Please enter 1 to confirm logoff.")
 	if hibernate == "1":
@@ -239,6 +249,10 @@ def hibernate():
 		hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
 		hibernatethreader.start()
 def hibernatethread(waittime):
+	if threads.hibernate == True:
+		print("HIBERNATE thread: Hibernate already scheduled!")
+		return;
+	threads.hibernate = True
 	waittime = waittime * 60
 	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
@@ -252,7 +266,12 @@ def hibernatethread(waittime):
 			os.system("systemctl suspend")
 	else:
 		print("HIBERNATE thread: Stopping...")
+	threads.hibernate = False
 def restartthread(waittime):
+	if threads.restart == True:
+		print("RESTART thread: restart already scheduled!")
+		return;
+	threads.restart = True
 	waittime = waittime * 60
 	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
@@ -270,6 +289,7 @@ def restartthread(waittime):
 				os.system("reboot")
 	else:
 		print("RESTART thread: Stopping...")
+	threads.restart = False
 def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
@@ -279,6 +299,10 @@ def shutdown(type):
 		shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
 		shutdownthreader.start()
 def shutdownthread(waittime, type):
+	if threads.shutdown == True:
+		print("SHUTDOWN thread: Shutdown already scheduled!")
+		return;
+	threads.shutdown = True
 	waittime = waittime * 60
 	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
@@ -298,6 +322,7 @@ def shutdownthread(waittime, type):
 					print("Failed to execute reboot binary.")
 	else:
 		print("SHUTDOWN thread: Stopping...")
+	threads.shutdown = False
 def pyshell():
 	if uos.useros == "Android" or uos.useros == "Linux":
 		os.system("python3")
