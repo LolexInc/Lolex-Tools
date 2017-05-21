@@ -85,9 +85,9 @@ try:
      except(IOError, OSError):
           pass
      useros = platform.system()
-     if useros == "Linux":
-              print("This project requires Git for updating. Installing git...")
-              os.system("apt install git")
+     # if useros == "Linux":
+              # print("This project requires Git for updating. Installing git...")
+              # os.system("apt install git")
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
               print("Sorry! We only support 0 - 2 usernames currently.")
