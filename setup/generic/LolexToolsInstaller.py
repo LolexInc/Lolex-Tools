@@ -88,10 +88,6 @@ try:
      if useros == "Linux":
               print("This project requires Git for updating. Installing git...")
               os.system("apt install git")
-     if useros != "Windows":
-              plat = int(input("Please enter 1 if you are using Android, or 0 for other."))
-              if plat == 1:
-                      useros = "Android"
      howmanyunames = int(input("Please enter the number of usernames you wish to use."))
      while howmanyunames<0 or howmanyunames>2:
               print("Sorry! We only support 0 - 2 usernames currently.")
@@ -450,7 +446,7 @@ try:
               print("Thank you for using Lolex-Tools Installer.")
               if start == 1:
                        print("Starting Lolex-Tools...")
-                       if useros == "Linux" or useros == "Android":
+                       if useros == "Linux":
                                os.system("python3 ./main/LolexTools.py")
                        else:
                                if sys.version_info.minor>5:
