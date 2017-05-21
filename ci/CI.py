@@ -7,7 +7,9 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, py_compile
+import os, py_compile, sys
+if sys.version_info.minor > 6:
+	IOError = OSError
 print("CI version 1.9.0")
 folders = []
 files = []

@@ -8,6 +8,8 @@
 ##
 ## authors = Monkeyboy2805
 import sys
+if sys.version_info > 6:
+	IOError = OSError
 sys.path.append("./")
 import os, LolexToolsOptions, LolexToolsMethods
 onepintotal = LolexToolsOptions.onepintotal

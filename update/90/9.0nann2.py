@@ -8,6 +8,8 @@
 ##
 ## authors = Monkeyboy2805
 import sys
+if sys.version_minor > 6:
+	IOError = OSError
 syslen = len(sys.path)
 sys.path.append("./")
 import os, platform, LolexToolsMethods

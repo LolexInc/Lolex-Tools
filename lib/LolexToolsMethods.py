@@ -371,6 +371,7 @@ def logo():
 def exitnow():
 	print("This function has been deprecated.")
 def compiler(name):
+	IOError
 	try:
 		os.remove("./" + name+".pyc")
 	except(IOError):

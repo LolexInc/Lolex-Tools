@@ -8,6 +8,8 @@
 ##
 ## authors = Monkeyboy2805
 import os, platform, shutil, sys, time
+if sys.version_info.minor > 6:
+	IOError = OSError
 sys.path.extend(("./lib/"))
 a = time.time()
 system = platform.system()
@@ -27,6 +29,8 @@ if "arm" in platform.platform():
 	except(ImportError):
 		os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 try:
+        if sys.version_info.minor > 6:
+        	IOError = OSError
         fail = False
         try:
                 import JTToolsOptions

@@ -1,4 +1,6 @@
-import os
+import os, sys
+if sys.version_minor > 6:
+	IOError = OSError
 try:
 	os.remove("./patches.py")
 except(IOError, OSError):

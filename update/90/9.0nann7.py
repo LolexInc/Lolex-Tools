@@ -1,4 +1,6 @@
 import os, py_compile, sys
+if sys.version_info.minor > 6:
+	IOError = OSError
 sys.path.append("./")
 import LolexToolsOptions
 array = os.listdir("./")

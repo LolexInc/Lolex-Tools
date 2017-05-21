@@ -44,6 +44,8 @@ try:
 except(ImportError):
 	pass
 fail = False
+if sys.version_info.minor > 6:
+	IOError = OSError
 try:
 	import requiredpatches
 except(ImportError):
@@ -98,6 +100,8 @@ if system == "Windows":
 	os.system("title Lolex-Tools")
 print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
 try:
+	if sys.version_info.minor > 6:
+		IOError = OSError
 	if LolexToolsMethods.uos.useros == "Windows":
 		clear = "cls"
 	elif platform.system() == "Linux":

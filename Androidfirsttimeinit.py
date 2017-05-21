@@ -7,7 +7,9 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ## 
 ## authors = Monkeyboy2805
-import shutil, os, time, platform
+import shutil, os, time, platform, sys
+if sys.version_info.minor > 6:
+	IOError = OSError
 init1 = time.time()
 local = time.asctime( time.localtime(time.time()) )
 print(local,"    Attempting to remove folders...")
