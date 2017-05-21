@@ -36,7 +36,7 @@ except(ImportError) as e:
 stopping = False
 class uos:
 	useros = platform.system()
-	if "arm" in platform.platform():
+	if os.path.exists("/system/build.prop") == True and os.path.isdir("/system/build.prop") and platform.system() == "Linux":
 		useros = "Android"
 try:
 		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
