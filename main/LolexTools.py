@@ -451,6 +451,7 @@ try:
 			print("Giving all threads 5 seconds to exit...")
 			LolexToolsMethods.stopping = True
 			time.sleep(5)
+			print("MAIN thread: Stopping...")
 			os._exit(0)
 except(SyntaxError) as a:
 	print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")

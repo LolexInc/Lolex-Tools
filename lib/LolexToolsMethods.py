@@ -214,7 +214,8 @@ def logoff(type):
 		loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
 		loggeroff.start()
 def logoffthread(waittime, type):
-	while waittime > 0.1:
+	waittime = waittime * 60
+	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
 		waittime = waittime - 0.1
 	if stopping != True:
@@ -227,6 +228,8 @@ def logoffthread(waittime, type):
 				subprocess.Popen("logoff.exe")
 		else:
 			os.system("gnome-session-quit --force")
+	else:
+		print("LOGOFF thread: Stopping...")
 def hibernate():
 	hibernate = input("Please enter 1 to confirm logoff.")
 	if hibernate == "1":
@@ -236,7 +239,8 @@ def hibernate():
 		hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
 		hibernatethreader.start()
 def hibernatethread(waittime):
-	while waittime > 0.1:
+	waittime = waittime * 60
+	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
 		waittime = waittime - 0.1
 	if stopping != True:
@@ -246,8 +250,11 @@ def hibernatethread(waittime):
 			os.system("shutdown -h -f")
 		elif uos.useros == "Linux":
 			os.system("systemctl suspend")
+	else:
+		print("HIBERNATE thread: Stopping...")
 def restartthread(waittime):
-	while waittime > 0.1:
+	waittime = waittime * 60
+	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
 		waittime = waittime - 0.1
 	if stopping != True:
@@ -261,6 +268,8 @@ def restartthread(waittime):
 					os.system("reboot")
 			else:
 				os.system("reboot")
+	else:
+		print("RESTART thread: Stopping...")
 def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
@@ -270,7 +279,8 @@ def shutdown(type):
 		shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
 		shutdownthreader.start()
 def shutdownthread(waittime, type):
-	while waittime > 0.1:
+	waittime = waittime * 60
+	while waittime > 0.1 and stopping == False:
 		time.sleep(0.1)
 		waittime = waittime - 0.1
 	if stopping != True:
@@ -286,6 +296,8 @@ def shutdownthread(waittime, type):
 					print("Failed to execute reboot binary.")
 		elif uos.useros == "Linux":
 			os.system("poweroff")
+	else:
+		print("SHUTDOWN thread: Stopping...")
 def pyshell():
 	if uos.useros == "Android" or uos.useros == "Linux":
 		os.system("python3")
