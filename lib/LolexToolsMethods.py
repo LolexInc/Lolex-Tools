@@ -290,12 +290,12 @@ def shutdownthread(waittime, type):
 				os.system ("shutdown -s -f")
 			elif type == 1:
 				subprocess.Popen("shutdown.exe")
+		elif uos.useros == "Linux":
+			os.system("poweroff")
 		elif uos.useros == "Android":
 			if os.system("su -c reboot -p") != 0:
 				if os.system("/system/bin/reboot -p") != 0:
 					print("Failed to execute reboot binary.")
-		elif uos.useros == "Linux":
-			os.system("poweroff")
 	else:
 		print("SHUTDOWN thread: Stopping...")
 def pyshell():
