@@ -12,22 +12,7 @@ if sys.version_minor > 6:
 	IOError = OSError
 syslen = len(sys.path)
 sys.path.append("./")
-import os, platform, LolexToolsMethods
-try:
-	import verifonboot, LolexToolsOptions
-except(ImportError):
-	system = platform.system()
-	if system == "Windows":
-		if platform.system() == "Windows":
-			if sys.version_info.minor>5:
-				os.system("py .\Lolex-Tools.py")
-			else:
-				os.system("python .\LolexTools.py")
-		else:
-			os.system("python3 ./LolexTools.py")
-	elif system == "Linux":
-		os.system("python3 ./LolexToolsInstaller.py")
-	exit(0)
+import os, platform, LolexToolsMethods, verifonboot, LolexToolsOptions
 try:
     os.remove("./verifonboot.py")
 except(IOError, OSError):
