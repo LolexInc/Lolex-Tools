@@ -95,7 +95,7 @@ if system == "Windows":
                         outf.write("seconds to initilaize on Windows Python < 3.6.\n")
                 time.sleep(3)
                 os.system("python .\main\\LolexTools.py")
-        exit(None)
+        exit(0)
 else:
         sys.stdout.write("\x1b]2;Lolex-Tools\x07")
         if "arm" in platform.platform() == False:
@@ -111,4 +111,4 @@ else:
                 outf.write("seconds to initilaize on Linux Python 3.\n")
         time.sleep(3)
         os.system("python3 ./main/LolexTools.py")
-        exit(None)
+        exit(0)
