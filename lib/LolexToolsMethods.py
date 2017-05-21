@@ -635,52 +635,36 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 				pass
 			elif expl.file == "..":
 				arraypos = 0
-				if expl.path != "/" or len(expl.path) == 0:
-					print(len(expl.path))
+				if (expl.path != "/" or len(expl.path) == 0) and expl.path.count("/") > 2:
 					if expl.path[len(expl.path)-1] == "/" and expl.path[len(expl.path)-2] == "/":
 						path = path[:len(expl.path) - 1]
-					safedir = False
-					while safedir == False:
-						slash = False
-						arraypos = len(expl.path) - 2
-						if len(expl.path) > 3:
-							while slash == False:
-								if expl.path[arraypos] == "/":
-									slash = True
-									endpoint = arraypos
-								else:
-									arraypos = arraypos - 1
-								if arraypos < 1 and slash != True:
-									path = "/"
-									safedir = True
-									slash = True
-									break;
-							if slash == True and expl.path != "/":
-								arraypos = len(expl.path) - 2
-								while arraypos > endpoint:
-									expl.path = expl.path[:arraypos]
-									arraypos = arraypos - 1
-						else:
-							expl.path = "/"
-							slash = True
-							safedir = True
-							break;
-						print("Out of loop...")
-						y = validate(expl.path)
-						if y == True:
-							safedir == True
-							break;
-						else:
-							expl.path = "/"
-							slash = True
-							safedir = True
-							break;
+					slash = False
+					arraypos = len(expl.path) - 2
+					if len(expl.path) > 3:
+						while slash == False:
+							if expl.path[arraypos] == "/":
+								slash = True
+								endpoint = arraypos
+							else:
+								arraypos = arraypos - 1
+							if arraypos < 1 and slash != True:
+								path = "/"
+								safedir = True
+								slash = True
+								break;
+						if slash == True and expl.path != "/":
+							arraypos = len(expl.path) - 2
+							while arraypos > endpoint:
+								expl.path = expl.path[:arraypos]
+								arraypos = arraypos - 1
+					else:
+						expl.path = "/"
+						slash = True
 				else:
 					if expl.path == "/":
 						print("Already at highest directory")
 					expl.path = "/"
-					time.sleep(3)
-					break;
+					time.sleep(1.5)
 			if auto != 0:
 				auto = 0
 			else: pass
