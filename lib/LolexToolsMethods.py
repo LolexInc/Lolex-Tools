@@ -879,6 +879,53 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 			if expl.file == "./":
 				expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
 				expl.newpath = expl.path
-			
+def addplugins(rewrite):
+	if rewrite == True:
+		try:
+			os.remove("./startplugins.py")
+		except(IOError, OSError):
+			pass
+		try:
+			os.remove("./startplugins.pyc")
+		except(IOError, OSError):
+			pass
+		with open("./startplugins.py", "a") as outf: outf.write("import sys\nfrom lib import LolexToolsMethods\n")
+	done = "0"
+	while done != "1":
+		print("You will now enter the explorer to choose your plugin.")
+		time.sleep(1.5)
+		newpath = explorer(0, 0, 1, 0, "/", 0)
+		if namepath.endswith(".py") != True:
+			if namepath.endswith(".pyc"):
+				print("This plugin file is already a pyc which cannot be scanned. Please supply a .py file")
+				success = False
+			else:
+				success = False
+		else:
+			success = py_compile.compile(namepath)
+			if "Error" in success:
+				success = False
+				print("Could not load plugin due to errors in the plugin.")
+			else:
+				success = True
+		if success == True:
+			w = open("./startplugins.py", "a")
+			path = namepath
+			for i in range(len(namepath) - 1, 0):
+				if path[i] != "/":
+					path = path[:i]
+				else:
+					break;
+			name = namepath
+			for j in range(0, i):
+				name = name[:j]
+			if " " in name or "	" in name or name.count(".") > 1 or "#" in name or "@" in name or "LolexTools" in name or "(" in name or ")" or "{" in name or "}" in name or "/" in name or "&" in name or "|" in name:
+				print("Plugin name contains an/several characters that are invalid. Could not load plugin.")
+			else:
+				name = name[:len(name) - 1]
+				name = name[:len(name) - 2]
+				name = name[:len(name) - 3]
+				w.write('\ntry:\n    sys.path.append("' + path + '")\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
+				done = input("Please enter 1 if you are done, 0 if not.")
 del sys.path[syslen]
 	

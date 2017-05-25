@@ -8,7 +8,7 @@
 ## 
 ## authors = Monkeyboy2805
 import sys, time, os, shutil, platform, py_compile
-if sys.version_minor > 6:
+if sys.version_info.minor > 6:
 	IOError = OSError
 syslen = len(sys.path)
 sys.path.append("./lib/")
@@ -27,8 +27,8 @@ except(ValueError, TypeError, SyntaxError):
      exit(0)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nWhen FINAL CONFIRM appears, enter 3.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
-	if sys.version_info > 6:
-		IOError = OSError
+     if sys.version_info.minor > 6:
+          IOError = OSError
      print("Resetting...This process could take a couple of minutes.")
      try:
             os.remove("./LolexToolsOptions.pyc")
