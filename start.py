@@ -61,7 +61,7 @@ try:
                                 with open ("./exitsettings.py","a") as f: f.write("hidden = False")
                 except(IOError, ImportError):
                         pass
-except(ImportError, IOError, OSError):
+except(ImportError, IOError, OSError, AttributeError):
         if platform.system() == "Windows":
                 if sys.version_info.minor>5:
                         os.system("py .\setup\generic\LolexToolsInstaller.py")
