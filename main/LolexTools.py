@@ -16,39 +16,39 @@ if system == "Windows":
 		time.sleep(3)
 try:
 	import LolexToolsMethods
-except(ImportError) as e:
+except(ImportError, SyntaxError, TabError, EOLError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
 	exit(0)
 try:
 	sys.path.append("./")
 	import LolexToolsOptions, runningsys, startplugins, patches
-except(ImportError) as e:
+except(ImportError, SyntaxError, TabError, EOLError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)
 try:
 	import verifonboot, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-except(ImportError) as e:
+except(ImportError, SyntaxError, TabError, EOLError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)
 try:
 	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
-except(ImportError) as e:
+except(ImportError, SyntaxError, TabError, EOLError) as e:
 	print(e)
 sys.path.append("./")
 try:
 	import madeon
 	LolexToolsOptions.compiledon = madeon.compiledon
-except(ImportError):
+except(ImportError, SyntaxError, TabError, EOLError):
 	pass
 fail = False
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
 try:
 	import requiredpatches
-except(ImportError):
+except(ImportError, SyntaxError, TabError, EOLError):
 	print("Required file missing.")
 if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:

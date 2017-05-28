@@ -27,7 +27,7 @@ except(ValueError, TypeError, SyntaxError):
 	exit(0)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
-	if sys.version_info.minor > 6:
+	if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 		IOError = OSError
 	print("Resetting...This process could take a couple of minutes.")
 	try:
@@ -329,7 +329,7 @@ try:
 		compiler = True
 	else:
 		compiler = False
-	if twowords<2:
+	if twowords < 2:
 		twoswapwords = False
 	with open("./theme.py","a") as outf:
 		print("Writing theme...", theme)
