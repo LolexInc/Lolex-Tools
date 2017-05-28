@@ -435,13 +435,7 @@ try:
 		print("Thank you for using Lolex-Tools Installer.")
 		if start == 1:
 			print("Starting Lolex-Tools...")
-			if useros == "Linux":
-				os.system("python3 ./main/LolexTools.py")
-			else:
-				if sys.version_info.minor > 5:
-					os.system("py .\main\LolexTools.py")
-				else:
-					os.system("python .\main\LolexTools.py")
+			os.system(LolexToolsMethods.py + "main" + s + "LolexTools.py")
 		exit(0)
 	except(TypeError, SyntaxError, ValueError):
 		print("Failed to start.")
