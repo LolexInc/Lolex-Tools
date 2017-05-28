@@ -319,20 +319,10 @@ try:
                	theme = "cd ./"
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if pluginconfirm == 1:
-                       currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions! Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
-                       with open ("./startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
-                       done = int(input("Please enter 1 if you are done, 0 if you aren't."))
-                       while done != 1:
-                                    currentplugin = input("Please enter the name of your next plugin.")
-                                    with open ("./startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
-                                    done = int(input("Please enter 1 if you are done, 0 if you aren't."))
-                       if developer == 1:
-                                    compileplugins = int(input("Please enter 1 if you want your plugins compiling, or 0 if you don't."))
-                       else:
-                                    compileplugins = 1
+         LolexToolsMethods.addplugins(True)
      elif pluginconfirm != 1:
               compileplugins = 0
-              with open ("./startplugins.py", "a") as outf: pass
+              with open ("./startplugins.py", "a") as outf: outf.write("import sys\nfrom lib import LolexToolsMethods")
      if developer == 1:
               developer = True
      else:
@@ -405,8 +395,6 @@ try:
               outf.write("\ncompiler = ")
               outf.write(str(compiler))
               compiler = "None"
-              outf.write("\ncompileplugins = ")
-              outf.write(str(compileplugins))
               compileplugins = "None"
               outf.write("\nonewait = ")
               outf.write(str(onewait))
@@ -415,7 +403,7 @@ try:
               outf.write(str(twowait))
               twowait = "None"
               confirm = "None"
-     with open ("./patches.py", "a") as outf: outf.write('applied = "/90/9.0nann4", "/90/9.0nann7"')
+     with open ("./patches.py", "a") as outf: outf.write('applied = "/90/9.0nann4", "/90/9.0nann7", "/90/9.0alpha0"')
      with open ("./runningsys.py","a") as outf:
               outf.write("system = " + '("' + useros + '")')
      with open ("./menusettings.py","a") as outf:
@@ -429,8 +417,7 @@ try:
              LolexToolsMethods.compiler("LolexToolsOptions")
              LolexToolsMethods.compiler("runningsys")
              LolexToolsMethods.compiler("theme")
-     if compileplugins == 1 or compileplugins == True:
-              LolexToolsMethods.compiler("startplugins")
+             LolexToolsMethods.compiler("startplugins")
      LolexToolsMethods = False
      with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
      with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")

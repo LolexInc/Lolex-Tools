@@ -87,7 +87,7 @@ if update == True:
 		pass
 	with open("./patches.py", "a") as outf: 
 		outf.write('applied = ')
-		outf.write('"/90/9.0nann4", "/90/9.0nann7"')
+		outf.write(str(requiredpatches.patches))
 	if fail == True:
 		print("Couldn't update: files missing!")
 		exit(0)
@@ -250,7 +250,7 @@ try:
 			outf.write("\ntwoswapwords = ")
 			outf.write(str(twoswapwords))
 		if LolexToolsOptions.compiler == True:
-			LolexToolsMethods.compiler("verifonboot")
+			startplugins.LolexToolsMethods.compiler("verifonboot")
 	useros = platform.system()
 	if "arm" in platform.platform():
 		useros = "Android"
@@ -259,11 +259,11 @@ try:
 	while True:
 		time.sleep(0.1)
 		if useros == "Windows":
-			LolexToolsMethods.windowspage(page, menusettings.layout)
+			startplugins.LolexToolsMethods.windowspage(page, menusettings.layout)
 		elif useros == "Linux":
-			LolexToolsMethods.linuxpage(page, menusettings.layout)
+			startplugins.LolexToolsMethods.linuxpage(page, menusettings.layout)
 		elif useros == "Android":
-			LolexToolsMethods.androidpage(page, menusettings.layout)
+			startplugins.LolexToolsMethods.androidpage(page, menusettings.layout)
 		modewanted = int(input("Please enter the number of the mode that you want."))
 		if useros == "Windows":
 			maxmode = 26
@@ -315,54 +315,54 @@ try:
 				print("15 = Exit hidden = ", exitsettings.hidden)
 				chngm = int(input("Please select the number of the mode."))
 				if chngm == 2:
-					LolexToolsMethods.modehide("restart", restartsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("restart", restartsettings.hidden)
 				elif chngm == 3:
-					LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("logoff", logoffsettings.hidden)
 				elif chngm == 4:
-					LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
+					startplugins.LolexToolsMethods.modehide("hibernate", hibernatesettings.hidden)
 				elif chngm == 5:
-					LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("shutdown", shutdownsettings.hidden)
 				elif chngm == 6:
-					LolexToolsMethods.modehide("pyshell", pyshellsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("pyshell", pyshellsettings.hidden)
 				elif chngm == 7:
-					LolexToolsMethods.modehide("foldercreate", foldercreatesettings.hidden)
+					startplugins.LolexToolsMethods.modehide("foldercreate", foldercreatesettings.hidden)
 				elif chngm == 8:
-					LolexToolsMethods.modehide("exfolder", exfoldersettings.hidden)
+					startplugins.LolexToolsMethods.modehide("exfolder", exfoldersettings.hidden)
 				elif chngm == 9:
-					LolexToolsMethods.modehide("addfile", addfilesettings.hidden)
+					startplugins.LolexToolsMethods.modehide("addfile", addfilesettings.hidden)
 				elif chngm == 10:
-					LolexToolsMethods.modehide("scriptloop", scriptloopsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("scriptloop", scriptloopsettings.hidden)
 				elif chngm == 11:
-					LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
+					startplugins.LolexToolsMethods.modehide("mathmode", mathmodesettings.hidden)
 				elif chngm == 12:
-					LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
+					startplugins.LolexToolsMethods.modehide("scriptlock", scriptlocksettings.hidden)
 				elif chngm == 13:
-					LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("installerstart", installerstartsettings.hidden)
 				elif chngm == 14:
-					LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
+					startplugins.LolexToolsMethods.modehide("sysinfo", sysinfosettings.hidden)
 				elif chngm == 15:
-					LolexToolsMethods.modehide("exit", exitsettings.hidden)
+					startplugins.LolexToolsMethods.modehide("exit", exitsettings.hidden)
 				if useros == "Windows":
 					os.system(LolexToolsMethods.py + "start.py")
 				exit(0)
 		elif modewanted == 2:
-			LolexToolsMethods.restart()
+			startplugins.LolexToolsMethods.restart()
 		elif (modewanted == 3 and useros != "Android") or (modewanted == 4 and useros == "Windows"):
-			LolexToolsMethods.logoff(modewanted-3)
+			startplugins.LolexToolsMethods.logoff(modewanted-3)
 		elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
-			LolexToolsMethods.hibernate()
+			startplugins.LolexToolsMethods.hibernate()
 		elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux") or (modewanted == 3 and useros == "Android"):
-			LolexToolsMethods.shutdown(0)
+			startplugins.LolexToolsMethods.shutdown(0)
 		elif modewanted == 7 and useros == "Windows" :
-			LolexToolsMethods.shutdown(1)
+			startplugins.LolexToolsMethods.shutdown(1)
 		elif modewanted == 8 and useros == "Windows" :
-			LolexToolsMethods.flicker()
+			startplugins.LolexToolsMethods.flicker()
 		elif modewanted == 9 and useros == "Windows" :
 			subprocess.call("cmd.exe")
 		elif modewanted == 10 and useros == "Windows" :
 			subprocess.Popen("explorer.exe")
 		elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux") or (modewanted == 4 and useros == "Android"):
-			LolexToolsMethods.pyshell()
+			startplugins.LolexToolsMethods.pyshell()
 		elif modewanted == 12 and useros == "Windows" :
 			subprocess.Popen("taskmgr.exe")
 		elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux") or (modewanted == 5 and useros == "Android"):
@@ -387,9 +387,9 @@ try:
 			except(IOError, OSError):
 				print("Failed to create file: ",filename)
 		elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
-			LolexToolsMethods.scriptrestart()
+			startplugins.LolexToolsMethods.scriptrestart()
 		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
-			LolexToolsMethods.numops()
+			startplugins.LolexToolsMethods.numops()
 		elif modewanted == 18  and useros == "Windows" :
 			path = input("Please input the full path of the RDP file.")
 			length = len(path) - 1
@@ -407,11 +407,11 @@ try:
 			os.system("start powershell")
 			# may cause hangs if you're not running the scriot in Powershell
 		elif (modewanted == 20 and useros == "Windows") or (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
-			LolexToolsMethods.dumpme()
+			startplugins.LolexToolsMethods.dumpme()
 		elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
-			LolexToolsMethods.enterinstall()
+			startplugins.LolexToolsMethods.enterinstall()
 		elif (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
-			LolexToolsMethods.uptime()
+			startplugins.LolexToolsMethods.uptime()
 		elif (modewanted == 23 and useros == "Windows"):
 			print("Checking for updates...")
 			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
@@ -434,7 +434,7 @@ try:
 					zip_ref.close()
 		elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
 			path = os.getcwd()
-			LolexToolsMethods.explorer(0, 1, 1, 0, "/" , 1)
+			startplugins.LolexToolsMethods.explorer(0, 1, 1, 0, "/" , 1)
 		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2):
 				page = page + 1
@@ -454,6 +454,7 @@ try:
 			print("Exiting...")
 			print("Giving all threads 5 seconds to exit...")
 			LolexToolsMethods.stopping = True
+			startplugins.LolexToolsMethods.stopping = True
 			time.sleep(5)
 			print("MAIN thread: Stopping...")
 			os._exit(0)
