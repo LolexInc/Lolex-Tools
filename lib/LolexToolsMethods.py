@@ -44,7 +44,7 @@ class threads:
 	restart = False
 	hibernate = False
 try:
-		import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
+        import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
 except(ImportError):
 		pass
 def version():
@@ -52,7 +52,7 @@ def version():
 def flicker():
 	suretoflash = int(input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy."))
 	if suretoflash == 1:
-		howlongtoflashfor = int(input("How many loops do you wish to occur?")) 
+                howlongtoflashfor = int(input("How many loops do you wish to occur?")) 
 	print("Here is a list of colours available:")
 	print("a - Neon Green")
 	print("b - Light Blue")
