@@ -1,5 +1,5 @@
 import os, py_compile, sys
-if sys.version_info.minor > 6:
+if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
 sys.path.append("./")
 import LolexToolsOptions

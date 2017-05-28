@@ -1,5 +1,5 @@
 import os, sys
-if sys.version_minor > 6:
+if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
 try:
 	os.remove("./patches.py")

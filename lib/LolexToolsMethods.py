@@ -10,6 +10,7 @@
 import os, time, py_compile, shutil, sys, platform, threading, subprocess
 from glob import glob
 syslen = len(sys.path)
+if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 if platform.system() == "Windows":
 	if sys.version_info.minor > 5:
