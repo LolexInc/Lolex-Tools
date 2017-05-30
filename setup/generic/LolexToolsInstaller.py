@@ -12,6 +12,8 @@ if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info
 	IOError = OSError
 syslen = len(sys.path)
 sys.path.append("./lib/")
+sys.path.append("./")
+import requiredpatches
 print("Importing...")
 import LolexToolsMethods
 print("This installer uses the following modules: sys, time, os, shutil, platform, LolexToolsMethods")
@@ -401,7 +403,9 @@ try:
 		outf.write(str(twowait))
 		twowait = "None"
 		confirm = "None"
-	with open ("./patches.py", "a") as outf: outf.write('applied = "/90/9.0nann4", "/90/9.0nann7", "/90/9.0alpha0"')
+	with open ("./patches.py", "a") as outf:
+                outf.write('applied = ')
+                outf.write(str(requiredpatches.patches))
 	with open ("./runningsys.py","a") as outf:
 		outf.write("system = " + '("' + useros + '")')
 	with open ("./menusettings.py","a") as outf:
@@ -416,7 +420,6 @@ try:
 		LolexToolsMethods.compiler("runningsys")
 		LolexToolsMethods.compiler("theme")
 		LolexToolsMethods.compiler("startplugins")
-	LolexToolsMethods = False
 	with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
 	with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
 	with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
@@ -435,7 +438,7 @@ try:
 		print("Thank you for using Lolex-Tools Installer.")
 		if start == 1:
 			print("Starting Lolex-Tools...")
-			os.system(LolexToolsMethods.py + "main" + s + "LolexTools.py")
+			os.system(LolexToolsMethods.py + "main" + LolexToolsMethods.s + "LolexTools.py")
 		exit(0)
 	except(TypeError, SyntaxError, ValueError):
 		print("Failed to start.")

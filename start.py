@@ -26,7 +26,7 @@ if "arm" in platform.platform():
 		if ver.version>ver_old.version:
 			print("Installing updates...")
 			os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
-	except(ImportError, SyntaxError, TabError, EOLError):
+	except(ImportError, SyntaxError, TabError):
 		os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 try:
         if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
@@ -41,7 +41,7 @@ try:
                                 os.rename("./JTToolsOptions.pyc","LolexToolsOptions.pyc")
                         except(IOError, OSError):
                                 pass
-        except(ImportError, SyntaxError, TabError, EOLError, SystemError):
+        except(ImportError, SyntaxError, TabError, SystemError):
                 fail = True
         if fail != False:
                 import LolexToolsOptions
@@ -61,7 +61,7 @@ try:
                                 with open ("./exitsettings.py","a") as f: f.write("hidden = False")
                 except(IOError, ImportError):
                         pass
-except(ImportError, SyntaxError, TabError, EOLError, IOError, OSError, AttributeError):
+except(ImportError, SyntaxError, TabError, IOError, OSError, AttributeError):
         if platform.system() == "Windows":
                 if sys.version_info.minor>5:
                         os.system("py .\setup\generic\LolexToolsInstaller.py")

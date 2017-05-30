@@ -894,7 +894,7 @@ def addplugins(rewrite):
 		except(IOError, OSError):
 			pass
 		w = open("./startplugins.py", "a")
-		w.write("import sys\nfrom lib import LolexToolsMethods\n")
+		w.write("import sys\nfrom lib import LolexToolsMethods\nfrom LolexToolsMethods import *")
 	done = "0"
 	while done != "1":
 		success = True
@@ -906,13 +906,12 @@ def addplugins(rewrite):
 		if success == True:
 			path = namepath[0]
 			name = namepath[1]
-			if print(" " in name or "	" in name or name.count(".") > 1 or "#" in name or "@" in name or "LolexTools" in name or "{" in name or "}" in name or "/" in name or "&" in name or "|" in name):
-				print("Plugin name contains an/several characters that are invalid. Could not load plugin.")
-			else:
-				name = name[:len(name) - 1]
-				name = name[:len(name) - 2]
-				name = name[:len(name) - 3]
-				w.write('\ntry:\n    sys.path.append("' + path + '")\n    import ' + (str(name)) + '\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
-			done = input("Please enter 1 if you are done, 0 if not.")
+			name = name.replace(".py", "")
+			name = name.replace(".pyc", "")
+		if " " in name or "	" in name or name.count(".") > 1 or "#" in name or "@" in name or "LolexTools" in name or "{" in name or "}" in name or "/" in name or "&" in name or "|" in name:
+			print("Plugin name contains an/several characters that are invalid. Could not load plugin.")
+		else:
+			w.write('\ntry:\n    sys.path.append("' + path + '")\n    from ' + (str(name)) + ' import *\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
+		done = input("Please enter 1 if you are done, 0 if not.")
 del sys.path[syslen]
 	
