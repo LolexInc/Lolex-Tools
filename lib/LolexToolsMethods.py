@@ -13,6 +13,7 @@ syslen = len(sys.path)
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
+doubleslash = "\\"
 if platform.system() == "Windows":
 	if sys.version_info.minor > 5:
 		py = "py .\\"
@@ -20,7 +21,7 @@ if platform.system() == "Windows":
 	else:
 		py = "python .\\"
 		pyo = "python"
-	s = "\\"
+	s = "//"
 elif platform.system() == "Linux":
 	py = "python3 ./"
 	pyo = "python3"
@@ -46,9 +47,9 @@ class threads:
 	restart = False
 	hibernate = False
 try:
-        import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings
+    import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings, LolexToolsOptions
 except(ImportError):
-		pass
+	pass
 def version():
 	print(ver.version)
 def flicker():
@@ -384,6 +385,7 @@ def dumpme():
 def enterinstall():
 	confirm = int(input("Please confirm (with a 1) to enter the installer."))
 	if confirm == 1:
+		stopping = True
 		os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
 		exit(0)
 def uptime():
@@ -419,6 +421,15 @@ def modehide(name, state):
 		outf.write("hidden = ")
 		outf.write(str(newstate))
 def bak(name, path, reinstall, attrestore, regenerate):
+	import LolexToolsOptions
+	try:
+		os.remove(path + name + ".py")
+	except(IOError, OSError):
+		pass
+	try:
+		os.remove(path + name + ".pyc")
+	except(IOError, OSError):
+		pass
 	if regenerate == 1 and name == "LolexToolsOptions":
 		attrestore = 1
 		regenerate = 0
@@ -429,11 +440,11 @@ def bak(name, path, reinstall, attrestore, regenerate):
 		reinstall = 0
 	if "settings" in name:
 		if name != "menusettings":
-			with open ("./" + name + ".py", "a") as outf: outf.write("hidden = False")
+			with open (path + name + ".py", "a") as outf: outf.write("hidden = False")
 		else:
-			with open ("./menusettings.py", "a") as outf: outf.write("layout = 0")
+			with open (path + "menusettings.py", "a") as outf: outf.write("layout = 0")
 		if LolexToolsOptions.compiler == True:
-			compiler(name + ".py")
+			compiler(path + name + ".py")
 		#os.system(py + s + "main" + s + "LolexTools.py")
 		#exit(None)
 	elif name == "verifonboot":
@@ -629,15 +640,16 @@ class expl:
 	elif platform.system() == "Linux":
 		clear = "clear"
 	else: pass
-def loading():
-	start = int(1)
-	while expl.loaded == False:
-		print("\n\n\n\n\n\n                      Loading: Large directories may take a while...\n          (" + (str(start)) + ") seconds elapsed.")
-		time.sleep(1)
-		os.system(expl.clear)
-		start = int(start) + int(1)
-		if expl.loaded == True:
-			return;
+def loading(text1):
+	#start = int(1)
+	#while expl.loaded == False:
+		#print("\n\n\n\n\n\n                      " + (str(text1)) + "\n          (" + (str(start)) + ") seconds elapsed.")
+		#time.sleep(1)
+		#os.system(expl.clear)
+		#start = int(start) + int(1)
+		#if expl.loaded == True:
+			#return;
+		time.sleep(5)
 def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 	expl.path = path
 	file = 0
@@ -662,7 +674,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 					exittext = "You cannot exit until the current operation is complete"
 				else:
 					exittext = "Exit file explorer"
-				loadingthread = threading.Thread(target=loading, args=[])
+				loadingthread = threading.Thread(target=loading, args=["Loading: Large directories may take a while..."])
 				loadingthread.start()
 				array = os.listdir(expl.path)
 				expl.loaded = True

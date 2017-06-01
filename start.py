@@ -7,13 +7,17 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, platform, shutil, sys, time
+import os, shutil, sys, time
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
-sys.path.extend(("./lib/"))
-a = time.time()
-system = platform.system()
-if "arm" in platform.platform():
+try:
+	from lib import LolexToolsMethods
+except(ImportError, SyntaxError, TabError) as e:
+	print(e)
+	print("Missing library. Please redownload this application.")
+	time.sleep(5)
+	os._exit(0)
+if LolexToolsMethods.uos.useros == "Android":
 	try:
 		import androidinit
 		try:
@@ -23,95 +27,55 @@ if "arm" in platform.platform():
 		os.rename("./ver.py","ver_old.py")
 		shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
 		import ver, ver_old
-		if ver.version>ver_old.version:
+		if ver.version > ver_old.version:
 			print("Installing updates...")
 			os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 	except(ImportError, SyntaxError, TabError):
 		os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 try:
-        if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-        	IOError = OSError
-        fail = False
-        try:
-                import JTToolsOptions
-                try:
-                        os.rename("./JTToolsOptions.py","LolexToolsOptions.py")
-                except(IOError, OSError):
-                        try:
-                                os.rename("./JTToolsOptions.pyc","LolexToolsOptions.pyc")
-                        except(IOError, OSError):
-                                pass
-        except(ImportError, SyntaxError, TabError, SystemError):
-                fail = True
-        if fail != False:
-                import LolexToolsOptions
-                if LolexToolsOptions.compiledon<8.127:
-                        if platform.system() == "Windows":
-                                if sys.version_info.minor>5:
-                                        os.system(" py .\setup\generic\LolexToolsInstaller.py")
-                                else:
-                                        os.system("python .\setup\generic\LolexToolsInstaller.py")
-                        else:
-                                if platform.system() == "Linux":
-                                        os.system("python3 ./setup/generic/LolexToolsInstaller.py")
-                        exit(0)
-                try:
-                        import ver
-                        if ver.version <= 8.129211346:
-                                with open ("./exitsettings.py","a") as f: f.write("hidden = False")
-                except(IOError, ImportError):
-                        pass
+	if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
+		IOError = OSError
+	fail = False
+	try:
+		import JTToolsOptions
+		try:
+			os.rename("./JTToolsOptions.py", "LolexToolsOptions.py")
+		except(IOError, OSError):
+			try:
+				os.rename("./JTToolsOptions.pyc", "LolexToolsOptions.pyc")
+			except(IOError, OSError):
+				pass
+	except(ImportError, SyntaxError, TabError, SystemError):
+			fail = True
+	if fail != False:
+		import LolexToolsOptions
+		if LolexToolsOptions.compiledon < 8.127:
+			os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
+			exit(0)
+	try:
+		import ver
+		if ver.version <= 8.129211346:
+			with open ("./exitsettings.py","a") as f: f.write("hidden = False")
+	except(IOError, ImportError):
+		pass
 except(ImportError, SyntaxError, TabError, IOError, OSError, AttributeError):
-        if platform.system() == "Windows":
-                if sys.version_info.minor>5:
-                        os.system("py .\setup\generic\LolexToolsInstaller.py")
-                else:
-                        os.system("python .\setup\generic\LolexToolsInstaller.py")
-        else:
-                os.system("python3 ./setup/generic/LolexToolsInstaller.py")
-        exit(0)
-if system == "Windows":
-        os.system("TITLE Lolex-Tools")
-        os.system("MODE 1000")
-        if sys.version_info.minor>5:
-                os.system("py .\sys\\bootanim.py")
-                b = time.time()
-                local = time.asctime(time.localtime(time.time()))
-                with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
-                        outf.write(local)
-                        outf.write("	 Took ")
-                        outf.write((str(b-a)))
-                        outf.write("seconds to initilaize on Windows Python >3.5\n")
-                time.sleep(3)
-                os.system("py .\main\\LolexTools.py")
-        else:
-                os.system("python .\sys\\bootanim.py")
-                b = time.time()
-                local = time.asctime(time.localtime(time.time()))
-                with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
-                        outf.write(local)
-                        outf.write("	 Took ")
-                        outf.write((str(b-a)))
-                        outf.write("seconds to initilaize on Windows Python < 3.6.\n")
-                time.sleep(3)
-                os.system("python .\main\\LolexTools.py")
-        exit(0)
-elif platform.system() == "Linux":
-        sys.stdout.write("\x1b]2;Lolex-Tools\x07")
-        if "arm" in platform.platform() == False:
-            os.system("python3 ./sys/bootanim.py")
-            os.system("sudo apt-get install xdotool")
-            os.system("xdotool key ctrl+super+Up")
-        b = time.time()
-        local = time.asctime(time.localtime(time.time()))
-        with open ("./Logs/LolexToolsLogFile.txt","a") as outf:
-                outf.write(local)
-                outf.write("	 Took ")
-                outf.write((str(b-a)))
-                outf.write("seconds to initilaize on Linux Python 3.\n")
-        time.sleep(3)
-        os.system("python3 ./main/LolexTools.py")
-        exit(0)
+	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
+	exit(0)
+if LolexToolsMethods.uos.useros == "Windows":
+	os.system("TITLE Lolex-Tools")
+	os.system("MODE 1000")
+	os.system(LolexToolsMethods.pyo + " .\sys\\bootanim.py")
+	time.sleep(3)
+	os.system(LolexToolsMethods.pyo + " ./main/LolexTools.py")
+	os._exit(0)
+elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == "Android":
+	sys.stdout.write("\x1b]2;Lolex-Tools\x07")
+	if LolexToolsMethods.uos.useros == "Linux":
+		os.system("python3 ./sys/bootanim.py")
+		os.system("sudo apt-get install xdotool")
+		os.system("xdotool key ctrl+super+Up")
+	os.system("python3 ./main/LolexTools.py")
+	os._exit(0)
 else:
 	print("OS not supported!!!")
 	time.sleep(3)

@@ -19,6 +19,7 @@ try:
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
+	time.sleep(5)
 	os._exit(0)
 try:
 	sys.path.append("./")
@@ -29,7 +30,12 @@ except(ImportError, SyntaxError, TabError) as e:
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	os._exit(0)
 try:
-	import verifonboot, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+	import menusettings
+except(ImportError):
+	LolexToolsMethods.bak("menusettings", "./", 0, 0, 1)
+	os.system(LolexToolsMethods.py + "start.py")
+try:
+	import verifonboot, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
@@ -95,7 +101,7 @@ if update == True:
 	print("Restarting to finish updating...")
 	LolexToolsMethods.stopping = True
 	startplugins.stopping = True
-	os.startfile(LolexToolsMethods.py + "start.py")
+	os.system(LolexToolsMethods.py + "start.py")
 	os._exit(0)
 if system == "Windows":
 	os.system(theme.theme)
