@@ -19,7 +19,7 @@ try:
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
-	exit(0)
+	os._exit(0)
 try:
 	sys.path.append("./")
 	import LolexToolsOptions, runningsys, startplugins, patches
@@ -27,13 +27,13 @@ except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	time.sleep(3)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
-	exit(0)
+	os._exit(0)
 try:
 	import verifonboot, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
-	exit(0)
+	os._exit(0)
 try:
 	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
 except(ImportError, SyntaxError, TabError) as e:
@@ -80,7 +80,7 @@ if update == True:
 		if os.system(LolexToolsMethods.pyo + " ./update" + requiredpatches.patches[arraypos]  + ".py") != 0:
 			print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
 			time.sleep(5)
-			exit(0)
+			os._exit(0)
 		arraypos = arraypos + 1
 	try:
 		os.remove("./patches.py")
@@ -91,10 +91,12 @@ if update == True:
 		outf.write(str(requiredpatches.patches))
 	if fail == True:
 		print("Couldn't update: files missing!")
-		exit(0)
+		os._exit(0)
 	print("Restarting to finish updating...")
-	os.system(LolexToolsMethods.py + "start.py")
-	exit(0)
+	LolexToolsMethods.stopping = True
+	startplugins.stopping = True
+	os.startfile(LolexToolsMethods.py + "start.py")
+	os._exit(0)
 if system == "Windows":
 	os.system(theme.theme)
 	os.system("mode 1000")

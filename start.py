@@ -96,7 +96,7 @@ if system == "Windows":
                 time.sleep(3)
                 os.system("python .\main\\LolexTools.py")
         exit(0)
-else:
+elif platform.system() == "Linux":
         sys.stdout.write("\x1b]2;Lolex-Tools\x07")
         if "arm" in platform.platform() == False:
             os.system("python3 ./sys/bootanim.py")
@@ -112,3 +112,7 @@ else:
         time.sleep(3)
         os.system("python3 ./main/LolexTools.py")
         exit(0)
+else:
+	print("OS not supported!!!")
+	time.sleep(3)
+	os._exit(0)
