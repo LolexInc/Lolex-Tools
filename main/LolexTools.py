@@ -343,9 +343,10 @@ try:
 					startplugins.modehide("sysinfo", sysinfosettings.hidden)
 				elif chngm == 15:
 					startplugins.modehide("exit", exitsettings.hidden)
-				if useros == "Windows":
-					os.system(LolexToolsMethods.py + "start.py")
-				exit(0)
+				os.startfile(LolexToolsMethods.py + "start.py")
+				LolexToolsMethods.stopping = True
+				startplugins.stopping = True
+				os._exit(0)
 		elif modewanted == 2:
 			startplugins.restart()
 		elif (modewanted == 3 and useros != "Android") or (modewanted == 4 and useros == "Windows"):
