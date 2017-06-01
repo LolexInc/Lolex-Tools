@@ -291,7 +291,7 @@ try:
 		with open ("./LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
 	print("Setting up general options...")
 	developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
-	if developer !=1:
+	if developer != 1:
 		compiler = True
 	elif developer == 1:
 		compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
@@ -419,7 +419,6 @@ try:
 		LolexToolsMethods.compiler("LolexToolsOptions")
 		LolexToolsMethods.compiler("runningsys")
 		LolexToolsMethods.compiler("theme")
-		LolexToolsMethods.compiler("startplugins")
 	with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
 	with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
 	with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
