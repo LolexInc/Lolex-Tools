@@ -8,6 +8,10 @@
 ##
 ## authors = Monkeyboy2805
 import os, shutil, sys, time
+if sys.version_info.major == 2:
+	print("Please install Python 3 to run this script.")
+	time.sleep(5)
+	exit(0)
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
 try:
@@ -52,12 +56,6 @@ try:
 		if LolexToolsOptions.compiledon < 8.127:
 			os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 			exit(0)
-	try:
-		import ver
-		if ver.version <= 8.129211346:
-			with open ("./exitsettings.py","a") as f: f.write("hidden = False")
-	except(IOError, ImportError):
-		pass
 except(ImportError, SyntaxError, TabError, IOError, OSError, AttributeError):
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	exit(0)

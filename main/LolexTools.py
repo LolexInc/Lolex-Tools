@@ -33,6 +33,13 @@ try:
 	import menusettings
 except(ImportError):
 	LolexToolsMethods.bak("menusettings", "./", 0, 0, 1)
+	restart = True
+try:
+	import exitsettings
+except(ImportError):
+	LolexToolsMethods.bak("exitsettings", "./", 0, 0, 1)
+	restart = True
+if restart == True:
 	os.system(LolexToolsMethods.py + "start.py")
 try:
 	import verifonboot, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
