@@ -20,7 +20,7 @@ except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
 	time.sleep(5)
-	os._exit(0)
+	exit(0)
 if LolexToolsMethods.uos.useros == "Android":
 	try:
 		import androidinit
@@ -65,7 +65,7 @@ if LolexToolsMethods.uos.useros == "Windows":
 	os.system(LolexToolsMethods.pyo + " .\sys\\bootanim.py")
 	time.sleep(3)
 	os.system(LolexToolsMethods.pyo + " ./main/LolexTools.py")
-	os._exit(0)
+	exit(0)
 elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == "Android":
 	sys.stdout.write("\x1b]2;Lolex-Tools\x07")
 	if LolexToolsMethods.uos.useros == "Linux":
@@ -73,8 +73,8 @@ elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == 
 		os.system("sudo apt-get install xdotool")
 		os.system("xdotool key ctrl+super+Up")
 	os.system("python3 ./main/LolexTools.py")
-	os._exit(0)
+	exit(0)
 else:
 	print("OS not supported!!!")
 	time.sleep(3)
-	os._exit(0)
+	exit(0)
