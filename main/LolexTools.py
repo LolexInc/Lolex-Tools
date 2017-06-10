@@ -23,7 +23,7 @@ except(ImportError, SyntaxError, TabError) as e:
 	os._exit(0)
 try:
 	sys.path.append("./")
-	import LolexToolsOptions, runningsys, startplugins, patches
+	import LolexToolsOptions, runningsys, startplugins
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	time.sleep(3)
@@ -74,6 +74,11 @@ if LolexToolsOptions.compiledon < 9.00001:
 		if os.system(LolexToolsMethods.py +  "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0nann4.py") != 0:
 			fail = True
 update = False
+try:
+	import patches
+except(ImportError, SyntaxError, TabError):
+	class patches:
+		patches.applied = ""
 if len(patches.applied) != len(requiredpatches.patches):
 	arraypos = (len(requiredpatches.patches) - len(patches.applied))
 	update = True
