@@ -28,8 +28,8 @@ if LolexToolsMethods.uos.useros == "Android":
 			os.remove("./ver_old.py")
 		except(IOError, OSError):
 			pass
-		os.rename("./ver.py","ver_old.py")
-		shutil.copy("/sdcard/Lolex-Tools/ver.py","./")
+		os.rename("./ver.py", "ver_old.py")
+		shutil.copy("/sdcard/Lolex-Tools/ver.py", "./")
 		import ver, ver_old
 		if ver.version > ver_old.version:
 			print("Installing updates...")
