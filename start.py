@@ -63,7 +63,6 @@ if LolexToolsMethods.uos.useros == "Windows":
 	os.system("TITLE Lolex-Tools")
 	os.system("MODE 1000")
 	os.system(LolexToolsMethods.pyo + " .\sys\\bootanim.py")
-	time.sleep(3)
 	os.system(LolexToolsMethods.pyo + " ./main/LolexTools.py")
 	exit(0)
 elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == "Android":
@@ -76,5 +75,5 @@ elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == 
 	exit(0)
 else:
 	print("OS not supported!!!")
-	time.sleep(3)
+	time.sleep(5)
 	exit(0)
