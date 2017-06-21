@@ -23,14 +23,16 @@ except(ImportError):
         os.system("python3 ./LolexToolsInstaller.py")
     exit(0)
 if LolexToolsOptions.compiledon<8.3:
-    if system == "Windows":
-        if sys.version_info.minor>5:
-            os.system ("py ./update.py")
-            pass
+    try:
+        name = LolexToolsOptions.onepintotal
+    except(NameError):
+        if system == "Windows":
+            if sys.version_info.minor>5:
+                os.system ("py ./update.py")
+            else:
+                os.system("python update.py")
         else:
-            os.system("python update.py")
-    else:
-        os.system ("python3 ./update.py")
+            os.system ("python3 ./update.py")
         
 if system == "Windows":
     os.system(theme.theme)
