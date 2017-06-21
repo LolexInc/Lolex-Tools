@@ -37,7 +37,7 @@ try:
                 os.system("python .\LolexToolsInstaller.py")
         else:
             os.system("python3 ./LolexToolsInstaller.py")
-        exit()
+        exit(0)
     try:
        import ver
        if ver.version <= 8.129211346:
@@ -52,15 +52,15 @@ except(ImportError, IOError, OSError):
             os.system("python .\LolexToolsInstaller.py")
     else:
         os.system("python3 ./LolexToolsInstaller.py")
-    exit()
+    exit(0)
 if system == "Windows":
     print("Starting on Windows...")
     if sys.version_info.minor>5:
         os.system("py .\LolexTools.py")
     else:
         os.system("python LolexTools.py")
-    exit(None)
+    exit(0)
 else:
     print("Starting on Linux...")
     os.system("python3 ./LolexTools.py")
-    exit(None)
+    exit(0)
