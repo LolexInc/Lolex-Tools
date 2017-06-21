@@ -1,12 +1,6 @@
 #! python3
 import sys, time, subprocess, os, shutil, py_compile, platform, LolexToolsMethods
 print("This installer uses the following modules:sys,time,subprocess,os,shutil,py_compile, platform, LolexToolsMethods")
-try:
-     import isnottravisci
-except(ImportError):
-    print("Running as Travis CI...\nIf you aren't actually then create isnottravisci.py  to verify you aren't actually a bot.\nInstallation will commence upon the script restart and the file being present.")
-    time.sleep(5)
-    exit()
 if sys.version_info.major !=3:
      print("Only Python 3 is currently supported. Please install Python 3.")
      os.system("python3 LolexToolsInstaller.py")
