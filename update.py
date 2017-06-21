@@ -184,7 +184,7 @@ with open ("./LolexToolsOptions.py","a")as outf:
                         outf.write(str(LolexToolsOptions.twopinfive))
     if twowordtotal>0:
         outf.write("\ntwowordone = ")
-        if JTToolsOptions.twowordone == False:
+        if LolexToolsOptions.twowordone == False:
             outf.write(str(LolexToolsOptions.twowordone))
         else:
             outf.write('("')
@@ -192,7 +192,7 @@ with open ("./LolexToolsOptions.py","a")as outf:
             outf.write('")')
         if twowordtotal>1:
             outf.write("\ntwowordtwo = ")
-            if JTToolsOptions.twowordone == False:
+            if LolexToolsOptions.twowordone == False:
                 outf.write(str(LolexToolsOptions.twowordone))
             else:
                 outf.write('("')
@@ -201,7 +201,7 @@ with open ("./LolexToolsOptions.py","a")as outf:
             if twowordtotal>2:
                 outf.write("\ntwowordthree = ")
                 outf.write(str(LolexToolsOptions.twowordthree))
-                if JTToolsOptions.twowordthree == False:
+                if LolexToolsOptions.twowordthree == False:
                     outf.write(str(LolexToolsOptions.twowordthree))
                 else:
                     outf.write('("')
@@ -226,10 +226,3 @@ with open ("./LolexToolsOptions.py","a")as outf:
 if LolexToolsOptions.compiler == True:
     LolexToolsMethods.compiler("LolexToolsOptions")
 print("Finished updating...")
-    
-
-    
-    
-
-
-    
