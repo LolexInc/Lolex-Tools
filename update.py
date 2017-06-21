@@ -209,7 +209,7 @@ with open ("./LolexToolsOptions.py","a")as outf:
                     outf.write('")')
                 if twowordtotal>3:
                     outf.write("\ntwowordfour = ")
-                    if JTToolsOptions.twowordfour == False:
+                    if LolexToolsOptions.twowordfour == False:
                         outf.write(str(LolexToolsOptions.twowordfour))
                     else:
                         outf.write('("')
@@ -217,7 +217,7 @@ with open ("./LolexToolsOptions.py","a")as outf:
                         outf.write('")')
                     if twowordtotal>4:
                         outf.write("\ntwowordfive = ")
-                        if JTToolsOptions.twowordfive == False:
+                        if LolexToolsOptions.twowordfive == False:
                             outf.write(str(LolexToolsOptions.twowordfive))
                         else:
                             outf.write('("')
