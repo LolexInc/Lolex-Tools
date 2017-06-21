@@ -1,11 +1,5 @@
 #! python3
 import sys, time, subprocess, os, shutil, py_compile, platform, io
-try:
-    import isnottravisci
-except(ImportError):
-    print("Please create isnottravisci.py to continue.")
-    time.sleep(5)
-    exit(None)
 system = platform.system()
 if system == "Windows":
     os.system("mode 1000")
