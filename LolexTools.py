@@ -559,15 +559,8 @@ try:
             print ("Feature currently unavailable(under development).")
         elif modewanted == 19  and useros == "Windows" :
             path = input("Please input the full path of the RDP file.")
-            length = len(path) - 1
-            if path[length] == "p":
-                length = length - 1
-                if path[length] == "d":
-                    length = length - 1
-                    if path[length] == "r":
-                        length = length - 1
-                        if path[length] == ".":
-                            os.system(path)
+            if path.endswith(".rdp")
+                os.system(path)
             else:
                 print("Not a valid rdp file.")
         elif modewanted == 20 and useros == "Windows" :
