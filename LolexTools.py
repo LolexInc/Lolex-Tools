@@ -11,17 +11,17 @@ try:
     import LolexToolsMethods
 except(ImportError):
     print("Missing library. Please redownload this application.")
-    exit(None)
+    exit(0)
 
 try:
     import verifonboot, LolexToolsOptions, runningsys, startplugins, theme, menusettings, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
-except():
+except(ImportError):
     system = platform.system()
     if system == "Windows":
         subprocess.Popen(".\LolexToolsInstaller.py", shell = True)
     else:
         os.system("python3 ./LolexToolsInstaller.py")
-    exit(None)
+    exit(0)
 if LolexToolsOptions.compiledon<8.3:
     if system == "Windows":
         if sys.version_info.minor>5:
@@ -605,7 +605,7 @@ try:
                     page = 3
         elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux"):
             print("Exiting...")
-            exit(None)
+            exit(0)
 except(SyntaxError):
      print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
