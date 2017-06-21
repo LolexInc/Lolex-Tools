@@ -1,7 +1,7 @@
 import shutil, os, time, platform
 init1 = time.time()
 if "arm" not in platform.platform():
-        exit(None)
+        exit(0)
 try:
 	local = time.asctime( time.localtime(time.time()) )
 	print(local,"    Attempting to remove folders...") 
@@ -144,7 +144,8 @@ try:
 	print("Took ",((b-a)*1000)," milliseconds to copy Tests.")
 except(IOError, OSError):
 	print("Please ensure that all files are present in /sdcard/Lolex-Tools")
-	exit(None)
+	time.sleep(10)
+	exit(0)
 init2 = time.time()
 print("Took ",((init2-init1)*1000),"milliseconds to setup Android environment")
 local =time.asctime( time.localtime(time.time()) )
