@@ -25,7 +25,7 @@ except(ImportError):
 if LolexToolsOptions.compiledon<8.3:
     try:
         name = LolexToolsOptions.onepintotal
-    except(NameError):
+    except(AttributeError):
         if system == "Windows":
             if sys.version_info.minor>5:
                 os.system ("py ./update.py")
