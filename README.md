@@ -1,5 +1,5 @@
 # Lolex Tools 2014-2016 LolexOrg
-# This is : Lolex-Tools 8.3
+# This is : Lolex-Tools 8.3.4
 ### Quantified Code checker <br>[![Code Issues](https://www.quantifiedcode.com/api/v1/project/ed746cf494f24911b477070327cc0f48/badge.svg)](https://www.quantifiedcode.com/app/project/ed746cf494f24911b477070327cc0f48)
 ## Features and requirements
 ## Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
