@@ -66,8 +66,11 @@ except(ImportError, SyntaxError, TabError):
 	print("Required file missing.")
 if LolexToolsOptions.compiledon < 9.00001:
 	if LolexToolsOptions.compiledon < 8.3:
-		if os.system (LolexToolsMethods.py + "update" + LolexToolsMethods.s + "83" + LolexToolsMethods.s + "8.3release.py") != 0:
-			fail = True
+		try:
+			name = LolexToolsOptions.onepintotal
+		except(AttributeError):
+			if os.system (LolexToolsMethods.py + "update" + LolexToolsMethods.s + "83" + LolexToolsMethods.s + "8.3release.py") != 0:
+				fail = True
 	if LolexToolsOptions.compiledon < 9.0:
 		if os.system(LolexToolsMethods.py +  "update" + LolexToolsMethods.s + "90" + LolexToolsMethods.s + "9.0n1.py") != 0:
 			fail = True
