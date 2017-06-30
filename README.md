@@ -10,7 +10,6 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 ## Features and requirements
 ## Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
-# NOTE: Android x86 devices are not currently supported.
 # Visit our website for more information and news
 # Please go to:
 [Our official website](http://lolexorg.wixsite.com/lolex-tools)
