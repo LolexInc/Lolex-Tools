@@ -148,65 +148,9 @@ try:
           oneswappins = True
      else:
           oneswappins = False
-
-##     while onepins<0 or onepins>5:
-##          onepins = int(input("We only support between 0-5 PINs currently.\nHow many PINs do you wish to use?"))
-##     if onepins == 0:
-##          onewait = 0
-##     if onepins>1:
-##          oneswappins = True
-##     else:
-##          oneswappins = False
-##     if onepins == 0:
-##          oneusepin = False
-##     else:
-##          oneusepin = True
-##     if onepins>0:
-##          onepinone = int(input("Please set your first PIN."))
-##          confirm = int(input("Please confirm your first PIN."))
-##          while onepinone != confirm:
-##               onepinone = int(input("Sorry! Your PINs didn't match! Please set your first PIN."))
-##               confirm = int(input("Please confirm your first PIN."))
-##          if onepins>1:
-##               onepintwo = int(input("Please set your second PIN."))
-##               confirm = int(input("Please confirm your second PIN."))
-##               while onepintwo != confirm or onepintwo == onepinone:
-##                    onepintwo = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your second PIN."))
-##                    confirm = int(input("Please confirm your second PIN."))
-##               if onepins>2:
-##                    onepinthree = int(input("Please set your third PIN."))
-##                    confirm = int(input("Please confirm your third PIN."))
-##                    while onepinthree != confirm or(onepinthree ==(onepintwo or onepinone)):
-##                         onepinthree = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your third PIN."))
-##                         confirm = int(input("Please confirm your third PIN."))
-##                    if onepins>3:
-##                         onepinfour = int(input("Please set your fourth PIN."))
-##                         confirm = int(input("Please confirm your fourth PIN."))
-##                         while onepinfour != confirm or (onepinfour == (onepinthree or onepintwo or onepinone)):
-##                              onepinfour = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fourth PIN."))
-##                              confirm = int(input("Please confirm your fourth PIN."))
-##                         if onepins>4:
-##                              onepinfive = int(input("Please set your fifth PIN."))
-##                              confirm = int(input("Please confirm your fifth PIN."))
-##                              while onepinfive != confirm or (onepinfive == (onepinfour or onepinthree or onepintwo or onepinone)):
-##                                   onepinfive = int(input("Sorry! Your PINs didn't match or they matched an earlier PIN! Please set your fifth PIN."))
-##                                   confirm = int(input("Please confirm your fifth PIN."))
-##     if onepins == 0:
-##          onepinone = False
-##          onewait = False
-##     if onepins<2:
-##          onepintwo = False
-##     if onepins<3:
-##          onepinthree = False
-##     if onepins<4:
-##          onepinfour = False
-##     if onepins<5:
-##          onepinfive = False
-##     if onepins>0:
-##          oneusepin = True
-     if onepins>0:
+     if onepins > 0:
           onewait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
-          while onewait<0:
+          while onewait < 0:
                onewait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      onewords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
      if onewords == 0:
@@ -245,23 +189,22 @@ try:
           outf.write(str(onewordtotal))
      if onewords == 0:
           onewordwait = False
-     if onewords>0:
+     if onewords > 0:
           oneuseword = True
      else:
           oneuseword = False
-     if onewords>1:
+     if onewords > 1:
           oneswapwords = True
      else:
           oneswapwords = False
      if onewords == 0:
           onewordwait = False
-     if onewords>0:
+     if onewords > 0:
           oneuseword = True
-     if onewords>0:
           onewordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed?"))
           while onewordwait<0:
                onewordwait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
-     if howmanyunames>1:
+     if howmanyunames > 1:
           print("Setting up user 2...")
           username2 = input("Please set your username.")
           confirm = input("Please confirm your username.")
@@ -303,17 +246,18 @@ try:
                outf.write(str(twopintotal))
           if twopins == 0:
                twowait = False
-          if onepins>0:
+          if twopins > 0:
                twousepin = True
           else:
                twousepin = False
-          if twopins>1:
+          if twopins > 1:
                twoswappins = True
           else:
                twoswappins = False
-          twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
-          while twowait<0:
-               twowait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
+          if twopins > 0:
+               twowait = int(input("If someone gets your PIN wrong 5 times, how long should the delay be before retries are allowed?"))
+               while twowait<0:
+                    twowait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
           twowords = int(input("How many passwords do you wish to use?\nUsing more than 1 will enable a swap passwords function.\nThis, upon each startup, will use your next password."))
           if twowords == 0:
                twowordtotal = 0
@@ -351,7 +295,7 @@ try:
                outf.write(str(twowordtotal))
           if twowords == 0:
                twowordwait = False
-          if twowords>0:
+          if twowords > 0:
                twouseword = True
           else:
                twouseword = False
@@ -362,59 +306,57 @@ try:
 
           if twowords == 0:
                twowordwait = False
-          if twowords>0:
+          if twowords > 0:
                twouseword = True
-          if twowords>0:
                twowordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed?"))
                while twowordwait<0:
                     twowordwait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      print("Setting up general options...")
      developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
-     if (oneusepin == True or 1) or (twousepin == True or 1):
-          if developer !=1:
-               vanishprint = int(input("How many lines do you wish to be printed to hide your PIN (as a number)?"))
-               confirm = 0
-               while vanishprint<500 and confirm!=1:
+               if developer !=1:
+                    vanishprint = int(input("How many lines do you wish to be printed to hide your PIN (as a number)?"))
+                    confirm = 0
+                    while vanishprint < 500 and confirm !=n 1:
                     confirm = int(input("SECURITY WARNING: this number may not be secure. Please enter 0 to change it, or 1 to confirm it.\nPlease be aware that less than 0 lines is invalid."))
-                    if confirm != 1 or vanishprint<0:
+                    if confirm != 1 or vanishprint < 0:
                          vanishprint = int(input("Please enter a valid number of lines."))
-               compiler = True
-          elif developer == 1:
-               compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
-               vanishprint = 0 #Feature for devs :)
-          if useros == "Windows":
-               print("Here is a list of colours available:")
-               print("a - Neon Green")
-               print("b - Light Blue")
-               print("c - Neon Red")
-               print("d - Light Purple/Pink")
-               print("e - Neon Yellow")
-               print("f - White")
-               print("1 - Dark Blue")
-               print("2 - Dark Green")
-               print("3 - Light Non-Neon Blue")
-               print("4 - Dark Red/Brown")
-               print("5 - Dark Purple")
-               print("6 - Non Neon Yellow")
-               print("7 - White/Light Gray")
-               print("8 - Dark Gray")
-               print("9 - Dark Neon Blue")
-               print("The first colour will set the background colour, the second the text. Please enter color then your colour code.")
-               print("If any crashes occur try enclosing your colour code in speech marks.")
-               theme = input("Please set your theme.")
-               os.system(theme)
+                    compiler = True
+               elif developer == 1:
+                    compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
+                    vanishprint = 0 #Feature for devs :)
+               if useros == "Windows":
+                    print("Here is a list of colours available:")
+                    print("a - Neon Green")
+                    print("b - Light Blue")
+                    print("c - Neon Red")
+                    print("d - Light Purple/Pink")
+                    print("e - Neon Yellow")
+                    print("f - White")
+                    print("1 - Dark Blue")
+                    print("2 - Dark Green")
+                    print("3 - Light Non-Neon Blue")
+                    print("4 - Dark Red/Brown")
+                    print("5 - Dark Purple")
+                    print("6 - Non Neon Yellow")
+                    print("7 - White/Light Gray")
+                    print("8 - Dark Gray")
+                    print("9 - Dark Neon Blue")
+                    print("The first colour will set the background colour, the second the text. Please enter color then your colour code.")
+                    print("If any crashes occur try enclosing your colour code in speech marks.")
+                    theme = input("Please set your theme.")
+                    os.system(theme)
      pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
      if pluginconfirm == 1:
                try:
                     shutil.copy("./Defaults/startplugins.py","./")
                except(IOError, OSError):
                     print("File missing. Fatal Error: Please redownload the repository from Github and re-run this installer.")
-               currentplugin = (str(input("Please enter the name of your first plugin. Do not include file extensions! Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")))
+               currentplugin = input("Please enter the name of your first plugin. Do not include file extensions! Plugin names also have to be case- sensitive, cannot be any types of numbers, cannot have spaces or special characters like commas.")
                with open ("./startplugins.py","a") as outf:outf.write(str("\nimport "+(str(currentplugin))))
                done = int(input("Please enter 1 if you are done, 0 if you aren't."))
                while done != 1:
                     currentplugin = input("Please enter the name of your next plugin.")
-                    with open ("./startplugins.py","a") as outf: outf.write(str("\nimport "+(str(currentplugin))))
+                    with open ("./startplugins.py","a") as outf: outf.write(str("\nimport " + (str(currentplugin))))
                     done = int(input("Please enter 1 if you are done, 0 if you aren't."))
                if developer == 1:
                     compileplugins = int(input("Please enter 1 if you want your plugins compiling, or 0 if you don't."))
@@ -430,7 +372,7 @@ try:
           developer = True
      else:
           developer = False
-     if pluginconfirm !=1:
+     if pluginconfirm != 1:
           compileplugins = 0
      else:
           pass
@@ -457,7 +399,7 @@ try:
           twoswapwords = 0
           outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
      with open ("LolexToolsOptions.py","a") as outf:
-          outf.write("\ncompiledon = 8.20")
+          outf.write("\ncompiledon = 8.34")
           outf.write("\nuseusername = ")
           outf.write(str(useusername))
           useusername = 0
@@ -470,8 +412,6 @@ try:
                outf.write('")')
           username1 = 0
           outf.write("\nusername2 = ")
-          
-
           outf.write('("')
           outf.write(username2)
           outf.write('")')
@@ -572,16 +512,15 @@ except(ValueError):
 except(IOError):
      print("Sorry! A IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(NameError):
      print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(EOFError):
      print("Sorry! A EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-except():
+except(AttributeError):
      print("Sorry! A AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
 except(OSError):
      print("Sorry! A OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
      time.sleep(10)
-
