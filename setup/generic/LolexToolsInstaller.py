@@ -354,7 +354,7 @@ try:
 		twoswapwords = 0
 		outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
 	with open ("./LolexToolsOptions.py","a") as outf:
-		outf.write("\ncompiledon = 9.0011")
+		outf.write("\ncompiledon = 9.00110000000001")
 		outf.write("\nuseusername = ")
 		outf.write(str(useusername))
 		useusername = 0
