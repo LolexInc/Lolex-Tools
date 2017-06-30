@@ -8,7 +8,8 @@ Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
 AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
 
 ## Features and requirements
-## Python 3.0 or higher is required for this project!!! Up to Python 3.7.0a1 is supported currently (as of 26/12/2016)
+## Python 3.0 or higher is required for this project!!! 
+## Up to Python 3.7.0a1 should be supported currently, measures have been put in place (as of 26/12/2016)
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # Visit our website for more information and news
 # Please go to:
@@ -38,8 +39,8 @@ Exit: None <br><br>
 
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
-# Lolex-Tools is licensed under LGPL 3.0
-## License: LGPL 3.0
+# Lolex-Tools is licensed under GPL 3.0
+## License: GPL 3.0
 
 ```
 GNU LESSER GENERAL PUBLIC LICENSE
