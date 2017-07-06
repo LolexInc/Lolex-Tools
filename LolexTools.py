@@ -555,7 +555,7 @@ try:
             print ("Feature currently unavailable(under development).")
         elif modewanted == 19  and useros == "Windows" :
             path = input("Please input the full path of the RDP file.")
-            if path.endswith(".rdp")
+            if path.endswith(".rdp"):
                 os.system(path)
             else:
                 print("Not a valid rdp file.")
