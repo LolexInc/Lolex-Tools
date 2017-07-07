@@ -26,20 +26,10 @@ elif platform.system() == "Linux":
 	py = "python3 ./"
 	pyo = "python3"
 	s = "/"
-try:
-	sys.path.append("./")
-	import ver
-except(ImportError) as e:
-	if "arm" in platform.platform() == False:
-		pass
-	else:
-		print("Please redownload this repository to access all features.")
-		print(e)
-		exit(0)
 stopping = False
 class uos:
 	useros = platform.system()
-	if os.path.exists("/system/build.prop") == True and os.path.isdir("/system/build.prop") and platform.system() == "Linux":
+	if os.path.exists("/system/build.prop") == True and not(os.path.isdir("/system/build.prop")) and platform.system() == "Linux":
 		useros = "Android"
 class threads:
 	shutdown = False
@@ -47,9 +37,17 @@ class threads:
 	restart = False
 	hibernate = False
 try:
-    import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings, LolexToolsOptions
+    import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings, LolexToolsOptions, theme
 except(ImportError):
 	pass
+try:
+	sys.path.append("./")
+	import ver
+except(ImportError) as e:
+	print("Please redownload this repository to access all features.")
+	print(e)
+	time.sleep(5)
+	exit(0)
 def version():
 	print(ver.version)
 def flicker():
@@ -79,19 +77,17 @@ def flickerp2(colour, howlongtoflashfor):
 	currentflashes= int(0)
 	while howlongtoflashfor != currentflashes and stopping != True:
 		os.system (colour[0])
-		time.sleep()
+		pass
 		os.system (colour[1])
-		time.sleep()
+		pass
 		os.system (colour[2])
-		time.sleep()
+		pass
 		os.system (colour[3])
-		time.sleep()
+		pass
 		os.system (colour[4])
-		time.sleep()
+		pass
 		currentflashes = currentflashes + 1
-	import theme
 	os.system(theme.theme)
-	exit(0)
 def windowspage(page, layout):
 	if page == 0:
 		print("1  = Settings")
@@ -133,7 +129,7 @@ def windowspage(page, layout):
 			print("25 = Next Page")
 			print("26 = Back a Page")
 	else:
-		if page < 5 and page != -1:
+		if page < 5:
 			page = page + 1
 		else:
 			return;
@@ -223,7 +219,7 @@ def logoff(type):
 		loggeroff.start()
 def logoffthread(waittime, type):
 	if threads.logoff == True:
-		print("LOGOFF thread: Logoff already scheduled.")
+		print("LOGOFF thread: Logoff already scheduled!")
 		return;
 	threads.logoff = True
 	waittime = waittime * 60
@@ -247,8 +243,8 @@ def hibernate():
 	hibernate = input("Please enter 1 to confirm logoff.")
 	if hibernate == "1":
 		waittime = float(input("How long, in minutes, do you wish to wait?"))
-		while waittime < 0:
-			waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
+		while waittime < 0 and waittime > 65505:
+			waittime = float(input("Please select a time between 0 - 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
 		hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
 		hibernatethreader.start()
 def hibernatethread(waittime):
@@ -285,7 +281,7 @@ def restartthread(waittime):
 		if uos.useros != "Linux":
 			os.system("shutdown -r -f")
 		else:
-			if "arm" in platform.platform():
+			if uos.useros == "Android":
 				if os.system("su -c reboot") != 0:
 					os.system("reboot")
 			else:
@@ -297,8 +293,8 @@ def shutdown(type):
 	shutdown = input("Please enter 1 to shutdown.")
 	if shutdown == "1":
 		waittime = float(input("How long, in minutes, do you wish to wait?"))
-		while waittime < 0:
-			waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
+		while waittime < 0 or waittime > 65505:
+			waittime = float(input("Please select a time between 0- 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
 		shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
 		shutdownthreader.start()
 def shutdownthread(waittime, type):
@@ -339,7 +335,7 @@ def scriptrestart():
 	confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
 	if confirmscriptrestart == 1:
 		os.system(py + "start.py")
-		exit(0)
+		os._exit(0)
 def numops():
 	print ("Here is a list of operations:")
 	print ("1 = Add")
@@ -371,7 +367,7 @@ def addortake():
 				startnum = startnum = startnum - addortakenum
 			time.sleep (waittime)
 	print ("The closest number to your target end number was:" + (str(startnum)))
-	time.sleep (1)
+	time.sleep(1)
 def dumpme():
 	if uos.useros == "Windows":
 		os.system(".\resources\systeminf")
@@ -395,14 +391,9 @@ def uptime():
 				print("Failed to run uptime script.")
 	else:
 		os.system("uptime")
-def logo():
-	print("This function has been deprecated.")
-def exitnow():
-	print("This function has been deprecated.")
 def compiler(name):
-	IOError
 	try:
-		os.remove("./" + name+".pyc")
+		os.remove("./" + name + ".pyc")
 	except(IOError):
 		pass
 	py_compile.compile(name+".py","./"+name+".pyc")
