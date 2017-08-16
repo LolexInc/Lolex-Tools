@@ -275,9 +275,7 @@ try:
 			outf.write(str(twoswapwords))
 		if LolexToolsOptions.compiler == True:
 			startplugins.compiler("verifonboot")
-	useros = platform.system()
-	if "arm" in platform.platform():
-		useros = "Android"
+	useros = LolexToolsMethods.uos.useros
 	layout = menusettings.layout
 	page = 0
 	while True:
