@@ -140,11 +140,11 @@ try:
           outf.write(str(onepintotal))
      if onepins == 0:
           onewait = False
-     if onepins>0:
+     if onepins > 0:
           oneusepin = True
      else:
           oneusepin = False
-     if onepins>1:
+     if onepins > 1:
           oneswappins = True
      else:
           oneswappins = False
@@ -299,7 +299,7 @@ try:
                twouseword = True
           else:
                twouseword = False
-          if twowords>1:
+          if twowords > 1:
                twoswapwords = True
           else:
                twoswapwords = False
@@ -309,11 +309,11 @@ try:
           if twowords > 0:
                twouseword = True
                twowordwait = int(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed?"))
-               while twowordwait<0:
+               while twowordwait < 0:
                     twowordwait = int(input("Less than 0 seconds is invalid. Please enter a valid number of seconds."))
      print("Setting up general options...")
      developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
-               if developer !=1:
+              if developer !=1:
                     vanishprint = int(input("How many lines do you wish to be printed to hide your PIN (as a number)?"))
                     confirm = 0
                     while vanishprint < 500 and confirm !=n 1:
@@ -323,7 +323,7 @@ try:
                     compiler = True
                elif developer == 1:
                     compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
-                    vanishprint = 0 #Feature for devs :)
+                    vanishprint = 0  #Feature for devs :)
                if useros == "Windows":
                     print("Here is a list of colours available:")
                     print("a - Neon Green")
@@ -380,7 +380,7 @@ try:
           compiler = True
      else:
           compiler = False
-     if twowords<2:
+     if twowords < 2:
           twoswapwords = False
      print("OK. Reset completed with a 1.")
      print("Applying new options...")
