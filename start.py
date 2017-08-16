@@ -69,8 +69,6 @@ elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == 
 	sys.stdout.write("\x1b]2;Lolex-Tools\x07")
 	if LolexToolsMethods.uos.useros == "Linux":
 		os.system("python3 ./sys/bootanim.py")
-		os.system("sudo apt-get install xdotool")
-		os.system("xdotool key ctrl+super+Up")
 	os.system("python3 ./main/LolexTools.py")
 	exit(0)
 else:
