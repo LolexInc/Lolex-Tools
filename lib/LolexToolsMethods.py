@@ -45,7 +45,7 @@ except(ImportError) as e:
         print("Please redownload this repository to access all features.")
         print(e)
         time.sleep(5)
-        #exit(0)
+        exit(0)
 def version():
         print(ver.version)
 def flicker():
