@@ -69,7 +69,7 @@ def flicker():
         print("8 - Dark Gray")
         print("9 - Dark Neon Blue")
         colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour  "))
-        flickerthread = threading.Thread(target=flickerp2, args=[colour, howlongtoflashfor])
+        flickerthread = threading.Thread(target = flickerp2, args = [colour, howlongtoflashfor])
         flickerthread.start()
 def flickerp2(colour, howlongtoflashfor):
         currentflashes= int(0)
