@@ -400,11 +400,11 @@ def modehide(name, state):
         else:
                 newstate = False
         try:
-                os.remove("./"+name+".py")
-                os.remove("./"+name+".pyc")
+                os.remove("./" + name + ".py")
+                os.remove("./" + name + ".pyc")
         except(IOError):
                 pass
-        with open ("./"+name+"settings.py","a") as outf: 
+        with open ("./" + name + "settings.py","a") as outf: 
                 outf.write("hidden = ")
                 outf.write(str(newstate))
 def bak(name, path, reinstall, attrestore, regenerate):
