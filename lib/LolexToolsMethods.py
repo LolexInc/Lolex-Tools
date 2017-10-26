@@ -604,7 +604,7 @@ class expl:
                 clear = "clear"
         else: pass
 def loading(text1):
-        start = int(1)
+        start = int(0)
         while expl.loaded == False:
                 print("\n\n\n\n\n\n                      " + (str(text1)) + "\n          (" + (str(start)) + ") seconds elapsed.")
                 time.sleep(1)
