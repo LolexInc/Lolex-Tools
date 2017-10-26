@@ -198,8 +198,8 @@ def androidpage(page, layout):
                         return;
                 androidpage (page, layout)
 def restart():
-        restart_confirm = int(input("Please enter 1 to confirm restart."))
-        if restart_confirm == 1:
+        restart_confirm = input("Please enter 1 to confirm restart.")
+        if restart_confirm == "1":
                 waittime = float(input("How long, in minutes do you wish to wait?"))
                 while waittime < 0:
                         waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
