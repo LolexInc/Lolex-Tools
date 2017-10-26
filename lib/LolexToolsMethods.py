@@ -224,7 +224,6 @@ def logoffthread(waittime, type):
                 waittime = waittime - 0.1
         if stopping != True:
                 print("LOGOFF thread: Logging off...")
-                uos.useros = platform.system()
                 if uos.useros != "Linux":
                         if type == 0:
                                 os.system("shutdown -l -f")
@@ -254,7 +253,6 @@ def hibernatethread(waittime):
                 waittime = waittime - 0.1
         if stopping != True:
                 print("HIBERNATE thread: Hibernating...")
-                uos.useros = platform.system()
                 if uos.useros == "Windows":
                         os.system("shutdown -h -f")
                 elif uos.useros == "Linux":
@@ -273,7 +271,6 @@ def restartthread(waittime):
                 waittime = waittime - 0.1
         if stopping != True:
                 print("RESTART thread: Restarting device...")
-                uos.useros = platform.system()
                 if uos.useros != "Linux":
                         os.system("shutdown -r -f")
                 else:
