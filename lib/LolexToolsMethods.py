@@ -22,7 +22,7 @@ if platform.system() == "Windows":
                 py = "python ." + os.sep
                 pyo = "python"
 elif platform.system() == "Linux":
-        py = "python3 ./"
+        py = "python3 " + os.sep
         pyo = "python3"
 stopping = False
 class uos:
