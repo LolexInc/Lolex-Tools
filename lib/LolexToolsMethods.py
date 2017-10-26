@@ -198,16 +198,16 @@ def androidpage(page, layout):
                         return;
                 androidpage (page, layout)
 def restart():
-        restart = int(input("Please enter 1 to confirm restart."))
-        if restart == 1:
+        restart_confirm = int(input("Please enter 1 to confirm restart."))
+        if restart_confirm == 1:
                 waittime = float(input("How long, in minutes do you wish to wait?"))
                 while waittime < 0:
                         waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
                 restartthreader = threading.Thread(target = restartthread, args = [waittime])
                 restartthreader.start()
 def logoff(type):
-        logoff = input("Please enter 1 to confirm logoff.")
-        if logoff == "1":
+        logoff_confirm = input("Please enter 1 to confirm logoff.")
+        if logoff_confirm == "1":
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 while waittime < 0:
                         waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
@@ -236,8 +236,8 @@ def logoffthread(waittime, type):
                 print("LOGOFF thread: Stopping...")
         threads.logoff = False
 def hibernate():
-        hibernate = input("Please enter 1 to confirm logoff.")
-        if hibernate == "1":
+        hibernate_confirm = input("Please enter 1 to confirm logoff.")
+        if hibernate_confirm == "1":
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 while waittime < 0 and waittime > 65505:
                         waittime = float(input("Please select a time between 0 - 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
@@ -286,8 +286,8 @@ def restartthread(waittime):
                 print("RESTART thread: Stopping...")
         threads.restart = False
 def shutdown(type):
-        shutdown = input("Please enter 1 to shutdown.")
-        if shutdown == "1":
+        shutdown_confirm = input("Please enter 1 to shutdown.")
+        if shutdown_confirm == "1":
                 waittime = float(input("How long, in minutes, do you wish to wait?"))
                 while waittime < 0 or waittime > 65505:
                         waittime = float(input("Please select a time between 0- 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
@@ -392,8 +392,8 @@ def compiler(name):
                 os.remove("./" + name + ".pyc")
         except(IOError):
                 pass
-        py_compile.compile(name+".py","./"+name+".pyc")
-        os.remove("./"+name+".py")
+        py_compile.compile(name + ".py","./" + name + ".pyc")
+        os.remove("./" + name + ".py")
 def modehide(name, state):
         if state == False:
                 newstate = True
