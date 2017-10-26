@@ -8,9 +8,8 @@
 ##
 ## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
-sys.path.append("./lib/")
 try:
-	import LolexToolsMethods
+	from lib import LolexToolsMethods
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
@@ -21,7 +20,6 @@ if LolexToolsMethods.uos.useros == "Windows":
 		print("Only Python 3 is currently supported. Please install Python 3.")
 		time.sleep(3)
 try:
-	sys.path.append("./")
 	import LolexToolsOptions, runningsys, startplugins
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
