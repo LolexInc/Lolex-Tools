@@ -39,7 +39,6 @@ try:
 except(ImportError):
         pass
 try:
-        sys.path.append("./")
         import ver
 except(ImportError) as e:
         print("Please redownload this repository to access all features.")
