@@ -63,7 +63,7 @@ try:
 	import requiredpatches
 except(ImportError, SyntaxError, TabError):
 	print("Required file missing.")
-if LolexToolsOptions.compiledon < 9.00001:
+if LolexToolsOptions.compiledon < 9.1:
 	if LolexToolsOptions.compiledon < 8.3:
 		try:
 			name = LolexToolsOptions.onepintotal
