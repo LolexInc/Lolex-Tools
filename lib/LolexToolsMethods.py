@@ -13,19 +13,17 @@ syslen = len(sys.path)
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
         IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
-doubleslash = "\\"
+s = os.sep
 if platform.system() == "Windows":
         if sys.version_info.minor > 5:
-                py = "py .\\"
+                py = "py .\" + os.sep
                 pyo = "py"
         else:
-                py = "python .\\"
+                py = "python ." + os.sep
                 pyo = "python"
-        s = "//"
 elif platform.system() == "Linux":
         py = "python3 ./"
         pyo = "python3"
-        s = "/"
 stopping = False
 class uos:
         useros = platform.system()
