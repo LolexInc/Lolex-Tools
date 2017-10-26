@@ -16,7 +16,7 @@ print ("Module LolexToolsMethods is running, using modules os, time, py_compile,
 s = os.sep
 if platform.system() == "Windows":
         if sys.version_info.minor > 5:
-                py = "py .\" + os.sep
+                py = "py ." + os.sep
                 pyo = "py"
         else:
                 py = "python ." + os.sep
