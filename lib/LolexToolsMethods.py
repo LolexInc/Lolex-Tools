@@ -604,14 +604,14 @@ class expl:
                 clear = "clear"
         else: pass
 def loading(text1):
-        #start = int(1)
-        #while expl.loaded == False:
-                #print("\n\n\n\n\n\n                      " + (str(text1)) + "\n          (" + (str(start)) + ") seconds elapsed.")
-                #time.sleep(1)
-                #os.system(expl.clear)
-                #start = int(start) + int(1)
-                #if expl.loaded == True:
-                        #return;
+        start = int(1)
+        while expl.loaded == False:
+                print("\n\n\n\n\n\n                      " + (str(text1)) + "\n          (" + (str(start)) + ") seconds elapsed.")
+                time.sleep(1)
+                os.system(expl.clear)
+                start = int(start) + int(1)
+                if expl.loaded == True:
+                        return;
                 time.sleep(5)
 def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         expl.path = path
