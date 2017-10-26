@@ -36,8 +36,9 @@ class threads:
         hibernate = False
 try:
     import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings, LolexToolsOptions, theme
-except(ImportError):
-        pass
+except(ImportError) as e:
+        print((str(e)) + " occured.")
+		time.sleep(5)
 try:
         import ver
 except(ImportError) as e:
