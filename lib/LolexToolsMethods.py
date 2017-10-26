@@ -378,7 +378,7 @@ def enterinstall():
                 os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
                 exit(0)
 def uptime():
-        if "arm" in platform.platform():
+        if uos.useros == "Android":
                 if os.system("su -c uptime") != 0:
                         if os.system("/system/bin/uptime") != 0:
                                 print("Failed to run uptime script.")
