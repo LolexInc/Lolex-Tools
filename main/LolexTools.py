@@ -9,11 +9,6 @@
 ## authors = Monkeyboy2805
 import sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
 sys.path.append("./lib/")
-system = platform.system()
-if system == "Windows":
-	if sys.version_info.major != 3:
-		print("Only Python 3 is currently supported. Please install Python 3.")
-		time.sleep(3)
 try:
 	import LolexToolsMethods
 except(ImportError, SyntaxError, TabError) as e:
@@ -21,6 +16,11 @@ except(ImportError, SyntaxError, TabError) as e:
 	print("Missing library. Please redownload this application.")
 	time.sleep(5)
 	os._exit(0)
+system = LolexToolsMethods.uos.useros
+if system == "Windows":
+	if sys.version_info.major != 3:
+		print("Only Python 3 is currently supported. Please install Python 3.")
+		time.sleep(3)
 try:
 	sys.path.append("./")
 	import LolexToolsOptions, runningsys, startplugins
