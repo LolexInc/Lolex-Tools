@@ -626,7 +626,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         expl.path = correctpath(expl.path)
                         y = validate(expl.path)
                         if y == False:
-                                expl.file == ".."
                                 auto = 1
                         if auto == 0:
                                 os.system(expl.clear)
@@ -699,7 +698,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 possibles = []
                                 if validate(expl.path) == False:
                                         auto = 1
-                                        expl.file = ".."
                                 else:
                                         array = os.listdir(expl.path)
                                         arraylen = len(array)
@@ -724,7 +722,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                 expl.newpath = expl.path + possibles[0]
                                                 if validate(expl.path) == False:
                                                         auto = 1
-                                                        expl.file = ".."
                                                 else:
                                                         file = 0
                                                         if os.path.isdir(expl.newpath) == False:
@@ -811,7 +808,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                                         time.sleep(3)
                                                                 op = 7
                                                                 auto = 1
-                                                                expl.file = ".."
                                                         else:
                                                                 print("Deleting...")
                                                                 try:
