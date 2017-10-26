@@ -881,5 +881,3 @@ def addplugins(rewrite):
                 else:
                         w.write('\ntry:\n    sys.path.append("' + path + '")\n    from ' + (str(name)) + ' import *\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
                 done = input("Please enter 1 if you are done, 0 if not.")
-del sys.path[syslen]
-        
