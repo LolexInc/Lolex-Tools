@@ -644,7 +644,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 expl.file = input("\nSelect/Open (Name): ")
                         if expl.file == "///":
                                 pass
-                        elif expl.file == "..":
+                        elif expl.file == ".." or auto == 0:
                                 arraypos = 0
                                 if (expl.path != "/" or len(expl.path) == 0) and expl.path.count("/") > 2:
                                         if expl.path[len(expl.path)-1] == "/" and expl.path[len(expl.path)-2] == "/":
@@ -678,7 +678,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                         time.sleep(1.5)
                         if auto != 0:
                                 auto = 0
-                        else: pass
                         if expl.file == "///?":
                                 print("Type names from here to enter/select files and folders.")
                                 time.sleep(5)
