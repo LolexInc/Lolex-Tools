@@ -645,37 +645,12 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         if expl.file == "///":
                                 pass
                         elif expl.file == ".." or auto == 0:
-                                arraypos = 0
-                                if (expl.path != "/" or len(expl.path) == 0) and expl.path.count("/") > 2:
-                                        if expl.path[len(expl.path)-1] == "/" and expl.path[len(expl.path)-2] == "/":
-                                                path = path[:len(expl.path) - 1]
-                                        slash = False
-                                        arraypos = len(expl.path) - 2
-                                        if len(expl.path) > 3:
-                                                while slash == False:
-                                                        if expl.path[arraypos] == "/":
-                                                                slash = True
-                                                                endpoint = arraypos
-                                                        else:
-                                                                arraypos = arraypos - 1
-                                                        if arraypos < 1 and slash != True:
-                                                                path = "/"
-                                                                safedir = True
-                                                                slash = True
-                                                                break;
-                                                if slash == True and expl.path != "/":
-                                                        arraypos = len(expl.path) - 2
-                                                        while arraypos > endpoint:
-                                                                expl.path = expl.path[:arraypos]
-                                                                arraypos = arraypos - 1
-                                        else:
-                                                expl.path = "/"
-                                                slash = True
-                                else:
-                                        if expl.path == "/":
-                                                print("Already at highest directory")
-                                        expl.path = "/"
-                                        time.sleep(1.5)
+							new = expl.path.split("/")
+							del new[len(new) -1]
+							actual = ""
+							for i in range(0, len(new) - 1):
+								actual = actual + new[i]
+							expl.path = actual
                         if auto != 0:
                                 auto = 0
                         if expl.file == "///?":
