@@ -9,7 +9,7 @@
 ## authors = Monkeyboy2805
 import os, platform, time
 if platform.system() == "Linux":
-    if "arm" in platform.platform():
+    if os.path.isfile("/system/build.prop") == True:
         clear = "reset"
     else:
         clear = "clear"
