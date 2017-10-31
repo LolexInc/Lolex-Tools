@@ -65,9 +65,8 @@ while arraypos<len(folders):
 flen = len(files)
 arraypos = 0
 print("Compiling...")
-while arraypos<flen:
+while arraypos < flen:
 	currfile = files[arraypos]
-	arraypos = 0
 	py_compile.compile(currfile)
 	print("Attempted to compile " + (str(currfile)))
 	arraypos = arraypos + 1
