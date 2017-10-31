@@ -68,9 +68,6 @@ print("Compiling...")
 while arraypos<flen:
 	currfile = files[arraypos]
 	arraypos = 0
-	a = py_compile.compile(currfile)
-	if a != 0:
-		print(a)
-		exit(1)
+	py_compile.compile(currfile)
 	print("Successfully compiled " + (str(currfile)))
 	arraypos = arraypos + 1
