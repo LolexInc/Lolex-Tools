@@ -69,5 +69,9 @@ while arraypos<flen:
 	currfile = files[arraypos]
 	aarraypos = 0
 	py_compile.compile(currfile)
+	a = sys.stdout.readlines()
+	a = a[len(a) - 1]
+	if "Sorry!" in a:
+		exit(1)
 	print("Successfully compiled " + (str(currfile)))
 	arraypos = arraypos + 1
