@@ -8,7 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import os, shutil, sys, time
-if sys.version_info.major == 2:
+if sys.version_info.major != 3:
 	print("Please install Python 3 to run this script.")
 	time.sleep(5)
 	exit(0)
