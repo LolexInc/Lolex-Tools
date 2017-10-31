@@ -639,7 +639,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 expl.loaded = True
                                 time.sleep(1.5)
                                 print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
-                                for i in range(0, len(array)):
+                                for i in range(0, len(array) - 1):
                                         print(array[i])
                                 expl.file = input("\nSelect/Open (Name): ")
                         if expl.file == "///":
