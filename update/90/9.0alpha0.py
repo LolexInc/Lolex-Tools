@@ -9,7 +9,7 @@
 ## authors = Monkeyboy2805
 import os
 from lib import LolexToolsMethods
-if os.path.exists("./update/90/9.0alpha0patch1.py") and (os.path.isdir("./update/90/9.0alpha0patch1.py")) == False:
+if os.path.isfile("./update/90/9.0alpha0patch1.py"):
 	pass
 else:
 	LolexToolsMethods.addplugins(True)
