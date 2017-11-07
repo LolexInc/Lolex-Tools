@@ -565,11 +565,12 @@ def correctpath(path):
                         tlen = 2
                         zz.p = correctpath(os.getcwd()) + zz.p[:midlen] + zz.p[midlen + 2:]
                 j = 0
-        if zz.p[len(zz.p) - 1] != "/":
-                zz.p = zz.p.replace(zz.p, zz.p + "/")
-        if len(zz.p) > 2:
-                for i in range(0, len(zz.p) - 1):
-                        zz.p = zz.p.replace("//", "/")
+        if len(zz.p) != 0:
+                if zz.p[len(zz.p) - 1] != "/":
+                        zz.p = zz.p.replace(zz.p, zz.p + "/")
+                if len(zz.p) > 2:
+                        for i in range(0, len(zz.p) - 1):
+                                zz.p = zz.p.replace("//", "/")
         return zz.p;
 def validate(path):
         path = correctpath(path)
@@ -640,17 +641,18 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 time.sleep(1.5)
                                 print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
                                 for i in range(0, len(array) - 1):
-                                        print(array[i])
+                                        if "~$" not in array[i]:
+                                                print(array[i])
                                 expl.file = input("\nSelect/Open (Name): ")
                         if expl.file == "///":
                                 pass
-                        elif expl.file == ".." or auto == 0:
-                                                        new = expl.path.split("/")
-                                                        del new[len(new) -1]
-                                                        actual = ""
-                                                        for i in range(0, len(new) - 1):
-                                                                actual = actual + new[i]
-                                                        expl.path = actual
+                        elif expl.file == ".." or auto == 1:
+                                new = expl.path.split("/")
+                                del new[len(new) -1]
+                                actual = ""
+                                for i in range(0, len(new) - 1):
+                                        actual = actual + new[i]
+                                expl.path = actual
                         if auto != 0:
                                 auto = 0
                         if expl.file == "///?":
@@ -688,7 +690,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                                 which = which - 2
                                                 del possibles[which]
                                                 found = 1
-                                        else: pass
                                         if found == 1:
                                                 expl.newpath = expl.path + possibles[0]
                                                 if validate(expl.path) == False:
@@ -712,7 +713,6 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                                 time.sleep(3)
                                                         if file == 2:
                                                                 print("Could not access file!")
-                                                                time.sleep(3)
                                                         elif file == 3:
                                                                 print("Could not access folder!")
                                                                 time.sleep(3)
@@ -727,13 +727,12 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                                 expl.path = expl.newpath
                                                                 if tofinishop == True or rtnofolders == 0:
                                                                         return expl.path;
-                                        elif found == 0:
+                                        if found == 0 or "~$" in expl.file:
                                                 print("No such file or directory found!")
                                                 file = 5
                         elif expl.file == "///s" or expl.file == "///o":
                                 o = True
                                 expl.newpath = expl.path
-                        else: pass
                         if file == 1:
                                 expl.newpath = correctfile(expl.newpath)
                         if o == True:
@@ -787,6 +786,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                                         print(f)
                                                                         print("Couldn't delete folder.")
                                                                         time.sleep(3)
+                                                        break;
                                         elif op == 2:
                                                 if validatefile(expl.newpath) == True:
                                                         print("Cannot create files/folders inside files!")
@@ -825,6 +825,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         if expl.file == "./":
                                 expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
                                 expl.newpath = expl.path
+                        auto = 0
 def addplugins(rewrite):
         if rewrite == True:
                 try:
