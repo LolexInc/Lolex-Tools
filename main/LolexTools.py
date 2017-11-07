@@ -10,8 +10,10 @@
 import sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
+sys.path.append("./lib")
+sys.path.append("./")
 try:
-	from lib import LolexToolsMethods
+	import LolexToolsMethods
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 	print("Missing library. Please redownload this application.")
@@ -28,6 +30,7 @@ except(ImportError, SyntaxError, TabError) as e:
 	time.sleep(3)
 	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 	os._exit(0)
+restart = False
 try:
 	import menusettings
 except(ImportError):
@@ -89,7 +92,7 @@ except(ImportError, SyntaxError, TabError):
 	class patches:
 		patches.applied = ""
 if len(patches.applied) != len(requiredpatches.patches):
-	arraypos = (len(requiredpatches.patches) - len(patches.applied))
+	arraypos = len(patches.applied)
 	update = True
 elif len(patches.applied) == 0:
 	arraypos = 0
@@ -117,7 +120,7 @@ if update == True:
 	startplugins.stopping = True
 	os.system(LolexToolsMethods.py + "start.py")
 	os._exit(0)
-if system == "Windows":
+if LolexToolsMethods.uos.useros == "Windows":
 	os.system(theme.theme)
 	os.system("mode 1000")
 	os.system("title Lolex-Tools")
