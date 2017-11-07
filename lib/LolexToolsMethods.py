@@ -12,6 +12,7 @@ if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info
         IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 s = os.sep
+sys.path.append("./")
 if platform.system() == "Windows":
         if sys.version_info.minor > 5:
                 py = "py ." + os.sep
@@ -36,14 +37,13 @@ try:
     import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings, LolexToolsOptions, theme
 except(ImportError) as e:
         print((str(e)) + " occured.")
-		time.sleep(5)
+        time.sleep(1)
 try:
         import ver
 except(ImportError) as e:
         print("Please redownload this repository to access all features.")
         print(e)
         time.sleep(5)
-        exit(0)
 def version():
         print(ver.version)
 def flicker():
@@ -645,12 +645,12 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         if expl.file == "///":
                                 pass
                         elif expl.file == ".." or auto == 0:
-							new = expl.path.split("/")
-							del new[len(new) -1]
-							actual = ""
-							for i in range(0, len(new) - 1):
-								actual = actual + new[i]
-							expl.path = actual
+                                                        new = expl.path.split("/")
+                                                        del new[len(new) -1]
+                                                        actual = ""
+                                                        for i in range(0, len(new) - 1):
+                                                                actual = actual + new[i]
+                                                        expl.path = actual
                         if auto != 0:
                                 auto = 0
                         if expl.file == "///?":
