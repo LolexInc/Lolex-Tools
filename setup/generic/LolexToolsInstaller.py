@@ -191,8 +191,6 @@ try:
 		oneswapwords = True
 	else:
 		oneswapwords = False
-	if onewords == 0:
-		onewordwait = False
 	if onewords > 0:
 		oneuseword = True
 		onewordwait = float(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
@@ -231,10 +229,9 @@ try:
 			outf.write(str(twopintotal))
 		if twopins == 0:
 			twowait = False
+			twousepin = False
 		if twopins > 0:
 			twousepin = True
-		else:
-			twousepin = False
 		if twopins > 1:
 			twoswappins = True
 		else:
@@ -270,11 +267,9 @@ try:
 			outf.write("\ntwowordtotal = ")
 			outf.write(str(twowordtotal))
 		if twowords == 0:
-			twowordwait = False
-		if twowords > 0:
-			twouseword = True
-		else:
 			twouseword = False
+		else:
+			twouseword = True
 		if twowords > 1:
 			twoswapwords = True
 		else:
@@ -283,7 +278,6 @@ try:
 			twowordwait = False
 		if twowords > 0:
 			twouseword = True
-		if twowords > 0:
 			twowordwait = float(input("If someone gets your password wrong 5 times, how long should the delay be before retries are allowed, in seconds?"))
 			while twowordwait < 0 or twowordwait > 4194304:
 				twowordwait = float(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
@@ -291,10 +285,10 @@ try:
 		with open ("./LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
 	print("Setting up general options...")
 	developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
-	if developer != 1:
-		compiler = True
-	elif developer == 1:
+	if developer == 1:
 		compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
+	else:
+		compiler = True
 	if useros == "Windows":
 		print("Here is a list of colours available:")
 		print("a - Neon Green")
@@ -320,7 +314,7 @@ try:
 	pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
 	if pluginconfirm == 1:
 		LolexToolsMethods.addplugins(True)
-	elif pluginconfirm != 1:
+	else:
                 with open("./startplugins.py", "a") as outf: outf.write("from lib import LolexToolsMethods\nfrom LolexToolsMethods import *")
 		compileplugins = 0
 	if developer == 1:
