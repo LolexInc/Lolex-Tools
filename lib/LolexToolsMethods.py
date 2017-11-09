@@ -651,13 +651,15 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         if expl.file == "///":
                                 pass
                         elif expl.file == ".." or auto == 1:
-                                if len(expl.path) != 0:
+                                if len(expl.path) > 1:
                                         new = expl.path.split("/")
                                         del new[len(new) -1]
                                         actual = new[0]
                                         if len(new) > 1:
                                                 for i in range(0 , len(new) - 1):
                                                         actual = "/" + new[i]
+                                if expl.path == "/" or len(expl.path) < 3:
+                                        actual = "/"
                                 print(new)
                                 expl.path = actual
                         if auto != 0:
