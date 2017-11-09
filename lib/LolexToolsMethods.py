@@ -616,256 +616,255 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         auto = 0
         if expl.clear == "<>":
                 return 1;
-        else:
-                while True:
-                        expl.loaded = False
-                        o = False
-                        expl.path = correctpath(expl.path)
-                        y = validate(expl.path)
-                        if y == False:
-                                auto = 1
-                        if auto == 0:
-                                os.system(expl.clear)
-                                print("\n " + expl.path + "\n")
-                                if otext == 0:
-                                        otext = "Start/finish operations on this folder"
-                                if allowexit == 0:
-                                        exittext = "You cannot exit until the current operation is complete"
-                                else:
-                                        exittext = "Exit file explorer"
-                                loadingthread = threading.Thread(target=loading, args=["Loading: Large directories may take a while..."])
-                                loadingthread.start()
-                                array = os.listdir(expl.path)
-                                expl.loaded = True
-                                time.sleep(1.5)
-                                print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
-                                for i in range(0, len(array)):
-                                        if i == len(array):
-                                                break
-                                        if len(array[i]) > 2:
-                                                if array[i][0] != "~" and array[i][1] != "$":
-                                                        print(array[i])
-                                        else:
+        while True:
+                expl.loaded = False
+                o = False
+                expl.path = correctpath(expl.path)
+                y = validate(expl.path)
+                if y == False:
+                        auto = 1
+                if auto == 0:
+                        os.system(expl.clear)
+                        print("\n " + expl.path + "\n")
+                        if otext == 0:
+                                otext = "Start/finish operations on this folder"
+                        if allowexit == 0:
+                                exittext = "You cannot exit until the current operation is complete"
+                        else:
+                                exittext = "Exit file explorer"
+                        loadingthread = threading.Thread(target=loading, args=["Loading: Large directories may take a while..."])
+                        loadingthread.start()
+                        array = os.listdir(expl.path)
+                        expl.loaded = True
+                        time.sleep(1.5)
+                        print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+                        for i in range(0, len(array)):
+                                if i == len(array):
+                                        break
+                                if len(array[i]) > 2:
+                                        if array[i][0] != "~" and array[i][1] != "$":
                                                 print(array[i])
-                                expl.file = input("\nSelect/Open (Name): ")
-                        if expl.file == "///":
-                                pass
-                        elif expl.file == ".." or auto == 1:
-                                if len(expl.path) > 1:
-                                        new = expl.path.split("/")
-                                        del new[len(new) -1]
-                                        actual = new[0]
-                                        if len(new) > 1:
-                                                for i in range(0 , len(new) - 1):
-                                                        actual = "/" + new[i]
-                                if expl.path == "/" or len(expl.path) < 3:
-                                        actual = "/"
-                                expl.path = actual
-                        if auto != 0:
-                                auto = 0
-                        if expl.file == "///?":
-                                print("Type names from here to enter/select files and folders.")
+                                else:
+                                        print(array[i])
+                        expl.file = input("\nSelect/Open (Name): ")
+                if expl.file == "///":
+                        pass
+                elif expl.file == ".." or auto == 1:
+                        if len(expl.path) > 1:
+                                new = expl.path.split("/")
+                                del new[len(new) -1]
+                                actual = new[0]
+                                if len(new) > 1:
+                                        for i in range(0 , len(new) - 1):
+                                                actual = "/" + new[i]
+                        if expl.path == "/" or len(expl.path) < 3:
+                                actual = "/"
+                        expl.path = actual
+                if auto != 0:
+                        auto = 0
+                if expl.file == "///?":
+                        print("Type names from here to enter/select files and folders.")
+                        time.sleep(5)
+                elif expl.file == "///exit":
+                        if allowexit == 1:
+                                return 1;
+                        else:
+                                print("Operation not completed!")
                                 time.sleep(5)
-                        elif expl.file == "///exit":
-                                if allowexit == 1:
-                                        return 1;
-                                else:
-                                        print("Operation not completed!")
-                                        time.sleep(5)
-                        elif expl.file != "///s" and expl.file != "///o" and expl.file != ".." and expl.file != "./":
-                                o = False
-                                found = 0
-                                arraypos = 0
-                                possibles = []
-                                if validate(expl.path) == False:
-                                        auto = 1
-                                else:
-                                        array = os.listdir(expl.path)
-                                        arraylen = len(array)
-                                        while arraypos < arraylen:
-                                                if array[arraypos] == expl.file:
-                                                        possibles.append(array[arraypos])
-                                                        found = found + 1
-                                                arraypos = arraypos + 1
-                                        if found == 2:
-                                                if tofinishop == 1 or rtnofiles == 1:
-                                                        which = 1
-                                                elif rtnofolders == 1:
-                                                        which = 0
+                elif expl.file != "///s" and expl.file != "///o" and expl.file != ".." and expl.file != "./":
+                        o = False
+                        found = 0
+                        arraypos = 0
+                        possibles = []
+                        if validate(expl.path) == False:
+                                auto = 1
+                        else:
+                                array = os.listdir(expl.path)
+                                arraylen = len(array)
+                                while arraypos < arraylen:
+                                        if array[arraypos] == expl.file:
+                                                possibles.append(array[arraypos])
+                                                found = found + 1
+                                        arraypos = arraypos + 1
+                                if found == 2:
+                                        if tofinishop == 1 or rtnofiles == 1:
+                                                which = 1
+                                        elif rtnofolders == 1:
+                                                which = 0
+                                        else:
+                                                which = int(input("Please enter 1 for the folder, 0 for the file."))
+                                                while which != 1 or which != 0:
+                                                        which = which - 2
+                                        del possibles[which]
+                                        found = 1
+                                if found == 1:
+                                        expl.newpath = expl.path + possibles[0]
+                                        if validate(expl.path) == False:
+                                                auto = 1
+                                        else:
+                                                file = 0
+                                                if os.path.isdir(expl.newpath) == False:
+                                                        file = 1
+                                                        try:
+                                                                open(expl.newpath, "a")
+                                                        except(IOError, OSError):
+                                                                file = 2
                                                 else:
-                                                        which = int(input("Please enter 1 for the folder, 0 for the file."))
-                                                        while which != 1 or which != 0:
-                                                                which = which - 2
-                                                del possibles[which]
-                                                found = 1
-                                        if found == 1:
-                                                expl.newpath = expl.path + possibles[0]
-                                                if validate(expl.path) == False:
+                                                        try:
+                                                                os.listdir(expl.newpath + "/")
+                                                        except(IOError, OSError):
+                                                                file = 3
+                                                if file != 0 and tofinishop == 1:
+                                                        file = 4
+                                                        print("Please select a (valid) folder to complete the operation.")
+                                                        time.sleep(3)
+                                                if file == 2:
+                                                        print("Could not access file!")
+                                                elif file == 3:
+                                                        print("Could not access folder!")
+                                                        time.sleep(3)
+                                                elif file == 1:
+                                                        if rtnofiles != 1:
+                                                                if rtnofiles == -1:
+                                                                        return [expl.path, possibles[0]]
+                                                                return expl.newpath;
+                                                        o = True
+                                                elif file == 0:
+                                                        expl.newpath = correctpath(expl.newpath)
+                                                        expl.path = expl.newpath
+                                                        if tofinishop == True or rtnofolders == 0:
+                                                                return expl.path;
+                                if found == 0 or "~$" in expl.file:
+                                        print("No such file or directory found!")
+                                        file = 5
+                elif expl.file == "///s" or expl.file == "///o":
+                        o = True
+                        expl.newpath = expl.path
+                if file == 1:
+                        expl.newpath = correctfile(expl.newpath)
+                if o == True:
+                        op = 0
+                        while op != 7:
+                                if expl.file == "///s":
+                                        pass
+                                else:
+                                        print("\n" + expl.newpath + "\n")
+                                        print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder\n3 = Copy file/folder\n4 = Rename file/folder\n7 = Back")
+                                        op = int(input("Please enter the number of the operation you wish to execute."))
+                                if op == 0 and expl.file == "///s":
+                                        search = searchpath(input("Please enter the characters to search for."), expl.path, int(input("Please enter 1 to exlude this name, or 0 to include it.")), int(input("Please enter 1 to only include results with the characters at the end, or 0 to not.")), int(input("Please enter 1 to include folders, or 0 to not.")), int(input("Please enter 1 to include files, or 0 to not,")))
+                                        if search == "INVALID<>":
+                                                print("Folder could not be accessed or no return was selected.")
+                                                time.sleep(3)
+                                                break;
+                                        elif searchpath.rtfiles == 1 and searchpath.rtfolders == searchpath.files:
+                                                if search == "None" or (len(search) == 1 and search[0] == "END_OF_ARRAY<>"):
+                                                        print(search)
+                                                else:
+                                                        print("Files:")
+                                                        for i in range(0, len(search) - 1):
+                                                                if search[i] != "END_OF_ARRAY<>":
+                                                                        print( i + " = " + search[i])
+                                                                elif searchpath.rtfolders == 1:
+                                                                        endfiles = i - 1
+                                                                        j = i + 1
+                                                                        print("Folders:")
+                                                                        for k in range(j, len(search) - 1):
+                                                                                print(k + " = " + search[k])
+                                                                        break;
+                                elif op == 1:
+                                        confirm = int(input("Please enter 1 to confirm delete."))
+                                        if confirm == int(1):
+                                                if os.path.isdir(expl.newpath) == True:
+                                                        print("Deleting...")
+                                                        try:
+                                                                shutil.rmtree(expl.newpath)
+                                                        except(IOError, OSError) as e:
+                                                                print(e)
+                                                                print("Couldn't delete folder.")
+                                                                time.sleep(3)
+                                                        op = 7
                                                         auto = 1
                                                 else:
-                                                        file = 0
-                                                        if os.path.isdir(expl.newpath) == False:
-                                                                file = 1
-                                                                try:
-                                                                        open(expl.newpath, "a")
-                                                                except(IOError, OSError):
-                                                                        file = 2
-                                                        else:
-                                                                try:
-                                                                        os.listdir(expl.newpath + "/")
-                                                                except(IOError, OSError):
-                                                                        file = 3
-                                                        if file != 0 and tofinishop == 1:
-                                                                file = 4
-                                                                print("Please select a (valid) folder to complete the operation.")
+                                                        print("Deleting...")
+                                                        try:
+                                                                os.remove(expl.newpath)
+                                                        except(IOError, OSError) as f:
+                                                                print(f)
+                                                                print("Couldn't delete folder.")
                                                                 time.sleep(3)
-                                                        if file == 2:
-                                                                print("Could not access file!")
-                                                        elif file == 3:
-                                                                print("Could not access folder!")
-                                                                time.sleep(3)
-                                                        elif file == 1:
-                                                                if rtnofiles != 1:
-                                                                        if rtnofiles == -1:
-                                                                                return [expl.path, possibles[0]]
-                                                                        return expl.newpath;
-                                                                o = True
-                                                        elif file == 0:
-                                                                expl.newpath = correctpath(expl.newpath)
-                                                                expl.path = expl.newpath
-                                                                if tofinishop == True or rtnofolders == 0:
-                                                                        return expl.path;
-                                        if found == 0 or "~$" in expl.file:
-                                                print("No such file or directory found!")
-                                                file = 5
-                        elif expl.file == "///s" or expl.file == "///o":
-                                o = True
-                                expl.newpath = expl.path
-                        if file == 1:
-                                expl.newpath = correctfile(expl.newpath)
-                        if o == True:
-                                op = 0
-                                while op != 7:
-                                        if expl.file == "///s":
-                                                pass
-                                        else:
-                                                print("\n" + expl.newpath + "\n")
-                                                print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder\n3 = Copy file/folder\n4 = Rename file/folder\n7 = Back")
-                                                op = int(input("Please enter the number of the operation you wish to execute."))
-                                        if op == 0 and expl.file == "///s":
-                                                search = searchpath(input("Please enter the characters to search for."), expl.path, int(input("Please enter 1 to exlude this name, or 0 to include it.")), int(input("Please enter 1 to only include results with the characters at the end, or 0 to not.")), int(input("Please enter 1 to include folders, or 0 to not.")), int(input("Please enter 1 to include files, or 0 to not,")))
-                                                if search == "INVALID<>":
-                                                        print("Folder could not be accessed or no return was selected.")
-                                                        time.sleep(3)
-                                                        break;
-                                                elif searchpath.rtfiles == 1 and searchpath.rtfolders == searchpath.files:
-                                                        if search == "None" or (len(search) == 1 and search[0] == "END_OF_ARRAY<>"):
-                                                                print(search)
-                                                        else:
-                                                                print("Files:")
-                                                                for i in range(0, len(search) - 1):
-                                                                        if search[i] != "END_OF_ARRAY<>":
-                                                                                print( i + " = " + search[i])
-                                                                        elif searchpath.rtfolders == 1:
-                                                                                endfiles = i - 1
-                                                                                j = i + 1
-                                                                                print("Folders:")
-                                                                                for k in range(j, len(search) - 1):
-                                                                                        print(k + " = " + search[k])
-                                                                                break;
-                                        elif op == 1:
-                                                confirm = int(input("Please enter 1 to confirm delete."))
-                                                if confirm == int(1):
-                                                        if os.path.isdir(expl.newpath) == True:
-                                                                print("Deleting...")
-                                                                try:
-                                                                        shutil.rmtree(expl.newpath)
-                                                                except(IOError, OSError) as e:
-                                                                        print(e)
-                                                                        print("Couldn't delete folder.")
-                                                                        time.sleep(3)
-                                                                op = 7
-                                                                auto = 1
-                                                        else:
-                                                                print("Deleting...")
-                                                                try:
-                                                                        os.remove(expl.newpath)
-                                                                except(IOError, OSError) as f:
-                                                                        print(f)
-                                                                        print("Couldn't delete folder.")
-                                                                        time.sleep(3)
-                                                        break;
-                                        elif op == 2:
-                                                if validatefile(expl.newpath) == True:
-                                                        print("Cannot create files/folders inside files!")
-                                                else:
-                                                        oq = int(input("1 = Make a folder\n2 = Make a file\nPlease enter the number of the object you would like to create."))
-                                                        class create:
-                                                                if oq == int(1):
-                                                                        typ = "folder"
-                                                                elif oq == int(2):
-                                                                        typ = "file"
-                                                                else:
-                                                                        typ = "folder"
-                                                                newname = input("Please enter the name of your new " + typ + "  ")
-                                                        if oq == int(1):
-                                                                array.append(create.newname)
-                                                                try:
-                                                                        print("Creating folder...")
-                                                                        os.mkdir(expl.path + create.newname)
-                                                                except(IOError, OSError) as g:
-                                                                        print(g)
-                                                                        time.sleep(3)
-                                                                        del array[len(array) - 1]
-                                                        elif oq == int(2):
-                                                                array.append(create.newname)
-                                                                try:
-                                                                        print("Creating file...")
-                                                                        open(expl.path + create.newname, "a")
-                                                                except(IOError, OSError) as h:
-                                                                        print(h)
-                                                                        time.sleep(3)
-                                                                        del array[len(array) - 1]
-                                        elif op == 3:
-                                                class copy:
-                                                        a = explorer(0, 1, 0, "Select a path to paste", 0)
-                                                if copy.a != 3:
-                                                        if os.path.isdir(expl.newpath):
-                                                                try:
-                                                                        shutil.copytree(expl.newpath, a)
-                                                                except(IOError, OSError):
-                                                                        print("Could not copy folder!!!")
-                                                                        time.sleep(3)
-                                                        elif os.path.isfile(expl.newpath):
-                                                                try:
-                                                                        shutil.copy(expl.newpath, a)
-                                                                except(IOError, OSError):
-                                                                        print("Could not copy file!!!")
-                                                                        time.sleep(3)
-                                        elif op == 4:
-                                                class rename:
-                                                        c = ""
-                                                if len(expl.newpath) > 0:
-                                                        b = expl.newpath.split("/")
-                                                        del b[len(b) -1]
-                                                        for i in range(0, len(b) - 1):
-                                                                rename.c = b[i] + "/"
-                                                try:
-                                                        os.rename(expl.newpath, "/" + rename.c + input("What do you wish the new name to be?"))
-                                                except(IOError, OSError) as e:
-                                                        print(e)
-                                                        print("Could not rename file/folder!")
-                                                op = 7
-                                                        
-                                                        
-                                        if op == 7:
-                                                if tofinishop == 1:
-                                                        return expl.path;
                                                 break;
-                        if expl.file == "./":
-                                expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
-                                expl.newpath = expl.path
-                        auto = 0
+                                elif op == 2:
+                                        if validatefile(expl.newpath) == True:
+                                                print("Cannot create files/folders inside files!")
+                                        else:
+                                                oq = int(input("1 = Make a folder\n2 = Make a file\nPlease enter the number of the object you would like to create."))
+                                                class create:
+                                                        if oq == int(1):
+                                                                typ = "folder"
+                                                        elif oq == int(2):
+                                                                typ = "file"
+                                                        else:
+                                                                typ = "folder"
+                                                        newname = input("Please enter the name of your new " + typ + "  ")
+                                                if oq == int(1):
+                                                        array.append(create.newname)
+                                                        try:
+                                                                print("Creating folder...")
+                                                                os.mkdir(expl.path + create.newname)
+                                                        except(IOError, OSError) as g:
+                                                                print(g)
+                                                                time.sleep(3)
+                                                                del array[len(array) - 1]
+                                                elif oq == int(2):
+                                                        array.append(create.newname)
+                                                        try:
+                                                                print("Creating file...")
+                                                                open(expl.path + create.newname, "a")
+                                                        except(IOError, OSError) as h:
+                                                                print(h)
+                                                                time.sleep(3)
+                                                                del array[len(array) - 1]
+                                elif op == 3:
+                                        class copy:
+                                                a = explorer(0, 1, 0, "Select a path to paste", 0)
+                                        if copy.a != 3:
+                                                if os.path.isdir(expl.newpath):
+                                                        try:
+                                                                shutil.copytree(expl.newpath, a)
+                                                        except(IOError, OSError):
+                                                                print("Could not copy folder!!!")
+                                                                time.sleep(3)
+                                                elif os.path.isfile(expl.newpath):
+                                                        try:
+                                                                shutil.copy(expl.newpath, a)
+                                                        except(IOError, OSError):
+                                                                print("Could not copy file!!!")
+                                                                time.sleep(3)
+                                elif op == 4:
+                                        class rename:
+                                                c = ""
+                                        if len(expl.newpath) > 0:
+                                                b = expl.newpath.split("/")
+                                                del b[len(b) -1]
+                                                for i in range(0, len(b) - 1):
+                                                        rename.c = b[i] + "/"
+                                        try:
+                                                os.rename(expl.newpath, "/" + rename.c + input("What do you wish the new name to be?"))
+                                        except(IOError, OSError) as e:
+                                                print(e)
+                                                print("Could not rename file/folder!")
+                                        op = 7
+                                                
+                                                
+                                if op == 7:
+                                        if tofinishop == 1:
+                                                return expl.path;
+                                        break;
+                if expl.file == "./":
+                        expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
+                        expl.newpath = expl.path
+                auto = 0
 def addplugins(rewrite):
         if rewrite == True:
                 try:
