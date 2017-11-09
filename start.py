@@ -21,21 +21,21 @@ except(ImportError, SyntaxError, TabError) as e:
 	print("Missing library. Please redownload this application.")
 	time.sleep(5)
 	exit(0)
-if LolexToolsMethods.uos.useros == "Android":
-	try:
-		import androidinit
-		try:
-			os.remove("./ver_old.py")
-		except(IOError, OSError):
-			pass
-		os.rename("./ver.py", "ver_old.py")
-		shutil.copy("/sdcard/Lolex-Tools/ver.py", "./")
-		import ver, ver_old
-		if ver.version > ver_old.version:
-			print("Installing updates...")
-			os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
-	except(ImportError, SyntaxError, TabError):
-		os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
+#if LolexToolsMethods.uos.useros == "Android":
+	#try:
+		#import androidinit
+		#try:
+			#os.remove("./ver_old.py")
+		#except(IOError, OSError):
+			#pass
+		#os.rename("./ver.py", "ver_old.py")
+		#shutil.copy("/sdcard/Lolex-Tools/ver.py", "./")
+		#import ver, ver_old
+		#if ver.version > ver_old.version:
+			#print("Installing updates...")
+			#os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
+	#except(ImportError, SyntaxError, TabError):
+		#os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 if LolexToolsMethods.uos.useros == "Windows":
 	os.system("TITLE Lolex-Tools")
 	os.system("MODE 1000")
