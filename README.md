@@ -1,6 +1,6 @@
-# Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
+﻿# Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # Major Changes are planned! We will be back!
-# This is : Lolex-Tools 9.0alpha0patch3
+# This is : Lolex-Tools 9.0alpha0patch3 -> 9.X bug fixes in progress
 # This is a alpha build. Do not use for production purposes<br>
 # Highly unstable at the minute
 ## Also ensure you read Logs/README.md for our agreements
