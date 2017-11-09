@@ -36,29 +36,6 @@ if LolexToolsMethods.uos.useros == "Android":
 			os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 	except(ImportError, SyntaxError, TabError):
 		os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
-try:
-	if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-		IOError = OSError
-	fail = False
-	try:
-		import JTToolsOptions
-		try:
-			os.rename("./JTToolsOptions.py", "LolexToolsOptions.py")
-		except(IOError, OSError):
-			try:
-				os.rename("./JTToolsOptions.pyc", "LolexToolsOptions.pyc")
-			except(IOError, OSError):
-				pass
-	except(ImportError, SyntaxError, TabError, SystemError):
-			fail = True
-	if fail != False:
-		import LolexToolsOptions
-		if LolexToolsOptions.compiledon < 8.127:
-			os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
-			exit(0)
-except(ImportError, SyntaxError, TabError, IOError, OSError, AttributeError):
-	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
-	exit(0)
 if LolexToolsMethods.uos.useros == "Windows":
 	os.system("TITLE Lolex-Tools")
 	os.system("MODE 1000")
