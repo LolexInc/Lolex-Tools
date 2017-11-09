@@ -600,7 +600,6 @@ class expl:
                 clear = "cls"
         elif platform.system() == "Linux":
                 clear = "clear"
-        else: pass
 def loading(text1):
         start = int(0)
         while expl.loaded == False:
@@ -640,18 +639,26 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 expl.loaded = True
                                 time.sleep(1.5)
                                 print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
-                                for i in range(0, len(array) - 1):
-                                        if "~$" not in array[i]:
+                                for i in range(0, len(array)):
+                                        if i == len(array):
+                                                break
+                                        if len(array[i]) > 2:
+                                                if array[i][0] != "~" and array[i][1] != "$":
+                                                        print(array[i])
+                                        else:
                                                 print(array[i])
                                 expl.file = input("\nSelect/Open (Name): ")
                         if expl.file == "///":
                                 pass
                         elif expl.file == ".." or auto == 1:
-                                new = expl.path.split("/")
-                                del new[len(new) -1]
-                                actual = ""
-                                for i in range(0, len(new) - 1):
-                                        actual = actual + new[i]
+                                if len(expl.path) != 0:
+                                        new = expl.path.split("/")
+                                        del new[len(new) -1]
+                                        actual = new[0]
+                                        if len(new) > 1:
+                                                for i in range(0 , len(new) - 1):
+                                                        actual = "/" + new[i]
+                                print(new)
                                 expl.path = actual
                         if auto != 0:
                                 auto = 0
@@ -742,7 +749,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                 pass
                                         else:
                                                 print("\n" + expl.newpath + "\n")
-                                                print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder")
+                                                print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder\n3 = Copy file/folder\n4 = Rename file/folder\n7 = Back")
                                                 op = int(input("Please enter the number of the operation you wish to execute."))
                                         if op == 0 and expl.file == "///s":
                                                 search = searchpath(input("Please enter the characters to search for."), expl.path, int(input("Please enter 1 to exlude this name, or 0 to include it.")), int(input("Please enter 1 to only include results with the characters at the end, or 0 to not.")), int(input("Please enter 1 to include folders, or 0 to not.")), int(input("Please enter 1 to include files, or 0 to not,")))
@@ -818,6 +825,38 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                                                         print(h)
                                                                         time.sleep(3)
                                                                         del array[len(array) - 1]
+                                        elif op == 3:
+                                                class copy:
+                                                        a = explorer(0, 1, 0, "Select a path to paste", 0)
+                                                if copy.a != 3:
+                                                        if os.path.isdir(expl.newpath):
+                                                                try:
+                                                                        shutil.copytree(expl.newpath, a)
+                                                                except(IOError, OSError):
+                                                                        print("Could not copy folder!!!")
+                                                                        time.sleep(3)
+                                                        elif os.path.isfile(expl.newpath):
+                                                                try:
+                                                                        shutil.copy(expl.newpath, a)
+                                                                except(IOError, OSError):
+                                                                        print("Could not copy file!!!")
+                                                                        time.sleep(3)
+                                        elif op == 4:
+                                                class rename:
+                                                        c = ""
+                                                if len(expl.newpath) > 0:
+                                                        b = expl.newpath.split("/")
+                                                        del b[len(b) -1]
+                                                        for i in range(0, len(b) - 1):
+                                                                rename.c = b[i] + "/"
+                                                try:
+                                                        os.rename(expl.newpath, "/" + rename.c + input("What do you wish the new name to be?"))
+                                                except(IOError, OSError) as e:
+                                                        print(e)
+                                                        print("Could not rename file/folder!")
+                                                op = 7
+                                                        
+                                                        
                                         if op == 7:
                                                 if tofinishop == 1:
                                                         return expl.path;
