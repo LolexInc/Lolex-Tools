@@ -1,5 +1,4 @@
 # Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
-# Major Changes are planned! We will be back!
 # This is : Lolex-Tools VERSION 10 pre-nightly
 # This is a alpha build. Do not use for production purposes<br>
 # Highly unstable at the minute
