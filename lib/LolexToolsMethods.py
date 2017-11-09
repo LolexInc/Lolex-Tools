@@ -647,6 +647,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 else:
                                         print(array[i])
                         expl.file = input("\nSelect/Open (Name): ")
+                        expl.file = expl.file.lower()
                 if expl.file == "///":
                         pass
                 elif expl.file == ".." or auto == 1:
@@ -682,7 +683,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 array = os.listdir(expl.path)
                                 arraylen = len(array)
                                 while arraypos < arraylen:
-                                        if array[arraypos] == expl.file:
+                                        if array[arraypos].lower() == expl.file:
                                                 possibles.append(array[arraypos])
                                                 found = found + 1
                                         arraypos = arraypos + 1
