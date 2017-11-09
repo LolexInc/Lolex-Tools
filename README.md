@@ -2,7 +2,6 @@
 # This is : Lolex-Tools VERSION 10 pre-nightly
 # This is a alpha build. Do not use for production purposes<br>
 # Highly unstable at the minute
-## Also ensure you read Logs/README.md for our agreements
 ## People
 Monkeyboy2805 : Owner, founder of Lolexorg and Lolex-Tools<br><br>
 AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
