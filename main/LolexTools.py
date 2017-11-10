@@ -68,9 +68,11 @@ fail = False
 #if len(patches.applied) != len(requiredpatches.patches):
 	#arraypos = len(patches.applied)
 	#update = True
-#elif len(patches.applied) == 0:
+#elif len(patches.applied) == 0: Shouldn't assume there's no updates :facepalm:
 	##arraypos = 0
 	#update = True
+#else:
+	#update = False
 #if update == True:
 	#while arraypos != len(requiredpatches.patches):
 		#print(arraypos)
