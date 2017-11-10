@@ -398,8 +398,8 @@ try:
                 twowait = "None"
                 confirm = "None"
         with open ("./patches.py", "a") as outf:
-                outf.write('applied = ')
-                outf.write(str(requiredpatches.patches))
+                outf.write('applied = ""')
+                #outf.write(str(requiredpatches.patches))
         with open ("./runningsys.py","a") as outf:
                 outf.write("system = " + '("' + useros + '")')
         with open ("./menusettings.py","a") as outf:
