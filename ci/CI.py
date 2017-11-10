@@ -67,6 +67,8 @@ arraypos = 0
 print("Compiling...")
 while arraypos < flen:
 	currfile = files[arraypos]
-	py_compile.compile(currfile)
-	print("Attempted to compile " + (str(currfile)))
+	if os.path.exists(py_compile.compile(currfile)):
+		print("Successfully to compiled " + (str(currfile)))
+	else:
+		print("Failed to compile " + (str(currfile)))
 	arraypos = arraypos + 1
