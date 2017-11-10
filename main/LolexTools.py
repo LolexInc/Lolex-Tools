@@ -19,10 +19,10 @@ except(ImportError, SyntaxError, TabError) as e:
 	print("Missing library. Please redownload this application.")
 	time.sleep(5)
 	os._exit(0)
-if LolexToolsMethods.uos.useros == "Windows":
-	if sys.version_info.major != 3:
-		print("Only Python 3 is currently supported. Please install Python 3.")
-		time.sleep(3)
+if sys.version_info.major != 3:
+	print("Only Python 3 is currently supported. Please install Python 3.")
+	time.sleep(3)
+	exit(0)
 try:
 	import LolexToolsOptions, runningsys, startplugins
 except(ImportError, SyntaxError, TabError) as e:
