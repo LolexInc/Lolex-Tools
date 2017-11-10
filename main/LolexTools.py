@@ -57,45 +57,45 @@ sys.path.append("./")
 fail = False
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
-try:
-	import requiredpatches
-except(ImportError, SyntaxError, TabError):
-	print("Required file missing.")
-update = False
-try:
-	import patches
-except(ImportError, SyntaxError, TabError):
-	class patches:
-		patches.applied = ""
-if len(patches.applied) != len(requiredpatches.patches):
-	arraypos = len(patches.applied)
-	update = True
-elif len(patches.applied) == 0:
-	arraypos = 0
-	update = True
-if update == True:
-	while arraypos != len(requiredpatches.patches):
-		print(arraypos)
-		if os.system(LolexToolsMethods.pyo + " ./update" + requiredpatches.patches[arraypos]  + ".py") != 0:
-			print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
-			time.sleep(5)
-			os._exit(0)
-		arraypos = arraypos + 1
-	try:
-		os.remove("./patches.py")
-	except(IOError, OSError):
-		pass
-	with open("./patches.py", "a") as outf: 
-		outf.write('applied = ')
-		outf.write(str(requiredpatches.patches))
-	if fail == True:
-		print("Couldn't update: files missing!")
-		os._exit(0)
-	print("Restarting to finish updating...")
-	LolexToolsMethods.stopping = True
-	startplugins.stopping = True
-	os.system(LolexToolsMethods.py + "start.py")
-	os._exit(0)
+#try:
+	#import requiredpatches
+#except(ImportError, SyntaxError, TabError):
+	#print("Required file missing.")
+#update = False
+#try:
+	#import patches
+#except(ImportError, SyntaxError, TabError):
+	#class patches:
+		#patches.applied = ""
+#if len(patches.applied) != len(requiredpatches.patches):
+	#arraypos = len(patches.applied)
+	#update = True
+#elif len(patches.applied) == 0:
+	##arraypos = 0
+	#update = True
+#if update == True:
+	#while arraypos != len(requiredpatches.patches):
+		#print(arraypos)
+		#if os.system(LolexToolsMethods.pyo + " ./update" + requiredpatches.patches[arraypos]  + ".py") != 0:
+			#print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
+			#time.sleep(5)
+			#os._exit(0)
+		#arraypos = arraypos + 1
+	#try:
+		#os.remove("./patches.py")
+	#except(IOError, OSError):
+		#pass
+	#with open("./patches.py", "a") as outf: 
+		#outf.write('applied = ')
+		#outf.write(str(requiredpatches.patches))
+	#if fail == True:
+		#print("Couldn't update: files missing!")
+		#os._exit(0)
+	#print("Restarting to finish updating...")
+	#LolexToolsMethods.stopping = True
+	#startplugins.stopping = True
+	#os.system(LolexToolsMethods.py + "start.py")
+	#os._exit(0)
 if LolexToolsMethods.uos.useros == "Windows":
 	os.system(theme.theme)
 	os.system("mode 1000")
