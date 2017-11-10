@@ -652,7 +652,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         pass
                 elif expl.file == ".." or auto == 1:
 						## SORT OUT SO IT LOOKS LIKE A REAL PATH AT SOME POINT
-                        if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1:
+                        if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
                                 new = expl.path.split("/")
                                 del new[len(new) -1]
                                 actual = new[0]
