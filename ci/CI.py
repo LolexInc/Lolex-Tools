@@ -68,7 +68,7 @@ print("Compiling...")
 fail = False
 while arraypos < flen:
 	currfile = files[arraypos]
-	if os.path.exists(py_compile.compile(currfile)):
+	if type(py_compile.compile(currfile)) is str:
 		print("Successfully to compiled " + (str(currfile)))
 	else:
 		print("Failed to compile " + (str(currfile)))
