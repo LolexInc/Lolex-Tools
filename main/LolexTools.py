@@ -55,8 +55,6 @@ except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 sys.path.append("./")
 fail = False
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-	IOError = OSError
 #try:
 	#import requiredpatches
 #except(ImportError, SyntaxError, TabError):
