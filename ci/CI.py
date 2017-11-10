@@ -65,10 +65,14 @@ while arraypos<len(folders):
 flen = len(files)
 arraypos = 0
 print("Compiling...")
+fail = False
 while arraypos < flen:
 	currfile = files[arraypos]
 	if os.path.exists(py_compile.compile(currfile)):
 		print("Successfully to compiled " + (str(currfile)))
 	else:
 		print("Failed to compile " + (str(currfile)))
+		fail = True
 	arraypos = arraypos + 1
+if fail == True:
+	exit(1)
