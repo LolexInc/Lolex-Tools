@@ -37,16 +37,17 @@ except(ImportError, SyntaxError, TabError) as e:
 	#except(ImportError, SyntaxError, TabError):
 		#os.system("python3 /sdcard/Lolex-Tools/Androidfirsttimeinit.py")
 if LolexToolsMethods.uos.useros == "Windows":
+	# TODO: MERGE THESE: IT'S EASY!
 	os.system("TITLE Lolex-Tools")
 	os.system("MODE 1000")
-	os.system(LolexToolsMethods.pyo + " .\sys\\bootanim.py")
-	os.system(LolexToolsMethods.pyo + " ./main/LolexTools.py")
+	os.system(LolexToolsMethods.pyo + " ." + os.sep + "sys" + os.sep + "bootanim.py")
+	os.system(LolexToolsMethods.pyo + " ." + os.sep + "main" + os.sep + "LolexTools.py")
 	exit(0)
 elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == "Android":
 	sys.stdout.write("\x1b]2;Lolex-Tools\x07")
 	if LolexToolsMethods.uos.useros == "Linux":
-		os.system("python3 ./sys/bootanim.py")
-	os.system("python3 ./main/LolexTools.py")
+		os.system("python3 ." + ps.sep + "sys" + os.sep + "bootanim.py")
+	os.system("python3 ." + os.sep + "main" + os.sep + "LolexTools.py")
 	exit(0)
 else:
 	print("OS not supported!!!")
