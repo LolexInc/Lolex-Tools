@@ -12,7 +12,7 @@ if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info
 	IOError = OSError
 init1 = time.time()
 local = time.asctime( time.localtime(time.time()) )
-print(local,"    Attempting to remove folders...")
+print(local, "    Attempting to remove folders...")
 try:
 	shutil.rmtree("./sys")
 except(IOError, OSError):
@@ -83,10 +83,10 @@ except(IOError, OSError) as e:
 	print("Please ensure that all files are present in /sdcard/Lolex-Tools")
 	exit(None)
 try:
-	shutil.copytree("/sdcard/Lolex-Tools/Logs","./Logs")
+	shutil.copytree("/sdcard/Lolex-Tools/Logs", "./Logs")
 except(IOError, OSError):
 	pass
 init2 = time.time()
-print("Took ",((init2-init1)*1000)," milliseconds to setup Android environment")
-with open ("./androidinit.py","a") as outf:pass
+print("Took ",((init2-init1) * 1000)," milliseconds to setup Android environment")
+with open ("./androidinit.py", "a") as outf: pass
 print("Initialized... Starting...")
