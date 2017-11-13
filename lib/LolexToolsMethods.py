@@ -590,6 +590,7 @@ def validate(path):
                         readin = False
         return readin;
 class expl:
+		req_drives = False
         path = "/"
         newpath = "/"
         file = ""
@@ -600,7 +601,6 @@ class expl:
                 clear = "cls"
         elif platform.system() == "Linux":
                 clear = "clear"
-		req_drives = False
 def req_drives():
 	currentdrives = []
 	for i in range(ord("A"), ord("Z")):
@@ -734,6 +734,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                         del possibles[which]
                                         found = 1
                                 if found == 1:
+										expl.req_drives = False
                                         expl.newpath = expl.path + possibles[0]
                                         if validate(expl.path) == False:
                                                 auto = 1
