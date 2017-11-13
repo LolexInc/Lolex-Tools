@@ -54,7 +54,7 @@ try:
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
 sys.path.append("./")
-fail = False
+#fail = False
 #try:
 	#import requiredpatches
 #except(ImportError, SyntaxError, TabError):
