@@ -53,7 +53,6 @@ try:
 	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
-sys.path.append("./")
 #fail = False
 #try:
 	#import requiredpatches
