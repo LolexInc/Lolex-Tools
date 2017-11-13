@@ -591,16 +591,16 @@ def validate(path):
         return readin;
 class expl:
 		req_drives = False
-        path = "/"
-        newpath = "/"
-        file = ""
-        loaded = False
-        if (platform.system() != "Windows" and platform.system() != "Linux"):
-                clear = "<>"
-        elif uos.useros == "Windows":
-                clear = "cls"
-        elif platform.system() == "Linux":
-                clear = "clear"
+		path = "/"
+		newpath = "/"
+		file = ""
+		loaded = False
+		if (platform.system() != "Windows" and platform.system() != "Linux"):
+			clear = "<>"
+		elif uos.useros == "Windows":
+			clear = "cls"
+		elif platform.system() == "Linux":
+			clear = "clear"
 def req_drives():
 	currentdrives = []
 	for i in range(ord("A"), ord("Z")):
