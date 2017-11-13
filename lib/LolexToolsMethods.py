@@ -600,6 +600,18 @@ class expl:
                 clear = "cls"
         elif platform.system() == "Linux":
                 clear = "clear"
+		req_drives = False
+def req_drives():
+	currentdrives = []
+	for i in range(ord("A"), ord("Z")):
+		success = True
+		try:
+			os.listdir(chr(i) + ":/")
+		except(IOError):
+			success = False
+		if success == True:
+			currentdrives.append(chr(i) + ":/")
+	return currentdrives
 def loading(text1):
         start = int(0)
         while expl.loaded == False:
@@ -614,6 +626,8 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         expl.path = path
         file = 0
         auto = 0
+		if type(path) is not str:
+			expl.req_drives = True
         if expl.clear == "<>":
                 return 1;
         while True:
@@ -638,7 +652,10 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         expl.loaded = True
                         time.sleep(1.5)
                         print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
-                        for i in range(0, len(array)):
+                        if type(expl.path) is not str:
+							array = req_drives()
+						else:
+							for i in range(0, len(array)):
                                 if i == len(array):
                                         break
                                 if len(array[i]) > 2:
@@ -654,32 +671,25 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
 						## SORT OUT SO IT LOOKS LIKE A REAL PATH AT SOME POINT
                         if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
                                 new = expl.path.split("/")
-                                del new[len(new) -1]
+                                del new[len(new) - 1]
                                 actual = new[0]
                                 if len(new) > 1:
                                         for i in range(0 , len(new) - 1):
                                                 actual = "/" + new[i]
 								expl.path = actual
 						elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
-								os.system(expl.clear)
-								real = False
-								while real != True:
-									currentdrives = []
-									for i in range(ord("A"), ord("Z")):
-										success = True
-										try:
-											os.listdir(chr(i) + ":/")
-										except(IOError):
-											success = False
-										if success == True:
-											currentdrives.append(chr(i) + ":/")
-									for j in range(0, len(currentdrives) - 1):
-										print(currentdrives[j])
-									expl.path = input("Please input your drive letter.")
-									for k in range(0, len(currentdrives) - 1):
-										if expl.path == currentdrives[k]:
-											real = True
-											break;
+								#os.system(expl.clear)
+								#real = False
+								#while real != True:
+									#currentdrives = []
+									#for j in range(0, len(currentdrives) - 1):
+										#print(currentdrives[j])
+									#expl.path = input("Please input your drive letter.")
+									#for k in range(0, len(currentdrives) - 1):
+										#if expl.path == currentdrives[k]:
+											#real = True
+											#break;
+								path = False
 						else:
 							actual = "/"
 							expl.path = actual
