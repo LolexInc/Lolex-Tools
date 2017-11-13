@@ -47,7 +47,7 @@ try:
 	import verifonboot, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 except(ImportError, SyntaxError, TabError) as e:
 	print(e)
-	os.system(LolexToolsMethods.py + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
+	os.system(LolexToolsMethods.py + "setup" + os.sep + "generic" + os.sep + "LolexToolsInstaller.py")
 	os._exit(0)
 try:
 	import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
