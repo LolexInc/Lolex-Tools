@@ -119,11 +119,11 @@ def windowspage(page, layout):
                                 print("22 = Exit")
         elif page == 5:
                 print("EXPERIMENTAL FEATURES:")
-                print("23 = Update")
-                print("24 = Start File Explorer\n")
+                #print("23 = Update")
+                print("23 = Start File Explorer\n")
         if layout == 1:
-                        print("25 = Next Page")
-                        print("26 = Back a Page")
+                        print("24 = Next Page")
+                        print("25 = Back a Page")
         else:
                 if page < 5:
                         page = page + 1
