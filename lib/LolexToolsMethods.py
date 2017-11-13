@@ -626,8 +626,8 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         expl.path = path
         file = 0
         auto = 0
-		if type(path) is not str:
-			expl.req_drives = True
+        if type(path) is not str:
+            expl.req_drives = True
         if expl.clear == "<>":
                 return 1;
         while True:
@@ -653,16 +653,16 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                         time.sleep(1.5)
                         print("\n\n///o - " + otext + "\n./ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
                         if type(expl.path) is not str:
-							array = req_drives()
-						else:
-							for i in range(0, len(array)):
+                            array = req_drives()
+                        else:
+                            for i in range(0, len(array)):
                                 if i == len(array):
-                                        break
+                                    break
                                 if len(array[i]) > 2:
-                                        if array[i][0] != "~" and array[i][1] != "$":
-                                                print(array[i])
+                                    if array[i][0] != "~" and array[i][1] != "$":
+                                            print(array[i])
                                 else:
-                                        print(array[i])
+                                       print(array[i])
                         expl.file = input("\nSelect/Open (Name): ")
                         expl.file = expl.file.lower()
                 if expl.file == "///":
