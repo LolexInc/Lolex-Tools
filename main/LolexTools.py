@@ -437,35 +437,15 @@ try:
 			startplugins.enterinstall()
 		elif (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
 			startplugins.uptime()
-		elif (modewanted == 23 and useros == "Windows"):
-			print("Checking for updates...")
-			print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
-			if os.system("git clone https://github.com/lolexorg/Lolex-Tools.git") != 0:
-				continueto = int(input("Git was not found. Please press 1 to initiate webbrowser method or 0 to cancel."))
-				if continueto == 1:
-					print("Please save your zip to Lolex-Tools newversion folder.")
-					os.system(LolexToolsMethods.pyo + "-m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
-					confirm = input("Press enter to continue...")
-					try:
-						os.remove("./newversion")
-					except(IOError, OSError):
-						pass
-					os.mkdirs("./newversion")
-					newver = os.listdirs("./newversion")
-		# search for zips instead :P
-					zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
-					print("Extracting...")
-					zip_ref.extractall("newversion")
-					zip_ref.close()
-		elif (modewanted == 24 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
+		elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
 			path = os.getcwd()
 			startplugins.explorer(0, 1, 1, 0, "/" , 1)
-		elif (modewanted == 25 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
+		elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
 			if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2):
 				page = page + 1
 			else:
 				page = 0
-		elif (modewanted == 26 and useros == "Windows") or (modewanted == 18 and useros == "Linux") or (modewanted == 16 and useros == "Android") and menusettings.layout == 1:
+		elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux") or (modewanted == 16 and useros == "Android") and menusettings.layout == 1:
 			if page > 0:
 				page = page - 1
 			else:
