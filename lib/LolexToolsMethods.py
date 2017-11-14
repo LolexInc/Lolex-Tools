@@ -590,28 +590,28 @@ def validate(path):
                         readin = False
         return readin;
 class expl:
-		req_drives = False
-		path = "/"
-		newpath = "/"
-		file = ""
-		loaded = False
-		if (platform.system() != "Windows" and platform.system() != "Linux"):
-			clear = "<>"
-		elif uos.useros == "Windows":
-			clear = "cls"
-		elif platform.system() == "Linux":
-			clear = "clear"
+                req_drives = False
+                path = "/"
+                newpath = "/"
+                file = ""
+                loaded = False
+                if (platform.system() != "Windows" and platform.system() != "Linux"):
+                        clear = "<>"
+                elif uos.useros == "Windows":
+                        clear = "cls"
+                elif platform.system() == "Linux":
+                        clear = "clear"
 def req_drives():
-	currentdrives = []
-	for i in range(ord("A"), ord("Z")):
-		success = True
-		try:
-			os.listdir(chr(i) + ":/")
-		except(IOError):
-			success = False
-		if success == True:
-			currentdrives.append(chr(i) + ":/")
-	return currentdrives
+        currentdrives = []
+        for i in range(ord("A"), ord("Z")):
+                success = True
+                try:
+                        os.listdir(chr(i) + ":/")
+                except(IOError):
+                        success = False
+                if success == True:
+                        currentdrives.append(chr(i) + ":/")
+        return currentdrives
 def loading(text1):
         start = int(0)
         while expl.loaded == False:
@@ -668,7 +668,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                 if expl.file == "///":
                         pass
                 elif expl.file == ".." or auto == 1:
-						## SORT OUT SO IT LOOKS LIKE A REAL PATH AT SOME POINT
+                                                ## SORT OUT SO IT LOOKS LIKE A REAL PATH AT SOME POINT
                         if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
                                 new = expl.path.split("/")
                                 del new[len(new) - 1]
@@ -677,22 +677,22 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                         for i in range(0 , len(new) - 1):
                                             actual = "/" + new[i]
                                 expl.path = actual
-                            elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
-								#os.system(expl.clear)
-								#real = False
-								#while real != True:
-									#currentdrives = []
-									#for j in range(0, len(currentdrives) - 1):
-										#print(currentdrives[j])
-									#expl.path = input("Please input your drive letter.")
-									#for k in range(0, len(currentdrives) - 1):
-										#if expl.path == currentdrives[k]:
-											#real = True
-											#break;
+                        elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
+                                                                #os.system(expl.clear)
+                                                                #real = False
+                                                                #while real != True:
+                                                                        #currentdrives = []
+                                                                        #for j in range(0, len(currentdrives) - 1):
+                                                                                #print(currentdrives[j])
+                                                                        #expl.path = input("Please input your drive letter.")
+                                                                        #for k in range(0, len(currentdrives) - 1):
+                                                                                #if expl.path == currentdrives[k]:
+                                                                                        #real = True
+                                                                                        #break;
                                 path = False
-						else:
-							actual = "/"
-							expl.path = actual
+                        else:
+                                actual = "/"
+                                expl.path = actual
                         if expl.path == "/" or len(expl.path) < 3:
                                 actual = "/"
                         expl.path = actual
@@ -734,7 +734,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                         del possibles[which]
                                         found = 1
                                 if found == 1:
-										expl.req_drives = False
+                                        expl.req_drives = False
                                         expl.newpath = expl.path + possibles[0]
                                         if validate(expl.path) == False:
                                                 auto = 1
