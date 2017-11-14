@@ -659,7 +659,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                                 if len(new) > 1:
                                         for i in range(0 , len(new) - 1):
                                                 actual = "/" + new[i]
-								expl.path = actual
+                                expl.path = actual
 						elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
 								os.system(expl.clear)
 								real = False
