@@ -10,7 +10,7 @@
 import os, py_compile, sys
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
-print("CI version 1.9.0")
+print("CI version 2.0")
 folders = []
 files = []
 root = os.listdir("./")
@@ -19,7 +19,7 @@ while arraypos < len(root):
 	if (".git" in root[arraypos]) == False:
 		readin = True
 		try:
-			r = open(root[arraypos], "a")
+			r = open(root[arraypos], "r")
 		except(IOError, OSError):
 			readin = False
 		if readin == True:
