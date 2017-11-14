@@ -39,8 +39,8 @@ Exit: None <br><br>
 
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
-# Lolex-Tools is licensed under GPL 3.0
-## License: GPL 3.0
+# Lolex-Tools is licensed under LGPL 3.0
+## License: LGPL 3.0
 
 ```
 GNU LESSER GENERAL PUBLIC LICENSE
