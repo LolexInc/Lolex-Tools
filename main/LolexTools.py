@@ -113,7 +113,7 @@ def titleUpdater():
                         time.sleep(1)
 title_thread = threading.Thread(target = titleUpdater, args = [])
 title_thread.start()
-print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
+print("Welcome to Lolex-Tools version 10.0 ID")
 try:
 	if LolexToolsMethods.uos.useros == "Windows":
 		clear = "cls"
