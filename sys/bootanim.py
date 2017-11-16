@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, platform, time
+import os, platform, time, random
 if platform.system() == "Linux":
     if os.path.isfile("/system/build.prop") == True:
         clear = "reset"
@@ -15,7 +15,16 @@ if platform.system() == "Linux":
         clear = "clear"
 else:
     clear = "cls"
-    os.system("color 0a")
+    a = random.randint(0, 15)
+    choices = "a", "b", "c", "d", "e", "f"
+    if a > 9:
+        a = choices[10 - a]
+    b = random.randint(0, 15)
+    if b > 9:
+        b = choices[10 - b]
+    c = (str(a) + (str(b)))
+    os.system("color " + (str(c)))
+    #os.system("color 0a")
     os.system("MODE 1000")
 print("0")
 print(" 0                000000   0         000000     0  0     000000    00000    000000")
