@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
+import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 	IOError = OSError
 sys.path.append("./lib")
@@ -99,6 +99,20 @@ if LolexToolsMethods.uos.useros == "Windows":
 	os.system(theme.theme)
 	os.system("mode 1000")
 	os.system("title Lolex-Tools")
+class title_updater:
+        threads = 2
+        notificationsmsg = []
+        notificarionsdelay = []
+        a = round(time.time(), 0)
+def titleUpdater():
+        while LolexToolsMethods.stopping != True:
+                if len(title_updater.notificationsmsg) == 0:
+                        #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
+                        newtitle = "TITLE Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
+                        os.system(newtitle)
+                        time.sleep(1)
+title_thread = threading.Thread(target = titleUpdater, args = [])
+title_thread.start()
 print("Welcome to Lolex-Tools version 9.0exp 10:24 GMT+0.0 17/1/17")
 try:
 	if LolexToolsMethods.uos.useros == "Windows":
@@ -385,6 +399,7 @@ try:
 			except(IOError, OSError):
 				print("Failed to create file: ",filename)
 		elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
+			LolexToolsMethods.stopping = True
 			startplugins.scriptrestart()
 		elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
 			startplugins.numops()
