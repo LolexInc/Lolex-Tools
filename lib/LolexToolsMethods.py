@@ -44,6 +44,27 @@ except(ImportError) as e:
 		print("Please redownload this repository to access all features.")
 		print(e)
 		time.sleep(5)
+class title_updater:
+		threads = 2
+		notificationsmsg = []
+		notificarionsdelay = []
+		a = round(time.time(), 0)
+		units = ["weeks", "days", "hours", "minutes", "seconds"]
+def titleUpdater():
+		while stopping != True:
+				if len(title_updater.notificationsmsg) == 0:
+						#os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
+						newtitle = "TITLE Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
+						timer = convert_time_all(str(round(time.time(), 0) - title_updater.a))
+						for i in range(0, len(timer) - 1):
+							if timer[i] != 0:
+								newtitle = newtitle + str(timer[i]) + title_updater.units[i]
+						newtitle = newtitle + "    " + (str(time.time()))
+						os.system(newtitle)
+						time.sleep(1)
+def _init_():
+	title_thread = threading.Thread(target = titleUpdater, args = [])
+	title_thread.start()
 def version():
 		print(ver.version)
 def convert_time_all(secs):
