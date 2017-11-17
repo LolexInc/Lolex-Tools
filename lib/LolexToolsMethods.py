@@ -50,17 +50,26 @@ class title_updater:
 		notificarionsdelay = []
 		a = round(time.time(), 0)
 		units = ["weeks", "days", "hours", "minutes", "seconds"]
+		if uos.useros == "Windows":
+			title_cmd_start = "TITLE"
+			title_cmd_end = ""
+		elif uos.useros == "Linux" or uos.useros == "Android":
+			title_cmd_start = "\x1b]2;"
+			title_cmd_end = "\x07"
 def titleUpdater():
 		while stopping != True:
 				if len(title_updater.notificationsmsg) == 0:
 						#os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
-						newtitle = "TITLE Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
+						newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
 						timer = convert_time_all(str(round(time.time(), 0) - title_updater.a))
 						for i in range(0, len(timer) - 1):
 							if timer[i] != 0:
 								newtitle = newtitle + str(timer[i]) + title_updater.units[i]
-						newtitle = newtitle + "    " + (str(time.time()))
-						os.system(newtitle)
+						newtitle = newtitle + "    " + (str(time.time())) + title_updater.title_cmd_end
+						if uos.useros == "Linux" or uos.useros == "Android":
+							sys.stdout.write(newtitle)
+						else:
+							os.system(newtitle)
 						time.sleep(1)
 def _init_():
 	title_thread = threading.Thread(target = titleUpdater, args = [])
