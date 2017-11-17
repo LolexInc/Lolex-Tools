@@ -18,10 +18,10 @@ else:
     a = random.randint(0, 15)
     choices = "a", "b", "c", "d", "e", "f"
     if a > 9:
-        a = choices[10 - a]
+        a = choices[a - 10]
     b = random.randint(0, 15)
     if b > 9:
-        b = choices[10 - b]
+        b = choices[b - 10]
     c = (str(a) + (str(b)))
     os.system("color " + (str(c)))
     #os.system("color 0a")
