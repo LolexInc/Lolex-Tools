@@ -415,8 +415,9 @@ def pyshell():
 def scriptrestart():
                 confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
                 if confirmscriptrestart == 1:
-                                os.system(py + "start.py")
-                                os._exit(0)
+                    stopping = True
+                    os.system(py + "start.py")
+                    os._exit(0)
 def numops():
                 print ("Here is a list of operations:")
                 print ("1 = Add")

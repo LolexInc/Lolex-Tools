@@ -406,7 +406,6 @@ try:
                         except(IOError, OSError):
                                 print("Failed to create file: ",filename)
                 elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
-                        LolexToolsMethods.stopping = True
                         startplugins.scriptrestart()
                 elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
                         startplugins.numops()
