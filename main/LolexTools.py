@@ -291,8 +291,8 @@ try:
 			maxmode = 16
 		if menusettings.layout == 0:
 			maxmode = maxmode - 2
-		while modewanted > maxmode:
-			modewanted = modewanted - maxmode
+                if modewanted > maxmode:
+			modewanted = modewanted%maxmode
 		while modewanted < 1:
 			modewanted = modewanted + maxmode
 		if modewanted == 1:
@@ -512,3 +512,4 @@ except(KeyboardInterrupt) as k:
 	print(k)
 	# shouldn't be as much of a problem with threads
 	time.sleep(10)
+os._exit(0)
