@@ -47,40 +47,48 @@ except(ImportError) as e:
 class title_updater:
                 threads = 2
                 notificationsmsg = []
-                notificarionsdelay = []
+                notificationsdelay = []
                 a = round(time.time(), 0)
                 units = ["weeks", "days", "hours", "minutes", "seconds"]
                 if uos.useros == "Windows":
-                        title_cmd_start = "TITLE"
+                        title_cmd_start = "TITLE "
                         title_cmd_end = ""
                 elif uos.useros == "Linux" or uos.useros == "Android":
                         title_cmd_start = "\x1b]2;"
                         title_cmd_end = "\x07"
 def titleUpdater():
                 while stopping != True:
-                                if len(title_updater.notificationsmsg) == 0:
-                                                #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
-                                                newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
-                                                #print(round(time.time(), 0) - title_updater.a)
-                                                timer = convert_time_all(round(time.time(), 0) - title_updater.a, True)
-                                                #print(timer)
-                                                #t = len(timer) - 1
-                                                #while t != -1:
-                                                    #newtitle = newtitle[t] + (str(timer[t]) + "" + (title_updater.units[t]))
-                                                    #print(newtitle)
-                                                    #t = t - 1
-                                                #for i in range(0, len(timer) - 1):
-                                                        #j = len(timer) - i - 1
-                                                        #if timer[j] != 0:
-                                                                #newtitle = newtitle + str(timer[i]) + "" + (str(title_updater.units[i]))
-                                                newtitle = newtitle + (str(timer))
-                                                #newtitle = newtitle + title_updater.title_cmd_end
-                                                newtitle = newtitle + "    " + (str(time.time())) + title_updater.title_cmd_end
-                                                if uos.useros == "Linux" or uos.useros == "Android":
-                                                        sys.stdout.write(newtitle)
-                                                else:
-                                                        os.system((str(newtitle)))
-                                                time.sleep(1)
+                    if len(title_updater.notificationsmsg) == 0:
+                        #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
+                        newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
+                        #print(round(time.time(), 0) - title_updater.a)
+                        timer = convert_time_all(round(time.time(), 0) - title_updater.a, True)
+                        #print(timer)
+                        #t = len(timer) - 1
+                        #while t != -1:
+                            #newtitle = newtitle[t] + (str(timer[t]) + "" + (title_updater.units[t]))
+                            #print(newtitle)
+                            #t = t - 1
+                        #for i in range(0, len(timer) - 1):
+                                #j = len(timer) - i - 1
+                                #if timer[j] != 0:
+                                        #newtitle = newtitle + str(timer[i]) + "" + (str(title_updater.units[i]))
+                        newtitle = newtitle + (str(timer))
+                        #newtitle = newtitle + title_updater.title_cmd_end
+                        newtitle = newtitle + "    " + (str(time.time())) + title_updater.title_cmd_end
+                        if uos.useros == "Linux" or uos.useros == "Android":
+                                sys.stdout.write(newtitle)
+                        else:
+                                os.system((str(newtitle)))
+                        time.sleep(1)
+                    else:
+                        if uos.useros == "Linux" or uos.useros == "Android":
+                            sys.stdout.write(title_updater.title_cmd_start + (str(title_updater.notificationsmsg[0])) + title_updater.title_cmd_end)
+                        else:
+                            os.system(title_updater.title_cmd_start + (str(title_updater.notificationsmsg[0])) + title_updater.title_cmd_end)
+                        time.sleep(title_updater.notificationsdelay[0])
+                        del title_updater.notificationsdelay[0]
+                        del title_updater.notificationsmsg[0]
                 if uos.useros == "Linux" or uos.useros == "Android":
                     sys.stdout.write("\x1b]2;Lolex-Tools: EXITING...\x07")
                 else:
@@ -123,6 +131,9 @@ def convert_time_all(secs, rtstr):
                     return string_out
                 
                 return weeks, days, hours, minutes, secs
+def send_notification(msg, delay):
+    title_updater.notificationsmsg.append("Lolex-Tools NOTIFICATION: " + (str(msg)))
+    title_updater.notificationsdelay.append(delay)
 def flicker():
                 suretoflash = int(input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy."))
                 if suretoflash == 1:

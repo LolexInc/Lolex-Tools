@@ -120,7 +120,7 @@ if LolexToolsMethods.uos.useros == "Windows":
 #title_thread = threading.Thread(target = titleUpdater, args = [])
 #title_thread.start()
 LolexToolsMethods._init_()
-print("Welcome to Lolex-Tools version 10.0 ID")
+LolexToolsMethods.send_notification("Welcome to Lolex-Tools version 10.0 ID", 10)
 try:
         if LolexToolsMethods.uos.useros == "Windows":
                 clear = "cls"
