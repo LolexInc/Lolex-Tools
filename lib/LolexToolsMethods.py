@@ -119,6 +119,7 @@ def convert_time_all(secs, rtstr):
                         string_out = string_out + (str(minutes)) + " minutes "
                     if secs != 0:
                         string_out = string_out + (str(secs)) + " seconds "
+                    string_out = string_out.replace(".0", "")
                     return string_out
                 
                 return weeks, days, hours, minutes, secs
