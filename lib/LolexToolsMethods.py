@@ -118,15 +118,30 @@ def convert_time_all(secs, rtstr):
                         days = days%7
                 if rtstr == True:
                     if weeks != 0:
-                        string_out = string_out + (str(weeks)) + " weeks "
+                        if weeks != 1:
+                            string_out = string_out + (str(weeks)) + " weeks "
+                        else:
+                            string_out = string_out + (str(weeks)) + " week "
                     if days != 0:
-                        string_out = string_out + (str(days)) + " days "
+                        if days != 1:
+                            string_out = string_out + (str(days)) + " days "
+                        else:
+                            string_out = string_out + (str(days)) + " day "
                     if hours != 0:
-                        string_out = string_out + (str(hours)) + " hours "
+                        if hours != 1:
+                            string_out = string_out + (str(hours)) + " hours "
+                        else:
+                            string_out = string_out + (str(hours)) + " hour "
                     if minutes != 0:
-                        string_out = string_out + (str(minutes)) + " minutes "
+                        if minutes != 1:
+                            string_out = string_out + (str(minutes)) + " minutes "
+                        else:
+                            string_out = string_out + (str(minutes)) + " minute "
                     if secs != 0:
-                        string_out = string_out + (str(secs)) + " seconds "
+                        if secs != 1:
+                            string_out = string_out + (str(secs)) + " seconds "
+                        else:
+                            string_out = string_out + (str(secs)) + " second "
                     string_out = string_out.replace(".0", "")
                     return string_out
                 
