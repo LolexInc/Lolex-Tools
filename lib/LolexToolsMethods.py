@@ -62,7 +62,7 @@ def titleUpdater():
                         #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
                         newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
                         #print(round(time.time(), 0) - title_updater.a)
-                        timer = convert_time_all(round(time.time(), 0) - title_updater.a, True)
+                        timer = convert_time_all(seconds = round(time.time(), 0) - title_updater.a, True)
                         #print(timer)
                         #t = len(timer) - 1
                         #while t != -1:
@@ -98,15 +98,11 @@ def _init_():
         title_thread.start()
 def version():
                 print(ver.version)
-def convert_time_all(secs, rtstr):
+def convert_time_all(seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0 rtstr):
                 string_out = ""
-                minutes = 0
-                hours = 0
-                days = 0
-                weeks = 0
-                if secs >= 60:
+                if seconds >= 60:
                         minutes = minutes + secs//60
-                        secs = secs%60
+                        seconds = seconds%60
                 if minutes >= 60:
                         hours = hours + minutes//60
                         minutes = minutes%60
@@ -137,15 +133,14 @@ def convert_time_all(secs, rtstr):
                             string_out = string_out + (str(minutes)) + " minutes "
                         else:
                             string_out = string_out + (str(minutes)) + " minute "
-                    if secs != 0:
+                    if seconds != 0:
                         if secs != 1:
-                            string_out = string_out + (str(secs)) + " seconds "
+                            string_out = string_out + (str(seconds)) + " seconds "
                         else:
-                            string_out = string_out + (str(secs)) + " second "
+                            string_out = string_out + (str(seconds)) + " second "
                     string_out = string_out.replace(".0", "")
                     return string_out
-                
-                return weeks, days, hours, minutes, secs
+                return weeks, days, hours, minutes, seconds
 def send_notification(msg, delay):
     title_updater.notificationsmsg.append("Lolex-Tools NOTIFICATION: " + (str(msg)))
     title_updater.notificationsdelay.append(delay)
