@@ -57,12 +57,15 @@ class title_updater:
                         title_cmd_start = "\x1b]2;"
                         title_cmd_end = "\x07"
 def titleUpdater():
+                start = 0
                 while stopping != True:
-                    if len(title_updater.notificationsmsg) == 0:
+                    if len(title_updater.notificationsmsg) == 0 and start%10 == 0:
+                        if start%10 == 0:
+                            start = 0
                         #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
                         newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
                         #print(round(time.time(), 0) - title_updater.a)
-                        timer = convert_time_all(seconds = round(time.time(), 0) - title_updater.a, True)
+                        timer = convert_time_all(True, seconds = round(time.time(), 0) - title_updater.a)
                         #print(timer)
                         #t = len(timer) - 1
                         #while t != -1:
@@ -80,7 +83,8 @@ def titleUpdater():
                                 sys.stdout.write(newtitle)
                         else:
                                 os.system((str(newtitle)))
-                        time.sleep(1)
+                        time.sleep(0.1)
+                        start = start + 1
                     else:
                         if uos.useros == "Linux" or uos.useros == "Android":
                             sys.stdout.write(title_updater.title_cmd_start + (str(title_updater.notificationsmsg[0])) + title_updater.title_cmd_end)
@@ -98,7 +102,7 @@ def _init_():
         title_thread.start()
 def version():
                 print(ver.version)
-def convert_time_all(seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0 rtstr):
+def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0):
                 string_out = ""
                 if seconds >= 60:
                         minutes = minutes + secs//60
