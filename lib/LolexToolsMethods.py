@@ -57,11 +57,8 @@ class title_updater:
                         title_cmd_start = "\x1b]2;"
                         title_cmd_end = "\x07"
 def titleUpdater():
-                start = 0
                 while stopping != True:
-                    if len(title_updater.notificationsmsg) == 0 and start%10 == 0:
-                        if start%10 == 0:
-                            start = 0
+                    if len(title_updater.notificationsmsg) == 0:
                         #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
                         newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
                         #print(round(time.time(), 0) - title_updater.a)
@@ -84,7 +81,6 @@ def titleUpdater():
                         else:
                                 os.system((str(newtitle)))
                         time.sleep(0.1)
-                        start = start + 1
                     else:
                         if uos.useros == "Linux" or uos.useros == "Android":
                             sys.stdout.write(title_updater.title_cmd_start + (str(title_updater.notificationsmsg[0])) + title_updater.title_cmd_end)
@@ -105,7 +101,7 @@ def version():
 def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0):
                 string_out = ""
                 if seconds >= 60:
-                        minutes = minutes + secs//60
+                        minutes = minutes + seconds//60
                         seconds = seconds%60
                 if minutes >= 60:
                         hours = hours + minutes//60
@@ -138,7 +134,7 @@ def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks
                         else:
                             string_out = string_out + (str(minutes)) + " minute "
                     if seconds != 0:
-                        if secs != 1:
+                        if seconds != 1:
                             string_out = string_out + (str(seconds)) + " seconds "
                         else:
                             string_out = string_out + (str(seconds)) + " second "
