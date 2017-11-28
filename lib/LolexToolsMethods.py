@@ -9,7 +9,7 @@
 ## authors = Monkeyboy2805
 import os, time, py_compile, shutil, sys, platform, threading, subprocess
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-                IOError = OSError
+    IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 s = os.sep
 sys.path.append("./")
@@ -50,6 +50,14 @@ class title_updater:
     notificationsdelay = []
     a = round(time.time(), 0)
     units = ["weeks", "days", "hours", "minutes", "seconds"]
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    month_unit = [3, 0, 3, 2, 3, 2, 3, 3, 2, 3, 2, 3]
+    start_month_str = time.asctime(time.localtime(time.time())).split(" ")[1]
+    start_month = -1
+    for i in range(0, len(months) - 1):
+        if start_month_str == months[i]:
+            start_month = i - 1
+            break
     if uos.useros == "Windows":
         title_cmd_start = "TITLE "
         title_cmd_end = ""
@@ -115,8 +123,8 @@ def _init_():
         title_thread = threading.Thread(target = titleUpdater, args = [])
         title_thread.start()
 def version():
-                print(ver.version)
-def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0):
+        print(ver.version)
+def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0, start_month = title_updater.start_month, months = 0):
     # Have a look into datetime for this
     string_out = ""
     if seconds >= 60:
@@ -131,7 +139,17 @@ def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks
     if days >= 7:
         weeks = weeks + days//7
         days = days%7
+    while weeks >= 4: #and days >= title_updater.month_unit[(start_month + (months%12))%12]:
+        weeks = weeks - 4
+        # Based on a month being 4 weeks
+        #days = days - title_updater.month_unit[(start_month + (months%12))%12]
+        months = months + 1
     if rtstr == True:
+        if months != 0:
+            if months != 1:
+               string_out = string_out + (str(months)) + " months "
+            else:
+                string_out = string_out + (str(months)) + " month "
         if weeks != 0:
             if weeks != 1:
                 string_out = string_out + (str(weeks)) + " weeks "
@@ -159,7 +177,7 @@ def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks
                 string_out = string_out + (str(seconds)) + " second "
         string_out = string_out.replace(".0", "")
         return string_out
-    return weeks, days, hours, minutes, seconds
+    return months, weeks, days, hours, minutes, seconds
 def send_notification(msg, delay):
     title_updater.notificationsmsg.append("Lolex-Tools NOTIFICATION: " + (str(msg)))
     title_updater.notificationsdelay.append(delay)
