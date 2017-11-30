@@ -24,7 +24,7 @@ if sys.version_info.major != 3:
         exit(0)
 sys.path.insert(0, "./")
 try:
-        import LolexToolsOptions, runningsys, startplugins
+        import LolexToolsOptions, runningsys, startplugins, lang
 except(ImportError, SyntaxError, TabError) as e:
         print(e)
         time.sleep(3)
@@ -120,7 +120,7 @@ if LolexToolsMethods.uos.useros == "Windows":
 #title_thread = threading.Thread(target = titleUpdater, args = [])
 #title_thread.start()
 LolexToolsMethods._init_()
-LolexToolsMethods.send_notification("Welcome to Lolex-Tools version 10.0 ID", 10)
+LolexToolsMethods.send_notification(lang.strings.welcome, 10)
 try:
         if LolexToolsMethods.uos.useros == "Windows":
                 clear = "cls"
