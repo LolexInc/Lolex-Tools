@@ -512,6 +512,7 @@ def dumpme():
 def enterinstall():
     confirm = int(input("Please confirm (with a 1) to enter the installer."))
     if confirm == 1:
+        global stopping
         stopping = True
         os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
         exit(0)
