@@ -108,6 +108,7 @@ def titleUpdater():
             end = time.time()
             load = round((float((end - start - 1) * 100)), 2)
             if load > 100:
+                send_notification("WARNING: Overloading. Took " + str(round(float(load - 100)/100), 2) + " seconds too long too tick.", 3)
                 load = 100
         else:
             if uos.useros == "Linux" or uos.useros == "Android":
