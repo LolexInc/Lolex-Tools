@@ -202,22 +202,31 @@ def flicker():
     print("7 - White/Light Gray")
     print("8 - Dark Gray")
     print("9 - Dark Neon Blue")
-    colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour  "))
+    done = "0"
+    colour = []
+    while done != "1":
+        colour.append("color " + input("Please enter your colour "))
+        done = input("Please enter 1 if you are finished adding colours.")
+    #colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour  "))
     flickerthread = threading.Thread(target = flickerp2, args = [colour, howlongtoflashfor])
     flickerthread.start()
 def flickerp2(colour, howlongtoflashfor):
     currentflashes = int(0)
+    global stopping
     while howlongtoflashfor != currentflashes and stopping != True:
-        os.system (colour[0])
-        pass
-        os.system (colour[1])
-        pass
-        os.system (colour[2])
-        pass
-        os.system (colour[3])
-        pass
-        os.system (colour[4])
-        pass
+        for i in range(0, len(colour) - 1):
+            os.system(colour[i])
+            pass
+##        os.system (colour[0])
+##        pass
+##        os.system (colour[1])
+##        pass
+##        os.system (colour[2])
+##        pass
+##        os.system (colour[3])
+##        pass
+##        os.system (colour[4])
+##        pass
         currentflashes = currentflashes + 1
     os.system(theme.theme)
 def windowspage(page, layout):
