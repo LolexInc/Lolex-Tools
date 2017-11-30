@@ -11,10 +11,10 @@ import sys, time, os, shutil, platform, py_compile
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
         IOError = OSError
 syslen = len(sys.path)
-sys.path.insert("./", 0)
+sys.path.insert(0, "./")
 import requiredpatches
 print("Importing...")
-sys.path.insert("./lib/", 0)
+sys.path.insert(0, "./lib/")
 import LolexToolsMethods
 print("This installer uses the following modules: sys, time, os, shutil, platform, LolexToolsMethods")
 if sys.version_info.major != 3:
