@@ -341,15 +341,15 @@ def restart():
             waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
         restartthreader = threading.Thread(target = restartthread, args = [waittime])
         restartthreader.start()
-def logoff(type):
+def logoff(type_of):
     logoff_confirm = input("Please enter 1 to confirm logoff.")
     if logoff_confirm == "1":
         waittime = float(input("How long, in minutes, do you wish to wait?"))
         while waittime < 0:
             waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
-        loggeroff = threading.Thread(target = logoffthread, args = [waittime, type])
+        loggeroff = threading.Thread(target = logoffthread, args = [waittime, type_of])
         loggeroff.start()
-def logoffthread(waittime, type):
+def logoffthread(waittime, type_of):
     if threads.logoff == True:
         print("LOGOFF thread: Logoff already scheduled!")
         return;
@@ -361,7 +361,7 @@ def logoffthread(waittime, type):
     if stopping != True:
         print("LOGOFF thread: Logging off...")
         if uos.useros != "Linux":
-            if type == 0:
+            if type_of == 0:
                 os.system("shutdown -l -f")
             else:
                 subprocess.Popen("logoff.exe")
@@ -418,15 +418,15 @@ def restartthread(waittime):
     else:
         print("RESTART thread: Stopping...")
     threads.restart = False
-def shutdown(type):
+def shutdown(type_of):
     shutdown_confirm = input("Please enter 1 to shutdown.")
     if shutdown_confirm == "1":
         waittime = float(input("How long, in minutes, do you wish to wait?"))
         while waittime < 0 or waittime > 65505:
             waittime = float(input("Please select a time between 0- 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
-        shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime,type])
+        shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime, type_of])
         shutdownthreader.start()
-def shutdownthread(waittime, type):
+def shutdownthread(waittime, type_of):
     if threads.shutdown == True:
         print("SHUTDOWN thread: Shutdown already scheduled!")
         return;
@@ -438,9 +438,9 @@ def shutdownthread(waittime, type):
     if stopping != True:
         print("SHUTDOWN thread: shutting device down...")
         if uos.useros == "Windows":
-            if type == 0:
+            if type_of == 0:
                 os.system ("shutdown -s -f")
-            elif type == 1:
+            elif type_of == 1:
                 subprocess.Popen("shutdown.exe")
         elif uos.useros == "Linux":
             os.system("poweroff")
