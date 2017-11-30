@@ -139,17 +139,17 @@ def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks
     if days >= 7:
         weeks = weeks + days//7
         days = days%7
-    while weeks >= 4: #and days >= title_updater.month_unit[(start_month + (months%12))%12]:
-        weeks = weeks - 4
+    #while weeks >= 4: #and days >= title_updater.month_unit[(start_month + (months%12))%12]:
+        #weeks = weeks - 4
         # Based on a month being 4 weeks
         #days = days - title_updater.month_unit[(start_month + (months%12))%12]
-        months = months + 1
+        #months = months + 1
     if rtstr == True:
-        if months != 0:
-            if months != 1:
-               string_out = string_out + (str(months)) + " months "
-            else:
-                string_out = string_out + (str(months)) + " month "
+        #if months != 0:
+            #if months != 1:
+               #string_out = string_out + (str(months)) + " months "
+            #else:
+                #string_out = string_out + (str(months)) + " month "
         if weeks != 0:
             if weeks != 1:
                 string_out = string_out + (str(weeks)) + " weeks "
@@ -177,7 +177,8 @@ def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks
                 string_out = string_out + (str(seconds)) + " second "
         string_out = string_out.replace(".0", "")
         return string_out
-    return months, weeks, days, hours, minutes, seconds
+    #return months,
+    return weeks, days, hours, minutes, seconds
 def send_notification(msg, delay):
     title_updater.notificationsmsg.append("Lolex-Tools NOTIFICATION: " + (str(msg)))
     title_updater.notificationsdelay.append(delay)
