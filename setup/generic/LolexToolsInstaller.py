@@ -419,6 +419,7 @@ try:
                 LolexToolsMethods.compiler("LolexToolsOptions")
                 LolexToolsMethods.compiler("runningsys")
                 LolexToolsMethods.compiler("theme")
+        with open ("./lang.py", "a") as outf: outf.write("import sys\nsys.path.insert(0, './strings/')\nimport enUK as strings")
         with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
         with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
         with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
