@@ -15,7 +15,13 @@ sys.path.insert(0, "./")
 import requiredpatches
 print("Importing...")
 sys.path.insert(0, "./lib/")
-import LolexToolsMethods
+try:
+        import LolexToolsMethods
+except(ImportError) as e:
+        print(e)
+        print("Missing or corrupted library. Please redownload this application or make an issue if this persists.")
+        time.sleep(5)
+        exit(0)
 print("This installer uses the following modules: sys, time, os, shutil, platform, LolexToolsMethods")
 if sys.version_info.major != 3:
         print("Only Python 3 is currently supported. Please install Python 3.")

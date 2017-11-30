@@ -15,11 +15,11 @@ if sys.version_info.major != 3:
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
     IOError = OSError
 sys.path.insert(0, "./lib/")
-try:
+try: 
     import LolexToolsMethods
 except(ImportError, SyntaxError, TabError) as e:
     print(e)
-    print("Missing library. Please redownload this application.")
+    print("Missing or corrupted library. Please redownload this application or make an issue if this persists.")
     time.sleep(5)
     exit(0)
 if LolexToolsMethods.uos.useros == "Windows":
