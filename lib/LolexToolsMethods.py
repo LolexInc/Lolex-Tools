@@ -779,6 +779,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
     while True:
         expl.loaded = False
         o = False
+        op = False
         expl.path = correctpath(expl.path)
         y = validate(expl.path)
         if y == False:
@@ -824,7 +825,10 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
             os.system(expl.clear)
             real = False
+            op = False
+            o = False
             while real != True:
+                ## FIX THIS FOR EXITING
                 currentdrives = []
                 for i in range(ord("A"), ord("Z")):
                     success = True
