@@ -12,7 +12,7 @@ if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info
     IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 s = os.sep
-sys.path.insert("./", 0)
+sys.path.insert(0, "./")
 if platform.system() == "Windows":
     if sys.version_info.minor > 5:
         py = "py ." + os.sep
@@ -1054,5 +1054,5 @@ def addplugins(rewrite):
             if " " in name or "	" in name or name.count(".") > 1 or "#" in name or "@" in name or "LolexTools" in name or "{" in name or "}" in name or "/" in name or "&" in name or "|" in name:
                 print("Plugin name contains an/several characters that are invalid. Could not load plugin.")
             else:
-                w.write('\ntry:\n    sys.path.insert("' + path + ', 0")\n    from ' + (str(name)) + ' import *\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
+                w.write('\ntry:\n    sys.path.insert("0, ' + path + '")\n    from ' + (str(name)) + ' import *\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
         done = input("Please enter 1 if you are done, 0 if not.")
