@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, time, py_compile, shutil, sys, platform, threading, subprocess
+import os, time, py_compile, shutil, sys, platform, threading, subprocess, random
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
     IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
@@ -185,10 +185,21 @@ def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks
 def send_notification(msg, delay):
     title_updater.notificationsmsg.append("Lolex-Tools NOTIFICATION: " + (str(msg)))
     title_updater.notificationsdelay.append(delay)
+def str_to_int(string):
+    try:
+        a = int(string)
+    except(ValueError):
+        return False
+    return True
 def flicker():
-    suretoflash = int(input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy."))
-    if suretoflash == 1:
-        howlongtoflashfor = int(input("How many loops do you wish to occur?")) 
+    a = input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy.")
+    if str_to_int(a) == True and int(a) == 1:
+        howlongtoflashfor = input("How many loops do you wish to occur?")
+        if str_to_int(howlongtoflashfor) == True:
+            howlongtoflashfor = int(howlongtoflashfor)
+        else:
+            howlongtoflashfor = random.randint(1, 1000)
+            print("TYPE of loops was not a number, selected " + (str(howlongtoflashfor)))
     print("Here is a list of colours available:")
     print("a - Neon Green")
     print("b - Light Blue")
