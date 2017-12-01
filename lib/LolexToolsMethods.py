@@ -227,9 +227,12 @@ def flicker():
 def flickerp2(colour, howlongtoflashfor):
     currentflashes = int(0)
     global stopping
-    while howlongtoflashfor != currentflashes and stopping != True:
+    while howlongtoflashfor != currentflashes:
+        if stopping == True:
+            break
         for i in range(0, len(colour) - 1):
             os.system(colour[i])
+            print("STARTED")
             pass
 ##        os.system (colour[0])
 ##        pass
@@ -1065,7 +1068,7 @@ def addplugins(rewrite):
         except(IOError, OSError):
             pass
         w = open("./startplugins.py", "a")
-        w.write("import sys\nfrom lib import LolexToolsMethods\nfrom LolexToolsMethods import *")
+        w.write("import sys\nsys.path.insert(0, './lib')\nfrom LolexToolsMethods import *")
     done = "0"
     while done != "1":
         success = True
