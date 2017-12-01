@@ -28,7 +28,7 @@ else:
     os.system("MODE 1000")
 timings = []
 for i in range(0, 24):
-    timings.append(random.randint(1, 100)//100)
+    timings.append(random.randint(5, 100)//100)
 print("0")
 print(" 0                000000   0         000000     0  0     000000    00000    000000")
 print("  0              00     0  0         0           00     0      0   00   0   00")
