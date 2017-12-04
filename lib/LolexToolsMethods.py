@@ -808,54 +808,51 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
             if len(array[i]) > 2:
                 if array[i][0] != "~" and array[i][1] != "$":
                     print(array[i])
-                else:
-                    print(array[i])
         expl.file = input("\nSelect/Open (Name): ")
         expl.file = expl.file.lower()
         if expl.file == "///":
             pass
         elif expl.file == ".." or auto == 1:
             ## SORT OUT SO IT LOOKS LIKE A REAL PATH AT SOME POINT
-            pass
-        if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
-            new = expl.path.split("/")
-            del new[len(new) -1]
-            actual = new[0]
-            if len(new) > 1:
-                for i in range(0 , len(new) - 1):
-                    actual = "/" + new[i]
-            expl.path = actual
-        elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
-            os.system(expl.clear)
-            real = False
-            op = False
-            o = False
-            while real != True:
-                ## FIX THIS FOR EXITING
-                currentdrives = []
-                for i in range(ord("A"), ord("Z")):
-                    success = True
-                    try:
-                            os.listdir(chr(i) + ":/")
-                    except(IOError):
-                            success = False
-                    if success == True:
-                            currentdrives.append(chr(i) + ":/")
-                for j in range(0, len(currentdrives) - 1):
-                    print(currentdrives[j])
-                expl.path = input("Please input your drive letter.")
-                for k in range(0, len(currentdrives) - 1):
-                    if expl.path == currentdrives[k]:
-                            real = True
-                            break;
-        else:
-            actual = "/"
-            expl.path = actual
-        if expl.path == "/" or len(expl.path) < 3:
-            actual = "/"
-            expl.path = actual
-        if auto != 0:
-            auto = 0
+            if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
+                new = expl.path.split("/")
+                del new[len(new) -1]
+                actual = new[0]
+                if len(new) > 1:
+                    for i in range(0 , len(new) - 1):
+                        actual = "/" + new[i]
+                    expl.path = actual
+                elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
+                    os.system(expl.clear)
+                    real = False
+                    op = False
+                    o = False
+                    while real != True:
+                        ## FIX THIS FOR EXITING
+                        currentdrives = []
+                        for i in range(ord("A"), ord("Z")):
+                            success = True
+                            try:
+                                    os.listdir(chr(i) + ":/")
+                            except(IOError):
+                                    success = False
+                            if success == True:
+                                    currentdrives.append(chr(i) + ":/")
+                        for j in range(0, len(currentdrives) - 1):
+                            print(currentdrives[j])
+                        expl.path = input("Please input your drive letter.")
+                        for k in range(0, len(currentdrives) - 1):
+                            if expl.path == currentdrives[k]:
+                                    real = True
+                                    break;
+                else:
+                    actual = "/"
+                    expl.path = actual
+                if expl.path == "/" or len(expl.path) < 3:
+                    actual = "/"
+                    expl.path = actual
+                if auto != 0:
+                    auto = 0
         if expl.file == "///?":
             print("Type names from here to enter/select files and folders.")
             time.sleep(5)
@@ -977,6 +974,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                             print(e)
                             print("Couldn't delete folder.")
                             time.sleep(3)
+                        ### EXITS FOR SOME REASON ON DIR RELOAD
                         op = 7
                         auto = 1
                     else:
@@ -1056,7 +1054,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         if expl.file == "./":
             expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
             expl.newpath = expl.path
-            auto = 0
+            auto = 1
 def addplugins(rewrite):
     if rewrite == True:
         try:
