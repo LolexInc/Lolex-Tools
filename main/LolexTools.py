@@ -511,4 +511,8 @@ except(KeyboardInterrupt) as k:
         print(k)
         # shouldn't be as much of a problem with threads
         time.sleep(10)
+except(_thread.error) as l:
+        print("OOPS! Seems an external thread error occured.")
+        print(l)
+        time.sleep(10)
 os._exit(0)
