@@ -25,7 +25,7 @@ except(ImportError) as e:
 print("This installer uses the following modules: sys, time, os, shutil, platform, LolexToolsMethods")
 if sys.version_info.major != 3:
         print("Only Python 3 is currently supported. Please install Python 3.")
-        os.system("python3 LolexToolsInstaller.py")
+        time.sleep(5)
         exit(0)
 try:
         continueon = int(input("Please enter 1 to continue, or 0 to exit."))
