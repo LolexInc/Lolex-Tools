@@ -65,12 +65,12 @@ try:
         except(IOError, OSError):
                 pass
         class settings:
-                dir = os.listdir("./")
+                directories = os.listdir("./")
                 arraypos = 0
-        while settings.arraypos < len(settings.dir):
-                if settings.dir[settings.arraypos].endswith("settings.py"):
+        while settings.arraypos < len(settings.directories):
+                if settings.directories[settings.arraypos].endswith("settings.py"):
                         try:
-                                os.remove("./" + settings.dir[settings.arraypos])
+                                os.remove("./" + settings.directories[settings.arraypos])
                         except(IOError, OSError):
                                 pass
                 settings.arraypos = settings.arraypos + 1
