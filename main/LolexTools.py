@@ -99,26 +99,6 @@ if LolexToolsMethods.uos.useros == "Windows":
         os.system(theme.theme)
         os.system("mode 1000")
         os.system("title Lolex-Tools")
-#class title_updater:
-                #threads = 2
-                #notificationsmsg = []
-                #notificarionsdelay = []
-                #a = round(time.time(), 0)
-                #units = ["weeks", "days", "hours", "minutes", "seconds"]
-#def titleUpdater():
-                #while LolexToolsMethods.stopping != True:
-                                #if len(title_updater.notificationsmsg) == 0:
-                                                ##os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
-                                                #newtitle = "TITLE Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
-                                                #timer = LolexToolsMethods.convert_time_all(str(round(time.time(), 0) - title_updater.a))
-                                                #for i in range(0, len(timer) - 1):
-                                                        #if timer[i] != 0:
-                                                                #newtitle = newtitle + str(timer[i]) + title_updater.units[i]
-                                                #newtitle = newtitle + "    " + (str(time.time()))
-                                                #os.system(newtitle)
-                                                #time.sleep(1)
-#title_thread = threading.Thread(target = titleUpdater, args = [])
-#title_thread.start()
 LolexToolsMethods._init_()
 LolexToolsMethods.send_notification(lang.strings.welcome, 10)
 try:
