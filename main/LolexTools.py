@@ -276,8 +276,8 @@ try:
         if modewanted == 1:
             print("1 = Menu Settings")
             print("2 = Hide modes")
-            setting = int(input("Please enter the group of settings you wish to modify."))
-            if setting == 1:
+            setting = input("Please enter the group of settings you wish to modify.")
+            if setting == "1":
                 print(" Modiy Menu Layout")
                 if layout != 0:
                     print(" 0 = Default")
@@ -294,7 +294,7 @@ try:
                     outf.write(str(layout))
                 page = 0
                 menusettings.layout = layout
-            elif setting == 2:
+            elif setting == "2":
                 print("2 = Restart hidden = ", restartsettings.hidden)
                 print("3 = Logoff hidden = ", logoffsettings.hidden)
                 print("4 = Hibernate hidden = ", hibernatesettings.hidden)
