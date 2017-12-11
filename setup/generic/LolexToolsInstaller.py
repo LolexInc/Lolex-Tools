@@ -35,19 +35,9 @@ except(ValueError, TypeError, SyntaxError):
         exit(0)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
-        if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-                IOError = OSError
         print("Resetting...This process could take a couple of minutes.")
         try:
-                os.remove("./LolexToolsOptions.pyc")
-        except(IOError, OSError):
-                pass
-        try:
                 os.remove("./LolexToolsOptions.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./verifonboot.pyc")
         except(IOError, OSError):
                 pass
         try:
@@ -55,23 +45,11 @@ try:
         except(IOError, OSError):
                 pass
         try:
-                os.remove("./startplugins.pyc")
-        except(IOError, OSError):
-                pass
-        try:
                 os.remove("./startplugins.py")
         except(IOError, OSError):
                 pass
         try:
-                os.remove("./theme.pyc")
-        except(IOError, OSError):
-                pass
-        try:
                 os.remove("./theme.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./runningsys.pyc")
         except(IOError, OSError):
                 pass
         try:
@@ -90,7 +68,7 @@ try:
                 dir = os.listdir("./")
                 arraypos = 0
         while settings.arraypos < len(settings.dir):
-                if settings.dir[settings.arraypos].endswith("settings.py") or settings.dir[settings.arraypos].endswith("settings.pyc"):
+                if settings.dir[settings.arraypos].endswith("settings.py"):
                         try:
                                 os.remove("./" + settings.dir[settings.arraypos])
                         except(IOError, OSError):
@@ -296,9 +274,7 @@ try:
         print("Setting up general options...")
         developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
         if developer == 1:
-                compiler = int(input("Please enter 1 if you want your options compiling, or 0 if you don't."))
-        else:
-                compiler = True
+                print("WELCOME developer!")
         if useros == "Windows":
                 print("Here is a list of colours available:")
                 print("a - Neon Green")
@@ -331,10 +307,6 @@ try:
                 developer = True
         else:
                 developer = False
-        if compiler == 1:
-                compiler = True
-        else:
-                compiler = False
         if twowords < 2:
                 twoswapwords = False
         with open("./theme.py","a") as outf:
@@ -396,9 +368,6 @@ try:
                 outf.write("\ndeveloper = ")
                 outf.write(str(developer))
                 developer = "None"
-                outf.write("\ncompiler = ")
-                outf.write(str(compiler))
-                compiler = "None"
                 compileplugins = "None"
                 outf.write("\nonewait = ")
                 outf.write(str(onewait))
@@ -416,13 +385,6 @@ try:
                 outf.write("layout = 0")
         if useros == "Linux":
                 theme = "cd ./"
-        if compiler == 0 or False:
-                pass
-        elif compiler == 1 or compiler == True:
-                LolexToolsMethods.compiler("verifonboot")
-                LolexToolsMethods.compiler("LolexToolsOptions")
-                LolexToolsMethods.compiler("runningsys")
-                LolexToolsMethods.compiler("theme")
         with open ("./lang.py", "a") as outf: outf.write("import sys\nsys.path.insert(0, './strings/')\nimport enUK as strings")
         with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
         with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
