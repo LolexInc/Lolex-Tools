@@ -82,6 +82,10 @@ try:
                 os.remove("./patches.py")
         except(IOError, OSError):
                 pass
+        try:
+                os.remove("./lang.py")
+        except(IOError, OSError):
+                pass
         class settings:
                 dir = os.listdir("./")
                 arraypos = 0
