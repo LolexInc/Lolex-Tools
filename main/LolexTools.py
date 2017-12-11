@@ -365,14 +365,14 @@ try:
         elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux") or (modewanted == 5 and useros == "Android"):
             foldername = input("Please input the name of your new folder.")
             try:
-                os.makedirs (foldername)
+                os.mkdirs(foldername)
                 cont = input("Success! Press any key then enter to continue...")
             except(IOError, OSError):
                 print("Failed to create folder: ", foldername)
         elif (modewanted == 14 and useros == "Windows") or (modewanted == 8 and useros == "Linux") or (modewanted == 6 and useros == "Android"):
             foldername = input("Please input the name of the folder you wish to delete.")
             try:
-                os.rmdir (foldername)
+                os.rmdir(foldername)
                 cont = input("Success! Press any key then enter to continue...")
             except(IOError, OSError):
                 print("Folder does not exist!")
