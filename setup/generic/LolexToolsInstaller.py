@@ -321,7 +321,7 @@ try:
         if pluginconfirm == 1:
                 LolexToolsMethods.addplugins(True)
         else:
-                with open("./startplugins.py", "a") as outf: outf.write("from lib import LolexToolsMethods\nfrom LolexToolsMethods import *")
+                with open("./startplugins.py", "a") as outf: outf.write("import sys\nsys.path.insert(0, './lib')\nfrom LolexToolsMethods import *")
                 compileplugins = 0
         if developer == 1:
                 developer = True
