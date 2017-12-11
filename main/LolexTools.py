@@ -269,8 +269,6 @@ try:
                         outf.write(str(oneswapwords))
                         outf.write("\ntwoswapwords = ")
                         outf.write(str(twoswapwords))
-                if LolexToolsOptions.compiler == True:
-                        startplugins.compiler("verifonboot")
         useros = LolexToolsMethods.uos.useros
         layout = menusettings.layout
         page = 0
