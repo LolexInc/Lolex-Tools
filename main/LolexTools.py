@@ -309,34 +309,34 @@ try:
                 print("13 = Start Installer hidden = ", installerstartsettings.hidden)
                 print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
                 print("15 = Exit hidden = ", exitsettings.hidden)
-                chngm = int(input("Please select the number of the mode."))
-                if chngm == 2:
+                chngm = input("Please select the number of the mode.")
+                if chngm == "2":
                     startplugins.modehide("restart", restartsettings.hidden)
-                elif chngm == 3:
+                elif chngm == "3":
                     startplugins.modehide("logoff", logoffsettings.hidden)
-                elif chngm == 4:
+                elif chngm == "4":
                     startplugins.modehide("hibernate", hibernatesettings.hidden)
-                elif chngm == 5:
+                elif chngm == "5":
                     startplugins.modehide("shutdown", shutdownsettings.hidden)
-                elif chngm == 6:
+                elif chngm == "6":
                     startplugins.modehide("pyshell", pyshellsettings.hidden)
-                elif chngm == 7:
+                elif chngm == "7":
                     startplugins.modehide("foldercreate", foldercreatesettings.hidden)
-                elif chngm == 8:
+                elif chngm == "8":
                     startplugins.modehide("exfolder", exfoldersettings.hidden)
-                elif chngm == 9:
+                elif chngm == "9":
                     startplugins.modehide("addfile", addfilesettings.hidden)
-                elif chngm == 10:
+                elif chngm == "10":
                     startplugins.modehide("scriptloop", scriptloopsettings.hidden)
-                elif chngm == 11:
+                elif chngm == "11":
                     startplugins.modehide("mathmode", mathmodesettings.hidden)
-                elif chngm == 12:
+                elif chngm == "12":
                     startplugins.modehide("scriptlock", scriptlocksettings.hidden)
-                elif chngm == 13:
+                elif chngm == "13":
                     startplugins.modehide("installerstart", installerstartsettings.hidden)
-                elif chngm == 14:
+                elif chngm == "14":
                     startplugins.modehide("sysinfo", sysinfosettings.hidden)
-                elif chngm == 15:
+                elif chngm == "15":
                     startplugins.modehide("exit", exitsettings.hidden)
                 os.startfile(LolexToolsMethods.py + "start.py")
                 LolexToolsMethods.stopping = True
