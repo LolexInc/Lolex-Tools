@@ -35,67 +35,67 @@ except(ValueError, TypeError, SyntaxError):
         exit(0)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
-##        if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-##                IOError = OSError
-##        print("Resetting...This process could take a couple of minutes.")
-##        try:
-##                os.remove("./LolexToolsOptions.pyc")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./LolexToolsOptions.py")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./verifonboot.pyc")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./verifonboot.py")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./startplugins.pyc")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./startplugins.py")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./theme.pyc")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./theme.py")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./runningsys.pyc")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./runningsys.py")
-##        except(IOError, OSError):
-##                pass
-##        try:
-##                os.remove("./patches.py")
-##        except(IOError, OSError):
-##                pass
-##        class settings:
-##                dir = os.listdir("./")
-##                arraypos = 0
-##        while settings.arraypos < len(settings.dir):
-##                if settings.dir[settings.arraypos].endswith("settings.py") or settings.dir[settings.arraypos].endswith("settings.pyc"):
-##                        try:
-##                                os.remove("./" + settings.dir[settings.arraypos])
-##                        except(IOError, OSError):
-##                                pass
-##                settings.arraypos = settings.arraypos + 1
-##        try:
-##                os.remove("./madeon.py")
-##        except(IOError, OSError):
-##                pass
+        if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
+                IOError = OSError
+        print("Resetting...This process could take a couple of minutes.")
+        try:
+                os.remove("./LolexToolsOptions.pyc")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./LolexToolsOptions.py")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./verifonboot.pyc")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./verifonboot.py")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./startplugins.pyc")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./startplugins.py")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./theme.pyc")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./theme.py")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./runningsys.pyc")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./runningsys.py")
+        except(IOError, OSError):
+                pass
+        try:
+                os.remove("./patches.py")
+        except(IOError, OSError):
+                pass
+        class settings:
+                dir = os.listdir("./")
+                arraypos = 0
+        while settings.arraypos < len(settings.dir):
+                if settings.dir[settings.arraypos].endswith("settings.py") or settings.dir[settings.arraypos].endswith("settings.pyc"):
+                        try:
+                                os.remove("./" + settings.dir[settings.arraypos])
+                        except(IOError, OSError):
+                                pass
+                settings.arraypos = settings.arraypos + 1
+        try:
+                os.remove("./madeon.py")
+        except(IOError, OSError):
+                pass
         useros = platform.system()
         #if useros == "Linux":
                 #print("This project requires Git for updating. Installing git...")
@@ -406,9 +406,9 @@ try:
         with open ("./patches.py", "a") as outf:
                 outf.write('applied = ""')
                 #outf.write(str(requiredpatches.patches))
-        with open ("./runningsys.py","a") as outf:
+        with open ("./runningsys.py", "a") as outf:
                 outf.write("system = " + '("' + useros + '")')
-        with open ("./menusettings.py","a") as outf:
+        with open ("./menusettings.py", "a") as outf:
                 outf.write("layout = 0")
         if useros == "Linux":
                 theme = "cd ./"
