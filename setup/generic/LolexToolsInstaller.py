@@ -301,7 +301,10 @@ try:
         if pluginconfirm == 1:
                 LolexToolsMethods.addplugins(True)
         else:
-                with open("./startplugins.py", "a") as outf: outf.write("import sys\nsys.path.insert(0, './lib')\nfrom LolexToolsMethods import *")
+                a = open("./startplugins.py", "w+")
+                a.truncate()
+                a.write("import sys\nsys.path.insert(0, './lib')\nfrom LolexToolsMethods import *")
+                a.close()
                 compileplugins = 0
         if developer == 1:
                 developer = True
@@ -309,73 +312,79 @@ try:
                 developer = False
         if twowords < 2:
                 twoswapwords = False
-        with open("./theme.py","a") as outf:
-                print("Writing theme...", theme)
-                outf.write('theme = ("')
-                outf.write(str(theme))
-                outf.write('")')
+        b = open("./theme.py", "w+")
+        b.truncate()
+        print("Writing theme...", theme)
+        b.write('theme = ("')
+        b.write(str(theme))
+        b.write('")')
+        b.close()
         print("OK. Reset completed with a 1.")
         print("Applying new options...")
-        with open ("./verifonboot.py","a") as outf:
-                outf.write("\noneswappins = ")
-                outf.write(str(oneswappins))
-                outf.write("\noneswapwords = ")
-                outf.write(str(oneswapwords))
-                outf.write("\ntwoswappins = ")
-                outf.write((str(twoswappins)))
-                twoswappins = 0
-                outf.write("\nruntimeone = 0\nruntimetwo = 0")
-                outf.write("\ntwoswapwords = ")
-                outf.write((str(twoswapwords)))
-                twoswapwords = 0
-                outf.write("\nwordtimeone = 0\nwordtimetwo = 0")
-        with open ("./LolexToolsOptions.py","a") as outf:
-                outf.write("\ncompiledon = 10.0") # See if I can get rid of this thing at some point
-                outf.write("\nuseusername = ")
-                outf.write(str(useusername))
-                useusername = 0
-                outf.write("\nusername1 = ")
-                if username1 == False:
-                        outf.write(str(username1))
-                else:
-                        outf.write('("')
-                        outf.write(username1)
-                        outf.write('")')
-                username1 = 0
-                outf.write("\nusername2 = ")
-                outf.write('("')
-                outf.write(username2)
-                outf.write('")')
-                username2 = 0
-                outf.write("\noneusepin = ")
-                outf.write(str(oneusepin))
-                oneusepin = 0
-                outf.write("\ntwousepin = ")
-                outf.write(str(twousepin))
-                twousepin = 0
-                outf.write("\noneuseword = ")
-                outf.write(str(oneuseword))
-                oneuseword = 0
-                outf.write("\ntwouseword = ")
-                outf.write(str(twouseword))
-                twouseword = 0
-                outf.write("\nonewordwait = ")
-                outf.write(str(onewordwait))
-                onewordwait = "None"
-                outf.write("\ntwowordwait = ")
-                outf.write(str(twowordwait))
-                twowordwait = "None"
-                outf.write("\ndeveloper = ")
-                outf.write(str(developer))
-                developer = "None"
-                compileplugins = "None"
-                outf.write("\nonewait = ")
-                outf.write(str(onewait))
-                onewait = "None"
-                outf.write("\ntwowait = ")
-                outf.write(str(twowait))
-                twowait = "None"
-                confirm = "None"
+        c = open("./verifonboot.py", "w+")
+        c.truncate()
+        c.write("\noneswappins = ")
+        c.write(str(oneswappins))
+        c.write("\noneswapwords = ")
+        c.write(str(oneswapwords))
+        c.write("\ntwoswappins = ")
+        c.write((str(twoswappins)))
+        twoswappins = 0
+        c.write("\nruntimeone = 0\nruntimetwo = 0")
+        c.write("\ntwoswapwords = ")
+        c.write((str(twoswapwords)))
+        twoswapwords = 0
+        c.write("\nwordtimeone = 0\nwordtimetwo = 0")
+        c.close()
+        d = open("./LolexToolsOptions.py", "w+")
+        d.truncate()
+        d.write("\ncompiledon = 10.0") # See if I can get rid of this thing at some point
+        d.write("\nuseusername = ")
+        d.write(str(useusername))
+        useusername = 0
+        d.write("\nusername1 = ")
+        if username1 == False:
+                d.write(str(username1))
+        else:
+                d.write('("')
+                d.write(username1)
+                d.write('")')
+        username1 = 0
+        d.write("\nusername2 = ")
+        d.write('("')
+        d.write(username2)
+        d.write('")')
+        username2 = 0
+        d.write("\noneusepin = ")
+        d.write(str(oneusepin))
+        oneusepin = 0
+        d.write("\ntwousepin = ")
+        d.write(str(twousepin))
+        twousepin = 0
+        d.write("\noneuseword = ")
+        d.write(str(oneuseword))
+        oneuseword = 0
+        d.write("\ntwouseword = ")
+        d.write(str(twouseword))
+        twouseword = 0
+        d.write("\nonewordwait = ")
+        d.write(str(onewordwait))
+        onewordwait = "None"
+        d.write("\ntwowordwait = ")
+        d.write(str(twowordwait))
+        twowordwait = "None"
+        d.write("\ndeveloper = ")
+        d.write(str(developer))
+        developer = "None"
+        compileplugins = "None"
+        d.write("\nonewait = ")
+        d.write(str(onewait))
+        onewait = "None"
+        d.write("\ntwowait = ")
+        d.write(str(twowait))
+        d.close()
+        twowait = "None"
+        confirm = "None"
         with open ("./patches.py", "a") as outf:
                 outf.write('applied = ""')
                 #outf.write(str(requiredpatches.patches))
