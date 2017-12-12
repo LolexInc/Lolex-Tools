@@ -36,34 +36,34 @@ except(ValueError, TypeError, SyntaxError):
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
         print("Resetting...This process could take a couple of minutes.")
-        try:
-                os.remove("./LolexToolsOptions.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./verifonboot.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./startplugins.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./theme.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./runningsys.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./patches.py")
-        except(IOError, OSError):
-                pass
-        try:
-                os.remove("./lang.py")
-        except(IOError, OSError):
-                pass
+##        try:
+##                os.remove("./LolexToolsOptions.py")
+##        except(IOError, OSError):
+##                pass
+##        try:
+##                os.remove("./verifonboot.py")
+##        except(IOError, OSError):
+##                pass
+##        try:
+##                os.remove("./startplugins.py")
+##        except(IOError, OSError):
+##                pass
+##        try:
+##                os.remove("./theme.py")
+##        except(IOError, OSError):
+##                pass
+##        try:
+##                os.remove("./runningsys.py")
+##        except(IOError, OSError):
+##                pass
+##        try:
+##                os.remove("./patches.py")
+##        except(IOError, OSError):
+##                pass
+##        try:
+##                os.remove("./lang.py")
+##        except(IOError, OSError):
+##                pass
         class settings:
                 directories = os.listdir("./")
                 arraypos = 0
