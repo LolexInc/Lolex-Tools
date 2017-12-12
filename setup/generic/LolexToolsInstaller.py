@@ -292,8 +292,8 @@ try:
                 print("7 - White/Light Gray")
                 print("8 - Dark Gray")
                 print("9 - Dark Neon Blue")
-                print("The first colour will set the background colour, the second the text. Please enter color then your colour code.")
-                theme = input("Please set your theme.")
+                print("The first colour will set the background colour, the second the text. Please enter your colour code.")
+                theme = "color " + input("Please set your theme.")
                 os.system(theme)
         else:
                 theme = "cd ./"
