@@ -411,18 +411,6 @@ try:
                 with open(default_settings[i], "w+") as outf:
                         outf.truncate()
                         outf.write("hidden = False")
-##        with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./shutdownsettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./exitsettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./pyshellsettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./foldercreatesettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./exfoldersettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./addfilesettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./scriptloopsettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./mathmodesettings.py","a") as outf: outf.write("hidden = False")
-##        with open ("./scriptlocksettings.py","a") as outf: outf.write("hidden = False")
         with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00101")
         try:
                 start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
