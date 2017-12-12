@@ -41,7 +41,6 @@ try:
                 pass
         with open("./LolexToolsOptions.py", "w+") as outf:
                 outf.truncate()
-                a = input("STAGE 1")
         useros = platform.system()
         #if useros == "Linux":
                 #print("This project requires Git for updating. Installing git...")
@@ -93,7 +92,6 @@ try:
         with open ("./LolexToolsOptions.py", "a") as outf:
                 outf.write("\nonepintotal = ")
                 outf.write(str(onepintotal))
-                b = input("STAGE 2")
         if onepins == 0:
                 onewait = False
         if onepins > 0:
@@ -131,11 +129,9 @@ try:
                                 onewordtotal = onewordtotal + 1
                         else:
                                 done = 0
-                        c= input("STAGE 3")
         with open ("./LolexToolsOptions.py", "a") as outf:
                 outf.write("\nonewordtotal = ")
                 outf.write(str(onewordtotal))
-                d = input("STAGE 4")
         if onewords == 0:
                 onewordwait = False
         if onewords > 0:
@@ -171,7 +167,6 @@ try:
                                 twopin = int(input("Please set your PIN so it matches."))
                                 confirm = int(input("Please confirm your PIN."))
                                 with open ("./LolexToolsOptions.py","a") as outf:
-                                        e = input("STAGE 5")
                                         outf.write("\ntwopin")
                                         outf.write(str(twopintotal))
                                         outf.write(" = ")
@@ -183,7 +178,6 @@ try:
                 with open ("./LolexToolsOptions.py", "a") as outf:
                         outf.write("\ntwopintotal = ")
                         outf.write(str(twopintotal))
-                        f = input("STAGE 6")
                 if twopins == 0:
                         twowait = False
                         twousepin = False
@@ -210,7 +204,6 @@ try:
                                 twoword = input("Please set your password so it matches.")
                                 confirm = input("Please confirm your password.")
                                 with open ("./LolexToolsOptions.py", "a") as outf:
-                                        g = input("STAGE 7")
                                         outf.write("\ntwoword")
                                         outf.write(str(twowordtotal))
                                         outf.write(" = ")
@@ -224,7 +217,6 @@ try:
                 with open ("./LolexToolsOptions.py","a") as outf:
                         outf.write("\ntwowordtotal = ")
                         outf.write(str(twowordtotal))
-                        h = input("STAGE 8")
                 if twowords == 0:
                         twouseword = False
                 else:
@@ -242,7 +234,6 @@ try:
                                 twowordwait = float(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
         else:
                 with open ("./LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
-                i = input("STAGE 9")
         print("Setting up general options...")
         developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
         if developer == 1:
@@ -356,7 +347,6 @@ try:
         d.close()
         twowait = "None"
         confirm = "None"
-        end = input("END")
         with open ("./patches.py", "a") as outf:
                 outf.write('applied = ""')
                 #outf.write(str(requiredpatches.patches))
