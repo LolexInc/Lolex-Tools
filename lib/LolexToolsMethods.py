@@ -85,7 +85,11 @@ def titleUpdater():
             #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
             newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
             #print(round(time.time(), 0) - title_updater.a)
-            timer = convert_time_all(True, seconds = round(time.time(), 0) - title_updater.a)
+            new_time = round(time.time(), 0) - title_updater.a
+            if type(new_time) is float or type(new_time) is int:
+                timer = convert_time_all(True, seconds = new_time)
+            else:
+                timer = "Sorry! There was a temporary error with the timer."
             #print(timer)
             #t = len(timer) - 1
             #while t != -1:
