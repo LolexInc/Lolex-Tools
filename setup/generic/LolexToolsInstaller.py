@@ -395,18 +395,23 @@ try:
         if useros == "Linux":
                 theme = "cd ./"
         with open ("./lang.py", "a") as outf: outf.write("import sys\nsys.path.insert(0, './strings/')\nimport enUK as strings")
-        with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./shutdownsettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./exitsettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./pyshellsettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./foldercreatesettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./exfoldersettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./addfilesettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./scriptloopsettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./mathmodesettings.py","a") as outf: outf.write("hidden = False")
-        with open ("./scriptlocksettings.py","a") as outf: outf.write("hidden = False")
+        default_settings = ["./restartsettings.py", "./logoffsettings.py", "./hibernatesettings.py", "./shutdownsettings.py", "./exitsettings.py", "./foldercreatesettings.py", "./exfoldersettings.py", "./addfilesettings.py", "./scriptloopsettings.py", "./mathmodesettings.py", "./scriptlocksettings.py"]
+        for i in range(0, len(default_settings) - 1):
+                with open(default_settings[i], "w+") as outf:
+                        outf.truncate()
+                        outf.write("hidden = False")
+##        with open ("./restartsettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./logoffsettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./hibernatesettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./shutdownsettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./exitsettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./pyshellsettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./foldercreatesettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./exfoldersettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./addfilesettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./scriptloopsettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./mathmodesettings.py","a") as outf: outf.write("hidden = False")
+##        with open ("./scriptlocksettings.py","a") as outf: outf.write("hidden = False")
         with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00101")
         try:
                 start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
