@@ -371,7 +371,8 @@ try:
         with open ("./patches.py", "a") as outf:
                 outf.write('applied = ""')
                 #outf.write(str(requiredpatches.patches))
-        with open ("./menusettings.py", "a") as outf:
+        with open ("./menusettings.py", "w+") as outf:
+                outf.truncate()
                 outf.write("layout = 0")
         if useros == "Linux":
                 theme = "cd ./"
