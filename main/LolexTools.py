@@ -50,8 +50,12 @@ except(ImportError, SyntaxError, TabError) as e:
     os.system(LolexToolsMethods.py + "setup" + os.sep + "generic" + os.sep + "LolexToolsInstaller.py")
     os._exit(0)
 try:
-    import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, theme, menusettings
+    import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, menusettings
 except(ImportError, SyntaxError, TabError) as e:
+    print(e)
+try:
+    import theme
+except(ImportError) as e:
     print(e)
 #fail = False
 #try:
