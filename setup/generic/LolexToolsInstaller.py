@@ -403,7 +403,9 @@ try:
                 outf.write("layout = 0")
         if useros == "Linux":
                 theme = "cd ./"
-        with open ("./lang.py", "a") as outf: outf.write("import sys\nsys.path.insert(0, './strings/')\nimport enUK as strings")
+        with open ("./lang.py", "w+") as outf:
+                outf.truncate()
+                outf.write("import sys\nsys.path.insert(0, './strings/')\nimport enUK as strings")
         default_settings = ["./restartsettings.py", "./logoffsettings.py", "./hibernatesettings.py", "./shutdownsettings.py", "./exitsettings.py", "./foldercreatesettings.py", "./exfoldersettings.py", "./addfilesettings.py", "./scriptloopsettings.py", "./mathmodesettings.py", "./scriptlocksettings.py"]
         for i in range(0, len(default_settings) - 1):
                 with open(default_settings[i], "w+") as outf:
