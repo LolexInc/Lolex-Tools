@@ -232,10 +232,6 @@ try:
             os.remove("./verifonboot.py")
         except(IOError, OSError):
             pass
-        try:
-            os.remove("./verifonboot.pyc")
-        except(IOError, OSError):
-            pass
         with open ("./verifonboot.py","a") as outf:
             outf.write("oneswappins = ")
             outf.write(str(oneswappins))
@@ -290,10 +286,9 @@ try:
                 layout = int(input("Please input the number of the setting you wish to apply."))
                 try:
                     os.remove("./menusettings.py")
-                    os.remove("./menusettings.pyc")
                 except(IOError, OSError):
                     pass
-                with open ("./menusettings.py","a") as outf:
+                with open ("./menusettings.py", "a") as outf:
                     outf.write("layout = ")
                     outf.write(str(layout))
                 page = 0
