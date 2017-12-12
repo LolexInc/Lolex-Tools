@@ -24,7 +24,7 @@ if sys.version_info.major != 3:
     exit(0)
 sys.path.insert(0, "./")
 try:
-        import LolexToolsOptions, runningsys, startplugins, lang
+        import LolexToolsOptions, startplugins, lang
 except(ImportError, SyntaxError, TabError) as e:
     print(e)
     time.sleep(3)
