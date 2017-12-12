@@ -132,11 +132,8 @@ try:
         else:
             runtimeone = runtimeone + 1
         if LolexToolsOptions.onepintotal != 0:
-            try:
-                os.remove("./onepinner.py")
-            except(IOError, OSError):
-                pass
-            with open ("./onepinner.py","a") as outf:
+            with open ("./onepinner.py", "w+") as outf:
+                outf.truncate()
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
                 outf.write(str(runtimeone))
             import onepinner
@@ -158,11 +155,8 @@ try:
             else:
                 wordtimeone = wordtimeone + 1
             if LolexToolsOptions.onewordtotal != 0:
-                try:
-                    os.remove("./oneworder.py")
-                except(IOError, OSError):
-                    pass
-                with open("./oneworder.py","a") as outf:
+                with open("./oneworder.py", "w+") as outf:
+                    outf.truncate()
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
                     outf.write(str(wordtimeone))
                 wordenter = input("Please enter your current password.")
@@ -182,11 +176,8 @@ try:
         else:
             runtimetwo = runtimetwo + 1
         if LolexToolsOptions.twopintotal != 0:
-            try:
-                os.remove("./twopinner.py")
-            except(IOError, OSError):
-                pass
-            with open ("./twopinner.py","a") as outf:
+            with open ("./twopinner.py", "w+") as outf:
+                outf.truncate()
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
                 outf.write(str(runtimetwo))
             import twopinner
@@ -208,11 +199,8 @@ try:
             else:
                 wordtimetwo = wordtimetwo + 1
             if LolexToolsOptions.twowordtotal != 0:
-                try:
-                    os.remove("./twoworder.py")
-                except(IOError, OSError):
-                    pass
-                with open ("./twoworder.py","a") as outf:
+                with open ("./twoworder.py", "w+") as outf:
+                    outf.truncate()
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
                     outf.write(str(wordtimetwo))
                 import twoworder
@@ -228,11 +216,8 @@ try:
                     os.system(clear)
                     tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
-        try:
-            os.remove("./verifonboot.py")
-        except(IOError, OSError):
-            pass
-        with open ("./verifonboot.py","a") as outf:
+        with open ("./verifonboot.py", "w+") as outf:
+            outf.truncate()
             outf.write("oneswappins = ")
             outf.write(str(oneswappins))
             outf.write("\ntwoswappins = ")
@@ -284,11 +269,8 @@ try:
                 elif layout != 1:
                     print(" 1 = Pages")
                 layout = int(input("Please input the number of the setting you wish to apply."))
-                try:
-                    os.remove("./menusettings.py")
-                except(IOError, OSError):
-                    pass
-                with open ("./menusettings.py", "a") as outf:
+                with open ("./menusettings.py", "w+") as outf:
+                    outf.truncate()
                     outf.write("layout = ")
                     outf.write(str(layout))
                 page = 0
