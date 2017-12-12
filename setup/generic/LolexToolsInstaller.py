@@ -35,17 +35,6 @@ except(ValueError, TypeError, SyntaxError):
         exit(0)
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
-        print("Resetting...This process could take a couple of minutes.")
-        class settings:
-                directories = os.listdir("./")
-                arraypos = 0
-        while settings.arraypos < len(settings.directories):
-                if settings.directories[settings.arraypos].endswith("settings.py"):
-                        try:
-                                os.remove("./" + settings.directories[settings.arraypos])
-                        except(IOError, OSError):
-                                pass
-                settings.arraypos = settings.arraypos + 1
         try:
                 os.remove("./madeon.py")
         except(IOError, OSError):
