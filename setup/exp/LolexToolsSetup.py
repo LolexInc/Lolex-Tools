@@ -14,6 +14,7 @@ except(IOError, OSError):
     pass
 os.mkdir("./TEST")
 users_file = open("./TEST/users.py", "w+")
+users_file.truncate()
 users = []
 done = "0"
 while done != "1":
