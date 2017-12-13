@@ -20,14 +20,10 @@ done = "0"
 while done != "1":
     valid = True
     user_name = input("Please enter your desired username.")
-    if len(users) > 0:
-        for i in range(0, len(users)):
-            if i == len(users):
-                break;
-            if users[i] == user_name:
-                print("Username is already taken!")
-            else:
-                users.append(user_name)
+    if user_name in users:
+        print("Username already in use!")
+    else:
+        users.append(user_name)
     done = input("Please enter 1 if you are done adding users.")
 users_file.write("users = " + (str(users)))
 print("Welcome to the preliminary LolexToolsSetup. It doesn't actually do anything so we'll just exit now...")
