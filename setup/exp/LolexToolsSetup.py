@@ -27,6 +27,3 @@ while done != "1":
     done = input("Please enter 1 if you are done adding users.")
 users_file.write("users = " + (str(users)))
 users_file.close()
-print("Welcome to the preliminary LolexToolsSetup. It doesn't actually do anything so we'll just exit now...")
-time.sleep(5)
-exit(0)
