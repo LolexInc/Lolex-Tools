@@ -495,7 +495,7 @@ def scriptrestart():
     confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
     if confirmscriptrestart == 1:
         stopping = True
-        os.system(py + "start.py")
+        os.system(py + "project/old/start.py")
         os._exit(0)
 def numops():
     print("Here is a list of operations:")
