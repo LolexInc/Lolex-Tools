@@ -10,7 +10,7 @@
 import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
     IOError = OSError
-sys.path.insert(0, "./lib/")
+sys.path.insert(0, "./project/old/lib/")
 try:
     import LolexToolsMethods
 except(ImportError, SyntaxError, TabError) as e:
@@ -22,7 +22,7 @@ if sys.version_info.major != 3:
     print("Only Python 3 is currently supported. Please install Python 3.")
     time.sleep(3)
     exit(0)
-sys.path.insert(0, "./")
+sys.path.insert(0, "./project/old/")
 try:
         import LolexToolsOptions, startplugins, lang
 except(ImportError, SyntaxError, TabError) as e:
@@ -34,12 +34,12 @@ restart = False
 try:
     import menusettings
 except(ImportError):
-    LolexToolsMethods.bak("menusettings", "./", 0, 0, 1)
+    LolexToolsMethods.bak("menusettings", "./project/old/", 0, 0, 1)
     restart = True
 try:
     import exitsettings
 except(ImportError):
-    LolexToolsMethods.bak("exitsettings", "./", 0, 0, 1)
+    LolexToolsMethods.bak("exitsettings", "./project/old/", 0, 0, 1)
     restart = True
 if restart == True:
     os.system(LolexToolsMethods.py + "start.py")
@@ -79,16 +79,16 @@ except(ImportError) as e:
 #if update == True:
         #while arraypos != len(requiredpatches.patches):
             #print(arraypos)
-            #if os.system(LolexToolsMethods.pyo + " ./update" + requiredpatches.patches[arraypos]  + ".py") != 0:
+            #if os.system(LolexToolsMethods.pyo + " ./project/old/update" + requiredpatches.patches[arraypos]  + ".py") != 0:
                 #print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
                 #time.sleep(5)
                 #os._exit(0)
             #arraypos = arraypos + 1
         #try:
-            #os.remove("./patches.py")
+            #os.remove("./project/old/patches.py")
         #except(IOError, OSError):
             #pass
-        #with open("./patches.py", "a") as outf: 
+        #with open("./project/old/patches.py", "a") as outf: 
             #outf.write('applied = ')
             #outf.write(str(requiredpatches.patches))
         #if fail == True:
@@ -132,7 +132,7 @@ try:
         else:
             runtimeone = runtimeone + 1
         if LolexToolsOptions.onepintotal != 0:
-            with open ("./onepinner.py", "w+") as outf:
+            with open ("./project/old/onepinner.py", "w+") as outf:
                 outf.truncate()
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
                 outf.write(str(runtimeone))
@@ -155,7 +155,7 @@ try:
             else:
                 wordtimeone = wordtimeone + 1
             if LolexToolsOptions.onewordtotal != 0:
-                with open("./oneworder.py", "w+") as outf:
+                with open("./project/old/oneworder.py", "w+") as outf:
                     outf.truncate()
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
                     outf.write(str(wordtimeone))
@@ -176,7 +176,7 @@ try:
         else:
             runtimetwo = runtimetwo + 1
         if LolexToolsOptions.twopintotal != 0:
-            with open ("./twopinner.py", "w+") as outf:
+            with open ("./project/old/twopinner.py", "w+") as outf:
                 outf.truncate()
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
                 outf.write(str(runtimetwo))
@@ -199,7 +199,7 @@ try:
             else:
                 wordtimetwo = wordtimetwo + 1
             if LolexToolsOptions.twowordtotal != 0:
-                with open ("./twoworder.py", "w+") as outf:
+                with open ("./project/old/twoworder.py", "w+") as outf:
                     outf.truncate()
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
                     outf.write(str(wordtimetwo))
@@ -216,7 +216,7 @@ try:
                     os.system(clear)
                     tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
-        with open ("./verifonboot.py", "w+") as outf:
+        with open ("./project/old/verifonboot.py", "w+") as outf:
             outf.truncate()
             outf.write("oneswappins = ")
             outf.write(str(oneswappins))
@@ -269,7 +269,7 @@ try:
                 elif layout != 1:
                     print(" 1 = Pages")
                 layout = int(input("Please input the number of the setting you wish to apply."))
-                with open ("./menusettings.py", "w+") as outf:
+                with open ("./project/old/menusettings.py", "w+") as outf:
                     outf.truncate()
                     outf.write("layout = ")
                     outf.write(str(layout))
@@ -393,13 +393,13 @@ try:
                                 #os.system(LolexToolsMethods.pyo + "-m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
                                 #confirm = input("Press enter to continue...")
                                 #try:
-                                        #os.remove("./newversion")
+                                        #os.remove("./project/old/newversion")
                                 #except(IOError, OSError):
                                         #pass
-                                #os.mkdirs("./newversion")
-                                #newver = os.listdirs("./newversion")
+                                #os.mkdirs("./project/old/newversion")
+                                #newver = os.listdirs("./project/old/newversion")
         # search for zips instead :P
-                                ##zip_ref = zipfile.ZipFile("./newversion"+newver[0], "r")
+                                ##zip_ref = zipfile.ZipFile("./project/old/newversion"+newver[0], "r")
                                 #print("Extracting...")
                                 #zip_ref.extractall("newversion")
                                 #zip_ref.close()
