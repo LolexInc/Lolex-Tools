@@ -11,8 +11,9 @@ import os, sys, time
 sys.path.insert(0, "./project/old/lib")
 try:
     import LolexToolsMethods
-except(ImportError):
-    print("ERROR!")
+except(ImportError) as e:
+    print("ERROR: Something went wrong importing LolexToolsMethods!")
+    print(e)
     time.sleep(5)
     exit(0)
 if LolexToolsMethods.uos.useros != "Android" and LolexToolsMethods.uos.useros != "Linux" and LolexToolsMethods.uos.useros != "Windows":
