@@ -11,10 +11,10 @@ import sys, time, os, shutil, platform, py_compile
 if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
         IOError = OSError
 syslen = len(sys.path)
-sys.path.insert(0, "./")
+sys.path.insert(0, "./project/old/")
 import requiredpatches
 print("Importing...")
-sys.path.insert(0, "./lib/")
+sys.path.insert(0, "./project/old/lib/")
 try:
         import LolexToolsMethods
 except(ImportError) as e:
@@ -36,10 +36,10 @@ except(ValueError, TypeError, SyntaxError):
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
         try:
-                os.remove("./madeon.py")
+                os.remove("./project/old/madeon.py")
         except(IOError, OSError):
                 pass
-        with open("./LolexToolsOptions.py", "w+") as outf:
+        with open("./project/old/LolexToolsOptions.py", "w+") as outf:
                 outf.truncate()
         useros = platform.system()
         #if useros == "Linux":
@@ -80,7 +80,7 @@ try:
                 while onepin != confirm:
                         onepin = int(input("Please set your PIN so it matches."))
                         confirm = int(input("Please confirm your PIN."))
-                        with open ("./LolexToolsOptions.py", "a") as outf:
+                        with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                                 outf.write("\nonepin")
                                 outf.write(str(onepintotal))
                                 outf.write(" = ")
@@ -89,7 +89,7 @@ try:
                                         onepintotal = onepintotal + 1
                                 else:
                                         done = 0
-        with open ("./LolexToolsOptions.py", "a") as outf:
+        with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                 outf.write("\nonepintotal = ")
                 outf.write(str(onepintotal))
         if onepins == 0:
@@ -118,7 +118,7 @@ try:
                 while oneword != confirm:
                         oneword = input("Please set your password so it matches.")
                         confirm = input("Please confirm your password.")
-                with open ("./LolexToolsOptions.py", "a") as outf:
+                with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                         outf.write("\noneword")
                         outf.write(str(onewordtotal))
                         outf.write(" = ")
@@ -129,7 +129,7 @@ try:
                                 onewordtotal = onewordtotal + 1
                         else:
                                 done = 0
-        with open ("./LolexToolsOptions.py", "a") as outf:
+        with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                 outf.write("\nonewordtotal = ")
                 outf.write(str(onewordtotal))
         if onewords == 0:
@@ -166,7 +166,7 @@ try:
                         while twopin != confirm:
                                 twopin = int(input("Please set your PIN so it matches."))
                                 confirm = int(input("Please confirm your PIN."))
-                                with open ("./LolexToolsOptions.py","a") as outf:
+                                with open ("./project/old/LolexToolsOptions.py","a") as outf:
                                         outf.write("\ntwopin")
                                         outf.write(str(twopintotal))
                                         outf.write(" = ")
@@ -175,7 +175,7 @@ try:
                                                 twopintotal = twopintotal + 1
                                         else:
                                                 done = 0
-                with open ("./LolexToolsOptions.py", "a") as outf:
+                with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                         outf.write("\ntwopintotal = ")
                         outf.write(str(twopintotal))
                 if twopins == 0:
@@ -203,7 +203,7 @@ try:
                         while twoword != confirm:
                                 twoword = input("Please set your password so it matches.")
                                 confirm = input("Please confirm your password.")
-                                with open ("./LolexToolsOptions.py", "a") as outf:
+                                with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                                         outf.write("\ntwoword")
                                         outf.write(str(twowordtotal))
                                         outf.write(" = ")
@@ -214,7 +214,7 @@ try:
                                                 twowordtotal = twowordtotal + 1
                                         else:
                                                 done = 0
-                with open ("./LolexToolsOptions.py","a") as outf:
+                with open ("./project/old/LolexToolsOptions.py","a") as outf:
                         outf.write("\ntwowordtotal = ")
                         outf.write(str(twowordtotal))
                 if twowords == 0:
@@ -233,7 +233,7 @@ try:
                         while twowordwait < 0 or twowordwait > 4194304:
                                 twowordwait = float(input("Less than 0 or bigger than 4194304 seconds is invalid. Please enter a valid number of seconds."))
         else:
-                with open ("./LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
+                with open ("./project/old/LolexToolsOptions.py", "a") as outf: outf.write("\ntwopintotal = 0\ntwowordtotal = 0")
         print("Setting up general options...")
         developer = int(input("Please enter 1 if either of the users are planning to be a developer of this project, or 0 if not."))
         if developer == 1:
@@ -259,14 +259,14 @@ try:
                 theme = "color " + input("Please set your theme.")
                 os.system(theme)
         else:
-                theme = "cd ./"
+                theme = "cd ./project/old/"
         pluginconfirm = int(input("Do you wish to use plugins? Please enter 1 to use them, or 0 to not.\nPlease ensure that your plugins are downloaded and ready for use.\nNOTE:This is HIGHLY EXPERIMENTAL!."))
         if pluginconfirm == 1:
                 LolexToolsMethods.addplugins(True)
         else:
-                a = open("./startplugins.py", "w+")
+                a = open("./project/old/startplugins.py", "w+")
                 a.truncate()
-                a.write("import sys\nsys.path.insert(0, './lib')\nfrom LolexToolsMethods import *")
+                a.write("import sys\nsys.path.insert(0, './project/old/lib')\nfrom LolexToolsMethods import *")
                 a.close()
                 compileplugins = 0
         if developer == 1:
@@ -275,7 +275,7 @@ try:
                 developer = False
         if twowords < 2:
                 twoswapwords = False
-        b = open("./theme.py", "w+")
+        b = open("./project/old/theme.py", "w+")
         b.truncate()
         print("Writing theme...", theme)
         b.write('theme = ("')
@@ -284,7 +284,7 @@ try:
         b.close()
         print("OK. Reset completed with a 1.")
         print("Applying new options...")
-        c = open("./verifonboot.py", "w+")
+        c = open("./project/old/verifonboot.py", "w+")
         c.truncate()
         c.write("\noneswappins = ")
         c.write(str(oneswappins))
@@ -299,7 +299,7 @@ try:
         twoswapwords = 0
         c.write("\nwordtimeone = 0\nwordtimetwo = 0")
         c.close()
-        d = open("./LolexToolsOptions.py", "a")
+        d = open("./project/old/LolexToolsOptions.py", "a")
         d.write("\ncompiledon = 10.0") # See if I can get rid of this thing at some point
         d.write("\nuseusername = ")
         d.write(str(useusername))
@@ -347,23 +347,23 @@ try:
         d.close()
         twowait = "None"
         confirm = "None"
-        with open ("./patches.py", "a") as outf:
+        with open ("./project/old/patches.py", "a") as outf:
                 outf.write('applied = ""')
                 #outf.write(str(requiredpatches.patches))
-        with open ("./menusettings.py", "w+") as outf:
+        with open ("./project/old/menusettings.py", "w+") as outf:
                 outf.truncate()
                 outf.write("layout = 0")
         if useros == "Linux":
-                theme = "cd ./"
-        with open ("./lang.py", "w+") as outf:
+                theme = "cd ./project/old/"
+        with open ("./project/old/lang.py", "w+") as outf:
                 outf.truncate()
-                outf.write("import sys\nsys.path.insert(0, './strings/')\nimport enUK as strings")
-        default_settings = ["./restartsettings.py", "./logoffsettings.py", "./hibernatesettings.py", "./shutdownsettings.py", "./exitsettings.py", "./foldercreatesettings.py", "./exfoldersettings.py", "./addfilesettings.py", "./scriptloopsettings.py", "./mathmodesettings.py", "./scriptlocksettings.py"]
+                outf.write("import sys\nsys.path.insert(0, './project/old/strings/')\nimport enUK as strings")
+        default_settings = ["./project/old/restartsettings.py", "./project/old/logoffsettings.py", "./project/old/hibernatesettings.py", "./project/old/shutdownsettings.py", "./project/old/exitsettings.py", "./project/old/foldercreatesettings.py", "./project/old/exfoldersettings.py", "./project/old/addfilesettings.py", "./project/old/scriptloopsettings.py", "./project/old/mathmodesettings.py", "./project/old/scriptlocksettings.py"]
         for i in range(0, len(default_settings) - 1):
                 with open(default_settings[i], "w+") as outf:
                         outf.truncate()
                         outf.write("hidden = False")
-        with open ("./madeon.py","a") as outf: outf.write("compiledon = 9.00101")
+        with open ("./project/old/madeon.py","a") as outf: outf.write("compiledon = 9.00101")
         try:
                 start = int(input("Do you wish to start Lolex-Tools now? Please enter 1 if you do, or 0 if you don't."))
                 print("Thank you for using Lolex-Tools Installer.")
