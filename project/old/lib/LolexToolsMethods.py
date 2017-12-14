@@ -492,10 +492,14 @@ def pyshell():
             subprocess.Popen(pyo + "w.exe")
 def scriptrestart():
     global stopping
-    confirmscriptrestart = int(input("Please input 1 to confirm restarting of this script."))
-    if confirmscriptrestart == 1:
+    confirmscriptrestart = input("Please input 1 to confirm restarting of this script. Please enter 2 to start into the new version of the project.")
+    if confirmscriptrestart == "1":
         stopping = True
         os.system(py + "project/old/start.py")
+        os._exit(0)
+    elif confirmscriptrestart == "2":
+        stopping = True
+        os.system(py + "project/new/start.py")
         os._exit(0)
 def numops():
     print("Here is a list of operations:")
