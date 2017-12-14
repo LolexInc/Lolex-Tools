@@ -369,7 +369,7 @@ try:
                 print("Thank you for using Lolex-Tools Installer.")
                 if start == 1:
                         print("Starting Lolex-Tools...")
-                        os.system(LolexToolsMethods.py + "main" + LolexToolsMethods.s + "LolexTools.py")
+                        os.system(LolexToolsMethods.py + "project" + LolexToolsMethods.s + "old" + LolexToolsMethods.s + "main" + LolexToolsMethods.s + "LolexTools.py")
                 exit(0)
         except(TypeError, SyntaxError, ValueError):
                 print("Failed to start.")
