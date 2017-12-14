@@ -20,5 +20,6 @@ if LolexToolsMethods.uos.useros != "Android" and LolexToolsMethods.uos.useros !=
     print("OS not supported. Currently supported OSs are Linux(including Android) and Windows(newer than Windows ME at minimum, for higher than Python 3.5 you need at least Windows Vista.")
     time.sleep(5)
     exit(0)
+os.system(LolexToolsMethods.pyo + " ./project/new/ext/anim/bootanim.py")
 os.system(LolexToolsMethods.pyo + " ./project/new/main/_main_.py")
 time.sleep(5)
