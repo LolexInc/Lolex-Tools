@@ -10,8 +10,8 @@
 import time, os, shutil, io
 try:
     shutil.rmtree("./TEST")
-except(IOError, OSError):
-    pass
+except(IOError, OSError) as e:
+    print(e)
 os.mkdir("./TEST")
 users_file = open("./TEST/users.py", "w+")
 users_file.write("#! python3\n##0\n## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000\n##  0              00     0  0         0           00             00       0      0    0      0   0          0\n##   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000\n##    0            00     0  0         0          0  0            00       0      0    0      0   0              0\n##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000\n##\n## authors = Monkeyboy2805")
