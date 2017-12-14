@@ -15,7 +15,7 @@ except(ImportError):
     print("ERROR!")
     time.sleep(5)
     exit(0)
-if LolexToolsMethods.uos.useros != "Android" and LolexToolsMethods.uos.useros != "Linux" and LolexToolsMethods.uos.useros != "Linux":
+if LolexToolsMethods.uos.useros != "Android" and LolexToolsMethods.uos.useros != "Linux" and LolexToolsMethods.uos.useros != "Windows":
     print("OS not supported. Currently supported OSs are Linux(including Android) and Windows(newer than Windows ME at minimum, for higher than Python 3.5 you need at least Windows Vista.")
 os.system(LolexToolsMethods.pyo + " ./project/new/main/_main_.py")
 time.sleep(5)
