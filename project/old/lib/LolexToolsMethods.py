@@ -531,7 +531,7 @@ def addortake():
     time.sleep(1)
 def dumpme():
     if uos.useros == "Windows":
-        os.system(".\resources\systeminf")
+        os.system(r".\project\old\resources\systeminf")
     elif uos.useros == "Linux":
         os.system("sudo lshw")
     else:
@@ -544,7 +544,7 @@ def enterinstall():
     if confirm == 1:
         global stopping
         stopping = True
-        os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
+        os.system(py + "project" + s + "old" + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
         exit(0)
 def uptime():
     if uos.useros == "Android":
@@ -558,7 +558,7 @@ def compiler(name):
         os.remove("./project/old/" + name + ".pyc")
     except(IOError):
         pass
-    py_compile.compile(name + ".py","./project/old/" + name + ".pyc")
+    py_compile.compile(name + ".py", "./project/old/" + name + ".pyc")
     os.remove("./project/old/" + name + ".py")
 def modehide(name, state):
     if state == False:
@@ -657,7 +657,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
                     #os.system(py + "main" + s + "LolexTools.py")
                     #exit(None)
         if found == False:
-            os.system(py + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
+            os.system(py + "project" + s + "old" + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
             exit(0)
 def dirdisc(rtfiles, rtfolders, stpath, validator):
     stpath = correctpath(stpath)
