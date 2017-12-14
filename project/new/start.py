@@ -15,5 +15,5 @@ except(ImportError):
     print("ERROR!")
     time.sleep(5)
     exit(0)
-os.system(LolexToolsMethods.py + "project/new/main/_main_.py")
+os.system(LolexToolsMethods.pyo + " ./project/new/main/_main_.py")
     
