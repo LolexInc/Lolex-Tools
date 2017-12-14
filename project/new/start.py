@@ -7,3 +7,13 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
+import os, sys, time
+sys.path.insert(0, "./project/old/lib")
+try:
+    import LolexToolsMethods
+except(ImportError):
+    print("ERROR!")
+    time.sleep(5)
+    exit(0)
+os.system(LolexToolsMethods.py + "project/new/main/_main_.py")
+    
