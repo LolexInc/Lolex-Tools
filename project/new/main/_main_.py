@@ -9,6 +9,7 @@
 ## authors = Monkeyboy2805
 import os, sys, time
 sys.path.insert(0, "./project/old/lib")
+del sys.path[sys.path.index("./project/old/lib")]
 try:
     import LolexToolsMethods
 except(ImportError):
