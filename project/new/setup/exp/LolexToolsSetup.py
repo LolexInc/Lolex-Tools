@@ -42,8 +42,6 @@ try:
                 folder_string = folder_string + ((str(chr(b))))
         if not os.path.exists("./project/new/TEST/" + (str(folder_string))):
             os.mkdir("./project/new/TEST/" + (str(folder_string)))
-            user_file = open("./project/new/TEST/" + (str(folder_string)) + "Options.py", "w+")
-            user_file.write("print('Welcome " + (str(users[len(users) - 1))) + "')")
             paths.append(folder_strings)
         done = input("Please enter 1 if you are done adding users.")
     users_file.write("\nusers = " + (str(users)))
