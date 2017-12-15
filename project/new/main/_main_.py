@@ -9,12 +9,12 @@
 ## authors = Monkeyboy2805
 import os, sys, time
 sys.path.insert(0, "./project/old/lib")
-del sys.path[sys.path.index("./project/old/lib")]
 try:
     import LolexToolsMethods
 except(ImportError):
     print("Something went wrong here!")
     time.sleep(5)
     exit(0)
+del sys.path[sys.path.index("./project/old/lib")]
 print("Nothing available here yet... Entering experimental setup...")
 os.system(LolexToolsMethods.pyo + " ./project/new/setup/exp/LolexToolsSetup.py")
