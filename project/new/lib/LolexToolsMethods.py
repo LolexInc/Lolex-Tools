@@ -7,3 +7,9 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
+import sys, os
+class add_user:
+    def setup_folder():
+        pass
+    def add_user_to_file():
+        pass
