@@ -7,7 +7,9 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import time, os, shutil, io
+import time, os, shutil, io, sys
+if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
+    IOError = OSError
 try:
     shutil.rmtree("./project/new/TEST")
 except(IOError, OSError) as e:
