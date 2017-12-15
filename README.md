@@ -22,7 +22,7 @@ Hibernate: Windows or Linux<br><br>
 Shutdown: Android: Root Maybe Needed  (on some devices SE Linux being not set to the highest level may require root) Other Platforms: None <br><br>
 Alternative methods for Shutdown and Logoff: Windows<br><br>
 Call a Python Shell: None<br><br>
-Create Folders: RW permissions to relveant disk/partition<br><br>
+Create Folders: RW permissions to relevant disk/partition<br><br>
 Colour Flicker: Windows (may add something like Mintty at some point for other platforms)<br><br>
 Remove Directories: Relevant permissions to the relevant disk<br><br>
 Call CMD: Windows<br><br>
