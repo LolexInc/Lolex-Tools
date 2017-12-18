@@ -33,6 +33,8 @@ try:
                 exit(0)
 except(ValueError, TypeError, SyntaxError):
         exit(0)
+if LolexToolsMethods.uos.useros == "Windows":
+        os.system("color 9a")
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
         try:
