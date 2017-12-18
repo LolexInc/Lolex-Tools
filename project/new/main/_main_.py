@@ -19,3 +19,4 @@ except(ImportError):
 del sys.path[sys.path.index("./project/old/lib")]
 print("Nothing available here yet... Entering experimental setup...")
 os.system(LolexToolsMethods.pyo + " ./project/new/setup/exp/LolexToolsSetup.py")
+LolexToolsMethods.authenticate.login()
