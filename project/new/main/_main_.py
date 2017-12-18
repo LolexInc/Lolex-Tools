@@ -13,10 +13,16 @@ try:
     import LolexToolsMethods
 except(ImportError):
     print("Something went wrong here!")
-    del sys.path[sys.path.index("./project/old/lib")]
+    try:
+        del sys.path[sys.path.index("./project/old/lib")]
+    except(ValueError):
+        pass
     time.sleep(5)
     exit(0)
-del sys.path[sys.path.index("./project/old/lib")]
+try:
+    del sys.path[sys.path.index("./project/old/lib")]
+except(ValueError):
+    pass
 print("Nothing available here yet... Entering experimental setup...")
 os.system(LolexToolsMethods.pyo + " ./project/new/setup/exp/LolexToolsSetup.py")
 LolexToolsMethods.authenticate.login()
