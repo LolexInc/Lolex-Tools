@@ -15,29 +15,6 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 # Please go to:
 [Our official website](http://lolexorg.wixsite.com/lolex-tools)
 
-Settings: Read-Write Permissions to relvant partition (may need root on some later Android devices)<br><br>
-Restart: Relevant SE Linux and root permissions<br><br>
-Logoff: Windows or Linux<br><br>
-Hibernate: Windows or Linux<br><br>
-Shutdown: Android: Root Maybe Needed  (on some devices SE Linux being not set to the highest level may require root) Other Platforms: None <br><br>
-Alternative methods for Shutdown and Logoff: Windows<br><br>
-Call a Python Shell: None<br><br>
-Create Folders: RW permissions to relevant disk/partition<br><br>
-Colour Flicker: Windows (may add something like Mintty at some point for other platforms)<br><br>
-Remove Directories: Relevant permissions to the relevant disk<br><br>
-Call CMD: Windows<br><br>
-Create files: Relevant file permissions<br><br>
-Restart The Script: Files present<br><br>
-Perform Operations With Numbers: None <br><br>
-Call Task Manager: Windows <br><br>
-Lock This Script: None <br><br>
-Start Installer : Installer needs to be present in the original directory form which you ran start.py<br><br>
-Show Uptime and Average Load : Linux/Android (root may be needed on Android)<br><br>
-Dump system information into terminal: Linux/Android (root required Android, sudo password required on Linux), bat permissions required on Windows<br><br>
-Call Remote Desktop or Powershell: Windows (or wine on Linux if you know what you're doing)<br><br>
-Exit: None <br><br>
-
-
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
 # Lolex-Tools is licensed under LGPL 3.0
 ## License: LGPL 3.0
