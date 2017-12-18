@@ -27,14 +27,14 @@ if sys.version_info.major != 3:
         print("Only Python 3 is currently supported. Please install Python 3.")
         time.sleep(5)
         exit(0)
+if LolexToolsMethods.uos.useros == "Windows":
+        os.system("color 9a")
 try:
         continueon = int(input("Please enter 1 to continue, or 0 to exit."))
         if continueon != 1:
                 exit(0)
 except(ValueError, TypeError, SyntaxError):
         exit(0)
-if LolexToolsMethods.uos.useros == "Windows":
-        os.system("color 9a")
 print("Welcome to Lolex-Tools Installer version 3.2.1.\nNOTICE: all instructions must be followed carefully.\nAny crashes due to ignorance is not our fault.\nInstallation commencing...")
 try:
         try:
