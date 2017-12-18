@@ -66,6 +66,7 @@ flen = len(files)
 arraypos = 0
 print("Compiling...")
 fail = False
+failers = 0
 while arraypos < flen:
 	currfile = files[arraypos]
 	if type(py_compile.compile(currfile)) is str:
@@ -73,6 +74,8 @@ while arraypos < flen:
 	else:
 		print("Failed to compile " + (str(currfile)))
 		fail = True
+		failers = failers + 1
 	arraypos = arraypos + 1
 if fail == True:
+	print((str(failers)) + " files failed to compile.")
 	exit(1)
