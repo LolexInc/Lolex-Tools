@@ -11,7 +11,7 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # Visit our website for more information and news
 # Please go to:
-[Our official website](http://lolexorg.wixsite.com/lolex-tools)
+[Our official website @ http://lolexorg.wixsite.com/lolex-tools](http://lolexorg.wixsite.com/lolex-tools)
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
 # Lolex-Tools is licensed under LGPL 3.0
