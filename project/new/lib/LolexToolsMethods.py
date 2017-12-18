@@ -13,3 +13,16 @@ class add_user:
         pass
     def add_user_to_file():
         pass
+class authenticate:
+    def login():
+        try:
+            sys.path.insert(0, "./project/new/setup/exp/TEST")
+            import users
+            usernameenter = input("Please enter your username.")
+            if usernameenter in users.users:
+                path = users.paths[user.users.index(usernameenter)]
+                print("Welcome " + (str(usernameenter)))
+            else:
+                return 1
+        except(ImportError):
+            return 2
