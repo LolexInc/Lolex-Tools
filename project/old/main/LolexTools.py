@@ -102,7 +102,7 @@ except(ImportError) as e:
 if LolexToolsMethods.uos.useros == "Windows":
     os.system(theme.theme)
     os.system("mode 1000")
-    os.system("title Lolex-Tools")
+    os.system("title Lolex-Tools_OLD_VERSION")
 LolexToolsMethods._init_()
 LolexToolsMethods.send_notification(lang.strings.welcome, 10)
 try:
