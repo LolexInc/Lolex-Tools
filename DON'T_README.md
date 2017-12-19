@@ -1,5 +1,7 @@
 # Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
 # This is : Lolex-Tools VERSION 10 pre-nightly (dual project version)
+### NEWS
+Officially, from the 22/12/17 to the 8/1/18 there will be no development (unofficially there may be contributions though :P)
 # DO NOT USE THIS VERSION YET!!! THIS STILL USES THE 9.X FORMAT WHICH WILL NOT BE SUPPORTED (in the old version of the project)
 # This is a pre-alpha build. Do not use for production purposes
 # Highly unstable at the minute
