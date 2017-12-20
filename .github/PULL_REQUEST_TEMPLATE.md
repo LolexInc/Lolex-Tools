@@ -1,5 +1,5 @@
 ### Description
-<!-- What is this pull request for? Include version updates if necessary. -->
+<!-- What is this pull request for? Include version updates if necessary. For version of Lolex Tools (old project or new as well needed for the dual project version)? etc -->
 
 ### Reason to modify
 <!-- 
