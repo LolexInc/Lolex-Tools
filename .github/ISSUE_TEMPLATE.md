@@ -6,7 +6,7 @@
 
 #### OS and versions
 <!--- Versions MUST be included-->
-* Lolex Tools:
+* Lolex Tools (old project or new as well needed for the dual project version):
 * OS (eg Windows 10):
 * Python Version (eg 3.5.2):
 
