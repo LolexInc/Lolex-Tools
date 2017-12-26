@@ -36,10 +36,9 @@ try:
                 break;
             folder_string = ""
             for i in range(0, c):
-                b = random.randint(65, 115)
-                if b > 90:
-                    b = b + 7
+                b = random.randint(65, 90)
                 folder_string = folder_string + ((str(chr(b))))
+			b = b.randomcase()
         if not os.path.exists("./project/new/TEST/" + (str(folder_string))):
             os.mkdir("./project/new/TEST/" + (str(folder_string)))
             paths.append(folder_strings)
