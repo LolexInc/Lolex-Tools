@@ -1,4 +1,4 @@
-# Lolex Tools CopyLeft (c<-)2014-2017 LolexOrg
+# Lolex Tools CopyLeft (c<-)2014-2018 LolexOrg
 # This is : Lolex-Tools VERSION 10 pre-nightly (dual project version)
 ### NEWS
 Officially, from the 22/12/17 to the 8/1/18 there will be no development (unofficially there may be contributions though :P)<br>
