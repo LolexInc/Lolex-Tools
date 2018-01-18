@@ -445,7 +445,7 @@ def restartthread(waittime):
                 if os.system("su -c reboot") != 0:
                     os.system("reboot")
             else:
-                    os.system("reboot")
+                    os.system("systemctl reboot -i")
     else:
         print("RESTART thread: Stopping...")
     threads.restart = False
