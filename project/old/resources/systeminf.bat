@@ -1,6 +1,0 @@
-@echo off
-echo This may take a while...
-systeminfo
-echo Press any key to continue...
-pause > nul
-exit
