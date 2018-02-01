@@ -16,5 +16,8 @@ env:
 - DJANGO_VERSION==2.0.1
 install:
 - pip install -q Django=$DJANGO_VERSION 
+- git config --global user.name "Monkeyboy2805"
+- git config --global user.email "monkeyboy2805@gmail.com"
+- git config --global user.password $password
 script:
 - python ./ci/CI.py
