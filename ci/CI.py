@@ -81,7 +81,4 @@ if fail == True:
 	exit(1)
 if not os.path.exists("./ci/test.py") or os.path.isfile("./ci/test.py") == False:
         with open("./ci/test.py", "a") as outf: pass
-        os.system("git add *")
-        os.system("git commit -am 'Add missing file'")
-        os.system("git push origin HEAD:ci_test_bot")
 
