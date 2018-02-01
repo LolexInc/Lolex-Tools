@@ -28,4 +28,3 @@ if [ -z $GITHUB_OAUTH_TOKEN ]; then
 fi
 git push origin ci_test_bot_AA
 then
-  exit 0
