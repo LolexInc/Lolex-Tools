@@ -2,9 +2,9 @@ language: python
 python:
 - "3.6.4"
 env:
+ - DJANGO_VERSION==2.0.1
  global:
   secure: ae412da2c89e14e4175d43a05134a1142eabd3a5
- - DJANGO_VERSION==2.0.1
 install:
 - pip install -q Django=$DJANGO_VERSION
 
