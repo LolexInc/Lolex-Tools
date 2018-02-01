@@ -7,5 +7,5 @@ install:
 - pip install -q Django=$DJANGO_VERSION
 
 script:
-- sh ./ci/commit.sh
 - python ./ci/CI.py
+- sh ./ci/commit.sh
