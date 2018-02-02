@@ -13,5 +13,5 @@ after_success:
  - git config --global user.token $token
  - git checkout ci_test_bot
  - git add *
- - git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+ - git commit -m "Update here :P"
  - git push origin ci_test_bot
