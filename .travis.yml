@@ -1,13 +1,17 @@
 language: python
 python:
-- "3.6.4"
+ - "3.6.4"
 env:
  - DJANGO_VERSION==2.0.1
 install:
-- pip install -q Django=$DJANGO_VERSION
-
+ - pip install -q Django=$DJANGO_VERSION
 script:
-- sh ./ci/commit.sh
-- python ./ci/CI.py
+ - python ./ci/CI.py
 after_success:
- - ./ci/commit.sh
+ - git config --global user.email "monkeyboy2805@gmail.com"
+ - git config --global user.name "monkeyboy2805"
+ - git config --global user.token $token
+ - git checkout ci_test_bot
+ - git add *
+ - git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+ - git push origin ci_test_bot
