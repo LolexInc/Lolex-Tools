@@ -14,4 +14,4 @@ script:
  - echo $cred > $COUNTER_FILE
  - git add *
  - git commit -m "Update here :P"
- - git push origin
+ - git push origin HEAD:ci_test_bot_ahead_of_ci_\#9054
