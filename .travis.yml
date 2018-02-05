@@ -9,9 +9,6 @@ script:
  - python ./ci/CI.py
  - git config user.email "monkeyboy2805@gmail.com"
  - git config user.name "monkeyboy2805"
- - git config credential.helper store
- - COUNTER_FILE="../.git-credentials"
- - echo $cred > $COUNTER_FILE
  - git add *
  - git commit -m "Update here :P"
  - git push origin HEAD:ci_test_bot_ahead_of_ci_\#9054
