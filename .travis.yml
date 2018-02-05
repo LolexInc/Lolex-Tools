@@ -14,4 +14,4 @@ script:
  - echo $cred > $COUNTER_FILE
  - git add *
  - git commit -m "Update here :P"
- - git push
+ - git push origin
