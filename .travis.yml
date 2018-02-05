@@ -5,16 +5,12 @@ env:
  - DJANGO_VERSION==2.0.1
 install:
  - pip install -q Django=$DJANGO_VERSION
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $token  # Set in travis-ci.org dashboard, marked secure
-  keep-history: true
-  on:
-    branch: ci_test_bot_ahead_of_ci_#\9054
+ - git config credential.helper "store --file=.git/credentials"
+ - echo $cred > .git/credentials
 script:
  - python ./ci/CI.py
  - git config user.email "monkeyboy2805@gmail.com"
  - git config user.name "monkeyboy2805"
  - git add *
  - git commit -m "Update here :P"
+ - git push origin HEAD:ci_test_bot_ahead_of_ci_\#9054
