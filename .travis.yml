@@ -12,5 +12,5 @@ script:
  - git config user.email "monkeyboy2805@gmail.com"
  - git config user.name "monkeyboy2805"
  - git add *
- - git commit -m "Update here :P"
+ - git commit -m "Automated commit - build will FAIL"
  - git push origin HEAD:ci_test_bot_ahead_of_ci_\#9054
