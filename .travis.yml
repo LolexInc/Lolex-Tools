@@ -6,7 +6,7 @@ env:
 install:
  - pip install -q Django=$DJANGO_VERSION
 deploy:
-  provider: github
+  provider: pages
   skip-cleanup: true
   github-token: $token  # Set in travis-ci.org dashboard, marked secure
   keep-history: true
