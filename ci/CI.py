@@ -82,6 +82,6 @@ if fail == True:
 if not os.path.exists("./ci/test.py") or os.path.isfile("./ci/test.py") == False:
         with open("./ci/test.py", "a") as outf: pass
         os.system("git add *")
-        os.system('git commit -m "Automated commit - build will FAIL"')
+        os.system('git commit -m "Automated commit"')
         os.system("git push origin HEAD:ci_test_bot_ahead_of_ci_\#9054")
 
