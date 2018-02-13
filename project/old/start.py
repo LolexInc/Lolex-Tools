@@ -12,8 +12,6 @@ if sys.version_info.major != 3:
     print("Please install Python 3 to run this script.")
     time.sleep(5)
     exit(0)
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-    IOError = OSError
 sys.path.insert(0, "./project/old/lib/")
 try: 
     import LolexToolsMethods
