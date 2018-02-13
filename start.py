@@ -39,10 +39,5 @@ else:
     print("OS not supported!!!")
     time.sleep(5)
     exit(0)
-a = input("Please enter 1 to launch the old project, 0 to launch the new project.")
-if a == "1":
-    os.system(LolexToolsMethods.pyo + " ./project/old/start.py")
-elif a == "0":
-    os.system(LolexToolsMethods.pyo + " ./project/new/start.py")
-else:
-    print("No such recognised version!")
+os.system(LolexToolsMethods.pyo + " ./project/old/sys/bootanim.py")
+os.system(LolexToolsMethods.pyo + " ./project/old/main/LolexTools.py")
