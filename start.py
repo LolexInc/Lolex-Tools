@@ -12,8 +12,6 @@ if sys.version_info.major != 3:
     print("Please install Python 3 to run this script.")
     time.sleep(5)
     exit(0)
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-    IOError = OSError
 sys.path.insert(0, "./project/old/lib/")
 try: 
     import LolexToolsMethods
@@ -39,5 +37,10 @@ else:
     print("OS not supported!!!")
     time.sleep(5)
     exit(0)
-os.system(LolexToolsMethods.pyo + " ./project/old/sys/bootanim.py")
-os.system(LolexToolsMethods.pyo + " ./project/old/main/LolexTools.py")
+a = input("Please enter 1 to launch the old project, 0 to launch the new project.")
+if a == "1":
+    os.system(LolexToolsMethods.pyo + " ./project/old/start.py")
+elif a == "0":
+    os.system(LolexToolsMethods.pyo + " ./project/new/start.py")
+else:
+    print("No such recognised version!")
