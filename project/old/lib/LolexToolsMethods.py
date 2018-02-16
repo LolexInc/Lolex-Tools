@@ -8,8 +8,6 @@
 ##
 ## authors = Monkeyboy2805
 import os, time, py_compile, shutil, sys, platform, threading, subprocess, random
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-    IOError = OSError
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 s = os.sep
 sys.path.insert(0, "./project/old/")
