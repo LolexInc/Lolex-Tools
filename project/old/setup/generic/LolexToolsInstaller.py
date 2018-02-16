@@ -8,8 +8,6 @@
 ## 
 ## authors = Monkeyboy2805
 import sys, time, os, shutil, platform, py_compile
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-        IOError = OSError
 syslen = len(sys.path)
 sys.path.insert(0, "./project/old/")
 import requiredpatches
