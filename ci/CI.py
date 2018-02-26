@@ -11,7 +11,7 @@ import os, py_compile, sys
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
 import DJANGO_VERSION as env
-for i in range(0, len(env.versions):
+for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
     os.system("pip install -q django=" + env.versions[i])
