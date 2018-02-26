@@ -84,7 +84,9 @@ for i in range(0, len(env.versions)):
             fail = True
             failers = failers + 1
         arraypos = arraypos + 1
-    print("Tests complete on DJANGO version " + env.versions[i] + " in " + (str(round(time.time() - b - round(c - b, 0), 0))) + " seconds")
+    d = (str(round(time.time() - b - round(c - b, 0), 0)))
+    d.replace("-", "")
+    print("Tests complete on DJANGO version " + env.versions[i] + " in " + d + " seconds")
     if fail == True:
         print((str(failers)) + " files failed to compile.")
         exit(1)
