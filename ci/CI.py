@@ -14,7 +14,10 @@ import DJANGO_VERSION as env
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
+    print("Installing DJANGO version " + env.versions[i])
     os.system("pip install -q django==" + env.versions[i])
+    print("Installed DJANGO version " + env.versions[i])
+    print("Testing...")
     folders = []
     files = []
     root = os.listdir("./")
