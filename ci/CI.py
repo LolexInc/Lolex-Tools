@@ -78,7 +78,7 @@ for i in range(0, len(env.versions)):
     while arraypos < flen:
             currfile = files[arraypos]
             if type(py_compile.compile(currfile)) is str:
-                    print("Successfully to compiled " + (str(currfile)))
+                    print("Successfully compiled " + (str(currfile)))
             else:
                     print("Failed to compile " + (str(currfile)))
                     fail = True
