@@ -7,16 +7,19 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, py_compile, sys
+import os, py_compile, sys, time
+a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
 import DJANGO_VERSION as env
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
+    b = time.time()
     print("Installing DJANGO version " + env.versions[i])
     os.system("pip install -q django==" + env.versions[i])
-    print("Installed DJANGO version " + env.versions[i])
+    c = time.time()
+    print("Installed DJANGO version " + env.versions[i] + " after " + (str(round(c - b, 0))) + " seconds")
     print("Testing...")
     folders = []
     files = []
@@ -81,6 +84,7 @@ for i in range(0, len(env.versions)):
                     fail = True
                     failers = failers + 1
             arraypos = arraypos + 1
+    print("Tests complete on DJANGO version " + env.versions[i] + " in " (str(round(time.time() - b, 0))) + " seconds")
     if fail == True:
             print((str(failers)) + " files failed to compile.")
             exit(1)
