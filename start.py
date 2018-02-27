@@ -18,10 +18,6 @@ try:
 except(ImportError, SyntaxError, TabError) as e:
     print(e)
     print("Missing or corrupted library. Please redownload this application or make an issue if this persists.")
-    try:
-        del sys.path[sys.path.index("./project/old/lib")]
-    except(ValueError):
-        pass
     time.sleep(5)
     exit(0)
 try:
