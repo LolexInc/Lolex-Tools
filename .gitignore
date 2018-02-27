@@ -2,3 +2,4 @@ __pycache/*
 *.pyc
 *settings
 .idlerc/*
+.idea/*
