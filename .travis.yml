@@ -1,13 +1,22 @@
 language: python
 python:
-- "3.2"
-- "3.3"
-- "3.4"
-- "3.5"
-- "3.6.0"
-- "3.6.1"
-- "3.6.2"
-- "3.6.3"
-- "3.6.4"
+ - "3.2"
+ - "3.3"
+ - "3.4"
+ - "3.5"
+ - "3.6.0"
+ - "3.6.1"
+ - "3.6.2"
+ - "3.6.3"
+ - "3.6.4"
+env:
+ - DJANGO_VERSION==2.0.2
+install:
+ - pip install -q Django=$DJANGO_VERSION
+ - git config credential.helper "store --file=.git/credentials"
+ - echo $cred > .git/credentials
 script:
-- python ./ci/CI.py
+ - git config --global user.email "monkeyboy2805@gmail.com"
+ - git config --global user.name "monkeyboy2805"
+ - git checkout $TRAVIS_BRANCH
+ - python ./ci/CI.py
