@@ -17,7 +17,7 @@ for i in range(0, len(env.versions)):
         break;
     b = time.time()
     print("Installing DJANGO version " + env.versions[i])
-    os.system("pip install -q django==" + env.versions[i])
+    os.system("pip install django==" + env.versions[i])
     c = time.time()
     print("Installed DJANGO version " + env.versions[i] + " after " + (str(round(c - b, 0))) + " seconds")
     print("Testing...")
