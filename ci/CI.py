@@ -8,10 +8,17 @@
 ##
 ## authors = Monkeyboy2805
 import os, py_compile, sys, time
+version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2]))
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
 import DJANGO_VERSION as env
+import PYTHON_VERSION_FOR_AUTO as py_ver
+if py_ver.version < int(version):
+	os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
+	with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
+		outf.write("version = " + str(version))
+		print("Found version was bigger than expected")
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
