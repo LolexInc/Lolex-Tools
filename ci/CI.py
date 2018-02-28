@@ -14,7 +14,7 @@ print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
 import DJANGO_VERSION as env
 import PYTHON_VERSION_FOR_AUTO as py_ver
-if py_ver.version < int(version):
+if py_ver.version < int(version) and sys.version_info[3] == "final":
 	os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
 	with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
 		outf.write("version = " + str(version))
