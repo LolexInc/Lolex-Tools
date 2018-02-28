@@ -8,7 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import os, py_compile, sys, time
-version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2]))
+version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[3]))
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
