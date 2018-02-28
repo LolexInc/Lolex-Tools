@@ -8,7 +8,7 @@
 ##
 ## authors = Monkeyboy2805
 import os, py_compile, sys, time
-version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[3]))
+version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
@@ -19,7 +19,7 @@ if py_ver.version < int(version):
 	with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
 		outf.write("version = " + str(version))
 		print("Found version was bigger than expected")
-		#os.system("git add *")
+		os.system("git add *")
 		#os.system("git commit -am 'Update python version in ci/build")
 		#os.system("git push")
 for i in range(0, len(env.versions)):
