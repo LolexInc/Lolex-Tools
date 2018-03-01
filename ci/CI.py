@@ -12,9 +12,9 @@ version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.ver
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
-import DJANGO_VERSION as env
-import PYTHON_VERSION_FOR_AUTO as py_ver
-if py_ver.version < int(version) and sys.version_info[3] == "final":
+import DJANGO_VERSION as ENV
+import PYTHON_VERSION_FOR_AUTO as PY_VER
+if PY_VER.version < int(version) and sys.version_info[3] == "final":
         os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
         with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
                 outf.write("version = " + str(version))
@@ -25,15 +25,15 @@ if py_ver.version < int(version) and sys.version_info[3] == "final":
             exit(127)
         os.system("git push")
 failers = []
-for i in range(0, len(env.versions)):
-    if i == len(env.versions):
+for i in range(0, len(ENV.versions)):
+    if i == len(ENV.versions):
         break;
     failers.append(0)
     b = time.time()
-    print("Installing DJANGO version " + env.versions[i])
-    os.system("pip install django==" + env.versions[i])
+    print("Installing DJANGO version " + ENV.versions[i])
+    os.system("pip install django==" + ENV.versions[i])
     c = time.time()
-    print("Installed DJANGO version " + env.versions[i] + " after " + (str(round(c - b, 0))) + " seconds")
+    print("Installed DJANGO version " + ENV.versions[i] + " after " + (str(round(c - b, 0))) + " seconds")
     print("Testing...")
     folders = []
     files = []
@@ -92,7 +92,7 @@ for i in range(0, len(env.versions)):
         currfile = files[arraypos]
         if type(py_compile.compile(currfile)) is str:
             print("Successfully compiled " + (str(currfile)))
-            if version == py_ver.version:
+            if version == PY_VER.version:
                 file_opened = open(currfile, "r+")
                 file_opened_lines = file_opened.readlines()
                 if file_opened_lines[0] != "#! python3":
@@ -121,9 +121,9 @@ for i in range(0, len(env.versions)):
         arraypos = arraypos + 1
     d = (str(round(time.time() - b - round(c - b, 0), 0)))
     d.replace("-", "")
-    print("Tests complete on DJANGO version " + env.versions[i] + " in " + d + " seconds")
+    print("Tests complete on DJANGO version " + ENV.versions[i] + " in " + d + " seconds")
 if fail == True:
     out = ""
     for i in range(0, len(failers) - 1):
-        out = "\n" + out + (str(failers[i])) + " failed on DJANGO version " + env.versions[i]
+        out = "\n" + out + (str(failers[i])) + " failed on DJANGO version " + ENV.versions[i]
     exit(1)
