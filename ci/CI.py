@@ -20,7 +20,7 @@ if py_ver.version < int(version) and sys.version_info[3] == "final":
                 outf.write("version = " + str(version))
                 print("Found version was bigger than expected")
         os.system("git add *")
-        os.system("git commit -am '[ci skip] Update python version in ci/build'")
+        os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
         os.system("git push")
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
@@ -89,6 +89,14 @@ for i in range(0, len(env.versions)):
         currfile = files[arraypos]
         if type(py_compile.compile(currfile)) is str:
             print("Successfully compiled " + (str(currfile)))
+            file_opened = open(currfile, "r+")
+            file_opened_lines = file_opened.readlines()
+            if file_opened_lines[0] != "#! python3":
+                file_opened = "#! python3\n" + file_opened
+                os.system("git add *")
+                os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
+                os.system("git push")
+                file_opened.close()
         else:
             print("Failed to compile " + (str(currfile)))
             fail = True
