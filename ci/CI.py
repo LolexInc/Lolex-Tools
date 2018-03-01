@@ -93,6 +93,7 @@ for i in range(0, len(ENV.versions)):
         if type(py_compile.compile(currfile)) is str:
             print("Successfully compiled " + (str(currfile)))
             if version == PY_VER.version:
+				print("Updating headers...")
                 file_opened = open(currfile, "r+")
                 file_opened_lines = file_opened.readlines()
                 if file_opened_lines[0] != "#! python3":
