@@ -21,10 +21,14 @@ if py_ver.version < int(version) and sys.version_info[3] == "final":
                 print("Found version was bigger than expected")
         os.system("git add *")
         os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
+        if os.system("git pull --rebase") != 0:
+            exit(127)
         os.system("git push")
+failers = []
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
+    failers.append(0)
     b = time.time()
     print("Installing DJANGO version " + env.versions[i])
     os.system("pip install django==" + env.versions[i])
@@ -84,19 +88,42 @@ for i in range(0, len(env.versions)):
     arraypos = 0
     print("Compiling...")
     fail = False
-    failers = 0
     while arraypos < flen:
         currfile = files[arraypos]
         if type(py_compile.compile(currfile)) is str:
             print("Successfully compiled " + (str(currfile)))
+			if version == py_ver.version:
+				file_opened = open(currfile, "r+")
+				file_opened_lines = file_opened.readlines()
+				if file_opened_lines[0] != "#! python3":
+					file_opened_lines.insert(0, "#! python3\n")
+					file_opened.close()
+					try:
+						os.remove(currfile)
+					except(IOError, OSError):
+						pass
+					with open(currfile, "a") as outf:
+						for i in range(0, len(file_opened_lines)):
+							if i == len(file_opened_lines):
+								break;
+							outf.write("\n" + file_opened_lines[i])
+					os.system("git add *")
+					os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
+					os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
+					if os.system("git pull --rebase") != 0:
+						os.system(127)
+					os.system("git push")
+					file_opened.close()
         else:
             print("Failed to compile " + (str(currfile)))
             fail = True
-            failers = failers + 1
+            failers[i] = failers[i] + 1
         arraypos = arraypos + 1
     d = (str(round(time.time() - b - round(c - b, 0), 0)))
     d.replace("-", "")
     print("Tests complete on DJANGO version " + env.versions[i] + " in " + d + " seconds")
-    if fail == True:
-        print((str(failers)) + " files failed to compile.")
-        exit(1)
+if fail == True:
+    out = ""
+    for i in range(0, len(failers) - 1):
+        out = "\n" + out + (str(failers[i])) + " failed on DJANGO version " + env.versions[i]
+    exit(1)
