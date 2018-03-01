@@ -15,14 +15,13 @@ sys.path.insert(0, "./ci/build/")
 import DJANGO_VERSION as env
 import PYTHON_VERSION_FOR_AUTO as py_ver
 if py_ver.version < int(version) and sys.version_info[3] == "final":
-	os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
-	with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
-		outf.write("version = " + str(version))
-		print("Found version was bigger than expected")
-		os.system("git add *")
-		os.system("git commit -am 'Update python version in ci/build")
-        os.system("git pull --rebase")
-		os.system("git push")
+        os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
+        with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
+                outf.write("version = " + str(version))
+                print("Found version was bigger than expected")
+                os.system("git add *")
+                os.system("git commit -am 'Update python version in ci/build")
+                os.system("git push")
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
