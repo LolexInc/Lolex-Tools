@@ -24,9 +24,11 @@ if py_ver.version < int(version) and sys.version_info[3] == "final":
         if os.system("git pull --rebase") != 0:
             exit(127)
         os.system("git push")
+failers = []
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
+    failers.append(0)
     b = time.time()
     print("Installing DJANGO version " + env.versions[i])
     os.system("pip install django==" + env.versions[i])
@@ -86,7 +88,6 @@ for i in range(0, len(env.versions)):
     arraypos = 0
     print("Compiling...")
     fail = False
-    failers = 0
     while arraypos < flen:
         currfile = files[arraypos]
         if type(py_compile.compile(currfile)) is str:
@@ -104,11 +105,13 @@ for i in range(0, len(env.versions)):
         else:
             print("Failed to compile " + (str(currfile)))
             fail = True
-            failers = failers + 1
+            failers[i] = failers[i] + 1
         arraypos = arraypos + 1
     d = (str(round(time.time() - b - round(c - b, 0), 0)))
     d.replace("-", "")
     print("Tests complete on DJANGO version " + env.versions[i] + " in " + d + " seconds")
-    if fail == True:
-        print((str(failers)) + " files failed to compile.")
-        exit(1)
+if fail == True:
+    out = ""
+    for i in range(0, len(failers) - 1):
+        out = "\n" + out + (str(failers[i])) + " failed on DJANGO version " + env.versions[i]
+    exit(1)
