@@ -19,9 +19,9 @@ if py_ver.version < int(version) and sys.version_info[3] == "final":
         with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
                 outf.write("version = " + str(version))
                 print("Found version was bigger than expected")
-                os.system("git add *")
-                os.system("git commit -am 'Update python version in ci/build")
-                os.system("git push")
+        os.system("git add *")
+        os.system("git commit -am 'Update python version in ci/build")
+        os.system("git push")
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
         break;
