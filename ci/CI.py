@@ -21,6 +21,8 @@ if py_ver.version < int(version) and sys.version_info[3] == "final":
                 print("Found version was bigger than expected")
         os.system("git add *")
         os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
+        if os.system("git pull --rebase") != 0:
+            exit(127)
         os.system("git push")
 for i in range(0, len(env.versions)):
     if i == len(env.versions):
@@ -95,6 +97,8 @@ for i in range(0, len(env.versions)):
                 file_opened = "#! python3\n" + file_opened
                 os.system("git add *")
                 os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
+                if os.system("git pull --rebase") != 0:
+                    os.system(127)
                 os.system("git push")
                 file_opened.close()
         else:
