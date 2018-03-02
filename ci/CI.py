@@ -14,6 +14,9 @@ print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
 import DJANGO_VERSION as ENV
 import PYTHON_VERSION_FOR_AUTO as PY_VER
+del sys.path[sys.path.index("./ci/build/")]
+sys.path.insert(0, "../")
+import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
 if PY_VER.version < int(version) and sys.version_info[3] == "final":
         os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
         with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
@@ -92,8 +95,8 @@ for i in range(0, len(ENV.versions)):
         currfile = files[arraypos]
         if type(py_compile.compile(currfile)) is str:
             print("Successfully compiled " + (str(currfile)))
-            if version == PY_VER.version:
-				print("Updating headers...")
+            if version == PY_VER_OLD.version:
+                print("Updating headers...")
                 file_opened = open(currfile, "r+")
                 file_opened_lines = file_opened.readlines()
                 if file_opened_lines[0] != "#! python3":
