@@ -19,40 +19,40 @@
 
 ## authors = Monkeyboy2805
 
-import sys, os
+import os, sys, time
 
-class add_user:
+sys.path.insert(0, "./project/old/lib")
 
-    def setup_folder():
+try:
+
+    import LolexToolsMethods
+
+except(ImportError):
+
+    print("Something went wrong here!")
+
+    try:
+
+        del sys.path[sys.path.index("./project/old/lib")]
+
+    except(ValueError):
 
         pass
 
-    def add_user_to_file():
+    time.sleep(5)
 
-        pass
+    exit(0)
 
-class authenticate:
+try:
 
-    def login():
+    del sys.path[sys.path.index("./project/old/lib")]
 
-        try:
+except(ValueError):
 
-            sys.path.insert(0, "./project/new/setup/exp/TEST")
+    pass
 
-            import users
+print("Nothing available here yet... Entering experimental setup...")
 
-            usernameenter = input("Please enter your username.")
+os.system(LolexToolsMethods.pyo + " ./project/new/setup/exp/LolexToolsSetup.py")
 
-            if usernameenter in users.users:
-
-                path = users.paths[user.users.index(usernameenter)]
-
-                print("Welcome " + (str(usernameenter)))
-
-            else:
-
-                return 1
-
-        except(ImportError):
-
-            return 2
+LolexToolsMethods.authenticate.login()
