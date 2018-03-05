@@ -92,6 +92,7 @@ while arraypos < flen:
         failers = failers + 1
     arraypos = arraypos + 1
 if int(version) == int(PY_VER_OLD.version):
+	### Getting RIGHT contents but somehow writing to the wrong files
     print("Updating headers...")
     for j in range(0, len(files) - 1):
         file_opened = open(files[j], "r+")
