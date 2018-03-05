@@ -86,34 +86,35 @@ while arraypos < flen:
     currfile = files[arraypos]
     if type(py_compile.compile(currfile)) is str:
         print("Successfully compiled " + (str(currfile)))
-        if version == PY_VER_OLD.version:
-            print("Updating headers...")
-            file_opened = open(currfile, "r+")
-            file_opened_lines = file_opened.readlines()
-            if file_opened_lines[0] != "#! python3":
-                file_opened_lines.insert(0, "#! python3\n")
-                file_opened.close()
-                try:
-                    os.remove(currfile)
-                except(IOError, OSError):
-                    pass
-                with open(currfile, "a") as outf:
-                    for i in range(0, len(file_opened_lines)):
-                        if i == len(file_opened_lines):
-                            break;
-                        outf.write("\n" + file_opened_lines[i])
-                os.system("git add *")
-                os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
-                os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
-                if os.system("git pull --rebase") != 0:
-                    os.system(127)
-                os.system("git push")
-                file_opened.close()
     else:
         print("Failed to compile " + (str(currfile)))
         fail = True
         failers = failers + 1
     arraypos = arraypos + 1
+if int(version) == int(PY_VER_OLD.version):
+    print("Updating headers...")
+    for j in range(0, len(files) - 1):
+        file_opened = open(files[j], "r+")
+        file_opened_lines = file_opened.readlines()
+        if file_opened_lines[0] != "#! python3":
+            file_opened_lines.insert(0, "#! python3\n")
+            file_opened.close()
+            try:
+                os.remove(currfile)
+            except(IOError, OSError):
+                pass
+            with open(currfile, "a") as outf:
+                for i in range(0, len(file_opened_lines)):
+                    if i == len(file_opened_lines):
+                        break;
+                    outf.write("\n" + file_opened_lines[i])
+            os.system("git add *")
+            os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
+            #os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
+            if os.system("git pull --rebase") != 0:
+                os.system(127)
+            os.system("git push")
+            file_opened.close()
 c = (str(round(time.time() - b, 0)))
 c.replace("-", "")
 print("Tests complete in " + c + " seconds")
