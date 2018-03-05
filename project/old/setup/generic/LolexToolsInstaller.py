@@ -19,68 +19,230 @@
 
 ## authors = Monkeyboy2805
 
-import os, shutil, sys, time
+import os, py_compile, sys, time
 
-if sys.version_info.major != 3:
+version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
 
-    print("Please install Python 3 to run this script.")
+a = time.time()
 
-    time.sleep(5)
+print("CI version 3.0.0 PRERELEASE")
 
-    exit(0)
+sys.path.insert(0, "./ci/build/")
 
-sys.path.insert(0, "./project/old/lib/")
+import PYTHON_VERSION_FOR_AUTO as PY_VER
 
-try: 
+del sys.path[sys.path.index("./ci/build/")]
 
-    import LolexToolsMethods
+sys.path.insert(0, "../")
 
-except(ImportError, SyntaxError, TabError) as e:
+import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
 
-    print(e)
+if PY_VER.version < int(version) and sys.version_info[3] == "final":
 
-    print("Missing or corrupted library. Please redownload this application or make an issue if this persists.")
+        os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
 
-    time.sleep(5)
+        with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
 
-    exit(0)
+                outf.write("version = " + str(version))
 
-try:
+                print("Found version was bigger than expected")
 
-    del sys.path[sys.path.index("./project/old/lib")]
+        os.system("git add *")
 
-except(ValueError):
+        os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
 
-    pass
+        if os.system("git pull --rebase") != 0:
 
-if LolexToolsMethods.uos.useros == "Windows":
+            exit(127)
 
-    os.system("TITLE Lolex-Tools")
+        os.system("git push")
 
-    os.system("MODE 1000")
+failers = 0
 
-elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == "Android":
+b = time.time()
 
-    sys.stdout.write("\x1b]2;Lolex-Tools\x07")
+print("Testing...")
 
-else:
+folders = []
 
-    print("OS not supported!!!")
+files = []
 
-    time.sleep(5)
+root = os.listdir("./")
 
-    exit(0)
+arraypos = 0
 
-a = input("Please enter 1 to launch the old project, 0 to launch the new project.")
+while arraypos < len(root):
 
-if a == "1":
+    if (".git" in root[arraypos]) == False:
 
-    os.system(LolexToolsMethods.pyo + " ./project/old/start.py")
+        readin = True
 
-elif a == "0":
+        try:
 
-    os.system(LolexToolsMethods.pyo + " ./project/new/start.py")
+            r = open(root[arraypos], "r")
 
-else:
+        except(IOError, OSError):
 
-    print("No such recognised version!")
+            readin = False
+
+        if readin == True:
+
+            if root[arraypos].endswith(".py"):
+
+                    files.append("./" + root[arraypos])
+
+        if readin == False:
+
+            readin2 = True
+
+            try:
+
+                os.listdir(root[arraypos])
+
+            except(IOError, OSError):
+
+                readin2 = False
+
+            if readin2 == True:
+
+                folders.append("./" + root[arraypos])
+
+    arraypos = arraypos + 1
+
+arraypos = 0
+
+while arraypos < len(folders):
+
+    path = folders[arraypos] + "/"
+
+    currsub = os.listdir(path)
+
+    tarraypos = 0
+
+    sublen = len(currsub)
+
+    while tarraypos < sublen:
+
+        if (".git" in currsub[tarraypos]) == False:
+
+            readin3 = True
+
+            try:
+
+                r = open(path + currsub[tarraypos])
+
+            except(IOError, OSError):
+
+                readin3 = False
+
+            if readin3 == True:
+
+                if currsub[tarraypos].endswith(".py"):
+
+                    files.append(path + currsub[tarraypos])
+
+            if readin3 == False:
+
+                readin4 = True
+
+                try:
+
+                    os.listdir(path + currsub[tarraypos])
+
+                except(IOError, OSError):
+
+                    readin4 = False
+
+                if readin4 == True:
+
+                    folders.append(path + currsub[tarraypos])
+
+        tarraypos = tarraypos + 1
+
+    arraypos = arraypos + 1
+
+flen = len(files)
+
+arraypos = 0
+
+print("Compiling...")
+
+fail = False
+
+while arraypos < flen:
+
+    currfile = files[arraypos]
+
+    if type(py_compile.compile(currfile)) is str:
+
+        print("Successfully compiled " + (str(currfile)))
+
+    else:
+
+        print("Failed to compile " + (str(currfile)))
+
+        fail = True
+
+        failers = failers + 1
+
+    arraypos = arraypos + 1
+
+if int(version) == int(PY_VER_OLD.version):
+
+    print("Updating headers...")
+
+    for j in range(0, len(files) - 1):
+
+        file_opened = open(files[j], "r+")
+
+        file_opened_lines = file_opened.readlines()
+
+        if file_opened_lines[0] != "#! python3":
+
+            file_opened_lines.insert(0, "#! python3\n")
+
+            file_opened.close()
+
+            try:
+
+                os.remove(currfile)
+
+            except(IOError, OSError):
+
+                pass
+
+            with open(currfile, "a") as outf:
+
+                for i in range(0, len(file_opened_lines)):
+
+                    if i == len(file_opened_lines):
+
+                        break;
+
+                    outf.write("\n" + file_opened_lines[i])
+
+            os.system("git add *")
+
+            os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
+
+            #os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
+
+            if os.system("git pull --rebase") != 0:
+
+                os.system(127)
+
+            os.system("git push")
+
+            file_opened.close()
+
+c = (str(round(time.time() - b, 0)))
+
+c.replace("-", "")
+
+print("Tests complete in " + c + " seconds")
+
+if fail == True:
+
+    print(str(failers) + " files failed to compile")
+
+    exit(1)
