@@ -19,86 +19,68 @@
 
 ## authors = Monkeyboy2805
 
-import time, os, shutil, io, sys, random
+import os, shutil, sys, time
 
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
+if sys.version_info.major != 3:
 
-    IOError = OSError
+    print("Please install Python 3 to run this script.")
 
-try:
+    time.sleep(5)
 
-    try:
+    exit(0)
 
-        shutil.rmtree("./project/new/TEST")
+sys.path.insert(0, "./project/old/lib/")
 
-    except(IOError, OSError) as e:
+try: 
 
-        print(e)
+    import LolexToolsMethods
 
-    os.mkdir("./project/new/TEST")
-
-    users_file = open("./project/new/TEST/users.py", "w+")
-
-    users_file.write("#! python3\n##0\n## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000\n##  0              00     0  0         0           00             00       0      0    0      0   0          0\n##   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000\n##    0            00     0  0         0          0  0            00       0      0    0      0   0              0\n##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000\n##\n## authors = Monkeyboy2805")
-
-    users_file.truncate()
-
-    users = []
-
-    paths = []
-
-    done = "0"
-
-    while done != "1":
-
-        valid = True
-
-        user_name = input("Please enter your desired username.")
-
-        if user_name in users:
-
-            print("Username already in use!")
-
-        else:
-
-            users.append(user_name)
-
-            length = len(os.getcwd()) - 1
-
-            c = length - random.randint(0, 20)
-
-            if c < 1:
-
-                print("Not enough path space left!")
-
-                break;
-
-            folder_string = ""
-
-            for i in range(0, c):
-
-                b = random.randint(65, 90)
-
-                folder_string = folder_string + ((str(chr(b))))
-
-                b = b.randomcase()
-
-        if not os.path.exists("./project/new/TEST/" + (str(folder_string))):
-
-            os.mkdir("./project/new/TEST/" + (str(folder_string)))
-
-            paths.append(folder_strings)
-
-        done = input("Please enter 1 if you are done adding users.")
-
-    users_file.write("\nusers = " + (str(users)))
-
-    users_file.write("\npaths = " + (str(paths)))
-
-    users_file.close()
-
-except(IOError, OSError) as e:
+except(ImportError, SyntaxError, TabError) as e:
 
     print(e)
 
-    print("Something went wrong! Look above for details.")
+    print("Missing or corrupted library. Please redownload this application or make an issue if this persists.")
+
+    time.sleep(5)
+
+    exit(0)
+
+try:
+
+    del sys.path[sys.path.index("./project/old/lib")]
+
+except(ValueError):
+
+    pass
+
+if LolexToolsMethods.uos.useros == "Windows":
+
+    os.system("TITLE Lolex-Tools")
+
+    os.system("MODE 1000")
+
+elif LolexToolsMethods.uos.useros == "Linux" or LolexToolsMethods.uos.useros == "Android":
+
+    sys.stdout.write("\x1b]2;Lolex-Tools\x07")
+
+else:
+
+    print("OS not supported!!!")
+
+    time.sleep(5)
+
+    exit(0)
+
+a = input("Please enter 1 to launch the old project, 0 to launch the new project.")
+
+if a == "1":
+
+    os.system(LolexToolsMethods.pyo + " ./project/old/start.py")
+
+elif a == "0":
+
+    os.system(LolexToolsMethods.pyo + " ./project/new/start.py")
+
+else:
+
+    print("No such recognised version!")
