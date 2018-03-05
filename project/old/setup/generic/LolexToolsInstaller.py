@@ -19,1525 +19,201 @@
 
 ## authors = Monkeyboy2805
 
-import os, time, py_compile, shutil, sys, platform, threading, subprocess, random
+import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
 
-print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
-
-s = os.sep
-
-sys.path.insert(0, "./project/old/")
-
-if platform.system() == "Windows":
-
-    if sys.version_info.minor > 5:
-
-        py = "py ." + os.sep
-
-        pyo = "py"
-
-    else:
-
-        py = "python ." + os.sep
-
-        pyo = "python"
-
-elif platform.system() == "Linux":
-
-    py = "python3 " + os.sep
-
-    pyo = "python3"
-
-stopping = False
-
-class uos:
-
-    useros = platform.system()
-
-    if os.path.exists("/system/build.prop") == True and not(os.path.isdir("/system/build.prop")) and platform.system() == "Linux":
-
-        useros = "Android"
-
-class threads:
-
-    shutdown = False
-
-    logoff = False
-
-    restart = False
-
-    hibernate = False
+sys.path.insert(0, "./project/old/lib/")
 
 try:
 
-    import restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings, menusettings, LolexToolsOptions, theme
+    import LolexToolsMethods
 
-except(ImportError) as e:
-
-    print((str(e)) + " occured.")
-
-    time.sleep(1)
-
-try:
-
-    import ver
-
-except(ImportError) as e:
-
-    print("Please redownload this repository to access all features.")
+except(ImportError, SyntaxError, TabError) as e:
 
     print(e)
 
+    print("Missing or corrupted library. Please redownload this application or make an issue if this persists.")
+
     time.sleep(5)
 
-class title_updater:
+    os._exit(0)
 
-    threads = 2
+if sys.version_info.major != 3:
 
-    notificationsmsg = []
+    print("Only Python 3 is currently supported. Please install Python 3.")
 
-    notificationsdelay = []
+    time.sleep(3)
 
-    a = round(time.time(), 0)
+    exit(0)
 
-    units = ["weeks", "days", "hours", "minutes", "seconds"]
+sys.path.insert(0, "./project/old/")
 
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+try:
 
-    month_unit = [3, 0, 3, 2, 3, 2, 3, 3, 2, 3, 2, 3]
+        import LolexToolsOptions, startplugins, lang
 
-    start_month_str = time.asctime(time.localtime(time.time())).split(" ")[1]
+except(ImportError, SyntaxError, TabError) as e:
 
-    start_month = -1
+    print(e)
 
-    for i in range(0, len(months) - 1):
+    time.sleep(3)
 
-        if start_month_str == months[i]:
+    os.system(LolexToolsMethods.py + "project" + LolexToolsMethods.s + "old" + LolexToolsMethods.s + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 
-            start_month = i - 1
+    os._exit(0)
 
-            break
+restart = False
 
-    if uos.useros == "Windows":
+try:
 
-        title_cmd_start = "TITLE "
+    import menusettings
 
-        title_cmd_end = ""
+except(ImportError):
 
-    elif uos.useros == "Linux" or uos.useros == "Android":
+    LolexToolsMethods.bak("menusettings", "./project/old/", 0, 0, 1)
 
-        title_cmd_start = "\x1b]2;"
+    restart = True
 
-        title_cmd_end = "\x07"
+try:
 
-def get_current_datetime():
+    import exitsettings
 
-    a = time.asctime(time.localtime(time.time()))
+except(ImportError):
 
-    a = a.split(" ")
+    LolexToolsMethods.bak("exitsettings", "./project/old/", 0, 0, 1)
 
-    b = a[3] + " "
+    restart = True
 
-    del a[3]
+if restart == True:
 
-    for i in range(0, 4):
+    os.system(LolexToolsMethods.py + "start.py")
 
-        b = b + a[i] + " "
+try:
 
-    return b
+    import verifonboot, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
 
-def titleUpdater():
+except(ImportError, SyntaxError, TabError) as e:
 
-    start = title_updater.a
+    print(e)
 
-    end = title_updater.a
+    os.system(LolexToolsMethods.py + "project" + LolexToolsMethods.s + "old" + LolexToolsMethods.s + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
 
-    load = 0
+    os._exit(0)
 
-    global stopping
+try:
 
-    while stopping != True:
+    import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, menusettings
 
-        if stopping == True:
+except(ImportError, SyntaxError, TabError) as e:
 
-            break
+    print(e)
 
-        if len(title_updater.notificationsmsg) == 0:
+try:
 
-            start = time.time()
+    import theme
 
-            #os.system("TITLE Lolex-Tools|    " + (str(title_updater.threads)) + " threads|  Uptime: " + (str(round(time.time(), 0) - title_updater.a)) + " seconds" + (str(time.localtime(time.asctime(time.time())))))
+except(ImportError) as e:
 
-            newtitle = title_updater.title_cmd_start + " Lolex-Tools    " + (str(title_updater.threads)) + " threads  Uptime: " #+ (str(round(time.time(), 0) - title_updater.a)) + " seconds    " + (str(time.time()))
+    print(e)
 
-            #print(round(time.time(), 0) - title_updater.a)
+#fail = False
 
-            new_time = round(time.time(), 0) - title_updater.a
+#try:
 
-            if type(new_time) is float or type(new_time) is int:
+    #import requiredpatches
 
-                timer = convert_time_all(True, seconds = new_time)
+#except(ImportError, SyntaxError, TabError):
 
-            else:
+    #print("Required file missing.")
 
-                timer = "Sorry! There was a temporary error with the timer."
+#update = False
 
-            #print(timer)
+#try:
 
-            #t = len(timer) - 1
+    #import patches
 
-            #while t != -1:
+#except(ImportError, SyntaxError, TabError):
 
-                #newtitle = newtitle[t] + (str(timer[t]) + "" + (title_updater.units[t]))
+    #class patches:
 
-                #print(newtitle)
+        #patches.applied = ""
 
-                #t = t - 1
+#if len(patches.applied) != len(requiredpatches.patches):
 
-            #for i in range(0, len(timer) - 1):
+    #arraypos = len(patches.applied)
 
-                    #j = len(timer) - i - 1
+    #update = True
 
-                    #if timer[j] != 0:
+#elif len(patches.applied) == 0: Shouldn't assume there's no updates :facepalm:
 
-                            #newtitle = newtitle + str(timer[i]) + "" + (str(title_updater.units[i]))
+    ##arraypos = 0
 
-            newtitle = newtitle + (str(timer))
+    #update = True
 
-            #newtitle = newtitle + title_updater.title_cmd_end
+#else:
 
-            newtitle = newtitle + "    " + (str(get_current_datetime())) + "    Load: " + (str(load)) + "%" + title_updater.title_cmd_end
+    #update = False
 
-            # FIX THE LOAD THING ...
+#if update == True:
 
-            if uos.useros == "Linux" or uos.useros == "Android":
+        #while arraypos != len(requiredpatches.patches):
 
-                    sys.stdout.write(newtitle)
+            #print(arraypos)
 
-            else:
+            #if os.system(LolexToolsMethods.pyo + " ./project/old/update" + requiredpatches.patches[arraypos]  + ".py") != 0:
 
-                    os.system((str(newtitle)))
+                #print("Couldn't update to " + requiredpatches.patches[arraypos] +": Failed to run update script.")
 
-            time.sleep(1)
+                #time.sleep(5)
 
-            end = time.time()
+                #os._exit(0)
 
-            if type(load) is not str:
+            #arraypos = arraypos + 1
 
-                load = round((float((end - start - 1) * 100)), 2)
+        #try:
 
-                if load > 100:
+            #os.remove("./project/old/patches.py")
 
-                    send_notification("WARNING: Overloading. Took " + str(round(float(load - 100)/100), 2) + " seconds too long too tick.", 3)
+        #except(IOError, OSError):
 
-                    load = 100
+            #pass
 
-        else:
+        #with open("./project/old/patches.py", "a") as outf: 
 
-            if uos.useros == "Linux" or uos.useros == "Android":
+            #outf.write('applied = ')
 
-                sys.stdout.write(title_updater.title_cmd_start + (str(title_updater.notificationsmsg[0])) + title_updater.title_cmd_end)
+            #outf.write(str(requiredpatches.patches))
 
-            else:
+        #if fail == True:
 
-                os.system(title_updater.title_cmd_start + (str(title_updater.notificationsmsg[0])) + title_updater.title_cmd_end)
+            #print("Couldn't update: files missing!")
 
-            time.sleep(title_updater.notificationsdelay[0])
+            #os._exit(0)
 
-            del title_updater.notificationsdelay[0]
+        #print("Restarting to finish updating...")
 
-            del title_updater.notificationsmsg[0]
+        #LolexToolsMethods.stopping = True
 
-    if uos.useros == "Linux" or uos.useros == "Android":
+        #startplugins.stopping = True
 
-        sys.stdout.write("\x1b]2;Lolex-Tools: EXITING...\x07")
+        #os.system(LolexToolsMethods.py + "start.py")
 
-    else:
+        #os._exit(0)
 
-        os.system("TITLE Lolex-Tools: EXITING...")
-
-def _init_():
-
-        title_thread = threading.Thread(target = titleUpdater, args = [])
-
-        title_thread.start()
-
-def version():
-
-        print(ver.version)
-
-def convert_time_all(rtstr, seconds = 0, minutes = 0, hours = 0, days = 0, weeks = 0, start_month = title_updater.start_month, months = 0):
-
-    # Have a look into datetime for this
-
-    string_out = ""
-
-    if seconds >= 60:
-
-        minutes = minutes + seconds//60
-
-        seconds = seconds%60
-
-    if minutes >= 60:
-
-        hours = hours + minutes//60
-
-        minutes = minutes%60
-
-    if hours >= 24:
-
-        days = days + hours//24
-
-        hours = hours%24
-
-    if days >= 7:
-
-        weeks = weeks + days//7
-
-        days = days%7
-
-    #while weeks >= 4: #and days >= title_updater.month_unit[(start_month + (months%12))%12]:
-
-        #weeks = weeks - 4
-
-        # Based on a month being 4 weeks
-
-        #days = days - title_updater.month_unit[(start_month + (months%12))%12]
-
-        #months = months + 1
-
-    if rtstr == True:
-
-        #if months != 0:
-
-            #if months != 1:
-
-               #string_out = string_out + (str(months)) + " months "
-
-            #else:
-
-                #string_out = string_out + (str(months)) + " month "
-
-        if weeks != 0:
-
-            if weeks != 1:
-
-                string_out = string_out + (str(weeks)) + " weeks "
-
-            else:
-
-                string_out = string_out + (str(weeks)) + " week "
-
-        if days != 0:
-
-            if days != 1:
-
-                string_out = string_out + (str(days)) + " days "
-
-            else:
-
-                string_out = string_out + (str(days)) + " day "
-
-        if hours != 0:
-
-            if hours != 1:
-
-                string_out = string_out + (str(hours)) + " hours "
-
-            else:
-
-                string_out = string_out + (str(hours)) + " hour "
-
-        if minutes != 0:
-
-            if minutes != 1:
-
-                string_out = string_out + (str(minutes)) + " minutes "
-
-            else:
-
-                string_out = string_out + (str(minutes)) + " minute "
-
-        if seconds != 0:
-
-            if seconds != 1:
-
-                string_out = string_out + (str(seconds)) + " seconds "
-
-            else:
-
-                string_out = string_out + (str(seconds)) + " second "
-
-        string_out = string_out.replace(".0", "")
-
-        return string_out
-
-    #return months,
-
-    return weeks, days, hours, minutes, seconds
-
-def send_notification(msg, delay):
-
-    title_updater.notificationsmsg.append("Lolex-Tools NOTIFICATION: " + (str(msg)))
-
-    title_updater.notificationsdelay.append(delay)
-
-def str_to_int(string):
-
-    try:
-
-        a = int(string)
-
-    except(ValueError):
-
-        return False
-
-    return True
-
-def flicker():
-
-    a = input("Are you sure you wish to continue? 1 (yes) or 0 (no).Please don't continue if you have epilepsy.")
-
-    if str_to_int(a) == True and int(a) == 1:
-
-        howlongtoflashfor = input("How many loops do you wish to occur?")
-
-        if str_to_int(howlongtoflashfor) == True:
-
-            howlongtoflashfor = int(howlongtoflashfor)
-
-        else:
-
-            howlongtoflashfor = random.randint(1, 1000)
-
-            print("TYPE of loops was not a number, selected " + (str(howlongtoflashfor)))
-
-    print("Here is a list of colours available:")
-
-    print("a - Neon Green")
-
-    print("b - Light Blue")
-
-    print("c - Neon Red")
-
-    print("d - Light Purple/Pink")
-
-    print("e - Neon Yellow")
-
-    print("f - White")
-
-    print("1 - Dark Blue")
-
-    print("2 - Dark Green")
-
-    print("3 - Light Non-Neon Blue")
-
-    print("4 - Dark Red/Brown")
-
-    print("5 - Dark Purple")
-
-    print("6 - Non Neon Yellow")
-
-    print("7 - White/Light Gray")
-
-    print("8 - Dark Gray")
-
-    print("9 - Dark Neon Blue")
-
-    done = "0"
-
-    colour = []
-
-    while done != "1":
-
-        colour.append("color " + input("Please enter your colour "))
-
-        done = input("Please enter 1 if you are finished adding colours.")
-
-    #colour = ("color " + input("Please enter your first colour "), "color " + input("Please enter your second colour "), "color " + input("Please enter your third colour "), "color " + input("Please enter your fourth colour "), "color " + input("Please enter your fifth colour  "))
-
-    flickerthread = threading.Thread(target = flickerp2, args = [colour, howlongtoflashfor])
-
-    flickerthread.start()
-
-def flickerp2(colour, howlongtoflashfor):
-
-    currentflashes = int(0)
-
-    global stopping
-
-    while howlongtoflashfor != currentflashes:
-
-        if stopping == True:
-
-            break
-
-        for i in range(0, len(colour) - 1):
-
-            os.system(colour[i])
-
-            print("STARTED")
-
-            pass
-
-##        os.system (colour[0])
-
-##        pass
-
-##        os.system (colour[1])
-
-##        pass
-
-##        os.system (colour[2])
-
-##        pass
-
-##        os.system (colour[3])
-
-##        pass
-
-##        os.system (colour[4])
-
-##        pass
-
-        currentflashes = currentflashes + 1
+if LolexToolsMethods.uos.useros == "Windows":
 
     os.system(theme.theme)
 
-def windowspage(page, layout):
+    os.system("mode 1000")
 
-    if page == 0:
+    os.system("title Lolex-Tools_OLD_VERSION")
 
-        print("1  = Settings")
+LolexToolsMethods._init_()
 
-        if restartsettings.hidden == False:
+LolexToolsMethods.send_notification(lang.strings.welcome, 10)
 
-            print("2  = Restart")
+try:
 
-        if logoffsettings.hidden == False:
-
-            print("3  = Logoff")
-
-            print("4  = Alternative logoff method")
-
-        if hibernatesettings.hidden == False:
-
-            print("5  = Hibernate")
-
-    elif page == 1:
-
-        if shutdownsettings.hidden == False:
-
-            print("6  = Shutdown")
-
-            print("7  = Alternative shutdown method")		 
-
-        print("8  = Colour Flicker")
-
-        print("9  = Call CMD")
-
-        print("10 = Call documents")
-
-    elif page == 2:
-
-        print("11 = Call a Python shell")
-
-        print("12 = Call Task Manager")
-
-        print("13 = Create folders")
-
-        print("14 = Remove folders")
-
-        print("15 = Create files")
-
-    elif page == 3:
-
-        print("16 = Restart this script")
-
-        print("17 = Perform arithmetic operations")
-
-        print("18 = Call Remote Desktop")
-
-        print("19 = Call Powershell")
-
-        print("20 = Print SystemInfo")
-
-    elif page == 4:
-
-        print("21 = Start Installer")
-
-        if exitsettings.hidden == False:
-
-            print("22 = Exit")
-
-    elif page == 5:
-
-        print("EXPERIMENTAL FEATURES:")
-
-        #print("23 = Update")
-
-        print("23 = Start File Explorer\n")
-
-    if layout == 1:
-
-        print("24 = Next Page")
-
-        print("25 = Back a Page")
-
-    else:
-
-        if page < 5:
-
-            page = page + 1
-
-        else:
-
-            return;
-
-        windowspage(page, layout)
-
-def linuxpage(page, layout):
-
-    if page == 0:
-
-        print("1  = Settings")
-
-        if restartsettings.hidden == False:
-
-            print("2  = Restart")
-
-        if logoffsettings.hidden == False:
-
-            print("3  = Logoff")
-
-        if hibernatesettings.hidden == False:
-
-            print("4  = Hibernate")
-
-        if shutdownsettings.hidden == False:
-
-            print("5  = Shutdown")
-
-    elif page == 1:
-
-        print("6  = Call a Python Shell")
-
-        print("7  = Create folders")
-
-        print("8  = Remove folders")
-
-        print("9  = Create files")
-
-        print("10 = Restart this script")
-
-    elif page == 2:
-
-        print("11 = Perform arithmetic operations")
-
-        print("12 = Start Installer")
-
-        print("13 = Show Uptime and Average load")
-
-        print("14 = Print SystemInfo")
-
-        if exitsettings.hidden == False:
-
-            print("15 = Exit")
-
-    elif page == 3:
-
-        print("EXPERIMENTAL FEATURES:")
-
-        print("16 = Start File Explorer\n")
-
-    if layout == 1:
-
-        print("17 = Next Page")
-
-        print("18 = Back a Page")
-
-    else:
-
-        if page < 3:
-
-            page = page + 1
-
-        else:
-
-            return;
-
-        linuxpage (page, layout)
-
-def androidpage(page, layout):
-
-    if page == 0:
-
-        print("1 = Settings")
-
-        if restartsettings.hidden == False:
-
-            print("2 = Restart")
-
-        if shutdownsettings.hidden == False:
-
-            print("3 = Shutdown")
-
-        print("4 = Call a Python Shell")
-
-        print("5 = Create folders")
-
-    elif page == 1:
-
-        print("6 = Remove folders")
-
-        print("7 = Create files")
-
-        print("8 = Restart this script")
-
-        print("9 = Perform arithmetic operations")
-
-        print("10 = Start Installer")
-
-    elif page == 2:
-
-        print("11 = Show Uptime and Average load")
-
-        print("12 = Print SystemInfo")
-
-        if exitsettings.hidden == False:
-
-            print("13 = Exit")
-
-        print("EXPERIMENTAL FEATURES:")
-
-        print("14 = Start File Explorer\n")
-
-    if layout == 1:
-
-        print("15 = Next Page")
-
-        print("16 = Back a Page")
-
-    else:
-
-        if page < 2:
-
-            page = page + 1
-
-        else:
-
-            return;
-
-        androidpage(page, layout)
-
-def restart():
-
-    restart_confirm = input("Please enter 1 to confirm restart.")
-
-    if restart_confirm == "1":
-
-        waittime = float(input("How long, in minutes do you wish to wait?"))
-
-        while waittime < 0:
-
-            waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
-
-        restartthreader = threading.Thread(target = restartthread, args = [waittime])
-
-        restartthreader.start()
-
-def logoff(type_of):
-
-    logoff_confirm = input("Please enter 1 to confirm logoff.")
-
-    if logoff_confirm == "1":
-
-        waittime = float(input("How long, in minutes, do you wish to wait?"))
-
-        while waittime < 0:
-
-            waittime = float(input("Please select a time bigger than 0 minutes.\nHow long, in minutes, do you wish to wait?"))
-
-        loggeroff = threading.Thread(target = logoffthread, args = [waittime, type_of])
-
-        loggeroff.start()
-
-def logoffthread(waittime, type_of):
-
-    if threads.logoff == True:
-
-        print("LOGOFF thread: Logoff already scheduled!")
-
-        return;
-
-    threads.logoff = True
-
-    waittime = waittime * 60
-
-    while waittime > 0.1 and stopping == False:
-
-        time.sleep(0.1)
-
-        waittime = waittime - 0.1
-
-    if stopping != True:
-
-        print("LOGOFF thread: Logging off...")
-
-        if uos.useros != "Linux":
-
-            if type_of == 0:
-
-                os.system("shutdown -l -f")
-
-            else:
-
-                subprocess.Popen("logoff.exe")
-
-        else:
-
-            os.system("gnome-session-quit --force")
-
-    else:
-
-        print("LOGOFF thread: Stopping...")
-
-    threads.logoff = False
-
-def hibernate():
-
-    hibernate_confirm = input("Please enter 1 to confirm logoff.")
-
-    if hibernate_confirm == "1":
-
-        waittime = float(input("How long, in minutes, do you wish to wait?"))
-
-        while waittime < 0 and waittime > 65505:
-
-            waittime = float(input("Please select a time between 0 - 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
-
-        hibernatethreader = threading.Thread(target = hibernatethread, args = [waittime])
-
-        hibernatethreader.start()
-
-def hibernatethread(waittime):
-
-    if threads.hibernate == True:
-
-        print("HIBERNATE thread: Hibernate already scheduled!")
-
-        return;
-
-    threads.hibernate = True
-
-    waittime = waittime * 60
-
-    while waittime > 0.1 and stopping == False:
-
-        time.sleep(0.1)
-
-        waittime = waittime - 0.1
-
-    if stopping != True:
-
-        print("HIBERNATE thread: Hibernating...")
-
-        if uos.useros == "Windows":
-
-            os.system("shutdown -h -f")
-
-        elif uos.useros == "Linux":
-
-            os.system("systemctl suspend")
-
-    else:
-
-        print("HIBERNATE thread: Stopping...")
-
-    threads.hibernate = False
-
-def restartthread(waittime):
-
-    if threads.restart == True:
-
-        print("RESTART thread: restart already scheduled!")
-
-        return;
-
-    threads.restart = True
-
-    waittime = waittime * 60
-
-    while waittime > 0.1 and stopping == False:
-
-        time.sleep(0.1)
-
-        waittime = waittime - 0.1
-
-    if stopping != True:
-
-        print("RESTART thread: Restarting device...")
-
-        if uos.useros != "Linux":
-
-            os.system("shutdown -r -f")
-
-        else:
-
-            if uos.useros == "Android":
-
-                if os.system("su -c reboot") != 0:
-
-                    os.system("reboot")
-
-            else:
-
-                    os.system("systemctl reboot -i")
-
-    else:
-
-        print("RESTART thread: Stopping...")
-
-    threads.restart = False
-
-def shutdown(type_of):
-
-    shutdown_confirm = input("Please enter 1 to shutdown.")
-
-    if shutdown_confirm == "1":
-
-        waittime = float(input("How long, in minutes, do you wish to wait?"))
-
-        while waittime < 0 or waittime > 65505:
-
-            waittime = float(input("Please select a time between 0- 65505 minutes.\nHow long, in minutes, do you wish to wait?"))
-
-        shutdownthreader = threading.Thread(target = shutdownthread, args = [waittime, type_of])
-
-        shutdownthreader.start()
-
-def shutdownthread(waittime, type_of):
-
-    if threads.shutdown == True:
-
-        print("SHUTDOWN thread: Shutdown already scheduled!")
-
-        return;
-
-    threads.shutdown = True
-
-    waittime = waittime * 60
-
-    while waittime > 0.1 and stopping == False:
-
-        time.sleep(0.1)
-
-        waittime = waittime - 0.1
-
-    if stopping != True:
-
-        print("SHUTDOWN thread: shutting device down...")
-
-        if uos.useros == "Windows":
-
-            if type_of == 0:
-
-                os.system ("shutdown -s -f")
-
-            elif type_of == 1:
-
-                subprocess.Popen("shutdown.exe")
-
-        elif uos.useros == "Linux":
-
-            os.system("poweroff")
-
-        elif uos.useros == "Android":
-
-            if os.system("su -c reboot -p") != 0:
-
-                if os.system("/system/bin/reboot -p") != 0:
-
-                    print("Failed to execute reboot binary.")
-
-    else:
-
-        print("SHUTDOWN thread: Stopping...")
-
-    threads.shutdown = False
-
-def pyshell():
-
-    if uos.useros == "Android" or uos.useros == "Linux":
-
-        os.system("python3")
-
-    elif uos.useros == "Windows":
-
-        option = input("Please enter 1 for the Python Shell or 0 for the IDLE shell.")
-
-        if option == "0":
-
-            subprocess.call(pyo + ".exe")
-
-        elif option == "1":
-
-            subprocess.Popen(pyo + "w.exe")
-
-def scriptrestart():
-
-    global stopping
-
-    confirmscriptrestart = input("Please input 1 to confirm restarting of this script. Please enter 2 to start into the new version of the project.")
-
-    if confirmscriptrestart == "1":
-
-        stopping = True
-
-        os.system(py + "project/old/start.py")
-
-        os._exit(0)
-
-    elif confirmscriptrestart == "2":
-
-        stopping = True
-
-        os.system(py + "project/new/start.py")
-
-        os._exit(0)
-
-def numops():
-
-    print("Here is a list of operations:")
-
-    print("1 = Add")
-
-    print("2 = Take")
-
-    submode = int(input("Please enter the number of the operation you wish to perform."))
-
-    if submode == 1 or submode == 2:
-
-        addortake()
-
-def addortake():
-
-    startnum = int(input("Please enter your starting number."))
-
-    addortakenum = int(input("Please input the number to be added."))
-
-    endnum = int(input("Please enter your end number."))
-
-    waittime = float(input("How many seconds do you wish to wait before each operation is performed?"))
-
-    while waittime > 4194304 or waittime < 0:
-
-        waittime = float(input("Please select a time in between 0 and 4194304 seconds.\nHow long, in minutes do you wish to wait?"))
-
-    if endnum > startnum:
-
-        while endnum > startnum:
-
-            print(startnum)
-
-            if addortakenum < int(0):
-
-                startnum = startnum - addortakenum
-
-            elif addortakenum > int(0):
-
-                startnum = startnum + addortakenum
-
-            time.sleep(waittime)
-
-    if startnum > endnum:
-
-        while startnum > endnum:
-
-            print (startnum)
-
-            if addortakenum < 0:
-
-                startnum = startnum + addortakenum
-
-            if addortakenum > 0:
-
-                startnum = startnum = startnum - addortakenum
-
-            time.sleep(waittime)
-
-    print ("The closest number to your target end number was:" + (str(startnum)))
-
-    time.sleep(1)
-
-def dumpme():
-
-    if uos.useros == "Windows":
-
-        os.system(r".\project\old\resources\systeminf")
-
-    elif uos.useros == "Linux":
-
-        os.system("sudo lshw")
-
-    else:
-
-        if os.system("su -c dumpsys") != 0:
-
-            print("Cannot load as much information due to lack of root.")
-
-            if os.system("/system/bin/dumpsys") != 0:
-
-                            print("Failed to execute dumpsys binary. Please check your root and SELinux statuses.")
-
-def enterinstall():
-
-    confirm = int(input("Please confirm (with a 1) to enter the installer."))
-
-    if confirm == 1:
-
-        global stopping
-
-        stopping = True
-
-        os.system(py + "project" + s + "old" + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
-
-        exit(0)
-
-def uptime():
-
-    if uos.useros == "Android":
-
-        if os.system("su -c uptime") != 0:
-
-            if os.system("/system/bin/uptime") != 0:
-
-                print("Failed to run uptime script.")
-
-    else:
-
-        os.system("uptime")
-
-def compiler(name):
-
-    try:
-
-        os.remove("./project/old/" + name + ".pyc")
-
-    except(IOError):
-
-        pass
-
-    py_compile.compile(name + ".py", "./project/old/" + name + ".pyc")
-
-    os.remove("./project/old/" + name + ".py")
-
-def modehide(name, state):
-
-    if state == False:
-
-        newstate = True
-
-    else:
-
-        newstate = False
-
-    try:
-
-        os.remove("./project/old/" + name + ".py")
-
-        os.remove("./project/old/" + name + ".pyc")
-
-    except(IOError):
-
-        pass
-
-    with open ("./project/old/" + name + "settings.py","a") as outf: 
-
-        outf.write("hidden = ")
-
-        outf.write(str(newstate))
-
-def bak(name, path, reinstall, attrestore, regenerate):
-
-    import LolexToolsOptions
-
-    try:
-
-        os.remove(path + name + ".py")
-
-    except(IOError, OSError):
-
-        pass
-
-    try:
-
-        os.remove(path + name + ".pyc")
-
-    except(IOError, OSError):
-
-        pass
-
-    if regenerate == 1 and name == "LolexToolsOptions":
-
-        attrestore = 1
-
-        regenerate = 0
-
-        reinstall = 0
-
-    elif name == "verifonboot" or name == "theme" or name == "startplugins" or "settings" in name:
-
-        regenerate = 1
-
-        attrestore = 0
-
-        reinstall = 0
-
-    if "settings" in name:
-
-        if name != "menusettings":
-
-            with open (path + name + ".py", "a") as outf: outf.write("hidden = False")
-
-        else:
-
-            with open (path + "menusettings.py", "a") as outf: outf.write("layout = 0")
-
-        if LolexToolsOptions.compiler == True:
-
-            compiler(path + name + ".py")
-
-        #os.system(py + s + "main" + s + "LolexTools.py")
-
-        #exit(None)
-
-    elif name == "verifonboot":
-
-        import LolexToolsOptions
-
-        if LolexToolsOptions.onepintotal > 1:
-
-            oneswappins = True
-
-        else:
-
-            oneswappins = False
-
-        if LolexToolsOptions.onewordtotal > 1:
-
-            oneswapwords = True
-
-        else:
-
-            oneswapwords = False
-
-        if LolexToolsOptions.twopintotal > 1:
-
-            twoswappins = True
-
-        else:
-
-            twoswappins = False
-
-        if LolexToolsOptions.twowordtotal > 1:
-
-            twoswapwords = True
-
-        else:
-
-            twoswapwords = False
-
-        with open ("./project/old/verifonboot.py", "a") as outf:
-
-            outf.write("compiledon = ")
-
-            outf.write(str(ver.version))
-
-            outf.write("\nruntimeone = 0\nruntimetwo = 0\nwordtimeone = 0\nwordtimetwo = 0")
-
-            outf.write("\noneswappins = ")
-
-            outf.write(str(oneswappins))
-
-            outf.write("\noneswapwords = ")
-
-            outf.write(str(oneswapwords))
-
-            outf.write("\ntwoswappins = ")
-
-            outf.write(str(twoswappins))
-
-            outf.write("\ntwoswapwords = ")
-
-            outf.write(str(twoswapwords))
-
-    elif name == "theme":
-
-        # will add theme changing at some point
-
-        with open ("./project/old/theme.py", "a") as outf: pass
-
-    elif name == "startplugins":
-
-        # will add ability to add plugins at some point
-
-        with open ("./project/old/startplugins.py", "a") as outf: pass
-
-    if name == "verifonboot" or name == "theme" or name == "startplugins":
-
-        if LolexToolsOptions.compiler == True:
-
-            compiler(name + ".py")
-
-        # os.system(py + "main" + s + "LolexTools.py")
-
-        #exit(None)
-
-    elif attrestore == 1:
-
-        backup = os.listdir("./project/old/Backup")
-
-        arraypos = 0
-
-        found = False
-
-        while arraypos < len(backup):
-
-            currsub = os.listdir(backup[arraypos])
-
-            tarraypos = 0
-
-            while tarraypos < len(backup):
-
-                if name + ".pyc" in currsub[tarraypos] and (".pycnotpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])) in currsub[tarraypos]) == False:
-
-                    found = True
-
-                    os.rename("./project/old/Backup" + backup[arraypos] + cursub[tarraypos], "./project/old/" + name + ".pyc")
-
-                    if LolexToolsOptions.compiler == True:
-
-                        compiler(name + ".py")
-
-                    #os.system(py + "main" + s + "LolexTools.py")
-
-                    #exit(None)
-
-        if found == False:
-
-            os.system(py + "project" + s + "old" + s + "setup" + s + "generic" + s + "LolexToolsInstaller.py")
-
-            exit(0)
-
-def dirdisc(rtfiles, rtfolders, stpath, validator):
-
-    stpath = correctpath(stpath)
-
-    folders = [stpath]
-
-    files = []
-
-    arraypos = 0
-
-    while arraypos < len(folders):
-
-        path = correctpath(folders[arraypos])
-
-        if validate(path) == True:
-
-            cont = os.listdir(path)
-
-        else:
-
-            cont = []
-
-        tarraypos = 0
-
-        while tarraypos < len(cont):
-
-            if validator == True:
-
-                filev = validatefile(path + cont[tarraypos])
-
-                folderv = validate(path + cont[arraypos])
-
-            else:
-
-                filev = os.path.isfile(path + cont[tarraypos])
-
-                folderv = os.path.isdir(path + cont[tarraypos])
-
-            if filev == True:
-
-                files.append(path + cont[tarraypos])
-
-            if folderv == True:
-
-                folders.append(path + cont[tarraypos] + "/")
-
-            if folderv == True and filev == True:
-
-                for i in range(0, len(cont) - 1):
-
-                    if cont[i] == cont[tarraypos] and i != tarraypos:
-
-                        del cont[i]
-
-                        break;
-
-            tarraypos = tarraypos + 1
-
-        arraypos = arraypos + 1
-
-    if rtfiles == 1 and rtfolders == 1:
-
-        folders.append("END_OF_ARRAY<>")
-
-        return folders + files;
-
-    elif rtfiles == 1:
-
-        return files;
-
-    elif rtfolders == 1:
-
-        return folders;                                                                                                           
-
-def correctfile(path):
-
-    print(path)
-
-    slash = "\\"
-
-    if path[0] == "." and path[1] == "/":
-
-        tlen = 2
-
-        path = correctpath(os.getcwd()) + path[:midlen] + path[midlen + 2:]
-
-    if len(path) > 2:
-
-        path = path.replace(slash[0], "/")
-
-        path = path.replace("//", "/")
-
-        print(2, path)
-
-    if path[len(path) - 1] == "/":
-
-        path = path[:len(path) - 1]
-
-        print(3, path)
-
-    return path;
-
-def validatefile(path):
-
-    if validate(path) == True:
-
-        return "WrongFunction";
-
-    path = correctfile(path)
-
-    class a:
-
-        a = path
-
-    valid = True
-
-    try:
-
-        open(a.a, "a")
-
-    except(IOError, OSError) as e:
-
-        print(e)
-
-        valid = False
-
-    return valid;
-
-def correctpath(path):
-
-    slash = "\\"
-
-    class zz:
-
-        p = path
-
-    if len(zz.p) > 2:
-
-        zz.p = zz.p.replace(slash[0], "/")
-
-        if zz.p[0] == "." and zz.p[1] == "/":
-
-            tlen = 2
-
-            zz.p = correctpath(os.getcwd()) + zz.p[:midlen] + zz.p[midlen + 2:]
-
-    if len(zz.p) != 0:
-
-        if zz.p[len(zz.p) - 1] != "/":
-
-            zz.p = zz.p.replace(zz.p, zz.p + "/")
-
-        if len(zz.p) > 2:
-
-            for i in range(0, len(zz.p) - 1):
-
-                            zz.p = zz.p.replace("//", "/")
-
-    return zz.p;
-
-def validate(path):
-
-    path = correctpath(path)
-
-    class v:
-
-        p = path
-
-    readin = True
-
-    try:
-
-        os.path.isdir(v.p)
-
-    except(IOError, OSError):
-
-        readin = False
-
-    if readin == True and not os.path.isdir(v.p):
-
-        readin = False
-
-    elif readin == True:
-
-        try:
-
-            os.listdir(v.p)
-
-        except(IOError, OSError):
-
-            readin = False
-
-    return readin;
-
-class expl:
-
-    path = "/"
-
-    newpath = "/"
-
-    file = ""
-
-    loaded = False
-
-    if (platform.system() != "Windows" and platform.system() != "Linux"):
-
-        clear = "<>"
-
-    elif uos.useros == "Windows":
+    if LolexToolsMethods.uos.useros == "Windows":
 
         clear = "cls"
 
@@ -1545,656 +221,724 @@ class expl:
 
         clear = "clear"
 
-def loading(text1):
+    oneswappins = verifonboot.oneswappins
 
-    start = int(0)
+    twoswappins = verifonboot.twoswappins
 
-    while expl.loaded == False:
+    runtimeone = verifonboot.runtimeone
 
-        print("\n\n\n\n\n\n                      " + (str(text1)) + "\n          (" + (str(start)) + ") seconds elapsed.")
+    runtimetwo = verifonboot.runtimetwo
 
-        time.sleep(1)
+    oneswapwords = verifonboot.oneswapwords
 
-        os.system(expl.clear)
+    twoswapwords = verifonboot.twoswapwords
 
-        start = int(start) + int(1)
+    wordtimeone = verifonboot.wordtimeone
 
-        if expl.loaded == True:
+    wordtimetwo = verifonboot.wordtimetwo
 
-            return;
+    oneuseword = LolexToolsOptions.oneuseword
 
-        time.sleep(5)
+    twouseword = LolexToolsOptions.twouseword
 
-def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
+    if LolexToolsOptions.useusername == True:
 
-    expl.path = path
+        usernameenter = input("Please enter your username.")
 
-    file = 0
+        while usernameenter != LolexToolsOptions.username1 and usernameenter != LolexToolsOptions.username2:
 
-    auto = 0
+            usernameenter = input("Please enter a valid username.")
 
-    if expl.clear == "<>":
+    elif LolexToolsOptions.useusername == False:
 
-            return 1;
+        usernameenter = LolexToolsOptions.username1
 
-    while True:
+    if LolexToolsOptions.username1 == usernameenter:
 
-        expl.loaded = False
+        if runtimeone == LolexToolsOptions.onepintotal:
 
-        o = False
-
-        op = False
-
-        expl.path = correctpath(expl.path)
-
-        y = validate(expl.path)
-
-        if y == False:
-
-            auto = 1
-
-        if expl.path == "/":
-
-            expl.path = os.getcwd()[:2] + "/"
-
-            print(expl.path)
-
-            a = input("DEBUG_1")
-
-            expl.file = ".."
-
-        if auto == 0:
-
-            os.system(expl.clear)
-
-        print("\n " + expl.path + "\n")
-
-        if otext == 0:
-
-            otext = "Start/finish operations on this folder"
-
-        if allowexit == 0:
-
-            exittext = "You cannot exit until the current operation is complete"
+            runtimeone = 1
 
         else:
 
-            exittext = "Exit file explorer"
+            runtimeone = runtimeone + 1
 
-        loadingthread = threading.Thread(target=loading, args=["Loading: Large directories may take a while..."])
+        if LolexToolsOptions.onepintotal != 0:
 
-        loadingthread.start()
+            with open ("./project/old/onepinner.py", "w+") as outf:
 
-        array = os.listdir(expl.path)
+                outf.truncate()
 
-        expl.loaded = True
+                outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
 
-        time.sleep(1.5)
+                outf.write(str(runtimeone))
 
-        print("\n\n///o - " + otext + "\n./project/old/ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+            import onepinner
 
-        for i in range(0, len(array)):
+            codeenter = int(input("Please enter your current PIN."))
 
-            if i == len(array):
+            os.system(clear)
 
-                break
+            tries = 1
 
-            if len(array[i]) > 2:
+            if codeenter != onepinner.pin:
 
-                if array[i][0] != "~" and array[i][1] != "$":
+                while codeenter != onepinner.pin:
 
-                    print(array[i])
+                    if tries == 5:
 
-        expl.file = input("\nSelect/Open (Name): ")
+                        print("You got your PIN wrong 5 times.")
 
-        expl.file = expl.file.lower()
+                        time.sleep(LolexToolsOptions.onewait)
 
-        if expl.file == "///":
+                        tries = 0
 
-            pass
+                    codeenter = int(input("Please enter your current PIN."))
 
-        if expl.file == ".." or auto == 1 or expl.path == "/":
+                    os.system(clear)
 
-            ## SORT OUT SO IT LOOKS LIKE A REAL PATH AT SOME POINT
+                    tries = tries + 1
 
-            if len(expl.path) > 1 and "/" in expl.path and not (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
+        if verifonboot.oneswapwords == True:
 
-                new = expl.path.split("/")
+            if LolexToolsOptions.onewordtotal == wordtimeone:
 
-                del new[len(new) -1]
+                wordtimeone = 1
 
-                actual = new[0]
+            else:
 
-                if len(new) > 1:
+                wordtimeone = wordtimeone + 1
 
-                    for i in range(0 , len(new) - 1):
+            if LolexToolsOptions.onewordtotal != 0:
 
-                        actual = "/" + new[i]
+                with open("./project/old/oneworder.py", "w+") as outf:
 
-                    expl.path = actual
+                    outf.truncate()
 
-                elif expl.path == "/" or (len(expl.path) == 3 and expl.path[2] == "/" and expl.path.count("/") == 1):
+                    outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
 
-                    os.system(expl.clear)
+                    outf.write(str(wordtimeone))
 
-                    real = False
+                wordenter = input("Please enter your current password.")
 
-                    op = False
+                os.system(clear)
 
-                    o = False
+                tries = 1
 
-                    while real != True:
+                while wordenter != oneworder.word:
 
-                        ## FIX THIS FOR EXITING
+                    if tries == 5:
 
-                        currentdrives = []
+                        print("You got your password wrong 5 times.")
 
-                        for i in range(ord("A"), ord("Z")):
+                        time.sleep(LolexToolsOptions.onewordwait)
 
-                            success = True
+                        tries = 0
 
-                            try:
+                    wordenter = input("Please enter your current password.")
 
-                                    os.listdir(chr(i) + ":/")
+                    os.system(clear)
 
-                            except(IOError):
+                    tries = tries + 1
 
-                                    success = False
+    elif LolexToolsOptions.username2 == usernameenter:
 
-                            if success == True:
+        if runtimetwo == LolexToolsOptions.twopintotal:
 
-                                    currentdrives.append(chr(i) + ":/")
+            runtimetwo = 1
 
-                        for j in range(0, len(currentdrives) - 1):
+        else:
 
-                            print(currentdrives[j])
+            runtimetwo = runtimetwo + 1
 
-                        expl.path = input("Please input your drive letter.")
+        if LolexToolsOptions.twopintotal != 0:
 
-                        for k in range(0, len(currentdrives) - 1):
+            with open ("./project/old/twopinner.py", "w+") as outf:
 
-                            if expl.path == currentdrives[k]:
+                outf.truncate()
 
-                                    real = True
+                outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
 
-                                    break;
+                outf.write(str(runtimetwo))
 
-                else:
+            import twopinner
 
-                    actual = "/"
+            codeenter = int(input("Please enter your current PIN."))
 
-                    expl.path = actual
+            os.system(clear)
 
-                if expl.path == "/" or len(expl.path) < 3:
+            tries = 1
 
-                    actual = "/"
+            if codeenter != twopinner.pin:
 
-                    expl.path = actual
+                while codeenter != twopinner.pin:
 
-                if auto != 0:
+                    if tries == 5:
 
-                    auto = 0
+                        print("You got your PIN wrong 5 times.")
 
-        if expl.file == "///?":
+                        time.sleep(LolexToolsOptions.twowait)
 
-            print("Type names from here to enter/select files and folders.")
+                        tries = 0
+
+                    codeenter = int(input("Please enter your current PIN."))
+
+                    os.system(clear)
+
+                    tries = tries + 1
+
+        if verifonboot.twoswapwords == True:
+
+            if LolexToolsOptions.twowordtotal == wordtimetwo:
+
+                wordtimetwo = 1
+
+            else:
+
+                wordtimetwo = wordtimetwo + 1
+
+            if LolexToolsOptions.twowordtotal != 0:
+
+                with open ("./project/old/twoworder.py", "w+") as outf:
+
+                    outf.truncate()
+
+                    outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
+
+                    outf.write(str(wordtimetwo))
+
+                import twoworder
+
+                wordenter = input("Please enter your current password.")
+
+                os.system(clear)
+
+                tries = 1
+
+                while wordenter != twoworder.word:
+
+                    if tries == 5:
+
+                        print("You got your password wrong 5 times.")
+
+                        time.sleep(LolexToolsOptions.twowordwait)
+
+                        tries = 0
+
+                    wordenter = input("Please enter your current password.")
+
+                    os.system(clear)
+
+                    tries = tries + 1
+
+    if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
+
+        with open ("./project/old/verifonboot.py", "w+") as outf:
+
+            outf.truncate()
+
+            outf.write("oneswappins = ")
+
+            outf.write(str(oneswappins))
+
+            outf.write("\ntwoswappins = ")
+
+            outf.write(str(twoswappins))
+
+            outf.write("\nruntimeone = ")
+
+            outf.write(str(runtimeone))
+
+            outf.write("\nruntimetwo = ")
+
+            outf.write(str(runtimetwo))
+
+            outf.write("\nwordtimeone = ")
+
+            outf.write(str(wordtimeone))
+
+            outf.write("\nwordtimetwo = ")
+
+            outf.write(str(wordtimetwo))
+
+            outf.write("\noneswapwords = ")
+
+            outf.write(str(oneswapwords))
+
+            outf.write("\ntwoswapwords = ")
+
+            outf.write(str(twoswapwords))
+
+    useros = LolexToolsMethods.uos.useros
+
+    layout = menusettings.layout
+
+    page = 0
+
+    while True:
+
+        time.sleep(0.1)
+
+        if useros == "Windows":
+
+            startplugins.windowspage(page, menusettings.layout)
+
+        elif useros == "Linux":
+
+            startplugins.linuxpage(page, menusettings.layout)
+
+        elif useros == "Android":
+
+            startplugins.androidpage(page, menusettings.layout)
+
+        modewanted = int(input("Please enter the number of the mode that you want."))
+
+        if useros == "Windows":
+
+            maxmode = 26
+
+        elif useros == "Linux":
+
+            maxmode = 18
+
+        elif useros == "Android":
+
+            maxmode = 16
+
+        if menusettings.layout == 0:
+
+            maxmode = maxmode - 2
+
+        if modewanted > maxmode:
+
+            modewanted = modewanted%maxmode
+
+        while modewanted < 1:
+
+            modewanted = modewanted + maxmode
+
+        if modewanted == 1:
+
+            print("1 = Menu Settings")
+
+            print("2 = Hide modes")
+
+            setting = input("Please enter the group of settings you wish to modify.")
+
+            if setting == "1":
+
+                print(" Modiy Menu Layout")
+
+                if layout != 0:
+
+                    print(" 0 = Default")
+
+                elif layout != 1:
+
+                    print(" 1 = Pages")
+
+                layout = int(input("Please input the number of the setting you wish to apply."))
+
+                with open ("./project/old/menusettings.py", "w+") as outf:
+
+                    outf.truncate()
+
+                    outf.write("layout = ")
+
+                    outf.write(str(layout))
+
+                page = 0
+
+                menusettings.layout = layout
+
+            elif setting == "2":
+
+                print("2 = Restart hidden = ", restartsettings.hidden)
+
+                print("3 = Logoff hidden = ", logoffsettings.hidden)
+
+                print("4 = Hibernate hidden = ", hibernatesettings.hidden)
+
+                print("5 = Shutdown hidden = ", shutdownsettings.hidden)
+
+                print("6 = Call a Python Shell hidden = ", pyshellsettings.hidden)
+
+                print("7 = Create folders hidden = ", foldercreatesettings.hidden)
+
+                print("8 = Remove folders hidden = ", exfoldersettings.hidden)
+
+                print("9 = Create files hidden = ", addfilesettings.hidden)
+
+                print("10 = Restart this script hidden = ", scriptloopsettings.hidden)
+
+                print("11 = Perform arithmetic operations hidden = ", mathmodesettings.hidden)
+
+                print("12 = Lock this script hidden = ", scriptlocksettings.hidden)
+
+                print("13 = Start Installer hidden = ", installerstartsettings.hidden)
+
+                print("14 = Print SystemInfo hidden = ", sysinfosettings.hidden)
+
+                print("15 = Exit hidden = ", exitsettings.hidden)
+
+                chngm = input("Please select the number of the mode.")
+
+                if chngm == "2":
+
+                    startplugins.modehide("restart", restartsettings.hidden)
+
+                elif chngm == "3":
+
+                    startplugins.modehide("logoff", logoffsettings.hidden)
+
+                elif chngm == "4":
+
+                    startplugins.modehide("hibernate", hibernatesettings.hidden)
+
+                elif chngm == "5":
+
+                    startplugins.modehide("shutdown", shutdownsettings.hidden)
+
+                elif chngm == "6":
+
+                    startplugins.modehide("pyshell", pyshellsettings.hidden)
+
+                elif chngm == "7":
+
+                    startplugins.modehide("foldercreate", foldercreatesettings.hidden)
+
+                elif chngm == "8":
+
+                    startplugins.modehide("exfolder", exfoldersettings.hidden)
+
+                elif chngm == "9":
+
+                    startplugins.modehide("addfile", addfilesettings.hidden)
+
+                elif chngm == "10":
+
+                    startplugins.modehide("scriptloop", scriptloopsettings.hidden)
+
+                elif chngm == "11":
+
+                    startplugins.modehide("mathmode", mathmodesettings.hidden)
+
+                elif chngm == "12":
+
+                    startplugins.modehide("scriptlock", scriptlocksettings.hidden)
+
+                elif chngm == "13":
+
+                    startplugins.modehide("installerstart", installerstartsettings.hidden)
+
+                elif chngm == "14":
+
+                    startplugins.modehide("sysinfo", sysinfosettings.hidden)
+
+                elif chngm == "15":
+
+                    startplugins.modehide("exit", exitsettings.hidden)
+
+                os.startfile(LolexToolsMethods.py + "start.py")
+
+                LolexToolsMethods.stopping = True
+
+                startplugins.stopping = True
+
+                os._exit(0)
+
+        elif modewanted == 2:
+
+            startplugins.restart()
+
+        elif (modewanted == 3 and useros != "Android") or (modewanted == 4 and useros == "Windows"):
+
+            startplugins.logoff(modewanted-3)
+
+        elif (modewanted == 5 and useros == "Windows") or (modewanted == 4 and useros == "Linux"):
+
+            startplugins.hibernate()
+
+        elif (modewanted == 6 and useros == "Windows") or (modewanted == 5 and useros == "Linux") or (modewanted == 3 and useros == "Android"):
+
+            startplugins.shutdown(0)
+
+        elif modewanted == 7 and useros == "Windows" :
+
+            startplugins.shutdown(1)
+
+        elif modewanted == 8 and useros == "Windows" :
+
+            startplugins.flicker()
+
+        elif modewanted == 9 and useros == "Windows" :
+
+            subprocess.call("cmd.exe")
+
+        elif modewanted == 10 and useros == "Windows" :
+
+            subprocess.Popen("explorer.exe")
+
+        elif (modewanted == 11 and useros == "Windows") or (modewanted == 6 and useros == "Linux") or (modewanted == 4 and useros == "Android"):
+
+            startplugins.pyshell()
+
+        elif modewanted == 12 and useros == "Windows" :
+
+            subprocess.Popen("taskmgr.exe")
+
+        elif (modewanted == 13 and useros == "Windows") or (modewanted == 7 and useros == "Linux") or (modewanted == 5 and useros == "Android"):
+
+            foldername = input("Please input the name of your new folder.")
+
+            try:
+
+                os.mkdirs(foldername)
+
+                cont = input("Success! Press any key then enter to continue...")
+
+            except(IOError, OSError):
+
+                print("Failed to create folder: ", foldername)
+
+        elif (modewanted == 14 and useros == "Windows") or (modewanted == 8 and useros == "Linux") or (modewanted == 6 and useros == "Android"):
+
+            foldername = input("Please input the name of the folder you wish to delete.")
+
+            try:
+
+                os.rmdir(foldername)
+
+                cont = input("Success! Press any key then enter to continue...")
+
+            except(IOError, OSError):
+
+                print("Folder does not exist!")
+
+        elif (modewanted == 15 and useros == "Windows") or (modewanted == 9 and useros == "Linux") or (modewanted == 7 and useros == "Android"):
+
+            try:
+
+                filename = input("Please enter your file name plus the extension, eg. B.txt.  ")
+
+                open(filename, "a")
+
+                cont = input("Success! Press any key then enter to continue...")
+
+            except(IOError, OSError):
+
+                print("Failed to create file: ",filename)
+
+        elif (modewanted == 16 and useros == "Windows") or (modewanted == 10 and useros == "Linux") or (modewanted == 8 and useros == "Android"):
+
+            startplugins.scriptrestart()
+
+        elif (modewanted == 17 and useros == "Windows") or (modewanted == 11 and useros == "Linux") or (modewanted == 9 and useros == "Android"):
+
+            startplugins.numops()
+
+        elif modewanted == 18  and useros == "Windows" :
+
+            path = input("Please input the full path of the RDP file.")
+
+            if path.endswith(".rdp"):
+
+                os.system(path)
+
+            else:
+
+                print("Not a valid rdp file.")
+
+        elif modewanted == 19 and useros == "Windows" :
+
+            os.system("start powershell")
+
+            # may cause hangs if you're not running the script in Powershell
+
+        elif (modewanted == 20 and useros == "Windows") or (modewanted == 14 and useros == "Linux") or (modewanted == 12 and useros == "Android"):
+
+            startplugins.dumpme()
+
+        elif (modewanted == 21 and useros == "Windows") or (modewanted == 12 and useros == "Linux") or (modewanted == 10 and useros == "Android"):
+
+            startplugins.enterinstall()
+
+        elif (modewanted == 13 and useros == "Linux") or (modewanted == 11 and useros == "Android"):
+
+            startplugins.uptime()
+
+        #elif (modewanted == 23 and useros == "Windows"):
+
+                #print("Checking for updates...")
+
+                #print("Upon prompt for saving the file, please save as Lolex-Tools-master.zip in your Lolex-Tools folder.")
+
+                #if os.system("git clone https://github.com/lolexorg/Lolex-Tools.git") != 0:
+
+                        #continueto = int(input("Git was not found. Please press 1 to initiate webbrowser method or 0 to cancel."))
+
+                        #if continueto == 1:
+
+                                #print("Please save your zip to Lolex-Tools newversion folder.")
+
+                                #os.system(LolexToolsMethods.pyo + "-m webbrowser -t https://github.com/lolexorg/Lolex-Tools/zipball/master")
+
+                                #confirm = input("Press enter to continue...")
+
+                                #try:
+
+                                        #os.remove("./project/old/newversion")
+
+                                #except(IOError, OSError):
+
+                                        #pass
+
+                                #os.mkdirs("./project/old/newversion")
+
+                                #newver = os.listdirs("./project/old/newversion")
+
+        # search for zips instead :P
+
+                                ##zip_ref = zipfile.ZipFile("./project/old/newversion"+newver[0], "r")
+
+                                #print("Extracting...")
+
+                                #zip_ref.extractall("newversion")
+
+                                #zip_ref.close()
+
+        elif (modewanted == 23 and useros == "Windows") or (modewanted == 16 and useros == "Linux") or (modewanted == 14 and useros == "Android"):
+
+            path = os.getcwd()
+
+            startplugins.explorer(0, 1, 1, 0, "/" , 1)
+
+        elif (modewanted == 24 and useros == "Windows") or (modewanted == 17 and useros == "Linux") or (modewanted == 15 and useros == "Android") and menusettings.layout == 1:
+
+            if (page < 5 and useros == "Windows") or (page < 3 and useros == "Linux") or (useros == "Android" and page < 2):
+
+                page = page + 1
+
+            else:
+
+                page = 0
+
+        elif (modewanted == 25 and useros == "Windows") or (modewanted == 18 and useros == "Linux") or (modewanted == 16 and useros == "Android") and menusettings.layout == 1:
+
+            if page > 0:
+
+                page = page - 1
+
+            else:
+
+                if useros == "Windows":
+
+                    page = 5
+
+                elif useros == "Linux":
+
+                    page = 3
+
+                elif useros == "Android":
+
+                    page = 2
+
+        elif (modewanted == 22 and useros == "Windows") or (modewanted == 15 and useros == "Linux") or (modewanted == 13 and useros == "Android"):
+
+            print("Exiting...")
+
+            print("Giving all threads 5 seconds to exit...")
+
+            LolexToolsMethods.stopping = True
+
+            startplugins.stopping = True
 
             time.sleep(5)
 
-        elif expl.file == "///exit":
+            print("MAIN thread: Stopping...")
 
-            if allowexit == 1:
+            os._exit(0)
 
-                return 1;
+except(SyntaxError) as a:
 
-            else:
+    print("Sorry! A SyntaxError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                print("Operation not completed!")
+    print(a)
 
-                time.sleep(5)
+    time.sleep(10)
 
-        elif expl.file != "///s" and expl.file != "///o" and expl.file != ".." and expl.file != "./project/old/":
+except(TypeError) as b:
 
-            o = False
+    print("Sorry! A TypeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-            found = 0
+    print(b)
 
-            arraypos = 0
+    time.sleep(10)
 
-            possibles = []
+except(ValueError) as c:
 
-            if validate(expl.path) == False:
+    print("Sorry! A ValueError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                auto = 1
+    print(c)
 
-            else:
+    time.sleep(10)
 
-                array = os.listdir(expl.path)
+except(IOError) as d:
 
-                arraylen = len(array)
+    print("Sorry! An IOError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                while arraypos < arraylen:
+    print(d)
 
-                    if array[arraypos].lower() == expl.file:
+    time.sleep(10)
 
-                        possibles.append(array[arraypos])
+except(NameError) as e:
 
-                        found = found + 1
+    print("Sorry! A NameError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                    arraypos = arraypos + 1
+    print(e)
 
-                if found == 2:
+    time.sleep(10)
 
-                    if tofinishop == 1 or rtnofiles == 1:
+except(EOFError) as f:
 
-                        which = 1
+    print("Sorry! An EOFError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                    elif rtnofolders == 1:
+    print(f)
 
-                        which = 0
+    time.sleep(10)
 
-                    else:
+except(AttributeError) as g:
 
-                        which = int(input("Please enter 1 for the folder, 0 for the file."))
+    print("Sorry! An AttributeError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                    while which != 1 or which != 0:
+    print(g)
 
-                            which = which - 2
+    time.sleep(10)
 
-                    del possibles[which]
+except(OSError) as h:
 
-                    found = 1
+    print("Sorry! An OSError occured. If this continues to occur, please make an issue on the Github, specifying which file it occured with and what part.")
 
-                if found == 1:
+    print(h)
 
-                    expl.newpath = expl.path + possibles[0]
+    time.sleep(10)
 
-                    if validate(expl.path) == False:
+except(ZeroDivisionError) as j: # not i for for loops
 
-                        auto = 1
+    print("Sorry! A ZeroDivisionError occured. Please do not try to divide by zero.")
 
-                    else:
+    print(j)
 
-                        file = 0
+    time.sleep(10)
 
-                    if os.path.isdir(expl.newpath) == False:
+except(KeyboardInterrupt) as k:
 
-                        file = 1
+    print("User input caused a crash.")
 
-                        try:
+    print(k)
 
-                            open(expl.newpath, "a")
+    # shouldn't be as much of a problem with threads
 
-                        except(IOError, OSError):
+    time.sleep(10)
 
-                            file = 2
-
-                    else:
-
-                        try:
-
-                            os.listdir(expl.newpath + "/")
-
-                        except(IOError, OSError):
-
-                            file = 3
-
-                        if file != 0 and tofinishop == 1:
-
-                            file = 4
-
-                            print("Please select a (valid) folder to complete the operation.")
-
-                            time.sleep(3)
-
-                        if file == 2:
-
-                            print("Could not access file!")
-
-                        elif file == 3:
-
-                            print("Could not access folder!")
-
-                            time.sleep(3)
-
-                        elif file == 1:
-
-                            if rtnofiles != 1:
-
-                                if rtnofiles == -1:
-
-                                    return [expl.path, possibles[0]]
-
-                                return expl.newpath;
-
-                            o = True
-
-                        elif file == 0:
-
-                            expl.newpath = correctpath(expl.newpath)
-
-                            expl.path = expl.newpath
-
-                            if tofinishop == True or rtnofolders == 0:
-
-                                    return expl.path;
-
-                if found == 0 or "~$" in expl.file:
-
-                    print("No such file or directory found!")
-
-                    file = 5
-
-        elif expl.file == "///s" or expl.file == "///o":
-
-            o = True
-
-        expl.newpath = expl.path
-
-        if file == 1:
-
-            expl.newpath = correctfile(expl.newpath)
-
-        if o == True:
-
-            op = 0
-
-            while op != 7:
-
-                if expl.file == "///s":
-
-                    pass
-
-                else:
-
-                    print("\n" + expl.newpath + "\n")
-
-                    print("Here is a list of operations available: \n1 = Delete\n2 = Create file/folder\n3 = Copy file/folder\n4 = Rename file/folder\n7 = Back")
-
-                    op = int(input("Please enter the number of the operation you wish to execute."))
-
-                if op == 0 and expl.file == "///s":
-
-                    search = searchpath(input("Please enter the characters to search for."), expl.path, int(input("Please enter 1 to exlude this name, or 0 to include it.")), int(input("Please enter 1 to only include results with the characters at the end, or 0 to not.")), int(input("Please enter 1 to include folders, or 0 to not.")), int(input("Please enter 1 to include files, or 0 to not,")))
-
-                    if search == "INVALID<>":
-
-                        print("Folder could not be accessed or no return was selected.")
-
-                        time.sleep(3)
-
-                        break;
-
-                    elif searchpath.rtfiles == 1 and searchpath.rtfolders == searchpath.files:
-
-                        if search == "None" or (len(search) == 1 and search[0] == "END_OF_ARRAY<>"):
-
-                            print(search)
-
-                    else:
-
-                        print("Files:")
-
-                        for i in range(0, len(search) - 1):
-
-                            if search[i] != "END_OF_ARRAY<>":
-
-                                print( i + " = " + search[i])
-
-                            elif searchpath.rtfolders == 1:
-
-                                endfiles = i - 1
-
-                                j = i + 1
-
-                                break;
-
-                        print("Folders:")
-
-                        for k in range(j, len(search) - 1):
-
-                                print(k + " = " + search[k])
-
-                elif op == 1:
-
-                    confirm = int(input("Please enter 1 to confirm delete."))
-
-                    if confirm == int(1):
-
-                        if os.path.isdir(expl.newpath) == True:
-
-                            print("Deleting...")
-
-                            try:
-
-                                shutil.rmtree(expl.newpath)
-
-                            except(IOError, OSError) as e:
-
-                                print(e)
-
-                                print("Couldn't delete folder.")
-
-                                time.sleep(3)
-
-                            ### EXITS FOR SOME REASON ON DIR RELOAD
-
-                            op = 7
-
-                            auto = 1
-
-                        else:
-
-                            print("Deleting...")
-
-                            try:
-
-                                os.remove(expl.newpath)
-
-                            except(IOError, OSError) as f:
-
-                                print(f)
-
-                                print("Couldn't delete folder.")
-
-                                time.sleep(3)
-
-                        break;
-
-                elif op == 2:
-
-                        if validatefile(expl.newpath) == True:
-
-                            print("Cannot create files/folders inside files!")
-
-                        else:
-
-                            oq = int(input("1 = Make a folder\n2 = Make a file\nPlease enter the number of the object you would like to create."))
-
-                        class create:
-
-                            if oq == int(1):
-
-                                typ = "folder"
-
-                            elif oq == int(2):
-
-                                typ = "file"
-
-                            else:
-
-                                typ = "folder"
-
-                            newname = input("Please enter the name of your new " + typ + "  ")
-
-                        if oq == int(1):
-
-                            array.append(create.newname)
-
-                            try:
-
-                                print("Creating folder...")
-
-                                os.mkdir(expl.path + create.newname)
-
-                            except(IOError, OSError) as g:
-
-                                print(g)
-
-                                time.sleep(3)
-
-                                del array[len(array) - 1]
-
-                        elif oq == int(2):
-
-                            array.append(create.newname)
-
-                            try:
-
-                                print("Creating file...")
-
-                                open(expl.path + create.newname, "a")
-
-                            except(IOError, OSError) as h:
-
-                                print(h)
-
-                                time.sleep(3)
-
-                                del array[len(array) - 1]
-
-                elif op == 3:
-
-                    class copy:
-
-                        a = explorer(0, 1, 0, "Select a path to paste", 0)
-
-                    if copy.a != 3:
-
-                        if os.path.isdir(expl.newpath):
-
-                            try:
-
-                                shutil.copytree(expl.newpath, a)
-
-                            except(IOError, OSError):
-
-                                print("Could not copy folder!!!")
-
-                                time.sleep(3)
-
-                        elif os.path.isfile(expl.newpath):
-
-                            try:
-
-                                shutil.copy(expl.newpath, a)
-
-                            except(IOError, OSError):
-
-                                print("Could not copy file!!!")
-
-                                time.sleep(3)
-
-                elif op == 4:
-
-                    class rename:
-
-                        c = ""
-
-                    if len(expl.newpath) > 0:
-
-                        b = expl.newpath.split("/")
-
-                        del b[len(b) -1]
-
-                        for i in range(0, len(b) - 1):
-
-                            rename.c = b[i] + "/"
-
-                    try:
-
-                        os.rename(expl.newpath, "/" + rename.c + input("What do you wish the new name to be?"))
-
-                    except(IOError, OSError) as e:
-
-                        print(e)
-
-                        print("Could not rename file/folder!")
-
-                        op = 7                    
-
-                if op == 7:
-
-                    if tofinishop == 1:
-
-                        return expl.path;
-
-                    break;
-
-        if expl.file == "./project/old/":
-
-            expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
-
-            expl.newpath = expl.path
-
-            auto = 1
-
-def addplugins(rewrite):
-
-    if rewrite == True:
-
-        try:
-
-            os.remove("./project/old/startplugins.py")
-
-        except(IOError, OSError):
-
-            pass
-
-        try:
-
-            os.remove("./project/old/startplugins.pyc")
-
-        except(IOError, OSError):
-
-            pass
-
-        w = open("./project/old/startplugins.py", "a")
-
-        w.write("import sys\nsys.path.insert(0, './project/old/lib')\nfrom LolexToolsMethods import *")
-
-    done = "0"
-
-    while done != "1":
-
-        success = True
-
-        print("You will now enter the explorer to choose your plugin.")
-
-        time.sleep(1.5)
-
-        namepath = explorer(0, -1, 1, 0, "/", 0)
-
-        if namepath[1].endswith(".py") != True and namepath[1].endswith(".pyc") != True:
-
-            success = False
-
-        if success == True:
-
-            path = namepath[0]
-
-            name = namepath[1]
-
-            name = name.replace(".py", "")
-
-            name = name.replace(".pyc", "")
-
-            if " " in name or "	" in name or name.count(".") > 1 or "#" in name or "@" in name or "LolexTools" in name or "{" in name or "}" in name or "/" in name or "&" in name or "|" in name:
-
-                print("Plugin name contains an/several characters that are invalid. Could not load plugin.")
-
-            else:
-
-                w.write('\ntry:\n    sys.path.insert("0, ' + path + '")\n    from ' + (str(name)) + ' import *\nexcept(ImportError) as e:\n    print("Could not load plugin ' + name + ' due to the error below.")\n    print(e)')
-
-        done = input("Please enter 1 if you are done, 0 if not.")
+os._exit(0)
