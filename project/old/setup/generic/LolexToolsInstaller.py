@@ -19,428 +19,86 @@
 
 ## authors = Monkeyboy2805
 
-import os, platform, time, random
+import time, os, shutil, io, sys, random
 
-if platform.system() == "Linux":
+if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
 
-    if os.path.isfile("/system/build.prop") == True:
+    IOError = OSError
 
-        clear = "reset"
+try:
 
-    else:
+    try:
 
-        clear = "clear"
+        shutil.rmtree("./project/new/TEST")
 
-else:
+    except(IOError, OSError) as e:
 
-    clear = "cls"
+        print(e)
 
-    a = random.randint(0, 15)
+    os.mkdir("./project/new/TEST")
 
-    choices = "a", "b", "c", "d", "e", "f"
+    users_file = open("./project/new/TEST/users.py", "w+")
 
-    if a > 9:
+    users_file.write("#! python3\n##0\n## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000\n##  0              00     0  0         0           00             00       0      0    0      0   0          0\n##   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000\n##    0            00     0  0         0          0  0            00       0      0    0      0   0              0\n##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000\n##\n## authors = Monkeyboy2805")
 
-        a = choices[a - 10]
+    users_file.truncate()
 
-    b = random.randint(0, 15)
+    users = []
 
-    if b > 9:
+    paths = []
 
-        b = choices[b - 10]
+    done = "0"
 
-    c = (str(a) + (str(b)))
+    while done != "1":
 
-    os.system("color " + (str(c)))
+        valid = True
 
-    #os.system("color 0a")
+        user_name = input("Please enter your desired username.")
 
-    os.system("MODE 1000")
+        if user_name in users:
 
-timings = []
+            print("Username already in use!")
 
-for i in range(0, 24):
+        else:
 
-    timings.append(random.randint(5, 100)//100)
+            users.append(user_name)
 
-print("0")
+            length = len(os.getcwd()) - 1
 
-print(" 0                000000   0         000000     0  0     000000    00000    000000")
+            c = length - random.randint(0, 20)
 
-print("  0              00     0  0         0           00     0      0   00   0   00")
+            if c < 1:
 
-print("   0             00     0  0         00000       00     0      0   00  0    00   00")
+                print("Not enough path space left!")
 
-print("    0            00     0  0         0          0  0    0      0   00    0  00    0")
+                break;
 
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  0000000")
+            folder_string = ""
 
-time.sleep(timings[0])
+            for i in range(0, c):
 
-os.system(clear)
+                b = random.randint(65, 90)
 
-print("0")
+                folder_string = folder_string + ((str(chr(b))))
 
-print(" 0                000000   0         000000     0  0     000000    00000    00000")
+                b = b.randomcase()
 
-print("  0              00     0  0         0           00     0      0   00   0   00")
+        if not os.path.exists("./project/new/TEST/" + (str(folder_string))):
 
-print("   0             00     0  0         00000       00     0      0   00  0    00   0")
+            os.mkdir("./project/new/TEST/" + (str(folder_string)))
 
-print("    0            00     0  0         0          0  0    0      0   00    0  00    ")
+            paths.append(folder_strings)
 
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  000000")
+        done = input("Please enter 1 if you are done adding users.")
 
-time.sleep(timings[1])
+    users_file.write("\nusers = " + (str(users)))
 
-os.system(clear)
+    users_file.write("\npaths = " + (str(paths)))
 
-print("0")
+    users_file.close()
 
-print(" 0                000000   0         000000     0  0     000000    00000    00000")
+except(IOError, OSError) as e:
 
-print("  0              00     0  0         0           00     0      0   00   0   00")
+    print(e)
 
-print("   0             00     0  0         00000       00     0      0   00  0    00   ")
-
-print("    0            00     0  0         0          0  0    0      0   00    0  00    ")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  00000")
-
-time.sleep(timings[2])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    00000    0000")
-
-print("  0              00     0  0         0           00     0      0   00   0   00")
-
-print("   0             00     0  0         00000       00     0      0   00  0    00   ")
-
-print("    0            00     0  0         0          0  0    0      0   00    0  00    ")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  0000")
-
-time.sleep(timings[3])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    00000    000")
-
-print("  0              00     0  0         0           00     0      0   00   0   00")
-
-print("   0             00     0  0         00000       00     0      0   00  0    00")
-
-print("    0            00     0  0         0          0  0    0      0   00    0  00")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  000")
-
-time.sleep(timings[4])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    00000    00")
-
-print("  0              00     0  0         0           00     0      0   00   0   00")
-
-print("   0             00     0  0         00000       00     0      0   00  0    00")
-
-print("    0            00     0  0         0          0  0    0      0   00    0  00")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  00")
-
-time.sleep(timings[5])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    00000    0")
-
-print("  0              00     0  0         0           00     0      0   00   0   0")
-
-print("   0             00     0  0         00000       00     0      0   00  0    0")
-
-print("    0            00     0  0         0          0  0    0      0   00    0  0")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    0  0")
-
-time.sleep(timings[6])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    00000 ")
-
-print("  0              00     0  0         0           00     0      0   00   0")
-
-print("   0             00     0  0         00000       00     0      0   00  0 ")
-
-print("    0            00     0  0         0          0  0    0      0   00    0")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    0")
-
-time.sleep(timings[7])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    00000 ")
-
-print("  0              00     0  0         0           00     0      0   00   ")
-
-print("   0             00     0  0         00000       00     0      0   00  0 ")
-
-print("    0            00     0  0         0          0  0    0      0   00    ")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    ")
-
-time.sleep(timings[8])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    0000")
-
-print("  0              00     0  0         0           00     0      0   00")
-
-print("   0             00     0  0         00000       00     0      0   00   ")
-
-print("    0            00     0  0         0          0  0    0      0   00    ")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00    ")
-
-time.sleep(timings[9])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    000")
-
-print("  0              00     0  0         0           00     0      0   00")
-
-print("   0             00     0  0         00000       00     0      0   00")
-
-print("    0            00     0  0         0          0  0    0      0   00")
-
-print("     0000000      000000   0000000   000000    0    0    000000    00")
-
-time.sleep(timings[10])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000    0")
-
-print("  0              00     0  0         0           00     0      0   0")
-
-print("   0             00     0  0         00000       00     0      0   0")
-
-print("    0            00     0  0         0          0  0    0      0   0")
-
-print("     0000000      000000   0000000   000000    0    0    000000    0")
-
-time.sleep(timings[11])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000")
-
-print("  0              00     0  0         0           00     0      0 ")
-
-print("   0             00     0  0         00000       00     0      0 ")
-
-print("    0            00     0  0         0          0  0    0      0 ")
-
-print("     0000000      000000   0000000   000000    0    0    000000")
-
-time.sleep(timings[12])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000000")
-
-print("  0              00     0  0         0           00     0       ")
-
-print("   0             00     0  0         00000       00     0       ")
-
-print("    0            00     0  0         0          0  0    0       ")
-
-print("     0000000      000000   0000000   000000    0    0    000000")
-
-time.sleep(timings[13])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     00000")
-
-print("  0              00     0  0         0           00     0       ")
-
-print("   0             00     0  0         00000       00     0       ")
-
-print("    0            00     0  0         0          0  0    0       ")
-
-print("     0000000      000000   0000000   000000    0    0    00000")
-
-time.sleep(timings[14])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     0000")
-
-print("  0              00     0  0         0           00     0       ")
-
-print("   0             00     0  0         00000       00     0       ")
-
-print("    0            00     0  0         0          0  0    0       ")
-
-print("     0000000      000000   0000000   000000    0    0    0000")
-
-time.sleep(timings[15])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     000")
-
-print("  0              00     0  0         0           00     0")
-
-print("   0             00     0  0         00000       00     0")
-
-print("    0            00     0  0         0          0  0    0")
-
-print("     0000000      000000   0000000   000000    0    0    000")
-
-time.sleep(timings[16])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     00")
-
-print("  0              00     0  0         0           00     0")
-
-print("   0             00     0  0         00000       00     0")
-
-print("    0            00     0  0         0          0  0    0")
-
-print("     0000000      000000   0000000   000000    0    0    00")
-
-time.sleep(timings[17])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0     ")
-
-print("  0              00     0  0         0           00     0")
-
-print("   0             00     0  0         00000       00     0")
-
-print("    0            00     0  0         0          0  0    0")
-
-print("     0000000      000000   0000000   000000    0    0    ")
-
-time.sleep(timings[18])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0")
-
-print("  0              00     0  0         0           00")
-
-print("   0             00     0  0         00000       00")
-
-print("    0            00     0  0         0          0  0 ")
-
-print("     0000000      000000   0000000   000000    0    0")
-
-time.sleep(timings[19])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0")
-
-print("  0              00     0  0         0           00")
-
-print("   0             00     0  0         00000       00   000000")
-
-print("    0            00     0  0         0          0  0 ")
-
-print("     0000000      000000   0000000   000000    0    0")
-
-time.sleep(timings[20])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0         000000000                          0")
-
-print("  0              00     0  0         0           00             00                              0")
-
-print("   0             00     0  0         00000       00   000000    00                              0")
-
-print("    0            00     0  0         0          0  0            00                              0")
-
-print("     0000000      000000   0000000   000000    0    0           00                              0000000")
-
-time.sleep(timings[21])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0         000000000   00000000    00000000   0")
-
-print("  0              00     0  0         0           00             00       0      0    0      0   0")
-
-print("   0             00     0  0         00000       00   000000    00       0      0    0      0   0")
-
-print("    0            00     0  0         0          0  0            00       0      0    0      0   0")
-
-print("     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000")
-
-time.sleep(timings[22])
-
-os.system(clear)
-
-print("0")
-
-print(" 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000")
-
-print("  0              00     0  0         0           00             00       0      0    0      0   0          0")
-
-print("   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000")
-
-print("    0            00     0  0         0          0  0            00       0      0    0      0   0              0")
-
-print("     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000")
-
-time.sleep(timings[23])
+    print("Something went wrong! Look above for details.")
