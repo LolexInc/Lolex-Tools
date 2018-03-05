@@ -107,7 +107,7 @@ if int(version) == int(PY_VER_OLD.version):
                 for i in range(0, len(file_opened_lines)):
                     if i == len(file_opened_lines):
                         break;
-                    outf.write("\n" + file_opened_lines[i])
+                    outf.write(file_opened_lines[i])
             os.system("git add *")
             os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
             #os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
