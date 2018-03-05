@@ -19,40 +19,14 @@
 
 ## authors = Monkeyboy2805
 
-import os, sys, time
+import os, time
 
-sys.path.insert(0, "./project/old/lib")
+path_name = input("Please input your file name")
 
-try:
+with open(path_name + ".py", "a") as outf:
 
-    import LolexToolsMethods
+    outf.write("#! python3\n##0\n## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000\n##  0              00     0  0         0           00             00       0      0    0      0   0          0\n##   0             00     0  0         00000       00   000000    00       0      0    0      0   0          00000\n##    0            00     0  0         0          0  0            00       0      0    0      0   0              0\n##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000\n##\n## authors = Monkeyboy2805")
 
-except(ImportError):
+print("Created file")
 
-    print("Something went wrong here!")
-
-    try:
-
-        del sys.path[sys.path.index("./project/old/lib")]
-
-    except(ValueError):
-
-        pass
-
-    time.sleep(5)
-
-    exit(0)
-
-try:
-
-    del sys.path[sys.path.index("./project/old/lib")]
-
-except(ValueError):
-
-    pass
-
-print("Nothing available here yet... Entering experimental setup...")
-
-os.system(LolexToolsMethods.pyo + " ./project/new/setup/exp/LolexToolsSetup.py")
-
-LolexToolsMethods.authenticate.login()
+time.sleep(5)
