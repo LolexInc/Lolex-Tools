@@ -7,9 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, time, sys
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-    IOError = OSError
+import time
 path_name = input("Please input your file name")
 try:
     with open(path_name + ".py", "a") as outf:
@@ -21,3 +19,4 @@ except(IOError, OSError) as e:
     exit(0)
 print("Created file")
 time.sleep(5)
+exit(0)
