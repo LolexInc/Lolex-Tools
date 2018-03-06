@@ -15,7 +15,7 @@ class add_user:
         pass
 class authenticate:
     @staticmethod
-    def login(self):
+    def login():
         try:
             sys.path.insert(0, "./project/new/setup/exp/TEST")
             import users
