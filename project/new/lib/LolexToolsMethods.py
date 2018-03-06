@@ -9,12 +9,13 @@
 ## authors = Monkeyboy2805
 import sys, os
 class add_user:
-    def setup_folder():
+    def setup_folder(self):
         pass
-    def add_user_to_file():
+    def add_user_to_file(self):
         pass
 class authenticate:
-    def login():
+    @staticmethod
+    def login(self):
         try:
             sys.path.insert(0, "./project/new/setup/exp/TEST")
             import users
