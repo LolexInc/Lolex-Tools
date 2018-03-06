@@ -13,10 +13,6 @@ try:
     import LolexToolsMethods
 except ImportError:
     print("Something went wrong here!")
-    try:
-        del sys.path[sys.path.index("./project/old/lib")]
-    except ValueError:
-        pass
     time.sleep(5)
     exit(1)
 try:
