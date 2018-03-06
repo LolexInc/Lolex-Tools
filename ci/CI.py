@@ -1,5 +1,4 @@
 #! python3
-#! python3
 ##0
 ## 0                000000   0         000000     0  0         000000000   00000000    00000000   0          000000
 ##  0              00     0  0         0           00             00       0      0    0      0   0          0
@@ -8,19 +7,19 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import os, py_compile, sys, time
-
-version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (
-str(sys.version_info[4]))
+import os
+import py_compile
+import sys
+import time
+version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 sys.path.insert(0, "./ci/build/")
 import PYTHON_VERSION_FOR_AUTO as PY_VER
-
 del sys.path[sys.path.index("./ci/build/")]
 sys.path.insert(0, "../")
 import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
-
+del sys.path[sys.path.index("../")]
 if PY_VER.version < int(version) and sys.version_info[3] == "final":
     os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
     with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
@@ -102,20 +101,20 @@ if int(version) == int(PY_VER_OLD.version):
     for j in range(0, len(files) - 1):
         file_opened = open(files[j], "r+")
         file_opened_lines = file_opened.readlines()
-        if file_opened_lines[0] != "#! python3":
+        if file_opened_lines[0] != "#! python3\n":
             file_opened_lines.insert(0, "#! python3\n")
             file_opened.close()
             os.remove(files[j])
             with open(files[j], "a") as outf:
                 for i in range(0, len(file_opened_lines)):
                     if i == len(file_opened_lines):
-                        break;
+                        break
                     outf.write(file_opened_lines[i])
             os.system("git add *")
-            os.system("git commit -am '[ci skip] Update shebang line in " + currfile + "'")
+            os.system("git commit -am '[ci skip] Update shebang line in " + files[j] + "'")
             # os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
             if os.system("git pull --rebase") != 0:
-                os.system(127)
+                os.system("127")
             os.system("git push")
             file_opened.close()
 c = (str(round(time.time() - b, 0)))
