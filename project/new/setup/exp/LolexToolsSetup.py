@@ -8,8 +8,6 @@
 ##
 ## authors = Monkeyboy2805
 import time, os, shutil, io, sys, random
-if sys.version_info.minor > 6 and (sys.version_info[1] == 7 and sys.version_info[2] == 0 and sys.version_info[3] == "alpha" and sys.version[4] == 0) == False:
-    IOError = OSError
 try:
     try:
         shutil.rmtree("./project/new/TEST")
@@ -33,11 +31,11 @@ try:
             c = length - random.randint(0, 20)
             if c < 1:
                 print("Not enough path space left!")
-                break;
+                break
             folder_string = ""
             for i in range(0, c):
                 b = random.randint(65, 90)
-                folder_string = folder_string + ((str(chr(b))))
+                folder_string = folder_string + str(chr(b))
                 b = b.randomcase()
         if not os.path.exists("./project/new/TEST/" + (str(folder_string))):
             os.mkdir("./project/new/TEST/" + (str(folder_string)))
