@@ -16,7 +16,7 @@ except(IOError, OSError) as e:
     print(e)
     print("Failed to create file!")
     time.sleep(5)
-    exit(0)
+    exit(1)
 print("Created file")
 time.sleep(5)
 exit(0)
