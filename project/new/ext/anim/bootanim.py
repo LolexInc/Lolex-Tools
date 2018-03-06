@@ -9,7 +9,7 @@
 ## authors = Monkeyboy2805
 import os, platform, time, random
 if platform.system() == "Linux":
-    if os.path.isfile("/system/build.prop") == True:
+    if os.path.isfile("/system/build.prop"):
         clear = "reset"
     else:
         clear = "clear"
