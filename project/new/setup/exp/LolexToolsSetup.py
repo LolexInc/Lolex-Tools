@@ -7,7 +7,9 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import time, os, shutil, io, sys, random
+import os
+import shutil
+import random
 try:
     try:
         shutil.rmtree("./project/new/TEST")
@@ -39,7 +41,7 @@ try:
                 b = b.randomcase()
         if not os.path.exists("./project/new/TEST/" + (str(folder_string))):
             os.mkdir("./project/new/TEST/" + (str(folder_string)))
-            paths.append(folder_strings)
+            paths.append(folder_string)
         done = input("Please enter 1 if you are done adding users.")
     users_file.write("\nusers = " + (str(users)))
     users_file.write("\npaths = " + (str(paths)))
