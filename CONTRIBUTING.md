@@ -10,5 +10,5 @@
   - Give us as much information as you can<br>
   - Make sure it isn't a duplicate<br>
   - FILL IN ALL FIELDS PROVIDED!<br>
-  # Any security issues please email us in private at lolexinc2805@gmail.com or message us through out website
+  # Any security issues please email us in private at lolexinc2805@gmail.com or message us through our website
  # Spam will NOT be tolerated and you will recieve a ban!
