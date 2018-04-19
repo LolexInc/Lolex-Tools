@@ -9,6 +9,7 @@ python:
  - "3.6.2"
  - "3.6.3"
  - "3.6.4"
+ - "3.6.5"
 install:
  - git config credential.helper "store --file=.git/credentials"
  - echo $cred > .git/credentials
