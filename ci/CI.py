@@ -14,22 +14,24 @@ import time
 version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
-sys.path.insert(0, "./ci/build/")
-import PYTHON_VERSION_FOR_AUTO as PY_VER
-del sys.path[sys.path.index("./ci/build/")]
-sys.path.insert(0, "../")
-import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
-del sys.path[sys.path.index("../")]
-if PY_VER.version < int(version) and sys.version_info[3] == "final":
-    os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
-    with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
-        outf.write("version = " + str(version))
-        print("Found version was bigger than expected")
-    os.system("git add *")
-    os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
-    if os.system("git pull --rebase") != 0:
-        exit(127)
-    os.system("git push")
+def update_py_ver():
+    sys.path.insert(0, "./ci/build/")
+    import PYTHON_VERSION_FOR_AUTO as PY_VER
+    del sys.path[sys.path.index("./ci/build/")]
+    sys.path.insert(0, "../")
+    import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
+    del sys.path[sys.path.index("../")]
+    if PY_VER.version < int(version) and sys.version_info[3] == "final":
+        os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
+        with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
+            outf.write("version = " + str(version))
+            print("Found version was bigger than expected")
+        os.system("git add *")
+        os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
+        if os.system("git pull --rebase") != 0:
+            exit(127)
+        os.system("git push")
+update_py_ver()
 failers = 0
 b = time.time()
 print("Testing...")
