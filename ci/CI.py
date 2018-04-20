@@ -16,15 +16,15 @@ def get_py_ver():
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 def update_py_ver():
-    sys.path.insert(0, "./ci/build/")
-    import PYTHON_VERSION_FOR_AUTO as PY_VER
-    del sys.path[sys.path.index("./ci/build/")]
+    sys.path.insert(0, "./ci/build/prop")
+    import LATEST_PYTHON_VERSION as PY_VER
+    del sys.path[sys.path.index("./ci/build/prop")]
     sys.path.insert(0, "../")
-    import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
+    import LATEST_PYTHON_VERSION as PY_VER_OLD
     del sys.path[sys.path.index("../")]
     if PY_VER.version < int(get_py_ver()) and sys.version_info[3] == "final":
-        os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
-        with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
+        os.remove("./ci/build/prop/LATEST_PYTHON_VERSION.py")
+        with open("./ci/build/prop/LATEST_PYTHON_VERSION.py", "a") as outf:
             outf.write("version = " + str(get_py_ver()))
             print("Found version was bigger than expected")
         os.system("git add *")
