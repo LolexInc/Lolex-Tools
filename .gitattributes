@@ -1,5 +1,5 @@
 * text=auto
-*.php text eol=lf
+*.py text eol=lf
 *.sh text eol=lf
 *.txt text eol=lf
 *.properties text eol=lf
