@@ -98,28 +98,30 @@ while arraypos < flen:
         fail = True
         failers = failers + 1
     arraypos = arraypos + 1
-if int(get_py_version()) == int(PY_VER_OLD.version):
-    ### Getting RIGHT contents but somehow writing to the wrong files
-    print("Updating headers...")
-    for j in range(0, len(files) - 1):
-        file_opened = open(files[j], "r+")
-        file_opened_lines = file_opened.readlines()
-        if file_opened_lines[0] != "#! python3\n":
-            file_opened_lines.insert(0, "#! python3\n")
-            file_opened.close()
-            os.remove(files[j])
-            with open(files[j], "a") as outf:
-                for i in range(0, len(file_opened_lines)):
-                    if i == len(file_opened_lines):
-                        break
-                    outf.write(file_opened_lines[i])
-            os.system("git add *")
-            os.system("git commit -am '[ci skip] Update shebang line in " + files[j] + "'")
-            # os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
-            if os.system("git pull --rebase") != 0:
-                os.system("127")
-            os.system("git push")
-            file_opened.close()
+def update_headers():
+    if int(get_py_version()) == int(PY_VER_OLD.version):
+        ### Getting RIGHT contents but somehow writing to the wrong files
+        print("Updating headers...")
+        for j in range(0, len(files) - 1):
+            file_opened = open(files[j], "r+")
+            file_opened_lines = file_opened.readlines()
+            if file_opened_lines[0] != "#! python3\n":
+                file_opened_lines.insert(0, "#! python3\n")
+                file_opened.close()
+                os.remove(files[j])
+                with open(files[j], "a") as outf:
+                    for i in range(0, len(file_opened_lines)):
+                        if i == len(file_opened_lines):
+                            break
+                        outf.write(file_opened_lines[i])
+                os.system("git add *")
+                os.system("git commit -am '[ci skip] Update shebang line in " + files[j] + "'")
+                # os.system("git branch $TRAVIS_BUILD_NUMBER AUTOMATION")
+                if os.system("git pull --rebase") != 0:
+                    os.system("127")
+                os.system("git push")
+                file_opened.close()
+update_headers()
 c = (str(round(time.time() - b, 0)))
 c.replace("-", "")
 print("Tests complete in " + c + " seconds")
