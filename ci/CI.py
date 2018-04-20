@@ -11,7 +11,8 @@ import os
 import py_compile
 import sys
 import time
-version = (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
+def get_py_ver():
+    return (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
 a = time.time()
 print("CI version 3.0.0 PRERELEASE")
 def update_py_ver():
@@ -21,13 +22,13 @@ def update_py_ver():
     sys.path.insert(0, "../")
     import PYTHON_VERSION_FOR_AUTO as PY_VER_OLD
     del sys.path[sys.path.index("../")]
-    if PY_VER.version < int(version) and sys.version_info[3] == "final":
+    if PY_VER.version < int(get_py_ver()) and sys.version_info[3] == "final":
         os.remove("./ci/build/PYTHON_VERSION_FOR_AUTO.py")
         with open("./ci/build/PYTHON_VERSION_FOR_AUTO.py", "a") as outf:
-            outf.write("version = " + str(version))
+            outf.write("version = " + str(get_py_ver()))
             print("Found version was bigger than expected")
         os.system("git add *")
-        os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(version) + "'")
+        os.system("git commit -am '[ci skip] Update python version in ci/build to " + str(get_py_ver()) + "'")
         if os.system("git pull --rebase") != 0:
             exit(127)
         os.system("git push")
@@ -97,7 +98,7 @@ while arraypos < flen:
         fail = True
         failers = failers + 1
     arraypos = arraypos + 1
-if int(version) == int(PY_VER_OLD.version):
+if int(get_py_version()) == int(PY_VER_OLD.version):
     ### Getting RIGHT contents but somehow writing to the wrong files
     print("Updating headers...")
     for j in range(0, len(files) - 1):
