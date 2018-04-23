@@ -11,7 +11,7 @@ import sys
 sys.path.insert(0, "./ci/lib/")
 import LolexToolsCIlib
 del sys.path[sys.path.index("./ci/lib/")]
-sys.path.insert("./ci/build/prop/")
+sys.path.insert(0, "./ci/build/prop/")
 import LATEST_PYTHON_VERSION
 del sys.path.index[sys.path.index("./ci/build/prop/")]
 if int(LATEST_PYTHON_VERSION.version) == int(LolexToolsCIlib.get_py_ver()):
