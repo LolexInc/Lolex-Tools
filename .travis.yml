@@ -19,4 +19,4 @@ script:
  - python ./ci/CI.py
  - git reset --hard
  - git checkout $TRAVIS_BRANCH
- - python ./ci/build/update/CIRepoAutoUpdate
+ - python ./ci/build/update/CIRepoAutoUpdate.py
