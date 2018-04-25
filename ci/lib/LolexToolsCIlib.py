@@ -28,7 +28,7 @@ def update_py_ver():
             exit(127)
         os.system("git push")
 def update_headers():
-    if int(get_py_version()) == int(PY_VER_OLD.version):
+    if int(get_py_ver()) == int(PY_VER_OLD.version):
         ### Getting RIGHT contents but somehow writing to the wrong files
         print("Updating headers...")
         for j in range(0, len(files) - 1):
