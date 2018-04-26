@@ -82,7 +82,7 @@ def get_file_folders():
     if fail == True:
         print(str(failers) + " files failed to compile")
         exit(1)
+get_file_folders()
 c = (str(round(time.time() - b, 0)))
 c.replace("-", "")
 print("Tests complete in " + c + " seconds")
-get_file_folders()
