@@ -28,6 +28,7 @@ def update_headers():
     if int(get_py_ver()) == int(PY_VER.version):
         ### Getting RIGHT contents but somehow writing to the wrong files
         print("Updating headers...")
+        files = get_file_folders()
         for j in range(0, len(files) - 1):
             file_opened = open(files[j], "r+")
             file_opened_lines = file_opened.readlines()
@@ -114,3 +115,4 @@ def get_file_folders():
     if fail == True:
         print(str(failers) + " files failed to compile")
         exit(1)
+    return files;
