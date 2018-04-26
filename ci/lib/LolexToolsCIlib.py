@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import sys, os
+import sys, os, py_compile
 sys.path.insert(0, "./ci/build/prop")
 import LATEST_PYTHON_VERSION as PY_VER
 del sys.path[sys.path.index("./ci/build/prop")]
