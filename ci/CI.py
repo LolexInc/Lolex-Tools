@@ -18,7 +18,7 @@ import LolexToolsCIlib
 del sys.path[sys.path.index("./ci/lib/")]
 b = time.time()
 print("Testing...")
-LolexToolsCIlib.get_file_folders()
+LolexToolsCIlib.compile_files(LolexToolsCIlib.get_file_folders())
 c = (str(round(time.time() - b, 0)))
 c.replace("-", "")
 print("Tests complete in " + c + " seconds")
