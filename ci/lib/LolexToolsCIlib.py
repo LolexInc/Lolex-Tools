@@ -99,6 +99,8 @@ def get_file_folders():
                         folders.append(path + currsub[tarraypos])
             tarraypos = tarraypos + 1
         arraypos = arraypos + 1
+    return files;
+def compile_files(files):
     flen = len(files)
     arraypos = 0
     print("Compiling...")
@@ -115,4 +117,3 @@ def get_file_folders():
     if fail == True:
         print(str(failers) + " files failed to compile")
         exit(1)
-    return files;
