@@ -8,15 +8,12 @@
 ##
 ## authors = Monkeyboy2805
 import sys, os
+sys.path.insert(0, "./ci/build/prop")
+import LATEST_PYTHON_VERSION as PY_VER
+del sys.path[sys.path.index("./ci/build/prop")]
 def get_py_ver():
     return (str(sys.version_info[0])) + (str(sys.version_info[1])) + (str(sys.version_info[2])) + (str(sys.version_info[4]))
 def update_py_ver():
-    sys.path.insert(0, "./ci/build/prop")
-    import LATEST_PYTHON_VERSION as PY_VER
-    del sys.path[sys.path.index("./ci/build/prop")]
-    sys.path.insert(0, "../Lolex-Tools-original")
-    import LATEST_PYTHON_VERSION as PY_VER_OLD
-    del sys.path[sys.path.index("../Lolex-Tools-original")]
     if PY_VER.version < int(get_py_ver()) and sys.version_info[3] == "final":
         os.remove("./ci/build/prop/LATEST_PYTHON_VERSION.py")
         with open("./ci/build/prop/LATEST_PYTHON_VERSION.py", "a") as outf:
@@ -28,7 +25,7 @@ def update_py_ver():
             exit(127)
         os.system("git push")
 def update_headers():
-    if int(get_py_ver()) == int(PY_VER_OLD.version):
+    if int(get_py_ver()) == int(PY_VER.version):
         ### Getting RIGHT contents but somehow writing to the wrong files
         print("Updating headers...")
         for j in range(0, len(files) - 1):
