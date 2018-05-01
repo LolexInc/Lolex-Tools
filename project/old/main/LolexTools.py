@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
+import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib, getpass
 sys.path.insert(0, "./project/old/lib/")
 try:
     import LolexToolsMethods
@@ -135,7 +135,7 @@ try:
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
                 outf.write(str(runtimeone))
             import onepinner
-            codeenter = int(input("Please enter your current PIN."))
+            codeenter = int(getpass.getpass("Please enter your current PIN."))
             os.system(clear)
             tries = 1
             if codeenter != onepinner.pin:
@@ -144,7 +144,7 @@ try:
                         print("You got your PIN wrong 5 times.")
                         time.sleep(LolexToolsOptions.onewait)
                         tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
+                    codeenter = int(getpass.getpass("Please enter your current PIN."))
                     os.system(clear)
                     tries = tries + 1
         if verifonboot.oneswapwords == True:
@@ -157,7 +157,7 @@ try:
                     outf.truncate()
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.oneword")
                     outf.write(str(wordtimeone))
-                wordenter = input("Please enter your current password.")
+                wordenter = getpass.getpass("Please enter your current password.")
                 os.system(clear)
                 tries = 1
                 while wordenter != oneworder.word:
@@ -165,7 +165,7 @@ try:
                         print("You got your password wrong 5 times.")
                         time.sleep(LolexToolsOptions.onewordwait)
                         tries = 0
-                    wordenter = input("Please enter your current password.")
+                    wordenter = getpass.getpass("Please enter your current password.")
                     os.system(clear)
                     tries = tries + 1
     elif LolexToolsOptions.username2 == usernameenter:
@@ -179,7 +179,7 @@ try:
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
                 outf.write(str(runtimetwo))
             import twopinner
-            codeenter = int(input("Please enter your current PIN."))
+            codeenter = int(getpass.getpass("Please enter your current PIN."))
             os.system(clear)
             tries = 1
             if codeenter != twopinner.pin:
@@ -188,7 +188,7 @@ try:
                         print("You got your PIN wrong 5 times.")
                         time.sleep(LolexToolsOptions.twowait)
                         tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
+                    codeenter = int(getpass.getpass("Please enter your current PIN."))
                     os.system(clear)
                     tries = tries + 1
         if verifonboot.twoswapwords == True:
@@ -202,7 +202,7 @@ try:
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
                     outf.write(str(wordtimetwo))
                 import twoworder
-                wordenter = input("Please enter your current password.")
+                wordenter = getpass.getpass("Please enter your current password.")
                 os.system(clear)
                 tries = 1
                 while wordenter != twoworder.word:
@@ -210,7 +210,7 @@ try:
                         print("You got your password wrong 5 times.")
                         time.sleep(LolexToolsOptions.twowordwait)
                         tries = 0
-                    wordenter = input("Please enter your current password.")
+                    wordenter = getpass.getpass("Please enter your current password.")
                     os.system(clear)
                     tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
