@@ -66,8 +66,8 @@ try:
                 username1 = input("Please set your username.")
                 confirm = input("Please confirm your username.")
                 while username1 != confirm:
-                        username1 = input("Your usernames didn't match. Please set your username.")
-                        confirm = input("Please confirm your username.")
+                        username1 = getpass.getpass("Your usernames didn't match. Please set your username.")
+                        confirm = getpass.getpass("Please confirm your username.")
         onepins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
         if onepins == 0:
                 onepintotal = 0
@@ -75,11 +75,11 @@ try:
                 onepintotal = 1
         done = 1
         while onepintotal < onepins + 1 and onepins != 0 and done != 0:
-                onepin = int(input("Please set your PIN."))
-                confirm = int(input("Please confirm your PIN."))
+                onepin = int(getpass.getpass("Please set your PIN."))
+                confirm = int(getpass.getpass("Please confirm your PIN."))
                 while onepin != confirm:
-                        onepin = int(input("Please set your PIN so it matches."))
-                        confirm = int(input("Please confirm your PIN."))
+                        onepin = int(getpass.getpass("Please set your PIN so it matches."))
+                        confirm = int(getpass.getpass("Please confirm your PIN."))
                         with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                                 outf.write("\nonepin")
                                 outf.write(str(onepintotal))
@@ -113,11 +113,11 @@ try:
                 onewordtotal = 1
         done = 1
         while onewordtotal < onewords + 1 and onewords != 0 and done != 0:
-                oneword = input("Please set your password.")
-                confirm = input("Please confirm your password.")
+                oneword = getpass.getpass("Please set your password.")
+                confirm = getpass.getpass("Please confirm your password.")
                 while oneword != confirm:
-                        oneword = input("Please set your password so it matches.")
-                        confirm = input("Please confirm your password.")
+                        oneword = getpass.getpass("Please set your password so it matches.")
+                        confirm = getpass.getpass("Please confirm your password.")
                 with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                         outf.write("\noneword")
                         outf.write(str(onewordtotal))
@@ -149,11 +149,11 @@ try:
                         onewordwait = float(input("Less than 0 or more than 4194304 seconds is invalid. Please enter a valid number of seconds."))
         if howmanyunames > 1:
                 print("Setting up user 2...")
-                username2 = input("Please set your username.")
-                confirm = input("Please confirm your username.")
+                username2 = getpass.getpass("Please set your username.")
+                confirm = getpass.getpass("Please confirm your username.")
                 while username2 != confirm or username2 == username1:
-                        username2 = input("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")
-                        confirm = input("Please confirm your username.")
+                        username2 = getpass.getpass("Sorry! Your usernames didn't match or is already in use!\nPlease set your username.")
+                        confirm = getpass.getpass("Please confirm your username.")
                 twopins = int(input("How many PINs do you wish to use?\nUsing more than 1 will enable a swap PINs function.\nThis, upon each startup, will use your next PIN."))
                 if twopins == 0:
                         twopintotal = 0
@@ -161,11 +161,11 @@ try:
                         twopintotal = 1
                 done = 1
                 while twopintotal < twopins + 1 and twopins != 0 and done != 0:
-                        twopin = int(input("Please set your PIN."))
-                        confirm = int(input("Please confirm your PIN."))
+                        twopin = int(getpass.getpass("Please set your PIN."))
+                        confirm = int(getpass.getpass("Please confirm your PIN."))
                         while twopin != confirm:
-                                twopin = int(input("Please set your PIN so it matches."))
-                                confirm = int(input("Please confirm your PIN."))
+                                twopin = int(getpass.getpass("Please set your PIN so it matches."))
+                                confirm = int(getpass.getpass("Please confirm your PIN."))
                                 with open ("./project/old/LolexToolsOptions.py","a") as outf:
                                         outf.write("\ntwopin")
                                         outf.write(str(twopintotal))
@@ -198,11 +198,11 @@ try:
                         twowordtotal = 1
                 done = 1
                 while twowordtotal < twowords + 1 and twowords != 0 and done != 0:
-                        twoword = input("Please set your password.")
-                        confirm = input("Please confirm your password.")
+                        twoword = getpass.getpass("Please set your password.")
+                        confirm = getpass.getpass("Please confirm your password.")
                         while twoword != confirm:
-                                twoword = input("Please set your password so it matches.")
-                                confirm = input("Please confirm your password.")
+                                twoword = getpass.getpass("Please set your password so it matches.")
+                                confirm = getpass.getpass("Please confirm your password.")
                                 with open ("./project/old/LolexToolsOptions.py", "a") as outf:
                                         outf.write("\ntwoword")
                                         outf.write(str(twowordtotal))
