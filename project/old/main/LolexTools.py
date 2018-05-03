@@ -7,7 +7,7 @@
 ##     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 ##
 ## authors = Monkeyboy2805
-import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib
+import threading, sys, time, subprocess, os, shutil, py_compile, platform, zipfile, importlib, getpass
 sys.path.insert(0, "./project/old/lib/")
 try:
     import LolexToolsMethods
@@ -32,8 +32,8 @@ restart = False
 try:
     import menusettings
 except(ImportError):
-    LolexToolsMethods.bak("menusettings", "./project/old/", 0, 0, 1)
-    restart = True
+    class menusettings:
+        layout = 0
 try:
     import exitsettings
 except(ImportError):
@@ -42,15 +42,71 @@ except(ImportError):
 if restart == True:
     os.system(LolexToolsMethods.py + "start.py")
 try:
-    import verifonboot, restartsettings, logoffsettings, hibernatesettings, exitsettings, shutdownsettings
+    import verifonboot
 except(ImportError, SyntaxError, TabError) as e:
     print(e)
     os.system(LolexToolsMethods.py + "project" + LolexToolsMethods.s + "old" + LolexToolsMethods.s + "setup" + LolexToolsMethods.s + "generic" + LolexToolsMethods.s + "LolexToolsInstaller.py")
     os._exit(0)
 try:
-    import pyshellsettings, foldercreatesettings, exfoldersettings, addfilesettings, scriptloopsettings, mathmodesettings, scriptlocksettings, menusettings
-except(ImportError, SyntaxError, TabError) as e:
-    print(e)
+    import restartsettings
+except(ImportError):
+    class restartsettings:
+        hidden = False
+try:
+    import logoffsettings:
+except(ImportError):
+    class logoffsettings:
+        hidden = False
+try:
+    import hibernatesettings
+except(ImportError):
+    class hibernatesettings:
+        hidden = False
+try:
+    import exitsettings
+except(importError):
+    class exitsettings:
+        hidden = False
+try:
+    import shutdownsettings
+except(ImportError):
+    class shutdownsettings:
+        hidden = False
+try:
+    import pyshellsettings
+except(ImportError):
+    class pyshellsettings:
+        hidden = False
+try:
+    import foldercreatesettings
+except(ImportError):
+    class foldercreatesettings:
+        hidden = False
+try:
+    import exfoldersettings
+except(ImportError):
+    class exfoldersettings:
+        hidden = False
+try:
+    import addfilesettings
+except(ImportError):
+    class addfilesettings:
+        hidden = False
+try:
+    import scriptloopsettings
+except(ImportError):
+    class scriptloopsettings:
+        hidden = False
+try:
+    import mathmodesettings
+except(ImportError):
+    class mathmodesettings:
+        hidden = False
+try:
+    import scriptlocksettings
+except(ImportError):
+    class scriptlocksettings:
+        hidden = False
 try:
     import theme
 except(ImportError) as e:
@@ -135,7 +191,7 @@ try:
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.onepin")
                 outf.write(str(runtimeone))
             import onepinner
-            codeenter = int(input("Please enter your current PIN."))
+            codeenter = int(getpass.getpass("Please enter your current PIN."))
             os.system(clear)
             tries = 1
             if codeenter != onepinner.pin:
@@ -144,7 +200,7 @@ try:
                         print("You got your PIN wrong 5 times.")
                         time.sleep(LolexToolsOptions.onewait)
                         tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
+                    codeenter = int(getpass.getpass("Please enter your current PIN."))
                     os.system(clear)
                     tries = tries + 1
         if verifonboot.oneswapwords == True:
@@ -179,7 +235,7 @@ try:
                 outf.write("import LolexToolsOptions\npin = LolexToolsOptions.twopin")
                 outf.write(str(runtimetwo))
             import twopinner
-            codeenter = int(input("Please enter your current PIN."))
+            codeenter = int(getpass.getpass("Please enter your current PIN."))
             os.system(clear)
             tries = 1
             if codeenter != twopinner.pin:
@@ -188,7 +244,7 @@ try:
                         print("You got your PIN wrong 5 times.")
                         time.sleep(LolexToolsOptions.twowait)
                         tries = 0
-                    codeenter = int(input("Please enter your current PIN."))
+                    codeenter = int(getpass.getpass("Please enter your current PIN."))
                     os.system(clear)
                     tries = tries + 1
         if verifonboot.twoswapwords == True:
@@ -202,7 +258,7 @@ try:
                     outf.write("import LolexToolsOptions\nword = LolexToolsOptions.twoword")
                     outf.write(str(wordtimetwo))
                 import twoworder
-                wordenter = input("Please enter your current password.")
+                wordenter = getpass.getpass("Please enter your current password.")
                 os.system(clear)
                 tries = 1
                 while wordenter != twoworder.word:
@@ -210,7 +266,7 @@ try:
                         print("You got your password wrong 5 times.")
                         time.sleep(LolexToolsOptions.twowordwait)
                         tries = 0
-                    wordenter = input("Please enter your current password.")
+                    wordenter = getpass.getpass("Please enter your current password.")
                     os.system(clear)
                     tries = tries + 1
     if (verifonboot.runtimeone != runtimeone) or (verifonboot.runtimetwo != runtimetwo) or (verifonboot.oneswappins != oneswappins) or (verifonboot.twoswappins != twoswappins) or (verifonboot.wordtimeone != wordtimeone) or (wordtimetwo != verifonboot.wordtimetwo) or (oneswapwords != verifonboot.oneswapwords) or (twoswapwords != verifonboot.twoswapwords):
