@@ -49,7 +49,6 @@ def update_headers():
                 os.system("git push")
                 file_opened.close()
 def get_file_folders():
-    failers = 0
     folders = []
     files = []
     root = os.listdir("./")
@@ -101,6 +100,7 @@ def get_file_folders():
         arraypos = arraypos + 1
     return files;
 def compile_files(files):
+    failers = 0
     flen = len(files)
     arraypos = 0
     print("Compiling...")
