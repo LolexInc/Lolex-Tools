@@ -53,7 +53,7 @@ except(ImportError):
     class restartsettings:
         hidden = False
 try:
-    import logoffsettings:
+    import logoffsettings
 except(ImportError):
     class logoffsettings:
         hidden = False
