@@ -117,3 +117,7 @@ def compile_files(files):
     if fail == True:
         print(str(failers) + " files failed to compile")
         exit(1)
+def inactivity_reset():
+    os.remove("./ci/build/stats.py")
+    with open("./ci/build/stats.py", "a") as outf:
+        outf.write("inactivity = 0")
