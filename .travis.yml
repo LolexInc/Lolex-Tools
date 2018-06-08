@@ -7,4 +7,4 @@ install:
 script:
  - git config --global user.email "monkeyboy2805@gmail.com"
  - git config --global user.name "monkeyboy2805"
- - python ./ci/LolexUKupdate.py
+ - python ./ci/LolexUK.py
