@@ -1,10 +1,8 @@
 import time, os
 a = time.asctime(time.localtime(time.time())).split()
-if a[1] == “Aug” and a[2] == “1”:
-	os.remove(“./README.md”)
-	os.rename(“./README.md.new”, “./README.md”)
-	os.remove(“./.travis.yml”)
-	os.rename(“./.travis.yml.old”, “./travis.yml”)
-	os.remove(“./ci/LolexUK.py”)
-
-
+if a[1] == â€œAugâ€ and a[2] == â€œ1â€:
+	os.remove(â€œ./README.mdâ€)
+	os.rename(â€œ./README.md.newâ€, â€œ./README.mdâ€)
+	os.remove(â€œ./.travis.ymlâ€)
+	os.rename(â€œ./.travis.yml.oldâ€, â€œ./travis.ymlâ€)
+	os.remove(â€œ./ci/LolexUK.pyâ€)
