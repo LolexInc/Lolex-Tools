@@ -6,3 +6,6 @@ if a[1] == “Aug” and a[2] == “1”:
 	os.remove(“./.travis.yml”)
 	os.rename(“./.travis.yml.old”, “./travis.yml”)
 	os.remove(“./ci/LolexUK.py”)
+	os.system("git add *")
+	os.system("git commit -am 'Official update to the LolexUK name'")
+	os.system("git push")
