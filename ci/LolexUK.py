@@ -1,6 +1,6 @@
 import time, os
 a = time.asctime(time.localtime(time.time())).split()
-if a[1] == "Jun" and a[2] == "11":
+if a[1] == "Aug" and a[2] == "1":
 	os.remove("./README.md")
 	os.rename("./README.md.new", "./README.md")
 	os.remove("./.travis.yml")
