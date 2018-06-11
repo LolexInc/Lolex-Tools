@@ -7,4 +7,5 @@ install:
 script:
  - git config --global user.email "monkeyboy2805@gmail.com"
  - git config --global user.name "monkeyboy2805"
+ - git checkout $TRAVIS_BRANCH
  - python ./ci/LolexUK.py
