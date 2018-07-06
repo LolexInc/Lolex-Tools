@@ -17,6 +17,6 @@ del sys.path[sys.path.index("./ci/build/prop/")]
 if int(LATEST_PYTHON_VERSION.version) == int(LolexToolsCIlib.get_py_ver()):
     LolexToolsCIlib.update_py_ver()
     LolexToolsCIlib.update_headers()
-    LolexToolsCILib.inactivity_reset()
+    LolexToolsCIlib.inactivity_reset()
 else:
     exit(0)
