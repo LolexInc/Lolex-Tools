@@ -1,4 +1,4 @@
-# Lolex Tools CopyLeft (c<-)2014-2018 LolexOrg
+# Lolex Tools CopyLeft (c<-)2014-2018 LolexUK
 # This is : Lolex-Tools VERSION 10 pre-nightly (dual project version)
 
 # DO NOT USE THIS VERSION YET!!! THIS STILL USES THE 9.X FORMAT WHICH WILL NOT BE SUPPORTED (in the old version of the project)
