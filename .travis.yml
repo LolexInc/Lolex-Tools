@@ -4,6 +4,7 @@ python:
 install:
  - git config credential.helper "store --file=.git/credentials"
  - echo $cred > .git/credentials
+ - git checkout -b LolexUK_official
 script:
  - git config --global user.email "monkeyboy2805@gmail.com"
  - git config --global user.name "monkeyboy2805"
