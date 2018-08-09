@@ -1,2 +1,1 @@
-#! python3
-version = 3650
+version = 3700
