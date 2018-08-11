@@ -1,3 +1,4 @@
+#! python3
 import os, time
 proxy = input("Enter Y if you are using a proxy or enter anything else if you aren't or you don't know what this means. ")
 if proxy == "Y":
