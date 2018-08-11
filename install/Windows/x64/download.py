@@ -14,3 +14,4 @@ for i in range(0, len(a) - 1):
 		os.rename("./" + a[i], "./Lolex-Tools")
 os.remove("./install.bat")
 os.remove("./package.zip")
+os.rename("./Lolex-Tools/start.bat", "./start.bat")
