@@ -11,3 +11,5 @@ a = os.listdir("./")
 for i in range(0, len(a) - 1):
 	if "Lolex-Tools" in a[i]:
 		os.rename("./" + a[i], "./Lolex-Tools")
+os.remove("./install.bat")
+os.remove("./package.zip")
