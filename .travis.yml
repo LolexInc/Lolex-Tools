@@ -1,7 +1,6 @@
 language: python
 python: 3.7
 dist: debian
-sudo: true
 install:
  - git config credential.helper "store --file=.git/credentials"
  - echo $cred > .git/credentials
