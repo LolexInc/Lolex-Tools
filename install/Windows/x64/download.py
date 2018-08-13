@@ -15,3 +15,5 @@ for i in range(0, len(a) - 1):
 os.remove("./install.bat")
 os.remove("./package.zip")
 os.rename("./Lolex-Tools/start.bat", "./start.bat")
+with open("./Lolex-Tools/PYTHONPATH.py") as outf:
+	outf.write("python_at = r".\python\python")
