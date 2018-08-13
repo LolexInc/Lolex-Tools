@@ -1,6 +1,6 @@
 language: python
 python: 3.7
-dist: cebian
+dist: debian
 sudo: true
 install:
  - git config credential.helper "store --file=.git/credentials"
