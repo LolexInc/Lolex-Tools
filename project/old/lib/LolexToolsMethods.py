@@ -10,7 +10,7 @@
 import os, time, py_compile, shutil, sys, platform, threading, subprocess, random
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 s = os.sep
-sys.path.insert(0, "./project/old/")
+sys.path.insert(0, "./Lolex-Tools/project/old/")
 if platform.system() == "Windows":
     if sys.version_info.minor > 5:
         py = "py ." + os.sep
@@ -558,10 +558,10 @@ def uptime():
         os.system("uptime")
 def compiler(name):
     try:
-        os.remove("./project/old/" + name + ".pyc")
+        os.remove("./Lolex-Tools/project/old/" + name + ".pyc")
     except(IOError):
         pass
-    py_compile.compile(name + ".py", "./project/old/" + name + ".pyc")
+    py_compile.compile(name + ".py", "./Lolex-Tools/project/old/" + name + ".pyc")
     os.remove("./project/old/" + name + ".py")
 def modehide(name, state):
     if state == False:
@@ -569,11 +569,11 @@ def modehide(name, state):
     else:
         newstate = False
     try:
-        os.remove("./project/old/" + name + ".py")
-        os.remove("./project/old/" + name + ".pyc")
+        os.remove("./Lolex-Tools/project/old/" + name + ".py")
+        os.remove("./Lolex-Tools/project/old/" + name + ".pyc")
     except(IOError):
         pass
-    with open ("./project/old/" + name + "settings.py","a") as outf: 
+    with open ("./Lolex-Tools/project/old/" + name + "settings.py","a") as outf: 
         outf.write("hidden = ")
         outf.write(str(newstate))
 def bak(name, path, reinstall, attrestore, regenerate):
@@ -621,7 +621,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
             twoswapwords = True
         else:
             twoswapwords = False
-        with open ("./project/old/verifonboot.py", "a") as outf:
+        with open ("./Lolex-Tools/project/old/verifonboot.py", "a") as outf:
             outf.write("compiledon = ")
             outf.write(str(ver.version))
             outf.write("\nruntimeone = 0\nruntimetwo = 0\nwordtimeone = 0\nwordtimetwo = 0")
@@ -635,17 +635,17 @@ def bak(name, path, reinstall, attrestore, regenerate):
             outf.write(str(twoswapwords))
     elif name == "theme":
         # will add theme changing at some point
-        with open ("./project/old/theme.py", "a") as outf: pass
+        with open ("./Lolex-Tools/project/old/theme.py", "a") as outf: pass
     elif name == "startplugins":
         # will add ability to add plugins at some point
-        with open ("./project/old/startplugins.py", "a") as outf: pass
+        with open ("./Lolex-Tools/project/old/startplugins.py", "a") as outf: pass
     if name == "verifonboot" or name == "theme" or name == "startplugins":
         if LolexToolsOptions.compiler == True:
             compiler(name + ".py")
         # os.system(py + "main" + s + "LolexTools.py")
         #exit(None)
     elif attrestore == 1:
-        backup = os.listdir("./project/old/Backup")
+        backup = os.listdir("./Lolex-Tools/project/old/Backup")
         arraypos = 0
         found = False
         while arraypos < len(backup):
@@ -654,7 +654,7 @@ def bak(name, path, reinstall, attrestore, regenerate):
             while tarraypos < len(backup):
                 if name + ".pyc" in currsub[tarraypos] and (".pycnotpy" + (str(sys.version_info[0])) + (str(sys.version_info[1])) in currsub[tarraypos]) == False:
                     found = True
-                    os.rename("./project/old/Backup" + backup[arraypos] + cursub[tarraypos], "./project/old/" + name + ".pyc")
+                    os.rename("./Lolex-Tools/project/old/Backup" + backup[arraypos] + cursub[tarraypos], "./Lolex-Tools/project/old/" + name + ".pyc")
                     if LolexToolsOptions.compiler == True:
                         compiler(name + ".py")
                     #os.system(py + "main" + s + "LolexTools.py")
@@ -813,7 +813,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
         array = os.listdir(expl.path)
         expl.loaded = True
         time.sleep(1.5)
-        print("\n\n///o - " + otext + "\n./project/old/ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
+        print("\n\n///o - " + otext + "\n./Lolex-Tools/project/old/ - Go to the CWD\n/// - Reload\n///? - Help\n.. - Up a level\n///exit - " + exittext + "\n///s - Search for files/folders in this directory")
         for i in range(0, len(array)):
             if i == len(array):
                 break
@@ -874,7 +874,7 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
             else:
                 print("Operation not completed!")
                 time.sleep(5)
-        elif expl.file != "///s" and expl.file != "///o" and expl.file != ".." and expl.file != "./project/old/":
+        elif expl.file != "///s" and expl.file != "///o" and expl.file != ".." and expl.file != "./Lolex-Tools/project/old/":
             o = False
             found = 0
             arraypos = 0
@@ -1063,22 +1063,22 @@ def explorer(tofinishop, rtnofiles, rtnofolders, otext, path, allowexit):
                     if tofinishop == 1:
                         return expl.path;
                     break;
-        if expl.file == "./project/old/":
+        if expl.file == "./Lolex-Tools/project/old/":
             expl.path = expl.path.replace(expl.path, os.getcwd() + "/")
             expl.newpath = expl.path
             auto = 1
 def addplugins(rewrite):
     if rewrite == True:
         try:
-            os.remove("./project/old/startplugins.py")
+            os.remove("./Lolex-Tools/project/old/startplugins.py")
         except(IOError, OSError):
             pass
         try:
-            os.remove("./project/old/startplugins.pyc")
+            os.remove("./Lolex-Tools/project/old/startplugins.pyc")
         except(IOError, OSError):
             pass
-        w = open("./project/old/startplugins.py", "a")
-        w.write("import sys\nsys.path.insert(0, './project/old/lib')\nfrom LolexToolsMethods import *")
+        w = open("./Lolex-Tools/project/old/startplugins.py", "a")
+        w.write("import sys\nsys.path.insert(0, './Lolex-Tools/project/old/lib')\nfrom LolexToolsMethods import *")
     done = "0"
     while done != "1":
         success = True
