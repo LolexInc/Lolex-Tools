@@ -1,1 +1,1 @@
-.\python\python .\start.py
+.\python\python .\Lolex-Tools\start.py
