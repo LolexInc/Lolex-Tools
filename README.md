@@ -1,6 +1,6 @@
 # Lolex Tools CopyLeft (c<-)2014-2018 LolexUK
 # This is : Lolex-Tools VERSION 10 pre-nightly (dual project version)
-
+# NOTE that there are a few issues with Python 3.7 on Linux which we are working to solve
 # DO NOT USE THIS VERSION YET!!! THIS STILL USES THE 9.X FORMAT WHICH WILL NOT BE SUPPORTED (in the old version of the project)
 # This is a pre-alpha build. Do not use for production purposes
 # Highly unstable at the minute
