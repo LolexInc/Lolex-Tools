@@ -8,6 +8,7 @@
 Monkeyboy2805 / 19taylorje / Monkeyboy44: Owner, founder of Lolexorg and Lolex-Tools<br><br>
 AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), part of the Lolex-Tools-write-access team (he's done more than it looks like he has!)<br><br>
 ## Python 3.0 or higher is required for this project!!! 
+Note that for Linux, you will currently have to compile python by yourselves
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # Visit our website for more information and news
 # Please go to:
