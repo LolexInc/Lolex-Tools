@@ -11,6 +11,8 @@ AvatarAing3 : Joined LolexOrg 20.12.16, website designer (promoted on 1.1.17), p
 Note that for Linux, you will currently have to compile python by yourselves
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # Visit our website for more information and news
+# Want to talk to us?:
+[Our Discord server](https://discord.gg/eGkFAcz)
 # Please go to:
 [Our official website @ http://lolexorg.wixsite.com/lolex-tools](http://lolexorg.wixsite.com/lolex-tools)
 
