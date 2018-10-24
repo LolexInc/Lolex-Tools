@@ -9,6 +9,7 @@ script:
  - git config --global user.email "monkeyboy2805@gmail.com"
  - git config --global user.name "monkeyboy2805"
  - curl --url https://www.python.org/ftp/python/3.7.1/Python-3.7.1.tgz --location --output ./source.tgz
+ - tar -xzf ./source.tgz
  - python ./ci/CI.py
  - git reset --hard
  - git checkout $TRAVIS_BRANCH
