@@ -79,7 +79,7 @@ def get_file_folders():
         tarraypos = 0
         sublen = len(currsub)
         while tarraypos < sublen:
-            if (".git" in currsub[tarraypos]) == False:
+            if (".git" in currsub[tarraypos]) == False and ("python" in currsub[tarraypos].lower()) == False:
                 readin3 = True
                 try:
                     r = open(path + currsub[tarraypos])
