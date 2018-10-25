@@ -13,8 +13,6 @@ Note that for Linux, you will currently have to compile python by yourselves
 # Visit our website for more information and news
 # Want to talk to us?:
 [Our Discord server](https://discord.gg/eGkFAcz)
-# Please go to:
-[Our official website @ http://lolexorg.wixsite.com/lolex-tools](http://lolexorg.wixsite.com/lolex-tools)
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
 # Lolex-Tools is licensed under Unlicense
