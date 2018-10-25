@@ -54,7 +54,7 @@ def get_file_folders():
     root = os.listdir("./")
     arraypos = 0
     while arraypos < len(root):
-        if (".git" in root[arraypos]) == False:
+        if (".git" in root[arraypos]) == False and ("python" in root[arraypos].lower()) == False:
             readin = True
             try:
                 r = open(root[arraypos], "r")
