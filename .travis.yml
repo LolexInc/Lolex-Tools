@@ -1,6 +1,6 @@
+os: windows
 language: python
 python: 3.6
-dist: windows
 install:
  - git config credential.helper "store --file=.git/credentials"
  - echo $cred > .git/credentials
