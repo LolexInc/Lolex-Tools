@@ -11,16 +11,19 @@ import os, time, py_compile, shutil, sys, platform, threading, subprocess, rando
 print ("Module LolexToolsMethods is running, using modules os, time, py_compile, shutil, sys, platform, threading.")
 s = os.sep
 sys.path.insert(0, "./Lolex-Tools/project/old/")
-if platform.system() == "Windows":
-    if sys.version_info.minor > 5:
-        py = "py ." + os.sep
-        pyo = "py"
-    else:
-        py = "python ." + os.sep
-        pyo = "python"
-elif platform.system() == "Linux":
-    py = "python3 " + os.sep
-    pyo = "python3"
+py = "./python/python ." + os.sep
+pyo = "./python/python"
+#if platform.system() == "Windows":
+#    if sys.version_info.minor > 5:
+#        py = "py ." + os.sep
+#        pyo = "py"
+#    else:
+#        py = "python ." + os.sep
+#        pyo = "python"
+#elif platform.system() == "Linux":
+#    py = "python3 " + os.sep
+#    pyo = "python3"
+### NOTE: Android must be sorted before removing this completely in a stable release
 stopping = False
 class uos:
     useros = platform.system()
