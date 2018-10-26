@@ -8,10 +8,10 @@
 ##
 ## authors = Monkeyboy2805
 import os, shutil, sys, time
-if sys.version_info.major != 3:
-    print("Please install Python 3 to run this script.")
-    time.sleep(5)
-    exit(0)
+#if sys.version_info.major != 3:
+    #print("Please install Python 3 to run this script.")
+    #time.sleep(5)
+    #exit(0)
 sys.path.insert(0, "./project/old/lib/")
 try: 
     import LolexToolsMethods
