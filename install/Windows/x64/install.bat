@@ -1,1 +1,1 @@
-.\python\python .\python\download.py
+.\python\python .\download.py
