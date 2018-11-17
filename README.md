@@ -12,7 +12,8 @@ Note that for Linux, you will currently have to compile python by yourselves
 # Due to permission errors on Android 6+, either root will be needed or Write permissions enabled for your terminal app.
 # Visit our website for more information and news
 # Want to talk to us?:
-[Our Discord server](https://discord.gg/eGkFAcz)
+[Our Discord server](https://discord.gg/eGkFAcz)<br>
+Or email us: lolexuk@protonmail.com
 
 Please be aware that any features that require certain OSs will be hidden if your device does not meet the requirements. Most features are available on Windows, some are limited on Linux, particularly Android
 # Lolex-Tools is licensed under Unlicense
