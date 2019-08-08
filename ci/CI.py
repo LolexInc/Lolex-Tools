@@ -7,8 +7,6 @@
 #      0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 #
 # authors = Monkeyboy2805
-import os
-import py_compile
 import sys
 import time
 a = time.time()
