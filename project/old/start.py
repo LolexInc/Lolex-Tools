@@ -37,5 +37,4 @@ else:
     print("OS not supported!!!")
     time.sleep(5)
     exit(0)
-os.system(LolexToolsMethods.pyo + " ./project/old/sys/bootanim.py")
 os.system(LolexToolsMethods.pyo + " ./project/old/main/LolexTools.py")
