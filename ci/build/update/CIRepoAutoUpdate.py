@@ -14,8 +14,8 @@ del sys.path[sys.path.index("./ci/lib/")]
 sys.path.insert(0, "./ci/build/prop/")
 import LATEST_PYTHON_VERSION
 del sys.path[sys.path.index("./ci/build/prop/")]
-if int(LATEST_PYTHON_VERSION.version) == int(LolexToolsCIlib.get_py_ver()):
+if int(LATEST_PYTHON_VERSION.version) != int(LolexToolsCIlib.get_py_ver()):
     LolexToolsCIlib.update_py_ver()
-    LolexToolsCIlib.update_headers()
+    #LolexToolsCIlib.update_headers() #doing headers might be glitchy at the moment
 else:
     exit(0)
