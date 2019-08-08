@@ -71,6 +71,7 @@ def get_file_folders():
 			readin = True
 			try:
 				r = open(root[arraypos], "r")
+				r.close()
 			except(IOError, OSError):
 				readin = False
 			if readin:
@@ -96,6 +97,7 @@ def get_file_folders():
 				readin3 = True
 				try:
 					r = open(path + currsub[tarraypos])
+					r.close()
 				except(IOError, OSError):
 					readin3 = False
 				if readin3:
