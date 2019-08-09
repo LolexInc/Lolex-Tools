@@ -17,6 +17,7 @@ del sys.path[sys.path.index("./ci/lib/")]
 b = time.time()
 print("Testing...")
 LolexToolsCIlib.compile_files(LolexToolsCIlib.get_file_folders())
+os.system("git checkout $TRAVIS_BRANCH")
 LolexToolsCIlib.update_py_ver()
 LolexToolsCIlib.update_headers()
 c = (str(round(time.time() - b, 0)))
