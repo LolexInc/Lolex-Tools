@@ -6,7 +6,7 @@
 #     0            00     0  0         0          0  0            00       0      0    0      0   0              0
 #     0000000      000000   0000000   000000    0    0           00       00000000    00000000   0000000   000000
 #
-## authors = Monkeyboy2805
+# authors = Monkeyboy2805
 import os
 import sys
 import time
