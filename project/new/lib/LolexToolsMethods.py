@@ -10,7 +10,7 @@
 import sys
 
 
-class add_user:
+class AddUser:
 	def setup_folder(self):
 		pass
 
@@ -18,7 +18,7 @@ class add_user:
 		pass
 
 
-class authenticate:
+class Authenticate:
 	@staticmethod
 	def login():
 		try:
@@ -26,7 +26,7 @@ class authenticate:
 			import users
 			usernameenter = input("Please enter your username.")
 			if usernameenter in users.users:
-				path = users.paths[users.users.index(usernameenter)]
+				path = users.paths[users.users.index(usernameenter)] # NOTE: the local variable path will be used at some point, but there isn't enough functionality for it to be used as of yet
 				print("Welcome " + (str(usernameenter)))
 			else:
 				return 1
