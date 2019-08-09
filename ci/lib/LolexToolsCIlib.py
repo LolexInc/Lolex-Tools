@@ -36,8 +36,8 @@ def update_py_ver():
 
 
 def update_headers():
+	# Need to add project header (well, the ability for it to do so)
 	if int(get_py_ver()) == int(PY_VER.version):
-		# Getting RIGHT contents but somehow writing to the wrong files
 		print("Updating headers...")
 		files = get_file_folders()
 		for j in range(0, len(files) - 1):
